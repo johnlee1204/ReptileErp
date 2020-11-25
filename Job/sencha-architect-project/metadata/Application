@@ -9,7 +9,7 @@
         "name": "Job",
         "views": [
             "MyViewport",
-            "MyPanel"
+            "Job"
         ]
     },
     "configAlternates": {

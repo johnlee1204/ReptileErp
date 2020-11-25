@@ -1,0 +1,28 @@
+CREATE TABLE Job (
+    jobId INT AUTO_INCREMENT PRIMARY KEY,
+    jobNumber varchar(10),
+    partId int,
+    quantity float,
+    status varchar(20),
+    jobStartDate datetime,
+    jobCreateDate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE JobRouting (
+    jobRoutingId INT AUTO_INCREMENT PRIMARY KEY,
+    jobId int,
+    partId int,
+    totalQuantity float,
+    quantityComplete float,
+    jobRoutingStartDate datetime,
+    workcenterId int
+);
+
+CREATE TABLE JobBillOfMaterial (
+    JobBillOfMaterialId INT AUTO_INCREMENT PRIMARY KEY,
+    jobId int,
+    partId int,
+    totalQuantity float,
+    quantityIssued float,
+    subJobId int
+);

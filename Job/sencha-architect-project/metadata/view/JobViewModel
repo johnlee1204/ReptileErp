@@ -1,0 +1,163 @@
+{
+    "type": "Ext.app.ViewModel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "job",
+        "designer|userClassName": "JobViewModel"
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string"
+    },
+    "designerId": "f565af02-a06d-4dc3-95d1-9c4c266bfbf2",
+    "cn": [
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "PartStore"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyStore",
+            "designerId": "6a535400-94f3-44a1-a56c-908b72eac59a",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "partId"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField",
+                    "designerId": "83c59bf5-e3c6-44c7-9421-8d98abd24134"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "partName"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField1",
+                    "designerId": "f8850f28-d695-426f-b6dc-9d24ef2bf63d"
+                },
+                {
+                    "type": "Ext.data.proxy.Ajax",
+                    "reference": {
+                        "name": "proxy",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "actionMethods": [
+                            "{\"create\":\"POST\",\"read\":\"POST\",\"update\":\"POST\",\"destroy\":\"POST\"}"
+                        ],
+                        "noCache": false,
+                        "url": "/ItemMaster/readPartsCombo"
+                    },
+                    "configAlternates": {
+                        "actionMethods": "object",
+                        "noCache": "boolean",
+                        "url": "string"
+                    },
+                    "name": "MyAjaxProxy",
+                    "designerId": "b0d0a6be-a2a1-4c9b-8c57-69442c83297e",
+                    "cn": [
+                        {
+                            "type": "Ext.data.reader.Array",
+                            "reference": {
+                                "name": "reader",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "rootProperty": "data"
+                            },
+                            "configAlternates": {
+                                "rootProperty": "string"
+                            },
+                            "name": "MyArrayReader",
+                            "designerId": "0b763e99-9584-4597-8346-1309395c2f3f"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "data": [
+                    "[",
+                    "{",
+                    "\"status\": \"Open\"",
+                    "},",
+                    "{",
+                    "\"status\": \"Released\"",
+                    "},",
+                    "{",
+                    "\"status\": \"Completed\"",
+                    "},",
+                    "{",
+                    "\"status\": \"Cancelled\"",
+                    "},",
+                    "{",
+                    "\"status\": \"Closed\"",
+                    "}",
+                    "]"
+                ],
+                "name": "StatusStore"
+            },
+            "configAlternates": {
+                "data": "array",
+                "name": "string"
+            },
+            "name": "MyStore1",
+            "designerId": "b9ce7b2b-8a48-490a-9979-9a6919fe68c0",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "status"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField2",
+                    "designerId": "16405e28-5209-4a83-80e9-c9b102750518"
+                }
+            ]
+        }
+    ]
+}

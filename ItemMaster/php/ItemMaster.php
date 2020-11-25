@@ -40,6 +40,10 @@ class ItemMaster extends AgileBaseController
 			throw new AgileUserMessageException("Part: " . $inputs['partName'] . " already exists!");
 		}
 
+		if(!$inputs['partsPerMinute']) {
+			$inputs['partsPerMinute'] = 0;
+		}
+
 		ItemMasterModel::createPart($inputs);
 
 		$newPartId = ItemMasterModel::readLastPartMade();
@@ -54,6 +58,10 @@ class ItemMaster extends AgileBaseController
 			'partDescription',
 			'partsPerMinute'
 		]);
+
+		if(!$inputs['partsPerMinute']) {
+			$inputs['partsPerMinute'] = 0;
+		}
 
 		ItemMasterModel::updatePart($inputs);
 

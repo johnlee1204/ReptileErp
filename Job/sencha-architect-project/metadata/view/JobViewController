@@ -6,8 +6,8 @@
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userAlias": "mypanel",
-        "designer|userClassName": "MyPanelViewController"
+        "designer|userAlias": "job",
+        "designer|userClassName": "JobViewController"
     },
     "configAlternates": {
         "designer|userAlias": "string",

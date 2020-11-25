@@ -92,6 +92,25 @@ class mysql_helper
 		}
 
 		$statement->execute();
+		if($statement->error) {
+			echo $statement->error;
+		}
 		return $statement;
+	}
+
+	public function begin_transaction() {
+		$this->connection->begin_transaction();
+	}
+
+	public function commit_transaction() {
+		$this->connection->commit();
+	}
+
+	public function rollback_transaction() {
+		$this->connection->rollback();
+	}
+
+	public function getInserted() {
+		return $this->connection->insert_id;
 	}
 }
