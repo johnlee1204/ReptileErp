@@ -1,0 +1,35 @@
+<style>
+	.logoutBtn{
+		margin-left: auto;
+		margin-right: auto;
+		padding: 10px 40px 10px 40px;
+		margin: 10px;
+		display: inline-block;
+		border: solid 1px #006064;
+		background: #00BCD4;
+		text-decoration: none;
+		color: white;
+		font-size:20px;
+	}
+	.logoutBtn:hover{
+		background: #0097A7;
+	}
+	.user{
+		color:red;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+</style>
+<div style="margin-top:10%;font-family:arial;font-size:30px;">
+	<center>
+		<span style="color:red;">Error 401: Not Authorized</span>
+		<br />
+		<br />
+		<span class="user">{user}</span> is <i>blocked</i> from accessing this page.
+		<br />
+		<br />
+		<img src="/Agile/ErrorPages/http-errors-401_blocked.jpg">
+		<br />
+		<a class="logoutBtn" href="/logout?redirect={class}/{method}">Logout</a>
+	</center>
+</div>

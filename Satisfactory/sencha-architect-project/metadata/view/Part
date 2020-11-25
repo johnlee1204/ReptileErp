@@ -1,0 +1,212 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyPadding": 10,
+        "bodyStyle": "background:none",
+        "designer|userAlias": "part",
+        "designer|userClassName": "Part",
+        "title": "Part"
+    },
+    "configAlternates": {
+        "bodyPadding": "auto",
+        "bodyStyle": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "title": "string"
+    },
+    "name": "MyPanel",
+    "designerId": "b978e417-cd06-438d-b586-3611c1a2971c",
+    "viewControllerInstanceId": "2a883481-1328-46e3-b423-6ee6a1285d43",
+    "viewModelInstanceId": "cb8cce1e-7693-4f86-b002-5367c3c223dd",
+    "cn": [
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Part Description",
+                "itemId": "partDescription"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string"
+            },
+            "name": "MyTextField1",
+            "designerId": "01286ee7-d18d-42e8-822d-6601fe4e74f0"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Parts Per Minute",
+                "itemId": "partsPerMinute"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string"
+            },
+            "name": "MyTextField5",
+            "designerId": "62140ee4-dfd6-40c2-9a1e-cf5f04c4b6d7"
+        },
+        {
+            "type": "Ext.form.FieldSet",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "padding": 10,
+                "title": "Calculations",
+                "width": 571
+            },
+            "configAlternates": {
+                "padding": "auto",
+                "title": "string",
+                "width": "auto"
+            },
+            "name": "MyFieldSet",
+            "designerId": "cc65dc9e-97bd-42ac-9438-8fa3333644ec",
+            "cn": [
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout": "hbox"
+                    },
+                    "configAlternates": {
+                        "layout": "string"
+                    },
+                    "name": "MyContainer2",
+                    "designerId": "bcb6f0fd-5722-4f81-a37d-f1dd180abebc",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docFormSkip": true,
+                                "fieldLabel": "Parts Produced",
+                                "itemId": "partsProduced"
+                            },
+                            "configAlternates": {
+                                "docFormSkip": "boolean",
+                                "fieldLabel": "string",
+                                "itemId": "string"
+                            },
+                            "name": "MyTextField6",
+                            "designerId": "029ad358-250c-426f-bcd6-0cd23b171ca7",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "docFormSkip",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onPartsProducedChange",
+                                        "implHandler": [
+                                            "this.queryById('estimatedTime').setValue(newValue / this.queryById('partsPerMinute').getValue());"
+                                        ],
+                                        "name": "change",
+                                        "scope": "me"
+                                    },
+                                    "configAlternates": {
+                                        "fn": "string",
+                                        "implHandler": "code",
+                                        "name": "string",
+                                        "scope": "string"
+                                    },
+                                    "name": "onPartsProducedChange",
+                                    "designerId": "1503b4d5-5392-4b63-9fba-c53c71ca8d99"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docFormSkip": true,
+                                "fieldLabel": "Estimated Time",
+                                "itemId": "estimatedTime",
+                                "margin": "0 0 0 20"
+                            },
+                            "configAlternates": {
+                                "docFormSkip": "boolean",
+                                "fieldLabel": "string",
+                                "itemId": "string",
+                                "margin": "auto"
+                            },
+                            "name": "MyTextField7",
+                            "designerId": "8cad5847-cf58-4585-b2a0-809015c406fd",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "docFormSkip",
+                                    "type": "string"
+                                }
+                            ],
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onEstimatedTimeChange",
+                                        "implHandler": [
+                                            "this.queryById('partsProduced').setValue(newValue * this.queryById('partsPerMinute').getValue());"
+                                        ],
+                                        "name": "change",
+                                        "scope": "me"
+                                    },
+                                    "configAlternates": {
+                                        "fn": "string",
+                                        "implHandler": "code",
+                                        "name": "string",
+                                        "scope": "string"
+                                    },
+                                    "name": "onEstimatedTimeChange",
+                                    "designerId": "f4504909-e359-4830-8db7-63d3cdeb6c0f"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,27 @@
+{
+    "type": "Ext.app.Application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "name": "Satisfactory",
+        "views": [
+            "MyViewport",
+            "PartMaster",
+            "Part",
+            "PartSearchWindow",
+            "PartBom",
+            "PartBomForm",
+            "PartRouting",
+            "PartRoutingForm"
+        ]
+    },
+    "configAlternates": {
+        "name": "string",
+        "views": "typedarray"
+    },
+    "name": "Application",
+    "designerId": "application"
+}

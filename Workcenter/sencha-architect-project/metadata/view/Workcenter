@@ -1,0 +1,266 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userAlias": "workcenter",
+        "designer|userClassName": "Workcenter",
+        "frame": true,
+        "layout": "vbox",
+        "minHeight": 500,
+        "minWidth": 500,
+        "title": "Work Center"
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "frame": "boolean",
+        "height": "auto",
+        "title": "string",
+        "width": "auto",
+        "minHeight": "number",
+        "minWidth": "number",
+        "container|align": "string",
+        "layout": "string"
+    },
+    "name": "MyPanel",
+    "designerId": "d38c2cf0-9e53-498a-8521-da773f47156a",
+    "viewControllerInstanceId": "8e77139f-bc05-4a61-ab7b-54ee0eb6e2c6",
+    "viewModelInstanceId": "f565af02-a06d-4dc3-95d1-9c4c266bfbf2",
+    "cn": [
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "layout": "hbox",
+                "layout|flex": 1
+            },
+            "configAlternates": {
+                "container|align": "string",
+                "layout": "string",
+                "layout|flex": "number"
+            },
+            "name": "MyContainer1",
+            "designerId": "c9689efb-f2ae-4bd5-80d7-547868d30998",
+            "cn": [
+                {
+                    "type": "Ext.grid.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "store": [
+                            "{WorkcenterStore}"
+                        ],
+                        "width": 473
+                    },
+                    "configAlternates": {
+                        "store": "binding",
+                        "width": "auto"
+                    },
+                    "name": "MyGridPanel",
+                    "designerId": "66a48371-6e26-44d4-852c-a99adb5f940e",
+                    "cn": [
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "workcenterName",
+                                "text": "Work Center",
+                                "width": 119
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyColumn",
+                            "designerId": "b9550441-cc75-4116-819e-ee2c51b47937"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "workcenterDescription",
+                                "text": "Work Center Description",
+                                "width": 314
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyColumn2",
+                            "designerId": "b1ae22bd-1aa7-431e-a95d-30f488403d41"
+                        },
+                        {
+                            "type": "Ext.view.Table",
+                            "reference": {
+                                "name": "viewConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "enableTextSelection": true
+                            },
+                            "configAlternates": {
+                                "enableTextSelection": "boolean"
+                            },
+                            "name": "MyTable",
+                            "designerId": "28f9c0e4-0bdb-45ab-b8a4-3c4b8fc3e041"
+                        },
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onGridpanelSelectionChange",
+                                "implHandler": [
+                                    "if(!selected || selected.length !== 1) {",
+                                    "\treturn;",
+                                    "}",
+                                    "",
+                                    "selected = selected[0];",
+                                    "",
+                                    "this.queryById('workcenterForm').readWorkcenter(selected.data.workcenterId);"
+                                ],
+                                "name": "selectionchange",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onGridpanelSelectionChange",
+                            "designerId": "5b3e942a-a6db-4a6b-bc87-0b0327815864"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "workcenterForm",
+                        "layout|flex": 1
+                    },
+                    "configAlternates": {
+                        "itemId": "string",
+                        "layout|flex": "number"
+                    },
+                    "name": "workcenterform",
+                    "designerId": "695ba447-0f2d-43e7-bef7-50b8f5e07051",
+                    "masterInstanceId": "28cb5063-35a0-45ce-be3f-8ff43cc52e1e",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "panel"
+                                ],
+                                "fn": "onPanelWorkcenterChangeD",
+                                "implHandler": [
+                                    "this.readWorkcenters();"
+                                ],
+                                "name": "workcenterchanged",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "designer|params": "typedarray",
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onPanelWorkcenterChangeD",
+                            "designerId": "d550c1bd-0e22-4003-8102-fb01baff2f2b"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.readWorkcenters();"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "f9e3621e-8174-47ed-a856-e3b3a660e47f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "readWorkcenters",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Workcenter/readWorkcenters',",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore('WorkcenterStore').loadData(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readWorkcenters",
+            "designerId": "a5b22bce-bce6-4099-8961-4785be159769"
+        }
+    ]
+}

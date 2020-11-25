@@ -1,0 +1,931 @@
+<?php
+
+/**
+ * Class sqlsrv_helperTest
+ * We assume that the basic query function here works, rather this test suite is
+ * for testing the library's ability to build complex queries through its build
+ * functions and we use hand written queries to test that it built and executed
+ * the commands correctly.
+ */
+
+require_once("C:/server/data/apacheData/dev.local/inc/php/classes/sqlsrv_helper.php");
+require_once("C:/server/data/apacheData/dev.local/inc/php/models/JobCreateModel.php");
+
+class JobCreateModel_insertTest extends PHPUnit_Framework_TestCase{
+	/* @var sqlsrv_helper */
+	protected static $testingDatabase  ;
+	protected static $sqlSrv;
+	protected static $dbc;
+	protected static $tableName = "FWE_DEV..unitTestSqlSrvHelper";
+
+	protected static $jobData = array(
+		'internal' => true,
+		'userChar1' => '',
+		'userChar2' => '',
+		'userMemo' => '',
+		'salesOrder' => '',
+		'salesOrderCompany' => '',
+		'salesOrderCustomerNo' => '',
+		'salesOrderJobName' => '',
+		'salesOrderKey' => '',
+		'jobType' => 'FillerLaser',
+		'deliverToWorkCenter' => '',
+		'reWorkReason' => '',
+		'reWorkInspCode' => '',
+		'reWorkLock' => '',
+		'reWorkHot' => '',
+		'reWorkReasonEmployeeId' => '',
+		'jobCreatorEmployeeId' => '',
+		'operationMemo' => '',
+		'part' => 'Z-400-2308',
+		'partRev' => '000',
+		'dueDate' => '2017-11-18',
+		'quantity' => '2',
+		'newJob' => '55504-0000',
+		'bomINum' => '0001',
+		'parentJob' => '',
+		'routingProductionHours' => ".00002000000000000000"
+	);
+
+	protected static $partData = array(
+	    'part' => 'Z-400-2308',
+	    'partRev' => '000',
+	    'partDescription' => 'TST-19SL-TB INSIDE ASSY',
+	    'unitOfMeasure' => 'EA',
+	    'groupCode' => 'SA1400',
+	    'productClass' => '60',
+	    'lotControlRequired' => 0,
+	    'lotControlExtent' => '',
+	    'source' => 'M',
+	    'fstdmemo' => '',
+	    'cadFile1' => '',
+	    'cadFile2' => 'S:\DRW\Z-400-2308.SLDDRW',
+	    'cadFile3' => 'S:\ASM\Z-400-2308.SLDASM',
+	    'FSTDCOST' => '314.36749',
+	    'identity_column' => 64491
+	);
+
+	public static function setUpBeforeClass(){
+		echo "setUpBeforeClass\r\n";
+
+		require("C:/server/data/apacheData/dev.local/inc/php/models/credentials/m2m.php");
+        
+		self::$sqlSrv = new sqlsrv_helper('m2m');
+    	sqlsrv_configure( "WarningsReturnAsErrors", 0 ); 
+    
+		$localDatabaseBackupPath = 'C:\\server\\Data\\DatabaseBackups\\';
+		self::$testingDatabase = 'm2mdata01_testing';
+		exec('sqlcmd -b -S "localhost" -U "'.$user.'" -P "'.$password.'" -Q "alter database '.self::$testingDatabase.' set offline with rollback immediate "', $output, $exitCode);
+   		print_r($output, true);
+    
+		unset($output);
+		unset($exitCode);
+
+		exec('sqlcmd -b -S "localhost" -U "'.$user.'" -P "'.$password.'" -Q "alter database '.self::$testingDatabase.' set online with rollback immediate "', $output, $exitCode);
+   		print_r($output, true);
+    
+    	$restoreQuery = "RESTORE DATABASE ".self::$testingDatabase." FROM DISK='{$localDatabaseBackupPath}".self::$testingDatabase.".bak' WITH RECOVERY, REPLACE,
+		MOVE 'm2mdata01' TO 'C:\\server\\data\\sqlServerData\\MSSQL10_50.MSSQLSERVER\\MSSQL\\DATA\\".self::$testingDatabase.".mdf',
+		MOVE 'm2mdata01_log' TO 'C:\\server\\data\\sqlServerData\\MSSQL10_50.MSSQLSERVER\\MSSQL\\DATA\\".self::$testingDatabase."_Log.ldf'";
+    
+		self::$sqlSrv->query( $restoreQuery);
+    
+		//sqlsrv_query(self::$dbc, "RESTORE DATABASE ".self::$testingDatabase." WITH RECOVERY");
+		self::$sqlSrv->query("USE ".self::$testingDatabase);
+    	//sqlsrv_close(self::$dbc);
+	}
+
+	protected static function getMethod($name) {
+		$class = new ReflectionClass('JobCreateModel');
+		$method = $class->getMethod($name);
+		$method->setAccessible(true);
+		return $method;
+	}
+
+	function testGetNextJobNumberData(){
+		echo "\r\ntestGetNextJobNumberData\r\n";
+
+		$jobNumberExternal = JobCreateModel::getNextJobNumberData(self::$sqlSrv, false);
+
+		$this->assertEquals("55504-0000",$jobNumberExternal);
+
+		$jobNumberInternal = JobCreateModel::getNextJobNumberData(self::$sqlSrv, true);
+
+		$this->assertEquals("I1RW3-0000",$jobNumberInternal);
+	}
+
+	function testGetPartDetails(){
+		echo "\r\ntestGetPartDetails\r\n";
+
+		$expectedReturn = array(
+		    'part' => 'Z-400-2308',
+		    'partRev' => '000',
+		    'partDescription' => 'TST-19SL-TB INSIDE ASSY',
+		    'unitOfMeasure' => 'EA',
+		    'groupCode' => 'SA1400',
+		    'productClass' => '60',
+		    'lotControlRequired' => 0,
+		    'lotControlExtent' => '',
+		    'source' => 'M',
+		    'fstdmemo' => '',
+		    'cadFile1' => '',
+		    'cadFile2' => 'S:\DRW\Z-400-2308.SLDDRW',
+		    'cadFile3' => 'S:\ASM\Z-400-2308.SLDASM',
+		    'FSTDCOST' => '314.36749',
+		    'identity_column' => 64491
+		);
+
+		$partData = JobCreateModel::getPartDetails(self::$sqlSrv,self::$partData['part'],self::$partData['partRev']);
+
+		$this->assertEquals($expectedReturn, $partData);
+	}
+
+	function testGetPartDetailsById(){
+		echo "\r\ntestGetPartDetailsById\r\n";
+
+		$expectedReturn = array(
+		    'part' => 'Z-400-2308',
+		    'partRev' => '000',
+		    'partDescription' => 'TST-19SL-TB INSIDE ASSY',
+		    'unitOfMeasure' => 'EA',
+		    'groupCode' => 'SA1400',
+		    'productClass' => '60',
+		    'lotControlRequired' => 0,
+		    'lotControlExtent' => '',
+		    'source' => 'M',
+		    'fstdmemo' => '',
+		    'cadFile1' => '',
+		    'cadFile2' => 'S:\DRW\Z-400-2308.SLDDRW',
+		    'cadFile3' => 'S:\ASM\Z-400-2308.SLDASM',
+		    'FSTDCOST' => '314.36749',
+		    'identity_column' => 64491
+		);
+
+		$partData = JobCreateModel::getJobPartDetailsById(self::$sqlSrv, self::$partData['identity_column']);
+
+		$this->assertEquals($expectedReturn, $partData);
+	}
+
+	/**
+	*  
+	*/
+	function testGetRoutingProductionHours(){
+		echo "\r\ntestGetRoutingProductionHours\r\n";
+
+		$part = 'Z-400-2308';
+		$partRev = '000';
+		$qty = '2';
+
+		$expectedReturn = ".00002000000000000000";
+
+		$productionHours = JobCreateModel::getRoutingProductionHours(self::$sqlSrv,$part,$partRev,$qty);
+
+		$this->assertEquals($expectedReturn, $productionHours);
+	}
+
+	/**
+	* @depends testGetPartDetails
+	* @depends testGetNextJobNumberData
+	*/
+	function testInsertJomastRecord(){
+		echo "\r\ntestInsertJomastRecord\r\n";
+
+		$jobKeyId = 1;
+
+		$expectedJomastReturn = array(
+			'fjobno' => '55504-0000',
+			'fpartno' => 'Z-400-2308               ',
+			'fpartrev' => '000',
+			'fstatus' => 'RELEASED  ',
+			'fopen_dt' => date('Y-m-d').' 00:00:00.000',
+			'fhold_dt' => date('Y-m-d').' 00:00:00.000',
+			'frel_dt' => '2017-11-18 00:00:00.000',
+			'fddue_date' => '2017-11-18 00:00:00.000',
+			'fdstart' => date('Y-m-d').' 00:00:00.000',
+			'fdesc' => 1,
+			'fsub_rel' => 1,
+			'fdet_bom' => 1,
+			'fdet_rtg' => 1,
+			'fitems' => '1',
+			'fitype' => '1',
+			'fmeasure' => 'EA ',
+			'fmethod' => ' ',
+			'fhold_by' => '                       ',
+			'fprodcl' => '60',
+			'fpro_plan' => 1,
+			'fquantity' => '2.00000',
+			'frouting' => '.00002',
+			'fschdprior' => '4',
+			'fstandpart' => 1,
+			'fsummary' => 1,
+			'ftot_assy' => '1',
+			'ftype' => 'I',
+			'fllotreqd' => 0,
+			'fclotext' => ' ',
+			'fac' => 'Default             ',
+			'fcudrev' => '000',
+			'fcusrchr1' => '                    ',
+			'fcusrchr2' => '',
+			'fbominum' => '0001',
+			'fsono' => '      ',
+			'fcompany' => '',
+			'fcus_id' => '      ',
+			'fjob_name' => '',
+			'fkey' => '      ',
+			'fschbefjob' => '          ',
+			'fsub_from' => '          ',
+			'fccadfile1' => '',
+			'fccadfile2' => 'S:\\DRW\\Z-400-2308.SLDDRW',
+			'fccadfile3' => 'S:\\ASM\\Z-400-2308.SLDASM',
+			'FMUSERMEMO' => '',
+		);
+
+		$expectedJomastExtReturn = array(
+			'reworkDelTo' => '',
+			'frework' => '',
+			'fkey_id' => 1,
+			'reworkReason' => '',
+			'Lock' => 0,
+			'ISTENN' => 1,
+			'hot' => 0,
+			'jobType' => 'FillerLaser',
+			'reworkresp' => '',
+			'reworkby' => '',
+		);
+
+		$qty = '2';
+
+		$insertJomastRecord = self::getMethod('insertJomastRecord');
+
+		$jobCreateModel = new JobCreateModel();
+
+		$insertJomastRecord->invokeArgs($jobCreateModel,array(self::$sqlSrv,self::$jobData,self::$partData,$qty));
+
+		$jomastData = self::$sqlSrv->fetch_assoc(
+			"SELECT 
+			fjobno, fpartno, fpartrev, fstatus, fopen_dt, fhold_dt, frel_dt,
+			fddue_date, fdstart, fdesc, fsub_rel,
+			fdet_bom, fdet_rtg, fitems, fitype, fmeasure, fmethod,
+			fhold_by,
+			fprodcl, fpro_plan, fquantity,  frouting, fschdprior,
+			fstandpart, fsummary, ftot_assy, ftype, fllotreqd, fclotext, fac, fcudrev,
+			fcusrchr1, fcusrchr2, 
+			fbominum,  
+			fsono, fcompany, fcus_id, fjob_name, fkey, 
+			fschbefjob, fsub_from, 
+			fccadfile1, fccadfile2, fccadfile3,
+			FMUSERMEMO FROM jomast WHERE fpartno = ?",array(self::$partData['part']));
+
+		$jomastExtData = self::$sqlSrv->fetch_assoc(
+			"SELECT rtrim(reworkDelTo) reworkDelTo, 
+			frework, 
+			fkey_id, 
+			reworkReason, 
+			Lock,
+			ISTENN,
+			hot,
+			rtrim(jobtype) jobType,
+			rtrim(reworkresp) reworkresp,
+			rtrim(reworkby) reworkby
+			FROM jomast_ext WHERE fkey_id = ?",array($jobKeyId));
+
+		$this->assertEquals($expectedJomastReturn, $jomastData);
+
+		$this->assertEquals($expectedJomastExtReturn, $jomastExtData);
+	}
+
+	function testInsertJoitemRecord(){
+		echo "\r\ntestInsertJoitemRecord\r\n";
+
+		$qty = '2';
+
+		$expectedReturn = array(
+			'fjobno' => '55504-0000',
+			'fitem' => '001',
+			'fpartno' => 'Z-400-2308               ',
+			'fpartrev' => '000',
+			'fgroup' => 'SA1400',
+			'fmeasure' => 'EA ',
+			'fmqty' => '2.00000',
+			'forderqty' => '2.00000',
+			'fprodcl' => '60',
+			'fsource' => 'M',
+			'fstandpart' => 1,
+			'fdesc' => 'TST-19SL-TB INSIDE ASSY',
+			'fdescmemo' => '',
+			'fac' => 'Default             ',
+			'fcudrev' => '000',
+			'fsono' => '      ',
+			'finumber' => '   ',
+			'fkey' => '   ',
+		);
+
+		$insertJoitemRecord = self::getMethod('insertJoitemRecord');
+
+		$jobCreateModel = new JobCreateModel();
+
+		$insertJoitemRecord->invokeArgs($jobCreateModel,array(self::$sqlSrv,self::$jobData,self::$partData,$qty));
+
+		$joitemData = self::$sqlSrv->fetch_assoc(
+			"SELECT fjobno, 
+			fitem, 
+			fpartno,
+			fpartrev,
+			fgroup, 
+			fmeasure,
+			fmqty,
+			forderqty,
+			fprodcl,
+			fsource,
+			fstandpart,
+			fdesc,
+			fdescmemo,
+			fac,
+			fcudrev,
+			fsono,
+			finumber,
+			fkey
+			FROM joitem where fjobno = ?",array(self::$jobData['newJob']));
+		
+		$this->assertEquals($expectedReturn, $joitemData);
+	}
+
+	function testInsertJobRoutingRecords(){
+		echo "\r\ntestInsertJobRoutingRecords\r\n";
+
+		$qty = '2';
+
+		$expectedReturn = array(
+			'foperno' => '10',
+			'fchngrates' => 'Y',
+			'felpstime' => '0.00',
+			'ffixcost' => '0.00000',
+			'flschedule' => '1',
+			'fstrtdate' => 'Nov 18 2017 12:00AM',
+			'factschdst' => 'Nov 18 2017 12:00AM',
+			'fmovetime' => '-0.01',
+			'fbominum' => '0001',
+			'finumber' => '',
+			'FNEED_dt' => 'Jan  1 1900 12:00AM',
+			'fnqty_togo' => '2.00000',
+			'foperqty' => '2.00000',
+			'fothrcost' => '0.00000',
+			'fpro_id' => 'INSIDET',
+			'fresponse' => '',
+			'fsetuptime' => '0.00',
+			'fsource' => '',
+			'fulabcost' => '25.00000',
+			'fuovrhdcos' => '65.00000',
+			'fuprodtime' => '0.0000100000',
+			'fusubcost' => '0.00000',
+			'fllotreqd' => '0',
+			'fcschdpct' => 'U',
+			'fnsimulops' => '1',
+			'fccharcode' => '',
+			'fopermemo' => '',
+			'FDPLANSTDT' => 'Jan  1 1900 12:00AM',
+			'fac' => 'Default',
+		);
+
+		$insertJobRoutingRecords = self::getMethod('insertJobRoutingRecords');
+
+		$jobCreateModel = new JobCreateModel();
+
+		$insertJobRoutingRecords->invokeArgs($jobCreateModel,
+			array(
+				self::$sqlSrv,
+				self::$jobData,
+				self::$partData['part'],
+				self::$partData['partRev'],
+				$qty
+			));
+
+		$routingData = self::$sqlSrv->fetch_assoc(
+			"SELECT
+			rtrim(foperno) foperno,
+			rtrim(fchngrates) fchngrates,
+			rtrim(felpstime) felpstime,
+			rtrim(ffixcost) ffixcost,
+			rtrim(flschedule) flschedule,
+			rtrim(fstrtdate) fstrtdate,
+			rtrim(factschdst) factschdst,
+			rtrim(fmovetime) fmovetime,
+			rtrim(fbominum) fbominum,
+			rtrim(finumber) finumber,
+			rtrim(FNEED_dt) FNEED_dt,
+			rtrim(fnqty_togo) fnqty_togo,
+			rtrim(foperqty) foperqty,
+			rtrim(fothrcost) fothrcost,
+			rtrim(fpro_id) fpro_id,
+			rtrim(fresponse) fresponse,
+			rtrim(fsetuptime) fsetuptime,
+			rtrim(fsource) fsource,
+			rtrim(fulabcost) fulabcost,
+			rtrim(fuovrhdcos) fuovrhdcos,
+			rtrim(fuprodtime) fuprodtime,
+			rtrim(fusubcost) fusubcost,
+			rtrim(fllotreqd) fllotreqd,
+			rtrim(fcschdpct) fcschdpct,
+			rtrim(fnsimulops) fnsimulops,
+			rtrim(fccharcode) fccharcode,
+			fopermemo,
+			rtrim(FDPLANSTDT) FDPLANSTDT,
+			rtrim(fac) fac
+			FROM jodrtg
+			WHERE fjobno = ?",array(self::$jobData['newJob']));
+		
+		$this->assertEquals($expectedReturn, $routingData);
+	}
+
+	function testInsertJoPestRecords(){
+		echo "\r\ntestInsertJoPestRecords\r\n";
+
+		$expectedReturn = array(
+			'fjobno' => '55504-0000',
+			'fsuboper' => '0',
+			'finoper' => '1',
+			'flabcost' => '.00050',
+			'flastoper' => '10',
+			'fmovehrs' => '-.01',
+			'fno_rtg' => 1,
+			'fnumopers' => '1',
+			'fothrcost' => '.00000',
+			'fovhdcost' => '.00130',
+			'fovhdsc' => '.00000',
+			'fprodhrs' => '.00002',
+			'fsetupcost' => '.00000',
+			'fsetuphrs' => '.00',
+			'fsubcost' => '.00000',
+			'fsubhrs' => '0',
+		);
+
+		$qty = 2;
+
+		$insertJoPestRecords = self::getMethod('insertJoPestRecords');
+
+		$jobCreateModel = new JobCreateModel();
+
+		$insertJoPestRecords->invokeArgs($jobCreateModel,
+			array(
+				self::$sqlSrv,
+				self::$jobData['newJob'],
+				$qty
+			));
+
+		$joPestRecords = self::$sqlSrv->fetch_assoc(
+			"SELECT fjobno,
+			fsuboper,
+			finoper,
+			flabcost,
+			flastoper,
+			fmovehrs,
+			fno_rtg,
+			fnumopers,
+			fothrcost,
+			fovhdcost ,
+			fovhdsc,
+			fprodhrs,
+			fsetupcost,
+			fsetuphrs,
+			fsubcost,
+			fsubhrs
+			FROM jopest
+			WHERE fjobno = ?",array(self::$jobData['newJob'])
+		);
+
+		$this->assertEquals($expectedReturn, $joPestRecords);
+	}
+
+	function testInsertJopactRecord(){
+		echo "\r\ntestInsertJopactRecord\r\n";
+
+		$expectedReturn = array(
+			'fjobno' => '55504-0000',
+			'faddedocos' => '.00000',
+			'faddedpcos' => '.00000',
+			'faddedltim' => '.00',
+			'faddedptim' => '.00',
+			'faddedscos' => '.00000',
+			'faddedstim' => '.00',
+			'finumber' => '',
+			'flabact' => '.00000',
+			'flabinv' => '.00000',
+			'fmatlact' => '.00000',
+			'fmatlinv' => '.00000',
+			'fothract' => '.00000',
+			'fothrinv' => '.00000',
+			'fovhdact' => '.00000',
+			'fovhdinv' => '.00000',
+			'frtgsetupa' => '.00000',
+			'fsetupact' => '.00000',
+			'fsubact' => '.00000',
+			'fsubinv' => '.00000',
+			'ftoolact' => '.00000',
+			'ftotltime' => '.00000',
+			'ftotptime' => '.00000',
+			'ftotstime' => '.00',
+			'faddedlsti' => '.00',
+			'ftotlstime' => '.00000',
+			'fpmemo' => '',
+		);
+
+		$insertJopactRecord = self::getMethod('insertJopactRecord');
+
+		$jobCreateModel = new JobCreateModel();
+
+		$insertJopactRecord->invokeArgs($jobCreateModel,
+			array(
+				self::$sqlSrv,
+				self::$jobData['newJob']
+			));
+
+		$jopactRecord = self::$sqlSrv->fetch_assoc(
+			"SELECT
+			 fjobno,
+			 faddedocos,
+			 faddedpcos,
+			 faddedltim,
+			 faddedptim,
+			 faddedscos,
+			 faddedstim,
+			 rtrim(finumber) finumber,
+			 flabact,
+			 flabinv,
+			 fmatlact,
+			 fmatlinv,
+			 fothract,
+			 fothrinv,
+			 fovhdact,
+			 fovhdinv,
+			 frtgsetupa,
+			 fsetupact,
+			 fsubact,
+			 fsubinv,
+			 ftoolact,
+			 ftotltime,
+			 ftotptime,
+			 ftotstime,
+			 faddedlsti,
+			 ftotlstime,
+			 fpmemo
+			FROM jopact
+			WHERE fjobno = ?",array(self::$jobData['newJob'])
+		);
+
+		$this->assertEquals($expectedReturn, $jopactRecord);
+	}
+
+	function testInsertJodBomRecord(){
+		echo "\r\ntestInsertJodBomRecord\n";
+
+		$qty = 2;
+
+		$extendQty = 4;
+
+		$partWithSSourceId = 100;
+
+		$expectedReturn = array(
+			'fbompart' => 'Z-400-2308',
+			'fbomrev' => '000',
+			'fbomdesc' => 'TST-19SL-TB INSIDE ASSY',
+			'fparent' => 'Z-400-2308',
+			'fparentrev' => '000',
+			'factqty' => '2.00000',
+			'fbomLCost' => '.00000',
+			'fbomMeas' => 'EA ',
+			'fbomOCost' => '.00000',
+			'fbomSource' => 'M',
+			'fbook' => '.00000',
+			'fjobno' => '55504-0000',
+			'fsub_job' => '55504-0001',
+			'fsub_rel' => 0,
+			'flextend' => 1,
+			'fltooling' => 0,
+			'fmatlcost' => '.00000',
+			'fneed_Dt' => '2017-11-18 00:00:00.000',
+			'fbominum' => '0001',
+			'fresponse' => 'M',
+			'ftotqty' => '2.00000',
+			'fllotreqd' => 0,
+			'fclotext' => ' ',
+			'fnoperno' => '0',
+			'fstdmemo' => '',
+			'cfac' => 'Default',
+			'fcbomudrev' => '000',
+			'fcparudrev' => '000',
+			'pfac' => 'Default',
+			'forigqty' => '2.00000',
+		);
+
+		$jobCreateModel = new JobCreateModel();
+
+		$nextSubJob = $jobCreateModel->getNextSubJobNumber(self::$sqlSrv, self::$jobData['newJob']);
+
+		$insertJodBomRecord = self::getMethod('insertJodBomRecord');
+
+		$insertJodBomRecord->invokeArgs($jobCreateModel,
+			array(
+				self::$sqlSrv,
+				self::$jobData['newJob'],
+				$nextSubJob,
+				self::$partData['identity_column'],
+				$qty,
+				$extendQty,
+				self::$jobData['bomINum']
+			));
+
+		$bomDataQuery = 
+			"SELECT rtrim(fbompart) fbompart,
+			fbomrev,
+			fbomdesc,
+			rtrim(fparent) fparent,
+			fparentrev,
+			factqty,
+			fbomLCost,
+			fbomMeas,
+			fbomOCost,
+			fbomSource,
+			fbook,
+			fjobno,
+			fsub_job,
+			fsub_rel,
+			flextend,
+			fltooling,
+			fmatlcost,
+			fneed_Dt,
+			fbominum,
+			fresponse,
+			ftotqty,
+			fllotreqd,
+			fclotext,
+			fnoperno,
+			fstdmemo,
+			rtrim(cfac) cfac,
+			fcbomudrev,
+			fcparudrev,
+			rtrim(pfac) pfac,
+			forigqty
+			FROM jodBom
+			WHERE fjobno = ?";
+
+		$bomData = self::$sqlSrv->fetch_assoc($bomDataQuery,array(self::$jobData['newJob']));
+
+		$this->assertEquals($expectedReturn, $bomData);
+
+		$insertJodBomRecord->invokeArgs($jobCreateModel,
+			array(
+				self::$sqlSrv,
+				self::$jobData['newJob'],
+				$nextSubJob,
+				$partWithSSourceId,
+				$qty,
+				$extendQty,
+				self::$jobData['bomINum']
+			));
+
+		$bomData = self::$sqlSrv->fetch_assoc($bomDataQuery,array(self::$jobData['newJob']));
+
+		$this->assertEquals($expectedReturn, $bomData);
+	}
+
+	function testGetJobNextBomINum(){
+		echo "\r\ntestGetJobNextBomINum\r\n";
+
+		$expectedReturn = "0002";
+
+		$nextBomInum = JobCreateModel::getJobNextBomINum(self::$sqlSrv, self::$jobData['newJob']);
+		
+		$this->assertEquals($expectedReturn, $nextBomInum);
+
+		self::$sqlSrv->query("DELETE FROM jodbom WHERE fjobno = ?", array(self::$jobData['newJob']));
+
+		$expectedReturn = "0001";
+
+		$nextBomInum = JobCreateModel::getJobNextBomINum(self::$sqlSrv, self::$jobData['newJob']);;
+
+		$this->assertEquals($expectedReturn, $nextBomInum);
+	}
+
+	/**
+	 * @expectedException Exception
+	 * @expectedExceptionMessageRegExp #Could not get next sub job number for job xxxxx#
+	 */
+	function testGetNextSubJobNumber(){
+		echo "\r\ntestGetNextSubJobNumber\r\n";
+
+		$expectedReturn = "55504-0001";
+
+		$nextSubJob = JobCreateModel::getNextSubJobNumber(self::$sqlSrv, self::$jobData['newJob']);
+
+		$this->assertEquals($expectedReturn, $nextSubJob);
+
+		$job = "xxxxx";
+
+		$nextSubJob = JobCreateModel::getNextSubJobNumber(self::$sqlSrv, $job);
+	}
+
+	function testAddMakePartToJob(){
+		echo "\r\ntestAddMakePartToJob\r\n";
+
+		$parentQty = 2;
+		$extendQty = 4;
+		$qty = 2;
+
+		$expectedReturn = array(
+ 			'fbompart' => '18079',
+ 			'fbomrev' => '000',
+ 			'fbomdesc' => 'TST-19SL-TB INSIDE LEFT PRS/GKT',
+ 			'fparent' => 'Z-400-2308',
+ 			'fparentrev' => '000',
+ 			'factqty' => '1.00000',
+ 			'fbomLCost' => '.00000',
+ 			'fbomMeas' => 'EA ',
+ 			'fbomOCost' => '.00000',
+ 			'fbomSource' => 'M',
+ 			'fbook' => '.00000',
+ 			'fjobno' => '55504-0001',
+ 			'fsub_job' => '55504-0002',
+ 			'fsub_rel' => 0,
+ 			'flextend' => 1,
+ 			'fltooling' => 0,
+ 			'fmatlcost' => '.00000',
+ 			'fneed_Dt' => '2017-11-18 00:00:00.000',
+ 			'fbominum' => '0001',
+ 			'fresponse' => 'M',
+ 			'ftotqty' => '1.00000',
+ 			'fllotreqd' => 0,
+ 			'fclotext' => ' ',
+ 			'fnoperno' => '0',
+ 			'fstdmemo' => '',
+ 			'cfac' => 'Default',
+ 			'fcbomudrev' => '000',
+ 			'fcparudrev' => '000',
+ 			'pfac' => 'Default',
+ 			'forigqty' => '1.00000',
+		);
+
+		JobCreateModel::addMakePartToJob(
+			self::$sqlSrv, 
+			self::$jobData,
+			self::$partData['identity_column'],
+			$qty,
+			$parentQty,
+			$extendQty,
+			self::$jobData['bomINum']
+		);
+
+		$bomDataQuery = 
+			"SELECT rtrim(fbompart) fbompart,
+			fbomrev,
+			fbomdesc,
+			rtrim(fparent) fparent,
+			fparentrev,
+			factqty,
+			fbomLCost,
+			fbomMeas,
+			fbomOCost,
+			fbomSource,
+			fbook,
+			fjobno,
+			fsub_job,
+			fsub_rel,
+			flextend,
+			fltooling,
+			fmatlcost,
+			fneed_Dt,
+			fbominum,
+			fresponse,
+			ftotqty,
+			fllotreqd,
+			fclotext,
+			fnoperno,
+			fstdmemo,
+			rtrim(cfac) cfac,
+			fcbomudrev,
+			fcparudrev,
+			rtrim(pfac) pfac,
+			forigqty
+			FROM jodBom
+			WHERE fparent = ?";
+
+		$bomData = self::$sqlSrv->fetch_assoc($bomDataQuery,array(self::$partData['part']));
+
+		$this->assertEquals($expectedReturn, $bomData);
+	}
+
+	function testAddAllBomPartsToJob(){
+		echo "\r\ntestAddAllBomPartsToJob\r\n";
+
+		$qty = 2;
+
+		$expectedReturn = array(
+			'fbompart' => '18079',
+			'fbomrev' => '000',
+			'fbomdesc' => 'TST-19SL-TB INSIDE LEFT PRS/GKT',
+			'fparent' => 'Z-400-2308',
+			'fparentrev' => '000',
+			'factqty' => '1.00000',
+			'fbomLCost' => '.00000',
+			'fbomMeas' => 'EA ',
+			'fbomOCost' => '.00000',
+			'fbomSource' => 'M',
+			'fbook' => '.00000',
+			'fjobno' => '55504-0000',
+			'fsub_job' => '55504-0016',
+			'fsub_rel' => 0,
+			'flextend' => 1,
+			'fltooling' => 0,
+			'fmatlcost' => '.00000',
+			'fneed_Dt' => '2017-11-18 00:00:00.000',
+			'fbominum' => '0001',
+			'fresponse' => 'M',
+			'ftotqty' => '1.00000',
+			'fllotreqd' => 0,
+			'fclotext' => ' ',
+			'fnoperno' => '0',
+			'fstdmemo' => '',
+			'cfac' => 'Default',
+			'fcbomudrev' => '000',
+			'fcparudrev' => '000',
+			'pfac' => 'Default',
+			'forigqty' => '1.00000',
+		);
+
+		JobCreateModel::addAllBomPartsToJob(self::$sqlSrv, self::$jobData, self::$partData['identity_column'], $qty);
+
+		$bomDataQuery = 
+			"SELECT rtrim(fbompart) fbompart,
+			fbomrev,
+			fbomdesc,
+			rtrim(fparent) fparent,
+			fparentrev,
+			factqty,
+			fbomLCost,
+			fbomMeas,
+			fbomOCost,
+			fbomSource,
+			fbook,
+			fjobno,
+			fsub_job,
+			fsub_rel,
+			flextend,
+			fltooling,
+			fmatlcost,
+			fneed_Dt,
+			fbominum,
+			fresponse,
+			ftotqty,
+			fllotreqd,
+			fclotext,
+			fnoperno,
+			fstdmemo,
+			rtrim(cfac) cfac,
+			fcbomudrev,
+			fcparudrev,
+			rtrim(pfac) pfac,
+			forigqty
+			FROM jodBom
+			WHERE fjobno = ?";
+
+		$bomData = self::$sqlSrv->fetch_assoc($bomDataQuery,array(self::$jobData['newJob']));
+
+		$this->assertEquals($expectedReturn, $bomData);
+	}
+
+	function testCreateJob(){
+		echo "\r\ntestCreateJob\r\n";
+
+		$expectedReturn = "I1RW4-0000";
+
+		$newJobNumber = JobCreateModel::createJob(self::$sqlSrv, self::$jobData);
+
+		$this->assertEquals($expectedReturn, $newJobNumber);
+
+		$expectedReturn = "55505-0000";
+
+		$externalJobData = self::$jobData;
+
+		$externalJobData['internal'] = false;
+
+		$newJobNumber = JobCreateModel::createJob(self::$sqlSrv, $externalJobData);
+
+		$this->assertEquals($expectedReturn, $newJobNumber);
+	}
+
+
+	/**
+	 * @expectedException Exception
+	 * @expectedExceptionMessageRegExp #Error getting next job number! IdNext failed!#
+	 */
+	public function testSySequException(){
+		echo "\r\ntestSySequException\r\n";
+
+		self::$sqlSrv->query("truncate table SYSEQU");
+
+		$getNextJobNumberData = self::getMethod('getNextJobNumberData');
+
+		$jobCreateModel = new JobCreateModel();
+
+		$jobNumberExternal = $getNextJobNumberData->invokeArgs($jobCreateModel, array(self::$sqlSrv, false));
+	}
+}

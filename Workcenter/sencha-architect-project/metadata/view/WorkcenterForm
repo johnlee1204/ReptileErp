@@ -1,0 +1,260 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyPadding": 10,
+        "bodyStyle": "background:none",
+        "designer|userAlias": "workcenterform",
+        "designer|userClassName": "WorkcenterForm",
+        "mixins": [
+            "['DocForm']"
+        ]
+    },
+    "configAlternates": {
+        "bodyPadding": "auto",
+        "bodyStyle": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "mixins": "object"
+    },
+    "name": "MyPanel",
+    "designerId": "28cb5063-35a0-45ce-be3f-8ff43cc52e1e",
+    "viewControllerInstanceId": "658eced7-e028-4142-8453-1f6984c7de8f",
+    "viewModelInstanceId": "6f31ea81-a90f-4e86-9f07-42d48b368962",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "itemId": "workcenterToolbar"
+            },
+            "configAlternates": {
+                "dock": "string",
+                "itemId": "string"
+            },
+            "name": "MyToolbar",
+            "designerId": "59c05925-c1c8-48ad-bae4-f1d021c1f7b4"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Work Center Name",
+                "itemId": "workcenterName",
+                "labelWidth": 120
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string",
+                "labelWidth": "number"
+            },
+            "name": "MyTextField",
+            "designerId": "6ff490d6-78d5-4aef-9963-6db66b40c9de"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Work Center Desc",
+                "itemId": "workcenterDescription",
+                "labelWidth": 120
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string",
+                "labelWidth": "number"
+            },
+            "name": "MyTextField1",
+            "designerId": "bf027ce3-b28a-4624-a0d2-c1ee015d0068"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Energy",
+                "itemId": "energy",
+                "labelWidth": 120
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string",
+                "labelWidth": "number"
+            },
+            "name": "MyTextField2",
+            "designerId": "30a7f999-cc1b-42d0-94ba-c46f0fbab9d5"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.docFormInit({",
+                    "\ttoolbarId:'workcenterToolbar',",
+                    "\taddFn: 'createWorkcenter',",
+                    "\tsaveFn: 'updateWorkcenter',",
+                    "\tdeleteFn: 'deleteWorkcenter'",
+                    "});"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "b00aa05c-5714-408f-ba45-41271cb9804a"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "workcenterId"
+                ],
+                "fn": "readWorkcenter",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Workcenter/readWorkcenter',",
+                    "\tjsonData:{workcenterId:workcenterId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.workcenterId = workcenterId;",
+                    "\t\tthis.docFormLoadFormData(reply);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "designer|params": "typedarray"
+            },
+            "name": "readWorkcenter",
+            "designerId": "05f06cda-9d7a-427b-9dab-969a9613468c"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "createWorkcenter",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Workcenter/createWorkcenter',",
+                    "\tjsonData:this.docFormGetAllFieldValues(),",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readWorkcenter(reply.data);",
+                    "\t\tthis.fireEvent('workcenterchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "createWorkcenter",
+            "designerId": "b8d97178-4773-4b16-a0f0-4800360e238f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "updateWorkcenter",
+                "implHandler": [
+                    "let jsonData = this.docFormGetAllFieldValues();",
+                    "jsonData.workcenterId = this.workcenterId;",
+                    "",
+                    "AERP.Ajax.request({",
+                    "\turl:'/Workcenter/updateWorkcenter',",
+                    "\tjsonData:jsonData,",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readWorkcenter(this.workcenterId);",
+                    "\t\tthis.fireEvent('workcenterchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "updateWorkcenter",
+            "designerId": "a2aeec43-d780-48d9-83af-82d7885e0361"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "deleteWorkcenter",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Workcenter/deleteWorkcenter',",
+                    "\tjsonData:{workcenterId:this.workcenterId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.docFormReset();",
+                    "\t\tthis.fireEvent('workcenterchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "deleteWorkcenter",
+            "designerId": "db17c573-b6a9-4a5f-aa8d-4be313bdeea1"
+        }
+    ]
+}

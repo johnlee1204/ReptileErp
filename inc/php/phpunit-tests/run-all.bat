@@ -1,0 +1,2 @@
+C:\server\programs\php-5.6.30-nts-Win32-VC11-x86\php.exe C:\server\Programs\phpUnit\phpunit-5.7.27.phar -c  C:\server\data\ApacheData\dev.local\inc\phpunit-tests\phpunit.xml C:\server\data\ApacheData\dev.local\inc\phpunit-tests
+pause

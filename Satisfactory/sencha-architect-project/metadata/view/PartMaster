@@ -1,0 +1,444 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userAlias": "partmaster",
+        "designer|userClassName": "PartMaster",
+        "frame": true,
+        "layout": "vbox",
+        "minHeight": 500,
+        "minWidth": 500,
+        "mixins": [
+            "['DocForm']"
+        ],
+        "title": "Part Master"
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "frame": "boolean",
+        "height": "auto",
+        "title": "string",
+        "width": "auto",
+        "minHeight": "number",
+        "minWidth": "number",
+        "container|align": "string",
+        "layout": "string",
+        "mixins": "object"
+    },
+    "name": "MyPanel",
+    "designerId": "d38c2cf0-9e53-498a-8521-da773f47156a",
+    "viewControllerInstanceId": "8e77139f-bc05-4a61-ab7b-54ee0eb6e2c6",
+    "viewModelInstanceId": "f565af02-a06d-4dc3-95d1-9c4c266bfbf2",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultButtonUI": "default",
+                "dock": "top",
+                "itemId": "partToolbar",
+                "layout|flex": 1
+            },
+            "configAlternates": {
+                "dock": "string",
+                "itemId": "string",
+                "layout|flex": "number",
+                "defaultButtonUI": "string"
+            },
+            "name": "MyToolbar",
+            "designerId": "50e822bf-5202-48dd-a5a6-311d971ebede",
+            "cn": [
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "icon": "/inc/img/silk_icons/arrow_right.png",
+                        "layout|flex": null,
+                        "margin": "0 0 0 10",
+                        "text": "View Create Guide"
+                    },
+                    "configAlternates": {
+                        "icon": "string",
+                        "layout|flex": "number",
+                        "margin": "auto",
+                        "text": "string"
+                    },
+                    "name": "MyButton",
+                    "designerId": "d15ecc72-718f-4625-8a7e-06bf21db03a0",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onButtonClick",
+                                "implHandler": [
+                                    "window.open(\"/Satisfactory/createManufacturingLayout?partId=\" + this.partId);"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onButtonClick",
+                            "designerId": "94069acd-16c5-4489-8555-b0f513627b55"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "margin": "10 0 0 10"
+            },
+            "configAlternates": {
+                "margin": "auto"
+            },
+            "name": "MyContainer1",
+            "designerId": "32748366-ade5-4eb3-9747-fad03de58dfe",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Part Name",
+                        "itemId": "partName"
+                    },
+                    "configAlternates": {
+                        "fieldLabel": "string",
+                        "itemId": "string"
+                    },
+                    "name": "MyTextField",
+                    "designerId": "0f501ac1-c33d-434e-a273-3a27fa6c01c4"
+                }
+            ]
+        },
+        {
+            "type": "Ext.tab.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "activeTab": 0,
+                "bodyStyle": "background:none",
+                "deferredRender": false,
+                "flex": 1,
+                "margin": "10 0 0 0 "
+            },
+            "configAlternates": {
+                "activeTab": "auto",
+                "bodyStyle": "string",
+                "deferredRender": "boolean",
+                "flex": "number",
+                "margin": "auto"
+            },
+            "name": "MyTabPanel",
+            "designerId": "e69d080f-84d6-4caf-ae67-1c38fc467778",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "name": "part",
+                    "designerId": "47372536-47d4-4f66-a459-502249c16a7b",
+                    "masterInstanceId": "b978e417-cd06-438d-b586-3611c1a2971c",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "TabConfig",
+                            "designerId": "57a7b03b-539a-4707-aef3-fa5807dd8dd2"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "partBom"
+                    },
+                    "configAlternates": {
+                        "itemId": "string"
+                    },
+                    "name": "partbom",
+                    "designerId": "87dd305c-ec0c-4386-8ff4-302b9d2e7ab4",
+                    "masterInstanceId": "20c23a95-3d82-49e5-8b6d-f02f5e9ff857",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "TabConfig1",
+                            "designerId": "00a87482-a0ca-4d7b-b3bf-277196945856"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "partRoutings"
+                    },
+                    "configAlternates": {
+                        "itemId": "string"
+                    },
+                    "name": "partrouting",
+                    "designerId": "82e6f4bf-907c-416b-86e2-82d339bf4c08",
+                    "masterInstanceId": "f698dd3d-8033-4a86-bd50-914ec3925625",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "TabConfig2",
+                            "designerId": "2bc6059b-e651-47f2-a7f3-14d5914a95bd"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.docFormInit({",
+                    "\ttoolbarId: 'partToolbar',",
+                    "\tsearchFn: 'searchParts',",
+                    "\taddFn: 'createPart',",
+                    "\tsaveFn: 'updatePart',",
+                    "\tdeleteFn: 'deletePart',",
+                    "\tsearchableFields:['partName']",
+                    "});"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "dde6d5b7-360a-4592-9791-64c21dcbfede"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "searchParts",
+                "implHandler": [
+                    "if(!this.partSearchWindow) {",
+                    "\tthis.partSearchWindow = Ext.create(\"Satisfactory.view.PartSearchWindow\", {",
+                    "\t\tlisteners: {",
+                    "\t\t\tpartselected:function(partId) {",
+                    "\t\t\t\tthis.readPart(partId);",
+                    "\t\t\t},",
+                    "\t\t\tscope:this",
+                    "\t\t}",
+                    "\t});",
+                    "}",
+                    "",
+                    "this.partSearchWindow.show(null, function() {",
+                    "\t\tthis.partSearchWindow.searchParts(this.queryById('partName').getValue());",
+                    "}, this);"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "searchParts",
+            "designerId": "441c3c4c-e4e0-43be-a744-8d2babdb240a"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "partId"
+                ],
+                "fn": "readPart",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Satisfactory/readPart',",
+                    "\tjsonData:{partId: partId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.docFormLoadFormData(reply);",
+                    "\t\tthis.queryById('partBom').readPartBom(partId);",
+                    "\t\tthis.queryById('partRoutings').readRoutings(partId);",
+                    "\t\t",
+                    "\t\tthis.partId = partId;",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readPart",
+            "designerId": "86c7691a-ec65-41c1-a494-cc184f2fb4f7"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "createPart",
+                "implHandler": [
+                    "let jsonData = this.docFormGetAllFieldValues();",
+                    "",
+                    "AERP.Ajax.request({",
+                    "\turl:'/Satisfactory/createPart',",
+                    "\tjsonData:jsonData,",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readPart(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "createPart",
+            "designerId": "c376d701-ebb5-4a7f-8eda-e27303daeda2"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "updatePart",
+                "implHandler": [
+                    "let jsonData = this.docFormGetAllFieldValues();",
+                    "jsonData.partId = this.partId;",
+                    "",
+                    "AERP.Ajax.request({",
+                    "\turl:'/Satisfactory/updatePart',",
+                    "\tjsonData:jsonData,",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readPart(this.partId);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "updatePart",
+            "designerId": "51269bb3-e6ed-4f9a-8ee2-77487f7ff3e0"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "deletePart",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Satisfactory/deletePart',",
+                    "\tjsonData:{partId: this.partId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.docFormReset();",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "deletePart",
+            "designerId": "8dee7c6d-25e2-4afd-8b2a-00b63e00149c"
+        }
+    ]
+}
