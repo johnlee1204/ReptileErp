@@ -1,0 +1,333 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyStyle": "background:none",
+        "container|align": "stretch",
+        "designer|userAlias": "partbom",
+        "designer|userClassName": "PartBom",
+        "layout": "vbox",
+        "title": "Part BOM"
+    },
+    "configAlternates": {
+        "bodyStyle": "string",
+        "container|align": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "layout": "string",
+        "title": "string"
+    },
+    "name": "MyPanel",
+    "designerId": "20c23a95-3d82-49e5-8b6d-f02f5e9ff857",
+    "viewControllerInstanceId": "7f8eb12d-eef9-4712-98ab-1648ed408026",
+    "viewModelInstanceId": "f053a3fc-ecc4-46eb-9e23-927feaa2b8d3",
+    "cn": [
+        {
+            "type": "Ext.tree.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "flex": 1,
+                "folderSort": true,
+                "itemId": "partBomGrid",
+                "rowLines": true,
+                "useArrows": true,
+                "width": 400
+            },
+            "configAlternates": {
+                "flex": "number",
+                "folderSort": "boolean",
+                "itemId": "string",
+                "rowLines": "boolean",
+                "useArrows": "boolean",
+                "width": "auto"
+            },
+            "name": "TreeGrid",
+            "designerId": "a05f59ed-265a-491f-a09f-7a7ec8ea8cde",
+            "isBuiltIn": true,
+            "iconCls": "icon-treegridpanel",
+            "autoName": "TreeGrid",
+            "cn": [
+                {
+                    "type": "Ext.tree.View",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "enableTextSelection": true
+                    },
+                    "configAlternates": {
+                        "enableTextSelection": "boolean"
+                    },
+                    "name": "MyTreeView",
+                    "designerId": "6d43d4c2-419b-4d96-a0a3-5e07212c3db8"
+                },
+                {
+                    "type": "Ext.tree.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "partName",
+                        "text": "Part",
+                        "width": 203
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyTreeColumn",
+                    "designerId": "4458f73c-caeb-42ad-af6a-aa8d348461bd"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "partDescription",
+                        "text": "Part Description",
+                        "width": 325
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyColumn2",
+                    "designerId": "b48cafaa-9b4a-438f-bb0d-79943eab7417"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "quantity",
+                        "text": "Quantity",
+                        "width": 173
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyColumn3",
+                    "designerId": "9b5751fe-6efd-4afe-82bf-0a4b8fda572e"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "extendedQuantity",
+                        "text": "Extended Quantity",
+                        "width": 173
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyColumn7",
+                    "designerId": "5ea191e0-69ec-4fe2-b5b7-e9504d81c053"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "bomId",
+                        "hidden": true,
+                        "text": "Bom Id"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "hidden": "boolean",
+                        "text": "string"
+                    },
+                    "name": "MyColumn4",
+                    "designerId": "24be17c0-fb6b-432a-8efe-cab0a1059468"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "partId",
+                        "hidden": true,
+                        "text": "Part Id"
+                    },
+                    "configAlternates": {
+                        "text": "string",
+                        "dataIndex": "datafield",
+                        "hidden": "boolean"
+                    },
+                    "name": "MyColumn5",
+                    "designerId": "30ca4abf-1b97-4d29-8144-dbe00f0c8983"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "isBomRecord",
+                        "hidden": true,
+                        "text": "Is Bom Record"
+                    },
+                    "configAlternates": {
+                        "text": "string",
+                        "dataIndex": "datafield",
+                        "hidden": "boolean"
+                    },
+                    "name": "MyColumn6",
+                    "designerId": "c780b9a4-4eaa-4d3e-96bf-4a9c3247ab59"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onPartBomGridSelectionChange",
+                        "implHandler": [
+                            "if(!selected || selected.length !== 1) {",
+                            "\treturn;",
+                            "}",
+                            "",
+                            "selected = selected[0];",
+                            "",
+                            "if(selected.data.isBomRecord === 1) {",
+                            "\tthis.queryById('partBomForm').readBomRecord(selected.data.bomId);",
+                            "} else {",
+                            "\tthis.queryById('partBomForm').setParentPart(selected.data.partId, selected.data.partName);",
+                            "}"
+                        ],
+                        "name": "selectionchange",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onPartBomGridSelectionChange",
+                    "designerId": "a3d64d80-22b9-4013-b2dc-463d0b45e5aa"
+                }
+            ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "partId"
+                ],
+                "fn": "readPartBom",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/ItemMaster/readPartBom',",
+                    "\tjsonData:{partId: partId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tlet partBomGrid = this.queryById('partBomGrid');",
+                    "\t\tpartBomGrid.setRootNode(reply.data);",
+                    "\t\tpartBomGrid.expandAll();",
+                    "\t\tthis.partId = partId;",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readPartBom",
+            "designerId": "034a7d28-310e-4191-aafa-26a720653be1"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "partBomForm"
+            },
+            "configAlternates": {
+                "itemId": "string"
+            },
+            "name": "partbomform",
+            "designerId": "c2903ab7-df33-42db-88df-acf3500da8b1",
+            "masterInstanceId": "02d4395d-58d4-4b51-9383-9b75aed06b17",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "panel"
+                        ],
+                        "fn": "onPanelBomChangeD",
+                        "implHandler": [
+                            "this.readPartBom(this.partId);"
+                        ],
+                        "name": "bomchanged",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "designer|params": "typedarray",
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onPanelBomChangeD",
+                    "designerId": "89d58e8c-fa7a-4755-8dab-79e710736915"
+                }
+            ]
+        }
+    ]
+}

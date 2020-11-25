@@ -1,0 +1,396 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyPadding": 10,
+        "bodyStyle": "background:none",
+        "designer|userAlias": "partbomform",
+        "designer|userClassName": "PartBomForm",
+        "mixins": [
+            "['DocForm']"
+        ]
+    },
+    "configAlternates": {
+        "bodyPadding": "auto",
+        "bodyStyle": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "mixins": "object"
+    },
+    "name": "MyPanel",
+    "designerId": "02d4395d-58d4-4b51-9383-9b75aed06b17",
+    "viewControllerInstanceId": "4269139e-1525-4a6c-b4b5-c42d03362f19",
+    "viewModelInstanceId": "5639be84-d3c7-48ff-8783-50ea4d80d743",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "itemId": "partBomFormToolbar"
+            },
+            "configAlternates": {
+                "dock": "string",
+                "itemId": "string"
+            },
+            "name": "MyToolbar2",
+            "designerId": "0fef1c2b-25f8-4488-a1aa-eea21c72d633"
+        },
+        {
+            "type": "Ext.form.field.ComboBox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "displayField": "partName",
+                "fieldLabel": "Parent Part",
+                "forceSelection": true,
+                "itemId": "parentPart",
+                "queryMode": "local",
+                "store": [
+                    "{ParentPartStore}"
+                ],
+                "valueField": "partId"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string",
+                "store": "binding",
+                "displayField": "datafield",
+                "forceSelection": "boolean",
+                "queryMode": "string",
+                "valueField": "datafield"
+            },
+            "name": "MyComboBox1",
+            "designerId": "2e0b82ff-58d8-422a-ad3c-c5c595966e4e"
+        },
+        {
+            "type": "Ext.form.field.ComboBox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "displayField": "partName",
+                "emptyText": "BEGIN TYPING",
+                "fieldLabel": "Part",
+                "forceSelection": true,
+                "hideTrigger": true,
+                "itemId": "bomPart",
+                "minChars": 1,
+                "queryParam": "partName",
+                "store": [
+                    "{PartStore}"
+                ],
+                "typeAhead": true,
+                "typeAheadDelay": 150,
+                "valueField": "partId",
+                "width": 337
+            },
+            "configAlternates": {
+                "store": "binding",
+                "displayField": "datafield",
+                "emptyText": "string",
+                "fieldLabel": "string",
+                "forceSelection": "boolean",
+                "hideTrigger": "boolean",
+                "itemId": "string",
+                "minChars": "number",
+                "queryParam": "string",
+                "typeAhead": "boolean",
+                "typeAheadDelay": "number",
+                "valueField": "datafield",
+                "width": "auto"
+            },
+            "name": "MyComboBox",
+            "designerId": "a4b3f061-c3e4-4c7f-ba03-28b189c30e3f"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Quantity",
+                "itemId": "quantity"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string"
+            },
+            "name": "MyTextField2",
+            "designerId": "d5738acb-cd1d-46b3-92aa-8b8387eab50b"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.docFormInit({",
+                    "\ttoolbarId:'partBomFormToolbar',",
+                    "\taddFn: 'createBomRecord',",
+                    "\tsaveFn: 'updateBomRecord',",
+                    "\tdeleteFn: 'deleteBomRecord'",
+                    "});"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "eefc7c30-1933-48ee-83b2-553d09a85169"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "panel"
+                ],
+                "fn": "onPanelDocformStateChangeD",
+                "implHandler": [
+                    "let field = this.queryById('parentPart');",
+                    "",
+                    "field.addCls('docFormReadOnly');",
+                    "field.setReadOnly(true);"
+                ],
+                "name": "docformstatechanged",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelDocformStateChangeD",
+            "designerId": "1293a563-96e7-45ea-87d8-c442daae1874"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "newData"
+                ],
+                "fn": "onPanelDocformBeforeNew",
+                "implHandler": [
+                    "let partId = this.queryById('bomPart').getValue();",
+                    "",
+                    "if(this.bomId && partId) {",
+                    "\tnewData.data.parentPart = partId;",
+                    "\tnewData.comboData.parentPart = this.partStoreRecords;",
+                    "} else {",
+                    "\tnewData.data.parentPart = this.queryById('parentPart').getValue();",
+                    "}",
+                    "",
+                    "if(!newData.data.parentPart) {",
+                    "\tExt.Msg.alert(\"Warning\", \"Select a Part to add to BOM!\");",
+                    "\treturn false;",
+                    "}"
+                ],
+                "name": "docformbeforenew",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelDocformBeforeNew",
+            "designerId": "179b91e7-696f-4d53-bf93-2934f129e51c"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "parentPartId",
+                    "parentPartName"
+                ],
+                "fn": "setParentPart",
+                "implHandler": [
+                    "this.getViewModel().getStore('ParentPartStore').loadData([[parentPartId, parentPartName]]);",
+                    "this.docFormLoadFormData({data:{parentPart:parentPartId}});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "setParentPart",
+            "designerId": "9c45a4cc-f91b-47d0-9e77-566fda862ae9"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "bomId"
+                ],
+                "fn": "readBomRecord",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/ItemMaster/readPartBomRecord',",
+                    "\tjsonData:{bomId: bomId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.bomId = bomId;",
+                    "\t\tthis.getViewModel().getStore('ParentPartStore').loadData([[reply.data.parentPart, reply.data.parentPartName]]);",
+                    "\t\tthis.partStoreRecords = [[reply.data.bomPart, reply.data.bomPartName]];",
+                    "\t\tthis.getViewModel().getStore('PartStore').loadData(this.partStoreRecords);",
+                    "",
+                    "\t\tthis.docFormLoadFormData(reply);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readBomRecord",
+            "designerId": "afa25fcd-12ee-41fd-aa65-5331e3dc0543"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "createBomRecord",
+                "implHandler": [
+                    "let jsonData = this.docFormGetAllFieldValues();",
+                    "",
+                    "if(!jsonData.parentPart) {",
+                    "\tExt.Msg.alert(\"Warning\", \"Please Select a Parent Part!\");",
+                    "}",
+                    "AERP.Ajax.request({",
+                    "\turl:'/ItemMaster/createBomRecord',",
+                    "\tjsonData:jsonData,",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.fireEvent('bomchanged');",
+                    "\t\tthis.readBomRecord(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "createBomRecord",
+            "designerId": "f9fada96-18ae-4e1b-86b6-fd7b0b7e014f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "updateBomRecord",
+                "implHandler": [
+                    "let jsonData = this.docFormGetAllFieldValues();",
+                    "jsonData.bomId = this.bomId;",
+                    "",
+                    "AERP.Ajax.request({",
+                    "\turl:'/ItemMaster/updateBomRecord',",
+                    "\tjsonData:jsonData,",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.fireEvent('bomchanged');",
+                    "\t\tthis.readBomRecord(this.bomId);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "updateBomRecord",
+            "designerId": "6aacf292-eaf8-4b8b-8c6f-f3a5a609d21c"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "deleteBomRecord",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/ItemMaster/deleteBomRecord',",
+                    "\tjsonData:{bomId: this.bomId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.fireEvent('bomchanged');",
+                    "\t\tthis.docFormReset();",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "deleteBomRecord",
+            "designerId": "64782aeb-3df0-4951-99d4-0dd62b458dc5"
+        }
+    ]
+}
