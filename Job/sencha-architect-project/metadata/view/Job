@@ -335,8 +335,9 @@
                     "\turl:'/Job/readJob',",
                     "\tjsonData:{jobId:jobId},",
                     "\tsuccess:function(reply) {",
-                    "\t\tthis.getViewModel.getStore('PartStore').loadData([[reply.data.part, reply.data.partName]]);",
+                    "\t\tthis.getViewModel().getStore('PartStore').loadData([[reply.data.part, reply.data.partName]]);",
                     "\t\tthis.docFormLoadFormData(reply);",
+                    "\t\tthis.jobId = jobId;",
                     "\t},",
                     "\tscope:this,",
                     "\tmask:this",
@@ -365,7 +366,7 @@
                     "\turl:'/Job/createJob',",
                     "\tjsonData:this.docFormGetAllFieldValues(),",
                     "\tsuccess:function(reply) {",
-                    "\t\t//this.readJob(reply.data);",
+                    "\t\tthis.readJob(reply.data);",
                     "\t},",
                     "\tscope:this,",
                     "\tmask:this",
@@ -410,6 +411,41 @@
             },
             "name": "deleteJob",
             "designerId": "cfee11ce-2504-43f2-a99a-2efc865afcad"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "panel"
+                ],
+                "fn": "onPanelDocFormStateChangeD",
+                "implHandler": [
+                    "let fields = ['job', 'jobCreateDate'];",
+                    "",
+                    "for(let i in fields) {",
+                    "\tlet field = this.queryById(fields[i]);",
+                    "\t",
+                    "\tfield.addCls('docFormReadOnly');",
+                    "\tfield.setReadOnly(true);",
+                    "}"
+                ],
+                "name": "docFormStateChanged",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelDocFormStateChangeD",
+            "designerId": "8df80ce5-1612-442f-bf91-b3d84614f217"
         }
     ]
 }

@@ -132,7 +132,8 @@ Ext.define('Job.view.Job', {
 		}
 	],
 	listeners: {
-		afterrender: 'onPanelAfterRender'
+		afterrender: 'onPanelAfterRender',
+		docFormStateChanged: 'onPanelDocFormStateChangeD'
 	},
 
 	onPanelAfterRender: function(component, eOpts) {
@@ -144,13 +145,25 @@ Ext.define('Job.view.Job', {
 		});
 	},
 
+	onPanelDocFormStateChangeD: function(panel) {
+		let fields = ['job', 'jobCreateDate'];
+
+		for(let i in fields) {
+			let field = this.queryById(fields[i]);
+
+			field.addCls('docFormReadOnly');
+			field.setReadOnly(true);
+		}
+	},
+
 	readJob: function(jobId) {
 		AERP.Ajax.request({
 			url:'/Job/readJob',
 			jsonData:{jobId:jobId},
 			success:function(reply) {
-				this.getViewModel.getStore('PartStore').loadData([[reply.data.part, reply.data.partName]]);
+				this.getViewModel().getStore('PartStore').loadData([[reply.data.part, reply.data.partName]]);
 				this.docFormLoadFormData(reply);
+				this.jobId = jobId;
 			},
 			scope:this,
 			mask:this
@@ -162,7 +175,7 @@ Ext.define('Job.view.Job', {
 			url:'/Job/createJob',
 			jsonData:this.docFormGetAllFieldValues(),
 			success:function(reply) {
-				//this.readJob(reply.data);
+				this.readJob(reply.data);
 			},
 			scope:this,
 			mask:this

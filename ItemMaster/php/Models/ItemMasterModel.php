@@ -271,5 +271,16 @@ class ItemMasterModel extends AgileModel {
 		return $lastRoutingMade;
 	}
 
+	static function readPartChildren($partId) {
+		return self::$database->fetch_all_assoc("
+			SELECT
+				partId part,
+				quantity
+			FROM BillOfMaterial
+			WHERE
+				parentPartId = ?
+		", [$partId]);
+	}
+
 
 }

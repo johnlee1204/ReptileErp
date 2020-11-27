@@ -20,10 +20,10 @@ class Job extends AgileBaseController
 			'jobStartDate' => 'notBlank'
 		]);
 
-		//$this->database->begin_transaction();
-		JobModel::createJob($inputs);
-		//$this->database->commit_transaction();
+		$this->database->begin_transaction();
+		$newJobId = JobModel::createJob($inputs);
+		$this->database->commit_transaction();
 
-		$this->outputSuccess();
+		$this->outputSuccessData($newJobId);
 	}
 }
