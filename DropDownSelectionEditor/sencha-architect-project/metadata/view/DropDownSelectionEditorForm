@@ -1,0 +1,249 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyPadding": 10,
+        "bodyStyle": "background:none",
+        "designer|userAlias": "dropdownselectioneditorform",
+        "designer|userClassName": "DropDownSelectionEditorForm",
+        "mixins": [
+            "['DocForm']"
+        ]
+    },
+    "configAlternates": {
+        "bodyPadding": "auto",
+        "bodyStyle": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "mixins": "object"
+    },
+    "name": "MyPanel",
+    "designerId": "c106bbb0-a402-40da-90ad-7d66e8a36c2c",
+    "viewControllerInstanceId": "224cbe78-e9ce-49ad-8cc9-5e1a2e633938",
+    "viewModelInstanceId": "69c7da22-6fb9-40a2-b76f-70f43dc50a51",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "itemId": "selectionEditorToolbar"
+            },
+            "configAlternates": {
+                "dock": "string",
+                "itemId": "string"
+            },
+            "name": "MyToolbar",
+            "designerId": "48226403-2382-449d-9656-28949a450f2d"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Selection",
+                "itemId": "selection",
+                "width": 581
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string",
+                "width": "auto"
+            },
+            "name": "MyTextField",
+            "designerId": "a5b50c7e-0660-4734-9d1f-a8cf33c7ad87"
+        },
+        {
+            "type": "Ext.form.field.Number",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Order",
+                "hideTrigger": true,
+                "itemId": "displayOrder",
+                "width": 161
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string",
+                "width": "auto",
+                "hideTrigger": "boolean"
+            },
+            "name": "MyNumberField",
+            "designerId": "cc72286b-7779-413b-8590-358fff28698d"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.docFormInit({",
+                    "\ttoolbarId:'selectionEditorToolbar',",
+                    "\taddFn:'createSelection',",
+                    "\tsaveFn:'updateSelection',",
+                    "\tdeleteFn:'deleteSelection'",
+                    "});"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "c4c0978e-5e35-494a-b14c-f2bbf092c877"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "dropDownSelectionId"
+                ],
+                "fn": "readSelection",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/DropDownSelectionEditor/readSelection',",
+                    "\tjsonData:{dropDownSelectionId:dropDownSelectionId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.dropDownSelectionId = dropDownSelectionId;",
+                    "\t\tthis.docFormLoadFormData(reply);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readSelection",
+            "designerId": "7eabb5e3-8e60-4b52-9272-80a156d77d7a"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "createSelection",
+                "implHandler": [
+                    "let jsonData = this.docFormGetAllFieldValues();",
+                    "jsonData.selectionKey = this.selectionKey;",
+                    "",
+                    "AERP.Ajax.request({",
+                    "\turl:'/DropDownSelectionEditor/createSelection',",
+                    "\tjsonData:jsonData,",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readSelection(reply.data);",
+                    "\t\tthis.fireEvent('selectionchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "createSelection",
+            "designerId": "ca268957-ec28-4a53-ae9b-3af2c3249296"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "updateSelection",
+                "implHandler": [
+                    "let jsonData = this.docFormGetAllFieldValues();",
+                    "jsonData.dropDownSelectionId = this.dropDownSelectionId;",
+                    "jsonData.selectionKey = this.selectionKey;",
+                    "",
+                    "AERP.Ajax.request({",
+                    "\turl:'/DropDownSelectionEditor/updateSelection',",
+                    "\tjsonData:jsonData,",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readSelection(this.dropDownSelectionId);",
+                    "\t\tthis.fireEvent('selectionchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "updateSelection",
+            "designerId": "9180345e-6acc-4c86-b797-90695b6c212c"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "deleteSelection",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/DropDownSelectionEditor/deleteSelection',",
+                    "\tjsonData:{dropDownSelectionId:this.dropDownSelectionId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.docFormReset();",
+                    "\t\tthis.fireEvent('selectionchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "deleteSelection",
+            "designerId": "24bc00ed-54b2-426c-98d3-a505a96e0a7f"
+        }
+    ]
+}

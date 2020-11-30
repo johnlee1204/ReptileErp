@@ -102,7 +102,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "displayField": "status",
+                        "displayField": null,
                         "fieldLabel": "Status",
                         "forceSelection": true,
                         "itemId": "status",
@@ -113,7 +113,7 @@
                         "store": [
                             "{StatusStore}"
                         ],
-                        "valueField": "status"
+                        "valueField": null
                     },
                     "configAlternates": {
                         "store": "binding",
@@ -128,7 +128,47 @@
                         "valueField": "datafield"
                     },
                     "name": "MyComboBox1",
-                    "designerId": "c983ed05-49ad-410b-aaf4-e19050495947"
+                    "designerId": "c983ed05-49ad-410b-aaf4-e19050495947",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onStatusAfterRender",
+                                "implHandler": [
+                                    "AppWindowManager.appOn('dropDownSelectionEditor', {",
+                                    "\tscope:this,",
+                                    "\tselectionchanged:function() {",
+                                    "\t\tthis.readJobStatuses();",
+                                    "\t}",
+                                    "});",
+                                    "",
+                                    "component.el.on({",
+                                    "    contextmenu: function(event) {",
+                                    "        event.stopEvent();",
+                                    "        AppWindowManager.appLink('dropDownSelectionEditor', {dataKey:'jobStatus'});",
+                                    "    },",
+                                    "    scope:this",
+                                    "});",
+                                    ""
+                                ],
+                                "name": "afterrender",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onStatusAfterRender",
+                            "designerId": "db1b0afd-fbbb-4c04-9d32-1a078f73c88f"
+                        }
+                    ]
                 },
                 {
                     "type": "Ext.form.field.Date",
@@ -306,7 +346,9 @@
                     "\tdeleteFn:'deleteJob',",
                     "\tsearchFn:'searchJobs',",
                     "\tsearchableFields:['job', 'part']",
-                    "});"
+                    "});",
+                    "",
+                    "this.readJobStatuses();"
                 ],
                 "name": "afterrender",
                 "scope": "me"
@@ -446,6 +488,34 @@
             },
             "name": "deleteJob",
             "designerId": "cfee11ce-2504-43f2-a99a-2efc865afcad"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "readJobStatuses",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/DropDownSelectionEditor/readSelectionsForCombo',",
+                    "\tjsonData:{selectionKey:'jobStatus'},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore('StatusStore').loadData(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readJobStatuses",
+            "designerId": "9634a69f-6bc5-4f7f-90e9-d5296e61715b"
         },
         {
             "type": "basiceventbinding",

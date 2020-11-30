@@ -1,0 +1,101 @@
+{
+    "type": "Ext.app.ViewModel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "dropdownselectioneditor",
+        "designer|userClassName": "DropDownSelectionEditorViewModel"
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string"
+    },
+    "designerId": "f565af02-a06d-4dc3-95d1-9c4c266bfbf2",
+    "cn": [
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "DropDownSelectionEditorStore"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyStore",
+            "designerId": "3a9195ff-24d9-45b3-907f-f1edf14265ac",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "dropDownSelectionId"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField",
+                    "designerId": "f68e2ee4-8a8a-4841-b873-c58876caaa40"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "selectionKey"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField1",
+                    "designerId": "4d0af379-65a7-4ee6-ad1f-fb36669c0648"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "selection"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField2",
+                    "designerId": "b28b0670-16f0-431d-80f9-01f605d5b357"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "displayOrder"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField3",
+                    "designerId": "c9769c5b-d5af-4e61-9e6f-7103b91492cd"
+                }
+            ]
+        }
+    ]
+}

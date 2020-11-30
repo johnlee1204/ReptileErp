@@ -28,7 +28,7 @@ Ext.define('ItemMaster.view.PartSearch', {
 		type: 'partsearch'
 	},
 	height: 390,
-	width: 591,
+	width: 609,
 	closeAction: 'hide',
 	title: 'Part Search',
 	defaultListenerScope: true,
@@ -55,6 +55,11 @@ Ext.define('ItemMaster.view.PartSearch', {
 			width: 294,
 			dataIndex: 'partDescription',
 			text: 'Description'
+		},
+		{
+			xtype: 'gridcolumn',
+			dataIndex: 'source',
+			text: 'Source'
 		}
 	],
 	listeners: {

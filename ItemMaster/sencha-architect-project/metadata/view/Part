@@ -61,6 +61,36 @@
             "designerId": "62140ee4-dfd6-40c2-9a1e-cf5f04c4b6d7"
         },
         {
+            "type": "Ext.form.field.ComboBox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "displayField": "source",
+                "fieldLabel": "Source",
+                "forceSelection": true,
+                "itemId": "source",
+                "queryMode": "local",
+                "store": [
+                    "{SourceStore}"
+                ],
+                "valueField": "source"
+            },
+            "configAlternates": {
+                "store": "binding",
+                "displayField": "datafield",
+                "fieldLabel": "string",
+                "forceSelection": "boolean",
+                "itemId": "string",
+                "queryMode": "string",
+                "valueField": "datafield"
+            },
+            "name": "MyComboBox3",
+            "designerId": "51d55d9a-30ec-4d69-990a-5292d40e2cbb"
+        },
+        {
             "type": "Ext.form.FieldSet",
             "reference": {
                 "name": "items",

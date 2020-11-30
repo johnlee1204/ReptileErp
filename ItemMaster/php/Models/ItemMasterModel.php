@@ -12,7 +12,8 @@ class ItemMasterModel extends AgileModel {
 			SELECT
 				partId,
 				partName,
-				partDescription
+				partDescription,
+				source
 			FROM Part
 			WHERE
 				partName LIKE CONCAT(?,'%')
@@ -39,6 +40,7 @@ class ItemMasterModel extends AgileModel {
 				partId,
 				partName,
 				partDescription,
+				source,
 				partsPerMinute
 			FROM Part
 			WHERE
@@ -52,6 +54,7 @@ class ItemMasterModel extends AgileModel {
 				partId,
 				partName,
 				partDescription,
+				source,
 				partsPerMinute
 			FROM Part
 			WHERE
@@ -61,9 +64,9 @@ class ItemMasterModel extends AgileModel {
 
 	static function createPart($inputs) {
 		self::$database->query("
-			INSERT INTO Part(partName, partDescription, partsPerMinute)
-			VALUES(?, ?, ?)
-		", [$inputs['partName'], $inputs['partDescription'], $inputs['partsPerMinute']]);
+			INSERT INTO Part(partName, partDescription, partsPerMinute, source)
+			VALUES(?, ?, ?, ?)
+		", [$inputs['partName'], $inputs['partDescription'], $inputs['partsPerMinute'], $inputs['source']]);
 	}
 
 	static function updatePart($inputs) {
@@ -72,10 +75,11 @@ class ItemMasterModel extends AgileModel {
 			SET
 				partName = ?,
 				partDescription = ?,
-				partsPerMinute = ?
+				partsPerMinute = ?,
+				source = ?
 			WHERE
 				partId = ?
-		", [$inputs['partName'], $inputs['partDescription'], $inputs['partsPerMinute'], $inputs['partId']]);
+		", [$inputs['partName'], $inputs['partDescription'], $inputs['partsPerMinute'], $inputs['source'], $inputs['partId']]);
 	}
 
 	static function deletePart($partId) {

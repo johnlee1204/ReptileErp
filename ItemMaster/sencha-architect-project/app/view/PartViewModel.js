@@ -15,6 +15,35 @@
 
 Ext.define('ItemMaster.view.PartViewModel', {
 	extend: 'Ext.app.ViewModel',
-	alias: 'viewmodel.part'
+	alias: 'viewmodel.part',
+
+	requires: [
+		'Ext.data.Store',
+		'Ext.data.field.Field'
+	],
+
+	stores: {
+		SourceStore: {
+			data: [
+				{
+					source: 'Make'
+				},
+				{
+					source: 'Stock'
+				},
+				{
+					source: 'Phantom'
+				},
+				{
+					source: 'Buy'
+				}
+			],
+			fields: [
+				{
+					name: 'source'
+				}
+			]
+		}
+	}
 
 });

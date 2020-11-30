@@ -14,7 +14,7 @@
             "{PartStore}"
         ],
         "title": "Part Search",
-        "width": 591
+        "width": 609
     },
     "configAlternates": {
         "store": "binding",
@@ -87,6 +87,24 @@
             },
             "name": "MyColumn1",
             "designerId": "63add719-baae-4f93-9f8e-a44d81af474a"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "source",
+                "text": "Source"
+            },
+            "configAlternates": {
+                "dataIndex": "datafield",
+                "text": "string"
+            },
+            "name": "MyColumn9",
+            "designerId": "7bdc6347-388c-44aa-9298-370d0d7d264a"
         },
         {
             "type": "Ext.view.Table",

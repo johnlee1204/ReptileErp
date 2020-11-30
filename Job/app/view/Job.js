@@ -69,12 +69,13 @@ Ext.define('Job.view.Job', {
 					fieldLabel: 'Status',
 					labelAlign: 'right',
 					labelWidth: 70,
-					displayField: 'status',
 					forceSelection: true,
 					queryMode: 'local',
-					valueField: 'status',
 					bind: {
 						store: '{StatusStore}'
+					},
+					listeners: {
+						afterrender: 'onStatusAfterRender'
 					}
 				},
 				{
@@ -136,6 +137,24 @@ Ext.define('Job.view.Job', {
 		docFormStateChanged: 'onPanelDocFormStateChangeD'
 	},
 
+	onStatusAfterRender: function(component, eOpts) {
+		AppWindowManager.appOn('dropDownSelectionEditor', {
+			scope:this,
+			selectionchanged:function() {
+				this.readJobStatuses();
+			}
+		});
+
+		component.el.on({
+		    contextmenu: function(event) {
+		        event.stopEvent();
+		        AppWindowManager.appLink('dropDownSelectionEditor', {dataKey:'jobStatus'});
+		    },
+		    scope:this
+		});
+
+	},
+
 	onPanelAfterRender: function(component, eOpts) {
 		this.docFormInit({
 			toolbarId:'jobToolbar',
@@ -145,6 +164,8 @@ Ext.define('Job.view.Job', {
 			searchFn:'searchJobs',
 			searchableFields:['job', 'part']
 		});
+
+		this.readJobStatuses();
 	},
 
 	onPanelDocFormStateChangeD: function(oldState, newState) {
@@ -211,6 +232,18 @@ Ext.define('Job.view.Job', {
 
 	deleteJob: function() {
 
+	},
+
+	readJobStatuses: function() {
+		AERP.Ajax.request({
+			url:'/DropDownSelectionEditor/readSelectionsForCombo',
+			jsonData:{selectionKey:'jobStatus'},
+			success:function(reply) {
+				this.getViewModel().getStore('StatusStore').loadData(reply.data);
+			},
+			scope:this,
+			mask:this
+		});
 	}
 
 });

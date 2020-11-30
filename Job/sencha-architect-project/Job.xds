@@ -7,7 +7,7 @@
             "frameworkVersion": ""
         },
         "urlPrefixTemplate": "http://dev.local/",
-        "exportPath": "C:/Users/jlee/Desktop/Websites/LeeSheet/Job",
+        "exportPath": "C:/Users/johnm/Desktop/Websites/LeeSheet/Job",
         "buildShouldOverwriteIndex": true,
         "generateArchitectVersion": false,
         "spacesToIndent": "tab",
@@ -26,8 +26,8 @@
         "sdkPath": "",
         "urlPrefix": "http://dev.local/"
     },
-    "xdsVersion": "4.2.6",
-    "xdsBuild": 425,
+    "xdsVersion": "4.2.5",
+    "xdsBuild": 420,
     "schemaVersion": 1,
     "upgradeVersion": 310000000001,
     "framework": "ext66",
@@ -47,7 +47,7 @@
         "controller": [],
         "model": [],
         "resource": [
-            "ffafc5bf-cc0a-41ce-819b-de2393d711a1",
+            "3f864d1a-dfd9-45e7-a4af-2e62b970da81",
             "173a740e-293e-4e00-b40c-9a50fb2577d4",
             "5ba3958c-da75-475c-be62-0204422d23cf",
             "e9dfff16-f6c8-498c-ac8a-f008ed4717e3",

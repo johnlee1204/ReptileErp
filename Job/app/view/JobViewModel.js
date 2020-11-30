@@ -51,23 +51,6 @@ Ext.define('Job.view.JobViewModel', {
 			}
 		},
 		StatusStore: {
-			data: [
-				{
-					status: 'Open'
-				},
-				{
-					status: 'Released'
-				},
-				{
-					status: 'Completed'
-				},
-				{
-					status: 'Cancelled'
-				},
-				{
-					status: 'Closed'
-				}
-			],
 			fields: [
 				{
 					name: 'status'

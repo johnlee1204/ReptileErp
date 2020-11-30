@@ -63,13 +63,13 @@ class AgileErrorHandler
 			$outputMessage = $exceptionMessage;
 		} //elseif (getenv('PHPENV') === "DEV" || isset($_GET['AgileErrorDebug'])) {
 			$outputMessage = $exceptionMessage;
-			$outputDetails = $exceptionLineNumberMsg .
-				$lineBreak .
-				$exceptionFileMsg .
-				$lineBreak .
-				$exceptionStackTrace .
-				$lineBreak .
-				$exceptionExtraData;
+//			$outputDetails = $exceptionLineNumberMsg .
+//				$lineBreak .
+//				$exceptionFileMsg .
+//				$lineBreak .
+//				$exceptionStackTrace .
+//				$lineBreak .
+//				$exceptionExtraData;
 		//}
 
 		if (isset($exception->AgileType)) {

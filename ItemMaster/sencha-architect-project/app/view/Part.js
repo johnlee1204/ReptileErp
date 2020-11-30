@@ -19,7 +19,7 @@ Ext.define('ItemMaster.view.Part', {
 
 	requires: [
 		'ItemMaster.view.PartViewModel',
-		'Ext.form.field.Text',
+		'Ext.form.field.ComboBox',
 		'Ext.form.FieldSet'
 	],
 
@@ -41,6 +41,18 @@ Ext.define('ItemMaster.view.Part', {
 			xtype: 'textfield',
 			itemId: 'partsPerMinute',
 			fieldLabel: 'Parts Per Minute'
+		},
+		{
+			xtype: 'combobox',
+			itemId: 'source',
+			fieldLabel: 'Source',
+			displayField: 'source',
+			forceSelection: true,
+			queryMode: 'local',
+			valueField: 'source',
+			bind: {
+				store: '{SourceStore}'
+			}
 		},
 		{
 			xtype: 'fieldset',

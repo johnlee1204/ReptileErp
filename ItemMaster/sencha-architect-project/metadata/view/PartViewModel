@@ -13,5 +13,58 @@
         "designer|userAlias": "string",
         "designer|userClassName": "string"
     },
-    "designerId": "cb8cce1e-7693-4f86-b002-5367c3c223dd"
+    "designerId": "cb8cce1e-7693-4f86-b002-5367c3c223dd",
+    "cn": [
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "data": [
+                    "[",
+                    "\t{",
+                    "\t\t\"source\": \"Make\"",
+                    "\t},",
+                    "\t{",
+                    "\t\t\"source\": \"Stock\"",
+                    "\t},",
+                    "\t{",
+                    "\t\t\"source\": \"Phantom\"",
+                    "\t},",
+                    "\t{",
+                    "\t\t\"source\": \"Buy\"",
+                    "\t}",
+                    "]"
+                ],
+                "name": "SourceStore"
+            },
+            "configAlternates": {
+                "data": "array",
+                "name": "string"
+            },
+            "name": "MyStore5",
+            "designerId": "1d40c46f-93e1-4669-adaa-ae929f5dc384",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "source"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField12",
+                    "designerId": "b111f8fa-23ec-4a37-9833-70f23f849c75"
+                }
+            ]
+        }
+    ]
 }

@@ -1,0 +1,253 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyStyle": "background:none",
+        "container|align": "stretch",
+        "designer|userAlias": "dropdownselectioneditor",
+        "designer|userClassName": "DropDownSelectionEditor",
+        "layout": "vbox",
+        "minHeight": 500,
+        "minWidth": 500,
+        "width": 700
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "frame": "boolean",
+        "height": "auto",
+        "title": "string",
+        "width": "auto",
+        "minHeight": "number",
+        "minWidth": "number",
+        "bodyStyle": "string",
+        "container|align": "string",
+        "layout": "string"
+    },
+    "name": "MyPanel",
+    "designerId": "d38c2cf0-9e53-498a-8521-da773f47156a",
+    "viewControllerInstanceId": "8e77139f-bc05-4a61-ab7b-54ee0eb6e2c6",
+    "viewModelInstanceId": "f565af02-a06d-4dc3-95d1-9c4c266bfbf2",
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "flex": 1,
+                "itemId": "DropDownSelectionEditorGrid",
+                "store": [
+                    "{DropDownSelectionEditorStore}"
+                ]
+            },
+            "configAlternates": {
+                "store": "binding",
+                "flex": "number",
+                "itemId": "string"
+            },
+            "name": "MyGridPanel",
+            "designerId": "13c999c9-8a71-46e3-932b-669a54bcac37",
+            "cn": [
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "displayOrder",
+                        "text": "Order",
+                        "width": 55
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyColumn1",
+                    "designerId": "45982a82-ef16-4105-a96e-4e723f72453f"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "selection",
+                        "text": "Selection",
+                        "width": 635
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyColumn",
+                    "designerId": "fe2f1a9d-4b8d-49dc-a949-dbace68fad2a"
+                },
+                {
+                    "type": "Ext.view.Table",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "enableTextSelection": true
+                    },
+                    "configAlternates": {
+                        "enableTextSelection": "boolean"
+                    },
+                    "name": "MyTable",
+                    "designerId": "b7dfe29b-53d3-4c6a-ac60-1eab117a4c86"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onDropDownSelectionEditorGridSelectionChange",
+                        "implHandler": [
+                            "if(!selected || selected.length !== 1) {",
+                            "\treturn;",
+                            "}",
+                            "",
+                            "selected = selected[0];",
+                            "",
+                            "this.queryById('selectionEditorForm').readSelection(selected.data.dropDownSelectionId);"
+                        ],
+                        "name": "selectionchange",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onDropDownSelectionEditorGridSelectionChange",
+                    "designerId": "9c18a0a3-caa1-41ca-af79-6d399c45d041"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "selectionEditorForm"
+            },
+            "configAlternates": {
+                "itemId": "string"
+            },
+            "name": "dropdownselectioneditorform",
+            "designerId": "8e2be3cb-d688-4fb8-b729-095032f143e8",
+            "masterInstanceId": "c106bbb0-a402-40da-90ad-7d66e8a36c2c",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "panel"
+                        ],
+                        "fn": "onPanelSelectionChangeD",
+                        "implHandler": [
+                            "this.readSelections(this.selectionKey);",
+                            "this.fireEvent('selectionchanged');"
+                        ],
+                        "name": "selectionchanged",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "designer|params": "typedarray",
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onPanelSelectionChangeD",
+                    "designerId": "d9032347-a951-470b-a75a-42e64ac978c3"
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.fireEvent(\"appdataloaded\");"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "ab9d5188-0068-4266-ba1f-648593c8007d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "selectionKey"
+                ],
+                "fn": "readSelections",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/DropDownSelectionEditor/readSelections',",
+                    "\tjsonData:{selectionKey:selectionKey},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore('DropDownSelectionEditorStore').loadData(reply.data);",
+                    "\t\tthis.selectionKey = selectionKey;",
+                    "\t\tthis.queryById('selectionEditorForm').selectionKey = selectionKey;",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readSelections",
+            "designerId": "4be5d88a-07fc-4122-8369-9a3d3f213b63"
+        }
+    ]
+}

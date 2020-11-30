@@ -32,6 +32,7 @@ class ItemMaster extends AgileBaseController
 	function createPart() {
 		$inputs = Validation::validateJsonInput([
 			'partName' => 'notBlank',
+			'source' => 'notBlank',
 			'partDescription',
 			'partsPerMinute'
 		]);
@@ -55,6 +56,7 @@ class ItemMaster extends AgileBaseController
 		$inputs = Validation::validateJsonInput([
 			'partId' => 'numeric',
 			'partName' => 'notBlank',
+			'source' => 'notBlank',
 			'partDescription',
 			'partsPerMinute'
 		]);

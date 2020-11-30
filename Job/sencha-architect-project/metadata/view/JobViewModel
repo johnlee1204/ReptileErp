@@ -113,25 +113,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "data": [
-                    "[",
-                    "{",
-                    "\"status\": \"Open\"",
-                    "},",
-                    "{",
-                    "\"status\": \"Released\"",
-                    "},",
-                    "{",
-                    "\"status\": \"Completed\"",
-                    "},",
-                    "{",
-                    "\"status\": \"Cancelled\"",
-                    "},",
-                    "{",
-                    "\"status\": \"Closed\"",
-                    "}",
-                    "]"
-                ],
                 "name": "StatusStore"
             },
             "configAlternates": {
@@ -154,8 +135,8 @@
                     "configAlternates": {
                         "name": "string"
                     },
-                    "name": "MyField2",
-                    "designerId": "16405e28-5209-4a83-80e9-c9b102750518"
+                    "name": "MyField9",
+                    "designerId": "b7354f7f-71c7-4f15-98a8-235e7882980d"
                 }
             ]
         }
