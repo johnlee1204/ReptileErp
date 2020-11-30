@@ -59,10 +59,9 @@ class AgileErrorHandler
 		$outputMessage = $this->genericErrorStr;
 		$outputDetails = "";
 		$userMessageException = (get_class($exception) == 'AgileUserMessageException');
-		$userMessageEmailException = (get_class($exception) == 'AgileUserMessageEmailException');
-		if($userMessageException || $userMessageEmailException) {
+		if($userMessageException) {
 			$outputMessage = $exceptionMessage;
-		} elseif (getenv('PHPENV') === "DEV" || isset($_GET['AgileErrorDebug'])) {
+		} //elseif (getenv('PHPENV') === "DEV" || isset($_GET['AgileErrorDebug'])) {
 			$outputMessage = $exceptionMessage;
 			$outputDetails = $exceptionLineNumberMsg .
 				$lineBreak .
@@ -71,14 +70,12 @@ class AgileErrorHandler
 				$exceptionStackTrace .
 				$lineBreak .
 				$exceptionExtraData;
-		}
+		//}
 
 		if (isset($exception->AgileType)) {
 			$errorType = substr($exception->AgileType,0,10);
 		} elseif($userMessageException){
 			$errorType = 'usermsg';
-		} elseif($userMessageEmailException) {
-			$errorType = 'useremail';
 		}else {
 			$errorType = 'exception';
 		}

@@ -303,7 +303,9 @@
                     "\ttoolbarId:'jobToolbar',",
                     "\taddFn:'createJob',",
                     "\tsaveFn:'updateJob',",
-                    "\tdeleteJob:'deleteJob'",
+                    "\tdeleteFn:'deleteJob',",
+                    "\tsearchFn:'searchJobs',",
+                    "\tsearchableFields:['job', 'part']",
                     "});"
                 ],
                 "name": "afterrender",
@@ -317,6 +319,39 @@
             },
             "name": "onPanelAfterRender",
             "designerId": "5605bdbc-1897-46b4-8843-d0ec2828fdeb"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "searchJobs",
+                "implHandler": [
+                    "if(!this.jobSearchWindow) {",
+                    "\tthis.jobSearchWindow = Ext.create(\"Job.view.JobSearch\", {",
+                    "\t\tlisteners:{",
+                    "\t\t\tscope:this,",
+                    "\t\t\tjobselected:function(jobId) {",
+                    "\t\t\t\tthis.readJob(jobId);",
+                    "\t\t\t}",
+                    "\t\t}",
+                    "\t});",
+                    "}",
+                    "",
+                    "this.jobSearchWindow.show(null, function(){",
+                    "\tthis.jobSearchWindow.searchJobs(this.queryById('job').getValue(), this.queryById('part').getValue());",
+                    "}, this);"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "searchJobs",
+            "designerId": "3838b431-f5f0-4fae-bc0a-bafe4237e7f4"
         },
         {
             "type": "basicfunction",
@@ -421,15 +456,20 @@
             "codeClass": null,
             "userConfig": {
                 "designer|params": [
-                    "panel"
+                    "oldState",
+                    "newState"
                 ],
                 "fn": "onPanelDocFormStateChangeD",
                 "implHandler": [
-                    "let fields = ['job', 'jobCreateDate'];",
+                    "let fields = ['jobCreateDate'];",
+                    "",
+                    "if(newState !== \"search\") {",
+                    "\tfields.push('job');",
+                    "}",
                     "",
                     "for(let i in fields) {",
                     "\tlet field = this.queryById(fields[i]);",
-                    "\t",
+                    "",
                     "\tfield.addCls('docFormReadOnly');",
                     "\tfield.setReadOnly(true);",
                     "}"

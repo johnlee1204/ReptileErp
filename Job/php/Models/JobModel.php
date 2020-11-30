@@ -8,6 +8,42 @@ use SmartTruncate;
 
 class JobModel extends AgileModel
 {
+
+	static function searchJobs($inputs) {
+		$where = [];
+		$params = [];
+
+		if($inputs['jobNumber']) {
+			$where[] = "Job.jobNumber LIKE CONCAT(?,'%')";
+			$params[] = $inputs['jobNumber'];
+		}
+
+		if($inputs['part']) {
+			$where[] = "Job.partId = ?";
+			$params[] = $inputs['part'];
+		}
+
+		$where = join(" AND ", $where);
+
+		if($where !== "") {
+			$where = "WHERE " . $where;
+		}
+
+		return self::$database->fetch_all_assoc("
+			SELECT
+				Job.jobId,
+				Job.jobNumber,
+				Part.partName,
+				Job.jobStartDate,
+				Job.quantity
+			FROM Job
+			JOIN Part ON Part.partId = Job.partId
+			{$where}
+			ORDER BY jobNumber DESC
+		", $params);
+
+	}
+
 	static function readJob($jobId) {
 		$job = self::$database->fetch_assoc("
 			SELECT

@@ -22,7 +22,8 @@ Ext.Loader.setConfig({
 Ext.application({
 	views: [
 		'MyViewport',
-		'Job'
+		'Job',
+		'JobSearch'
 	],
 	name: 'Job',
 

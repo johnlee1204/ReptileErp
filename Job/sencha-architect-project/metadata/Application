@@ -9,7 +9,8 @@
         "name": "Job",
         "views": [
             "MyViewport",
-            "Job"
+            "Job",
+            "JobSearch"
         ]
     },
     "configAlternates": {

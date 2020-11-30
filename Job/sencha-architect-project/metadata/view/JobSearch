@@ -1,0 +1,237 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "closeAction": "hide",
+        "container|align": "stretch",
+        "designer|userAlias": "jobsearch",
+        "designer|userClassName": "JobSearch",
+        "height": 500,
+        "layout": "vbox",
+        "title": "Job Search",
+        "width": 500
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "title": "string",
+        "width": "auto",
+        "closeAction": "string",
+        "container|align": "string",
+        "layout": "string"
+    },
+    "designerId": "a74d169f-f514-45dd-91c7-0563cd108419",
+    "viewControllerInstanceId": "c51ffcf5-6479-46c1-a1ac-325acce0ae55",
+    "viewModelInstanceId": "411db1be-2ddd-41a5-ad80-c710a65e5ef8",
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "flex": 1,
+                "itemId": "jobSearchGrid",
+                "store": [
+                    "{JobSearchStore}"
+                ]
+            },
+            "configAlternates": {
+                "store": "binding",
+                "itemId": "string",
+                "flex": "number"
+            },
+            "name": "MyGridPanel",
+            "designerId": "fe789e52-43d6-4aa0-98e8-0d4e39de0e0b",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "top",
+                        "itemId": "jobSearchToolbar"
+                    },
+                    "configAlternates": {
+                        "dock": "string",
+                        "itemId": "string"
+                    },
+                    "name": "MyToolbar1",
+                    "designerId": "8587fa4a-f8f5-417e-9d4c-744f0f58b626"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "jobNumber",
+                        "text": "Job Number"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyColumn",
+                    "designerId": "2a70b64b-5f4f-46b7-ad65-e4183f62f9ca"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "part",
+                        "text": "Part"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyColumn1",
+                    "designerId": "fc629b89-8777-40c2-a3a3-5e4b8c384754"
+                },
+                {
+                    "type": "Ext.grid.column.Date",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "jobStartDate",
+                        "text": "Start Date"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyDateColumn",
+                    "designerId": "15b01d01-8f83-46eb-bd05-172f078ae388"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "quantity",
+                        "text": "Quantity"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyColumn3",
+                    "designerId": "2a0db2b8-0f85-4169-973d-64bcd449eebe"
+                },
+                {
+                    "type": "Ext.view.Table",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyTable",
+                    "designerId": "c00999d8-81aa-42b2-a1bf-8b0137043529"
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "Ext.create(\"NiceGridMenu\", {",
+                    "\tmenuItems:[{text:'Select Job', action:'selectJob', icon:'/inc/img/silk_icons/accept.png', disabled:true}],",
+                    "\tcallbackHandler:function(action, data) {",
+                    "\t\tswitch(action) {",
+                    "\t\t\tcase 'selectJob':",
+                    "\t\t\t\tthis.fireEvent('jobselected', data.jobId);",
+                    "\t\t\t\tthis.close();",
+                    "\t\t\t\tbreak;",
+                    "\t\t}",
+                    "\t},",
+                    "\tfilterField:true,",
+                    "\tdoubleClick:'selectJob',",
+                    "\tgrid:this.queryById('jobSearchGrid'),",
+                    "\ttoolbar:this.queryById('jobSearchToolbar'),",
+                    "\tscope:this",
+                    "});"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "a27697e1-05c4-4937-896d-0ff454398155"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "jobNumber",
+                    "part"
+                ],
+                "fn": "searchJobs",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Job/searchJobs',",
+                    "\tjsonData:{jobNumber:jobNumber, part:part},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tif(reply.data.length === 0) {",
+                    "\t\t\tExt.Msg.alert(\"Warning\", \"No Results Found\");",
+                    "\t\t\tthis.close();",
+                    "\t\t} else if(reply.data.length === 1) {",
+                    "\t\t\tthis.fireEvent('jobselected', reply.data[0][0]);",
+                    "\t\t\tthis.close();",
+                    "\t\t}",
+                    "\t\t",
+                    "\t\tthis.getViewModel().getStore('JobSearchStore').loadData(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "designer|params": "typedarray"
+            },
+            "name": "searchJobs",
+            "designerId": "d7503e6a-e3d8-4691-8789-a79916864261"
+        }
+    ]
+}

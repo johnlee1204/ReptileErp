@@ -141,12 +141,18 @@ Ext.define('Job.view.Job', {
 			toolbarId:'jobToolbar',
 			addFn:'createJob',
 			saveFn:'updateJob',
-			deleteJob:'deleteJob'
+			deleteFn:'deleteJob',
+			searchFn:'searchJobs',
+			searchableFields:['job', 'part']
 		});
 	},
 
-	onPanelDocFormStateChangeD: function(panel) {
-		let fields = ['job', 'jobCreateDate'];
+	onPanelDocFormStateChangeD: function(oldState, newState) {
+		let fields = ['jobCreateDate'];
+
+		if(newState !== "search") {
+			fields.push('job');
+		}
 
 		for(let i in fields) {
 			let field = this.queryById(fields[i]);
@@ -154,6 +160,23 @@ Ext.define('Job.view.Job', {
 			field.addCls('docFormReadOnly');
 			field.setReadOnly(true);
 		}
+	},
+
+	searchJobs: function() {
+		if(!this.jobSearchWindow) {
+			this.jobSearchWindow = Ext.create("Job.view.JobSearch", {
+				listeners:{
+					scope:this,
+					jobselected:function(jobId) {
+						this.readJob(jobId);
+					}
+				}
+			});
+		}
+
+		this.jobSearchWindow.show(null, function(){
+			this.jobSearchWindow.searchJobs(this.queryById('job').getValue(), this.queryById('part').getValue());
+		}, this);
 	},
 
 	readJob: function(jobId) {

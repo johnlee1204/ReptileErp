@@ -29,6 +29,9 @@ class AgileApp {
 		require_once($this->systemConfigs['systemPath']."inc/php/classes/Validation.php");
 		require_once($this->systemConfigs['systemPath']."inc/php/classes/SmartTruncate.php");
 
+		require_once($systemClassPath . 'AgileErrorHandler.php');
+		$this->ErrorHandler = new AgileErrorHandler($this);
+
 
 		ini_set('display_errors', '1');
 		ini_set('display_startup_errors', '1');

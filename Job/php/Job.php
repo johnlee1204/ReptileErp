@@ -5,6 +5,22 @@ use Job\Models\JobModel;
 
 class Job extends AgileBaseController
 {
+
+	function searchJobs() {
+		$inputs = Validation::validateJsonInput([
+			'jobNumber',
+			'part'
+		]);
+		$jobs = JobModel::searchJobs($inputs);
+		$output = [];
+
+		foreach($jobs as $job) {
+			$job['quantity'] = SmartTruncate::truncate($job['quantity']);
+			$output[] = array_values($job);
+		}
+
+		$this->outputSuccessData($output);
+	}
 	function readJob() {
 		$input = Validation::validateJsonInput([
 			'jobId' => 'numeric'
