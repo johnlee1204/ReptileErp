@@ -47,8 +47,8 @@ class DropDownSelectionEditorModel extends AgileModel {
 
 	static function createSelection($inputs) {
 
-		if($inputs['displayOrder']) {
-			self::checkIfOrderTaken($inputs['selectionKey'], $inputs['displayOrder']);
+		if($inputs['displayOrder'] !== NULL) {
+			self::updateDisplayOrders($inputs['selectionKey'], $inputs['displayOrder']);
 		}
 
 		self::$database->query("
@@ -61,8 +61,8 @@ class DropDownSelectionEditorModel extends AgileModel {
 
 	static function updateSelection($inputs) {
 
-		if($inputs['displayOrder']) {
-			self::checkIfOrderTaken($inputs['selectionKey'], $inputs['displayOrder']);
+		if($inputs['displayOrder'] !== NULL) {
+			self::updateDisplayOrders($inputs['selectionKey'], $inputs['displayOrder']);
 		}
 
 		self::$database->query("
@@ -83,19 +83,27 @@ class DropDownSelectionEditorModel extends AgileModel {
 		", [$dropDownSelectionId]);
 	}
 
-	static function checkIfOrderTaken($selectionKey, $displayOrder) {
-		$selection = self::$database->fetch_assoc("
+	static function updateDisplayOrders($selectionKey, $displayOrder) {
+		$selections = self::$database->fetch_all_assoc("
 			SELECT
 				dropDownSelectionId
 			FROM DropDownSelection
 			WHERE
 				selectionKey = ?
 			AND
-				displayOrder = ?
+				displayOrder >= ?
 		", [$selectionKey, $displayOrder]);
 
-		if($selection !== NULL) {
-			throw new AgileUserMessageException("Order: " . $displayOrder . " Already Taken! Choose Another.");
+		$displayOrder++;
+		foreach($selections as $selection) {
+			self::$database->query("
+				UPDATE DropDownSelection
+				SET
+					displayOrder = ?
+				WHERE
+					dropDownSelectionId = ?
+			", [$displayOrder, $selection['dropDownSelectionId']]);
+			$displayOrder++;
 		}
 	}
 }
