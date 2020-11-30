@@ -13,7 +13,7 @@
         "height": 500,
         "layout": "vbox",
         "title": "Part Search",
-        "width": 600
+        "width": 684
     },
     "configAlternates": {
         "closeAction": "string",
@@ -109,6 +109,24 @@
                     },
                     "name": "MyColumn1",
                     "designerId": "fa7d37bb-5d51-41e0-aeb5-e24022a1393c"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "source",
+                        "text": "Source"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyColumn10",
+                    "designerId": "01aaac5b-d3be-48df-953a-5401825d1c6c"
                 },
                 {
                     "type": "Ext.view.Table",

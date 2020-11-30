@@ -31,17 +31,7 @@
 
 Ext.define('NiceGridMenu',{
 	niceGridMenuAppLinks:{
-		quote:{appId:'quote', icon:'/Ali/resources/doc_q.png', text:'Quote', appLinkField:'quote'},
-		salesOrder:{appId:'salesOrder', icon:'/Ali/resources/doc_s.png', text:'Sales Order', appLinkField:'salesOrder'},
-		consultant:{appId:'consultant', icon:'/inc/img/silk_icons/user_gray', text:'Consultant', appLinkField:'consultantId'},
-		job:{appId:'job', icon:'/inc/img/silk_icons/wrench.png', text:'Job', appLinkField:'job'},
-		opportunity:{appId:'opportunity', icon:'/inc/img/silk_icons/door_open.png', text:'Opportunity', appLinkField:'opportunity'},
-		rep:{appId:'rep', icon:'/inc/img/silk_icons/user_suit.png', text:'Rep', appLinkField:'repId'},
-		project:{appId:'project', icon:'/Ali/resources/doc_p.png', text:'Project', appLinkField:'projectId'},
-		dealer:{appId:'dealer', icon:'/inc/img/silk_icons/user_orange.png', text:'Dealer', appLinkField:'dealerId'},
-		part:{appId:'itemMaster', icon:'/inc/img/silk_icons/cog.png', text:'Part', appLinkField:'partId'}, //TODO DELETE REFERENCES
-		itemMaster:{appId:'itemMaster', icon:'/inc/img/silk_icons/cog.png', text:'Item Master', appLinkField:'partId'},
-		activity:{appId:'activity', icon:'/Ali/resources/doc_a.png', text:'Activity', appLinkField:'activityId'}
+		job:{appId:'job', icon:'/inc/img/silk_icons/wrench.png', text:'Job', appLinkField:'job'}
 	},
 	constructor:function(userConfig){
 		this.config = userConfig;

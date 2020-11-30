@@ -52,6 +52,9 @@ Ext.define('ItemMaster.view.Part', {
 			valueField: 'source',
 			bind: {
 				store: '{SourceStore}'
+			},
+			listeners: {
+				afterrender: 'onSourceAfterRender'
 			}
 		},
 		{
@@ -88,6 +91,27 @@ Ext.define('ItemMaster.view.Part', {
 			]
 		}
 	],
+	listeners: {
+		afterrender: 'onPanelAfterRender'
+	},
+
+	onSourceAfterRender: function(component, eOpts) {
+		AppWindowManager.appOn('dropDownSelectionEditor', {
+			scope:this,
+			selectionchanged:function() {
+				this.readPartSources();
+			}
+		});
+
+		component.el.on({
+		    contextmenu: function(event) {
+		        event.stopEvent();
+		        AppWindowManager.appLink('dropDownSelectionEditor', {dataKey:'partSource'});
+		    },
+		    scope:this
+		});
+
+	},
 
 	onPartsProducedChange: function(field, newValue, oldValue, eOpts) {
 		this.queryById('estimatedTime').setValue(newValue / this.queryById('partsPerMinute').getValue());
@@ -95,6 +119,22 @@ Ext.define('ItemMaster.view.Part', {
 
 	onEstimatedTimeChange: function(field, newValue, oldValue, eOpts) {
 		this.queryById('partsProduced').setValue(newValue * this.queryById('partsPerMinute').getValue());
+	},
+
+	onPanelAfterRender: function(component, eOpts) {
+		this.readPartSources();
+	},
+
+	readPartSources: function() {
+		AERP.Ajax.request({
+			url:'/DropDownSelectionEditor/readSelectionsForCombo',
+			jsonData:{selectionKey:'partSource'},
+			success:function(reply) {
+				this.getViewModel().getStore('SourceStore').loadData(reply.data);
+			},
+			scope:this,
+			mask:this
+		});
 	}
 
 });

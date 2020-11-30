@@ -24,20 +24,6 @@ Ext.define('ItemMaster.view.PartViewModel', {
 
 	stores: {
 		SourceStore: {
-			data: [
-				{
-					source: 'Make'
-				},
-				{
-					source: 'Stock'
-				},
-				{
-					source: 'Phantom'
-				},
-				{
-					source: 'Buy'
-				}
-			],
 			fields: [
 				{
 					name: 'source'

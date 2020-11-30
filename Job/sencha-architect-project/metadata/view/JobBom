@@ -1,0 +1,360 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userAlias": "jobbom",
+        "designer|userClassName": "JobBom",
+        "layout": "vbox",
+        "title": "Job BOM"
+    },
+    "configAlternates": {
+        "container|align": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "layout": "string",
+        "title": "string"
+    },
+    "name": "MyPanel1",
+    "designerId": "97f02f24-fec6-48dd-adf9-d5b6658e993d",
+    "viewControllerInstanceId": "c9dbf752-0749-4dea-ac8d-c5ea45375874",
+    "viewModelInstanceId": "2379e3c3-96ed-43c3-9754-93454cb75d3a",
+    "cn": [
+        {
+            "type": "Ext.tree.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "flex": 1,
+                "folderSort": true,
+                "itemId": "jobBomGrid",
+                "rowLines": true,
+                "useArrows": true
+            },
+            "configAlternates": {
+                "flex": "number",
+                "folderSort": "boolean",
+                "itemId": "string",
+                "rowLines": "boolean",
+                "useArrows": "boolean"
+            },
+            "name": "TreeGrid",
+            "designerId": "9a97754d-5922-4330-9af7-0f4a40538907",
+            "isBuiltIn": true,
+            "iconCls": "icon-treegridpanel",
+            "autoName": "TreeGrid",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "top",
+                        "itemId": "jobBomToolbar"
+                    },
+                    "configAlternates": {
+                        "dock": "string",
+                        "itemId": "string"
+                    },
+                    "name": "MyToolbar2",
+                    "designerId": "c209bf8d-b18c-4592-a856-1022bcc11f89"
+                },
+                {
+                    "type": "Ext.tree.View",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "enableTextSelection": true
+                    },
+                    "configAlternates": {
+                        "enableTextSelection": "boolean"
+                    },
+                    "name": "MyTreeView",
+                    "designerId": "c808d686-ff4f-4e59-9102-3aa2ea68f8b0"
+                },
+                {
+                    "type": "Ext.tree.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "partName",
+                        "text": "Part",
+                        "width": 249
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyTreeColumn",
+                    "designerId": "45c04b6d-7cd0-4d7f-8717-f71263cee06c"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "jobNumber",
+                        "text": "For Job"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyColumn2",
+                    "designerId": "094c193c-c7ae-4a28-9af7-aad7d96089f4"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "jobId",
+                        "hidden": true,
+                        "text": "For Job Id"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "hidden": "boolean"
+                    },
+                    "name": "MyColumn13",
+                    "designerId": "116a14df-4755-477c-a5c3-6e479d871e7c"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "jobBillOfMaterialId",
+                        "hidden": true,
+                        "text": "Job Bom Record Id",
+                        "width": 112
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "hidden": "boolean",
+                        "width": "auto"
+                    },
+                    "name": "MyColumn11",
+                    "designerId": "5382bc19-e479-4d97-a31e-3bf710269921"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "quantity",
+                        "text": "Quantity"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyColumn7",
+                    "designerId": "27095e5d-a2f3-464f-b8ea-adbd521adfb3"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "totalQuantity",
+                        "text": "Total Quantity",
+                        "width": 92
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyColumn8",
+                    "designerId": "805cb4b1-9127-42a2-b251-2c145a6df571"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "subJobId",
+                        "hidden": true,
+                        "text": "Sub Job Id",
+                        "width": 81
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto",
+                        "itemId": "string",
+                        "hidden": "boolean"
+                    },
+                    "name": "MyColumn12",
+                    "designerId": "600de3fd-20dd-4f3b-b0ce-14f3c82e0bb1"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "subJob",
+                        "text": "Source Job",
+                        "width": 81
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyColumn9",
+                    "designerId": "dab8eb48-22f8-4c41-a866-cf01e4fca36e"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "source",
+                        "text": "Source",
+                        "width": 81
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyColumn10",
+                    "designerId": "99f475e7-4eb1-4a77-a995-e9de3fb9b270"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onTreepanelSelectionChange",
+                        "name": "selectionchange",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onTreepanelSelectionChange",
+                    "designerId": "659fada6-c04a-4406-92f2-524278682d3a"
+                }
+            ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "jobId"
+                ],
+                "fn": "readJobBom",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Job/readJobBom',",
+                    "\tjsonData:{jobId:jobId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.jobId = jobId;",
+                    "\t\tlet jobBomGrid = this.queryById('jobBomGrid');",
+                    "\t\tjobBomGrid.setRootNode(reply.data);",
+                    "\t\tjobBomGrid.expandAll();",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readJobBom",
+            "designerId": "2b689ff7-d35d-4303-8a31-96336ba1860b"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "Ext.create(\"NiceGridMenu\", {",
+                    "\tmenuItems:[",
+                    "\t\t{text:'Load For Job', appLink:'job', appLinkField:'jobId'},",
+                    "\t\t{text:'Load Source Job', appLink:'job', appLinkField:'subJobId'},",
+                    "\t],",
+                    "\tcallbackHandler:function(action, data) {},",
+                    "\tgrid:this.queryById('jobBomGrid'),",
+                    "\ttoolbar:this.queryById('jobBomToolbar'),",
+                    "\tscope:this",
+                    "});"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "146b04e4-20f9-4583-94a5-d2d515217c28"
+        }
+    ]
+}

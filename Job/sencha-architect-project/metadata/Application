@@ -10,7 +10,8 @@
         "views": [
             "MyViewport",
             "Job",
-            "JobSearch"
+            "JobSearch",
+            "JobBom"
         ]
     },
     "configAlternates": {

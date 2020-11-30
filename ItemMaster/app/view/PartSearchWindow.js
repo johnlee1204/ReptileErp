@@ -29,7 +29,7 @@ Ext.define('ItemMaster.view.PartSearchWindow', {
 		type: 'partsearchwindow'
 	},
 	height: 500,
-	width: 600,
+	width: 684,
 	closeAction: 'hide',
 	title: 'Part Search',
 	defaultListenerScope: true,
@@ -65,6 +65,11 @@ Ext.define('ItemMaster.view.PartSearchWindow', {
 					width: 351,
 					dataIndex: 'partDescription',
 					text: 'Description'
+				},
+				{
+					xtype: 'gridcolumn',
+					dataIndex: 'source',
+					text: 'Source'
 				}
 			],
 			viewConfig: {

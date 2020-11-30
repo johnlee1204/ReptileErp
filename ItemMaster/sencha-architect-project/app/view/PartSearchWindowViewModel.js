@@ -33,6 +33,9 @@ Ext.define('ItemMaster.view.PartSearchWindowViewModel', {
 				},
 				{
 					name: 'partDescription'
+				},
+				{
+					name: 'source'
 				}
 			]
 		}

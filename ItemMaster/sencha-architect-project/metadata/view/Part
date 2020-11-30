@@ -88,7 +88,47 @@
                 "valueField": "datafield"
             },
             "name": "MyComboBox3",
-            "designerId": "51d55d9a-30ec-4d69-990a-5292d40e2cbb"
+            "designerId": "51d55d9a-30ec-4d69-990a-5292d40e2cbb",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onSourceAfterRender",
+                        "implHandler": [
+                            "AppWindowManager.appOn('dropDownSelectionEditor', {",
+                            "\tscope:this,",
+                            "\tselectionchanged:function() {",
+                            "\t\tthis.readPartSources();",
+                            "\t}",
+                            "});",
+                            "",
+                            "component.el.on({",
+                            "    contextmenu: function(event) {",
+                            "        event.stopEvent();",
+                            "        AppWindowManager.appLink('dropDownSelectionEditor', {dataKey:'partSource'});",
+                            "    },",
+                            "    scope:this",
+                            "});",
+                            ""
+                        ],
+                        "name": "afterrender",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onSourceAfterRender",
+                    "designerId": "ee5b14f3-f6a7-494e-be65-9483dd61000a"
+                }
+            ]
         },
         {
             "type": "Ext.form.FieldSet",
@@ -237,6 +277,58 @@
                     ]
                 }
             ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.readPartSources();"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "5b27827a-510b-4b91-8761-aa532c477aa3"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "readPartSources",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/DropDownSelectionEditor/readSelectionsForCombo',",
+                    "\tjsonData:{selectionKey:'partSource'},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore('SourceStore').loadData(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readPartSources",
+            "designerId": "16c5e108-a089-4769-8b8d-0616e98b8e1f"
         }
     ]
 }

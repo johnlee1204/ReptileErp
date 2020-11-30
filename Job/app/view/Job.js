@@ -22,6 +22,7 @@ Ext.define('Job.view.Job', {
 	],
 	requires: [
 		'Job.view.JobViewModel',
+		'Job.view.JobBom',
 		'Ext.toolbar.Toolbar',
 		'Ext.form.field.ComboBox',
 		'Ext.form.field.Date',
@@ -69,8 +70,10 @@ Ext.define('Job.view.Job', {
 					fieldLabel: 'Status',
 					labelAlign: 'right',
 					labelWidth: 70,
+					displayField: 'status',
 					forceSelection: true,
 					queryMode: 'local',
+					valueField: 'status',
 					bind: {
 						store: '{StatusStore}'
 					},
@@ -91,10 +94,14 @@ Ext.define('Job.view.Job', {
 		{
 			xtype: 'tabpanel',
 			flex: 1,
+			itemId: 'jobTabPanel',
 			bodyStyle: 'background:none',
+			activeTab: 0,
+			deferredRender: false,
 			items: [
 				{
 					xtype: 'panel',
+					itemId: 'job',
 					bodyPadding: 10,
 					bodyStyle: 'background:none',
 					title: 'Job',
@@ -125,9 +132,17 @@ Ext.define('Job.view.Job', {
 						{
 							xtype: 'datefield',
 							itemId: 'jobStartDate',
-							fieldLabel: 'Start Date'
+							fieldLabel: 'Start Date',
+							submitFormat: 'Y-m-d',
+							listeners: {
+								afterrender: 'onJobStartDateAfterRender'
+							}
 						}
 					]
+				},
+				{
+					xtype: 'jobbom',
+					itemId: 'jobBomTab'
 				}
 			]
 		}
@@ -155,6 +170,12 @@ Ext.define('Job.view.Job', {
 
 	},
 
+	onJobStartDateAfterRender: function(component, eOpts) {
+		component.getEl().on('dblclick', function() {
+		    component.setValue(new Date());
+		});
+	},
+
 	onPanelAfterRender: function(component, eOpts) {
 		this.docFormInit({
 			toolbarId:'jobToolbar',
@@ -164,8 +185,9 @@ Ext.define('Job.view.Job', {
 			searchFn:'searchJobs',
 			searchableFields:['job', 'part']
 		});
-
+		this.fireEvent('appdataloaded');
 		this.readJobStatuses();
+		this.addAppWindowManagerListeners();
 	},
 
 	onPanelDocFormStateChangeD: function(oldState, newState) {
@@ -181,6 +203,14 @@ Ext.define('Job.view.Job', {
 			field.addCls('docFormReadOnly');
 			field.setReadOnly(true);
 		}
+	},
+
+	addAppWindowManagerListeners: function() {
+		AppWindowManager.on('applinkjob',function(linkEvent){
+		    this.queryById('jobTabPanel').setActiveTab('job');
+		    this.readJob(linkEvent.dataKey);
+		    return false;
+		}, this);
 	},
 
 	searchJobs: function() {
@@ -208,6 +238,7 @@ Ext.define('Job.view.Job', {
 				this.getViewModel().getStore('PartStore').loadData([[reply.data.part, reply.data.partName]]);
 				this.docFormLoadFormData(reply);
 				this.jobId = jobId;
+				this.queryById('jobBomTab').readJobBom(jobId);
 			},
 			scope:this,
 			mask:this
@@ -227,11 +258,31 @@ Ext.define('Job.view.Job', {
 	},
 
 	updateJob: function() {
+		let jsonData = this.docFormGetAllFieldValues();
+		jsonData.jobId = this.jobId;
 
+		AERP.Ajax.request({
+			url:'/Job/updateJob',
+			jsonData:jsonData,
+			success:function(reply) {
+				this.readJob(this.jobId);
+			},
+			scope:this,
+			mask:this
+		});
 	},
 
 	deleteJob: function() {
-
+		AERP.Ajax.request({
+			url:'/Job/deleteJob',
+			jsonData:{jobId:this.jobId},
+			success:function(reply) {
+				this.docFormReset();
+				this.queryById('jobBomTab').queryById('jobBomGrid').setRootNode({});
+			},
+			scope:this,
+			mask:this
+		});
 	},
 
 	readJobStatuses: function() {

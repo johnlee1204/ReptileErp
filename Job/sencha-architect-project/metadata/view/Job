@@ -102,7 +102,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "displayField": null,
+                        "displayField": "status",
                         "fieldLabel": "Status",
                         "forceSelection": true,
                         "itemId": "status",
@@ -113,7 +113,7 @@
                         "store": [
                             "{StatusStore}"
                         ],
-                        "valueField": null
+                        "valueField": "status"
                     },
                     "configAlternates": {
                         "store": "binding",
@@ -204,12 +204,18 @@
             },
             "codeClass": null,
             "userConfig": {
+                "activeTab": 0,
                 "bodyStyle": "background:none",
-                "flex": 1
+                "deferredRender": false,
+                "flex": 1,
+                "itemId": "jobTabPanel"
             },
             "configAlternates": {
                 "bodyStyle": "string",
-                "flex": "number"
+                "flex": "number",
+                "activeTab": "auto",
+                "deferredRender": "boolean",
+                "itemId": "string"
             },
             "name": "MyTabPanel",
             "designerId": "559d4e15-8739-4295-8226-bfcf139130c8",
@@ -224,12 +230,14 @@
                     "userConfig": {
                         "bodyPadding": 10,
                         "bodyStyle": "background:none",
+                        "itemId": "job",
                         "title": "Job"
                     },
                     "configAlternates": {
                         "bodyPadding": "auto",
                         "bodyStyle": "string",
-                        "title": "string"
+                        "title": "string",
+                        "itemId": "string"
                     },
                     "name": "MyPanel",
                     "designerId": "f629f7dc-fa9a-4839-ac75-af1453ca9862",
@@ -313,17 +321,76 @@
                             "codeClass": null,
                             "userConfig": {
                                 "fieldLabel": "Start Date",
-                                "itemId": "jobStartDate"
+                                "itemId": "jobStartDate",
+                                "submitFormat": "Y-m-d"
                             },
                             "configAlternates": {
                                 "fieldLabel": "string",
                                 "itemId": "string",
                                 "labelAlign": "string",
                                 "labelWidth": "number",
-                                "margin": "auto"
+                                "margin": "auto",
+                                "submitFormat": "string"
                             },
                             "name": "MyDateField1",
-                            "designerId": "0e87f1bb-6724-4d4c-9b66-363717a60a53"
+                            "designerId": "0e87f1bb-6724-4d4c-9b66-363717a60a53",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onJobStartDateAfterRender",
+                                        "implHandler": [
+                                            "component.getEl().on('dblclick', function() {",
+                                            "    component.setValue(new Date());",
+                                            "});"
+                                        ],
+                                        "name": "afterrender",
+                                        "scope": "me"
+                                    },
+                                    "configAlternates": {
+                                        "fn": "string",
+                                        "implHandler": "code",
+                                        "name": "string",
+                                        "scope": "string"
+                                    },
+                                    "name": "onJobStartDateAfterRender",
+                                    "designerId": "a4ca3c88-56f1-453c-b73f-d772b3372886"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "jobBomTab"
+                    },
+                    "configAlternates": {
+                        "itemId": "string"
+                    },
+                    "name": "jobbom",
+                    "designerId": "33e88ca4-c64e-478b-b55b-01017868d8e3",
+                    "masterInstanceId": "97f02f24-fec6-48dd-adf9-d5b6658e993d",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "TabConfig1",
+                            "designerId": "417240e5-8349-4e2b-b2de-bdc23d815fc8"
                         }
                     ]
                 }
@@ -347,8 +414,9 @@
                     "\tsearchFn:'searchJobs',",
                     "\tsearchableFields:['job', 'part']",
                     "});",
-                    "",
-                    "this.readJobStatuses();"
+                    "this.fireEvent('appdataloaded');",
+                    "this.readJobStatuses();",
+                    "this.addAppWindowManagerListeners();"
                 ],
                 "name": "afterrender",
                 "scope": "me"
@@ -361,6 +429,30 @@
             },
             "name": "onPanelAfterRender",
             "designerId": "5605bdbc-1897-46b4-8843-d0ec2828fdeb"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "addAppWindowManagerListeners",
+                "implHandler": [
+                    "AppWindowManager.on('applinkjob',function(linkEvent){",
+                    "    this.queryById('jobTabPanel').setActiveTab('job');",
+                    "    this.readJob(linkEvent.dataKey);",
+                    "    return false;",
+                    "}, this);"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "addAppWindowManagerListeners",
+            "designerId": "456097e4-5cc4-4232-aa39-3d948b5b4115"
         },
         {
             "type": "basicfunction",
@@ -415,6 +507,7 @@
                     "\t\tthis.getViewModel().getStore('PartStore').loadData([[reply.data.part, reply.data.partName]]);",
                     "\t\tthis.docFormLoadFormData(reply);",
                     "\t\tthis.jobId = jobId;",
+                    "\t\tthis.queryById('jobBomTab').readJobBom(jobId);",
                     "\t},",
                     "\tscope:this,",
                     "\tmask:this",
@@ -465,10 +558,25 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fn": "updateJob"
+                "fn": "updateJob",
+                "implHandler": [
+                    "let jsonData = this.docFormGetAllFieldValues();",
+                    "jsonData.jobId = this.jobId;",
+                    "",
+                    "AERP.Ajax.request({",
+                    "\turl:'/Job/updateJob',",
+                    "\tjsonData:jsonData,",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readJob(this.jobId);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
             },
             "configAlternates": {
-                "fn": "string"
+                "fn": "string",
+                "implHandler": "code"
             },
             "name": "updateJob",
             "designerId": "d0223fb3-7ec3-486a-a028-d9b0977a14bd"
@@ -481,10 +589,23 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fn": "deleteJob"
+                "fn": "deleteJob",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Job/deleteJob',",
+                    "\tjsonData:{jobId:this.jobId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.docFormReset();",
+                    "\t\tthis.queryById('jobBomTab').queryById('jobBomGrid').setRootNode({});",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
             },
             "configAlternates": {
-                "fn": "string"
+                "fn": "string",
+                "implHandler": "code"
             },
             "name": "deleteJob",
             "designerId": "cfee11ce-2504-43f2-a99a-2efc865afcad"

@@ -23,7 +23,8 @@ Ext.application({
 	views: [
 		'MyViewport',
 		'Job',
-		'JobSearch'
+		'JobSearch',
+		'JobBom'
 	],
 	name: 'Job',
 

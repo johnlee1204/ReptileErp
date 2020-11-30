@@ -29,7 +29,7 @@
                 "name": "string"
             },
             "name": "MyStore",
-            "designerId": "19a6497f-4265-44f1-948b-08dc778b3c9a",
+            "designerId": "075cb1b4-4fe3-4b6c-85c8-60271e77dc57",
             "cn": [
                 {
                     "type": "Ext.data.field.Field",
@@ -45,7 +45,7 @@
                         "name": "string"
                     },
                     "name": "MyField",
-                    "designerId": "36701c83-ff9d-4d3a-a6b3-c2a5fe6e1123"
+                    "designerId": "bd8d08cb-0992-4010-b76b-d64700bd2ad7"
                 },
                 {
                     "type": "Ext.data.field.Field",
@@ -61,7 +61,7 @@
                         "name": "string"
                     },
                     "name": "MyField1",
-                    "designerId": "ce65aa17-2263-4908-b97a-d984e1e0e14e"
+                    "designerId": "38c16453-2349-4421-b716-3cc5af850d29"
                 },
                 {
                     "type": "Ext.data.field.Field",
@@ -77,7 +77,23 @@
                         "name": "string"
                     },
                     "name": "MyField2",
-                    "designerId": "7474d32a-af58-46be-a4bf-3b2a1179237b"
+                    "designerId": "aa8be20c-d629-4ac0-8ca7-34ed944ba165"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "source"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField13",
+                    "designerId": "e2a623ff-be31-4dc1-af18-26d0225c8933"
                 }
             ]
         }

@@ -1,17 +1,17 @@
 {
-    "type": "Ext.app.ViewController",
+    "type": "Ext.app.ViewModel",
     "reference": {
         "name": "items",
         "type": "array"
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userAlias": "partsearch",
-        "designer|userClassName": "PartSearchViewController"
+        "designer|userAlias": "jobbom",
+        "designer|userClassName": "JobBomViewModel"
     },
     "configAlternates": {
         "designer|userAlias": "string",
         "designer|userClassName": "string"
     },
-    "designerId": "00fa89e6-a3d1-439d-b6d5-de96e0c583d2"
+    "designerId": "2379e3c3-96ed-43c3-9754-93454cb75d3a"
 }

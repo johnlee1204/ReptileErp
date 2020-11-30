@@ -36,6 +36,15 @@ Ext.define('AppWindowManagerClass', {
 			windowConfig:{
 				title:'Selection Editor'
 			}
+		},
+		'job':{
+			loaderClass:'Job',
+			loaderPath:'/Job/app',
+			appClass: 'Job.view.Job',
+			dataLoader: 'readJob',
+			windowConfig:{
+				title:'Job'
+			}
 		}
 	},
 	appLink:function(appId, appConfig){

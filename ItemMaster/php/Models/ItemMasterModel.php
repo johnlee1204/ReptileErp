@@ -278,11 +278,13 @@ class ItemMasterModel extends AgileModel {
 	static function readPartChildren($partId) {
 		return self::$database->fetch_all_assoc("
 			SELECT
-				partId part,
-				quantity
+				BillOfMaterial.partId part,
+				BillOfMaterial.quantity,
+				Part.source
 			FROM BillOfMaterial
+			JOIN Part ON Part.partId = BillOfMaterial.partId
 			WHERE
-				parentPartId = ?
+				BillOfMaterial.parentPartId = ?
 		", [$partId]);
 	}
 

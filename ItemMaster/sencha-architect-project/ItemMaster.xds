@@ -33,9 +33,6 @@
     "framework": "ext66",
     "viewOrderMap": {
         "view": [
-            "7c284b64-5d43-4d5d-9a6c-17e3197b96aa",
-            "00fa89e6-a3d1-439d-b6d5-de96e0c583d2",
-            "c897c7b4-796d-4fb8-9253-faed15c2f980",
             "79f3f913-02f7-4a07-8ef4-c3f24245093b",
             "0202bb2a-4780-44c2-a06f-4de52c206d34",
             "9f9c802f-7311-4f1e-8bd1-2b212c501096",
@@ -65,7 +62,7 @@
         "controller": [],
         "model": [],
         "resource": [
-            "4fcc85d0-8404-4b2c-929f-98897b4dd849",
+            "7eea8120-2fb5-4da4-aa3c-3e8208fc1acd",
             "173a740e-293e-4e00-b40c-9a50fb2577d4",
             "5ba3958c-da75-475c-be62-0204422d23cf",
             "e9dfff16-f6c8-498c-ac8a-f008ed4717e3",

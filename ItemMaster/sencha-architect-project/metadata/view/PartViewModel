@@ -23,22 +23,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "data": [
-                    "[",
-                    "\t{",
-                    "\t\t\"source\": \"Make\"",
-                    "\t},",
-                    "\t{",
-                    "\t\t\"source\": \"Stock\"",
-                    "\t},",
-                    "\t{",
-                    "\t\t\"source\": \"Phantom\"",
-                    "\t},",
-                    "\t{",
-                    "\t\t\"source\": \"Buy\"",
-                    "\t}",
-                    "]"
-                ],
                 "name": "SourceStore"
             },
             "configAlternates": {
