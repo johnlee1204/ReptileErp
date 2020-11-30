@@ -44,6 +44,7 @@
             },
             "codeClass": null,
             "userConfig": {
+                "defaultButtonUI": "default",
                 "dock": "top",
                 "itemId": "jobToolbar",
                 "layout|flex": 1
@@ -51,10 +52,318 @@
             "configAlternates": {
                 "dock": "string",
                 "itemId": "string",
-                "layout|flex": "number"
+                "layout|flex": "number",
+                "defaultButtonUI": "string"
             },
             "name": "MyToolbar",
-            "designerId": "8d64bde7-9540-4f53-89e8-5ae9cd6ee040"
+            "designerId": "8d64bde7-9540-4f53-89e8-5ae9cd6ee040",
+            "cn": [
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "icon": "/inc/img/silk_icons/arrow_up.png",
+                        "layout|flex": null,
+                        "margin": "0 0 0 5",
+                        "text": "View Parent Job"
+                    },
+                    "configAlternates": {
+                        "icon": "string",
+                        "layout|flex": "number",
+                        "margin": "auto",
+                        "text": "string"
+                    },
+                    "name": "MyButton",
+                    "designerId": "a77eeb7a-ba27-4493-a811-20f648b2b314",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onButtonClick",
+                                "implHandler": [
+                                    "if(!this.jobId) {",
+                                    "\tExt.Msg.alert('Error', \"Please Load a Job First!\");",
+                                    "\treturn;",
+                                    "}",
+                                    "",
+                                    "AERP.Ajax.request({",
+                                    "\turl:'/Job/readParentJob',",
+                                    "\tjsonData:{jobId:this.jobId},",
+                                    "\tsuccess:function(reply) {",
+                                    "\t\tthis.readJob(reply.data);",
+                                    "\t},",
+                                    "\tscope:this,",
+                                    "\tmask:this",
+                                    "});"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onButtonClick",
+                            "designerId": "0f929ff1-18c0-4f05-9fd7-254dca1e8a27"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "margin": "0 0 0 5"
+                    },
+                    "configAlternates": {
+                        "layout|flex": "number",
+                        "margin": "auto"
+                    },
+                    "name": "MyContainer2",
+                    "designerId": "70ab4304-2005-4d67-803c-1941a980ae84",
+                    "cn": [
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "icon": "/inc/img/silk_icons/resultset_first.png",
+                                "itemId": "first",
+                                "margin": "0 5 0 0"
+                            },
+                            "configAlternates": {
+                                "icon": "string",
+                                "itemId": "string",
+                                "margin": "auto"
+                            },
+                            "name": "MyButton1",
+                            "designerId": "a88bad76-8d27-4b1b-9250-420ecbe8966a",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onFirstClick",
+                                        "implHandler": [
+                                            "AERP.Ajax.request({",
+                                            "\turl:'/Job/readFirstJob',",
+                                            "\tsuccess:function(reply) {",
+                                            "\t\tthis.readJob(reply.data);",
+                                            "\t},",
+                                            "\tscope:this,",
+                                            "\tmask:this",
+                                            "});"
+                                        ],
+                                        "name": "click",
+                                        "scope": "me"
+                                    },
+                                    "configAlternates": {
+                                        "fn": "string",
+                                        "implHandler": "code",
+                                        "name": "string",
+                                        "scope": "string"
+                                    },
+                                    "name": "onFirstClick",
+                                    "designerId": "95eaad8d-2ab1-47d9-aedd-a26be8564875"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "icon": "/inc/img/silk_icons/resultset_previous.png",
+                                "itemId": "previous",
+                                "margin": "0 5 0 0"
+                            },
+                            "configAlternates": {
+                                "icon": "string",
+                                "itemId": "string",
+                                "margin": "auto"
+                            },
+                            "name": "MyButton2",
+                            "designerId": "a348e1f8-6fbb-452b-bddb-e2a30b75dc17",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onFirstClick1",
+                                        "implHandler": [
+                                            "if(!this.jobId) {",
+                                            "\tExt.Msg.alert('Error', \"Please Load a Job First!\");",
+                                            "\treturn;",
+                                            "}",
+                                            "",
+                                            "AERP.Ajax.request({",
+                                            "\turl:'/Job/readPreviousJob',",
+                                            "\tjsonData:{jobId:this.jobId},",
+                                            "\tsuccess:function(reply) {",
+                                            "\t\tthis.readJob(reply.data);",
+                                            "\t},",
+                                            "\tscope:this,",
+                                            "\tmask:this",
+                                            "});"
+                                        ],
+                                        "name": "click",
+                                        "scope": "me"
+                                    },
+                                    "configAlternates": {
+                                        "fn": "string",
+                                        "implHandler": "code",
+                                        "name": "string",
+                                        "scope": "string"
+                                    },
+                                    "name": "onFirstClick1",
+                                    "designerId": "ccaf860d-8891-4977-9ebf-06558fa2d555"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "icon": "/inc/img/silk_icons/resultset_next.png",
+                                "itemId": "next",
+                                "margin": "0 5 0 0"
+                            },
+                            "configAlternates": {
+                                "icon": "string",
+                                "itemId": "string",
+                                "margin": "auto"
+                            },
+                            "name": "MyButton3",
+                            "designerId": "98bae73b-de0a-4904-8144-17b0730cbb98",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onFirstClick11",
+                                        "implHandler": [
+                                            "if(!this.jobId) {",
+                                            "\tExt.Msg.alert('Error', \"Please Load a Job First!\");",
+                                            "\treturn;",
+                                            "}",
+                                            "",
+                                            "AERP.Ajax.request({",
+                                            "\turl:'/Job/readNextJob',",
+                                            "\tjsonData:{jobId:this.jobId},",
+                                            "\tsuccess:function(reply) {",
+                                            "\t\tthis.readJob(reply.data);",
+                                            "\t},",
+                                            "\tscope:this,",
+                                            "\tmask:this",
+                                            "});"
+                                        ],
+                                        "name": "click",
+                                        "scope": "me"
+                                    },
+                                    "configAlternates": {
+                                        "fn": "string",
+                                        "implHandler": "code",
+                                        "name": "string",
+                                        "scope": "string"
+                                    },
+                                    "name": "onFirstClick11",
+                                    "designerId": "6a10da8a-b266-45b9-8041-b3e57be8c444"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.button.Button",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "icon": "/inc/img/silk_icons/resultset_last.png",
+                                "itemId": "last",
+                                "margin": "0 5 0 0"
+                            },
+                            "configAlternates": {
+                                "icon": "string",
+                                "itemId": "string",
+                                "margin": "auto"
+                            },
+                            "name": "MyButton4",
+                            "designerId": "e7e9d9c7-60cf-4124-81e4-473a9c4bda0f",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onFirstClick111",
+                                        "implHandler": [
+                                            "AERP.Ajax.request({",
+                                            "\turl:'/Job/readLastJob',",
+                                            "\tsuccess:function(reply) {",
+                                            "\t\tthis.readJob(reply.data);",
+                                            "\t},",
+                                            "\tscope:this,",
+                                            "\tmask:this",
+                                            "});"
+                                        ],
+                                        "name": "click",
+                                        "scope": "me"
+                                    },
+                                    "configAlternates": {
+                                        "fn": "string",
+                                        "implHandler": "code",
+                                        "name": "string",
+                                        "scope": "string"
+                                    },
+                                    "name": "onFirstClick111",
+                                    "designerId": "a7776ae9-fad1-4683-9e10-3515f719db59"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
         },
         {
             "type": "Ext.container.Container",
@@ -83,7 +392,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "fieldLabel": "Job",
-                        "itemId": "job",
+                        "itemId": "jobNumber",
                         "labelAlign": "right"
                     },
                     "configAlternates": {
@@ -412,7 +721,7 @@
                     "\tsaveFn:'updateJob',",
                     "\tdeleteFn:'deleteJob',",
                     "\tsearchFn:'searchJobs',",
-                    "\tsearchableFields:['job', 'part']",
+                    "\tsearchableFields:['jobNumber', 'part']",
                     "});",
                     "this.fireEvent('appdataloaded');",
                     "this.readJobStatuses();",
@@ -476,7 +785,7 @@
                     "}",
                     "",
                     "this.jobSearchWindow.show(null, function(){",
-                    "\tthis.jobSearchWindow.searchJobs(this.queryById('job').getValue(), this.queryById('part').getValue());",
+                    "\tthis.jobSearchWindow.searchJobs(this.queryById('jobNumber').getValue(), this.queryById('part').getValue());",
                     "}, this);"
                 ]
             },
@@ -655,7 +964,7 @@
                     "let fields = ['jobCreateDate'];",
                     "",
                     "if(newState !== \"search\") {",
-                    "\tfields.push('job');",
+                    "\tfields.push('jobNumber');",
                     "}",
                     "",
                     "for(let i in fields) {",

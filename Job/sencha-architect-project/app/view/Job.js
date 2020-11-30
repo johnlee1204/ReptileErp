@@ -48,7 +48,61 @@ Ext.define('Job.view.Job', {
 			xtype: 'toolbar',
 			flex: 1,
 			dock: 'top',
-			itemId: 'jobToolbar'
+			itemId: 'jobToolbar',
+			defaultButtonUI: 'default',
+			items: [
+				{
+					xtype: 'button',
+					margin: '0 0 0 5',
+					icon: '/inc/img/silk_icons/arrow_up.png',
+					text: 'View Parent Job',
+					listeners: {
+						click: 'onButtonClick'
+					}
+				},
+				{
+					xtype: 'container',
+					margin: '0 0 0 5',
+					items: [
+						{
+							xtype: 'button',
+							itemId: 'first',
+							margin: '0 5 0 0',
+							icon: '/inc/img/silk_icons/resultset_first.png',
+							listeners: {
+								click: 'onFirstClick'
+							}
+						},
+						{
+							xtype: 'button',
+							itemId: 'previous',
+							margin: '0 5 0 0',
+							icon: '/inc/img/silk_icons/resultset_previous.png',
+							listeners: {
+								click: 'onFirstClick1'
+							}
+						},
+						{
+							xtype: 'button',
+							itemId: 'next',
+							margin: '0 5 0 0',
+							icon: '/inc/img/silk_icons/resultset_next.png',
+							listeners: {
+								click: 'onFirstClick11'
+							}
+						},
+						{
+							xtype: 'button',
+							itemId: 'last',
+							margin: '0 5 0 0',
+							icon: '/inc/img/silk_icons/resultset_last.png',
+							listeners: {
+								click: 'onFirstClick111'
+							}
+						}
+					]
+				}
+			]
 		}
 	],
 	items: [
@@ -59,7 +113,7 @@ Ext.define('Job.view.Job', {
 			items: [
 				{
 					xtype: 'textfield',
-					itemId: 'job',
+					itemId: 'jobNumber',
 					fieldLabel: 'Job',
 					labelAlign: 'right'
 				},
@@ -152,6 +206,79 @@ Ext.define('Job.view.Job', {
 		docFormStateChanged: 'onPanelDocFormStateChangeD'
 	},
 
+	onButtonClick: function(button, e, eOpts) {
+		if(!this.jobId) {
+			Ext.Msg.alert('Error', "Please Load a Job First!");
+			return;
+		}
+
+		AERP.Ajax.request({
+			url:'/Job/readParentJob',
+			jsonData:{jobId:this.jobId},
+			success:function(reply) {
+				this.readJob(reply.data);
+			},
+			scope:this,
+			mask:this
+		});
+	},
+
+	onFirstClick: function(button, e, eOpts) {
+		AERP.Ajax.request({
+			url:'/Job/readFirstJob',
+			success:function(reply) {
+				this.readJob(reply.data);
+			},
+			scope:this,
+			mask:this
+		});
+	},
+
+	onFirstClick1: function(button, e, eOpts) {
+		if(!this.jobId) {
+			Ext.Msg.alert('Error', "Please Load a Job First!");
+			return;
+		}
+
+		AERP.Ajax.request({
+			url:'/Job/readPreviousJob',
+			jsonData:{jobId:this.jobId},
+			success:function(reply) {
+				this.readJob(reply.data);
+			},
+			scope:this,
+			mask:this
+		});
+	},
+
+	onFirstClick11: function(button, e, eOpts) {
+		if(!this.jobId) {
+			Ext.Msg.alert('Error', "Please Load a Job First!");
+			return;
+		}
+
+		AERP.Ajax.request({
+			url:'/Job/readNextJob',
+			jsonData:{jobId:this.jobId},
+			success:function(reply) {
+				this.readJob(reply.data);
+			},
+			scope:this,
+			mask:this
+		});
+	},
+
+	onFirstClick111: function(button, e, eOpts) {
+		AERP.Ajax.request({
+			url:'/Job/readLastJob',
+			success:function(reply) {
+				this.readJob(reply.data);
+			},
+			scope:this,
+			mask:this
+		});
+	},
+
 	onStatusAfterRender: function(component, eOpts) {
 		AppWindowManager.appOn('dropDownSelectionEditor', {
 			scope:this,
@@ -183,7 +310,7 @@ Ext.define('Job.view.Job', {
 			saveFn:'updateJob',
 			deleteFn:'deleteJob',
 			searchFn:'searchJobs',
-			searchableFields:['job', 'part']
+			searchableFields:['jobNumber', 'part']
 		});
 		this.fireEvent('appdataloaded');
 		this.readJobStatuses();
@@ -194,7 +321,7 @@ Ext.define('Job.view.Job', {
 		let fields = ['jobCreateDate'];
 
 		if(newState !== "search") {
-			fields.push('job');
+			fields.push('jobNumber');
 		}
 
 		for(let i in fields) {
@@ -226,7 +353,7 @@ Ext.define('Job.view.Job', {
 		}
 
 		this.jobSearchWindow.show(null, function(){
-			this.jobSearchWindow.searchJobs(this.queryById('job').getValue(), this.queryById('part').getValue());
+			this.jobSearchWindow.searchJobs(this.queryById('jobNumber').getValue(), this.queryById('part').getValue());
 		}, this);
 	},
 

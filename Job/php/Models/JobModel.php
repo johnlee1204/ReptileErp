@@ -67,6 +67,30 @@ class JobModel extends AgileModel
 		return $job;
 	}
 
+	static function readJobByJobNumber($jobNumber) {
+		$job = self::$database->fetch_assoc("
+			SELECT
+				Job.jobId,
+				Job.jobNumber,
+				Job.partId part,
+				Part.partName,
+				Job.quantity,
+				Job.status,
+				CAST(Job.jobStartDate AS DATE) jobStartDate,
+				CAST(Job.jobCreateDate AS DATE) jobCreateDate
+			FROM Job
+			JOIN Part on Part.partId = Job.partId
+			WHERE
+				jobNumber = ?
+		", [$jobNumber]);
+
+		if($job !== NULL) {
+			$job['quantity'] = SmartTruncate::truncate($job['quantity']);
+		}
+
+		return $job;
+	}
+
 	static function createJob($inputs) {
 
 		if(!isset($inputs['jobNumber'])) {
@@ -329,4 +353,83 @@ class JobModel extends AgileModel
 				partId = ?
 		", [$jobId, $part]);
 	}
+
+	static function readParentJob($jobId) {
+		$parentJob = self::$database->fetch_assoc("
+			SELECT
+				jobId
+			FROM JobBillOfMaterial
+			WHERE
+				subJobId = ?
+		", [$jobId]);
+
+		if($parentJob === NULL) {
+			throw new AgileUserMessageException("No Parent Job Found!");
+		}
+
+		return $parentJob['jobId'];
+	}
+
+	static function readFirstJob() {
+		$minJobNumber = self::$database->fetch_assoc("
+			SELECT MIN(jobNumber) jobNumber FROM Job
+		");
+
+		$firstJob = self::readJobByJobNumber($minJobNumber['jobNumber']);
+		if($firstJob !== NULL) {
+			$firstJob = $firstJob['jobId'];
+		}
+		return $firstJob;
+	}
+
+	static function readPreviousJob($jobId) {
+		$job = self::readJob($jobId);
+		$previousJobNumber = self::$database->fetch_assoc("
+			SELECT MAX(jobNumber) jobNumber FROM Job
+			WHERE
+				jobNumber < ?
+		", [$job['jobNumber']]);
+
+		if($previousJobNumber['jobNumber'] === NULL) {
+			return self::readLastJob();
+		}
+
+		$previousJob = self::readJobByJobNumber($previousJobNumber['jobNumber']);
+		if($previousJob !== NULL) {
+			$previousJob = $previousJob['jobId'];
+		}
+		return $previousJob;
+	}
+
+	static function readNextJob($jobId) {
+		$job = self::readJob($jobId);
+		$nextJobNumber = self::$database->fetch_assoc("
+			SELECT MIN(jobNumber) jobNumber FROM Job
+			WHERE
+				jobNumber > ?
+		", [$job['jobNumber']]);
+
+		if($nextJobNumber['jobNumber'] === NULL) {
+			return self::readFirstJob();
+		}
+
+		$nextJob = self::readJobByJobNumber($nextJobNumber['jobNumber']);
+		if($nextJob !== NULL) {
+			$nextJob = $nextJob['jobId'];
+		}
+		return $nextJob;
+	}
+
+	static function readLastJob() {
+		$maxJobNumber = self::$database->fetch_assoc("
+			SELECT MAX(jobNumber) jobNumber FROM Job
+		");
+
+		$lastJob = self::readJobByJobNumber($maxJobNumber['jobNumber']);
+		if($lastJob !== NULL) {
+			$lastJob = $lastJob['jobId'];
+		}
+		return $lastJob;
+	}
+
 }

@@ -78,4 +78,36 @@ class Job extends AgileBaseController
 
 		$this->outputSuccessData(JobModel::readJobBom($input['jobId']));
 	}
+
+	function readParentJob() {
+		$input = Validation::validateJsonInput([
+			'jobId' => 'numeric'
+		]);
+
+		$this->outputSuccessData(JobModel::readParentJob($input['jobId']));
+	}
+
+	function readFirstJob() {
+		$this->outputSuccessData(JobModel::readFirstJob());
+	}
+
+	function readPreviousJob() {
+		$input = Validation::validateJsonInput([
+			'jobId' => 'numeric'
+		]);
+
+		$this->outputSuccessData(JobModel::readPreviousJob($input['jobId']));
+	}
+
+	function readNextJob() {
+		$input = Validation::validateJsonInput([
+			'jobId' => 'numeric'
+		]);
+
+		$this->outputSuccessData(JobModel::readNextJob($input['jobId']));
+	}
+
+	function readLastJob() {
+		$this->outputSuccessData(JobModel::readLastJob());
+	}
 }
