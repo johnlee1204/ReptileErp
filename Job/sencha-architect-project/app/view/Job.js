@@ -22,6 +22,7 @@ Ext.define('Job.view.Job', {
 	],
 	requires: [
 		'Job.view.JobViewModel',
+		'Job.view.JobRoutings',
 		'Job.view.JobBom',
 		'Ext.toolbar.Toolbar',
 		'Ext.form.field.ComboBox',
@@ -109,62 +110,60 @@ Ext.define('Job.view.Job', {
 		{
 			xtype: 'container',
 			padding: 10,
-			layout: 'hbox',
+			layout: {
+				type: 'vbox',
+				align: 'stretch'
+			},
 			items: [
 				{
-					xtype: 'textfield',
-					itemId: 'jobNumber',
-					fieldLabel: 'Job',
-					labelAlign: 'right'
+					xtype: 'container',
+					layout: 'hbox',
+					items: [
+						{
+							xtype: 'textfield',
+							itemId: 'jobNumber',
+							fieldLabel: 'Job',
+							labelAlign: 'right'
+						},
+						{
+							xtype: 'combobox',
+							itemId: 'status',
+							margin: '0 0 0 15',
+							fieldLabel: 'Status',
+							labelAlign: 'right',
+							labelWidth: 70,
+							displayField: 'status',
+							forceSelection: true,
+							queryMode: 'local',
+							valueField: 'status',
+							bind: {
+								store: '{StatusStore}'
+							},
+							listeners: {
+								afterrender: 'onStatusAfterRender'
+							}
+						},
+						{
+							xtype: 'datefield',
+							itemId: 'jobCreateDate',
+							margin: '0 0 0 10',
+							fieldLabel: 'Create Date',
+							labelAlign: 'right',
+							labelWidth: 70
+						}
+					]
 				},
 				{
-					xtype: 'combobox',
-					itemId: 'status',
-					margin: '0 0 0 15',
-					fieldLabel: 'Status',
-					labelAlign: 'right',
-					labelWidth: 70,
-					displayField: 'status',
-					forceSelection: true,
-					queryMode: 'local',
-					valueField: 'status',
-					bind: {
-						store: '{StatusStore}'
-					},
-					listeners: {
-						afterrender: 'onStatusAfterRender'
-					}
-				},
-				{
-					xtype: 'datefield',
-					itemId: 'jobCreateDate',
-					margin: '0 0 0 10',
-					fieldLabel: 'Create Date',
-					labelAlign: 'right',
-					labelWidth: 70
-				}
-			]
-		},
-		{
-			xtype: 'tabpanel',
-			flex: 1,
-			itemId: 'jobTabPanel',
-			bodyStyle: 'background:none',
-			activeTab: 0,
-			deferredRender: false,
-			items: [
-				{
-					xtype: 'panel',
-					itemId: 'job',
-					bodyPadding: 10,
-					bodyStyle: 'background:none',
-					title: 'Job',
+					xtype: 'container',
+					margin: '5 0 0 0',
+					layout: 'hbox',
 					items: [
 						{
 							xtype: 'combobox',
 							itemId: 'part',
 							width: 337,
 							fieldLabel: 'Part',
+							labelAlign: 'right',
 							emptyText: 'BEGIN TYPING',
 							hideTrigger: true,
 							displayField: 'partName',
@@ -181,18 +180,35 @@ Ext.define('Job.view.Job', {
 						{
 							xtype: 'textfield',
 							itemId: 'quantity',
-							fieldLabel: 'Quantity'
+							width: 205,
+							fieldLabel: 'Quantity',
+							labelAlign: 'right'
 						},
 						{
 							xtype: 'datefield',
 							itemId: 'jobStartDate',
 							fieldLabel: 'Start Date',
+							labelAlign: 'right',
 							submitFormat: 'Y-m-d',
 							listeners: {
 								afterrender: 'onJobStartDateAfterRender'
 							}
 						}
 					]
+				}
+			]
+		},
+		{
+			xtype: 'tabpanel',
+			flex: 1,
+			itemId: 'jobTabPanel',
+			bodyStyle: 'background:none',
+			activeTab: 0,
+			deferredRender: false,
+			items: [
+				{
+					xtype: 'jobroutings',
+					itemId: 'jobRoutingTab'
 				},
 				{
 					xtype: 'jobbom',
@@ -334,7 +350,6 @@ Ext.define('Job.view.Job', {
 
 	addAppWindowManagerListeners: function() {
 		AppWindowManager.on('applinkjob',function(linkEvent){
-		    this.queryById('jobTabPanel').setActiveTab('job');
 		    this.readJob(linkEvent.dataKey);
 		    return false;
 		}, this);
@@ -366,6 +381,7 @@ Ext.define('Job.view.Job', {
 				this.docFormLoadFormData(reply);
 				this.jobId = jobId;
 				this.queryById('jobBomTab').readJobBom(jobId);
+				this.queryById('jobRoutingTab').readJobRoutings(jobId);
 			},
 			scope:this,
 			mask:this
@@ -406,6 +422,7 @@ Ext.define('Job.view.Job', {
 			success:function(reply) {
 				this.docFormReset();
 				this.queryById('jobBomTab').queryById('jobBomGrid').setRootNode({});
+				this.queryById('jobRoutingTab').getViewModel().getStore('JobRoutingStore').removeAll();
 			},
 			scope:this,
 			mask:this

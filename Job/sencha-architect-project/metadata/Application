@@ -11,7 +11,8 @@
             "MyViewport",
             "Job",
             "JobSearch",
-            "JobBom"
+            "JobBom",
+            "JobRoutings"
         ]
     },
     "configAlternates": {

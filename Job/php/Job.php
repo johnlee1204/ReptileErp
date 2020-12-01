@@ -79,6 +79,22 @@ class Job extends AgileBaseController
 		$this->outputSuccessData(JobModel::readJobBom($input['jobId']));
 	}
 
+	function readJobRoutings() {
+		$input = Validation::validateJsonInput([
+			'jobId' => 'numeric'
+		]);
+
+		$routings = JobModel::readJobRoutings($input['jobId']);
+		$output = [];
+		foreach($routings as $routing) {
+			$routing['totalQuantity'] = SmartTruncate::truncate($routing['totalQuantity']);
+			$routing['quantityComplete'] = SmartTruncate::truncate($routing['quantityComplete']);
+			$output[] = array_values($routing);
+		}
+
+		$this->outputSuccessData($output);
+	}
+
 	function readParentJob() {
 		$input = Validation::validateJsonInput([
 			'jobId' => 'numeric'

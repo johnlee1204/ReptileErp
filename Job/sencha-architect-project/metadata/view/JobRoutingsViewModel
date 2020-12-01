@@ -1,0 +1,133 @@
+{
+    "type": "Ext.app.ViewModel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "jobroutings",
+        "designer|userClassName": "JobRoutingsViewModel"
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string"
+    },
+    "designerId": "190bce17-cde0-4fec-9328-2e6710f70c4e",
+    "cn": [
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "JobRoutingStore"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyStore3",
+            "designerId": "733668b7-c41d-4617-b45d-b3b55fc5715b",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "jobRoutingId"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField2",
+                    "designerId": "5048e107-18b7-438c-8c1f-1cc0b11a4c2d"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "totalQuantity"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField11",
+                    "designerId": "e5a23af0-3cd3-4ea5-a3f2-eb675e7f57c6"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "quantityComplete"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField12",
+                    "designerId": "4f1d1f5a-8948-4f59-9eed-5c69d4c82fd6"
+                },
+                {
+                    "type": "Ext.data.field.Date",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "jobRoutingStartDate"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyDate",
+                    "designerId": "d9a08db3-d8c4-4c39-b43d-dbd63ad0fe81"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "operation"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField15",
+                    "designerId": "cdb6766a-22cb-4d6c-8cd8-0736fbc8278c"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "workcenterName"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField8",
+                    "designerId": "7df1262a-c82b-4407-a240-cb757a1a4942"
+                }
+            ]
+        }
+    ]
+}

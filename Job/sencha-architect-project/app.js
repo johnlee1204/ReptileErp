@@ -24,7 +24,8 @@ Ext.application({
 		'MyViewport',
 		'Job',
 		'JobSearch',
-		'JobBom'
+		'JobBom',
+		'JobRoutings'
 	],
 	name: 'Job',
 

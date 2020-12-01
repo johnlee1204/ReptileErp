@@ -112,9 +112,18 @@ class JobModel extends AgileModel
 				jobId = ?
 		", [$inputs['jobNumber'], $insertedId]);
 
+		self::createJobRoutings($insertedId, $inputs['quantity'], $inputs['jobStartDate'], $inputs['part']);
+
 		self::createSubJobs($insertedId, $inputs['jobNumber'], $inputs['part'], $inputs['quantity'], $inputs['jobStartDate']);
 
 		return $insertedId;
+	}
+
+	private static function createJobRoutings($jobId, $quantity, $startDate, $partId) {
+		self::$database->query("
+			INSERT INTO JobRouting(jobId, partId, totalQuantity, quantityComplete, jobRoutingStartDate, workcenterId, operation)
+			SELECT ? jobId, partId, ? totalQuantity, 0 quantityComplete, ? jobRoutingStartDate, workcenterId, operation FROM Routing WHERE partId = ?
+		", [$jobId, $quantity, $startDate, $partId]);
 	}
 
 	private static function createSubJobs($jobId, $jobNumber, $partId, $quantity, $jobStartDate) {
@@ -253,9 +262,10 @@ class JobModel extends AgileModel
 	}
 
 	static function updateJob($inputs) {
-		$oldJob = self::readJob($inputs['jobId']);
 		if(!isset($inputs['quantityMultiplier'])) {
+			$oldJob = self::readJob($inputs['jobId']);
 			$inputs['quantityMultiplier'] = $inputs['quantity'] / $oldJob['quantity'];
+			self::updateJobRoutingsOnJobUpdate($inputs['jobId'], $inputs['quantityMultiplier']);
 		}
 
 		self::$database->query("
@@ -291,8 +301,10 @@ class JobModel extends AgileModel
 
 		foreach($subJobs as $subJob) {
 			$subJob['quantity'] = $subJob['totalQuantity'] * $inputs['quantityMultiplier'];
+			$subJob['quantityMultiplier'] = $inputs['quantityMultiplier'];
 
-			self::updateJobBomRecordOnJobUpdate($inputs['quantityMultiplier'], $jobId, $subJob['part']);
+			self::updateJobBomRecordOnJobUpdate($jobId, $inputs['quantityMultiplier'], $subJob['part']);
+			self::updateJobRoutingsOnJobUpdate($subJob['jobId'], $inputs['quantityMultiplier']);
 
 			if($subJob['source'] === "Make") {
 				self::updateJob($subJob);
@@ -310,6 +322,16 @@ class JobModel extends AgileModel
 			AND
 				partId = ?
 		", [$quantityMultiplier, $jobId, $part]);
+	}
+
+	static function updateJobRoutingsOnJobUpdate($jobId, $quantityMultiplier) {
+		self::$database->query("
+			UPDATE JobRouting
+			SET
+				totalQuantity = totalQuantity * ?
+			WHERE
+				jobId = ?
+		", [$quantityMultiplier, $jobId]);
 	}
 
 	static function deleteJob($jobId) {
@@ -352,6 +374,23 @@ class JobModel extends AgileModel
 			AND
 				partId = ?
 		", [$jobId, $part]);
+	}
+
+	static function readJobRoutings($jobId) {
+		return self::$database->fetch_all_assoc("
+			SELECT
+				JobRouting.jobRoutingId,
+				JobRouting.totalQuantity,
+				JobRouting.quantityComplete,
+				JobRouting.jobRoutingStartDate,
+				JobRouting.operation,
+				Workcenter.workcenterName
+			FROM JobRouting
+			JOIN Workcenter ON Workcenter.workcenterId = JobRouting.workcenterId
+			WHERE
+				jobId = ?
+			ORDER BY operation
+		", [$jobId]);
 	}
 
 	static function readParentJob($jobId) {

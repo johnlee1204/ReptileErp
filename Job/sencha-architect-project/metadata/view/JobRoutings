@@ -1,0 +1,185 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userAlias": "jobroutings",
+        "designer|userClassName": "JobRoutings",
+        "layout": "vbox",
+        "title": "Job Routings"
+    },
+    "configAlternates": {
+        "container|align": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "layout": "string",
+        "title": "string"
+    },
+    "name": "MyPanel1",
+    "designerId": "1e55c17f-76b3-42a3-acca-d84090344e34",
+    "viewControllerInstanceId": "783a8783-ec1d-4ba3-8f69-dec4fe36754e",
+    "viewModelInstanceId": "190bce17-cde0-4fec-9328-2e6710f70c4e",
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "flex": 1,
+                "itemId": "jobRoutingGrid",
+                "store": [
+                    "{JobRoutingStore}"
+                ]
+            },
+            "configAlternates": {
+                "store": "binding",
+                "flex": "number",
+                "itemId": "string"
+            },
+            "name": "MyGridPanel1",
+            "designerId": "5ef6dced-616b-4b1d-b2c5-60a374725579",
+            "cn": [
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "operation",
+                        "text": "Operation"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyColumn4",
+                    "designerId": "1c5c4556-f559-44d1-b94f-43a9cf36533c"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "workcenterName",
+                        "text": "Work Center"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyColumn5",
+                    "designerId": "327e93ae-f23b-4620-821b-f9872dbb33b5"
+                },
+                {
+                    "type": "Ext.grid.column.Date",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "jobRoutingStartDate",
+                        "text": "Start Date"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyDateColumn1",
+                    "designerId": "8423ebaa-4d03-4323-8099-71ace8771ac3"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "quantityComplete",
+                        "text": "Complete"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyColumn14",
+                    "designerId": "415a34bf-529e-42f2-a3f0-259301cb8051"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "totalQuantity",
+                        "text": "Total"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyColumn15",
+                    "designerId": "5dca4857-cf42-42a3-b1ce-fff2df122c85"
+                },
+                {
+                    "type": "Ext.view.Table",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyTable1",
+                    "designerId": "036cff63-3f0f-4ff3-ac30-91c5550ec8ff"
+                }
+            ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "jobId"
+                ],
+                "fn": "readJobRoutings",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Job/readJobRoutings',",
+                    "\tjsonData:{jobId:jobId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.jobId = jobId;",
+                    "\t\tthis.getViewModel().getStore(\"JobRoutingStore\").loadData(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readJobRoutings",
+            "designerId": "c1a29530-8128-4900-b14c-2be776eb8be0"
+        }
+    ]
+}
