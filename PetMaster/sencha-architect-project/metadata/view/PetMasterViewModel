@@ -1,0 +1,53 @@
+{
+    "type": "Ext.app.ViewModel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "petmaster",
+        "designer|userClassName": "PetMasterViewModel"
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string"
+    },
+    "designerId": "f565af02-a06d-4dc3-95d1-9c4c266bfbf2",
+    "cn": [
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "PetTypeStore"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyStore",
+            "designerId": "e319fc78-35cf-4c1e-9282-3b841a761c36",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "type"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField",
+                    "designerId": "248b0e75-673a-4117-aa9a-b1fbe50250b7"
+                }
+            ]
+        }
+    ]
+}
