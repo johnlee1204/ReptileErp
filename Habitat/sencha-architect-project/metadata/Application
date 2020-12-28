@@ -6,12 +6,11 @@
     },
     "codeClass": null,
     "userConfig": {
-        "name": "PetMaster",
+        "name": "Habitat",
         "views": [
             "MyViewport",
-            "PetMaster",
-            "PetSearch",
-            "HabitatData"
+            "Habitat",
+            "HabitatForm"
         ]
     },
     "configAlternates": {

@@ -22,14 +22,13 @@ Ext.Loader.setConfig({
 Ext.application({
 	views: [
 		'MyViewport',
-		'PetMaster',
-		'PetSearch',
-		'HabitatData'
+		'Habitat',
+		'HabitatForm'
 	],
-	name: 'PetMaster',
+	name: 'Habitat',
 
 	launch: function() {
-		Ext.create('PetMaster.view.MyViewport');
+		Ext.create('Habitat.view.MyViewport');
 	}
 
 });

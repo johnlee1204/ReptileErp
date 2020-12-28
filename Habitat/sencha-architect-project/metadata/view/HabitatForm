@@ -6,6 +6,8 @@
     },
     "codeClass": null,
     "userConfig": {
+        "bodyPadding": 10,
+        "bodyStyle": "background:none",
         "designer|userAlias": "habitatform",
         "designer|userClassName": "HabitatForm",
         "mixins": [
@@ -13,6 +15,8 @@
         ]
     },
     "configAlternates": {
+        "bodyPadding": "auto",
+        "bodyStyle": "string",
         "designer|userAlias": "string",
         "designer|userClassName": "string",
         "mixins": "object"
@@ -39,6 +43,26 @@
             },
             "name": "MyToolbar1",
             "designerId": "9cb40b01-f0cd-4a08-991d-195551b34013"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Habitat Name",
+                "itemId": "habitatName",
+                "labelAlign": "right"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string",
+                "labelAlign": "string"
+            },
+            "name": "MyTextField",
+            "designerId": "4832fbbf-a677-4b4a-9527-b2c98d588f89"
         },
         {
             "type": "basiceventbinding",

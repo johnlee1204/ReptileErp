@@ -21,7 +21,7 @@ class PetMaster extends AgileBaseController {
 			'sellDate',
 			'vendor',
 			'cost',
-			'habitatId',
+			'habitatId' => 'numericOrNull',
 			'food',
 			'feedingQuantity',
 			'feedingFrequency',
@@ -42,7 +42,7 @@ class PetMaster extends AgileBaseController {
 			'sellDate',
 			'vendor',
 			'cost',
-			'habitatId',
+			'habitatId' => 'numericOrNull',
 			'food',
 			'feedingQuantity',
 			'feedingFrequency',
@@ -62,5 +62,16 @@ class PetMaster extends AgileBaseController {
 		PetMasterModel::deletePet($input['petId']);
 
 		$this->outputSuccess();
+	}
+
+	function searchPets() {
+		$inputs = Validation::validateJsonInput([
+			'name',
+			'type',
+			'receiveDate',
+			'sellDate',
+		]);
+
+		$this->outputSuccessData(PetMasterModel::searchPets($inputs));
 	}
 }

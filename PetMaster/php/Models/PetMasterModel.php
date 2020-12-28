@@ -116,4 +116,43 @@ class PetMasterModel extends AgileModel {
 
 		return $petId['petId'];
 	}
+
+	static function searchPets($inputs) {
+		$where = "";
+		$params = [];
+
+		if($inputs['name']) {
+			$where .= " AND name LIKE CONCAT('%', ?, '%')";
+			$params[] = $inputs['name'];
+		}
+
+		if($inputs['type']) {
+			$where .= " AND type = ?";
+			$params[] = $inputs['type'];
+		}
+
+		if($inputs['receiveDate']) {
+			$where .= " AND receiveDate = ?";
+			$params[] = $inputs['receiveDate'];
+		}
+
+		if($inputs['sellDate']) {
+			$where .= " AND sellDate = ?";
+			$params[] = $inputs['sellDate'];
+		}
+
+		return self::$database->fetch_all_row("
+			SELECT
+				petId,
+				name,
+				type,
+				receiveDate,
+				sellDate
+			FROM Pet
+			WHERE
+				1 = 1
+			{$where}
+			ORDER BY receiveDate DESC
+		", $params);
+	}
 }

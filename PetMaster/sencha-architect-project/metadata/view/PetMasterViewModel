@@ -48,6 +48,90 @@
                     "designerId": "248b0e75-673a-4117-aa9a-b1fbe50250b7"
                 }
             ]
+        },
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "FoodTypeStore"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyStore1",
+            "designerId": "9d5a3c06-eabc-423e-b297-a72330fa408f",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "type"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField",
+                    "designerId": "37af6e1c-e619-4fcc-9d3d-3bea457fd9dc"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "HabitatStore"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyStore3",
+            "designerId": "c04ea617-ddb1-4d93-b7e4-959969c52361",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "habitatId"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField4",
+                    "designerId": "aee60ed4-9f29-468e-9923-b626ff789873"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "habitat"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField",
+                    "designerId": "2a9238ba-1a49-4c85-8598-63e2ef418c66"
+                }
+            ]
         }
     ]
 }

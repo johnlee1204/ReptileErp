@@ -1,5 +1,5 @@
 {
-    "name": "PetMaster",
+    "name": "Habitat",
     "settings": {
         "cmd": {
             "license": "",
@@ -7,7 +7,7 @@
             "frameworkVersion": ""
         },
         "urlPrefixTemplate": "http://dev.local/",
-        "exportPath": "C:/Users/johnm/Desktop/Websites/LeeSheet/PetMaster",
+        "exportPath": "C:/Users/johnm/Desktop/Websites/LeeSheet/Habitat",
         "buildShouldOverwriteIndex": true,
         "generateArchitectVersion": false,
         "spacesToIndent": "tab",
@@ -39,18 +39,15 @@
             "d38c2cf0-9e53-498a-8521-da773f47156a",
             "f565af02-a06d-4dc3-95d1-9c4c266bfbf2",
             "8e77139f-bc05-4a61-ab7b-54ee0eb6e2c6",
-            "0a80f287-4f1f-4c19-8a54-4f426e396f87",
-            "5b940d7f-aafb-4c6e-9ca6-33a5a3276cf7",
-            "6ea7c29d-9a0a-4959-81d3-3b3c0b728f9d",
-            "6396ae7d-cc0d-4c24-b5d6-c766e62e3fa3",
-            "27d08ea0-3f82-403f-a1c2-45043ec23b0c",
-            "29f38074-1ab1-4b0f-89d5-448731dc6375"
+            "395d712d-eebb-4288-8b5a-9e6f5dbcd571",
+            "01b8b812-f89f-4b23-8b40-844b3753b0ae",
+            "7502c6e3-51b0-4879-9c92-8f65dafdc630"
         ],
         "store": [],
         "controller": [],
         "model": [],
         "resource": [
-            "f5d97887-9c77-49ba-8b78-3bbb388362cf",
+            "89d1200a-9f70-4989-bdda-0aa43d7c6abb",
             "173a740e-293e-4e00-b40c-9a50fb2577d4",
             "5ba3958c-da75-475c-be62-0204422d23cf",
             "e9dfff16-f6c8-498c-ac8a-f008ed4717e3",
@@ -61,8 +58,7 @@
             "1dbd3c0d-5d1c-4cd8-86d0-2cbe0fd92178",
             "40e1fc54-dc2c-477a-9667-8688a4e3389a",
             "6d3863bd-00b5-4ae1-a676-10327db4a8d1",
-            "d94af485-d9b9-41ab-b418-64b8a3917c66",
-            "a84e446f-9d20-4618-8fe7-11cc76ad2625"
+            "d94af485-d9b9-41ab-b418-64b8a3917c66"
         ],
         "app": [
             "application"

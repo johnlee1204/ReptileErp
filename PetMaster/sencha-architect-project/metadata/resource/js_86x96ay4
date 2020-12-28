@@ -1,0 +1,20 @@
+{
+    "type": "jsresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "js_86x96ay4",
+        "includeInBundle": true,
+        "url": "https://canvasjs.com/assets/script/canvasjs.min.js"
+    },
+    "configAlternates": {
+        "designer|userClassName": "string",
+        "includeInBundle": "boolean",
+        "url": "uri"
+    },
+    "name": "js3",
+    "designerId": "a84e446f-9d20-4618-8fe7-11cc76ad2625"
+}

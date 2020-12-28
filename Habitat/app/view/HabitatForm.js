@@ -22,12 +22,15 @@ Ext.define('Habitat.view.HabitatForm', {
 	],
 	requires: [
 		'Habitat.view.HabitatFormViewModel',
-		'Ext.toolbar.Toolbar'
+		'Ext.toolbar.Toolbar',
+		'Ext.form.field.Text'
 	],
 
 	viewModel: {
 		type: 'habitatform'
 	},
+	bodyPadding: 10,
+	bodyStyle: 'background:none',
 	defaultListenerScope: true,
 
 	dockedItems: [
@@ -35,6 +38,14 @@ Ext.define('Habitat.view.HabitatForm', {
 			xtype: 'toolbar',
 			dock: 'top',
 			itemId: 'habitatFormToolbar'
+		}
+	],
+	items: [
+		{
+			xtype: 'textfield',
+			itemId: 'habitatName',
+			fieldLabel: 'Habitat Name',
+			labelAlign: 'right'
 		}
 	],
 	listeners: {

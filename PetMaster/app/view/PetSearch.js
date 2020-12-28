@@ -92,6 +92,7 @@ Ext.define('PetMaster.view.PetSearch', {
 						break;
 				}
 			},
+			doubleClick:'selectPet',
 			grid:this.queryById('petSearchGrid'),
 			toolbar:this.queryById('petSearchToolbar'),
 			filterField:true,
@@ -104,6 +105,10 @@ Ext.define('PetMaster.view.PetSearch', {
 			url:'/PetMaster/searchPets',
 			jsonData:params,
 			success:function(reply) {
+				if(reply.data.length === 0) {
+					Ext.Msg.alert("Warning", "No Results!");
+					this.close();
+				}
 				this.getViewModel().getStore('PetSearchStore').loadData(reply.data);
 			},
 			scope:this,

@@ -22,6 +22,7 @@ Ext.define('PetMaster.view.PetMaster', {
 	],
 	requires: [
 		'PetMaster.view.PetMasterViewModel',
+		'PetMaster.view.HabitatData',
 		'Ext.toolbar.Toolbar',
 		'Ext.form.field.ComboBox',
 		'Ext.tab.Panel',
@@ -87,6 +88,7 @@ Ext.define('PetMaster.view.PetMaster', {
 			flex: 1,
 			bodyStyle: 'background:none',
 			activeTab: 0,
+			deferredRender: false,
 			items: [
 				{
 					xtype: 'panel',
@@ -105,13 +107,15 @@ Ext.define('PetMaster.view.PetMaster', {
 							xtype: 'datefield',
 							itemId: 'birthDate',
 							fieldLabel: 'Birth Date',
-							labelAlign: 'right'
+							labelAlign: 'right',
+							submitFormat: 'Y-m-d'
 						},
 						{
 							xtype: 'datefield',
 							itemId: 'receiveDate',
 							fieldLabel: 'Receive Date',
 							labelAlign: 'right',
+							submitFormat: 'Y-m-d',
 							listeners: {
 								afterrender: 'onReceiveDateAfterRender'
 							}
@@ -121,6 +125,7 @@ Ext.define('PetMaster.view.PetMaster', {
 							itemId: 'sellDate',
 							fieldLabel: 'Sell Date',
 							labelAlign: 'right',
+							submitFormat: 'Y-m-d',
 							listeners: {
 								afterrender: 'onSellDateAfterRender'
 							}
@@ -140,13 +145,36 @@ Ext.define('PetMaster.view.PetMaster', {
 						},
 						{
 							xtype: 'combobox',
+							itemId: 'habitatId',
+							fieldLabel: 'Habitat',
+							labelAlign: 'right',
+							displayField: 'habitat',
+							forceSelection: true,
+							queryMode: 'local',
+							valueField: 'habitatId',
+							bind: {
+								store: '{HabitatStore}'
+							}
+						},
+						{
+							xtype: 'combobox',
 							itemId: 'food',
 							fieldLabel: 'Food',
-							labelAlign: 'right'
+							labelAlign: 'right',
+							displayField: 'type',
+							forceSelection: true,
+							queryMode: 'local',
+							valueField: 'type',
+							bind: {
+								store: '{FoodTypeStore}'
+							},
+							listeners: {
+								afterrender: 'onFoodAfterRender'
+							}
 						},
 						{
 							xtype: 'textfield',
-							itemId: 'foodQuantity',
+							itemId: 'feedingQuantity',
 							fieldLabel: 'Food Quantity',
 							labelAlign: 'right'
 						},
@@ -169,8 +197,19 @@ Ext.define('PetMaster.view.PetMaster', {
 									margin: '3 0 0 5'
 								}
 							]
+						},
+						{
+							xtype: 'textfield',
+							itemId: 'customer',
+							margin: '5 0 0 0',
+							fieldLabel: 'Customer',
+							labelAlign: 'right'
 						}
 					]
+				},
+				{
+					xtype: 'habitatdata',
+					itemId: 'habitatData'
 				}
 			]
 		}
@@ -209,14 +248,44 @@ Ext.define('PetMaster.view.PetMaster', {
 		});
 	},
 
+	onFoodAfterRender: function(component, eOpts) {
+		AppWindowManager.appOn('dropDownSelectionEditor', {
+			scope:this,
+			selectionchanged:function() {
+				this.readFoodTypes();
+			}
+		});
+
+		component.el.on({
+		    contextmenu: function(event) {
+		        event.stopEvent();
+		        AppWindowManager.appLink('dropDownSelectionEditor', {dataKey:'foodType'});
+		    },
+		    scope:this
+		});
+
+	},
+
 	onPanelAfterRender: function(component, eOpts) {
 		this.readPetTypes();
+		this.readFoodTypes();
+
+		AERP.Ajax.request({
+			url:'/Habitat/readHabitats',
+			success:function(reply) {
+				this.getViewModel().getStore('HabitatStore').loadData(reply.data);
+			},
+			scope:this,
+			mask:this
+		});
 
 		this.docFormInit({
 			toolbarId:'petFormToolbar',
 			addFn:'createPet',
 			saveFn:'updatePet',
-			deleteFn:'deletePet'
+			deleteFn:'deletePet',
+			searchFn:'searchPets',
+			searchableFields:['name', 'type', 'receiveDate', 'sellDate']
 		});
 	},
 
@@ -232,12 +301,27 @@ Ext.define('PetMaster.view.PetMaster', {
 		});
 	},
 
+	readFoodTypes: function() {
+		AERP.Ajax.request({
+			url:'/DropDownSelectionEditor/readSelectionsForCombo',
+			jsonData:{selectionKey:'foodType'},
+			success:function(reply) {
+				this.getViewModel().getStore('FoodTypeStore').loadData(reply.data);
+			},
+			scope:this,
+			mask:this
+		});
+	},
+
 	readPet: function(petId) {
 		AERP.Ajax.request({
 			url:'/PetMaster/readPet',
 			jsonData:{petId:petId},
 			success:function(reply) {
 				this.petId = petId;
+				if(reply.data.habitatId) {
+					this.queryById('habitatData').readHabitatData(reply.data.habitatId);
+				}
 				this.docFormLoadFormData(reply);
 			},
 			scope:this,
@@ -282,6 +366,27 @@ Ext.define('PetMaster.view.PetMaster', {
 			},
 			scope:this,
 			mask:this
+		});
+	},
+
+	searchPets: function() {
+		if(!this.petSearchWindow) {
+			this.petSearchWindow = Ext.create('PetMaster.view.PetSearch', {
+				listeners:{
+					scope:this,
+					'petselected':function(petId) {
+						this.readPet(petId);
+					}
+				}
+			});
+		}
+
+		this.petSearchWindow.show();
+		this.petSearchWindow.searchPets({
+			name:this.queryById('name').getValue(),
+			type:this.queryById('type').getValue(),
+			receiveDate:this.queryById('receiveDate').getSubmitValue(),
+			sellDate:this.queryById('sellDate').getSubmitValue()
 		});
 	}
 

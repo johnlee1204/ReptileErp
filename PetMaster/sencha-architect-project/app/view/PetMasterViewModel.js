@@ -29,6 +29,23 @@ Ext.define('PetMaster.view.PetMasterViewModel', {
 					name: 'type'
 				}
 			]
+		},
+		FoodTypeStore: {
+			fields: [
+				{
+					name: 'type'
+				}
+			]
+		},
+		HabitatStore: {
+			fields: [
+				{
+					name: 'habitatId'
+				},
+				{
+					name: 'habitat'
+				}
+			]
 		}
 	}
 

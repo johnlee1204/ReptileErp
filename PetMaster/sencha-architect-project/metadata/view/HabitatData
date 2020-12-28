@@ -1,0 +1,237 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyStyle": "background:none",
+        "container|align": "stretch",
+        "designer|userAlias": "habitatdata",
+        "designer|userClassName": "HabitatData",
+        "layout": "vbox",
+        "title": "Habitat Data"
+    },
+    "configAlternates": {
+        "bodyStyle": "string",
+        "container|align": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "layout": "string",
+        "title": "string"
+    },
+    "name": "MyPanel1",
+    "designerId": "6396ae7d-cc0d-4c24-b5d6-c766e62e3fa3",
+    "viewControllerInstanceId": "29f38074-1ab1-4b0f-89d5-448731dc6375",
+    "viewModelInstanceId": "27d08ea0-3f82-403f-a1c2-45043ec23b0c",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "defaultButtonUI": "default",
+                "dock": "top",
+                "layout|flex": 1
+            },
+            "configAlternates": {
+                "defaultButtonUI": "string",
+                "dock": "string",
+                "layout|flex": "number"
+            },
+            "name": "MyToolbar2",
+            "designerId": "b438f9f0-f891-4894-9681-ea7eeab082ec",
+            "cn": [
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": null,
+                        "margin": "0 0 0 5",
+                        "text": "Refresh"
+                    },
+                    "configAlternates": {
+                        "layout|flex": "number",
+                        "margin": "auto",
+                        "text": "string"
+                    },
+                    "name": "MyButton",
+                    "designerId": "4597bee2-add4-4b76-8fef-95b0a2a3f2bc",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onButtonClick",
+                                "implHandler": [
+                                    "this.refreshHabitatData();"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onButtonClick",
+                            "designerId": "94b556fc-9f23-4a3f-8fb6-a5d56bdfab9b"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "flex": 1,
+                "itemId": "chart"
+            },
+            "configAlternates": {
+                "flex": "number",
+                "itemId": "string"
+            },
+            "name": "MyContainer",
+            "designerId": "f04ffbe8-5edf-456f-bcad-49fee150210b"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "habitatId"
+                ],
+                "fn": "readHabitatData",
+                "implHandler": [
+                    "let html = `",
+                    "<div id=\"tempChart\" style=\"height: 50%; width: 100%;\"></div>",
+                    "<div id=\"humidityChart\" style=\"height: 50%; width: 100%;\"></div>",
+                    "`;",
+                    "this.habitatId = habitatId;",
+                    "this.queryById('chart').setHtml(html);",
+                    "this.refreshHabitatData();"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readHabitatData",
+            "designerId": "cf413695-403e-49b7-ac4c-6d9487a6fd93"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "refreshHabitatData",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Habitat/readHabitatVitals',",
+                    "\tjsonData:{habitatId:this.habitatId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tif(reply.data.temps.length === 0) {",
+                    "\t\t\treturn;",
+                    "\t\t}",
+                    "\t\tthis.chart1 = new CanvasJS.Chart(\"tempChart\",",
+                    "\t\t\t\t\t\t\t\t\t\t {",
+                    "",
+                    "\t\t\ttitle:{",
+                    "\t\t\t\ttext: \"Habitat Temp (Current: \" + reply.data.temps[reply.data.temps.length - 1].y + \")\"",
+                    "\t\t\t},",
+                    "\t\t\tdata: [",
+                    "\t\t\t\t{",
+                    "\t\t\t\t\ttype: \"line\",",
+                    "",
+                    "\t\t\t\t\tdataPoints: reply.data.temps",
+                    "\t\t\t\t}",
+                    "\t\t\t]",
+                    "\t\t});",
+                    "",
+                    "",
+                    "\t\tthis.chart2 = new CanvasJS.Chart(\"humidityChart\",",
+                    "\t\t\t\t\t\t\t\t\t\t {",
+                    "",
+                    "\t\t\ttitle:{",
+                    "\t\t\t\ttext: \"Habitat Humidity (Current: \" + reply.data.humidities[reply.data.humidities.length - 1].y + \")\"",
+                    "\t\t\t},",
+                    "\t\t\tdata: [",
+                    "\t\t\t\t{",
+                    "\t\t\t\t\ttype: \"line\",",
+                    "",
+                    "\t\t\t\t\tdataPoints: reply.data.humidities",
+                    "\t\t\t\t}",
+                    "\t\t\t]",
+                    "\t\t});",
+                    "",
+                    "",
+                    "",
+                    "\t\tthis.chart1.render();",
+                    "\t\tthis.chart2.render();",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "refreshHabitatData",
+            "designerId": "48d2c7ee-870c-46bf-a451-6f9835a0f58a"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelActivate",
+                "implHandler": [
+                    "if(this.habitatId) {",
+                    "\tthis.refreshHabitatData();",
+                    "}"
+                ],
+                "name": "activate",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelActivate",
+            "designerId": "952c60c8-50e4-4840-8f89-3046a311f2a7"
+        }
+    ]
+}

@@ -1,8 +1,0 @@
-[Wed Nov 25 05:29:51.999700 2020] [php7:notice] [pid 575778] [client 98.193.242.82:49950] phpmyadmin: Failed to load /etc/phpmyadmin/config-db.php Check group www-data has read access and open_basedir restrictions.
-[Wed Nov 25 05:29:52.146173 2020] [php7:notice] [pid 575778] [client 98.193.242.82:49950] phpmyadmin: Failed to load /etc/phpmyadmin/config-db.php Check group www-data has read access and open_basedir restrictions.
-[Wed Nov 25 05:29:53.188580 2020] [php7:notice] [pid 575778] [client 98.193.242.82:49950] phpmyadmin: Failed to load /etc/phpmyadmin/config-db.php Check group www-data has read access and open_basedir restrictions.
-[Wed Nov 25 05:29:53.487556 2020] [php7:notice] [pid 575778] [client 98.193.242.82:49950] phpmyadmin: Failed to load /etc/phpmyadmin/config-db.php Check group www-data has read access and open_basedir restrictions.
-[Wed Nov 25 05:29:53.568687 2020] [php7:notice] [pid 575778] [client 98.193.242.82:49950] phpmyadmin: Failed to load /etc/phpmyadmin/config-db.php Check group www-data has read access and open_basedir restrictions.
-[Wed Nov 25 05:29:53.573620 2020] [php7:notice] [pid 575779] [client 98.193.242.82:49951] phpmyadmin: Failed to load /etc/phpmyadmin/config-db.php Check group www-data has read access and open_basedir restrictions.
-[Wed Nov 25 05:29:53.699579 2020] [php7:notice] [pid 575779] [client 98.193.242.82:49951] phpmyadmin: Failed to load /etc/phpmyadmin/config-db.php Check group www-data has read access and open_basedir restrictions.
-[Wed Nov 25 05:29:53.716400 2020] [php7:notice] [pid 575778] [client 98.193.242.82:49950] phpmyadmin: Failed to load /etc/phpmyadmin/config-db.php Check group www-data has read access and open_basedir restrictions.
