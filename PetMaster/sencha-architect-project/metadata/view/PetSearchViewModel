@@ -1,0 +1,121 @@
+{
+    "type": "Ext.app.ViewModel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "petsearch",
+        "designer|userClassName": "PetSearchViewModel"
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string"
+    },
+    "designerId": "5b940d7f-aafb-4c6e-9ca6-33a5a3276cf7",
+    "cn": [
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "PetSearchStore"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyStore2",
+            "designerId": "a501ed84-eb73-4fcf-82b9-cdbaf925cac6",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "petId"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField1",
+                    "designerId": "d9f38efa-d7b7-4660-9dde-7a8fe7e5ce63"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "name"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField2",
+                    "designerId": "01deb75a-c8b2-4f28-85f1-5bc1622607e9"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "type"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField3",
+                    "designerId": "064f58bf-38ac-4624-bdb3-c7d100fc515b"
+                },
+                {
+                    "type": "Ext.data.field.Date",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dateReadFormat": "Y-m-d",
+                        "name": "receiveDate"
+                    },
+                    "configAlternates": {
+                        "name": "string",
+                        "dateReadFormat": "string"
+                    },
+                    "name": "MyDate",
+                    "designerId": "2ab50293-eaae-4df1-9336-0ae9224d028a"
+                },
+                {
+                    "type": "Ext.data.field.Date",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dateReadFormat": "Y-m-d",
+                        "name": "sellDate"
+                    },
+                    "configAlternates": {
+                        "name": "string",
+                        "dateReadFormat": "string"
+                    },
+                    "name": "MyDate1",
+                    "designerId": "f041e65d-0de5-4249-b26d-b27e02afdd7a"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,200 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "habitatform",
+        "designer|userClassName": "HabitatForm",
+        "mixins": [
+            "['DocForm']"
+        ]
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "mixins": "object"
+    },
+    "name": "MyPanel",
+    "designerId": "395d712d-eebb-4288-8b5a-9e6f5dbcd571",
+    "viewControllerInstanceId": "7502c6e3-51b0-4879-9c92-8f65dafdc630",
+    "viewModelInstanceId": "01b8b812-f89f-4b23-8b40-844b3753b0ae",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "itemId": "habitatFormToolbar"
+            },
+            "configAlternates": {
+                "dock": "string",
+                "itemId": "string"
+            },
+            "name": "MyToolbar1",
+            "designerId": "9cb40b01-f0cd-4a08-991d-195551b34013"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.docFormInit({",
+                    "\ttoolbarId:'habitatFormToolbar',",
+                    "\taddFn:'createHabitat',",
+                    "\tsaveFn:'updateHabitat',",
+                    "\tdeleteFn:'deleteHabitat'",
+                    "});"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "b6c13247-8384-4dd9-ac1b-9e59975091bb"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "habitatId"
+                ],
+                "fn": "readHabitat",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Habitat/readHabitat',",
+                    "\tjsonData:{habitatId:habitatId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.habitatId = habitatId;",
+                    "\t\tthis.docFormLoadFormData(reply);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readHabitat",
+            "designerId": "02d0d549-9753-49a1-9c2c-1f5b0ac9ccf5"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "createHabitat",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Habitat/createHabitat',",
+                    "\tjsonData:this.docFormGetAllFieldValues(),",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readHabitat(reply.data);",
+                    "\t\tthis.fireEvent('habitatchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "createHabitat",
+            "designerId": "5af1d2a2-47c3-448c-9e21-0aa849ea1478"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "updateHabitat",
+                "implHandler": [
+                    "let jsonData = this.docFormGetAllFieldValues();",
+                    "jsonData.habitatId = this.habitatId;",
+                    "",
+                    "AERP.Ajax.request({",
+                    "\turl:'/Habitat/updateHabitat',",
+                    "\tjsonData:jsonData,",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readHabitat(this.habitatId);",
+                    "\t\tthis.fireEvent('habitatchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "updateHabitat",
+            "designerId": "9e51eda9-442c-4b43-91c7-2ab3a7bcaa52"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "deleteHabitat",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Habitat/deleteHabitat',",
+                    "\tjsonData:{habitatId:this.habitatId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.habitatId = null;",
+                    "\t\tthis.docFormReset();",
+                    "\t\tthis.fireEvent('habitatchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "deleteHabitat",
+            "designerId": "e87b89bd-1f4e-4e4f-9d48-12fe088a0155"
+        }
+    ]
+}

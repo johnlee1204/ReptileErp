@@ -1,0 +1,218 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userAlias": "habitat",
+        "designer|userClassName": "Habitat",
+        "frame": true,
+        "layout": "hbox",
+        "minHeight": 500,
+        "minWidth": 500,
+        "title": "Habitat"
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "frame": "boolean",
+        "height": "auto",
+        "title": "string",
+        "width": "auto",
+        "minHeight": "number",
+        "minWidth": "number",
+        "container|align": "string",
+        "layout": "string"
+    },
+    "name": "MyPanel",
+    "designerId": "d38c2cf0-9e53-498a-8521-da773f47156a",
+    "viewControllerInstanceId": "8e77139f-bc05-4a61-ab7b-54ee0eb6e2c6",
+    "viewModelInstanceId": "f565af02-a06d-4dc3-95d1-9c4c266bfbf2",
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "store": [
+                    "{HabitatStore}"
+                ],
+                "width": 260
+            },
+            "configAlternates": {
+                "store": "binding",
+                "width": "auto"
+            },
+            "name": "MyGridPanel",
+            "designerId": "f9e7030e-ba50-4a46-82ac-12dca2714d74",
+            "cn": [
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "habitatName",
+                        "text": "Habitat",
+                        "width": 248
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyColumn",
+                    "designerId": "0334ba46-55ff-4298-bd1c-c491ab1cae8a"
+                },
+                {
+                    "type": "Ext.view.Table",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyTable",
+                    "designerId": "0299e7fd-58ae-4770-9097-ea5d0433d9af"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onGridpanelSelectionChange",
+                        "implHandler": [
+                            "if(!selected || selected.length !== 1) {",
+                            "\treturn;",
+                            "}",
+                            "",
+                            "selected = selected[0];",
+                            "",
+                            "this.queryById('habitatForm').readHabitat(selected.data.habitatId);"
+                        ],
+                        "name": "selectionchange",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onGridpanelSelectionChange",
+                    "designerId": "836975a4-572c-49f0-ac8c-ba3bb1788342"
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.readHabitats();"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "b75a164b-bbdc-41a4-90d4-efa9891fb782"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "readHabitats",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Habitat/readHabitats',",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore('HabitatStore').loadData(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readHabitats",
+            "designerId": "842a52ba-1a9e-454a-a372-ff23514414e2"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "flex": 1,
+                "itemId": "habitatForm"
+            },
+            "configAlternates": {
+                "flex": "number",
+                "itemId": "string"
+            },
+            "name": "habitatform",
+            "designerId": "dd59d6b9-3696-4c56-bd24-8e9e4aa08e84",
+            "masterInstanceId": "395d712d-eebb-4288-8b5a-9e6f5dbcd571",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "panel"
+                        ],
+                        "fn": "onPanelHabitatChangeD",
+                        "implHandler": [
+                            "this.readHabitats();"
+                        ],
+                        "name": "habitatchanged",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "designer|params": "typedarray",
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onPanelHabitatChangeD",
+                    "designerId": "97dae78f-492d-41a0-bf66-fbad5c93928c"
+                }
+            ]
+        }
+    ]
+}

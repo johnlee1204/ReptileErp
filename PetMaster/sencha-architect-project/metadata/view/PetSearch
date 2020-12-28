@@ -1,0 +1,228 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "closeAction": "hide",
+        "container|align": "stretch",
+        "designer|userAlias": "petsearch",
+        "designer|userClassName": "PetSearch",
+        "height": 471,
+        "layout": "vbox",
+        "title": "Pet Search",
+        "width": 737
+    },
+    "configAlternates": {
+        "closeAction": "string",
+        "container|align": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "layout": "string",
+        "title": "string",
+        "width": "auto"
+    },
+    "name": "MyWindow",
+    "designerId": "0a80f287-4f1f-4c19-8a54-4f426e396f87",
+    "viewControllerInstanceId": "6ea7c29d-9a0a-4959-81d3-3b3c0b728f9d",
+    "viewModelInstanceId": "5b940d7f-aafb-4c6e-9ca6-33a5a3276cf7",
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "flex": 1,
+                "itemId": "petSearchGrid",
+                "store": [
+                    "{PetSearchStore}"
+                ]
+            },
+            "configAlternates": {
+                "store": "binding",
+                "flex": "number",
+                "itemId": "string"
+            },
+            "name": "MyGridPanel",
+            "designerId": "4ccf55dd-64cd-4c59-bf00-0e5630857712",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "top",
+                        "itemId": "petSearchToolbar"
+                    },
+                    "configAlternates": {
+                        "dock": "string",
+                        "itemId": "string"
+                    },
+                    "name": "MyToolbar1",
+                    "designerId": "9c8488b2-3b23-43e0-8791-dbf1d5ea34b9"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "name",
+                        "text": "Name"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyColumn",
+                    "designerId": "e3423bf1-f1cf-4249-b0ae-e3612cff1969"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "type",
+                        "text": "Type"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyColumn1",
+                    "designerId": "977cb37a-51d3-4f69-ad37-de3638bd0045"
+                },
+                {
+                    "type": "Ext.grid.column.Date",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "receiveDate",
+                        "text": "Receive Date"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyDateColumn",
+                    "designerId": "c97a5f64-1299-48da-985d-5bf8389d9c7f"
+                },
+                {
+                    "type": "Ext.grid.column.Date",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "sellDate",
+                        "text": "Sell Date"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyDateColumn1",
+                    "designerId": "667a28f0-e976-46d4-8019-54e404b258ba"
+                },
+                {
+                    "type": "Ext.view.Table",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyTable",
+                    "designerId": "8c70e8bd-3f92-4016-ac5a-89e543b25616"
+                }
+            ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "params"
+                ],
+                "fn": "searchPets",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/PetMaster/searchPets',",
+                    "\tjsonData:params,",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore('PetSearchStore').loadData(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "searchPets",
+            "designerId": "697b0439-86ba-45db-93fd-bd31c9191b5d"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onWindowAfterRender",
+                "implHandler": [
+                    "Ext.create('NiceGridMenu', {",
+                    "\tmenuItems:[{text:'Select Pet', action:'selectPet', icon:'/inc/img/silk_icons/accept.png', disabled:true}],",
+                    "\tcallbackHandler:function(action, data) {",
+                    "\t\tswitch(action) {",
+                    "\t\t\tcase 'selectPet':",
+                    "\t\t\t\tthis.fireEvent('petselected', data.petId);",
+                    "\t\t\t\tthis.close();",
+                    "\t\t\t\tbreak;",
+                    "\t\t}",
+                    "\t},",
+                    "\tgrid:this.queryById('petSearchGrid'),",
+                    "\ttoolbar:this.queryById('petSearchToolbar'),",
+                    "\tfilterField:true,",
+                    "\tscope:this",
+                    "});"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onWindowAfterRender",
+            "designerId": "7431dac1-855a-4853-b70e-527b52b66dc3"
+        }
+    ]
+}
