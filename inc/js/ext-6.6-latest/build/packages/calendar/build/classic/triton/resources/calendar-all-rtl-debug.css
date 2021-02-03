@@ -1,0 +1,611 @@
+/* http://localhost:1842/packages/calendar/sass/src/calendar/Event.scss:5 */
+.x-calendar-event {
+    /**
+ * @class Ext.calendar.Event
+ */
+    position: absolute;
+    overflow: hidden;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/Event.scss:9 */
+.x-calendar-event.x-calendar-event-static {
+    position: static;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/Event.scss:14 */
+.x-calendar-event-inner {
+    user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-drag: none;
+    cursor: default;
+    height: 100%;
+    width: 100%;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/Event.scss:21 */
+.x-calendar-event-inline-title .x-calendar-event-time {
+    display: inline;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/Event.scss:25 */
+.x-calendar-event-inline-title .x-calendar-event-time-separator,
+.x-calendar-event-inline-title .x-calendar-event-time-end {
+    display: none;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/Event.scss:30 */
+.x-calendar-event-inline-title .x-calendar-event-inner {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/Event.scss:38 */
+.x-calendar-compact .x-calendar-event-time {
+    display: none;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/Event.scss:42 */
+.x-calendar-compact .x-calendar-event-inner {
+    overflow: hidden;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/Event.scss:47 */
+.x-calendar-event-resizer {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    cursor: s-resize;
+    display: none;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/Event.scss:54 */
+.x-calendar-event-resizable:hover .x-calendar-event-resizer,
+.x-calendar-event-resizing .x-calendar-event-resizer {
+    display: block;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/Event.scss:131 */
+.x-calendar-event .x-calendar-event-inner {
+    font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/Event.scss:137 */
+.x-calendar-event .x-calendar-event-time {
+    padding: 0 4px 0 0;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/Event.scss:141 */
+.x-calendar-event .x-calendar-event-resizer:after {
+    font-size: 15.6px;
+    font-family: monospace;
+    content: "=";
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/Event.scss:148 */
+.x-calendar-event.x-calendar-event-dragging {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    opacity: 0.8;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/Event.scss:154 */
+.x-calendar-event.x-calendar-event-resizing {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+    opacity: 0.8;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/Event.scss:175 */
+.x-calendar-event-week-span .x-calendar-event-time {
+    display: none;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/Event.scss:125 */
+.x-calendar-event-week-span {
+    margin: 3px;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/Event.scss:131 */
+.x-calendar-event-week-span .x-calendar-event-inner {
+    padding: 1px 1px 1px 3px;
+    font-size: 13px;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/Event.scss:190 */
+.x-calendar-event-week-inline .x-calendar-event-time-separator,
+.x-calendar-event-week-inline .x-calendar-event-time-end {
+    display: none;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/Event.scss:125 */
+.x-calendar-event-week-inline {
+    margin: 3px;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/Event.scss:131 */
+.x-calendar-event-week-inline .x-calendar-event-inner {
+    padding: 0 0 0 3px;
+    font-size: 13px;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/Event.scss:125 */
+.x-calendar-event-day {
+    margin: 1px 0;
+    border-width: 1px;
+    border-style: solid;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/Event.scss:131 */
+.x-calendar-event-day .x-calendar-event-inner {
+    padding: 2px 4px;
+    font-size: 11.05px;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/header/Base.scss:5 */
+.x-calendar-header-table {
+    /**
+ * @class Ext.calendar.header.Base
+ */
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 100%;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/header/Base.scss:11 */
+.x-calendar-header-cell {
+    user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-drag: none;
+    cursor: default;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/header/Base.scss:15 */
+.x-calendar-header-hidden-cell {
+    display: none;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/header/Base.scss:161 */
+.x-calendar-header {
+    background-color: #fff;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/header/Base.scss:164 */
+.x-calendar-header .x-calendar-header-cell {
+    font-weight: normal;
+    line-height: 17px;
+    font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    border: 1px solid #ddd;
+    border-bottom-width: 0;
+    text-align: center;
+    color: #404040;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/header/Base.scss:173 */
+.x-calendar-header .x-calendar-header-gutter {
+    background-color: #f7f9fd;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/header/Base.scss:164 */
+.x-calendar-header-large .x-calendar-header-cell {
+    font-size: 13px;
+    line-height: 17px;
+    border-bottom-width: 0;
+    padding: 8px 2px;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/header/Base.scss:173 */
+.x-calendar-header-large .x-calendar-header-gutter {
+    width: 4em;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/header/Base.scss:164 */
+.x-calendar-header-compact .x-calendar-header-cell {
+    font-size: 13px;
+    line-height: 17px;
+    border-bottom-width: 0;
+    padding: 3px 2px;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/header/Base.scss:173 */
+.x-calendar-header-compact .x-calendar-header-gutter {
+    width: 2em;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Base.scss:1 */
+.x-calendar-table {
+    table-layout: fixed;
+    border-collapse: collapse;
+    width: 100%;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Days.scss:5 */
+.x-calendar-days-table-wrap {
+    /**
+ * @class Ext.calendar.view.Days
+ */
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Days.scss:11 */
+.x-calendar-days-header-wrap {
+    width: 100%;
+    display: table-cell;
+    position: relative;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Days.scss:17 */
+.x-calendar-days-body-row {
+    display: table-row;
+    width: 100%;
+    height: 100%;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Days.scss:23 */
+.x-calendar-days-body-cell {
+    display: table-cell;
+    position: relative;
+    width: 100%;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Days.scss:28 */
+.x-gecko .x-calendar-days-body-cell {
+    position: static;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Days.scss:33 */
+.x-calendar-days-body-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Days.scss:39 */
+.x-calendar-days-table {
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 100%;
+    height: 100%;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Days.scss:46 */
+.x-calendar-days-allday-events {
+    position: relative;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Days.scss:49 */
+.x-calendar-days-allday-events td {
+    padding: 0;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Days.scss:54 */
+.x-calendar-days-allday-background-wrap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Days.scss:62 */
+.x-calendar-days-body-table {
+    position: absolute;
+    height: auto;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Days.scss:66 */
+.x-calendar-days-body-table td {
+    padding: 0;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Days.scss:71 */
+.x-calendar-days-time,
+.x-calendar-days-allday-empty-cell {
+    user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-drag: none;
+    cursor: default;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Days.scss:76 */
+.x-calendar-days-day-column {
+    position: relative;
+    z-index: 0;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Days.scss:82 */
+.x-calendar-days-day-event-container {
+    position: absolute;
+    height: 100%;
+    left: 0;
+    right: 0;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Days.scss:89 */
+.x-calendar-days-now-marker {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:323 */
+.x-calendar-days {
+    background-color: #fff;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:332 */
+.x-calendar-days .x-calendar-days-header-gutter {
+    background-color: #f7f9fd;
+    border: 1px solid #ddd;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:338 */
+.x-calendar-days .x-calendar-days-allday-background-cell {
+    border-right: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:345 */
+.x-calendar-days .x-calendar-days-time-ct {
+    background-color: #f7f9fd;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:354 */
+.x-calendar-days .x-calendar-days-time {
+    height: 42px;
+    color: #666;
+    text-align: right;
+    font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    border-bottom: 1px solid #ddd;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:366 */
+.x-calendar-days .x-calendar-days-time-ampm {
+    line-height: 1em;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:370 */
+.x-calendar-days .x-calendar-days-day-column {
+    border-right: 1px solid #ddd;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:376 */
+.x-calendar-days .x-calendar-days-marker {
+    height: 42px;
+    border-bottom: 1px solid #ddd;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:383 */
+.x-calendar-days .x-calendar-days-marker-alt {
+    height: 21px;
+    border-bottom: 1px dotted #ddd;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:390 */
+.x-calendar-days .x-calendar-days-now-marker {
+    margin: 0 5px;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=70)";
+    opacity: 0.7;
+    border-width: 2px 0 0 0;
+    border-style: solid;
+    border-color: #a94442;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:398 */
+.x-calendar-days .x-calendar-days-allday-empty-cell {
+    line-height: 10px;
+    border-bottom: 1px solid #ddd;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:405 */
+.x-calendar-days .x-calendar-days-selection {
+    background-color: #cff;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+    opacity: 0.3;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:327 */
+.x-calendar-days-large .x-calendar-days-day-event-container {
+    margin-right: 15px;
+    margin-left: 5px;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:332 */
+.x-calendar-days-large .x-calendar-days-header-gutter {
+    width: 4em;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:345 */
+.x-calendar-days-large .x-calendar-days-time-ct {
+    width: 4em;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:354 */
+.x-calendar-days-large .x-calendar-days-time {
+    padding: 2px 2px 0 0;
+    font-size: 13px;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:383 */
+.x-calendar-days-large .x-calendar-days-marker-alt {
+    height: null/2;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:398 */
+.x-calendar-days-large .x-calendar-days-allday-empty-cell {
+    line-height: 10px;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:327 */
+.x-calendar-days-compact .x-calendar-days-day-event-container {
+    margin-right: 0;
+    margin-left: 0;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:332 */
+.x-calendar-days-compact .x-calendar-days-header-gutter {
+    width: 2em;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:345 */
+.x-calendar-days-compact .x-calendar-days-time-ct {
+    width: 2em;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:354 */
+.x-calendar-days-compact .x-calendar-days-time {
+    padding: 2px 2px 0 0;
+    font-size: 11.05px;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:383 */
+.x-calendar-days-compact .x-calendar-days-marker-alt {
+    height: null/2;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Days.scss:398 */
+.x-calendar-days-compact .x-calendar-days-allday-empty-cell {
+    line-height: 10px;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Weeks.scss:5 */
+.x-calendar-weeks {
+    /**
+ * @class Ext.calendar.view.Weeks
+ */
+    position: relative;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Weeks.scss:9 */
+.x-calendar-weeks-week-rows {
+    width: 100%;
+    height: 100%;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Weeks.scss:14 */
+.x-calendar-weeks-cell {
+    user-select: none;
+    -o-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: -moz-none;
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-drag: none;
+    cursor: default;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Weeks.scss:18 */
+.x-calendar-weeks-cell-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Weeks.scss:24 */
+.x-calendar-weeks-hidden-cell {
+    display: none;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Weeks.scss:28 */
+.x-calendar-weeks-overflow {
+    position: absolute;
+    display: none;
+    text-align: center;
+    cursor: pointer;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Weeks.scss:34 */
+.x-calendar-weeks-with-overflow-bottom .x-calendar-weeks-overflow {
+    text-align: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Weeks.scss:41 */
+.x-calendar-weeks-with-overflow-top .x-calendar-weeks-overflow {
+    top: 5px;
+    right: 5px;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Weeks.scss:46 */
+.x-calendar-weeks-overflow-cell .x-calendar-weeks-overflow {
+    display: block;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Weeks.scss:51 */
+.x-calendar-weeks-overflow-popup {
+    z-index: 1;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Weeks.scss:237 */
+.x-calendar-weeks {
+    background-color: #fff;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Weeks.scss:241 */
+.x-calendar-weeks .x-calendar-weeks-cell {
+    border-style: solid;
+    border-color: #ddd;
+    border-width: 1px;
+    vertical-align: top;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Weeks.scss:249 */
+.x-calendar-weeks .x-calendar-weeks-cell-inner {
+    padding: 2px 0 4px 4px;
+    text-align: left;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Weeks.scss:254 */
+.x-calendar-weeks .x-calendar-weeks-day-text {
+    font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+    color: #000;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Weeks.scss:263 */
+.x-calendar-weeks .x-calendar-weeks-outside-cell .x-calendar-weeks-day-text {
+    color: #aaa;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Weeks.scss:276 */
+.x-calendar-weeks .x-calendar-weeks-selection {
+    background-color: #cff;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+    opacity: 0.3;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Weeks.scss:283 */
+.x-calendar-weeks .x-calendar-weeks-overflow {
+    color: #15c;
+    font-family: 'Open Sans', 'Helvetica Neue', helvetica, arial, verdana, sans-serif;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Weeks.scss:254 */
+.x-calendar-weeks-large .x-calendar-weeks-day-text {
+    font-size: 13px;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Weeks.scss:283 */
+.x-calendar-weeks-large .x-calendar-weeks-overflow {
+    font-size: 11.05px;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Weeks.scss:254 */
+.x-calendar-weeks-compact .x-calendar-weeks-day-text {
+    font-size: 13px;
+}
+/* http://localhost:1842/packages/core/sass/var/calendar/view/Weeks.scss:283 */
+.x-calendar-weeks-compact .x-calendar-weeks-overflow {
+    font-size: 11.05px;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Month.scss:6 */
+.x-calendar-month-4weeks .x-calendar-weeks-row {
+    /**
+ * @class Ext.calendar.view.Month
+ */
+    height: 25%;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Month.scss:9 */
+.x-calendar-month-4weeks .x-calendar-weeks-row[data-week="4"],
+.x-calendar-month-4weeks .x-calendar-weeks-row[data-week="5"] {
+    display: none;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Month.scss:16 */
+.x-calendar-month-5weeks .x-calendar-weeks-row {
+    height: 20%;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Month.scss:19 */
+.x-calendar-month-5weeks .x-calendar-weeks-row[data-week="5"] {
+    display: none;
+}
+/* http://localhost:1842/packages/calendar/sass/src/calendar/view/Month.scss:26 */
+.x-calendar-month-6weeks .x-calendar-weeks-row {
+    height: 16.66%;
+}
+/* http://localhost:1842/packages/calendar/classic/sass/src/calendar/List.scss:5 */
+.x-calendar-list-item {
+    /**
+ * @class Ext.calendar.List
+ */
+    position: relative;
+    cursor: pointer;
+}
+/* http://localhost:1842/packages/calendar/classic/sass/src/calendar/List.scss:10 */
+.x-calendar-list-icon {
+    position: absolute;
+}
+/* http://localhost:1842/packages/calendar/classic/sass/var/calendar/List.scss:24 */
+.x-calendar-list .x-calendar-list-item {
+    margin: 0 0 5px 0;
+    height: 17px;
+}
+/* http://localhost:1842/packages/calendar/classic/sass/var/calendar/List.scss:29 */
+.x-calendar-list .x-calendar-list-item-hidden {
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    opacity: 0.5;
+}
+/* http://localhost:1842/packages/calendar/classic/sass/var/calendar/List.scss:35 */
+.x-calendar-list .x-calendar-list-icon {
+    width: 17px;
+    height: 17px;
+}
+/* http://localhost:1842/packages/calendar/classic/sass/var/calendar/List.scss:40 */
+.x-calendar-list .x-calendar-list-text {
+    padding-left: 22px;
+}
+/* http://localhost:1842/packages/calendar/classic/sass/src/calendar/form/CalendarPicker.scss:5 */
+.x-calendar-picker-list-icon,
+.x-calendar-picker-field-icon {
+    /**
+ * @class Ext.calendar.form.CalendarPicker
+ */
+    position: absolute;
+}
+/* http://localhost:1842/packages/calendar/classic/sass/src/calendar/form/CalendarPicker.scss:9 */
+.x-calendar-picker-field .x-form-text-wrap {
+    position: relative;
+}
+/* http://localhost:1842/packages/calendar/classic/sass/var/calendar/form/CalendarPicker.scss:19 */
+.x-calendar-picker-list .x-calendar-picker-list-icon {
+    width: 22px;
+    height: 22px;
+    top: 4px;
+}
+/* http://localhost:1842/packages/calendar/classic/sass/var/calendar/form/CalendarPicker.scss:25 */
+.x-calendar-picker-list .x-calendar-picker-list-text {
+    padding-left: 27px;
+}
+/* http://localhost:1842/packages/calendar/classic/sass/var/calendar/form/CalendarPicker.scss:31 */
+.x-calendar-picker-field .x-calendar-picker-field-icon {
+    left: 10px;
+    top: 5px;
+    height: 21px;
+    width: 21px;
+}
+/* http://localhost:1842/packages/calendar/classic/sass/var/calendar/form/CalendarPicker.scss:38 */
+.x-calendar-picker-field .x-form-text {
+    padding-left: 36px;
+}

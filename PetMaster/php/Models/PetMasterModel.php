@@ -28,6 +28,15 @@ class PetMasterModel extends AgileModel {
 	}
 
 	static function createPet($inputs) {
+		if($inputs['sellDate'] === "") {
+			$inputs['sellDate'] = NULL;
+		}
+		if($inputs['receiveDate'] === "") {
+			$inputs['receiveDate'] = NULL;
+		}
+		if($inputs['birthDate'] === "") {
+			$inputs['birthDate'] = NULL;
+		}
 		self::$database->query("
 			INSERT INTO Pet(
 				name,
@@ -65,6 +74,15 @@ class PetMasterModel extends AgileModel {
 	}
 
 	static function updatePet($inputs) {
+		if($inputs['sellDate'] === "") {
+			$inputs['sellDate'] = NULL;
+		}
+		if($inputs['receiveDate'] === "") {
+			$inputs['receiveDate'] = NULL;
+		}
+		if($inputs['birthDate'] === "") {
+			$inputs['birthDate'] = NULL;
+		}
 		self::$database->query("
 			UPDATE Pet
 			SET
