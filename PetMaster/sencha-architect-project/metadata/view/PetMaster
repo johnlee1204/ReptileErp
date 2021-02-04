@@ -202,12 +202,16 @@
                     "userConfig": {
                         "bodyPadding": 10,
                         "bodyStyle": "background:none",
+                        "container|align": "stretch",
+                        "layout": "hbox",
                         "title": "Pet"
                     },
                     "configAlternates": {
                         "title": "string",
                         "bodyPadding": "auto",
-                        "bodyStyle": "string"
+                        "bodyStyle": "string",
+                        "container|align": "string",
+                        "layout": "string"
                     },
                     "name": "MyPanel",
                     "designerId": "5d9c28b0-72e6-4664-ad8c-928754575c35",
@@ -223,334 +227,6 @@
                             "designerId": "0c93e1ff-5fa7-4ab1-9380-2cbc2301355b"
                         },
                         {
-                            "type": "Ext.form.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "fieldLabel": "Price",
-                                "formatCurrency": true,
-                                "itemId": "price",
-                                "labelAlign": "right"
-                            },
-                            "configAlternates": {
-                                "formatCurrency": "boolean",
-                                "fieldLabel": "string",
-                                "itemId": "string",
-                                "labelAlign": "string"
-                            },
-                            "name": "MyTextField1",
-                            "designerId": "54f569ab-77c8-4634-a5fe-de1d94313698",
-                            "customConfigs": [
-                                {
-                                    "group": "(Custom Properties)",
-                                    "name": "formatCurrency",
-                                    "type": "string"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "Ext.form.field.Date",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "fieldLabel": "Birth Date",
-                                "itemId": "birthDate",
-                                "labelAlign": "right",
-                                "submitFormat": "Y-m-d"
-                            },
-                            "configAlternates": {
-                                "fieldLabel": "string",
-                                "itemId": "string",
-                                "labelAlign": "string",
-                                "submitFormat": "string"
-                            },
-                            "name": "MyDateField",
-                            "designerId": "6323661b-0a22-44e5-bd6d-4fef5cd2325c"
-                        },
-                        {
-                            "type": "Ext.form.field.Date",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "fieldLabel": "Receive Date",
-                                "itemId": "receiveDate",
-                                "labelAlign": "right",
-                                "submitFormat": "Y-m-d"
-                            },
-                            "configAlternates": {
-                                "fieldLabel": "string",
-                                "itemId": "string",
-                                "labelAlign": "string",
-                                "submitFormat": "string"
-                            },
-                            "name": "MyDateField1",
-                            "designerId": "beccb825-e289-41d6-b5d6-bc19e7e7028b",
-                            "cn": [
-                                {
-                                    "type": "basiceventbinding",
-                                    "reference": {
-                                        "name": "listeners",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "fn": "onReceiveDateAfterRender",
-                                        "implHandler": [
-                                            "component.el.on('dblclick', function() {",
-                                            "\tcomponent.setValue(new Date());",
-                                            "});"
-                                        ],
-                                        "name": "afterrender",
-                                        "scope": "me"
-                                    },
-                                    "configAlternates": {
-                                        "fn": "string",
-                                        "implHandler": "code",
-                                        "name": "string",
-                                        "scope": "string"
-                                    },
-                                    "name": "onReceiveDateAfterRender",
-                                    "designerId": "4755288b-6042-4297-8d51-f4b11b2d4941"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "Ext.form.field.Date",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "fieldLabel": "Sell Date",
-                                "itemId": "sellDate",
-                                "labelAlign": "right",
-                                "submitFormat": "Y-m-d"
-                            },
-                            "configAlternates": {
-                                "fieldLabel": "string",
-                                "itemId": "string",
-                                "labelAlign": "string",
-                                "submitFormat": "string"
-                            },
-                            "name": "MyDateField2",
-                            "designerId": "1900d95d-472b-4bcc-bff6-83bac1813aee",
-                            "cn": [
-                                {
-                                    "type": "basiceventbinding",
-                                    "reference": {
-                                        "name": "listeners",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "fn": "onSellDateAfterRender",
-                                        "implHandler": [
-                                            "component.el.on('dblclick', function() {",
-                                            "\tcomponent.setValue(new Date());",
-                                            "});"
-                                        ],
-                                        "name": "afterrender",
-                                        "scope": "me"
-                                    },
-                                    "configAlternates": {
-                                        "fn": "string",
-                                        "implHandler": "code",
-                                        "name": "string",
-                                        "scope": "string"
-                                    },
-                                    "name": "onSellDateAfterRender",
-                                    "designerId": "7b07aeae-640f-4fe8-ba07-75270f30cd04"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "Ext.form.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "fieldLabel": "Vendor",
-                                "itemId": "vendor",
-                                "labelAlign": "right"
-                            },
-                            "configAlternates": {
-                                "formatCurrency": "boolean",
-                                "fieldLabel": "string",
-                                "itemId": "string",
-                                "labelAlign": "string"
-                            },
-                            "name": "MyTextField3",
-                            "designerId": "bd9b6f2a-22fb-465e-9eda-f70be9c07286"
-                        },
-                        {
-                            "type": "Ext.form.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "fieldLabel": "Cost",
-                                "formatCurrency": true,
-                                "itemId": "cost",
-                                "labelAlign": "right"
-                            },
-                            "configAlternates": {
-                                "formatCurrency": "boolean",
-                                "fieldLabel": "string",
-                                "itemId": "string",
-                                "labelAlign": "string"
-                            },
-                            "name": "MyTextField4",
-                            "designerId": "fb589116-ea91-4f2a-b614-42237c1ab205",
-                            "customConfigs": [
-                                {
-                                    "group": "(Custom Properties)",
-                                    "name": "formatCurrency",
-                                    "type": "string"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "Ext.form.field.ComboBox",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "displayField": "habitat",
-                                "fieldLabel": "Habitat",
-                                "forceSelection": true,
-                                "itemId": "habitatId",
-                                "labelAlign": "right",
-                                "queryMode": "local",
-                                "store": [
-                                    "{HabitatStore}"
-                                ],
-                                "valueField": "habitatId"
-                            },
-                            "configAlternates": {
-                                "formatCurrency": "boolean",
-                                "fieldLabel": "string",
-                                "itemId": "string",
-                                "labelAlign": "string",
-                                "store": "binding",
-                                "displayField": "datafield",
-                                "forceSelection": "boolean",
-                                "queryMode": "string",
-                                "valueField": "datafield"
-                            },
-                            "name": "MyComboBox2",
-                            "designerId": "de07de52-2406-44e3-9d47-3eeb2891160c"
-                        },
-                        {
-                            "type": "Ext.form.field.ComboBox",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "displayField": "type",
-                                "fieldLabel": "Food",
-                                "forceSelection": true,
-                                "itemId": "food",
-                                "labelAlign": "right",
-                                "queryMode": "local",
-                                "store": [
-                                    "{FoodTypeStore}"
-                                ],
-                                "valueField": "type"
-                            },
-                            "configAlternates": {
-                                "formatCurrency": "boolean",
-                                "fieldLabel": "string",
-                                "itemId": "string",
-                                "labelAlign": "string",
-                                "store": "binding",
-                                "displayField": "datafield",
-                                "forceSelection": "boolean",
-                                "queryMode": "string",
-                                "valueField": "datafield"
-                            },
-                            "name": "MyComboBox1",
-                            "designerId": "46164cd1-893f-4aa0-8ea2-79fdbf36dcca",
-                            "cn": [
-                                {
-                                    "type": "basiceventbinding",
-                                    "reference": {
-                                        "name": "listeners",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "fn": "onFoodAfterRender",
-                                        "implHandler": [
-                                            "AppWindowManager.appOn('dropDownSelectionEditor', {",
-                                            "\tscope:this,",
-                                            "\tselectionchanged:function() {",
-                                            "\t\tthis.readFoodTypes();",
-                                            "\t}",
-                                            "});",
-                                            "",
-                                            "component.el.on({",
-                                            "    contextmenu: function(event) {",
-                                            "        event.stopEvent();",
-                                            "        AppWindowManager.appLink('dropDownSelectionEditor', {dataKey:'foodType'});",
-                                            "    },",
-                                            "    scope:this",
-                                            "});",
-                                            ""
-                                        ],
-                                        "name": "afterrender",
-                                        "scope": "me"
-                                    },
-                                    "configAlternates": {
-                                        "fn": "string",
-                                        "implHandler": "code",
-                                        "name": "string",
-                                        "scope": "string"
-                                    },
-                                    "name": "onFoodAfterRender",
-                                    "designerId": "5582b9c4-a78f-4d42-be05-3614dba0566f"
-                                }
-                            ]
-                        },
-                        {
-                            "type": "Ext.form.field.Text",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "fieldLabel": "Food Quantity",
-                                "itemId": "feedingQuantity",
-                                "labelAlign": "right"
-                            },
-                            "configAlternates": {
-                                "formatCurrency": "boolean",
-                                "fieldLabel": "string",
-                                "itemId": "string",
-                                "labelAlign": "string"
-                            },
-                            "name": "MyTextField6",
-                            "designerId": "ca2faacd-ac32-42be-aaea-50b3918ffc9c"
-                        },
-                        {
                             "type": "Ext.container.Container",
                             "reference": {
                                 "name": "items",
@@ -558,15 +234,13 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "container|align": "stretch",
-                                "layout": "hbox"
+                                "layout": "vbox"
                             },
                             "configAlternates": {
-                                "container|align": "string",
                                 "layout": "string"
                             },
-                            "name": "MyContainer2",
-                            "designerId": "675b6779-c8d0-4d04-8fb8-41e73dd60372",
+                            "name": "MyContainer8",
+                            "designerId": "d0c3da27-7384-4006-b8a5-58fd249ab702",
                             "cn": [
                                 {
                                     "type": "Ext.form.field.Text",
@@ -576,8 +250,9 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "fieldLabel": "Feed Frequency",
-                                        "itemId": "feedingFrequency",
+                                        "fieldLabel": "Price",
+                                        "formatCurrency": true,
+                                        "itemId": "price",
                                         "labelAlign": "right"
                                     },
                                     "configAlternates": {
@@ -586,8 +261,77 @@
                                         "itemId": "string",
                                         "labelAlign": "string"
                                     },
-                                    "name": "MyTextField7",
-                                    "designerId": "58fb9d36-bc07-4841-ac30-0bc1bd34871e"
+                                    "name": "MyTextField1",
+                                    "designerId": "54f569ab-77c8-4634-a5fe-de1d94313698",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "formatCurrency",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fieldLabel": "Actual Sell Price",
+                                        "formatCurrency": true,
+                                        "itemId": "sellPrice",
+                                        "labelAlign": "right"
+                                    },
+                                    "configAlternates": {
+                                        "formatCurrency": "boolean",
+                                        "fieldLabel": "string",
+                                        "itemId": "string",
+                                        "labelAlign": "string"
+                                    },
+                                    "name": "MyTextField8",
+                                    "designerId": "d41c985d-e0c7-4938-a563-9a340195c83d",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "formatCurrency",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.field.ComboBox",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "displayField": "sex",
+                                        "fieldLabel": "Sex",
+                                        "forceSelection": true,
+                                        "itemId": "sex",
+                                        "labelAlign": "right",
+                                        "queryMode": "local",
+                                        "store": [
+                                            "{SexStore}"
+                                        ],
+                                        "valueField": "sex"
+                                    },
+                                    "configAlternates": {
+                                        "formatCurrency": "boolean",
+                                        "fieldLabel": "string",
+                                        "itemId": "string",
+                                        "labelAlign": "string",
+                                        "store": "binding",
+                                        "displayField": "datafield",
+                                        "forceSelection": "boolean",
+                                        "queryMode": "string",
+                                        "valueField": "datafield"
+                                    },
+                                    "name": "MyComboBox3",
+                                    "designerId": "bf131670-cfe6-4d4f-81d1-dd6007e44ef6"
                                 },
                                 {
                                     "type": "Ext.container.Container",
@@ -597,40 +341,746 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "html": "Times Per Week",
-                                        "margin": "3 0 0 5"
+                                        "container|align": "stretch",
+                                        "layout": "hbox",
+                                        "margin": "0 0 5 0"
                                     },
                                     "configAlternates": {
-                                        "html": "string",
+                                        "container|align": "string",
+                                        "layout": "string",
                                         "margin": "auto"
                                     },
-                                    "name": "MyContainer3",
-                                    "designerId": "50f7d0db-fae5-458e-a6ed-2338b32a6f60"
+                                    "name": "MyContainer7",
+                                    "designerId": "6b14a658-d55c-4fd7-84e5-2573acb27535",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.form.field.Date",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "cls": [
+                                                    "docFormReadOnly"
+                                                ],
+                                                "fieldLabel": "Birth Date",
+                                                "itemId": "birthDate",
+                                                "labelAlign": "right",
+                                                "submitFormat": "Y-m-d"
+                                            },
+                                            "configAlternates": {
+                                                "fieldLabel": "string",
+                                                "itemId": "string",
+                                                "labelAlign": "string",
+                                                "submitFormat": "string",
+                                                "cls": "typedarray"
+                                            },
+                                            "name": "MyDateField",
+                                            "designerId": "6323661b-0a22-44e5-bd6d-4fef5cd2325c",
+                                            "cn": [
+                                                {
+                                                    "type": "basiceventbinding",
+                                                    "reference": {
+                                                        "name": "listeners",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "fn": "onBirthDateChange",
+                                                        "implHandler": [
+                                                            "let age = this.queryById('age');",
+                                                            "if(!newValue || !newValue.getTime) {",
+                                                            "\tage.setValue(\"\");",
+                                                            "\treturn;",
+                                                            "}",
+                                                            "var ageDifMs = Date.now() - newValue.getTime();",
+                                                            "if(ageDifMs < 0) {",
+                                                            "\tage.setValue(\"\");",
+                                                            "\treturn;",
+                                                            "}",
+                                                            "var ageDate = new Date(ageDifMs); // miliseconds from epoch",
+                                                            "let years = Math.abs(ageDate.getUTCFullYear() - 1970);",
+                                                            "let months = Math.abs(ageDate.getMonth());",
+                                                            "age.setValue(years + \" Years \" + months + \" Months\");"
+                                                        ],
+                                                        "name": "change",
+                                                        "scope": "me"
+                                                    },
+                                                    "configAlternates": {
+                                                        "fn": "string",
+                                                        "implHandler": "code",
+                                                        "name": "string",
+                                                        "scope": "string"
+                                                    },
+                                                    "name": "onBirthDateChange",
+                                                    "designerId": "ba64a634-c716-4517-938f-c6b3def77406"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.form.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "docFormSkip": true,
+                                                "fieldLabel": "Age",
+                                                "itemId": "age",
+                                                "labelAlign": "right",
+                                                "labelWidth": 50,
+                                                "readOnly": true,
+                                                "readOnlyCls": "docFormReadOnly",
+                                                "width": 186
+                                            },
+                                            "configAlternates": {
+                                                "fieldLabel": "string",
+                                                "itemId": "string",
+                                                "labelAlign": "string",
+                                                "submitFormat": "string",
+                                                "docFormSkip": "boolean",
+                                                "labelWidth": "number",
+                                                "readOnly": "boolean",
+                                                "readOnlyCls": "string",
+                                                "width": "auto"
+                                            },
+                                            "name": "MyTextField9",
+                                            "designerId": "8a1c59a1-72fd-4af2-86fa-965018e266cb",
+                                            "customConfigs": [
+                                                {
+                                                    "group": "(Custom Properties)",
+                                                    "name": "docFormSkip",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.field.Date",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fieldLabel": "Receive Date",
+                                        "itemId": "receiveDate",
+                                        "labelAlign": "right",
+                                        "submitFormat": "Y-m-d"
+                                    },
+                                    "configAlternates": {
+                                        "fieldLabel": "string",
+                                        "itemId": "string",
+                                        "labelAlign": "string",
+                                        "submitFormat": "string"
+                                    },
+                                    "name": "MyDateField1",
+                                    "designerId": "beccb825-e289-41d6-b5d6-bc19e7e7028b",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onReceiveDateAfterRender",
+                                                "implHandler": [
+                                                    "component.el.on('dblclick', function() {",
+                                                    "\tcomponent.setValue(new Date());",
+                                                    "});"
+                                                ],
+                                                "name": "afterrender",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onReceiveDateAfterRender",
+                                            "designerId": "4755288b-6042-4297-8d51-f4b11b2d4941"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.field.Date",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fieldLabel": "Sell Date",
+                                        "itemId": "sellDate",
+                                        "labelAlign": "right",
+                                        "submitFormat": "Y-m-d"
+                                    },
+                                    "configAlternates": {
+                                        "fieldLabel": "string",
+                                        "itemId": "string",
+                                        "labelAlign": "string",
+                                        "submitFormat": "string"
+                                    },
+                                    "name": "MyDateField2",
+                                    "designerId": "1900d95d-472b-4bcc-bff6-83bac1813aee",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onSellDateAfterRender",
+                                                "implHandler": [
+                                                    "component.el.on('dblclick', function() {",
+                                                    "\tcomponent.setValue(new Date());",
+                                                    "});"
+                                                ],
+                                                "name": "afterrender",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onSellDateAfterRender",
+                                            "designerId": "7b07aeae-640f-4fe8-ba07-75270f30cd04"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.container.Container",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "container|align": "stretch",
+                                        "layout": "hbox",
+                                        "margin": "0 0 5 0"
+                                    },
+                                    "configAlternates": {
+                                        "container|align": "string",
+                                        "layout": "string",
+                                        "margin": "auto"
+                                    },
+                                    "name": "MyContainer5",
+                                    "designerId": "d4959f79-a8b0-4b8b-a50e-544f909b08a9",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.form.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fieldLabel": "Weight",
+                                                "itemId": "weight",
+                                                "labelAlign": "right"
+                                            },
+                                            "configAlternates": {
+                                                "formatCurrency": "boolean",
+                                                "fieldLabel": "string",
+                                                "itemId": "string",
+                                                "labelAlign": "string"
+                                            },
+                                            "name": "MyTextField5",
+                                            "designerId": "fcb51423-5f33-4c98-8a60-51a70b6f9904"
+                                        },
+                                        {
+                                            "type": "Ext.container.Container",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "html": "Grams",
+                                                "margin": "3 0 0 5"
+                                            },
+                                            "configAlternates": {
+                                                "html": "string",
+                                                "margin": "auto"
+                                            },
+                                            "name": "MyContainer6",
+                                            "designerId": "25b31ec5-9ec0-43ec-90d2-677b63e5d4ba"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fieldLabel": "Vendor",
+                                        "itemId": "vendor",
+                                        "labelAlign": "right"
+                                    },
+                                    "configAlternates": {
+                                        "formatCurrency": "boolean",
+                                        "fieldLabel": "string",
+                                        "itemId": "string",
+                                        "labelAlign": "string"
+                                    },
+                                    "name": "MyTextField3",
+                                    "designerId": "bd9b6f2a-22fb-465e-9eda-f70be9c07286"
+                                },
+                                {
+                                    "type": "Ext.form.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fieldLabel": "Cost",
+                                        "formatCurrency": true,
+                                        "itemId": "cost",
+                                        "labelAlign": "right"
+                                    },
+                                    "configAlternates": {
+                                        "formatCurrency": "boolean",
+                                        "fieldLabel": "string",
+                                        "itemId": "string",
+                                        "labelAlign": "string"
+                                    },
+                                    "name": "MyTextField4",
+                                    "designerId": "fb589116-ea91-4f2a-b614-42237c1ab205",
+                                    "customConfigs": [
+                                        {
+                                            "group": "(Custom Properties)",
+                                            "name": "formatCurrency",
+                                            "type": "string"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.container.Container",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout": "hbox",
+                                        "margin": "0 0 5 0"
+                                    },
+                                    "configAlternates": {
+                                        "layout": "string",
+                                        "margin": "auto"
+                                    },
+                                    "name": "MyContainer4",
+                                    "designerId": "b566bd19-591a-4255-bd2f-7b262c8ce904",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.form.field.ComboBox",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "displayField": "habitat",
+                                                "fieldLabel": "Habitat",
+                                                "forceSelection": true,
+                                                "itemId": "habitatId",
+                                                "labelAlign": "right",
+                                                "queryMode": "local",
+                                                "store": [
+                                                    "{HabitatStore}"
+                                                ],
+                                                "valueField": "habitatId"
+                                            },
+                                            "configAlternates": {
+                                                "formatCurrency": "boolean",
+                                                "fieldLabel": "string",
+                                                "itemId": "string",
+                                                "labelAlign": "string",
+                                                "store": "binding",
+                                                "displayField": "datafield",
+                                                "forceSelection": "boolean",
+                                                "queryMode": "string",
+                                                "valueField": "datafield"
+                                            },
+                                            "name": "MyComboBox2",
+                                            "designerId": "de07de52-2406-44e3-9d47-3eeb2891160c"
+                                        },
+                                        {
+                                            "type": "Ext.button.Button",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "icon": "/inc/img/silk_icons/pencil.png",
+                                                "margin": "0 0 0 15",
+                                                "text": "Edit Habitats"
+                                            },
+                                            "configAlternates": {
+                                                "icon": "string",
+                                                "margin": "auto",
+                                                "text": "string"
+                                            },
+                                            "name": "MyButton1",
+                                            "designerId": "0b86def7-f91a-4d1c-b13c-b3eb2b10c6db",
+                                            "cn": [
+                                                {
+                                                    "type": "basiceventbinding",
+                                                    "reference": {
+                                                        "name": "listeners",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "fn": "onButtonClick",
+                                                        "implHandler": [
+                                                            "window.open(\"/Habitat\");"
+                                                        ],
+                                                        "name": "click",
+                                                        "scope": "me"
+                                                    },
+                                                    "configAlternates": {
+                                                        "fn": "string",
+                                                        "implHandler": "code",
+                                                        "name": "string",
+                                                        "scope": "string"
+                                                    },
+                                                    "name": "onButtonClick",
+                                                    "designerId": "3a09e0a5-d21e-4cbe-88eb-8316b10ceba7"
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.field.ComboBox",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "displayField": "type",
+                                        "fieldLabel": "Food",
+                                        "forceSelection": true,
+                                        "itemId": "food",
+                                        "labelAlign": "right",
+                                        "queryMode": "local",
+                                        "store": [
+                                            "{FoodTypeStore}"
+                                        ],
+                                        "valueField": "type"
+                                    },
+                                    "configAlternates": {
+                                        "formatCurrency": "boolean",
+                                        "fieldLabel": "string",
+                                        "itemId": "string",
+                                        "labelAlign": "string",
+                                        "store": "binding",
+                                        "displayField": "datafield",
+                                        "forceSelection": "boolean",
+                                        "queryMode": "string",
+                                        "valueField": "datafield"
+                                    },
+                                    "name": "MyComboBox1",
+                                    "designerId": "46164cd1-893f-4aa0-8ea2-79fdbf36dcca",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onFoodAfterRender",
+                                                "implHandler": [
+                                                    "AppWindowManager.appOn('dropDownSelectionEditor', {",
+                                                    "\tscope:this,",
+                                                    "\tselectionchanged:function() {",
+                                                    "\t\tthis.readFoodTypes();",
+                                                    "\t}",
+                                                    "});",
+                                                    "",
+                                                    "component.el.on({",
+                                                    "    contextmenu: function(event) {",
+                                                    "        event.stopEvent();",
+                                                    "        AppWindowManager.appLink('dropDownSelectionEditor', {dataKey:'foodType'});",
+                                                    "    },",
+                                                    "    scope:this",
+                                                    "});",
+                                                    ""
+                                                ],
+                                                "name": "afterrender",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onFoodAfterRender",
+                                            "designerId": "5582b9c4-a78f-4d42-be05-3614dba0566f"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fieldLabel": "Food Quantity",
+                                        "itemId": "feedingQuantity",
+                                        "labelAlign": "right"
+                                    },
+                                    "configAlternates": {
+                                        "formatCurrency": "boolean",
+                                        "fieldLabel": "string",
+                                        "itemId": "string",
+                                        "labelAlign": "string"
+                                    },
+                                    "name": "MyTextField6",
+                                    "designerId": "ca2faacd-ac32-42be-aaea-50b3918ffc9c"
+                                },
+                                {
+                                    "type": "Ext.container.Container",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "container|align": "stretch",
+                                        "layout": "hbox"
+                                    },
+                                    "configAlternates": {
+                                        "container|align": "string",
+                                        "layout": "string"
+                                    },
+                                    "name": "MyContainer2",
+                                    "designerId": "675b6779-c8d0-4d04-8fb8-41e73dd60372",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.form.field.Text",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fieldLabel": "Feed Frequency",
+                                                "itemId": "feedingFrequency",
+                                                "labelAlign": "right"
+                                            },
+                                            "configAlternates": {
+                                                "formatCurrency": "boolean",
+                                                "fieldLabel": "string",
+                                                "itemId": "string",
+                                                "labelAlign": "string"
+                                            },
+                                            "name": "MyTextField7",
+                                            "designerId": "58fb9d36-bc07-4841-ac30-0bc1bd34871e"
+                                        },
+                                        {
+                                            "type": "Ext.container.Container",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "html": "Times Per Week",
+                                                "margin": "3 0 0 5"
+                                            },
+                                            "configAlternates": {
+                                                "html": "string",
+                                                "margin": "auto"
+                                            },
+                                            "name": "MyContainer3",
+                                            "designerId": "50f7d0db-fae5-458e-a6ed-2338b32a6f60"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fieldLabel": "Customer",
+                                        "itemId": "customer",
+                                        "labelAlign": "right",
+                                        "margin": "5 0 0 0"
+                                    },
+                                    "configAlternates": {
+                                        "formatCurrency": "boolean",
+                                        "fieldLabel": "string",
+                                        "itemId": "string",
+                                        "labelAlign": "string",
+                                        "margin": "auto"
+                                    },
+                                    "name": "MyTextField2",
+                                    "designerId": "a02a5222-77ed-42bc-a359-801266e8559f"
+                                },
+                                {
+                                    "type": "Ext.form.field.TextArea",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fieldLabel": "Notes",
+                                        "height": 165,
+                                        "itemId": "notes",
+                                        "labelAlign": "right",
+                                        "margin": "5 0 0 0",
+                                        "width": 408
+                                    },
+                                    "configAlternates": {
+                                        "fieldLabel": "string",
+                                        "height": "auto",
+                                        "itemId": "string",
+                                        "labelAlign": "string",
+                                        "margin": "auto",
+                                        "width": "auto"
+                                    },
+                                    "name": "MyTextArea",
+                                    "designerId": "400d7036-8a26-40b6-8a71-f20829704aa8"
                                 }
                             ]
                         },
                         {
-                            "type": "Ext.form.field.Text",
+                            "type": "Ext.grid.Panel",
                             "reference": {
                                 "name": "items",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "fieldLabel": "Customer",
-                                "itemId": "customer",
-                                "labelAlign": "right",
-                                "margin": "5 0 0 0"
+                                "margin": "0 0 0 15",
+                                "store": [
+                                    "{AttachmentStore}"
+                                ],
+                                "title": "Attachments",
+                                "width": 500
                             },
                             "configAlternates": {
-                                "formatCurrency": "boolean",
-                                "fieldLabel": "string",
-                                "itemId": "string",
-                                "labelAlign": "string",
-                                "margin": "auto"
+                                "store": "binding",
+                                "margin": "auto",
+                                "title": "string",
+                                "width": "auto"
                             },
-                            "name": "MyTextField2",
-                            "designerId": "a02a5222-77ed-42bc-a359-801266e8559f"
+                            "name": "MyGridPanel1",
+                            "designerId": "f2f2678f-5461-4f9f-bdd6-bbe40ccc9440",
+                            "cn": [
+                                {
+                                    "type": "Ext.grid.column.Column",
+                                    "reference": {
+                                        "name": "columns",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "dataIndex": "fileLocation",
+                                        "text": "Preview",
+                                        "width": 288
+                                    },
+                                    "configAlternates": {
+                                        "dataIndex": "datafield",
+                                        "text": "string",
+                                        "width": "auto"
+                                    },
+                                    "name": "MyColumn3",
+                                    "designerId": "8966ee16-9f44-479c-bd28-6aba9ead60c2",
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "value",
+                                                    "metaData",
+                                                    "record",
+                                                    "rowIndex",
+                                                    "colIndex",
+                                                    "store",
+                                                    "view"
+                                                ],
+                                                "fn": "renderer",
+                                                "implHandler": [
+                                                    "if(!value) {",
+                                                    "\treturn \"\";",
+                                                    "}",
+                                                    "",
+                                                    "return \"<img width = '200px' height='200px' alt='Not an Image' src= '/PetMaster/readAttachment?petAttachmentId=\" + record.data.petAttachmentId + \"'>\";"
+                                                ]
+                                            },
+                                            "configAlternates": {
+                                                "designer|params": "typedarray",
+                                                "fn": "string",
+                                                "implHandler": "code"
+                                            },
+                                            "name": "renderer",
+                                            "designerId": "6acb2de5-981e-4fae-86e9-55ea684e1a48"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.grid.column.Date",
+                                    "reference": {
+                                        "name": "columns",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "dataIndex": "photoDate",
+                                        "text": "Photo Date"
+                                    },
+                                    "configAlternates": {
+                                        "dataIndex": "datafield",
+                                        "text": "string"
+                                    },
+                                    "name": "MyDateColumn2",
+                                    "designerId": "a019ea7f-7a43-497d-a7e0-c87df8e24c85"
+                                },
+                                {
+                                    "type": "Ext.view.Table",
+                                    "reference": {
+                                        "name": "viewConfig",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "name": "MyTable1",
+                                    "designerId": "dcdc38db-6b03-4c10-897d-91f41cae526f"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -694,7 +1144,34 @@
                     "\tdeleteFn:'deletePet',",
                     "\tsearchFn:'searchPets',",
                     "\tsearchableFields:['name', 'type', 'receiveDate', 'sellDate']",
-                    "});"
+                    "});",
+                    "",
+                    "var listeners = {",
+                    "\tscope:this,",
+                    "\tbeforeUpLoad: function(){",
+                    "\t\tif(!this.petId){",
+                    "\t\t\tExt.Msg.alert(\"\",\"Please load an Animal before uploading!\");",
+                    "\t\t\treturn false;",
+                    "\t\t}",
+                    "\t},",
+                    "",
+                    "\tuploadFinished: function (uploadErrors,files){",
+                    "\t\tif(files.length>0){",
+                    "\t\t\tExt.Msg.alert('','Upload Success!');",
+                    "\t\t\tthis.readPet(this.petId);",
+                    "\t\t}",
+                    "\t}",
+                    "};",
+                    "",
+                    "//Main Viewport",
+                    "this.fileDropper = new FileDropper({",
+                    "\tviewport: component.ownerCt,",
+                    "\tuploadUrl:'/PetMaster/uploadAttachment',",
+                    "\tlisteners:listeners,",
+                    "\tallowedExtensions:['png', 'jpg', 'jpeg'],",
+                    "\tmaxFileSize:50",
+                    "});",
+                    ""
                 ],
                 "name": "afterrender",
                 "scope": "me"
@@ -785,6 +1262,12 @@
                     "\t\tif(reply.data.habitatId) {",
                     "\t\t\tthis.queryById('habitatData').readHabitatData(reply.data.habitatId);",
                     "\t\t}",
+                    "\t\t",
+                    "\t\tvar url = '/PetMaster/uploadAttachment?' + Ext.urlEncode({petId:petId});",
+                    "\t\tthis.fileDropper.setUploadUrl(url);",
+                    "",
+                    "\t\tthis.readPetAttachments();",
+                    "",
                     "\t\tthis.docFormLoadFormData(reply);",
                     "\t},",
                     "\tscope:this,",
@@ -799,6 +1282,34 @@
             },
             "name": "readPet",
             "designerId": "0a206b36-1003-4ae6-b314-ee28d83bbe8d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "readPetAttachments",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/PetMaster/readPetAttachments',",
+                    "\tjsonData:{petId:this.petId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore('AttachmentStore').loadData(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readPetAttachments",
+            "designerId": "b0cad344-687a-4cd2-bef9-fd52d7e95299"
         },
         {
             "type": "basicfunction",

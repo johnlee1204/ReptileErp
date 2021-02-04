@@ -107,6 +107,24 @@
                     "designerId": "977cb37a-51d3-4f69-ad37-de3638bd0045"
                 },
                 {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "sex",
+                        "text": "Sex"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyColumn2",
+                    "designerId": "1f5398ba-27b8-4cf3-a371-edde191f71bc"
+                },
+                {
                     "type": "Ext.grid.column.Date",
                     "reference": {
                         "name": "columns",

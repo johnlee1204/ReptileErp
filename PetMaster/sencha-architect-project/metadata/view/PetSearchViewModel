@@ -80,6 +80,22 @@
                     "designerId": "064f58bf-38ac-4624-bdb3-c7d100fc515b"
                 },
                 {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "sex"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField6",
+                    "designerId": "c0d8b736-d097-460c-896e-88c131fff996"
+                },
+                {
                     "type": "Ext.data.field.Date",
                     "reference": {
                         "name": "fields",

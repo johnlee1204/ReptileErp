@@ -3,6 +3,13 @@
 use DropDownSelectionEditor\Models\DropDownSelectionEditorModel;
 use PetMaster\Models\PetMasterModel;
 class PetMaster extends AgileBaseController {
+
+	static $allowedExtensions = [
+		'jpg',
+		'jpeg',
+		'png'
+	];
+
 	function readPet() {
 		$input = Validation::validateJsonInput([
 			'petId' => 'numeric'
@@ -16,6 +23,7 @@ class PetMaster extends AgileBaseController {
 			'name' => 'notBlank',
 			'type' => 'notBlank',
 			'price' => 'numeric',
+			'sex' => 'notBlank',
 			'birthDate',
 			'receiveDate' => 'notBlank',
 			'sellDate',
@@ -25,7 +33,10 @@ class PetMaster extends AgileBaseController {
 			'food',
 			'feedingQuantity',
 			'feedingFrequency',
-			'customer'
+			'customer',
+			'notes',
+			'weight',
+			'sellPrice'
 		]);
 
 		$this->outputSuccessData(PetMasterModel::createPet($inputs));
@@ -37,6 +48,7 @@ class PetMaster extends AgileBaseController {
 			'name' => 'notBlank',
 			'type' => 'notBlank',
 			'price' => 'numeric',
+			'sex' => 'notBlank',
 			'birthDate',
 			'receiveDate' => 'notBlank',
 			'sellDate',
@@ -46,7 +58,10 @@ class PetMaster extends AgileBaseController {
 			'food',
 			'feedingQuantity',
 			'feedingFrequency',
-			'customer'
+			'customer',
+			'notes',
+			'weight',
+			'sellPrice'
 		]);
 
 		PetMasterModel::updatePet($inputs);
@@ -73,5 +88,104 @@ class PetMaster extends AgileBaseController {
 		]);
 
 		$this->outputSuccessData(PetMasterModel::searchPets($inputs));
+	}
+
+	function readPetAttachments() {
+		$input = Validation::validateJsonInput(array(
+			'petId' => 'numeric'
+		));
+		$attachments = PetMasterModel::readPetAttachments($input['petId']);
+
+		$this->outputSuccessData($attachments);
+	}
+
+	function readAttachment() {
+		$input = Validation::validateGet([
+			'petAttachmentId'
+		]);
+
+		$petAttachment = PetMasterModel::readAttachment($input['petAttachmentId']);
+
+		echo file_get_contents($petAttachment['fileLocation'] . $petAttachment['fileName']);
+	}
+
+	public function uploadAttachment()
+	{
+		$input = Validation::validateGet(array(
+			'petId' => 'numeric'
+		));
+
+		$sizeLimitMb = 50;
+		$sizeLimit = $sizeLimitMb * 1024 * 1024; //convert to bytes
+
+		if (!empty($_FILES['fd-file']) and is_uploaded_file($_FILES['fd-file']['tmp_name'])) {
+			// Regular multipart/form-data upload.
+
+			$uploadedFileSize = $_FILES['fd-file']['size'];
+			$name = $_FILES['fd-file']['name'];
+			$data = file_get_contents($_FILES['fd-file']['tmp_name']);
+
+		} elseif (isset($_SERVER['HTTP_X_FILE_NAME'])) {
+			//drag and drop upload
+
+			$uploadedFileSize = $_SERVER['HTTP_X_FILE_SIZE'];
+			$name = urldecode($_SERVER['HTTP_X_FILE_NAME']);
+			$data = file_get_contents("php://input"); // Raw POST data.
+		} else {
+			throw new AgileUserMessageException("No File Uploaded");
+		}
+
+		if ($uploadedFileSize >= $sizeLimit) {
+			throw new AgileUserMessageException("File cannot be larger than " . $sizeLimitMb . "MB");
+		}
+
+		if (trim($name) == '') {
+			throw new AgileUserMessageException('Upload file Header "X_FILE_NAME" not sent!');
+		}
+
+		$pathInfo = pathinfo($name);
+
+		if (!in_array(strtolower($pathInfo['extension']), self::$allowedExtensions)) {
+			throw new AgileUserMessageException("File extension \"{$pathInfo['extension']}\" not allowed!<BR>\r\n{$name}");
+		}
+
+		$fileDir = "/var/www/leesheet.com/public_html/images/pets/" . date("Y") . '/' . date("m") . '/';
+		$databaseFileDir = "/var/www/leesheet.com/public_html/images/pets/" . date("Y") . '/' . date("m") . '/';
+
+		$newFileName = $input['petId'];
+
+		//cleanup multiple spaces and underscores, convert spaces to underscores:
+		$newFileName = preg_replace('!\s+!', ' ', $newFileName);
+		$newFileName = str_replace(' ', '_', $newFileName);
+		$newFileName = preg_replace('!_+!', '_', $newFileName);
+
+		if (file_exists($fileDir . $newFileName . '.' . $pathInfo['extension'])) {
+			$tryCount = 1;
+			do {
+				$renamedFileName = $newFileName . '_' . str_pad($tryCount, 2, '0', STR_PAD_LEFT);
+			} while (file_exists($fileDir . $renamedFileName . '.' . $pathInfo['extension']) && $tryCount++ <= 50);
+			if ($tryCount >= 50) {
+				throw new AgileUserMessageException("File name error. More than 50 files with same name.");
+			}
+			$newFileName = $renamedFileName;
+		}
+		$newFileName .= '.' . $pathInfo['extension'];
+
+		if (!is_dir($fileDir)) {
+			// dir doesn't exist, make it
+			mkdir($fileDir, 0777, true);
+		}
+		if (FALSE == file_put_contents($fileDir . $newFileName, $data)) {
+			throw new AgileUserMessageException('Error saving uploaded file!');
+		}
+
+		$date = date("Y-m-d");
+
+		$this->database->query("
+			INSERT INTO PetAttachment(petId, fileName, fileLocation, photoDate)
+			VALUES(?,?,?,?)
+		", [$input['petId'], $newFileName, $databaseFileDir, $date]);
+
+		$this->outputSuccess(array("file" => $newFileName));
 	}
 }

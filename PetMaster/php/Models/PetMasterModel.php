@@ -11,6 +11,7 @@ class PetMasterModel extends AgileModel {
 				name,
 				type,
 				price,
+				sex,
 				birthDate,
 				receiveDate,
 				sellDate,
@@ -20,7 +21,10 @@ class PetMasterModel extends AgileModel {
 				food,
 				feedingQuantity,
 				feedingFrequency,
-				customer
+				customer,
+				notes,
+				weight,
+				sellPrice
 			FROM Pet
 			WHERE
 				petId = ?
@@ -37,11 +41,15 @@ class PetMasterModel extends AgileModel {
 		if($inputs['birthDate'] === "") {
 			$inputs['birthDate'] = NULL;
 		}
+		if($inputs['sellPrice'] === "") {
+			$inputs['sellPrice'] = 0;
+		}
 		self::$database->query("
 			INSERT INTO Pet(
 				name,
 				type,
 				price,
+				sex,
 				birthDate,
 				receiveDate,
 				sellDate,
@@ -51,13 +59,17 @@ class PetMasterModel extends AgileModel {
 				food,
 				feedingQuantity,
 				feedingFrequency,
-				customer
+				customer,
+				notes,
+				weight,
+				sellPrice
 			)
-			VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)
+			VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
 		", [
 			$inputs['name'],
 			$inputs['type'],
 			$inputs['price'],
+			$inputs['sex'],
 			$inputs['birthDate'],
 			$inputs['receiveDate'],
 			$inputs['sellDate'],
@@ -67,7 +79,10 @@ class PetMasterModel extends AgileModel {
 			$inputs['food'],
 			$inputs['feedingQuantity'],
 			$inputs['feedingFrequency'],
-			$inputs['customer']
+			$inputs['customer'],
+			$inputs['notes'],
+			$inputs['weight'],
+			$inputs['sellPrice']
 		]);
 
 		return self::readLatestPetId();
@@ -89,6 +104,7 @@ class PetMasterModel extends AgileModel {
 				name = ?,
 				type = ?,
 				price = ?,
+				sex = ?,
 				birthDate = ?,
 				receiveDate = ?,
 				sellDate = ?,
@@ -98,13 +114,17 @@ class PetMasterModel extends AgileModel {
 				food = ?,
 				feedingQuantity = ?,
 				feedingFrequency = ?,
-				customer = ?
+				customer = ?,
+				notes = ?,
+				weight = ?,
+				sellPrice = ?
 			WHERE
 				petId = ?
 		", [
 			$inputs['name'],
 			$inputs['type'],
 			$inputs['price'],
+			$inputs['sex'],
 			$inputs['birthDate'],
 			$inputs['receiveDate'],
 			$inputs['sellDate'],
@@ -115,7 +135,10 @@ class PetMasterModel extends AgileModel {
 			$inputs['feedingQuantity'],
 			$inputs['feedingFrequency'],
 			$inputs['customer'],
-			$inputs['petId']
+			$inputs['petId'],
+			$inputs['notes'],
+			$inputs['weight'],
+			$inputs['sellPrice']
 		]);
 	}
 
@@ -164,6 +187,7 @@ class PetMasterModel extends AgileModel {
 				petId,
 				name,
 				type,
+				sex,
 				receiveDate,
 				sellDate
 			FROM Pet
@@ -172,5 +196,29 @@ class PetMasterModel extends AgileModel {
 			{$where}
 			ORDER BY receiveDate DESC
 		", $params);
+	}
+
+	static function readPetAttachments($petId) {
+		return self::$database->fetch_all_row("
+			SELECT
+				petAttachmentId,
+				fileName,
+				fileLocation,
+				photoDate
+			FROM PetAttachment
+			WHERE
+				petId = ?
+		", [$petId]);
+	}
+
+	static function readAttachment($petAttachmentId) {
+		return self::$database->fetch_assoc("
+			SELECT
+				fileName,
+				fileLocation
+			FROM PetAttachment
+			WHERE
+				petAttachmentId = ?
+		", [$petAttachmentId]);
 	}
 }

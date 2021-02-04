@@ -65,6 +65,11 @@ Ext.define('PetMaster.view.PetSearch', {
 					text: 'Type'
 				},
 				{
+					xtype: 'gridcolumn',
+					dataIndex: 'sex',
+					text: 'Sex'
+				},
+				{
 					xtype: 'datecolumn',
 					dataIndex: 'receiveDate',
 					text: 'Receive Date'

@@ -19,7 +19,7 @@ Ext.define('PetMaster.view.PetMasterViewModel', {
 
 	requires: [
 		'Ext.data.Store',
-		'Ext.data.field.Field'
+		'Ext.data.field.Date'
 	],
 
 	stores: {
@@ -44,6 +44,38 @@ Ext.define('PetMaster.view.PetMasterViewModel', {
 				},
 				{
 					name: 'habitat'
+				}
+			]
+		},
+		SexStore: {
+			data: [
+				{
+					sex: 'Male'
+				},
+				{
+					sex: 'Female'
+				}
+			],
+			fields: [
+				{
+					name: 'sex'
+				}
+			]
+		},
+		AttachmentStore: {
+			fields: [
+				{
+					name: 'petAttachmentId'
+				},
+				{
+					name: 'fileName'
+				},
+				{
+					name: 'fileLocation'
+				},
+				{
+					type: 'date',
+					name: 'photoDate'
 				}
 			]
 		}

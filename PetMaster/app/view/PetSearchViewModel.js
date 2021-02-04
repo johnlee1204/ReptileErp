@@ -35,6 +35,9 @@ Ext.define('PetMaster.view.PetSearchViewModel', {
 					name: 'type'
 				},
 				{
+					name: 'sex'
+				},
+				{
 					type: 'date',
 					name: 'receiveDate',
 					dateReadFormat: 'Y-m-d'

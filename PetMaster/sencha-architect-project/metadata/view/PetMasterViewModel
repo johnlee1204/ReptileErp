@@ -132,6 +132,133 @@
                     "designerId": "2a9238ba-1a49-4c85-8598-63e2ef418c66"
                 }
             ]
+        },
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "data": [
+                    "[",
+                    "\t{",
+                    "\t\t\"sex\": \"Male\"",
+                    "\t},",
+                    "\t{",
+                    "\t\t\"sex\": \"Female\"",
+                    "\t}",
+                    "]"
+                ],
+                "name": "SexStore"
+            },
+            "configAlternates": {
+                "data": "array",
+                "name": "string"
+            },
+            "name": "MyStore4",
+            "designerId": "4af46e7a-8069-4ef9-b03c-e14423a7865c",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "sex"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField5",
+                    "designerId": "0b454e62-a27b-4910-a266-a37516ef8191"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "AttachmentStore"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyStore5",
+            "designerId": "48e754df-3b45-4de6-9595-2d545c3e6733",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "petAttachmentId"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField7",
+                    "designerId": "24058846-2f72-44b3-97ff-f3375442ee4b"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "fileName"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField8",
+                    "designerId": "49b67ea4-ae28-40c2-9fd9-06555a4c0530"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "fileLocation"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField9",
+                    "designerId": "e5f6856a-2aaf-45bf-8cc5-acd0653a64f8"
+                },
+                {
+                    "type": "Ext.data.field.Date",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "photoDate"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyDate2",
+                    "designerId": "e28887a8-1e53-45af-ae0d-a268862ae313"
+                }
+            ]
         }
     ]
 }

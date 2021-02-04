@@ -26,6 +26,7 @@ Ext.define('PetMaster.view.MyViewport', {
 	viewModel: {
 		type: 'myviewport'
 	},
+	itemId: 'myViewport',
 
 	layout: {
 		type: 'vbox',

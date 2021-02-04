@@ -10,6 +10,7 @@
         "designer|initialView": true,
         "designer|userAlias": "myviewport",
         "designer|userClassName": "MyViewport",
+        "itemId": "myViewport",
         "layout": "vbox",
         "margin": null
     },
@@ -23,7 +24,8 @@
         "padding": "auto",
         "width": "auto",
         "layout": "string",
-        "container|align": "string"
+        "container|align": "string",
+        "itemId": "string"
     },
     "name": "MyViewport",
     "designerId": "79f3f913-02f7-4a07-8ef4-c3f24245093b",

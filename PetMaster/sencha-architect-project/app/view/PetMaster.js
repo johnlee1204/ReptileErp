@@ -27,7 +27,11 @@ Ext.define('PetMaster.view.PetMaster', {
 		'Ext.form.field.ComboBox',
 		'Ext.tab.Panel',
 		'Ext.tab.Tab',
-		'Ext.form.field.Date'
+		'Ext.form.field.Date',
+		'Ext.form.field.TextArea',
+		'Ext.grid.Panel',
+		'Ext.grid.column.Date',
+		'Ext.view.Table'
 	],
 
 	viewModel: {
@@ -95,115 +99,245 @@ Ext.define('PetMaster.view.PetMaster', {
 					bodyPadding: 10,
 					bodyStyle: 'background:none',
 					title: 'Pet',
+					layout: {
+						type: 'hbox',
+						align: 'stretch'
+					},
 					items: [
 						{
-							xtype: 'textfield',
-							formatCurrency: true,
-							itemId: 'price',
-							fieldLabel: 'Price',
-							labelAlign: 'right'
-						},
-						{
-							xtype: 'datefield',
-							itemId: 'birthDate',
-							fieldLabel: 'Birth Date',
-							labelAlign: 'right',
-							submitFormat: 'Y-m-d'
-						},
-						{
-							xtype: 'datefield',
-							itemId: 'receiveDate',
-							fieldLabel: 'Receive Date',
-							labelAlign: 'right',
-							submitFormat: 'Y-m-d',
-							listeners: {
-								afterrender: 'onReceiveDateAfterRender'
-							}
-						},
-						{
-							xtype: 'datefield',
-							itemId: 'sellDate',
-							fieldLabel: 'Sell Date',
-							labelAlign: 'right',
-							submitFormat: 'Y-m-d',
-							listeners: {
-								afterrender: 'onSellDateAfterRender'
-							}
-						},
-						{
-							xtype: 'textfield',
-							itemId: 'vendor',
-							fieldLabel: 'Vendor',
-							labelAlign: 'right'
-						},
-						{
-							xtype: 'textfield',
-							formatCurrency: true,
-							itemId: 'cost',
-							fieldLabel: 'Cost',
-							labelAlign: 'right'
-						},
-						{
-							xtype: 'combobox',
-							itemId: 'habitatId',
-							fieldLabel: 'Habitat',
-							labelAlign: 'right',
-							displayField: 'habitat',
-							forceSelection: true,
-							queryMode: 'local',
-							valueField: 'habitatId',
-							bind: {
-								store: '{HabitatStore}'
-							}
-						},
-						{
-							xtype: 'combobox',
-							itemId: 'food',
-							fieldLabel: 'Food',
-							labelAlign: 'right',
-							displayField: 'type',
-							forceSelection: true,
-							queryMode: 'local',
-							valueField: 'type',
-							bind: {
-								store: '{FoodTypeStore}'
-							},
-							listeners: {
-								afterrender: 'onFoodAfterRender'
-							}
-						},
-						{
-							xtype: 'textfield',
-							itemId: 'feedingQuantity',
-							fieldLabel: 'Food Quantity',
-							labelAlign: 'right'
-						},
-						{
 							xtype: 'container',
-							layout: {
-								type: 'hbox',
-								align: 'stretch'
-							},
+							layout: 'vbox',
 							items: [
 								{
 									xtype: 'textfield',
-									itemId: 'feedingFrequency',
-									fieldLabel: 'Feed Frequency',
+									formatCurrency: true,
+									itemId: 'price',
+									fieldLabel: 'Price',
+									labelAlign: 'right'
+								},
+								{
+									xtype: 'textfield',
+									formatCurrency: true,
+									itemId: 'sellPrice',
+									fieldLabel: 'Actual Sell Price',
+									labelAlign: 'right'
+								},
+								{
+									xtype: 'combobox',
+									itemId: 'sex',
+									fieldLabel: 'Sex',
+									labelAlign: 'right',
+									displayField: 'sex',
+									forceSelection: true,
+									queryMode: 'local',
+									valueField: 'sex',
+									bind: {
+										store: '{SexStore}'
+									}
+								},
+								{
+									xtype: 'container',
+									margin: '0 0 5 0',
+									layout: {
+										type: 'hbox',
+										align: 'stretch'
+									},
+									items: [
+										{
+											xtype: 'datefield',
+											cls: 'docFormReadOnly',
+											itemId: 'birthDate',
+											fieldLabel: 'Birth Date',
+											labelAlign: 'right',
+											submitFormat: 'Y-m-d',
+											listeners: {
+												change: 'onBirthDateChange'
+											}
+										},
+										{
+											xtype: 'textfield',
+											docFormSkip: true,
+											itemId: 'age',
+											width: 186,
+											fieldLabel: 'Age',
+											labelAlign: 'right',
+											labelWidth: 50,
+											readOnly: true,
+											readOnlyCls: 'docFormReadOnly'
+										}
+									]
+								},
+								{
+									xtype: 'datefield',
+									itemId: 'receiveDate',
+									fieldLabel: 'Receive Date',
+									labelAlign: 'right',
+									submitFormat: 'Y-m-d',
+									listeners: {
+										afterrender: 'onReceiveDateAfterRender'
+									}
+								},
+								{
+									xtype: 'datefield',
+									itemId: 'sellDate',
+									fieldLabel: 'Sell Date',
+									labelAlign: 'right',
+									submitFormat: 'Y-m-d',
+									listeners: {
+										afterrender: 'onSellDateAfterRender'
+									}
+								},
+								{
+									xtype: 'container',
+									margin: '0 0 5 0',
+									layout: {
+										type: 'hbox',
+										align: 'stretch'
+									},
+									items: [
+										{
+											xtype: 'textfield',
+											itemId: 'weight',
+											fieldLabel: 'Weight',
+											labelAlign: 'right'
+										},
+										{
+											xtype: 'container',
+											html: 'Grams',
+											margin: '3 0 0 5'
+										}
+									]
+								},
+								{
+									xtype: 'textfield',
+									itemId: 'vendor',
+									fieldLabel: 'Vendor',
+									labelAlign: 'right'
+								},
+								{
+									xtype: 'textfield',
+									formatCurrency: true,
+									itemId: 'cost',
+									fieldLabel: 'Cost',
 									labelAlign: 'right'
 								},
 								{
 									xtype: 'container',
-									html: 'Times Per Week',
-									margin: '3 0 0 5'
+									margin: '0 0 5 0',
+									layout: 'hbox',
+									items: [
+										{
+											xtype: 'combobox',
+											itemId: 'habitatId',
+											fieldLabel: 'Habitat',
+											labelAlign: 'right',
+											displayField: 'habitat',
+											forceSelection: true,
+											queryMode: 'local',
+											valueField: 'habitatId',
+											bind: {
+												store: '{HabitatStore}'
+											}
+										},
+										{
+											xtype: 'button',
+											margin: '0 0 0 15',
+											icon: '/inc/img/silk_icons/pencil.png',
+											text: 'Edit Habitats',
+											listeners: {
+												click: 'onButtonClick'
+											}
+										}
+									]
+								},
+								{
+									xtype: 'combobox',
+									itemId: 'food',
+									fieldLabel: 'Food',
+									labelAlign: 'right',
+									displayField: 'type',
+									forceSelection: true,
+									queryMode: 'local',
+									valueField: 'type',
+									bind: {
+										store: '{FoodTypeStore}'
+									},
+									listeners: {
+										afterrender: 'onFoodAfterRender'
+									}
+								},
+								{
+									xtype: 'textfield',
+									itemId: 'feedingQuantity',
+									fieldLabel: 'Food Quantity',
+									labelAlign: 'right'
+								},
+								{
+									xtype: 'container',
+									layout: {
+										type: 'hbox',
+										align: 'stretch'
+									},
+									items: [
+										{
+											xtype: 'textfield',
+											itemId: 'feedingFrequency',
+											fieldLabel: 'Feed Frequency',
+											labelAlign: 'right'
+										},
+										{
+											xtype: 'container',
+											html: 'Times Per Week',
+											margin: '3 0 0 5'
+										}
+									]
+								},
+								{
+									xtype: 'textfield',
+									itemId: 'customer',
+									margin: '5 0 0 0',
+									fieldLabel: 'Customer',
+									labelAlign: 'right'
+								},
+								{
+									xtype: 'textareafield',
+									height: 165,
+									itemId: 'notes',
+									margin: '5 0 0 0',
+									width: 408,
+									fieldLabel: 'Notes',
+									labelAlign: 'right'
 								}
 							]
 						},
 						{
-							xtype: 'textfield',
-							itemId: 'customer',
-							margin: '5 0 0 0',
-							fieldLabel: 'Customer',
-							labelAlign: 'right'
+							xtype: 'gridpanel',
+							margin: '0 0 0 15',
+							width: 500,
+							title: 'Attachments',
+							bind: {
+								store: '{AttachmentStore}'
+							},
+							columns: [
+								{
+									xtype: 'gridcolumn',
+									renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+										if(!value) {
+											return "";
+										}
+
+										return "<img width = '200px' height='200px' alt='Not an Image' src= '/PetMaster/readAttachment?petAttachmentId=" + record.data.petAttachmentId + "'>";
+									},
+									width: 288,
+									dataIndex: 'fileLocation',
+									text: 'Preview'
+								},
+								{
+									xtype: 'datecolumn',
+									dataIndex: 'photoDate',
+									text: 'Photo Date'
+								}
+							]
 						}
 					]
 				},
@@ -236,6 +370,23 @@ Ext.define('PetMaster.view.PetMaster', {
 
 	},
 
+	onBirthDateChange: function(field, newValue, oldValue, eOpts) {
+		let age = this.queryById('age');
+		if(!newValue || !newValue.getTime) {
+			age.setValue("");
+			return;
+		}
+		var ageDifMs = Date.now() - newValue.getTime();
+		if(ageDifMs < 0) {
+			age.setValue("");
+			return;
+		}
+		var ageDate = new Date(ageDifMs); // miliseconds from epoch
+		let years = Math.abs(ageDate.getUTCFullYear() - 1970);
+		let months = Math.abs(ageDate.getMonth());
+		age.setValue(years + " Years " + months + " Months");
+	},
+
 	onReceiveDateAfterRender: function(component, eOpts) {
 		component.el.on('dblclick', function() {
 			component.setValue(new Date());
@@ -246,6 +397,10 @@ Ext.define('PetMaster.view.PetMaster', {
 		component.el.on('dblclick', function() {
 			component.setValue(new Date());
 		});
+	},
+
+	onButtonClick: function(button, e, eOpts) {
+		window.open("/Habitat");
 	},
 
 	onFoodAfterRender: function(component, eOpts) {
@@ -287,6 +442,33 @@ Ext.define('PetMaster.view.PetMaster', {
 			searchFn:'searchPets',
 			searchableFields:['name', 'type', 'receiveDate', 'sellDate']
 		});
+
+		var listeners = {
+			scope:this,
+			beforeUpLoad: function(){
+				if(!this.petId){
+					Ext.Msg.alert("","Please load an Animal before uploading!");
+					return false;
+				}
+			},
+
+			uploadFinished: function (uploadErrors,files){
+				if(files.length>0){
+					Ext.Msg.alert('','Upload Success!');
+					this.readPet(this.petId);
+				}
+			}
+		};
+
+		//Main Viewport
+		this.fileDropper = new FileDropper({
+			viewport: component.ownerCt,
+			uploadUrl:'/PetMaster/uploadAttachment',
+			listeners:listeners,
+			allowedExtensions:['png', 'jpg', 'jpeg'],
+			maxFileSize:50
+		});
+
 	},
 
 	readPetTypes: function() {
@@ -322,7 +504,25 @@ Ext.define('PetMaster.view.PetMaster', {
 				if(reply.data.habitatId) {
 					this.queryById('habitatData').readHabitatData(reply.data.habitatId);
 				}
+
+				var url = '/PetMaster/uploadAttachment?' + Ext.urlEncode({petId:petId});
+				this.fileDropper.setUploadUrl(url);
+
+				this.readPetAttachments();
+
 				this.docFormLoadFormData(reply);
+			},
+			scope:this,
+			mask:this
+		});
+	},
+
+	readPetAttachments: function() {
+		AERP.Ajax.request({
+			url:'/PetMaster/readPetAttachments',
+			jsonData:{petId:this.petId},
+			success:function(reply) {
+				this.getViewModel().getStore('AttachmentStore').loadData(reply.data);
 			},
 			scope:this,
 			mask:this
