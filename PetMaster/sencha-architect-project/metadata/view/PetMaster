@@ -1046,6 +1046,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "itemId": "attachmentGrid",
                                 "margin": "0 0 0 15",
                                 "maxHeight": 543,
                                 "store": [
@@ -1059,11 +1060,30 @@
                                 "margin": "auto",
                                 "title": "string",
                                 "width": "auto",
-                                "maxHeight": "number"
+                                "maxHeight": "number",
+                                "itemId": "string"
                             },
                             "name": "MyGridPanel1",
                             "designerId": "f2f2678f-5461-4f9f-bdd6-bbe40ccc9440",
                             "cn": [
+                                {
+                                    "type": "Ext.toolbar.Toolbar",
+                                    "reference": {
+                                        "name": "dockedItems",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "dock": "top",
+                                        "itemId": "attachmentToolbar"
+                                    },
+                                    "configAlternates": {
+                                        "dock": "string",
+                                        "itemId": "string"
+                                    },
+                                    "name": "MyToolbar3",
+                                    "designerId": "05ccffce-469f-48d4-a9c1-f527cd767d20"
+                                },
                                 {
                                     "type": "Ext.grid.column.Column",
                                     "reference": {
@@ -1197,6 +1217,8 @@
                     "this.readPetTypes();",
                     "this.readFoodTypes();",
                     "",
+                    "this.buildNiceGridMenu();",
+                    "",
                     "AERP.Ajax.request({",
                     "\turl:'/Habitat/readHabitats',",
                     "\tsuccess:function(reply) {",
@@ -1252,6 +1274,70 @@
             },
             "name": "onPanelAfterRender",
             "designerId": "fb6c4f0f-8860-4330-9b10-8f2957e0b620"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "buildNiceGridMenu",
+                "implHandler": [
+                    "Ext.create(\"NiceGridMenu\", {",
+                    "\tmenuItems:[{action:'deleteAttachment', text:\"Delete\", icon:'/inc/img/silk_icons/delete.png', disabled:true}],",
+                    "\tcallbackHandler:function(action, data) {",
+                    "\t\tswitch(action) {",
+                    "\t\t\tcase 'deleteAttachment':",
+                    "\t\t\t\tthis.deleteAttachment(data.petAttachmentId);",
+                    "\t\t\t\tbreak;",
+                    "\t\t}",
+                    "\t},",
+                    "\tgrid:this.queryById('attachmentGrid'),",
+                    "\ttoolbar:this.queryById('attachmentToolbar'),",
+                    "\tscope:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "buildNiceGridMenu",
+            "designerId": "fe901848-a5cb-48df-8620-36cb6862932b"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "petAttachmentId"
+                ],
+                "fn": "deleteAttachment",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/PetMaster/deleteAttachment',",
+                    "\tjsonData:{petAttachmentId:petAttachmentId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readPetAttachments();",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "deleteAttachment",
+            "designerId": "3c10a31a-8f57-4374-a5b5-09f577f4bf4b"
         },
         {
             "type": "basicfunction",

@@ -188,4 +188,24 @@ class PetMaster extends AgileBaseController {
 
 		$this->outputSuccess(array("file" => $newFileName));
 	}
+
+	function deleteAttachment() {
+		$input = Validation::validateJsonInput([
+			'petAttachmentId' => 'numeric'
+		]);
+
+		$attachment = PetMasterModel::readAttachment($input['petAttachmentId']);
+
+		if($attachment === NULL) {
+			throw new AgileUserMessageException("Attachment not found!");
+		}
+
+		if(unlink($attachment['fileLocation'] . $attachment['fileName'])) {
+			$this->database->query("DELETE FROM PetAttachment WHERE petAttachmentId = ?", [$input['petAttachmentId']]);
+		} else {
+			throw new AgileUserMessageException("Failed to Delete Attachment!");
+		}
+
+		$this->outputSuccess();
+	}
 }

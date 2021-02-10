@@ -330,6 +330,7 @@ Ext.define('PetMaster.view.PetMaster', {
 						},
 						{
 							xtype: 'gridpanel',
+							itemId: 'attachmentGrid',
 							margin: '0 0 0 15',
 							maxHeight: 543,
 							width: 500,
@@ -337,6 +338,13 @@ Ext.define('PetMaster.view.PetMaster', {
 							bind: {
 								store: '{AttachmentStore}'
 							},
+							dockedItems: [
+								{
+									xtype: 'toolbar',
+									dock: 'top',
+									itemId: 'attachmentToolbar'
+								}
+							],
 							columns: [
 								{
 									xtype: 'gridcolumn',
@@ -449,6 +457,8 @@ Ext.define('PetMaster.view.PetMaster', {
 		this.readPetTypes();
 		this.readFoodTypes();
 
+		this.buildNiceGridMenu();
+
 		AERP.Ajax.request({
 			url:'/Habitat/readHabitats',
 			success:function(reply) {
@@ -491,6 +501,34 @@ Ext.define('PetMaster.view.PetMaster', {
 			listeners:listeners,
 			allowedExtensions:['png', 'jpg', 'jpeg'],
 			maxFileSize:50
+		});
+	},
+
+	buildNiceGridMenu: function() {
+		Ext.create("NiceGridMenu", {
+			menuItems:[{action:'deleteAttachment', text:"Delete", icon:'/inc/img/silk_icons/delete.png', disabled:true}],
+			callbackHandler:function(action, data) {
+				switch(action) {
+					case 'deleteAttachment':
+						this.deleteAttachment(data.petAttachmentId);
+						break;
+				}
+			},
+			grid:this.queryById('attachmentGrid'),
+			toolbar:this.queryById('attachmentToolbar'),
+			scope:this
+		});
+	},
+
+	deleteAttachment: function(petAttachmentId) {
+		AERP.Ajax.request({
+			url:'/PetMaster/deleteAttachment',
+			jsonData:{petAttachmentId:petAttachmentId},
+			success:function(reply) {
+				this.readPetAttachments();
+			},
+			scope:this,
+			mask:this
 		});
 	},
 
