@@ -80,7 +80,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fieldLabel": "Pet Name",
+                        "fieldLabel": "Serial",
                         "itemId": "name",
                         "labelAlign": "right",
                         "labelWidth": 60
@@ -301,37 +301,103 @@
                                     ]
                                 },
                                 {
-                                    "type": "Ext.form.field.ComboBox",
+                                    "type": "Ext.container.Container",
                                     "reference": {
                                         "name": "items",
                                         "type": "array"
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "displayField": "sex",
-                                        "fieldLabel": "Sex",
-                                        "forceSelection": true,
-                                        "itemId": "sex",
-                                        "labelAlign": "right",
-                                        "queryMode": "local",
-                                        "store": [
-                                            "{SexStore}"
-                                        ],
-                                        "valueField": "sex"
+                                        "container|align": "stretch",
+                                        "layout": "hbox",
+                                        "margin": "0 0 5 0"
                                     },
                                     "configAlternates": {
-                                        "formatCurrency": "boolean",
-                                        "fieldLabel": "string",
-                                        "itemId": "string",
-                                        "labelAlign": "string",
-                                        "store": "binding",
-                                        "displayField": "datafield",
-                                        "forceSelection": "boolean",
-                                        "queryMode": "string",
-                                        "valueField": "datafield"
+                                        "container|align": "string",
+                                        "layout": "string",
+                                        "margin": "auto"
                                     },
-                                    "name": "MyComboBox3",
-                                    "designerId": "bf131670-cfe6-4d4f-81d1-dd6007e44ef6"
+                                    "name": "MyContainer9",
+                                    "designerId": "99a4b72c-5c7f-4588-84ed-d5c3648792c2",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.form.field.ComboBox",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "displayField": "sex",
+                                                "fieldLabel": "Sex",
+                                                "forceSelection": true,
+                                                "itemId": "sex",
+                                                "labelAlign": "right",
+                                                "queryMode": "local",
+                                                "store": [
+                                                    "{SexStore}"
+                                                ],
+                                                "valueField": "sex"
+                                            },
+                                            "configAlternates": {
+                                                "formatCurrency": "boolean",
+                                                "fieldLabel": "string",
+                                                "itemId": "string",
+                                                "labelAlign": "string",
+                                                "store": "binding",
+                                                "displayField": "datafield",
+                                                "forceSelection": "boolean",
+                                                "queryMode": "string",
+                                                "valueField": "datafield"
+                                            },
+                                            "name": "MyComboBox3",
+                                            "designerId": "bf131670-cfe6-4d4f-81d1-dd6007e44ef6",
+                                            "cn": [
+                                                {
+                                                    "type": "basiceventbinding",
+                                                    "reference": {
+                                                        "name": "listeners",
+                                                        "type": "array"
+                                                    },
+                                                    "codeClass": null,
+                                                    "userConfig": {
+                                                        "fn": "onSexSelect",
+                                                        "implHandler": [
+                                                            "this.setSexIcon(record.data.sex);"
+                                                        ],
+                                                        "name": "select",
+                                                        "scope": "me"
+                                                    },
+                                                    "configAlternates": {
+                                                        "fn": "string",
+                                                        "implHandler": "code",
+                                                        "name": "string",
+                                                        "scope": "string"
+                                                    },
+                                                    "name": "onSexSelect",
+                                                    "designerId": "a94d3ff7-dc91-4824-94ae-d242d33ce872"
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "type": "Ext.container.Container",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "itemId": "sexIcon",
+                                                "margin": "4 0 0 5"
+                                            },
+                                            "configAlternates": {
+                                                "itemId": "string",
+                                                "margin": "auto"
+                                            },
+                                            "name": "MyContainer10",
+                                            "designerId": "08cd3718-18f9-4118-816d-70d5f23b7ca5"
+                                        }
+                                    ]
                                 },
                                 {
                                     "type": "Ext.container.Container",
@@ -981,6 +1047,7 @@
                             "codeClass": null,
                             "userConfig": {
                                 "margin": "0 0 0 15",
+                                "maxHeight": 543,
                                 "store": [
                                     "{AttachmentStore}"
                                 ],
@@ -991,7 +1058,8 @@
                                 "store": "binding",
                                 "margin": "auto",
                                 "title": "string",
-                                "width": "auto"
+                                "width": "auto",
+                                "maxHeight": "number"
                             },
                             "name": "MyGridPanel1",
                             "designerId": "f2f2678f-5461-4f9f-bdd6-bbe40ccc9440",
@@ -1038,8 +1106,9 @@
                                                     "if(!value) {",
                                                     "\treturn \"\";",
                                                     "}",
-                                                    "",
-                                                    "return \"<img width = '200px' height='200px' alt='Not an Image' src= '/PetMaster/readAttachment?petAttachmentId=\" + record.data.petAttachmentId + \"'>\";"
+                                                    "record.data.fileLocation = record.data.fileLocation.substring(record.data.fileLocation.indexOf(\"/images\"));",
+                                                    "return \"<a target = '_blank' href = '\" + record.data.fileLocation + record.data.fileName + \"'><img width = '200px' height='200px' alt='Not an Image' src='\" + record.data.fileLocation + record.data.fileName + \"'></a>\";",
+                                                    "//return \"<img width = '200px' height='200px' alt='Not an Image' src= '/PetMaster/readAttachment?petAttachmentId=\" + record.data.petAttachmentId + \"'>\";"
                                                 ]
                                             },
                                             "configAlternates": {
@@ -1170,8 +1239,7 @@
                     "\tlisteners:listeners,",
                     "\tallowedExtensions:['png', 'jpg', 'jpeg'],",
                     "\tmaxFileSize:50",
-                    "});",
-                    ""
+                    "});"
                 ],
                 "name": "afterrender",
                 "scope": "me"
@@ -1262,7 +1330,9 @@
                     "\t\tif(reply.data.habitatId) {",
                     "\t\t\tthis.queryById('habitatData').readHabitatData(reply.data.habitatId);",
                     "\t\t}",
-                    "\t\t",
+                    "",
+                    "\t\tthis.setSexIcon(reply.data.sex);",
+                    "",
                     "\t\tvar url = '/PetMaster/uploadAttachment?' + Ext.urlEncode({petId:petId});",
                     "\t\tthis.fileDropper.setUploadUrl(url);",
                     "",
@@ -1310,6 +1380,38 @@
             },
             "name": "readPetAttachments",
             "designerId": "b0cad344-687a-4cd2-bef9-fd52d7e95299"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "sex"
+                ],
+                "fn": "setSexIcon",
+                "implHandler": [
+                    "let sexIcon = this.queryById('sexIcon');",
+                    "",
+                    "if(sex === \"Male\") {",
+                    "\tsexIcon.setHtml(\"<img src='/inc/img/silk_icons/male.png'>\");",
+                    "} else if (sex === \"Female\") {",
+                    "\tsexIcon.setHtml(\"<img src='/inc/img/silk_icons/female.png'>\");",
+                    "} else {",
+                    "\tsexIcon.setHtml(\"\");",
+                    "}"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "setSexIcon",
+            "designerId": "57c782d7-4ae1-449c-9405-eb3f3e6e7a7a"
         },
         {
             "type": "basicfunction",
@@ -1387,6 +1489,7 @@
                     "\tjsonData:{petId:this.petId},",
                     "\tsuccess:function(reply) {",
                     "\t\tthis.petId = null;",
+                    "\t\tthis.setSexIcon(\"\");",
                     "\t\tthis.docFormReset();",
                     "\t},",
                     "\tscope:this,",

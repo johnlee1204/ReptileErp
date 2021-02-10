@@ -57,7 +57,7 @@ Ext.define('PetMaster.view.PetSearch', {
 				{
 					xtype: 'gridcolumn',
 					dataIndex: 'name',
-					text: 'Name'
+					text: 'Serial'
 				},
 				{
 					xtype: 'gridcolumn',
@@ -66,6 +66,13 @@ Ext.define('PetMaster.view.PetSearch', {
 				},
 				{
 					xtype: 'gridcolumn',
+					renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+						if(value === "Male") {
+							return "<img src='/inc/img/silk_icons/male.png'>";
+						} else {
+							return "<img src='/inc/img/silk_icons/female.png'>";
+						}
+					},
 					dataIndex: 'sex',
 					text: 'Sex'
 				},

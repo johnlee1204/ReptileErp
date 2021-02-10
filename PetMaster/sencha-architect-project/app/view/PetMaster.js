@@ -64,7 +64,7 @@ Ext.define('PetMaster.view.PetMaster', {
 				{
 					xtype: 'textfield',
 					itemId: 'name',
-					fieldLabel: 'Pet Name',
+					fieldLabel: 'Serial',
 					labelAlign: 'right',
 					labelWidth: 60
 				},
@@ -123,17 +123,35 @@ Ext.define('PetMaster.view.PetMaster', {
 									labelAlign: 'right'
 								},
 								{
-									xtype: 'combobox',
-									itemId: 'sex',
-									fieldLabel: 'Sex',
-									labelAlign: 'right',
-									displayField: 'sex',
-									forceSelection: true,
-									queryMode: 'local',
-									valueField: 'sex',
-									bind: {
-										store: '{SexStore}'
-									}
+									xtype: 'container',
+									margin: '0 0 5 0',
+									layout: {
+										type: 'hbox',
+										align: 'stretch'
+									},
+									items: [
+										{
+											xtype: 'combobox',
+											itemId: 'sex',
+											fieldLabel: 'Sex',
+											labelAlign: 'right',
+											displayField: 'sex',
+											forceSelection: true,
+											queryMode: 'local',
+											valueField: 'sex',
+											bind: {
+												store: '{SexStore}'
+											},
+											listeners: {
+												select: 'onSexSelect'
+											}
+										},
+										{
+											xtype: 'container',
+											itemId: 'sexIcon',
+											margin: '4 0 0 5'
+										}
+									]
 								},
 								{
 									xtype: 'container',
@@ -313,6 +331,7 @@ Ext.define('PetMaster.view.PetMaster', {
 						{
 							xtype: 'gridpanel',
 							margin: '0 0 0 15',
+							maxHeight: 543,
 							width: 500,
 							title: 'Attachments',
 							bind: {
@@ -325,8 +344,9 @@ Ext.define('PetMaster.view.PetMaster', {
 										if(!value) {
 											return "";
 										}
-
-										return "<img width = '200px' height='200px' alt='Not an Image' src= '/PetMaster/readAttachment?petAttachmentId=" + record.data.petAttachmentId + "'>";
+										record.data.fileLocation = record.data.fileLocation.substring(record.data.fileLocation.indexOf("/images"));
+										return "<a target = '_blank' href = '" + record.data.fileLocation + record.data.fileName + "'><img width = '200px' height='200px' alt='Not an Image' src='" + record.data.fileLocation + record.data.fileName + "'></a>";
+										//return "<img width = '200px' height='200px' alt='Not an Image' src= '/PetMaster/readAttachment?petAttachmentId=" + record.data.petAttachmentId + "'>";
 									},
 									width: 288,
 									dataIndex: 'fileLocation',
@@ -368,6 +388,10 @@ Ext.define('PetMaster.view.PetMaster', {
 		    scope:this
 		});
 
+	},
+
+	onSexSelect: function(combo, record, eOpts) {
+		this.setSexIcon(record.data.sex);
 	},
 
 	onBirthDateChange: function(field, newValue, oldValue, eOpts) {
@@ -468,7 +492,6 @@ Ext.define('PetMaster.view.PetMaster', {
 			allowedExtensions:['png', 'jpg', 'jpeg'],
 			maxFileSize:50
 		});
-
 	},
 
 	readPetTypes: function() {
@@ -505,6 +528,8 @@ Ext.define('PetMaster.view.PetMaster', {
 					this.queryById('habitatData').readHabitatData(reply.data.habitatId);
 				}
 
+				this.setSexIcon(reply.data.sex);
+
 				var url = '/PetMaster/uploadAttachment?' + Ext.urlEncode({petId:petId});
 				this.fileDropper.setUploadUrl(url);
 
@@ -527,6 +552,18 @@ Ext.define('PetMaster.view.PetMaster', {
 			scope:this,
 			mask:this
 		});
+	},
+
+	setSexIcon: function(sex) {
+		let sexIcon = this.queryById('sexIcon');
+
+		if(sex === "Male") {
+			sexIcon.setHtml("<img src='/inc/img/silk_icons/male.png'>");
+		} else if (sex === "Female") {
+			sexIcon.setHtml("<img src='/inc/img/silk_icons/female.png'>");
+		} else {
+			sexIcon.setHtml("");
+		}
 	},
 
 	createPet: function() {
@@ -562,6 +599,7 @@ Ext.define('PetMaster.view.PetMaster', {
 			jsonData:{petId:this.petId},
 			success:function(reply) {
 				this.petId = null;
+				this.setSexIcon("");
 				this.docFormReset();
 			},
 			scope:this,

@@ -44,6 +44,18 @@ class PetMasterModel extends AgileModel {
 		if($inputs['sellPrice'] === "") {
 			$inputs['sellPrice'] = 0;
 		}
+		if($inputs['cost'] === "") {
+			$inputs['cost'] = 0;
+		}
+		if($inputs['feedingQuantity'] === "") {
+			$inputs['feedingQuantity'] = 0;
+		}
+		if($inputs['feedingFrequency'] === "") {
+			$inputs['feedingFrequency'] = 0;
+		}
+		if($inputs['weight'] === "") {
+			$inputs['weight'] = 0;
+		}
 		self::$database->query("
 			INSERT INTO Pet(
 				name,
@@ -98,6 +110,23 @@ class PetMasterModel extends AgileModel {
 		if($inputs['birthDate'] === "") {
 			$inputs['birthDate'] = NULL;
 		}
+		if($inputs['sellPrice'] === "" || $inputs['sellPrice'] === "0.00") {
+			$inputs['sellPrice'] = 0;
+		}
+		if($inputs['cost'] === "") {
+			$inputs['cost'] = 0;
+		}
+		if($inputs['feedingQuantity'] === "") {
+			$inputs['feedingQuantity'] = 0;
+		}
+		if($inputs['feedingFrequency'] === "") {
+			$inputs['feedingFrequency'] = 0;
+		}
+		if($inputs['weight'] === "") {
+			$inputs['weight'] = 0;
+		}
+
+
 		self::$database->query("
 			UPDATE Pet
 			SET
@@ -135,10 +164,10 @@ class PetMasterModel extends AgileModel {
 			$inputs['feedingQuantity'],
 			$inputs['feedingFrequency'],
 			$inputs['customer'],
-			$inputs['petId'],
 			$inputs['notes'],
 			$inputs['weight'],
-			$inputs['sellPrice']
+			$inputs['sellPrice'],
+			$inputs['petId']
 		]);
 	}
 

@@ -79,7 +79,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "dataIndex": "name",
-                        "text": "Name"
+                        "text": "Serial"
                     },
                     "configAlternates": {
                         "dataIndex": "datafield",
@@ -122,7 +122,43 @@
                         "text": "string"
                     },
                     "name": "MyColumn2",
-                    "designerId": "1f5398ba-27b8-4cf3-a371-edde191f71bc"
+                    "designerId": "1f5398ba-27b8-4cf3-a371-edde191f71bc",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "if(value === \"Male\") {",
+                                    "\treturn \"<img src='/inc/img/silk_icons/male.png'>\";",
+                                    "} else {",
+                                    "\treturn \"<img src='/inc/img/silk_icons/female.png'>\";",
+                                    "}"
+                                ]
+                            },
+                            "configAlternates": {
+                                "designer|params": "typedarray",
+                                "fn": "string",
+                                "implHandler": "code"
+                            },
+                            "name": "renderer",
+                            "designerId": "77992374-3a2e-4303-88f1-08a5010b3681"
+                        }
+                    ]
                 },
                 {
                     "type": "Ext.grid.column.Date",
