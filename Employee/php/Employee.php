@@ -4,6 +4,20 @@
 use Employee\Models\EmployeeModel;
 
 class Employee extends AgileBaseController {
+
+	function readAppInitData() {
+		$groupModel = $this->loadModel('AgileGroupModel');
+		$groupsAssoc = $groupModel->getAllGroupsArray();
+		$groups = [];
+		foreach($groupsAssoc as $group) {
+			$groups[] = array_values($group);
+		}
+
+		$this->outputSuccess([
+			'groups' => $groups
+		]);
+	}
+
 	function readEmployees() {
 		$this->outputSuccessData(EmployeeModel::readEmployees());
 	}
@@ -27,7 +41,8 @@ class Employee extends AgileBaseController {
 			'hireDate',
 			'terminationDate',
 			'payRate' => 'numericOrNull',
-			'position'
+			'position',
+			'permissions'
 		]);
 
 		$this->outputSuccessData(EmployeeModel::createEmployee($inputs));
@@ -44,7 +59,8 @@ class Employee extends AgileBaseController {
 			'hireDate',
 			'terminationDate',
 			'payRate' => 'numericOrNull',
-			'position'
+			'position',
+			'permissions'
 		]);
 
 		EmployeeModel::updateEmployee($inputs);

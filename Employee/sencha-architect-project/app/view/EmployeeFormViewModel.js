@@ -29,6 +29,16 @@ Ext.define('Employee.view.EmployeeFormViewModel', {
 					name: 'position'
 				}
 			]
+		},
+		PermissionStore: {
+			fields: [
+				{
+					name: 'groupId'
+				},
+				{
+					name: 'groupName'
+				}
+			]
 		}
 	}
 

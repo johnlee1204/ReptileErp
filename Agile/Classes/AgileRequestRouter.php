@@ -168,21 +168,21 @@ class AgileRequestRouter{
 			$this->serve404error('The '.$this->routeClass.' class is not in '.$this->classFile);
 			return;
 		}
-//		$permCheck = $this->AgileApp->PermissionsManager->checkPermissions($this->routeClass,$this->routeMethod);
-//		switch($permCheck){
-//			case AgilePermissions::NOT_AUTHENTICATED:
-//				$this->serveLoginRedirect();
-//				return;
-//			case AgilePermissions::PERMISSION_DENIED:
-//				$this->serve401error($this->AgileApp->PermissionsManager->errorMsg,$this->routeClass,$this->routeMethod);
-//				return;
-//			case AgilePermissions::METHOD_NO_PERMISSIONS:
-//				$this->serve404error($this->AgileApp->PermissionsManager->errorMsg);
-//				return;
-//			case AgilePermissions::PERMISSION_GRANTED:
-//				//carry on
-//				break;
-//		}
+		$permCheck = $this->AgileApp->PermissionsManager->checkPermissions($this->routeClass,$this->routeMethod);
+		switch($permCheck){
+			case AgilePermissions::NOT_AUTHENTICATED:
+				$this->serveLoginRedirect();
+				return;
+			case AgilePermissions::PERMISSION_DENIED:
+				$this->serve401error($this->AgileApp->PermissionsManager->errorMsg,$this->routeClass,$this->routeMethod);
+				return;
+			case AgilePermissions::METHOD_NO_PERMISSIONS:
+				$this->serve404error($this->AgileApp->PermissionsManager->errorMsg);
+				return;
+			case AgilePermissions::PERMISSION_GRANTED:
+				//carry on
+				break;
+		}
 
 		$ClassInstance = new $this->routeClass();
 		//Init Class Variables

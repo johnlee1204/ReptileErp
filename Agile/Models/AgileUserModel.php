@@ -181,24 +181,32 @@ class AgileUserModel{
 			}
 		}
 
-//		$groupInserts = array();
-//		$groupInsertValues = array();
-//		foreach($userData['groupIds'] as $groupId){
-//			if(!is_numeric($groupId)){
-//				throw new Exception('Invalid GroupId\'s');
-//			}
-//			$groupInserts[] = "?,?";
-//			$groupInsertValues[] = $userId;
-//			$groupInsertValues[] = $groupId;
-//		}
+		$groupInserts = array();
+		$groupInsertValues = array();
+		foreach($userData['groupIds'] as $groupId){
+			if(!is_numeric($groupId)){
+				throw new Exception('Invalid GroupId\'s');
+			}
+			$groupInserts[] = "?,?";
+			$groupInsertValues[] = $userId;
+			$groupInsertValues[] = $groupId;
+		}
+
+		$admin = false;
+		if(isset($userData['admin'])){
+			$admin = $userData['admin'];
+		}
 
 		$updateUserData = array(
 			'userName' => $userData['userName'],
-			'admin' => $userData['admin'],
+			'admin' => $admin,
 			'email' => $userData['email'],
 			'firstName' => $userData['firstName'],
 			'lastName' => $userData['lastName'],
-			'ldapUser' => $userData['ldapUser'],
+			'hireDate' => $userData['hireDate'],
+			'terminationDate' => $userData['terminationDate'],
+			'payRate' => $userData['payRate'],
+			'position' => $userData['position'],
 			'employeeNumber' => $userData['employeeNumber']
 		);
 
@@ -225,10 +233,10 @@ class AgileUserModel{
 		}
 
 		$this->database->update($this->userTable,$updateUserData,array('employeeId' => $userId));
-//		$this->database->delete($this->userGroupsTable,array('employeeId' => $userId));
-//		if(count($groupInserts) > 0) {
-//			$this->database->query("INSERT INTO {$this->userGroupsTable} (employeeId,groupId) VALUES (" . implode("),(", $groupInserts) . ")",$groupInsertValues);
-//		}
+		$this->database->delete($this->userGroupsTable,array('employeeId' => $userId));
+		if(count($groupInserts) > 0) {
+			$this->database->query("INSERT INTO {$this->userGroupsTable} (employeeId,groupId) VALUES (" . implode("),(", $groupInserts) . ")",$groupInsertValues);
+		}
 		return true;
 	}
 
@@ -291,18 +299,18 @@ class AgileUserModel{
 
 		$this->database->insert($this->userTable,$insertUserData);
 		$insertResult = $this->database->fetch_assoc("SELECT LAST_INSERT_ID() as insertId");
-//		$groupInserts = array();
-//		if(isset($userData['groupIds'])) {
-//			foreach ($userData['groupIds'] as $groupId) {
-//				if (!is_numeric($groupId)) {
-//					throw new Exception('Invalid GroupId\'s');
-//				}
-//				$groupInserts[] = $insertResult['insertId'] . "," . $groupId;
-//			}
-//		}
-//		if(count($groupInserts) > 0) {
-//			$this->database->query("INSERT INTO {$this->userGroupsTable} (userId,groupId) VALUES (" . implode("),(", $groupInserts) . ")");
-//		}
+		$groupInserts = array();
+		if(isset($userData['groupIds'])) {
+			foreach ($userData['groupIds'] as $groupId) {
+				if (!is_numeric($groupId)) {
+					throw new Exception('Invalid GroupId\'s');
+				}
+				$groupInserts[] = $insertResult['insertId'] . "," . $groupId;
+			}
+		}
+		if(count($groupInserts) > 0) {
+			$this->database->query("INSERT INTO {$this->userGroupsTable} (userId,groupId) VALUES (" . implode("),(", $groupInserts) . ")");
+		}
 		return $insertResult['insertId'];
 	}
 

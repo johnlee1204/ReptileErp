@@ -31,15 +31,15 @@ class AgileGroupModel{
 	}
 
 	function autoAddNewGroup(){
-		$this->database->query("SELECT IDENT_CURRENT('{$this->groupTable}')+1 as nextGroupId");
+		$this->database->query("SELECT MAX(groupId) + 1 as nextGroupId FROM {$this->groupTable}");
 		$nextGroupId = $this->database->fetch_row();
 		$nextGroupId = $nextGroupId[0];
 		return $this->addNewGroup("Group".$nextGroupId);
 	}
 
 	function addNewGroup($groupName){
-		$this->database->query("INSERT INTO {$this->groupTable} VALUES (?)",array($groupName));
-		$this->database->query("SELECT @@IDENTITY FROM {$this->groupTable}");
+		$this->database->query("INSERT INTO {$this->groupTable}(groupName) VALUES (?)",array($groupName));
+		$this->database->query("SELECT LAST_INSERT_ID() FROM {$this->groupTable}");
 		$insertId = $this->database->fetch_row();
 		$insertId = $insertId[0];
 		return $insertId;

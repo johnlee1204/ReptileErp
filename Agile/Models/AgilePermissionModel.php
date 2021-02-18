@@ -51,16 +51,16 @@ class AgilePermissionModel{
 		foreach($apps as $app){
 			$appString[]= "(?)";
 		}
-		$this->database->query("CREATE TABLE #apps (appClass varchar(255))");
-		$this->database->query("INSERT INTO #apps (appClass) VALUES ".implode(",",$appString),$apps);
+		$this->database->query("CREATE TEMPORARY TABLE apps (appClass varchar(255))");
+		$this->database->query("INSERT INTO apps (appClass) VALUES ".implode(",",$appString),$apps);
 		$this->database->query(" SELECT
-								#apps.appClass
+								apps.appClass
 								,groupPermissionId
 								,permissionCreate
 								,permissionRead
 								,permissionUpdate
 								,permissionDelete
-							FROM #apps
+							FROM apps
 							LEFT JOIN
 								(
 									SELECT
@@ -77,7 +77,7 @@ class AgilePermissionModel{
 										groupId = ?
 								)
 							AS currentGroupPermissions
-							ON #apps.appClass = currentGroupPermissions.appClass
+							ON apps.appClass = currentGroupPermissions.appClass
 							",array($groupId));
 		return $this->database->fetch_all_row();
 	}
@@ -132,10 +132,10 @@ class AgilePermissionModel{
 		$insertData = array(
 			 $groupId
 			,$permission['appClass']
-			,$permission['permissionCreate']
-			,$permission['permissionRead']
-			,$permission['permissionUpdate']
-			,$permission['permissionDelete']
+			,intval(boolval($permission['permissionCreate']))
+			,intval(boolval($permission['permissionRead']))
+			,intval(boolval($permission['permissionUpdate']))
+			,intval(boolval($permission['permissionDelete']))
 		);
 		$this->database->query("INSERT INTO {$this->groupPermissionsTable}
 			(
@@ -152,10 +152,10 @@ class AgilePermissionModel{
 	function updatePermission($permission){
 		$updateData = array(
 			$permission['permissionCreate']
-			,$permission['permissionRead']
-			,$permission['permissionUpdate']
-			,$permission['permissionDelete']
-			,$permission['groupPermissionId']
+			,intval(boolval($permission['permissionCreate']))
+			,intval(boolval($permission['permissionRead']))
+			,intval(boolval($permission['permissionUpdate']))
+			,intval(boolval($permission['permissionDelete']))
 		);
 		$this->database->query("UPDATE {$this->groupPermissionsTable} SET permissionCreate=?,permissionRead=?,permissionUpdate=?,permissionDelete=? WHERE groupPermissionId=?",$updateData);
 	}

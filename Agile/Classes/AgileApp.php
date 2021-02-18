@@ -57,9 +57,9 @@ class AgileApp {
 		$this->SessionManager = new AgileSession($this);
 		$this->SessionManager->initSession();
 
-//		//Permissions
-//		require_once($systemClassPath . 'AgilePermissions.php');
-//		$this->PermissionsManager = new AgilePermissions($this);
+		//Permissions
+		require_once($systemClassPath . 'AgilePermissions.php');
+		$this->PermissionsManager = new AgilePermissions($this);
 
 
 		//Route the Request

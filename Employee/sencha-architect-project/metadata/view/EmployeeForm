@@ -285,6 +285,36 @@
             ]
         },
         {
+            "type": "Ext.form.field.Tag",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "displayField": "groupName",
+                "fieldLabel": "Permissions",
+                "itemId": "permissions",
+                "queryMode": "local",
+                "store": [
+                    "{PermissionStore}"
+                ],
+                "valueField": "groupId",
+                "width": 256
+            },
+            "configAlternates": {
+                "store": "binding",
+                "displayField": "datafield",
+                "fieldLabel": "string",
+                "itemId": "string",
+                "queryMode": "string",
+                "valueField": "datafield",
+                "width": "auto"
+            },
+            "name": "MyTagField",
+            "designerId": "cafd02d4-d0dc-43e2-9c5c-8798f2eac4c8"
+        },
+        {
             "type": "basiceventbinding",
             "reference": {
                 "name": "listeners",
@@ -299,6 +329,15 @@
                     "\taddFn:'createEmployee',",
                     "\tsaveFn:'updateEmployee',",
                     "\tdeleteFn:'deleteEmployee'",
+                    "});",
+                    "",
+                    "AERP.Ajax.request({",
+                    "\turl:'/Employee/readAppInitData',",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore(\"PermissionStore\").loadData(reply.groups);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
                     "});",
                     "",
                     "this.readPositions();"
@@ -386,9 +425,12 @@
             "userConfig": {
                 "fn": "createEmployee",
                 "implHandler": [
+                    "let jsonData = this.docFormGetAllFieldValues();",
+                    "jsonData.permissions = JSON.stringify(jsonData.permissions);",
+                    "",
                     "AERP.Ajax.request({",
                     "\turl:'/Employee/createEmployee',",
-                    "\tjsonData:this.docFormGetAllFieldValues(),",
+                    "\tjsonData:jsonData,",
                     "\tsuccess:function(reply) {",
                     "\t\tthis.readEmployee(reply.data);",
                     "\t\tthis.fireEvent('employeechanged');",
@@ -418,6 +460,7 @@
                 "implHandler": [
                     "let jsonData = this.docFormGetAllFieldValues();",
                     "jsonData.employeeId = this.employeeId;",
+                    "jsonData.permissions = JSON.stringify(jsonData.permissions);",
                     "",
                     "AERP.Ajax.request({",
                     "\turl:'/Employee/updateEmployee',",

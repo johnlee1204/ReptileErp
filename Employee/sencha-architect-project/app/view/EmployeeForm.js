@@ -24,7 +24,7 @@ Ext.define('Employee.view.EmployeeForm', {
 		'Employee.view.EmployeeFormViewModel',
 		'Ext.toolbar.Toolbar',
 		'Ext.form.field.Date',
-		'Ext.form.field.ComboBox'
+		'Ext.form.field.Tag'
 	],
 
 	viewModel: {
@@ -105,6 +105,18 @@ Ext.define('Employee.view.EmployeeForm', {
 			listeners: {
 				afterrender: 'onPositionAfterRender'
 			}
+		},
+		{
+			xtype: 'tagfield',
+			itemId: 'permissions',
+			width: 256,
+			fieldLabel: 'Permissions',
+			displayField: 'groupName',
+			queryMode: 'local',
+			valueField: 'groupId',
+			bind: {
+				store: '{PermissionStore}'
+			}
 		}
 	],
 	listeners: {
@@ -137,6 +149,15 @@ Ext.define('Employee.view.EmployeeForm', {
 			deleteFn:'deleteEmployee'
 		});
 
+		AERP.Ajax.request({
+			url:'/Employee/readAppInitData',
+			success:function(reply) {
+				this.getViewModel().getStore("PermissionStore").loadData(reply.groups);
+			},
+			scope:this,
+			mask:this
+		});
+
 		this.readPositions();
 	},
 
@@ -166,9 +187,12 @@ Ext.define('Employee.view.EmployeeForm', {
 	},
 
 	createEmployee: function() {
+		let jsonData = this.docFormGetAllFieldValues();
+		jsonData.permissions = JSON.stringify(jsonData.permissions);
+
 		AERP.Ajax.request({
 			url:'/Employee/createEmployee',
-			jsonData:this.docFormGetAllFieldValues(),
+			jsonData:jsonData,
 			success:function(reply) {
 				this.readEmployee(reply.data);
 				this.fireEvent('employeechanged');
@@ -181,6 +205,7 @@ Ext.define('Employee.view.EmployeeForm', {
 	updateEmployee: function() {
 		let jsonData = this.docFormGetAllFieldValues();
 		jsonData.employeeId = this.employeeId;
+		jsonData.permissions = JSON.stringify(jsonData.permissions);
 
 		AERP.Ajax.request({
 			url:'/Employee/updateEmployee',

@@ -59,7 +59,8 @@ Ext.define('Schedule.view.LaborForm', {
 		}
 	],
 	listeners: {
-		afterrender: 'onPanelAfterRender'
+		afterrender: 'onPanelAfterRender',
+		docFormStateChanged: 'onPanelDocFormStateChangeD'
 	},
 
 	onPanelAfterRender: function(component, eOpts) {
@@ -68,6 +69,17 @@ Ext.define('Schedule.view.LaborForm', {
 			saveFn:'updateLabor',
 			deleteFn:'deleteLabor'
 		});
+	},
+
+	onPanelDocFormStateChangeD: function(panel) {
+		let readOnlyFields = ['hoursWorked'];
+
+		for(let i in readOnlyFields) {
+			let field = this.queryById(readOnlyFields[i]);
+
+			field.setReadOnly(true);
+			field.addCls('docFormReadOnly');
+		}
 	},
 
 	readLabor: function(laborId) {

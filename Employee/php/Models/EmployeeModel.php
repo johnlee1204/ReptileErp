@@ -24,7 +24,7 @@ class EmployeeModel extends AgileModel{
 	}
 
 	static function readEmployee($employeeId) {
-		return self::$database->fetch_assoc("
+		$employee = self::$database->fetch_assoc("
 			SELECT
 				employeeNumber,
 				userName,
@@ -39,6 +39,9 @@ class EmployeeModel extends AgileModel{
 			WHERE
 				employeeId = ?
 		", [$employeeId]);
+
+		$employee['permissions'] = self::$database->fetch_row("SELECT groupId FROM userGroups WHERE userId = ?", [$employeeId]);
+		return $employee;
 	}
 
 	static function createEmployee($inputs) {
@@ -49,6 +52,8 @@ class EmployeeModel extends AgileModel{
 		if($inputs['terminationDate'] === "") {
 			$inputs['terminationDate'] = NULL;
 		}
+
+		$inputs['groupIds'] = $inputs['permissions'];
 
 		$userModel = self::$agileApp->loadModel('AgileUserModel');
 
@@ -64,21 +69,11 @@ class EmployeeModel extends AgileModel{
 			$inputs['terminationDate'] = NULL;
 		}
 
-		self::$database->update(
-			'Employee',
-			[
-				'employeeNumber' => $inputs['employeeNumber'],
-				'userName' => $inputs['userName'],
-				'firstName' => $inputs['firstName'],
-				'lastName' => $inputs['lastName'],
-				'email' => $inputs['email'],
-				'hireDate' => $inputs['hireDate'],
-				'terminationDate' => $inputs['terminationDate'],
-				'payRate' => $inputs['payRate'],
-				'position' => $inputs['position']
-			],
-			['employeeId' => $inputs['employeeId']]
-		);
+		$inputs['groupIds'] = $inputs['permissions'];
+
+		$userModel = self::$agileApp->loadModel('AgileUserModel');
+
+		return $userModel->updateUser($inputs);
 	}
 
 	static function deleteEmployee($employeeId) {
