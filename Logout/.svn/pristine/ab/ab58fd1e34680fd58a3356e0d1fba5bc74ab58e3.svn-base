@@ -1,0 +1,7 @@
+<?php
+	class Logout extends AgileBaseController{
+		function index(){
+			$this->AgileApp->SessionManager->delete();
+			readfile($_SERVER['DOCUMENT_ROOT'].'/Logout/index.html');
+		}
+	}

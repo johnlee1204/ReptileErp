@@ -75,7 +75,7 @@
             "codeClass": null,
             "userConfig": {
                 "fieldLabel": "User Name",
-                "itemId": "username"
+                "itemId": "userName"
             },
             "configAlternates": {
                 "fieldLabel": "string",
@@ -83,6 +83,24 @@
             },
             "name": "MyTextField4",
             "designerId": "de4f9330-1cd9-4a61-a6cb-f40a22d593f7"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Password",
+                "itemId": "password"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string"
+            },
+            "name": "MyTextField5",
+            "designerId": "9b0c5981-817c-4c4a-b8b6-6e69cb081a5c"
         },
         {
             "type": "Ext.form.field.Text",

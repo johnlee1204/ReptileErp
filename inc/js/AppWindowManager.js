@@ -45,6 +45,15 @@ Ext.define('AppWindowManagerClass', {
 			windowConfig:{
 				title:'Job'
 			}
+		},
+		'userToolbarSetup':{
+			loaderClass:'UserToolbar',
+			loaderPath:'/UserToolbar/app',
+			appClass: 'UserToolbar.view.UserToolbarSetup',
+			dataLoader: 'readUserLinks',
+			windowConfig:{
+				title:'User Toolbar Setup'
+			}
 		}
 	},
 	appLink:function(appId, appConfig){

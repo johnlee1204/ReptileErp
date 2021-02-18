@@ -2,6 +2,7 @@
 
 namespace Employee\Models;
 use AgileModel;
+use AgileUserModel;
 
 class EmployeeModel extends AgileModel{
 	static function readEmployees() {
@@ -9,7 +10,7 @@ class EmployeeModel extends AgileModel{
 			SELECT
 				employeeId,
 				employeeNumber,
-				username,
+				userName,
 				firstName,
 				lastName,
 				email,
@@ -25,7 +26,7 @@ class EmployeeModel extends AgileModel{
 		return self::$database->fetch_assoc("
 			SELECT
 				employeeNumber,
-				username,
+				userName,
 				firstName,
 				lastName,
 				email,
@@ -47,29 +48,9 @@ class EmployeeModel extends AgileModel{
 			$inputs['terminationDate'] = NULL;
 		}
 
-		self::$database->query("
-			INSERT INTO Employee(
-				employeeNumber,
-				username,
-				firstName,
-				lastName,
-				email,
-				hireDate,
-				terminationDate,
-				payRate
-			) VALUES (?,?,?,?,?,?,?,?)
-		", [
-			$inputs['employeeNumber'],
-			$inputs['username'],
-			$inputs['firstName'],
-			$inputs['lastName'],
-			$inputs['email'],
-			$inputs['hireDate'],
-			$inputs['terminationDate'],
-			$inputs['payRate']
-		]);
+		$userModel = self::$agileApp->loadModel('AgileUserModel');
 
-		return self::readMaxEmployee();
+		return $userModel->createUser($inputs);
 	}
 
 	static function updateEmployee($inputs) {
@@ -85,7 +66,7 @@ class EmployeeModel extends AgileModel{
 			UPDATE Employee
 			SET
 				employeeNumber = ?,
-				username = ?,
+				userName = ?,
 				firstName = ?,
 				lastName = ?,
 				email = ?,
@@ -96,7 +77,7 @@ class EmployeeModel extends AgileModel{
 				employeeId = ?
 		", [
 			$inputs['employeeNumber'],
-			$inputs['username'],
+			$inputs['userName'],
 			$inputs['firstName'],
 			$inputs['lastName'],
 			$inputs['email'],

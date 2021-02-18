@@ -32,7 +32,7 @@ Ext.define('Employee.view.EmployeeViewModel', {
 					name: 'employeeNumber'
 				},
 				{
-					name: 'username'
+					name: 'userName'
 				},
 				{
 					name: 'firstName'

@@ -52,10 +52,10 @@ class AgileApp {
 		require_once($systemClassPath . 'AgileRequestRouter.php');
 		$this->RequestRouter = new AgileRequestRouter($this);
 
-		//Session Manager
-		//require_once($systemClassPath . 'AgileSession.php');
-		//$this->SessionManager = new AgileSession($this);
-		//$this->SessionManager->initSession();
+//		Session Manager
+		require_once($systemClassPath . 'AgileSession.php');
+		$this->SessionManager = new AgileSession($this);
+		$this->SessionManager->initSession();
 
 //		//Permissions
 //		require_once($systemClassPath . 'AgilePermissions.php');

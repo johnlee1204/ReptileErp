@@ -27,7 +27,7 @@ Ext.application({
 		'HabitatData'
 	],
 	name: 'PetMaster',
-	title: 'Shwift Reptiles Datebase',
+	title: 'Shwift Reptiles Database',
 
 	launch: function() {
 		Ext.create('PetMaster.view.MyViewport');

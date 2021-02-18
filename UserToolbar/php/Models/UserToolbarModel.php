@@ -113,7 +113,7 @@ class UserToolbarModel extends AgileModel {
 				ToolbarLinks.linkCategory
 			FROM
 			UserToolbarLink
-			JOIN ToolbarLinks ON UserToolBarLink.toolbarLinkId = ToolbarLinks.toolbarLinkId
+			JOIN ToolbarLinks ON UserToolbarLink.toolbarLinkId = ToolbarLinks.toolbarLinkId
 			WHERE
 				UserToolbarLink.userId = ?
 		";
@@ -148,7 +148,7 @@ class UserToolbarModel extends AgileModel {
 				ToolbarLinks.iconPath
 			FROM
 			UserToolbarLink
-			JOIN ToolbarLinks ON UserToolBarLink.toolbarLinkId = ToolbarLinks.toolbarLinkId
+			JOIN ToolbarLinks ON UserToolbarLink.toolbarLinkId = ToolbarLinks.toolbarLinkId
 			WHERE
 				UserToolbarLink.userId = ?
 			ORDER BY linkName 

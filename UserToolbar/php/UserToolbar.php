@@ -5,7 +5,7 @@ use UserToolbar\Models\UserToolbarModel;
 class UserToolbar extends AgileBaseController {
 
 	public function readLoggedInInformation() {
-		$userInfo = FALSE;//$this->AgileApp->SessionManager->getUserDataFromSession();
+		$userInfo = $this->AgileApp->SessionManager->getUserDataFromSession();
 		$output = NULL;
 		$userButtons = [];
 		$allApps = UserToolbarModel::readAllButtonsByCategory();
@@ -13,9 +13,9 @@ class UserToolbar extends AgileBaseController {
 			$output = [
 				'firstName' => $userInfo['firstName'],
 				'lastName' => $userInfo['lastName'],
-				'userId' => $userInfo['userId']
+				'userId' => $userInfo['employeeId']
 			];
-			$userButtons = UserToolbarModel::readUserLinkButtons($userInfo['userId']);
+			$userButtons = UserToolbarModel::readUserLinkButtons($userInfo['employeeId']);
 		}
 
 

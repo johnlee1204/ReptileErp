@@ -1,0 +1,23 @@
+{
+    "type": "Ext.app.Application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "glyphFontFamily": "FontAwesome",
+        "name": "Logout",
+        "views": [
+            "MyViewport",
+            "LogoutPanel"
+        ]
+    },
+    "configAlternates": {
+        "glyphFontFamily": "string",
+        "name": "string",
+        "views": "typedarray"
+    },
+    "name": "Application",
+    "designerId": "application"
+}

@@ -50,8 +50,13 @@ Ext.define('Employee.view.EmployeeForm', {
 		},
 		{
 			xtype: 'textfield',
-			itemId: 'username',
+			itemId: 'userName',
 			fieldLabel: 'User Name'
+		},
+		{
+			xtype: 'textfield',
+			itemId: 'password',
+			fieldLabel: 'Password'
 		},
 		{
 			xtype: 'textfield',

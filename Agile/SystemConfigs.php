@@ -36,14 +36,15 @@ $systemConfigs["router"]["rootClass"] = "Links";
 $systemConfigs["router"]["rootMethod"]  = "redirectToLinks";
 
 $systemConfigs['table'] = array();
-$systemConfigs['table']['users'] = $systemConfigs['database']['systemDatabase'] .'..User';
-//$systemConfigs['table']['userCustomData'] = $systemConfigs['database']['systemDatabase'].'..userCustomData';
-//$systemConfigs['table']['groups'] = $systemConfigs['database']['systemDatabase'] .'..groups';
-//$systemConfigs['table']['userGroups'] = $systemConfigs['database']['systemDatabase'] .'..userGroups';
-//$systemConfigs['table']['sessions'] = $systemConfigs['database']['systemDatabase'] .'..sessions';
-//$systemConfigs['table']['groupPermissions'] = $systemConfigs['database']['systemDatabase'] .'..groupPermissions';
-//$systemConfigs['table']['logAccess'] = $systemConfigs['database']['systemDatabase'] .'..logAccess';
-//$systemConfigs['table']['logException'] = $systemConfigs['database']['systemDatabase'] .'..logException';
+$systemConfigs['table']['users'] = $systemConfigs['database']['systemDatabase'] .'.Employee';
+$systemConfigs['table']['Employee'] = $systemConfigs['database']['systemDatabase'] .'.Employee';
+//$systemConfigs['table']['userCustomData'] = $systemConfigs['database']['systemDatabase'].'.userCustomData';
+//$systemConfigs['table']['groups'] = $systemConfigs['database']['systemDatabase'] .'.groups';
+//$systemConfigs['table']['userGroups'] = $systemConfigs['database']['systemDatabase'] .'.userGroups';
+$systemConfigs['table']['sessions'] = $systemConfigs['database']['systemDatabase'] .'.Sessions';
+//$systemConfigs['table']['groupPermissions'] = $systemConfigs['database']['systemDatabase'] .'.groupPermissions';
+//$systemConfigs['table']['logAccess'] = $systemConfigs['database']['systemDatabase'] .'.logAccess';
+//$systemConfigs['table']['logException'] = $systemConfigs['database']['systemDatabase'] .'.logException';
 
 //$systemConfigs['exceptionEmailErrorTypes'] = array('error','shutdown','exception','useremail');
 

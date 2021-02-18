@@ -19,7 +19,8 @@ class Employee extends AgileBaseController {
 	function createEmployee() {
 		$inputs = Validation::validateJsonInput([
 			'employeeNumber' => 'notBlank',
-			'username' => 'notBlank',
+			'userName' => 'notBlank',
+			'password' => 'notBlank',
 			'firstName' => 'notBlank',
 			'lastName' => 'notBlank',
 			'email',
@@ -35,7 +36,7 @@ class Employee extends AgileBaseController {
 		$inputs = Validation::validateJsonInput([
 			'employeeId' => 'numeric',
 			'employeeNumber' => 'notBlank',
-			'username' => 'notBlank',
+			'userName' => 'notBlank',
 			'firstName' => 'notBlank',
 			'lastName' => 'notBlank',
 			'email',
