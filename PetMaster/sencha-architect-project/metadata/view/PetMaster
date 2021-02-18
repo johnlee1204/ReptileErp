@@ -14,7 +14,7 @@
         "mixins": [
             "['DocForm']"
         ],
-        "title": "Pet Master"
+        "title": "Shwift Reptiles Database"
     },
     "configAlternates": {
         "designer|userAlias": "string",
@@ -165,6 +165,80 @@
                             },
                             "name": "onTypeAfterRender",
                             "designerId": "77eae6f2-e8c0-4d97-be14-f3ed820ded8f"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayField": "status",
+                        "fieldLabel": "Status",
+                        "forceSelection": true,
+                        "itemId": "status",
+                        "labelAlign": "right",
+                        "labelWidth": 60,
+                        "queryMode": "local",
+                        "store": [
+                            "{StatusStore}"
+                        ],
+                        "valueField": "status"
+                    },
+                    "configAlternates": {
+                        "store": "binding",
+                        "displayField": "datafield",
+                        "fieldLabel": "string",
+                        "forceSelection": "boolean",
+                        "itemId": "string",
+                        "labelAlign": "string",
+                        "labelWidth": "number",
+                        "queryMode": "string",
+                        "valueField": "datafield"
+                    },
+                    "name": "MyComboBox4",
+                    "designerId": "e72809e4-d8cb-40e0-94fc-ef6c3be0cedb",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onTypeAfterRender1",
+                                "implHandler": [
+                                    "AppWindowManager.appOn('dropDownSelectionEditor', {",
+                                    "\tscope:this,",
+                                    "\tselectionchanged:function() {",
+                                    "\t\tthis.readPetStatuses();",
+                                    "\t}",
+                                    "});",
+                                    "",
+                                    "component.el.on({",
+                                    "    contextmenu: function(event) {",
+                                    "        event.stopEvent();",
+                                    "        AppWindowManager.appLink('dropDownSelectionEditor', {dataKey:'petStatus'});",
+                                    "    },",
+                                    "    scope:this",
+                                    "});",
+                                    ""
+                                ],
+                                "name": "afterrender",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onTypeAfterRender1",
+                            "designerId": "9608db42-c390-4377-9686-b6797db09560"
                         }
                     ]
                 }
@@ -1216,7 +1290,7 @@
                 "implHandler": [
                     "this.readPetTypes();",
                     "this.readFoodTypes();",
-                    "",
+                    "this.readPetStatuses();",
                     "this.buildNiceGridMenu();",
                     "",
                     "AERP.Ajax.request({",
@@ -1366,6 +1440,34 @@
             },
             "name": "readPetTypes",
             "designerId": "6f0f31f6-f113-4ce4-a841-d4f8b23ece97"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "readPetStatuses",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/DropDownSelectionEditor/readSelectionsForCombo',",
+                    "\tjsonData:{selectionKey:'petStatus'},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore('StatusStore').loadData(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readPetStatuses",
+            "designerId": "e97de7ee-e74e-4fba-ba78-c1157dcae3e1"
         },
         {
             "type": "basicfunction",

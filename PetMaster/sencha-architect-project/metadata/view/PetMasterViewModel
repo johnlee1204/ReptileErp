@@ -91,6 +91,40 @@
             },
             "codeClass": null,
             "userConfig": {
+                "name": "StatusStore"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyStore6",
+            "designerId": "6fd046da-b412-4087-96fa-0503cfb805d9",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "status"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField",
+                    "designerId": "2008896e-6b2f-46cd-a2c4-4d220e0cd98e"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "name": "HabitatStore"
             },
             "configAlternates": {

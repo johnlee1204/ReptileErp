@@ -37,6 +37,13 @@ Ext.define('PetMaster.view.PetMasterViewModel', {
 				}
 			]
 		},
+		StatusStore: {
+			fields: [
+				{
+					name: 'status'
+				}
+			]
+		},
 		HabitatStore: {
 			fields: [
 				{

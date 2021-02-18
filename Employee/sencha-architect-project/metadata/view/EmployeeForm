@@ -1,0 +1,356 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyPadding": 10,
+        "bodyStyle": "background:none",
+        "designer|userAlias": "employeeform",
+        "designer|userClassName": "EmployeeForm",
+        "layout": "vbox",
+        "mixins": [
+            "['DocForm']"
+        ]
+    },
+    "configAlternates": {
+        "bodyPadding": "auto",
+        "bodyStyle": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "layout": "string",
+        "mixins": "object"
+    },
+    "name": "MyPanel",
+    "designerId": "e9dc3894-68b1-4910-a175-504a0559dda2",
+    "viewControllerInstanceId": "928b24d8-cdaa-47cd-be14-2c87cf743a80",
+    "viewModelInstanceId": "e59c5334-8bca-427b-943d-bc9e42d10414",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "itemId": "employeeFormToolbar",
+                "layout|flex": 1
+            },
+            "configAlternates": {
+                "dock": "string",
+                "itemId": "string",
+                "layout|flex": "number"
+            },
+            "name": "MyToolbar",
+            "designerId": "7ca44f98-75e7-41ef-9d34-e06120f6ca07"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Employee No",
+                "itemId": "employeeNumber"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string"
+            },
+            "name": "MyTextField",
+            "designerId": "ca0d8aac-4577-46bd-8081-6d5282118670"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "User Name",
+                "itemId": "username"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string"
+            },
+            "name": "MyTextField4",
+            "designerId": "de4f9330-1cd9-4a61-a6cb-f40a22d593f7"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "First Name",
+                "itemId": "firstName"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string"
+            },
+            "name": "MyTextField3",
+            "designerId": "73e6389f-707b-426f-9d92-9dad6dbe0515"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Last Name",
+                "itemId": "lastName"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string"
+            },
+            "name": "MyTextField1",
+            "designerId": "eeb954ed-7365-4665-b534-bedcef168efd"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Email",
+                "itemId": "email"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string"
+            },
+            "name": "MyTextField2",
+            "designerId": "3688951c-b762-4498-88ea-3759072c978a"
+        },
+        {
+            "type": "Ext.form.field.Date",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Hire Date",
+                "itemId": "hireDate",
+                "submitFormat": "Y-m-d"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string",
+                "submitFormat": "string"
+            },
+            "name": "MyDateField",
+            "designerId": "7d420323-eadb-4a90-8770-861e08c2f062"
+        },
+        {
+            "type": "Ext.form.field.Date",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Termination Date",
+                "itemId": "terminationDate",
+                "submitFormat": "Y-m-d"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string",
+                "submitFormat": "string"
+            },
+            "name": "MyDateField1",
+            "designerId": "f1b76df5-c1f7-4996-bd1f-71da36d9e840"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Pay Rate",
+                "itemId": "payRate"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string"
+            },
+            "name": "MyTextField6",
+            "designerId": "9e68e8cf-7e32-4e4f-8422-d133c77b7011"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.docFormInit({",
+                    "\ttoolbarId:'employeeFormToolbar',",
+                    "\taddFn:'createEmployee',",
+                    "\tsaveFn:'updateEmployee',",
+                    "\tdeleteFn:'deleteEmployee'",
+                    "});"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "2cec14e2-5738-4e41-a7ab-5b8a42fa316b"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "employeeId"
+                ],
+                "fn": "readEmployee",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Employee/readEmployee',",
+                    "\tjsonData:{employeeId:employeeId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.employeeId = employeeId;",
+                    "\t\tthis.docFormLoadFormData(reply);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readEmployee",
+            "designerId": "70951518-32e3-429d-a9bb-1d1dac404598"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "createEmployee",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Employee/createEmployee',",
+                    "\tjsonData:this.docFormGetAllFieldValues(),",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readEmployee(reply.data);",
+                    "\t\tthis.fireEvent('employeechanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "createEmployee",
+            "designerId": "1d99006f-2c6f-44c4-9d4c-c5a0a1d8e7b6"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "updateEmployee",
+                "implHandler": [
+                    "let jsonData = this.docFormGetAllFieldValues();",
+                    "jsonData.employeeId = this.employeeId;",
+                    "",
+                    "AERP.Ajax.request({",
+                    "\turl:'/Employee/updateEmployee',",
+                    "\tjsonData:jsonData,",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readEmployee(this.employeeId);",
+                    "\t\tthis.fireEvent('employeechanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "updateEmployee",
+            "designerId": "10891fac-833f-434c-91cc-093f07ffaff7"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "deleteEmployee",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Employee/deleteEmployee',",
+                    "\tjsonData:{employeeId:this.employeeId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.employeeId = null;",
+                    "\t\tthis.docFormReset();",
+                    "\t\tthis.fireEvent('employeechanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "deleteEmployee",
+            "designerId": "a4226f70-fe77-4968-bbbf-9009104860b2"
+        }
+    ]
+}

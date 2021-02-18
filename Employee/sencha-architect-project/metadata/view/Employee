@@ -1,0 +1,316 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userAlias": "employee",
+        "designer|userClassName": "Employee",
+        "frame": true,
+        "layout": "hbox",
+        "minHeight": 500,
+        "minWidth": 500,
+        "title": "Employee"
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "frame": "boolean",
+        "height": "auto",
+        "title": "string",
+        "width": "auto",
+        "minHeight": "number",
+        "minWidth": "number",
+        "container|align": "string",
+        "layout": "string"
+    },
+    "name": "MyPanel",
+    "designerId": "d38c2cf0-9e53-498a-8521-da773f47156a",
+    "viewControllerInstanceId": "8e77139f-bc05-4a61-ab7b-54ee0eb6e2c6",
+    "viewModelInstanceId": "f565af02-a06d-4dc3-95d1-9c4c266bfbf2",
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "flex": 1,
+                "itemId": "employeeGrid",
+                "store": [
+                    "{EmployeeStore}"
+                ]
+            },
+            "configAlternates": {
+                "store": "binding",
+                "flex": "number",
+                "itemId": "string"
+            },
+            "name": "MyGridPanel",
+            "designerId": "917cc2a4-2451-4a0a-9525-e9fe83660c15",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "top",
+                        "itemId": "employeeToolbar"
+                    },
+                    "configAlternates": {
+                        "dock": "string",
+                        "itemId": "string"
+                    },
+                    "name": "MyToolbar1",
+                    "designerId": "0c5b6179-108f-424a-8182-df1d4a3f1601"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "employeeNumber",
+                        "text": "Employee No."
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyColumn",
+                    "designerId": "d934a948-6c16-423a-b532-bab36640a91e"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "firstName",
+                        "text": "First Name"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyColumn1",
+                    "designerId": "e5e88b19-763a-4e18-ae54-c42ea18cdda5"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "lastName",
+                        "text": "Last Name"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyColumn2",
+                    "designerId": "f42e1ef7-eaee-40e8-8fab-558b934ea7e7"
+                },
+                {
+                    "type": "Ext.grid.column.Date",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "hireDate",
+                        "text": "Hire Date"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyDateColumn",
+                    "designerId": "54f7892a-542f-45c5-9c41-bb3164e6a5ff"
+                },
+                {
+                    "type": "Ext.view.Table",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyTable",
+                    "designerId": "6ce63fd5-2943-45c6-a75a-c58fcb561319"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onGridpanelSelectionChange",
+                        "implHandler": [
+                            "if(!selected || selected.length !== 1) {",
+                            "\treturn;",
+                            "}",
+                            "",
+                            "selected = selected[0];",
+                            "",
+                            "this.queryById('employeeForm').readEmployee(selected.data.employeeId);"
+                        ],
+                        "name": "selectionchange",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onGridpanelSelectionChange",
+                    "designerId": "2d407b3d-5682-4c3c-81c3-f2661661cbd6"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "employeeForm"
+            },
+            "configAlternates": {
+                "itemId": "string"
+            },
+            "name": "employeeform",
+            "designerId": "d42ae7d3-8301-4715-aa2d-69ddda3e99d3",
+            "masterInstanceId": "e9dc3894-68b1-4910-a175-504a0559dda2",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "panel"
+                        ],
+                        "fn": "onPanelEmployeeChangeD",
+                        "implHandler": [
+                            "this.readEmployees();"
+                        ],
+                        "name": "employeechanged",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "designer|params": "typedarray",
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onPanelEmployeeChangeD",
+                    "designerId": "8743f353-0e19-420a-b903-891cf58c97ed"
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.buildNiceGridMenu();",
+                    "this.readEmployees();"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "b39ae4ad-dfaa-4267-aa9a-f08de738ea5b"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "buildNiceGridMenu",
+                "implHandler": [
+                    "Ext.create('NiceGridMenu', {",
+                    "\tmenuItems:[],",
+                    "\tcallbackHandler:function(action, data){},",
+                    "\tfilterField:true,",
+                    "\tgrid:this.queryById('employeeGrid'),",
+                    "\ttoolbar:this.queryById('employeeToolbar'),",
+                    "\tscope:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "buildNiceGridMenu",
+            "designerId": "91726358-9a74-4c91-9db1-bf761008d981"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "readEmployees",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Employee/readEmployees',",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore('EmployeeStore').loadData(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readEmployees",
+            "designerId": "f8690f9f-264a-4198-8e4c-9572de256c90"
+        }
+    ]
+}

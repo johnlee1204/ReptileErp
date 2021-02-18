@@ -38,7 +38,7 @@ Ext.define('PetMaster.view.PetMaster', {
 		type: 'petmaster'
 	},
 	frame: true,
-	title: 'Pet Master',
+	title: 'Shwift Reptiles Database',
 	defaultListenerScope: true,
 
 	layout: {
@@ -83,6 +83,23 @@ Ext.define('PetMaster.view.PetMaster', {
 					},
 					listeners: {
 						afterrender: 'onTypeAfterRender'
+					}
+				},
+				{
+					xtype: 'combobox',
+					itemId: 'status',
+					fieldLabel: 'Status',
+					labelAlign: 'right',
+					labelWidth: 60,
+					displayField: 'status',
+					forceSelection: true,
+					queryMode: 'local',
+					valueField: 'status',
+					bind: {
+						store: '{StatusStore}'
+					},
+					listeners: {
+						afterrender: 'onTypeAfterRender1'
 					}
 				}
 			]
@@ -398,6 +415,24 @@ Ext.define('PetMaster.view.PetMaster', {
 
 	},
 
+	onTypeAfterRender1: function(component, eOpts) {
+		AppWindowManager.appOn('dropDownSelectionEditor', {
+			scope:this,
+			selectionchanged:function() {
+				this.readPetStatuses();
+			}
+		});
+
+		component.el.on({
+		    contextmenu: function(event) {
+		        event.stopEvent();
+		        AppWindowManager.appLink('dropDownSelectionEditor', {dataKey:'petStatus'});
+		    },
+		    scope:this
+		});
+
+	},
+
 	onSexSelect: function(combo, record, eOpts) {
 		this.setSexIcon(record.data.sex);
 	},
@@ -456,7 +491,7 @@ Ext.define('PetMaster.view.PetMaster', {
 	onPanelAfterRender: function(component, eOpts) {
 		this.readPetTypes();
 		this.readFoodTypes();
-
+		this.readPetStatuses();
 		this.buildNiceGridMenu();
 
 		AERP.Ajax.request({
@@ -538,6 +573,18 @@ Ext.define('PetMaster.view.PetMaster', {
 			jsonData:{selectionKey:'petType'},
 			success:function(reply) {
 				this.getViewModel().getStore('PetTypeStore').loadData(reply.data);
+			},
+			scope:this,
+			mask:this
+		});
+	},
+
+	readPetStatuses: function() {
+		AERP.Ajax.request({
+			url:'/DropDownSelectionEditor/readSelectionsForCombo',
+			jsonData:{selectionKey:'petStatus'},
+			success:function(reply) {
+				this.getViewModel().getStore('StatusStore').loadData(reply.data);
 			},
 			scope:this,
 			mask:this

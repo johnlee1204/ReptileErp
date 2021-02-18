@@ -6,15 +6,15 @@
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userClassName": "js_86x96ay4",
+        "designer|userClassName": "js_47203077",
         "includeInBundle": true,
-        "url": "https://canvasjs.com/assets/script/canvasjs.min.js"
+        "url": "/inc/js/docForm/NiceGridMenu.js"
     },
     "configAlternates": {
         "designer|userClassName": "string",
         "includeInBundle": "boolean",
         "url": "uri"
     },
-    "name": "js3",
-    "designerId": "a84e446f-9d20-4618-8fe7-11cc76ad2625"
+    "name": "js1",
+    "designerId": "1d6673bb-a3a3-4208-8f47-7a811036c3b8"
 }

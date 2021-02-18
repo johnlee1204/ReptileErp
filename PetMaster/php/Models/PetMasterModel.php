@@ -24,7 +24,8 @@ class PetMasterModel extends AgileModel {
 				customer,
 				notes,
 				weight,
-				sellPrice
+				sellPrice,
+				status
 			FROM Pet
 			WHERE
 				petId = ?
@@ -74,7 +75,8 @@ class PetMasterModel extends AgileModel {
 				customer,
 				notes,
 				weight,
-				sellPrice
+				sellPrice,
+				status
 			)
 			VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
 		", [
@@ -94,7 +96,8 @@ class PetMasterModel extends AgileModel {
 			$inputs['customer'],
 			$inputs['notes'],
 			$inputs['weight'],
-			$inputs['sellPrice']
+			$inputs['sellPrice'],
+			$inputs['status']
 		]);
 
 		return self::readLatestPetId();
@@ -146,7 +149,8 @@ class PetMasterModel extends AgileModel {
 				customer = ?,
 				notes = ?,
 				weight = ?,
-				sellPrice = ?
+				sellPrice = ?,
+				status = ?
 			WHERE
 				petId = ?
 		", [
@@ -167,6 +171,7 @@ class PetMasterModel extends AgileModel {
 			$inputs['notes'],
 			$inputs['weight'],
 			$inputs['sellPrice'],
+			$inputs['status'],
 			$inputs['petId']
 		]);
 	}

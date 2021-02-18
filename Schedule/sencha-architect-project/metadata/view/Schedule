@@ -1,0 +1,751 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userAlias": "schedule",
+        "designer|userClassName": "Schedule",
+        "frame": true,
+        "layout": "vbox",
+        "minHeight": 500,
+        "minWidth": 500,
+        "title": "Schedule"
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "frame": "boolean",
+        "height": "auto",
+        "title": "string",
+        "width": "auto",
+        "minHeight": "number",
+        "minWidth": "number",
+        "container|align": "string",
+        "layout": "string"
+    },
+    "name": "MyPanel",
+    "designerId": "d38c2cf0-9e53-498a-8521-da773f47156a",
+    "viewControllerInstanceId": "8e77139f-bc05-4a61-ab7b-54ee0eb6e2c6",
+    "viewModelInstanceId": "f565af02-a06d-4dc3-95d1-9c4c266bfbf2",
+    "cn": [
+        {
+            "type": "Ext.tab.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "activeTab": 0,
+                "bodyStyle": "background:none",
+                "flex": 1
+            },
+            "configAlternates": {
+                "activeTab": "auto",
+                "bodyStyle": "string",
+                "flex": "number"
+            },
+            "name": "MyTabPanel",
+            "designerId": "80c0e27a-1fa1-460a-b07e-acfb9f490363",
+            "cn": [
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "bodyStyle": "background:none",
+                        "container|align": "stretch",
+                        "layout": "vbox",
+                        "title": "Schedule"
+                    },
+                    "configAlternates": {
+                        "bodyStyle": "string",
+                        "container|align": "string",
+                        "layout": "string",
+                        "title": "string"
+                    },
+                    "name": "MyPanel",
+                    "designerId": "2da014e5-f29c-4d87-9e72-d1a1779f83d9",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "TabConfig",
+                            "designerId": "97a54cc3-c1ab-48d9-a146-fbe3b54e7117"
+                        },
+                        {
+                            "type": "Ext.grid.Panel",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "flex": 1,
+                                "itemId": "employeeScheduleGrid",
+                                "store": [
+                                    "{EmployeeScheduleStore}"
+                                ]
+                            },
+                            "configAlternates": {
+                                "store": "binding",
+                                "flex": "number",
+                                "itemId": "string"
+                            },
+                            "name": "MyGridPanel",
+                            "designerId": "6299f827-6db8-46ad-91ab-e0ba6de0e86e",
+                            "cn": [
+                                {
+                                    "type": "Ext.grid.column.Column",
+                                    "reference": {
+                                        "name": "columns",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "dataIndex": "employeeNumber",
+                                        "text": "Employee No"
+                                    },
+                                    "configAlternates": {
+                                        "dataIndex": "datafield",
+                                        "text": "string"
+                                    },
+                                    "name": "MyColumn",
+                                    "designerId": "d1ce4190-570e-4e4e-b63e-75412616f4a4"
+                                },
+                                {
+                                    "type": "Ext.grid.column.Column",
+                                    "reference": {
+                                        "name": "columns",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "dataIndex": "firstName",
+                                        "text": "First Name"
+                                    },
+                                    "configAlternates": {
+                                        "dataIndex": "datafield",
+                                        "text": "string"
+                                    },
+                                    "name": "MyColumn1",
+                                    "designerId": "eca4e2c0-069d-4f00-b874-cfb95fce8e17"
+                                },
+                                {
+                                    "type": "Ext.grid.column.Column",
+                                    "reference": {
+                                        "name": "columns",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "dataIndex": "lastName",
+                                        "text": "Last Name"
+                                    },
+                                    "configAlternates": {
+                                        "dataIndex": "datafield",
+                                        "text": "string"
+                                    },
+                                    "name": "MyColumn2",
+                                    "designerId": "dfbbe26e-313c-449a-a17a-080c3627d272"
+                                },
+                                {
+                                    "type": "Ext.grid.column.Date",
+                                    "reference": {
+                                        "name": "columns",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "dataIndex": "currentClockIn",
+                                        "format": "h:ia",
+                                        "text": "Current Clock In"
+                                    },
+                                    "configAlternates": {
+                                        "dataIndex": "datafield",
+                                        "text": "string",
+                                        "format": "string"
+                                    },
+                                    "name": "MyDateColumn",
+                                    "designerId": "bb621db8-90ec-42da-ae9b-fa95feb73f5f"
+                                },
+                                {
+                                    "type": "Ext.view.Table",
+                                    "reference": {
+                                        "name": "viewConfig",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "name": "MyTable",
+                                    "designerId": "c697b315-a522-4899-a91f-c18ea4cd6d7c"
+                                },
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onEmployeeScheduleGridSelectionChange",
+                                        "implHandler": [
+                                            "if(!selected || selected.length !== 1) {",
+                                            "\treturn;",
+                                            "}",
+                                            "",
+                                            "selected = selected[0];",
+                                            "",
+                                            "this.readEmployeeLaborHistory(selected.data.employeeId);"
+                                        ],
+                                        "name": "selectionchange",
+                                        "scope": "me"
+                                    },
+                                    "configAlternates": {
+                                        "fn": "string",
+                                        "implHandler": "code",
+                                        "name": "string",
+                                        "scope": "string"
+                                    },
+                                    "name": "onEmployeeScheduleGridSelectionChange",
+                                    "designerId": "ddcbe8de-ce36-44ea-8d01-eea1348460f5"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.grid.Panel",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "layout|flex": 1,
+                                "store": [
+                                    "{LaborHistoryStore}"
+                                ],
+                                "title": "Labor History"
+                            },
+                            "configAlternates": {
+                                "store": "binding",
+                                "layout|flex": "number",
+                                "title": "string"
+                            },
+                            "name": "MyGridPanel1",
+                            "designerId": "7ce610a9-33d1-4029-bcb1-d2d952cdbe5e",
+                            "cn": [
+                                {
+                                    "type": "Ext.grid.column.Date",
+                                    "reference": {
+                                        "name": "columns",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "dataIndex": "startTime",
+                                        "format": "F j, Y g:i a",
+                                        "text": "Start Time",
+                                        "width": 160
+                                    },
+                                    "configAlternates": {
+                                        "dataIndex": "datafield",
+                                        "text": "string",
+                                        "format": "string",
+                                        "width": "auto"
+                                    },
+                                    "name": "MyDateColumn2",
+                                    "designerId": "c45d517f-e3b4-4b3e-a14d-ff97ef53e5c2"
+                                },
+                                {
+                                    "type": "Ext.grid.column.Date",
+                                    "reference": {
+                                        "name": "columns",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "dataIndex": "endTime",
+                                        "format": "F j, Y g:i a",
+                                        "text": "End Time",
+                                        "width": 160
+                                    },
+                                    "configAlternates": {
+                                        "dataIndex": "datafield",
+                                        "text": "string",
+                                        "format": "string",
+                                        "width": "auto"
+                                    },
+                                    "name": "MyDateColumn3",
+                                    "designerId": "862cc5c4-0fab-4b0a-91c7-ca8ba3d48cbc"
+                                },
+                                {
+                                    "type": "Ext.grid.column.Column",
+                                    "reference": {
+                                        "name": "columns",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "dataIndex": "hoursWorked",
+                                        "text": "Hours Worked"
+                                    },
+                                    "configAlternates": {
+                                        "dataIndex": "datafield",
+                                        "text": "string"
+                                    },
+                                    "name": "MyColumn4",
+                                    "designerId": "9ea88a1e-18f1-49b4-8f0c-f938b6b874be"
+                                },
+                                {
+                                    "type": "Ext.view.Table",
+                                    "reference": {
+                                        "name": "viewConfig",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "name": "MyTable1",
+                                    "designerId": "b506e227-6a15-4496-8da3-7c2457a8fe72"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "bodyPadding": 10,
+                        "bodyStyle": "background:none",
+                        "layout": "vbox",
+                        "title": "Clock In"
+                    },
+                    "configAlternates": {
+                        "bodyPadding": "auto",
+                        "bodyStyle": "string",
+                        "layout": "string",
+                        "title": "string"
+                    },
+                    "name": "MyPanel1",
+                    "designerId": "d26fac6d-12ea-4572-8bdb-869e79bbee2c",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "TabConfig1",
+                            "designerId": "4836d1b5-58c9-4cb6-a3f5-159da05662ed"
+                        },
+                        {
+                            "type": "Ext.form.field.ComboBox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "displayField": "name",
+                                "fieldLabel": "Employee",
+                                "forceSelection": true,
+                                "itemId": "employee",
+                                "queryMode": "local",
+                                "store": [
+                                    "{EmployeeStore}"
+                                ],
+                                "valueField": "employeeId"
+                            },
+                            "configAlternates": {
+                                "store": "binding",
+                                "displayField": "datafield",
+                                "fieldLabel": "string",
+                                "forceSelection": "boolean",
+                                "itemId": "string",
+                                "queryMode": "string",
+                                "valueField": "datafield"
+                            },
+                            "name": "MyComboBox",
+                            "designerId": "a27bbed8-a87e-433b-b0d8-cd1667da5e76",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onEmployeeSelect",
+                                        "implHandler": [
+                                            "this.readClockInDetails();"
+                                        ],
+                                        "name": "select",
+                                        "scope": "me"
+                                    },
+                                    "configAlternates": {
+                                        "fn": "string",
+                                        "implHandler": "code",
+                                        "name": "string",
+                                        "scope": "string"
+                                    },
+                                    "name": "onEmployeeSelect",
+                                    "designerId": "4ff8330f-1ae5-4dd3-af63-cc540d522dfe"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "height": 20,
+                                "itemId": "clockOnDetails"
+                            },
+                            "configAlternates": {
+                                "height": "auto",
+                                "itemId": "string"
+                            },
+                            "name": "MyContainer2",
+                            "designerId": "e684d480-8fb2-480f-9bd1-8c64041bb9d9"
+                        },
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "stretch",
+                                "layout": "hbox",
+                                "margin": "30 0 0 0"
+                            },
+                            "configAlternates": {
+                                "container|align": "string",
+                                "layout": "string",
+                                "margin": "auto"
+                            },
+                            "name": "MyContainer1",
+                            "designerId": "c2546c82-c2c6-440d-aece-23c3f277b9e0",
+                            "cn": [
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "height": 44,
+                                        "layout|flex": 1,
+                                        "text": "Clock On",
+                                        "width": 90
+                                    },
+                                    "configAlternates": {
+                                        "height": "auto",
+                                        "layout|flex": "number",
+                                        "text": "string",
+                                        "width": "auto"
+                                    },
+                                    "name": "MyButton",
+                                    "designerId": "c9e3d61e-0bb1-4bf2-9eaa-fb072957bccd",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onButtonClick",
+                                                "implHandler": [
+                                                    "this.clockOn();"
+                                                ],
+                                                "name": "click",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onButtonClick",
+                                            "designerId": "24801a64-b4b6-48ca-a866-d09d811a47e2"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "layout|flex": 1,
+                                        "margin": "0 0 0 25",
+                                        "text": "Clock Off",
+                                        "width": 90
+                                    },
+                                    "configAlternates": {
+                                        "layout|flex": "number",
+                                        "text": "string",
+                                        "margin": "auto",
+                                        "width": "auto"
+                                    },
+                                    "name": "MyButton1",
+                                    "designerId": "f0bedd8c-5046-4c7d-a918-f84b033d8596",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onButtonClick1",
+                                                "implHandler": [
+                                                    "this.clockOff();"
+                                                ],
+                                                "name": "click",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onButtonClick1",
+                                            "designerId": "2170d354-1495-4289-821b-88878d7f8125"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Schedule/readAppInitData',",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore('EmployeeStore').loadData(reply.employees);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});",
+                    "",
+                    "this.readEmployeeSchedule();"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "b8edcfac-2ddd-49ca-981f-4dedde7c344d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "readEmployeeSchedule",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Schedule/readEmployeeSchedule',",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore('EmployeeScheduleStore').loadData(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readEmployeeSchedule",
+            "designerId": "da90bff9-00d8-4a51-b10f-fb77fada6da6"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "employeeId"
+                ],
+                "fn": "readEmployeeLaborHistory",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Schedule/readEmployeeLaborHistory',",
+                    "\tjsonData:{employeeId:employeeId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore('LaborHistoryStore').loadData(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readEmployeeLaborHistory",
+            "designerId": "afddd066-cd14-4afd-9476-1911ed669dec"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "readClockInDetails",
+                "implHandler": [
+                    "let employee = this.queryById('employee').getValue();",
+                    "",
+                    "if(!employee) {",
+                    "\tExt.Msg.alert(\"Error\", \"Select an Employee!\");",
+                    "\treturn;",
+                    "}",
+                    "",
+                    "AERP.Ajax.request({",
+                    "\turl:'/Schedule/readClockOnDetails',",
+                    "\tjsonData:{employeeId:employee},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.queryById('clockOnDetails').setHtml(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readClockInDetails",
+            "designerId": "e7bd62e2-421d-44f7-ad58-3b93c2724637"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "clockOn",
+                "implHandler": [
+                    "let employee = this.queryById('employee').getValue();",
+                    "",
+                    "if(!employee) {",
+                    "\tExt.Msg.alert(\"Error\", \"Select an Employee!\");",
+                    "\treturn;",
+                    "}",
+                    "",
+                    "AERP.Ajax.request({",
+                    "\turl:'/Schedule/clockOn',",
+                    "\tjsonData:{employeeId:employee},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readClockInDetails();",
+                    "\t\tExt.Msg.alert(\"Success\", \"You are now Clocked On!\");",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "clockOn",
+            "designerId": "e217d60e-0e11-4656-ba4c-8c9de4fb2408"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "clockOff",
+                "implHandler": [
+                    "let employee = this.queryById('employee').getValue();",
+                    "",
+                    "if(!employee) {",
+                    "\tExt.Msg.alert(\"Error\", \"Select an Employee!\");",
+                    "\treturn;",
+                    "}",
+                    "",
+                    "AERP.Ajax.request({",
+                    "\turl:'/Schedule/clockOff',",
+                    "\tjsonData:{employeeId:employee},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readClockInDetails();",
+                    "\t\tExt.Msg.alert(\"Success\", \"You are now Clocked Off!\");",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "clockOff",
+            "designerId": "6d51cb29-c882-4f1e-ae1f-00a5ebe16fe6"
+        }
+    ]
+}

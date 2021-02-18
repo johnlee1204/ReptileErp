@@ -7,6 +7,7 @@
     "codeClass": null,
     "userConfig": {
         "name": "PetMaster",
+        "title": "Shwift Reptiles Datebase",
         "views": [
             "MyViewport",
             "PetMaster",
@@ -16,7 +17,8 @@
     },
     "configAlternates": {
         "name": "string",
-        "views": "typedarray"
+        "views": "typedarray",
+        "title": "string"
     },
     "name": "Application",
     "designerId": "application"
