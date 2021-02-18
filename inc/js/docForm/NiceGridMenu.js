@@ -117,6 +117,7 @@ Ext.define('NiceGridMenu',{
 		if(userConfig.hasOwnProperty('filterField') && userConfig.filterField === true) {
 			this.filterField = Ext.create({
 				xtype:'textfield',
+				itemId:'niceGridMenuFilterField',
 				fieldLabel:'Search',
 				labelWidth:35,
 				width:120,
@@ -351,13 +352,14 @@ Ext.define('NiceGridMenu',{
 		this.config.grid.getStore().filter(niceGridMenuFilter);
 	},
 	filterGrid: function() {
-		var store = this.config.grid.getStore();
-		var filters = [];
-		var included = [];
-		var newValue = this.filterField.getValue();
+		let store = this.config.grid.getStore();
+		let filters = [];
+		let included = [];
+		let newValue = this.filterField.getValue();
 		newValue = newValue.trim();
 
 		if (newValue.length > 0) {
+			let regex = new RegExp(newValue, 'gi');
 			var anyMatch = false;
 			var f = new Ext.util.Filter({
 				filterFn: function(item) {
@@ -370,7 +372,7 @@ Ext.define('NiceGridMenu',{
 						if(this.fieldsToFilter && this.fieldsToFilter.indexOf(i) === -1) {
 							continue;
 						}
-						if((item.data[i]+"").toLowerCase().substring(0,newValue.length) === newValue.toLowerCase()) {
+						if( (item.data[i]+"").match(regex) !== null ){
 							anyMatch = true;
 							return anyMatch;
 						}
