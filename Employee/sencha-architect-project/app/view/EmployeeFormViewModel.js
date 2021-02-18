@@ -15,6 +15,21 @@
 
 Ext.define('Employee.view.EmployeeFormViewModel', {
 	extend: 'Ext.app.ViewModel',
-	alias: 'viewmodel.employeeform'
+	alias: 'viewmodel.employeeform',
+
+	requires: [
+		'Ext.data.Store',
+		'Ext.data.field.Field'
+	],
+
+	stores: {
+		PositionStore: {
+			fields: [
+				{
+					name: 'position'
+				}
+			]
+		}
+	}
 
 });

@@ -268,6 +268,7 @@ class AgileUserModel{
 			'hireDate' => $userData['hireDate'],
 			'terminationDate' => $userData['terminationDate'],
 			'payRate' => $userData['payRate'],
+			'position' => $userData['position'],
 			'employeeNumber' => $userData['employeeNumber']
 		);
 
@@ -289,7 +290,7 @@ class AgileUserModel{
 		}
 
 		$this->database->insert($this->userTable,$insertUserData);
-		$insertResult = $this->database->fetch_assoc("SELECT LAST_INSERT_ID as insertId");
+		$insertResult = $this->database->fetch_assoc("SELECT LAST_INSERT_ID() as insertId");
 //		$groupInserts = array();
 //		if(isset($userData['groupIds'])) {
 //			foreach ($userData['groupIds'] as $groupId) {

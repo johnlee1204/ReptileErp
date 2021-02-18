@@ -51,6 +51,26 @@ class Schedule extends AgileBaseController {
 		$this->outputSuccessData(ScheduleModel::readEmployeeLaborHistory($input['employeeId']));
 	}
 
+	function readLabor() {
+		$input = Validation::validateJsonInput([
+			'laborId' => 'numeric'
+		]);
+
+		$this->outputSuccessData(ScheduleModel::readLabor($input['laborId']));
+	}
+
+	function updateLabor() {
+		$inputs = Validation::validateJsonInput([
+			'laborId' => 'numeric',
+			'startTime' => 'notBlank',
+			'endTime'
+		]);
+
+		ScheduleModel::updateLabor($inputs);
+
+		$this->outputSuccess();
+	}
+
 	function deleteLabor() {
 		$input = Validation::validateJsonInput([
 			'laborId' => 'numeric'

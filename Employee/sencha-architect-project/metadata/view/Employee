@@ -145,6 +145,26 @@
                     "designerId": "54f7892a-542f-45c5-9c41-bb3164e6a5ff"
                 },
                 {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "position",
+                        "text": "Position",
+                        "width": 130
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyColumn3",
+                    "designerId": "908daa51-bf39-450b-83d7-e8e76395fa5a"
+                },
+                {
                     "type": "Ext.view.Table",
                     "reference": {
                         "name": "viewConfig",

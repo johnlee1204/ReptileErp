@@ -9,7 +9,8 @@
         "name": "Schedule",
         "views": [
             "MyViewport",
-            "Schedule"
+            "Schedule",
+            "LaborForm"
         ]
     },
     "configAlternates": {

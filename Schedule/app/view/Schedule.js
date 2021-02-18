@@ -19,6 +19,7 @@ Ext.define('Schedule.view.Schedule', {
 
 	requires: [
 		'Schedule.view.ScheduleViewModel',
+		'Schedule.view.LaborForm',
 		'Ext.tab.Panel',
 		'Ext.tab.Tab',
 		'Ext.grid.Panel',
@@ -81,50 +82,85 @@ Ext.define('Schedule.view.Schedule', {
 									text: 'Last Name'
 								},
 								{
+									xtype: 'gridcolumn',
+									width: 134,
+									dataIndex: 'position',
+									text: 'Position'
+								},
+								{
 									xtype: 'datecolumn',
 									dataIndex: 'currentClockIn',
 									text: 'Current Clock In',
 									format: 'h:ia'
 								}
 							],
+							viewConfig: {
+								getRowClass: function(record, rowIndex, rowParams, store) {
+									if(record.data.currentClockIn !== null) {
+										return 'row-green';
+									}
+								},
+								enableTextSelection: true
+							},
 							listeners: {
 								selectionchange: 'onEmployeeScheduleGridSelectionChange'
 							}
 						},
 						{
-							xtype: 'gridpanel',
+							xtype: 'container',
 							flex: 1,
-							itemId: 'laborHistoryGrid',
-							title: 'Labor History',
-							bind: {
-								store: '{LaborHistoryStore}'
+							layout: {
+								type: 'hbox',
+								align: 'stretch'
 							},
-							dockedItems: [
+							items: [
 								{
-									xtype: 'toolbar',
-									dock: 'top',
-									itemId: 'laborHistoryToolbar'
-								}
-							],
-							columns: [
-								{
-									xtype: 'datecolumn',
-									width: 160,
-									dataIndex: 'startTime',
-									text: 'Start Time',
-									format: 'F j, Y g:i a'
+									xtype: 'gridpanel',
+									flex: 1,
+									itemId: 'laborHistoryGrid',
+									title: 'Labor History',
+									bind: {
+										store: '{LaborHistoryStore}'
+									},
+									dockedItems: [
+										{
+											xtype: 'toolbar',
+											dock: 'top',
+											itemId: 'laborHistoryToolbar'
+										}
+									],
+									columns: [
+										{
+											xtype: 'datecolumn',
+											width: 160,
+											dataIndex: 'startTime',
+											text: 'Start Time',
+											format: 'F j, Y g:i a'
+										},
+										{
+											xtype: 'datecolumn',
+											width: 160,
+											dataIndex: 'endTime',
+											text: 'End Time',
+											format: 'F j, Y g:i a'
+										},
+										{
+											xtype: 'gridcolumn',
+											dataIndex: 'hoursWorked',
+											text: 'Hours Worked'
+										}
+									],
+									listeners: {
+										selectionchange: 'onLaborHistoryGridSelectionChange'
+									}
 								},
 								{
-									xtype: 'datecolumn',
-									width: 160,
-									dataIndex: 'endTime',
-									text: 'End Time',
-									format: 'F j, Y g:i a'
-								},
-								{
-									xtype: 'gridcolumn',
-									dataIndex: 'hoursWorked',
-									text: 'Hours Worked'
+									xtype: 'laborform',
+									flex: 1,
+									itemId: 'laborForm',
+									listeners: {
+										laborchanged: 'onPanelLaborChangeD'
+									}
 								}
 							]
 						}
@@ -204,6 +240,21 @@ Ext.define('Schedule.view.Schedule', {
 		selected = selected[0];
 
 		this.readEmployeeLaborHistory(selected.data.employeeId);
+	},
+
+	onLaborHistoryGridSelectionChange: function(model, selected, eOpts) {
+		if(!selected || selected.length !== 1) {
+			return;
+		}
+
+		selected = selected[0];
+
+		this.queryById('laborForm').readLabor(selected.data.laborId);
+	},
+
+	onPanelLaborChangeD: function(panel) {
+		this.readEmployeeSchedule();
+		this.readEmployeeLaborHistory(this.employeeId);
 	},
 
 	onEmployeeSelect: function(combo, record, eOpts) {
@@ -323,6 +374,7 @@ Ext.define('Schedule.view.Schedule', {
 			jsonData:{employeeId:employee},
 			success:function(reply) {
 				this.readClockInDetails();
+				this.readEmployeeSchedule();
 				Ext.Msg.alert("Success", "You are now Clocked On!");
 			},
 			scope:this,
@@ -343,6 +395,7 @@ Ext.define('Schedule.view.Schedule', {
 			jsonData:{employeeId:employee},
 			success:function(reply) {
 				this.readClockInDetails();
+				this.readEmployeeSchedule();
 				Ext.Msg.alert("Success", "You are now Clocked Off!");
 			},
 			scope:this,

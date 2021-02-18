@@ -161,6 +161,26 @@
                                     "designerId": "dfbbe26e-313c-449a-a17a-080c3627d272"
                                 },
                                 {
+                                    "type": "Ext.grid.column.Column",
+                                    "reference": {
+                                        "name": "columns",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "dataIndex": "position",
+                                        "text": "Position",
+                                        "width": 134
+                                    },
+                                    "configAlternates": {
+                                        "dataIndex": "datafield",
+                                        "text": "string",
+                                        "width": "auto"
+                                    },
+                                    "name": "MyColumn3",
+                                    "designerId": "4ea45566-aefc-43c0-9ace-76290c126f8f"
+                                },
+                                {
                                     "type": "Ext.grid.column.Date",
                                     "reference": {
                                         "name": "columns",
@@ -187,8 +207,45 @@
                                         "type": "object"
                                     },
                                     "codeClass": null,
+                                    "userConfig": {
+                                        "enableTextSelection": true
+                                    },
+                                    "configAlternates": {
+                                        "enableTextSelection": "boolean"
+                                    },
                                     "name": "MyTable",
-                                    "designerId": "c697b315-a522-4899-a91f-c18ea4cd6d7c"
+                                    "designerId": "c697b315-a522-4899-a91f-c18ea4cd6d7c",
+                                    "cn": [
+                                        {
+                                            "type": "fixedfunction",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "record",
+                                                    "rowIndex",
+                                                    "rowParams",
+                                                    "store"
+                                                ],
+                                                "fn": "getRowClass",
+                                                "implHandler": [
+                                                    "if(record.data.currentClockIn !== null) {",
+                                                    "\treturn 'row-green';",
+                                                    "}"
+                                                ]
+                                            },
+                                            "configAlternates": {
+                                                "designer|params": "typedarray",
+                                                "fn": "string",
+                                                "implHandler": "code"
+                                            },
+                                            "name": "getRowClass",
+                                            "designerId": "814f2dd6-cbfe-4a10-bbd7-ba2796d1c48c"
+                                        }
+                                    ]
                                 },
                                 {
                                     "type": "basiceventbinding",
@@ -223,118 +280,220 @@
                             ]
                         },
                         {
-                            "type": "Ext.grid.Panel",
+                            "type": "Ext.container.Container",
                             "reference": {
                                 "name": "items",
                                 "type": "array"
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "itemId": "laborHistoryGrid",
-                                "layout|flex": 1,
-                                "store": [
-                                    "{LaborHistoryStore}"
-                                ],
-                                "title": "Labor History"
+                                "container|align": "stretch",
+                                "layout": "hbox",
+                                "layout|flex": 1
                             },
                             "configAlternates": {
-                                "store": "binding",
-                                "layout|flex": "number",
-                                "title": "string",
-                                "itemId": "string"
+                                "container|align": "string",
+                                "layout": "string",
+                                "layout|flex": "number"
                             },
-                            "name": "MyGridPanel1",
-                            "designerId": "7ce610a9-33d1-4029-bcb1-d2d952cdbe5e",
+                            "name": "MyContainer3",
+                            "designerId": "57ec0ee0-59dd-4af2-904b-b22b6146c755",
                             "cn": [
                                 {
-                                    "type": "Ext.toolbar.Toolbar",
+                                    "type": "Ext.grid.Panel",
                                     "reference": {
-                                        "name": "dockedItems",
+                                        "name": "items",
                                         "type": "array"
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "dock": "top",
-                                        "itemId": "laborHistoryToolbar"
+                                        "itemId": "laborHistoryGrid",
+                                        "layout|flex": 1,
+                                        "store": [
+                                            "{LaborHistoryStore}"
+                                        ],
+                                        "title": "Labor History"
                                     },
                                     "configAlternates": {
-                                        "dock": "string",
+                                        "store": "binding",
+                                        "layout|flex": "number",
+                                        "title": "string",
                                         "itemId": "string"
                                     },
-                                    "name": "MyToolbar",
-                                    "designerId": "a46f0a76-ba99-4c29-9ec3-b914b3528316"
+                                    "name": "MyGridPanel1",
+                                    "designerId": "7ce610a9-33d1-4029-bcb1-d2d952cdbe5e",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.toolbar.Toolbar",
+                                            "reference": {
+                                                "name": "dockedItems",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "dock": "top",
+                                                "itemId": "laborHistoryToolbar"
+                                            },
+                                            "configAlternates": {
+                                                "dock": "string",
+                                                "itemId": "string"
+                                            },
+                                            "name": "MyToolbar",
+                                            "designerId": "a46f0a76-ba99-4c29-9ec3-b914b3528316"
+                                        },
+                                        {
+                                            "type": "Ext.grid.column.Date",
+                                            "reference": {
+                                                "name": "columns",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "dataIndex": "startTime",
+                                                "format": "F j, Y g:i a",
+                                                "text": "Start Time",
+                                                "width": 160
+                                            },
+                                            "configAlternates": {
+                                                "dataIndex": "datafield",
+                                                "text": "string",
+                                                "format": "string",
+                                                "width": "auto"
+                                            },
+                                            "name": "MyDateColumn2",
+                                            "designerId": "c45d517f-e3b4-4b3e-a14d-ff97ef53e5c2"
+                                        },
+                                        {
+                                            "type": "Ext.grid.column.Date",
+                                            "reference": {
+                                                "name": "columns",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "dataIndex": "endTime",
+                                                "format": "F j, Y g:i a",
+                                                "text": "End Time",
+                                                "width": 160
+                                            },
+                                            "configAlternates": {
+                                                "dataIndex": "datafield",
+                                                "text": "string",
+                                                "format": "string",
+                                                "width": "auto"
+                                            },
+                                            "name": "MyDateColumn3",
+                                            "designerId": "862cc5c4-0fab-4b0a-91c7-ca8ba3d48cbc"
+                                        },
+                                        {
+                                            "type": "Ext.grid.column.Column",
+                                            "reference": {
+                                                "name": "columns",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "dataIndex": "hoursWorked",
+                                                "text": "Hours Worked"
+                                            },
+                                            "configAlternates": {
+                                                "dataIndex": "datafield",
+                                                "text": "string"
+                                            },
+                                            "name": "MyColumn4",
+                                            "designerId": "9ea88a1e-18f1-49b4-8f0c-f938b6b874be"
+                                        },
+                                        {
+                                            "type": "Ext.view.Table",
+                                            "reference": {
+                                                "name": "viewConfig",
+                                                "type": "object"
+                                            },
+                                            "codeClass": null,
+                                            "name": "MyTable1",
+                                            "designerId": "b506e227-6a15-4496-8da3-7c2457a8fe72"
+                                        },
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onLaborHistoryGridSelectionChange",
+                                                "implHandler": [
+                                                    "if(!selected || selected.length !== 1) {",
+                                                    "\treturn;",
+                                                    "}",
+                                                    "",
+                                                    "selected = selected[0];",
+                                                    "",
+                                                    "this.queryById('laborForm').readLabor(selected.data.laborId);"
+                                                ],
+                                                "name": "selectionchange",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onLaborHistoryGridSelectionChange",
+                                            "designerId": "9feb4787-9c7e-4712-9632-e6804ed672a4"
+                                        }
+                                    ]
                                 },
                                 {
-                                    "type": "Ext.grid.column.Date",
+                                    "type": "linkedinstance",
                                     "reference": {
-                                        "name": "columns",
+                                        "name": "items",
                                         "type": "array"
                                     },
                                     "codeClass": null,
                                     "userConfig": {
-                                        "dataIndex": "startTime",
-                                        "format": "F j, Y g:i a",
-                                        "text": "Start Time",
-                                        "width": 160
+                                        "itemId": "laborForm",
+                                        "layout|flex": 1
                                     },
                                     "configAlternates": {
-                                        "dataIndex": "datafield",
-                                        "text": "string",
-                                        "format": "string",
-                                        "width": "auto"
+                                        "itemId": "string",
+                                        "layout|flex": "number"
                                     },
-                                    "name": "MyDateColumn2",
-                                    "designerId": "c45d517f-e3b4-4b3e-a14d-ff97ef53e5c2"
-                                },
-                                {
-                                    "type": "Ext.grid.column.Date",
-                                    "reference": {
-                                        "name": "columns",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "dataIndex": "endTime",
-                                        "format": "F j, Y g:i a",
-                                        "text": "End Time",
-                                        "width": 160
-                                    },
-                                    "configAlternates": {
-                                        "dataIndex": "datafield",
-                                        "text": "string",
-                                        "format": "string",
-                                        "width": "auto"
-                                    },
-                                    "name": "MyDateColumn3",
-                                    "designerId": "862cc5c4-0fab-4b0a-91c7-ca8ba3d48cbc"
-                                },
-                                {
-                                    "type": "Ext.grid.column.Column",
-                                    "reference": {
-                                        "name": "columns",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "dataIndex": "hoursWorked",
-                                        "text": "Hours Worked"
-                                    },
-                                    "configAlternates": {
-                                        "dataIndex": "datafield",
-                                        "text": "string"
-                                    },
-                                    "name": "MyColumn4",
-                                    "designerId": "9ea88a1e-18f1-49b4-8f0c-f938b6b874be"
-                                },
-                                {
-                                    "type": "Ext.view.Table",
-                                    "reference": {
-                                        "name": "viewConfig",
-                                        "type": "object"
-                                    },
-                                    "codeClass": null,
-                                    "name": "MyTable1",
-                                    "designerId": "b506e227-6a15-4496-8da3-7c2457a8fe72"
+                                    "name": "laborform",
+                                    "designerId": "cc78db28-db7e-4a13-8db9-73980be4bd1f",
+                                    "masterInstanceId": "25da0455-50eb-4270-aa4e-2f68c67958d0",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "designer|params": [
+                                                    "panel"
+                                                ],
+                                                "fn": "onPanelLaborChangeD",
+                                                "implHandler": [
+                                                    "this.readEmployeeSchedule();",
+                                                    "this.readEmployeeLaborHistory(this.employeeId);"
+                                                ],
+                                                "name": "laborchanged",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "designer|params": "typedarray",
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onPanelLaborChangeD",
+                                            "designerId": "2c999ce5-ff43-43d7-af9a-e517b8437dd7"
+                                        }
+                                    ]
                                 }
                             ]
                         }
@@ -790,6 +949,7 @@
                     "\tjsonData:{employeeId:employee},",
                     "\tsuccess:function(reply) {",
                     "\t\tthis.readClockInDetails();",
+                    "\t\tthis.readEmployeeSchedule();",
                     "\t\tExt.Msg.alert(\"Success\", \"You are now Clocked On!\");",
                     "\t},",
                     "\tscope:this,",
@@ -826,6 +986,7 @@
                     "\tjsonData:{employeeId:employee},",
                     "\tsuccess:function(reply) {",
                     "\t\tthis.readClockInDetails();",
+                    "\t\tthis.readEmployeeSchedule();",
                     "\t\tExt.Msg.alert(\"Success\", \"You are now Clocked Off!\");",
                     "\t},",
                     "\tscope:this,",

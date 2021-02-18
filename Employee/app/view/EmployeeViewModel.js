@@ -51,6 +51,9 @@ Ext.define('Employee.view.EmployeeViewModel', {
 				},
 				{
 					name: 'payRate'
+				},
+				{
+					name: 'position'
 				}
 			]
 		}

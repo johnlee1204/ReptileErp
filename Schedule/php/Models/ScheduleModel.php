@@ -86,7 +86,8 @@ class ScheduleModel extends AgileModel{
 				employeeNumber,
 				firstName,
 				lastName,
-				startTime
+				startTime,
+			    position
 			FROM Employee
 			LEFT JOIN Labor ON Labor.employeeId = Employee.employeeId AND endTime IS NULL 
 			ORDER BY firstName
@@ -131,6 +132,49 @@ class ScheduleModel extends AgileModel{
 		}
 
 		return $output;
+	}
+
+	static function readLabor($laborId) {
+		self::$database->select(
+			'Labor',
+			[
+				'startTime',
+				'endTime',
+				'hoursWorked'
+			],
+			['laborId' => $laborId]
+		);
+
+		return self::$database->fetch_assoc();
+	}
+
+	static function updateLabor($inputs) {
+
+		if($inputs['endTime'] === "") {
+			$inputs['endTime'] = NULL;
+		}
+
+		$labor = self::readLabor($inputs['laborId']);
+
+		$hoursWorked = NULL;
+		if($inputs['endTime'] !== NULL) {
+			$hoursWorked = strtotime($inputs['endTime']) - strtotime($inputs['startTime']);
+			$hoursWorked = $hoursWorked / ( 60 * 60 );
+
+			if($hoursWorked < 0) {
+				throw new AgileUserMessageException("End time must be after Start time!");
+			}
+		}
+
+		self::$database->update(
+			'Labor',
+			[
+				'startTime' => $inputs['startTime'],
+				'endTime' => $inputs['endTime'],
+				'hoursWorked' => $hoursWorked
+			],
+			['laborId' => $inputs['laborId']]
+		);
 	}
 
 	static function deleteLabor($laborId) {

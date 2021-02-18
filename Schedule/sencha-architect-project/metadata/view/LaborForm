@@ -1,0 +1,229 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyPadding": 10,
+        "bodyStyle": "background:none",
+        "designer|userAlias": "laborform",
+        "designer|userClassName": "LaborForm",
+        "layout": "vbox",
+        "mixins": [
+            "['DocForm']"
+        ]
+    },
+    "configAlternates": {
+        "bodyPadding": "auto",
+        "bodyStyle": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "layout": "string",
+        "mixins": "object"
+    },
+    "name": "MyPanel2",
+    "designerId": "25da0455-50eb-4270-aa4e-2f68c67958d0",
+    "viewControllerInstanceId": "b185ad1e-c2c2-4ca7-a8d3-1ed4ded5e75e",
+    "viewModelInstanceId": "71815d24-b26a-4c88-80ec-bd0db01c5351",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "itemId": "laborFormToolbar"
+            },
+            "configAlternates": {
+                "dock": "string",
+                "itemId": "string"
+            },
+            "name": "MyToolbar2",
+            "designerId": "96226051-7d96-4f1b-9e37-81292cc3a08a"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Start Time",
+                "itemId": "startTime"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string"
+            },
+            "name": "MyTextField",
+            "designerId": "0e816394-855f-43b6-aa7d-473b12dd5d27"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "End Time",
+                "itemId": "endTime"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string"
+            },
+            "name": "MyTextField2",
+            "designerId": "71e3024f-e2a5-4335-96cf-be17dd66206c"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Hours Worked",
+                "itemId": "hoursWorked"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string"
+            },
+            "name": "MyTextField1",
+            "designerId": "0b66a5a7-4526-4d2c-b104-e0261630e9b3"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.docFormInit({",
+                    "\ttoolbarId:'laborFormToolbar',",
+                    "\tsaveFn:'updateLabor',",
+                    "\tdeleteFn:'deleteLabor'",
+                    "});"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "cc5a209f-88b9-4bbe-87f6-e5d2b4e423a5"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "laborId"
+                ],
+                "fn": "readLabor",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Schedule/readLabor',",
+                    "\tjsonData:{laborId:laborId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.laborId = laborId;",
+                    "\t\tthis.docFormLoadFormData(reply);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readLabor",
+            "designerId": "4fdd3968-5891-4a63-aafd-77b0abe162d8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "updateLabor",
+                "implHandler": [
+                    "let jsonData = this.docFormGetAllFieldValues();",
+                    "jsonData.laborId = this.laborId;",
+                    "",
+                    "AERP.Ajax.request({",
+                    "\turl:'/Schedule/updateLabor',",
+                    "\tjsonData:jsonData,",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readLabor(this.laborId);",
+                    "\t\tthis.fireEvent('laborchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "updateLabor",
+            "designerId": "8558af16-6288-4622-b16a-573406472856"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "deleteLabor",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Schedule/deleteLabor',",
+                    "\tjsonData:{laborId:this.laborId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.laborId = null;",
+                    "\t\tthis.docFormReset();",
+                    "\t\tthis.fireEvent('laborchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "deleteLabor",
+            "designerId": "c7d53d18-35a1-4757-b090-23ea59cf68c1"
+        }
+    ]
+}

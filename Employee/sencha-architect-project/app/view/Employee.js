@@ -74,6 +74,12 @@ Ext.define('Employee.view.Employee', {
 					xtype: 'datecolumn',
 					dataIndex: 'hireDate',
 					text: 'Hire Date'
+				},
+				{
+					xtype: 'gridcolumn',
+					width: 130,
+					dataIndex: 'position',
+					text: 'Position'
 				}
 			],
 			listeners: {

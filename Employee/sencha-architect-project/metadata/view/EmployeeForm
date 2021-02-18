@@ -215,6 +215,76 @@
             "designerId": "9e68e8cf-7e32-4e4f-8422-d133c77b7011"
         },
         {
+            "type": "Ext.form.field.ComboBox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "displayField": "position",
+                "fieldLabel": "Position",
+                "forceSelection": true,
+                "itemId": "position",
+                "queryMode": "local",
+                "store": [
+                    "{PositionStore}"
+                ],
+                "valueField": "position"
+            },
+            "configAlternates": {
+                "store": "binding",
+                "displayField": "datafield",
+                "fieldLabel": "string",
+                "forceSelection": "boolean",
+                "itemId": "string",
+                "queryMode": "string",
+                "valueField": "datafield"
+            },
+            "name": "MyComboBox",
+            "designerId": "09c73039-f258-4903-8cc0-f50beedcda20",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onPositionAfterRender",
+                        "implHandler": [
+                            "AppWindowManager.appOn('dropDownSelectionEditor', {",
+                            "\tscope:this,",
+                            "\tselectionchanged:function() {",
+                            "\t\tthis.readPositions();",
+                            "\t}",
+                            "});",
+                            "",
+                            "component.el.on({",
+                            "    contextmenu: function(event) {",
+                            "        event.stopEvent();",
+                            "        AppWindowManager.appLink('dropDownSelectionEditor', {dataKey:'position'});",
+                            "    },",
+                            "    scope:this",
+                            "});",
+                            ""
+                        ],
+                        "name": "afterrender",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onPositionAfterRender",
+                    "designerId": "c7fda87e-9074-4e04-882f-2cd11a25fee3"
+                }
+            ]
+        },
+        {
             "type": "basiceventbinding",
             "reference": {
                 "name": "listeners",
@@ -229,7 +299,9 @@
                     "\taddFn:'createEmployee',",
                     "\tsaveFn:'updateEmployee',",
                     "\tdeleteFn:'deleteEmployee'",
-                    "});"
+                    "});",
+                    "",
+                    "this.readPositions();"
                 ],
                 "name": "afterrender",
                 "scope": "me"
@@ -242,6 +314,34 @@
             },
             "name": "onPanelAfterRender",
             "designerId": "2cec14e2-5738-4e41-a7ab-5b8a42fa316b"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "readPositions",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/DropDownSelectionEditor/readSelectionsForCombo',",
+                    "\tjsonData:{selectionKey:'position'},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore('PositionStore').loadData(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readPositions",
+            "designerId": "42eea047-7091-435c-abfb-51ac2b685e06"
         },
         {
             "type": "basicfunction",

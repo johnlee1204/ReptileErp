@@ -52,6 +52,9 @@ Ext.define('Schedule.view.ScheduleViewModel', {
 					name: 'currentClockIn',
 					dateFormat: 'h:ia',
 					dateReadFormat: 'h:ia'
+				},
+				{
+					name: 'position'
 				}
 			]
 		},

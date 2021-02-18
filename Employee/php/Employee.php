@@ -26,7 +26,8 @@ class Employee extends AgileBaseController {
 			'email',
 			'hireDate',
 			'terminationDate',
-			'payRate' => 'numericOrNull'
+			'payRate' => 'numericOrNull',
+			'position'
 		]);
 
 		$this->outputSuccessData(EmployeeModel::createEmployee($inputs));
@@ -42,7 +43,8 @@ class Employee extends AgileBaseController {
 			'email',
 			'hireDate',
 			'terminationDate',
-			'payRate' => 'numericOrNull'
+			'payRate' => 'numericOrNull',
+			'position'
 		]);
 
 		EmployeeModel::updateEmployee($inputs);

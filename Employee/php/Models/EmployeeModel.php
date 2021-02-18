@@ -16,7 +16,8 @@ class EmployeeModel extends AgileModel{
 				email,
 				hireDate,
 				terminationDate,
-				payRate
+				payRate,
+			   	position
 			FROM Employee
 			ORDER BY firstName
 		");
@@ -32,7 +33,8 @@ class EmployeeModel extends AgileModel{
 				email,
 				hireDate,
 				terminationDate,
-				payRate
+				payRate,
+			    position
 			FROM Employee
 			WHERE
 				employeeId = ?
@@ -62,30 +64,21 @@ class EmployeeModel extends AgileModel{
 			$inputs['terminationDate'] = NULL;
 		}
 
-		self::$database->query("
-			UPDATE Employee
-			SET
-				employeeNumber = ?,
-				userName = ?,
-				firstName = ?,
-				lastName = ?,
-				email = ?,
-				hireDate = ?,
-				terminationDate = ?,
-				payRate = ?
-			WHERE
-				employeeId = ?
-		", [
-			$inputs['employeeNumber'],
-			$inputs['userName'],
-			$inputs['firstName'],
-			$inputs['lastName'],
-			$inputs['email'],
-			$inputs['hireDate'],
-			$inputs['terminationDate'],
-			$inputs['payRate'],
-			$inputs['employeeId']
-		]);
+		self::$database->update(
+			'Employee',
+			[
+				'employeeNumber' => $inputs['employeeNumber'],
+				'userName' => $inputs['userName'],
+				'firstName' => $inputs['firstName'],
+				'lastName' => $inputs['lastName'],
+				'email' => $inputs['email'],
+				'hireDate' => $inputs['hireDate'],
+				'terminationDate' => $inputs['terminationDate'],
+				'payRate' => $inputs['payRate'],
+				'position' => $inputs['position']
+			],
+			['employeeId' => $inputs['employeeId']]
+		);
 	}
 
 	static function deleteEmployee($employeeId) {

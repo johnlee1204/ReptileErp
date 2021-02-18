@@ -164,6 +164,22 @@
                     },
                     "name": "MyDate",
                     "designerId": "9f821739-dd05-4ffd-b06b-3318d35528ad"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "position"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField6",
+                    "designerId": "a671fe76-afe7-4732-8800-1e0b305915ed"
                 }
             ]
         },

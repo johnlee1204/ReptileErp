@@ -23,7 +23,8 @@ Ext.define('Employee.view.EmployeeForm', {
 	requires: [
 		'Employee.view.EmployeeFormViewModel',
 		'Ext.toolbar.Toolbar',
-		'Ext.form.field.Date'
+		'Ext.form.field.Date',
+		'Ext.form.field.ComboBox'
 	],
 
 	viewModel: {
@@ -89,10 +90,43 @@ Ext.define('Employee.view.EmployeeForm', {
 			xtype: 'textfield',
 			itemId: 'payRate',
 			fieldLabel: 'Pay Rate'
+		},
+		{
+			xtype: 'combobox',
+			itemId: 'position',
+			fieldLabel: 'Position',
+			displayField: 'position',
+			forceSelection: true,
+			queryMode: 'local',
+			valueField: 'position',
+			bind: {
+				store: '{PositionStore}'
+			},
+			listeners: {
+				afterrender: 'onPositionAfterRender'
+			}
 		}
 	],
 	listeners: {
 		afterrender: 'onPanelAfterRender'
+	},
+
+	onPositionAfterRender: function(component, eOpts) {
+		AppWindowManager.appOn('dropDownSelectionEditor', {
+			scope:this,
+			selectionchanged:function() {
+				this.readPositions();
+			}
+		});
+
+		component.el.on({
+		    contextmenu: function(event) {
+		        event.stopEvent();
+		        AppWindowManager.appLink('dropDownSelectionEditor', {dataKey:'position'});
+		    },
+		    scope:this
+		});
+
 	},
 
 	onPanelAfterRender: function(component, eOpts) {
@@ -101,6 +135,20 @@ Ext.define('Employee.view.EmployeeForm', {
 			addFn:'createEmployee',
 			saveFn:'updateEmployee',
 			deleteFn:'deleteEmployee'
+		});
+
+		this.readPositions();
+	},
+
+	readPositions: function() {
+		AERP.Ajax.request({
+			url:'/DropDownSelectionEditor/readSelectionsForCombo',
+			jsonData:{selectionKey:'position'},
+			success:function(reply) {
+				this.getViewModel().getStore('PositionStore').loadData(reply.data);
+			},
+			scope:this,
+			mask:this
 		});
 	},
 

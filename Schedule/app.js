@@ -22,7 +22,8 @@ Ext.Loader.setConfig({
 Ext.application({
 	views: [
 		'MyViewport',
-		'Schedule'
+		'Schedule',
+		'LaborForm'
 	],
 	name: 'Schedule',
 
