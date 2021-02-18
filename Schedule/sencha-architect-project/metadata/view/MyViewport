@@ -31,6 +31,22 @@
     "viewModelInstanceId": "0202bb2a-4780-44c2-a06f-4de52c206d34",
     "cn": [
         {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|createAlias": "usertoolbar"
+            },
+            "configAlternates": {
+                "designer|createAlias": "string"
+            },
+            "name": "MyToolbar1",
+            "designerId": "af73a2e0-12aa-4826-a2ba-a994b55b65d2"
+        },
+        {
             "type": "Ext.container.Container",
             "reference": {
                 "name": "items",

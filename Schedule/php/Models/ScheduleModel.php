@@ -132,4 +132,11 @@ class ScheduleModel extends AgileModel{
 
 		return $output;
 	}
+
+	static function deleteLabor($laborId) {
+		self::$database->delete(
+			'Labor',
+			['laborId' => $laborId]
+		);
+	}
 }

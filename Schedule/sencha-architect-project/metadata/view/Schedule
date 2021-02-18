@@ -230,6 +230,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "itemId": "laborHistoryGrid",
                                 "layout|flex": 1,
                                 "store": [
                                     "{LaborHistoryStore}"
@@ -239,11 +240,30 @@
                             "configAlternates": {
                                 "store": "binding",
                                 "layout|flex": "number",
-                                "title": "string"
+                                "title": "string",
+                                "itemId": "string"
                             },
                             "name": "MyGridPanel1",
                             "designerId": "7ce610a9-33d1-4029-bcb1-d2d952cdbe5e",
                             "cn": [
+                                {
+                                    "type": "Ext.toolbar.Toolbar",
+                                    "reference": {
+                                        "name": "dockedItems",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "dock": "top",
+                                        "itemId": "laborHistoryToolbar"
+                                    },
+                                    "configAlternates": {
+                                        "dock": "string",
+                                        "itemId": "string"
+                                    },
+                                    "name": "MyToolbar",
+                                    "designerId": "a46f0a76-ba99-4c29-9ec3-b914b3528316"
+                                },
                                 {
                                     "type": "Ext.grid.column.Date",
                                     "reference": {
@@ -558,6 +578,8 @@
             "userConfig": {
                 "fn": "onPanelAfterRender",
                 "implHandler": [
+                    "this.buildNiceGridMenu();",
+                    "",
                     "AERP.Ajax.request({",
                     "\turl:'/Schedule/readAppInitData',",
                     "\tsuccess:function(reply) {",
@@ -580,6 +602,76 @@
             },
             "name": "onPanelAfterRender",
             "designerId": "b8edcfac-2ddd-49ca-981f-4dedde7c344d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "buildNiceGridMenu",
+                "implHandler": [
+                    "Ext.create('NiceGridMenu', {",
+                    "\tmenuItems:[{action:'deleteLabor', text:'Delete Labor', icon:'/inc/img/silk_icons/delete.png', disabled:true}],",
+                    "\tcallbackHandler:function(action, data) {",
+                    "\t\tswitch(action) {",
+                    "\t\t\tcase 'deleteLabor':",
+                    "\t\t\t\tthis.deleteLabor(data.laborId);",
+                    "\t\t\t\tbreak;",
+                    "\t\t}",
+                    "\t},",
+                    "\tfilterField:true,",
+                    "\tgrid:this.queryById('laborHistoryGrid'),",
+                    "\ttoolbar:this.queryById('laborHistoryToolbar'),",
+                    "\tscope:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "buildNiceGridMenu",
+            "designerId": "1e053100-4a4f-4210-8baf-16b5c5c2ca2d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "laborId"
+                ],
+                "fn": "deleteLabor",
+                "implHandler": [
+                    "Ext.Msg.confirm(\"Delete?\", \"Are you sure you want to delete?\", function(button) {",
+                    "\tif(button === \"yes\") {",
+                    "\t\tAERP.Ajax.request({",
+                    "\t\t\turl:\"/Schedule/deleteLabor\",",
+                    "\t\t\tjsonData:{laborId:laborId},",
+                    "\t\t\tsuccess:function(reply) {",
+                    "\t\t\t\tthis.readEmployeeSchedule();",
+                    "\t\t\t\tthis.readEmployeeLaborHistory(this.employeeId);",
+                    "\t\t\t},",
+                    "\t\t\tscope:this,",
+                    "\t\t\tmask:this",
+                    "\t\t});",
+                    "\t}",
+                    "}, this);"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "deleteLabor",
+            "designerId": "80b66b3f-c9ab-4af3-850c-359c0b9ea71e"
         },
         {
             "type": "basicfunction",
@@ -625,6 +717,7 @@
                     "\turl:'/Schedule/readEmployeeLaborHistory',",
                     "\tjsonData:{employeeId:employeeId},",
                     "\tsuccess:function(reply) {",
+                    "\t\tthis.employeeId = employeeId;",
                     "\t\tthis.getViewModel().getStore('LaborHistoryStore').loadData(reply.data);",
                     "\t},",
                     "\tscope:this,",

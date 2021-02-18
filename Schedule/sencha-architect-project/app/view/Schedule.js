@@ -24,6 +24,7 @@ Ext.define('Schedule.view.Schedule', {
 		'Ext.grid.Panel',
 		'Ext.grid.column.Date',
 		'Ext.view.Table',
+		'Ext.toolbar.Toolbar',
 		'Ext.form.field.ComboBox'
 	],
 
@@ -93,15 +94,23 @@ Ext.define('Schedule.view.Schedule', {
 						{
 							xtype: 'gridpanel',
 							flex: 1,
+							itemId: 'laborHistoryGrid',
 							title: 'Labor History',
 							bind: {
 								store: '{LaborHistoryStore}'
 							},
+							dockedItems: [
+								{
+									xtype: 'toolbar',
+									dock: 'top',
+									itemId: 'laborHistoryToolbar'
+								}
+							],
 							columns: [
 								{
 									xtype: 'datecolumn',
-									dataIndex: 'startTime',
 									width: 160,
+									dataIndex: 'startTime',
 									text: 'Start Time',
 									format: 'F j, Y g:i a'
 								},
@@ -210,6 +219,8 @@ Ext.define('Schedule.view.Schedule', {
 	},
 
 	onPanelAfterRender: function(component, eOpts) {
+		this.buildNiceGridMenu();
+
 		AERP.Ajax.request({
 			url:'/Schedule/readAppInitData',
 			success:function(reply) {
@@ -220,6 +231,40 @@ Ext.define('Schedule.view.Schedule', {
 		});
 
 		this.readEmployeeSchedule();
+	},
+
+	buildNiceGridMenu: function() {
+		Ext.create('NiceGridMenu', {
+			menuItems:[{action:'deleteLabor', text:'Delete Labor', icon:'/inc/img/silk_icons/delete.png', disabled:true}],
+			callbackHandler:function(action, data) {
+				switch(action) {
+					case 'deleteLabor':
+						this.deleteLabor(data.laborId);
+						break;
+				}
+			},
+			filterField:true,
+			grid:this.queryById('laborHistoryGrid'),
+			toolbar:this.queryById('laborHistoryToolbar'),
+			scope:this
+		});
+	},
+
+	deleteLabor: function(laborId) {
+		Ext.Msg.confirm("Delete?", "Are you sure you want to delete?", function(button) {
+			if(button === "yes") {
+				AERP.Ajax.request({
+					url:"/Schedule/deleteLabor",
+					jsonData:{laborId:laborId},
+					success:function(reply) {
+						this.readEmployeeSchedule();
+						this.readEmployeeLaborHistory(this.employeeId);
+					},
+					scope:this,
+					mask:this
+				});
+			}
+		}, this);
 	},
 
 	readEmployeeSchedule: function() {
@@ -238,6 +283,7 @@ Ext.define('Schedule.view.Schedule', {
 			url:'/Schedule/readEmployeeLaborHistory',
 			jsonData:{employeeId:employeeId},
 			success:function(reply) {
+				this.employeeId = employeeId;
 				this.getViewModel().getStore('LaborHistoryStore').loadData(reply.data);
 			},
 			scope:this,

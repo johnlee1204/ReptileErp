@@ -50,4 +50,14 @@ class Schedule extends AgileBaseController {
 
 		$this->outputSuccessData(ScheduleModel::readEmployeeLaborHistory($input['employeeId']));
 	}
+
+	function deleteLabor() {
+		$input = Validation::validateJsonInput([
+			'laborId' => 'numeric'
+		]);
+
+		ScheduleModel::deleteLabor($input['laborId']);
+
+		$this->outputSuccess();
+	}
 }

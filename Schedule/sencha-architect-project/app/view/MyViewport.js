@@ -20,6 +20,7 @@ Ext.define('Schedule.view.MyViewport', {
 	requires: [
 		'Schedule.view.MyViewportViewModel',
 		'Schedule.view.Schedule',
+		'Ext.toolbar.Toolbar',
 		'Ext.panel.Panel'
 	],
 
@@ -32,6 +33,9 @@ Ext.define('Schedule.view.MyViewport', {
 		align: 'stretch'
 	},
 	items: [
+		{
+			xtype: 'usertoolbar'
+		},
 		{
 			xtype: 'container',
 			flex: 1,

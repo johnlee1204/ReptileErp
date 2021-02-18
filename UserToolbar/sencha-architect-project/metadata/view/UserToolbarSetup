@@ -1,0 +1,439 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userAlias": "usertoolbarsetup",
+        "designer|userClassName": "UserToolbarSetup",
+        "height": 600,
+        "layout": "vbox",
+        "width": 600
+    },
+    "configAlternates": {
+        "container|align": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "layout": "string",
+        "width": "auto"
+    },
+    "name": "MyPanel",
+    "designerId": "df098bb8-f751-44e1-ac2c-7776c8b03742",
+    "viewControllerInstanceId": "3855f02c-b739-4afc-b338-a383e47776c0",
+    "viewModelInstanceId": "414cc287-737a-441f-b11f-bfe00dd3081e",
+    "cn": [
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "layout": "hbox",
+                "layout|flex": 1
+            },
+            "configAlternates": {
+                "container|align": "string",
+                "layout": "string",
+                "layout|flex": "number"
+            },
+            "name": "MyContainer2",
+            "designerId": "0eb2a7e3-4191-4adf-afa5-9a5fb60ad39b",
+            "cn": [
+                {
+                    "type": "Ext.grid.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "allLinkGrid",
+                        "layout|flex": 1,
+                        "store": [
+                            "{AllLinksStore}"
+                        ],
+                        "title": "All Links"
+                    },
+                    "configAlternates": {
+                        "store": "binding",
+                        "itemId": "string",
+                        "layout|flex": "number",
+                        "title": "string"
+                    },
+                    "name": "MyGridPanel1",
+                    "designerId": "24bc7656-d6e1-4b7b-ad7d-3ca37291f109",
+                    "cn": [
+                        {
+                            "type": "Ext.toolbar.Toolbar",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dock": "top",
+                                "itemId": "allLinkToolbar"
+                            },
+                            "configAlternates": {
+                                "dock": "string",
+                                "itemId": "string"
+                            },
+                            "name": "MyToolbar2",
+                            "designerId": "f6fbd750-eb37-453c-9178-711f1e2f67a0"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "linkName",
+                                "flex": 1,
+                                "text": "App Name"
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "flex": "number",
+                                "text": "string"
+                            },
+                            "name": "MyColumn2",
+                            "designerId": "4b8bbd16-7b78-497f-b4eb-cca092477c64"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "category",
+                                "text": "Category"
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string"
+                            },
+                            "name": "MyColumn6",
+                            "designerId": "7c16cf71-d40c-48eb-bace-ec4a97032c36"
+                        },
+                        {
+                            "type": "Ext.view.Table",
+                            "reference": {
+                                "name": "viewConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "MyTable1",
+                            "designerId": "4b737b2d-6349-4850-939d-f3ca3fc528be"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "userLinkGrid",
+                        "layout|flex": 1,
+                        "store": [
+                            "{UserLinksStore}"
+                        ],
+                        "title": "My Links"
+                    },
+                    "configAlternates": {
+                        "layout|flex": "number",
+                        "title": "string",
+                        "store": "binding",
+                        "itemId": "string"
+                    },
+                    "name": "MyGridPanel2",
+                    "designerId": "1ed93cf6-a5ff-4e64-8f53-757839bc1004",
+                    "cn": [
+                        {
+                            "type": "Ext.toolbar.Toolbar",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dock": "top",
+                                "itemId": "userLinkToolbar"
+                            },
+                            "configAlternates": {
+                                "dock": "string",
+                                "itemId": "string"
+                            },
+                            "name": "MyToolbar3",
+                            "designerId": "6921dead-caba-4887-97c7-3521208ed169"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "linkName",
+                                "flex": 1,
+                                "text": "App Name"
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string",
+                                "flex": "number"
+                            },
+                            "name": "MyColumn2",
+                            "designerId": "f437584f-fba1-4597-939a-2debd365650b"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "category",
+                                "text": "Category"
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string"
+                            },
+                            "name": "MyColumn7",
+                            "designerId": "89ca9922-a9cd-4e92-9254-f00b3c0e6bfb"
+                        },
+                        {
+                            "type": "Ext.view.Table",
+                            "reference": {
+                                "name": "viewConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "MyTable1",
+                            "designerId": "46c3a3a7-1dc4-450f-9b23-9a9cb4f2f2ef"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.fireEvent('appdataloaded');",
+                    "this.buildNiceGridMenus();"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "45357020-7201-4e55-85d0-28d572f8fff7"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "buildNiceGridMenus",
+                "implHandler": [
+                    "Ext.create('NiceGridMenu', {",
+                    "\tmenuItems:[{text:'Add Link', action:'addLink', icon:'/inc/img/silk_icons/add.png', disabled:true}],",
+                    "\tcallbackHandler:function(action, data) {",
+                    "\t\tswitch(action) {",
+                    "\t\t\tcase 'addLink':",
+                    "\t\t\t\tthis.addUserLink(data.toolbarLinkId);",
+                    "\t\t\t\tbreak;",
+                    "\t\t}",
+                    "\t},",
+                    "\tdoubleClick:'addLink',",
+                    "\tgrid:this.queryById('allLinkGrid'),",
+                    "\ttoolbar:this.queryById('allLinkToolbar'),",
+                    "\tfilterField:true,",
+                    "\tscope:this",
+                    "});",
+                    "",
+                    "Ext.create('NiceGridMenu', {",
+                    "\tmenuItems:[{text:'Remove Link', action:'removeLink', icon:'/inc/img/silk_icons/delete.png', disabled:true}],",
+                    "\tcallbackHandler:function(action, data) {",
+                    "\t\tswitch(action) {",
+                    "\t\t\tcase 'removeLink':",
+                    "\t\t\t\tthis.removeUserLink(data.userToolbarLinkId);",
+                    "\t\t\t\tbreak;",
+                    "\t\t}",
+                    "\t},",
+                    "\tdoubleClick:'removeLink',",
+                    "\tgrid:this.queryById('userLinkGrid'),",
+                    "\ttoolbar:this.queryById('userLinkToolbar'),",
+                    "\tfilterField:true,",
+                    "\tscope:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "buildNiceGridMenus",
+            "designerId": "b33da5dd-2be1-4cba-9485-07bf674976f8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "readAllLinks",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/UserToolbar/readAllUnusedLinks',",
+                    "\tjsonData:{userId:this.userId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore('AllLinksStore').loadData(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readAllLinks",
+            "designerId": "682df6dd-e318-4aa9-9088-73e4c687b73e"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "userId"
+                ],
+                "fn": "readUserLinks",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/UserToolbar/readUserLinks',",
+                    "\tjsonData:{userId:userId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.userId = userId;",
+                    "\t\tthis.readAllLinks(userId);",
+                    "\t\tthis.getViewModel().getStore('UserLinksStore').loadData(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "designer|params": "typedarray",
+                "implHandler": "code"
+            },
+            "name": "readUserLinks",
+            "designerId": "cb1a5ddd-78e6-4e28-9c6a-c49488c4ac90"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "toolbarLinkId"
+                ],
+                "fn": "addUserLink",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/UserToolbar/addUserLink',",
+                    "\tjsonData:{userId:this.userId, toolbarLinkId:toolbarLinkId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readUserLinks(this.userId);",
+                    "\t\tthis.fireEvent('userlinkchange');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "addUserLink",
+            "designerId": "c9fcf121-c99c-40e3-bd8d-c2fd7d975611"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "userToolbarLinkId"
+                ],
+                "fn": "removeUserLink",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/UserToolbar/removeUserLink',",
+                    "\tjsonData:{userToolbarLinkId:userToolbarLinkId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readUserLinks(this.userId);",
+                    "\t\tthis.fireEvent('userlinkchange');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "removeUserLink",
+            "designerId": "08e519cb-9d0c-4807-be9a-786963e6724c"
+        }
+    ]
+}
