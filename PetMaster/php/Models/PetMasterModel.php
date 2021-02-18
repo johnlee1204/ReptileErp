@@ -5,31 +5,34 @@ use AgileModel;
 
 class PetMasterModel extends AgileModel {
 	static function readPet($petId) {
-		return self::$database->fetch_assoc("
-			SELECT
-				petId,
-				name,
-				type,
-				price,
-				sex,
-				birthDate,
-				receiveDate,
-				sellDate,
-				vendor,
-				cost,
-				habitatId,
-				food,
-				feedingQuantity,
-				feedingFrequency,
-				customer,
-				notes,
-				weight,
-				sellPrice,
-				status
-			FROM Pet
-			WHERE
-				petId = ?
-		", [$petId]);
+
+		self::$database->select(
+			'Pet',
+			[
+				'petId',
+				'name',
+				'type',
+				'price',
+				'sex',
+				'birthDate',
+				'receiveDate',
+				'sellDate',
+				'vendor',
+				'cost',
+				'habitatId',
+				'food',
+				'feedingQuantity',
+				'feedingFrequency',
+				'customer',
+				'notes',
+				'weight',
+				'sellPrice',
+				'status'
+			],
+			['petId' => $petId]
+		);
+
+		return self::$database->fetch_assoc();
 	}
 
 	static function createPet($inputs) {
@@ -57,48 +60,30 @@ class PetMasterModel extends AgileModel {
 		if($inputs['weight'] === "") {
 			$inputs['weight'] = 0;
 		}
-		self::$database->query("
-			INSERT INTO Pet(
-				name,
-				type,
-				price,
-				sex,
-				birthDate,
-				receiveDate,
-				sellDate,
-				vendor,
-				cost,
-				habitatId,
-				food,
-				feedingQuantity,
-				feedingFrequency,
-				customer,
-				notes,
-				weight,
-				sellPrice,
-				status
-			)
-			VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
-		", [
-			$inputs['name'],
-			$inputs['type'],
-			$inputs['price'],
-			$inputs['sex'],
-			$inputs['birthDate'],
-			$inputs['receiveDate'],
-			$inputs['sellDate'],
-			$inputs['vendor'],
-			$inputs['cost'],
-			$inputs['habitatId'],
-			$inputs['food'],
-			$inputs['feedingQuantity'],
-			$inputs['feedingFrequency'],
-			$inputs['customer'],
-			$inputs['notes'],
-			$inputs['weight'],
-			$inputs['sellPrice'],
-			$inputs['status']
-		]);
+
+		self::$database->insert(
+			'Pet',
+			[
+				'name' => $inputs['name'],
+				'type' => $inputs['type'],
+				'price' => $inputs['price'],
+				'sex' => $inputs['sex'],
+				'birthDate' => $inputs['birthDate'],
+				'receiveDate' => $inputs['receiveDate'],
+				'sellDate' => $inputs['sellDate'],
+				'vendor' => $inputs['vendor'],
+				'cost' => $inputs['cost'],
+				'habitatId' => $inputs['habitatId'],
+				'food' => $inputs['food'],
+				'feedingQuantity' => $inputs['feedingQuantity'],
+				'feedingFrequency' => $inputs['feedingFrequency'],
+				'customer' => $inputs['customer'],
+				'notes' => $inputs['notes'],
+				'weight' => $inputs['weight'],
+				'sellPrice' => $inputs['sellPrice'],
+				'status' => $inputs['status']
+			]
+		);
 
 		return self::readLatestPetId();
 	}
@@ -129,59 +114,39 @@ class PetMasterModel extends AgileModel {
 			$inputs['weight'] = 0;
 		}
 
-
-		self::$database->query("
-			UPDATE Pet
-			SET
-				name = ?,
-				type = ?,
-				price = ?,
-				sex = ?,
-				birthDate = ?,
-				receiveDate = ?,
-				sellDate = ?,
-				vendor = ?,
-				cost = ?,
-				habitatId = ?,
-				food = ?,
-				feedingQuantity = ?,
-				feedingFrequency = ?,
-				customer = ?,
-				notes = ?,
-				weight = ?,
-				sellPrice = ?,
-				status = ?
-			WHERE
-				petId = ?
-		", [
-			$inputs['name'],
-			$inputs['type'],
-			$inputs['price'],
-			$inputs['sex'],
-			$inputs['birthDate'],
-			$inputs['receiveDate'],
-			$inputs['sellDate'],
-			$inputs['vendor'],
-			$inputs['cost'],
-			$inputs['habitatId'],
-			$inputs['food'],
-			$inputs['feedingQuantity'],
-			$inputs['feedingFrequency'],
-			$inputs['customer'],
-			$inputs['notes'],
-			$inputs['weight'],
-			$inputs['sellPrice'],
-			$inputs['status'],
-			$inputs['petId']
-		]);
+		self::$database->update(
+			'Pet',
+			[
+				'name' => $inputs['name'],
+				'type' => $inputs['type'],
+				'price' => $inputs['price'],
+				'sex' => $inputs['sex'],
+				'birthDate' => $inputs['birthDate'],
+				'receiveDate' => $inputs['receiveDate'],
+				'sellDate' => $inputs['sellDate'],
+				'vendor' => $inputs['vendor'],
+				'cost' => $inputs['cost'],
+				'habitatId' => $inputs['habitatId'],
+				'food' => $inputs['food'],
+				'feedingQuantity' => $inputs['feedingQuantity'],
+				'feedingFrequency' => $inputs['feedingFrequency'],
+				'customer' => $inputs['customer'],
+				'notes' => $inputs['notes'],
+				'weight' => $inputs['weight'],
+				'sellPrice' => $inputs['sellPrice'],
+				'status' => $inputs['status']
+			],
+			[
+				'petId' => $inputs['petId']
+			]
+		);
 	}
 
 	static function deletePet($petId) {
-		self::$database->query("
-			DELETE FROM Pet
-			WHERE
-				petId = ?
-		", [$petId]);
+		self::$database->delete(
+			'Pet',
+			['petId' => $petId]
+		);
 	}
 
 	static function readLatestPetId() {
