@@ -20,6 +20,7 @@ Ext.define('PetMaster.view.MyViewport', {
 	requires: [
 		'PetMaster.view.MyViewportViewModel',
 		'PetMaster.view.PetMaster',
+		'Ext.toolbar.Toolbar',
 		'Ext.panel.Panel'
 	],
 
@@ -33,6 +34,9 @@ Ext.define('PetMaster.view.MyViewport', {
 		align: 'stretch'
 	},
 	items: [
+		{
+			xtype: 'usertoolbar'
+		},
 		{
 			xtype: 'container',
 			flex: 1,

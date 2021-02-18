@@ -1,0 +1,20 @@
+{
+    "type": "jsresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "js_hbn122fi",
+        "includeInBundle": true,
+        "url": "/UserToolbar/app/view/UserToolbar.js"
+    },
+    "configAlternates": {
+        "designer|userClassName": "string",
+        "includeInBundle": "boolean",
+        "url": "uri"
+    },
+    "name": "js3",
+    "designerId": "88572f23-e6a8-4e4f-99ef-c623e10e04e8"
+}

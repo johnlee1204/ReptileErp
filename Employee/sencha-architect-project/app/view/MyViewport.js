@@ -20,6 +20,7 @@ Ext.define('Employee.view.MyViewport', {
 	requires: [
 		'Employee.view.MyViewportViewModel',
 		'Employee.view.Employee',
+		'Ext.toolbar.Toolbar',
 		'Ext.panel.Panel'
 	],
 
@@ -32,6 +33,9 @@ Ext.define('Employee.view.MyViewport', {
 		align: 'stretch'
 	},
 	items: [
+		{
+			xtype: 'usertoolbar'
+		},
 		{
 			xtype: 'container',
 			flex: 1,

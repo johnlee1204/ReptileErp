@@ -20,6 +20,7 @@ Ext.define('Habitat.view.MyViewport', {
 	requires: [
 		'Habitat.view.MyViewportViewModel',
 		'Habitat.view.Habitat',
+		'Ext.toolbar.Toolbar',
 		'Ext.panel.Panel'
 	],
 
@@ -32,6 +33,9 @@ Ext.define('Habitat.view.MyViewport', {
 		align: 'stretch'
 	},
 	items: [
+		{
+			xtype: 'usertoolbar'
+		},
 		{
 			xtype: 'container',
 			flex: 1,

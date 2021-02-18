@@ -31,6 +31,22 @@
     "viewModelInstanceId": "0202bb2a-4780-44c2-a06f-4de52c206d34",
     "cn": [
         {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|createAlias": "usertoolbar"
+            },
+            "configAlternates": {
+                "designer|createAlias": "string"
+            },
+            "name": "MyToolbar",
+            "designerId": "d11b78f1-13d5-4ff9-9ffe-8ac069c8d789"
+        },
+        {
             "type": "Ext.container.Container",
             "reference": {
                 "name": "items",
@@ -59,7 +75,7 @@
                         "type": "array"
                     },
                     "codeClass": null,
-                    "name": "Habitat",
+                    "name": "habitat",
                     "designerId": "38b67402-0ac9-4d82-ae03-004462aad200",
                     "masterInstanceId": "d38c2cf0-9e53-498a-8521-da773f47156a"
                 }
