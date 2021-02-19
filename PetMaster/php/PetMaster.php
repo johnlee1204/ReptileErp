@@ -4,6 +4,19 @@ use DropDownSelectionEditor\Models\DropDownSelectionEditorModel;
 use PetMaster\Models\PetMasterModel;
 class PetMaster extends AgileBaseController {
 
+	static $AgilePermissions = [
+		'index' => 'read',
+		'readPet' => 'read',
+		'createPet' => 'create',
+		'updatePet' => 'update',
+		'deletePet' => 'delete',
+		'searchPets' => 'read',
+		'readPetAttachments' => 'read',
+		'readAttachment' => 'read',
+		'uploadAttachment' => 'update',
+		'deleteAttachment' => 'delete'
+	];
+
 	static $allowedExtensions = [
 		'jpg',
 		'jpeg',

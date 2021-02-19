@@ -26,8 +26,7 @@ class mysql_helper
 
 		$result = $statement->get_result();
 		if($result === FALSE) {
-			var_dump($this->connection->error);
-			die();
+			throw new Exception($this->connection->error);
 		}
 		return $result->fetch_assoc();
 	}
@@ -41,8 +40,7 @@ class mysql_helper
 
 		$result = $statement->get_result();
 		if($result === FALSE) {
-			var_dump($this->connection->error);
-			die();
+			throw new Exception($this->connection->error);
 		}
 		return $result->fetch_row();
 	}
@@ -56,8 +54,7 @@ class mysql_helper
 
 		$result = $statement->get_result();
 		if($result === FALSE) {
-			var_dump($this->connection->error);
-			die();
+			throw new Exception($this->connection->error);
 		}
 
 		$output = [];
@@ -76,8 +73,7 @@ class mysql_helper
 
 		$result = $statement->get_result();
 		if($result === FALSE) {
-			var_dump($this->connection->error);
-			die();
+			throw new Exception($this->connection->error);
 		}
 
 		$output = [];
@@ -90,8 +86,7 @@ class mysql_helper
 	public function query($sql, $params = []) {
 		$statement = $this->connection->prepare($sql);
 		if($statement === FALSE) {
-			var_dump($this->connection->error);
-			die();
+			throw new Exception($this->connection->error);
 		}
 
 		$types = "";
@@ -113,8 +108,9 @@ class mysql_helper
 		}
 
 		$statement->execute();
+
 		if($statement->error) {
-			echo $statement->error;
+			throw new Exception($statement->error);
 		}
 		$this->statement = $statement;
 		return $statement;

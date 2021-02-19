@@ -19,7 +19,8 @@ Ext.define('Employee.view.EmployeeViewModel', {
 
 	requires: [
 		'Ext.data.Store',
-		'Ext.data.field.Field'
+		'Ext.data.field.Date',
+		'Ext.util.Sorter'
 	],
 
 	stores: {
@@ -44,7 +45,9 @@ Ext.define('Employee.view.EmployeeViewModel', {
 					name: 'email'
 				},
 				{
-					name: 'hireDate'
+					type: 'date',
+					name: 'hireDate',
+					dateReadFormat: 'Y-m-d'
 				},
 				{
 					name: 'terminationDate'
@@ -55,7 +58,10 @@ Ext.define('Employee.view.EmployeeViewModel', {
 				{
 					name: 'position'
 				}
-			]
+			],
+			sorters: {
+				property: 'employeeNumber'
+			}
 		}
 	}
 

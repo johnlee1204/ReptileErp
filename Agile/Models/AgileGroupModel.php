@@ -52,10 +52,24 @@ class AgileGroupModel{
 	function deleteGroup($groupId){
 		$this->database->query("DELETE FROM {$this->groupTable} WHERE groupId = ?",array($groupId));
 		$this->database->query("DELETE FROM {$this->groupPermissionsTable} WHERE groupId = ?",array($groupId));
-		return $this->database->affected_rows();
 	}
 
 	function getUsersInGroup($groupId){
 		return $this->database->fetch_all_assoc("SELECT userId FROM {$this->userGroupsTable} WHERE groupId = ?",array($groupId));
+	}
+
+	function checkIfUserInGroup($employeeId, $groupName) {
+		$hasPermission = $this->database->fetch_assoc("
+			SELECT
+				userGroupId
+			FROM {$this->userGroupsTable}
+			JOIN {$this->groupTable} ON {$this->groupTable}.groupId = {$this->userGroupsTable}.groupId 
+			WHERE
+				userId = ?
+			AND
+				groupName = ?
+		", [$employeeId, $groupName]);
+
+		return $hasPermission !== NULL;
 	}
 }

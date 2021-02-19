@@ -1,0 +1,375 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userAlias": "finance",
+        "designer|userClassName": "Finance",
+        "frame": true,
+        "layout": "vbox",
+        "minHeight": 500,
+        "minWidth": 500,
+        "title": "Finance"
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "frame": "boolean",
+        "height": "auto",
+        "title": "string",
+        "width": "auto",
+        "minHeight": "number",
+        "minWidth": "number",
+        "container|align": "string",
+        "layout": "string"
+    },
+    "name": "MyPanel",
+    "designerId": "d38c2cf0-9e53-498a-8521-da773f47156a",
+    "viewControllerInstanceId": "8e77139f-bc05-4a61-ab7b-54ee0eb6e2c6",
+    "viewModelInstanceId": "f565af02-a06d-4dc3-95d1-9c4c266bfbf2",
+    "cn": [
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "MyContainer2",
+            "designerId": "954036da-e442-4ed1-a63b-9a4fd25833b3",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Current Balance",
+                        "itemId": "currentBalance",
+                        "margin": 10,
+                        "readOnly": true
+                    },
+                    "configAlternates": {
+                        "formatCurrency": "boolean",
+                        "fieldLabel": "string",
+                        "itemId": "string",
+                        "margin": "auto",
+                        "readOnly": "boolean"
+                    },
+                    "name": "MyTextField2",
+                    "designerId": "c32b5894-539c-4f23-b815-91a23bce4a49"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "flex": 1,
+                "layout": "hbox"
+            },
+            "configAlternates": {
+                "container|align": "string",
+                "flex": "number",
+                "layout": "string"
+            },
+            "name": "MyContainer1",
+            "designerId": "108abf0b-c26c-4017-bebf-ea0f6bc4fc5c",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "itemid",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.grid.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "flex": 1,
+                        "itemId": "ledgerGrid",
+                        "store": [
+                            "{LedgerStore}"
+                        ]
+                    },
+                    "configAlternates": {
+                        "store": "binding",
+                        "flex": "number",
+                        "itemId": "string"
+                    },
+                    "name": "MyGridPanel",
+                    "designerId": "b27f95ce-6a13-4335-973a-3459eec85ea4",
+                    "cn": [
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "amount",
+                                "text": "Amount"
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string"
+                            },
+                            "name": "MyColumn1",
+                            "designerId": "fd43acff-0ada-468b-baf1-dc1675fb1cf6",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "value",
+                                            "metaData",
+                                            "record",
+                                            "rowIndex",
+                                            "colIndex",
+                                            "store",
+                                            "view"
+                                        ],
+                                        "fn": "renderer",
+                                        "implHandler": [
+                                            "return Ext.util.Format.currency(value, \"$\", 2);"
+                                        ]
+                                    },
+                                    "configAlternates": {
+                                        "designer|params": "typedarray",
+                                        "fn": "string",
+                                        "implHandler": "code"
+                                    },
+                                    "name": "renderer",
+                                    "designerId": "7a530e66-e585-4fd2-9872-5401cdd9ac2c"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.grid.column.Date",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "date",
+                                "format": "F j, Y",
+                                "text": "Date",
+                                "width": 129
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "format": "string",
+                                "text": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyDateColumn",
+                            "designerId": "2ebf582a-43b4-452f-9120-0b2eb15d5020"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "name",
+                                "text": "Entered By"
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string"
+                            },
+                            "name": "MyColumn",
+                            "designerId": "74019b0c-81c9-48e4-aa56-fcdcdba84525"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "notes",
+                                "text": "Notes",
+                                "width": 300
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyColumn2",
+                            "designerId": "ec4a8aaa-cff5-41dd-966e-513fe75b7bd1"
+                        },
+                        {
+                            "type": "Ext.view.Table",
+                            "reference": {
+                                "name": "viewConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "MyTable",
+                            "designerId": "939631a3-cfae-439a-b11d-531d456bb8e0"
+                        },
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onLedgerGridSelectionChange",
+                                "implHandler": [
+                                    "if(!selected || selected.length !== 1) {",
+                                    "\treturn;",
+                                    "}",
+                                    "",
+                                    "selected = selected[0];",
+                                    "",
+                                    "this.queryById('transactionForm').readTransaction(selected.data.ledgerId);"
+                                ],
+                                "name": "selectionchange",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onLedgerGridSelectionChange",
+                            "designerId": "d4fac21e-2585-40b3-8113-7db25c5930e7"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "transactionForm",
+                        "layout|flex": 1
+                    },
+                    "configAlternates": {
+                        "itemId": "string",
+                        "layout|flex": "number"
+                    },
+                    "name": "transactionform",
+                    "designerId": "4e2ebbed-4bfb-4c76-b466-120dcf82b256",
+                    "masterInstanceId": "3574517c-9578-470c-b1ba-f6802801396a",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "panel"
+                                ],
+                                "fn": "onPanelLedgerChangeD",
+                                "implHandler": [
+                                    "this.readLedger();"
+                                ],
+                                "name": "ledgerchanged",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "designer|params": "typedarray",
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onPanelLedgerChangeD",
+                            "designerId": "f2c8c883-1223-416e-9469-4d1e9b9b83c9"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.readLedger();"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "5a88d561-9f7d-448b-a37c-7e00c1813f9e"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "readLedger",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Finance/readLedger',",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore('LedgerStore').loadData(reply.data);",
+                    "\t\tthis.queryById('currentBalance').setValue(Ext.util.Format.currency(reply.currentBalance, \"$\", 2));",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readLedger",
+            "designerId": "6f57ff5b-e20e-402c-81d4-1e9def5f2e10"
+        }
+    ]
+}

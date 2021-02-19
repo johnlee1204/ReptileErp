@@ -80,6 +80,17 @@ class ScheduleModel extends AgileModel{
 	}
 
 	static function readEmployeeSchedule() {
+		$userInformation = self::$agileApp->SessionManager->getUserDataFromSession();
+		$groupModel = self::$agileApp->loadModel('AgileGroupModel');
+		$viewAll = $groupModel->checkIfUserInGroup($userInformation['employeeId'], "Schedule Admin");
+
+		$where = "";
+		$params = [];
+		if(!$viewAll) {
+			$where = "WHERE Employee.employeeId = ?";
+			$params[] = $userInformation['employeeId'];
+		}
+
 		$employees = self::$database->fetch_all_assoc("
 			SELECT
 				Employee.employeeId,
@@ -89,9 +100,10 @@ class ScheduleModel extends AgileModel{
 				startTime,
 			    position
 			FROM Employee
-			LEFT JOIN Labor ON Labor.employeeId = Employee.employeeId AND endTime IS NULL 
+			LEFT JOIN Labor ON Labor.employeeId = Employee.employeeId AND endTime IS NULL	
+				{$where}
 			ORDER BY firstName
-		");
+		", $params);
 
 		$output = [];
 		foreach($employees as $employee) {

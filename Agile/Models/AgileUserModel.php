@@ -14,9 +14,9 @@ class AgileUserModel{
 
 	function init(){
 		$this->userTable = $this->AgileApp->systemConfigs['table']['Employee'];
-//		$this->userGroupsTable = $this->AgileApp->systemConfigs['table']['userGroups'];
-//		$this->groupTable = $this->AgileApp->systemConfigs['table']['groups'];
-//		$this->userCustomDataTable = $this->AgileApp->systemConfigs["database"]["systemDatabase"].'..userCustomData';
+		$this->userGroupsTable = $this->AgileApp->systemConfigs['table']['userGroups'];
+		$this->groupTable = $this->AgileApp->systemConfigs['table']['groups'];
+		$this->userCustomDataTable = $this->AgileApp->systemConfigs["database"]["systemDatabase"].'..userCustomData';
 		$this->database = $this->AgileApp->systemDb;
 	}
 
@@ -162,6 +162,7 @@ class AgileUserModel{
 	}
 
 	function updateUser($userId, $userData){
+
 		$overlap = $this->database->fetch_all_assoc("SELECT userName from {$this->userTable} WHERE userName = ? AND employeeId <> ?",array(strtolower($userData['userName']),$userId));
 		if(count($overlap) !== 0){
 			throw new AgileUserMessageException('Username Taken');
@@ -183,6 +184,9 @@ class AgileUserModel{
 
 		$groupInserts = array();
 		$groupInsertValues = array();
+		if(!is_array($userData['groupIds'])) {
+			$userData['groupIds'] = [];
+		}
 		foreach($userData['groupIds'] as $groupId){
 			if(!is_numeric($groupId)){
 				throw new Exception('Invalid GroupId\'s');
@@ -193,6 +197,7 @@ class AgileUserModel{
 		}
 
 		$admin = false;
+
 		if(isset($userData['admin'])){
 			$admin = $userData['admin'];
 		}
@@ -214,9 +219,9 @@ class AgileUserModel{
 		if(!isset($userData['password'])|| $userData['password'] == ''){
 			$userData['password'] = NULL;
 		}
-		if($userData['password'] == NULL && !$userData['ldapUser'] && (trim($user['passwordSalt']) === '' || trim($user['passwordHash']) === '')){
-			throw new AgileUserMessageException('You need to set a password if you are disabling LDAP');
-		}
+//		if($userData['password'] == NULL && !$userData['ldapUser'] && (trim($user['passwordSalt']) === '' || trim($user['passwordHash']) === '')){
+//			throw new AgileUserMessageException('You need to set a password if you are disabling LDAP');
+//		}
 
 		if($userData['password'] !== NULL && $userData['ldapUser']){
 			throw new AgileUserMessageException('Do not set passwords on LDAP users');
@@ -227,15 +232,15 @@ class AgileUserModel{
 			$updateUserData['passwordHash'] = $this->generatePasswordHash($userData['password'], $updateUserData['passwordSalt']);
 		}
 
-		if($userData['ldapUser']){
-			$updateUserData['passwordSalt'] = '';
-			$updateUserData['passwordHash'] = '';
-		}
+//		if($userData['ldapUser']){
+//			$updateUserData['passwordSalt'] = '';
+//			$updateUserData['passwordHash'] = '';
+//		}
 
 		$this->database->update($this->userTable,$updateUserData,array('employeeId' => $userId));
-		$this->database->delete($this->userGroupsTable,array('employeeId' => $userId));
+		$this->database->delete($this->userGroupsTable,array('userId' => $userId));
 		if(count($groupInserts) > 0) {
-			$this->database->query("INSERT INTO {$this->userGroupsTable} (employeeId,groupId) VALUES (" . implode("),(", $groupInserts) . ")",$groupInsertValues);
+			$this->database->query("INSERT INTO {$this->userGroupsTable} (userId,groupId) VALUES (" . implode("),(", $groupInserts) . ")",$groupInsertValues);
 		}
 		return true;
 	}

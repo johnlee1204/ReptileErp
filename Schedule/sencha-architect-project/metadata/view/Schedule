@@ -532,62 +532,6 @@
                             "designerId": "4836d1b5-58c9-4cb6-a3f5-159da05662ed"
                         },
                         {
-                            "type": "Ext.form.field.ComboBox",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "displayField": "name",
-                                "fieldLabel": "Employee",
-                                "forceSelection": true,
-                                "itemId": "employee",
-                                "queryMode": "local",
-                                "store": [
-                                    "{EmployeeStore}"
-                                ],
-                                "valueField": "employeeId"
-                            },
-                            "configAlternates": {
-                                "store": "binding",
-                                "displayField": "datafield",
-                                "fieldLabel": "string",
-                                "forceSelection": "boolean",
-                                "itemId": "string",
-                                "queryMode": "string",
-                                "valueField": "datafield"
-                            },
-                            "name": "MyComboBox",
-                            "designerId": "a27bbed8-a87e-433b-b0d8-cd1667da5e76",
-                            "cn": [
-                                {
-                                    "type": "basiceventbinding",
-                                    "reference": {
-                                        "name": "listeners",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "fn": "onEmployeeSelect",
-                                        "implHandler": [
-                                            "this.readClockInDetails();"
-                                        ],
-                                        "name": "select",
-                                        "scope": "me"
-                                    },
-                                    "configAlternates": {
-                                        "fn": "string",
-                                        "implHandler": "code",
-                                        "name": "string",
-                                        "scope": "string"
-                                    },
-                                    "name": "onEmployeeSelect",
-                                    "designerId": "4ff8330f-1ae5-4dd3-af63-cc540d522dfe"
-                                }
-                            ]
-                        },
-                        {
                             "type": "Ext.container.Container",
                             "reference": {
                                 "name": "items",
@@ -748,7 +692,8 @@
                     "\tmask:this",
                     "});",
                     "",
-                    "this.readEmployeeSchedule();"
+                    "this.readEmployeeSchedule();",
+                    "this.readClockInDetails();"
                 ],
                 "name": "afterrender",
                 "scope": "me"
@@ -902,16 +847,8 @@
             "userConfig": {
                 "fn": "readClockInDetails",
                 "implHandler": [
-                    "let employee = this.queryById('employee').getValue();",
-                    "",
-                    "if(!employee) {",
-                    "\tExt.Msg.alert(\"Error\", \"Select an Employee!\");",
-                    "\treturn;",
-                    "}",
-                    "",
                     "AERP.Ajax.request({",
                     "\turl:'/Schedule/readClockOnDetails',",
-                    "\tjsonData:{employeeId:employee},",
                     "\tsuccess:function(reply) {",
                     "\t\tthis.queryById('clockOnDetails').setHtml(reply.data);",
                     "\t},",
@@ -937,16 +874,8 @@
             "userConfig": {
                 "fn": "clockOn",
                 "implHandler": [
-                    "let employee = this.queryById('employee').getValue();",
-                    "",
-                    "if(!employee) {",
-                    "\tExt.Msg.alert(\"Error\", \"Select an Employee!\");",
-                    "\treturn;",
-                    "}",
-                    "",
                     "AERP.Ajax.request({",
                     "\turl:'/Schedule/clockOn',",
-                    "\tjsonData:{employeeId:employee},",
                     "\tsuccess:function(reply) {",
                     "\t\tthis.readClockInDetails();",
                     "\t\tthis.readEmployeeSchedule();",
@@ -974,16 +903,8 @@
             "userConfig": {
                 "fn": "clockOff",
                 "implHandler": [
-                    "let employee = this.queryById('employee').getValue();",
-                    "",
-                    "if(!employee) {",
-                    "\tExt.Msg.alert(\"Error\", \"Select an Employee!\");",
-                    "\treturn;",
-                    "}",
-                    "",
                     "AERP.Ajax.request({",
                     "\turl:'/Schedule/clockOff',",
-                    "\tjsonData:{employeeId:employee},",
                     "\tsuccess:function(reply) {",
                     "\t\tthis.readClockInDetails();",
                     "\t\tthis.readEmployeeSchedule();",

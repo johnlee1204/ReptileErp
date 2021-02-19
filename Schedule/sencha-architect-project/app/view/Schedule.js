@@ -25,8 +25,7 @@ Ext.define('Schedule.view.Schedule', {
 		'Ext.grid.Panel',
 		'Ext.grid.column.Date',
 		'Ext.view.Table',
-		'Ext.toolbar.Toolbar',
-		'Ext.form.field.ComboBox'
+		'Ext.toolbar.Toolbar'
 	],
 
 	viewModel: {
@@ -156,8 +155,8 @@ Ext.define('Schedule.view.Schedule', {
 								},
 								{
 									xtype: 'laborform',
-									flex: 1,
 									itemId: 'laborForm',
+									flex: 1,
 									listeners: {
 										laborchanged: 'onPanelLaborChangeD'
 									}
@@ -173,21 +172,6 @@ Ext.define('Schedule.view.Schedule', {
 					bodyStyle: 'background:none',
 					title: 'Clock In',
 					items: [
-						{
-							xtype: 'combobox',
-							itemId: 'employee',
-							fieldLabel: 'Employee',
-							displayField: 'name',
-							forceSelection: true,
-							queryMode: 'local',
-							valueField: 'employeeId',
-							bind: {
-								store: '{EmployeeStore}'
-							},
-							listeners: {
-								select: 'onEmployeeSelect'
-							}
-						},
 						{
 							xtype: 'container',
 							height: 20,
@@ -257,10 +241,6 @@ Ext.define('Schedule.view.Schedule', {
 		this.readEmployeeLaborHistory(this.employeeId);
 	},
 
-	onEmployeeSelect: function(combo, record, eOpts) {
-		this.readClockInDetails();
-	},
-
 	onButtonClick: function(button, e, eOpts) {
 		this.clockOn();
 	},
@@ -282,6 +262,7 @@ Ext.define('Schedule.view.Schedule', {
 		});
 
 		this.readEmployeeSchedule();
+		this.readClockInDetails();
 	},
 
 	buildNiceGridMenu: function() {
@@ -343,16 +324,8 @@ Ext.define('Schedule.view.Schedule', {
 	},
 
 	readClockInDetails: function() {
-		let employee = this.queryById('employee').getValue();
-
-		if(!employee) {
-			Ext.Msg.alert("Error", "Select an Employee!");
-			return;
-		}
-
 		AERP.Ajax.request({
 			url:'/Schedule/readClockOnDetails',
-			jsonData:{employeeId:employee},
 			success:function(reply) {
 				this.queryById('clockOnDetails').setHtml(reply.data);
 			},
@@ -362,16 +335,8 @@ Ext.define('Schedule.view.Schedule', {
 	},
 
 	clockOn: function() {
-		let employee = this.queryById('employee').getValue();
-
-		if(!employee) {
-			Ext.Msg.alert("Error", "Select an Employee!");
-			return;
-		}
-
 		AERP.Ajax.request({
 			url:'/Schedule/clockOn',
-			jsonData:{employeeId:employee},
 			success:function(reply) {
 				this.readClockInDetails();
 				this.readEmployeeSchedule();
@@ -383,16 +348,8 @@ Ext.define('Schedule.view.Schedule', {
 	},
 
 	clockOff: function() {
-		let employee = this.queryById('employee').getValue();
-
-		if(!employee) {
-			Ext.Msg.alert("Error", "Select an Employee!");
-			return;
-		}
-
 		AERP.Ajax.request({
 			url:'/Schedule/clockOff',
-			jsonData:{employeeId:employee},
 			success:function(reply) {
 				this.readClockInDetails();
 				this.readEmployeeSchedule();

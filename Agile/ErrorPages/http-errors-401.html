@@ -1,3 +1,9 @@
+<script>
+	function goBack() {
+		window.location.href = document.referrer;
+	}
+</script>
+
 <style>
 	.logoutBtn{
 		margin-left: auto;
@@ -30,6 +36,8 @@
 		<br />
 		<img src="/Agile/ErrorPages/http-errors-401_blocked.jpg">
 		<br />
-		<a class="logoutBtn" href="/logout?redirect={class}/{method}">Logout</a>
+		<a class="logoutBtn" href="/Logout?redirect={class}/{method}">Logout</a>
+		<br />
+		<button class="logoutBtn" onclick="goBack()">Go Back</button>
 	</center>
 </div>

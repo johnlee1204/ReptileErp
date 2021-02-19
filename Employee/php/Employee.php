@@ -5,6 +5,16 @@ use Employee\Models\EmployeeModel;
 
 class Employee extends AgileBaseController {
 
+	static $AgilePermissions = [
+		'index' => 'read',
+		'readAppInitData' => 'read',
+		'readEmployees' => 'read',
+		'readEmployee' => 'read',
+		'createEmployee' => 'create',
+		'updateEmployee' => 'update',
+		'deleteEmployee' => 'delete',
+	];
+
 	function readAppInitData() {
 		$groupModel = $this->loadModel('AgileGroupModel');
 		$groupsAssoc = $groupModel->getAllGroupsArray();
@@ -76,5 +86,13 @@ class Employee extends AgileBaseController {
 		EmployeeModel::deleteEmployee($input['employeeId']);
 
 		$this->outputSuccess();
+	}
+
+	function createSchedule() {
+		$inputs = Validation::validateJsonInput([
+			'employeeId' => 'notBlank',
+			'startTime' => 'notBlank',
+			'endTime' => 'notBlank'
+		]);
 	}
 }

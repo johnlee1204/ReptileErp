@@ -1,0 +1,269 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyPadding": 10,
+        "bodyStyle": "background:none",
+        "designer|userAlias": "transactionform",
+        "designer|userClassName": "TransactionForm",
+        "mixins": [
+            "['DocForm']"
+        ]
+    },
+    "configAlternates": {
+        "bodyPadding": "auto",
+        "bodyStyle": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "mixins": "object"
+    },
+    "name": "MyPanel",
+    "designerId": "3574517c-9578-470c-b1ba-f6802801396a",
+    "viewControllerInstanceId": "3b196be2-93e7-4e8b-b224-ee3615d158df",
+    "viewModelInstanceId": "dc9d098c-43cc-4576-80e4-59a487befd70",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "itemId": "transactionFormToolbar"
+            },
+            "configAlternates": {
+                "dock": "string",
+                "itemId": "string"
+            },
+            "name": "MyToolbar1",
+            "designerId": "ebee48c5-650a-4d37-b566-88170656fe87"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Amount",
+                "formatCurrency": true,
+                "itemId": "amount"
+            },
+            "configAlternates": {
+                "formatCurrency": "boolean",
+                "fieldLabel": "string",
+                "itemId": "string"
+            },
+            "name": "MyTextField",
+            "designerId": "c808494f-d020-41f0-bbc2-24fff7c7168a",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "formatCurrency",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.field.Date",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Date",
+                "format": "Y-m-d",
+                "itemId": "transactionDate"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "format": "string",
+                "itemId": "string"
+            },
+            "name": "MyDateField",
+            "designerId": "0ff2985c-631a-4ab3-8620-5dee001031cb"
+        },
+        {
+            "type": "Ext.form.field.TextArea",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Notes",
+                "itemId": "notes"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string"
+            },
+            "name": "MyTextArea",
+            "designerId": "d85a69ca-374e-4fee-9285-9aa07a281de8"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.docFormInit({",
+                    "\ttoolbarId:'transactionFormToolbar',",
+                    "\taddFn:'createTransaction',",
+                    "\tsaveFn:'updateTransaction',",
+                    "\tdeleteFn:'deleteTransaction'",
+                    "});"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "6616bfbc-b88c-47ba-9bbf-7dcc6afef757"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "ledgerId"
+                ],
+                "fn": "readTransaction",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Finance/readTransaction',",
+                    "\tjsonData:{ledgerId:ledgerId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.ledgerId = ledgerId;",
+                    "\t\tthis.docFormLoadFormData(reply);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readTransaction",
+            "designerId": "6d533c1f-9dba-4f74-8f73-5b3fd8ba4db5"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "createTransaction",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Finance/createTransaction',",
+                    "\tjsonData:this.docFormGetAllFieldValues(),",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readTransaction(reply.data);",
+                    "\t\tthis.fireEvent('ledgerchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "createTransaction",
+            "designerId": "e2cf68c3-3ec5-475a-9d1f-2cdb41be94f5"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "updateTransaction",
+                "implHandler": [
+                    "let jsonData = this.docFormGetAllFieldValues();",
+                    "jsonData.ledgerId = this.ledgerId;",
+                    "",
+                    "AERP.Ajax.request({",
+                    "\turl:'/Finance/updateTransaction',",
+                    "\tjsonData:jsonData,",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readTransaction(this.ledgerId);",
+                    "\t\tthis.fireEvent('ledgerchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "updateTransaction",
+            "designerId": "0b228458-5003-4142-9d33-e8852b8a6102"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "deleteTransaction",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Finance/deleteTransaction',",
+                    "\tjsonData:{ledgerId:this.ledgerId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.ledgerId = null;",
+                    "\t\tthis.docFormReset();",
+                    "\t\tthis.fireEvent('ledgerchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "deleteTransaction",
+            "designerId": "c55fbb3c-9283-401c-9e03-6a8ad883430f"
+        }
+    ]
+}

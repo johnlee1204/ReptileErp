@@ -1,14 +1,14 @@
 <?php
 	class UserGroup extends AgileBaseController {
 
-//		public static $AgilePermissions = array(
-//			'index' => array('read')
-//			,'getGroupList' => array('read')
-//			,'addGroup' => array('create')
-//			,'getGroupPermissions' => array('read')
-//			,'editGroup' => array('update')
-//			,'deleteGroup' => array('delete')
-//		);
+		public static $AgilePermissions = array(
+			'index' => array('read')
+			,'getGroupList' => array('read')
+			,'addGroup' => array('create')
+			,'getGroupPermissions' => array('read')
+			,'editGroup' => array('update')
+			,'deleteGroup' => array('delete')
+		);
 
         /* @var AgileGroupModel */
         private $groupModel;

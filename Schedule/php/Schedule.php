@@ -5,6 +5,20 @@ use Employee\Models\EmployeeModel;
 use Schedule\Models\ScheduleModel;
 
 class Schedule extends AgileBaseController {
+
+	static $AgilePermissions = [
+		'index' => 'read',
+		'readAppInitData' => 'read',
+		'clockOn' => 'read',
+		'clockOff' => 'read',
+		'readClockOnDetails' => 'read',
+		'readEmployeeSchedule' => 'read',
+		'readEmployeeLaborHistory' => 'read',
+		'readLabor' => 'read',
+		'updateLabor' => 'update',
+		'deleteLabor' => 'delete'
+	];
+
 	function readAppInitData() {
 		$this->outputSuccess([
 			'employees' => EmployeeModel::readEmployeesComboData()
@@ -12,31 +26,28 @@ class Schedule extends AgileBaseController {
 	}
 
 	function clockOn() {
-		$input = Validation::validateJsonInput([
-			'employeeId' => 'numeric'
-		]);
 
-		ScheduleModel::clockOn($input['employeeId']);
+		$userInformation = $this->AgileApp->SessionManager->getUserDataFromSession();
+
+		ScheduleModel::clockOn($userInformation['employeeId']);
 
 		$this->outputSuccess();
 	}
 
 	function clockOff() {
-		$input = Validation::validateJsonInput([
-			'employeeId' => 'numeric'
-		]);
 
-		ScheduleModel::clockOff($input['employeeId']);
+		$userInformation = $this->AgileApp->SessionManager->getUserDataFromSession();
+
+		ScheduleModel::clockOff($userInformation['employeeId']);
 
 		$this->outputSuccess();
 	}
 
 	public function readClockOnDetails() {
-		$input = Validation::validateJsonInput([
-			'employeeId' => 'numeric'
-		]);
 
-		$this->outputSuccessData(ScheduleModel::readClockOnDetails($input['employeeId']));
+		$userInformation = $this->AgileApp->SessionManager->getUserDataFromSession();
+
+		$this->outputSuccessData(ScheduleModel::readClockOnDetails($userInformation['employeeId']));
 	}
 
 	function readEmployeeSchedule() {

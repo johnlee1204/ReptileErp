@@ -19,7 +19,7 @@ class EmployeeModel extends AgileModel{
 				payRate,
 			   	position
 			FROM Employee
-			ORDER BY firstName
+			ORDER BY employeeNumber
 		");
 	}
 
@@ -40,7 +40,7 @@ class EmployeeModel extends AgileModel{
 				employeeId = ?
 		", [$employeeId]);
 
-		$employee['permissions'] = self::$database->fetch_row("SELECT groupId FROM userGroups WHERE userId = ?", [$employeeId]);
+		$employee['permissions'] = self::$database->fetch_all_row("SELECT groupId FROM userGroups WHERE userId = ?", [$employeeId]);
 		return $employee;
 	}
 
@@ -53,7 +53,7 @@ class EmployeeModel extends AgileModel{
 			$inputs['terminationDate'] = NULL;
 		}
 
-		$inputs['groupIds'] = $inputs['permissions'];
+		$inputs['groupIds'] = json_decode($inputs['permissions']);
 
 		$userModel = self::$agileApp->loadModel('AgileUserModel');
 
@@ -69,11 +69,11 @@ class EmployeeModel extends AgileModel{
 			$inputs['terminationDate'] = NULL;
 		}
 
-		$inputs['groupIds'] = $inputs['permissions'];
+		$inputs['groupIds'] = json_decode($inputs['permissions']);
 
 		$userModel = self::$agileApp->loadModel('AgileUserModel');
 
-		return $userModel->updateUser($inputs);
+		return $userModel->updateUser($inputs['employeeId'], $inputs);
 	}
 
 	static function deleteEmployee($employeeId) {

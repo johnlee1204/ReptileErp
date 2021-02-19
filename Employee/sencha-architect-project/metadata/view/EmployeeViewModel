@@ -128,19 +128,21 @@
                     "designerId": "7da1bc2c-b044-4585-8cfe-3311cb6d3b1c"
                 },
                 {
-                    "type": "Ext.data.field.Field",
+                    "type": "Ext.data.field.Date",
                     "reference": {
                         "name": "fields",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "dateReadFormat": "Y-m-d",
                         "name": "hireDate"
                     },
                     "configAlternates": {
-                        "name": "string"
+                        "name": "string",
+                        "dateReadFormat": "string"
                     },
-                    "name": "MyField6",
+                    "name": "MyDate",
                     "designerId": "d04a9c50-7a6e-47b3-a1f0-42ed9f48f300"
                 },
                 {
@@ -190,6 +192,22 @@
                     },
                     "name": "MyField10",
                     "designerId": "20ff605a-fbd8-407a-9b4a-fc15130a12d8"
+                },
+                {
+                    "type": "Ext.util.Sorter",
+                    "reference": {
+                        "name": "sorters",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "property": "employeeNumber"
+                    },
+                    "configAlternates": {
+                        "property": "string"
+                    },
+                    "name": "MySorter",
+                    "designerId": "19298d54-1944-4386-a385-a315860bf2ea"
                 }
             ]
         }
