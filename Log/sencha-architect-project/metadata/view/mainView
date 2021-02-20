@@ -1,0 +1,330 @@
+{
+    "type": "Ext.container.Viewport",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|initialView": true,
+        "designer|userAlias": "mainview",
+        "designer|userClassName": "MainView",
+        "itemId": "MainView",
+        "layout": "vbox"
+    },
+    "configAlternates": {
+        "designer|initialView": "boolean",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "itemId": "string",
+        "layout": "string",
+        "container|align": "string"
+    },
+    "name": "MyViewport",
+    "designerId": "053ae044-67ec-46bf-9cce-184ee28719b6",
+    "viewControllerInstanceId": "2a78d66d-0f6c-4ab7-a26c-7b4200293bd2",
+    "viewModelInstanceId": "3688a79a-8866-4b04-a5ef-c28902ff5de0",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|createAlias": "usertoolbar"
+            },
+            "configAlternates": {
+                "designer|createAlias": "string"
+            },
+            "name": "MyToolbar1",
+            "designerId": "861a98b8-c940-4ac7-864b-61cf40ae5198"
+        },
+        {
+            "type": "Ext.tab.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "activeTab": 0,
+                "flex": 1,
+                "frame": true,
+                "itemId": "tabPanel",
+                "plain": true,
+                "title": ""
+            },
+            "configAlternates": {
+                "activeTab": "auto",
+                "itemId": "string",
+                "title": "string",
+                "bodyStyle": "object",
+                "frame": "boolean",
+                "plain": "boolean",
+                "flex": "number",
+                "deferredRender": "boolean"
+            },
+            "name": "MyTabPanel",
+            "designerId": "d6f70f01-e22f-4ff1-9a89-bacbfb15cebf",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "name": "exceptions",
+                    "designerId": "ba0dd58c-c8c8-4b39-a55a-18948d24a3d1",
+                    "masterInstanceId": "2aa23d2e-c002-4bab-8b75-1584e739fcf3",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "TabConfig3",
+                            "designerId": "56acdf7e-e41b-4645-9e29-edd2893e2f1c"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "accessLogs"
+                    },
+                    "configAlternates": {
+                        "itemId": "string"
+                    },
+                    "name": "accesslogs",
+                    "designerId": "a7945d24-782d-4862-b7c9-9ca1ca4304cb",
+                    "masterInstanceId": "0a1f841c-1eb2-42bd-9af1-aff53fbb21ed",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "TabConfig2",
+                            "designerId": "af506c10-065f-44d1-b103-11da96311749"
+                        }
+                    ]
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onMainViewAfterRender",
+                        "implHandler": [
+                            "this.loadAppData();"
+                        ],
+                        "name": "afterrender",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onMainViewAfterRender",
+                    "designerId": "8e09fbca-d1f4-4ab8-8008-6ed66aa47b2c"
+                }
+            ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "loadAppData",
+                "implHandler": [
+                    "let exceptions = this.queryById('Exceptions');",
+                    "exceptions.maskFilters();",
+                    "exceptions.loadExceptions();",
+                    "",
+                    "let accessLog = this.queryById('accessLogs');",
+                    "",
+                    "AERP.Ajax.request({",
+                    "    url:'/Log/getAppData',",
+                    "    success:function(reply){",
+                    "",
+                    "        exceptions.appData = reply;",
+                    "        accessLog.appData = reply;",
+                    "",
+                    "        let contextMenu = this.queryById('contextMenu');",
+                    "        exceptions.contextMenu = contextMenu;",
+                    "        accessLog.contextMenu = contextMenu;",
+                    "",
+                    "        exceptions.getViewModel().getStore('ExceptionComboStore').loadData(reply.exceptionData);",
+                    "        accessLog.getViewModel().getStore('LogComboStore').loadData(reply.logData);",
+                    "        exceptions.getViewModel().getStore('ExceptionColumnStore').loadData(reply.exceptionColumns);",
+                    "        accessLog.getViewModel().getStore('LogColumnStore').loadData(reply.logColumns);",
+                    "",
+                    "        accessLog.queryById('appName').setValue('[ ALL ]','[ ALL ]');",
+                    "        exceptions.queryById('appSelection').setValue('[ ALL ]','[ ALL ]');",
+                    "",
+                    "        exceptions.unmaskFilters();",
+                    "    },",
+                    "    failure:function(reason){",
+                    "        exceptions.unmask();",
+                    "    },",
+                    "    scope:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "loadAppData",
+            "designerId": "192e2ebb-efa4-4be5-ba2b-8a01286a40b0"
+        },
+        {
+            "type": "Ext.menu.Menu",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "contextMenu",
+                "width": 120
+            },
+            "configAlternates": {
+                "itemId": "string",
+                "width": "auto"
+            },
+            "name": "MyMenu",
+            "designerId": "9ba468f0-1c69-45bb-ad3a-f9a02cb0dafc",
+            "cn": [
+                {
+                    "type": "Ext.menu.Item",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "icon": "/inc/img/silk_icons/find.png",
+                        "text": "Filter"
+                    },
+                    "configAlternates": {
+                        "icon": "string",
+                        "text": "string"
+                    },
+                    "name": "MyMenuItem",
+                    "designerId": "99ed02cc-4234-4f0b-a0aa-73e8f0b3445c",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onMenuitemClick",
+                                "implHandler": [
+                                    "if(this.queryById('tabPanel').getActiveTab().title === 'Exceptions'){",
+                                    "    var exceptions = this.queryById('Exceptions');",
+                                    "",
+                                    "    var searchColumn = exceptions.queryById('searchColumnException');",
+                                    "    var searchTerm = exceptions.queryById('searchTermException');",
+                                    "    var searchOperation = exceptions.queryById('searchOperationException');",
+                                    "",
+                                    "    if(exceptions.exceptionColumnName === 'date'){",
+                                    "        exceptions.queryById('dateToException').setValue(exceptions.exceptionColumnValue.substr(0,10));",
+                                    "        exceptions.queryById('timeToException').setValue(exceptions.exceptionColumnValue.substr(11,5));",
+                                    "        exceptions.loadExceptions();",
+                                    "    } else {",
+                                    "        exceptions.queryById('searchColumnException').setValue(exceptions.exceptionColumnName);",
+                                    "        var searchTerm = exceptions.queryById('searchTermException');",
+                                    "        var searchOperation = exceptions.queryById('searchOperationException');",
+                                    "        searchOperation.setDisabled(false);",
+                                    "        searchOperation.setValue('=');",
+                                    "        searchTerm.setValue(exceptions.exceptionColumnValue);",
+                                    "        searchTerm.setDisabled(false);",
+                                    "        exceptions.queryById('exceptionFilterButton').setDisabled(false);",
+                                    "        exceptions.exceptionFilterColumn = searchColumn.getValue();",
+                                    "        exceptions.exceptionFilterOperation = searchOperation.getValue();",
+                                    "        exceptions.exceptionFilterTerm = searchTerm.getValue();",
+                                    "        if(exceptions.exceptionFilterColumn !== \"\"){",
+                                    "           exceptions.loadExceptions();",
+                                    "           exceptions.setFilterButtonState('clear','exceptionFilterButton');",
+                                    "        }else {",
+                                    "           Ext.Msg.alert(\"Error\",\"No Filter Set\");",
+                                    "           return false;",
+                                    "        }",
+                                    "    }",
+                                    "} else {",
+                                    "    var access = this.queryById('accessLogs');",
+                                    "",
+                                    "    var searchColumn = access.queryById('searchColumnLog');",
+                                    "    var searchTerm = access.queryById('searchTermLog');",
+                                    "    var searchOperation = access.queryById('searchOperationLog');",
+                                    "",
+                                    "    if(access.logColumnName === 'date'){",
+                                    "        access.queryById('dateToLog').setValue(access.logColumnValue.substr(0,10));",
+                                    "        access.queryById('timeToLog').setValue(access.logColumnValue.substr(11,5));",
+                                    "        access.loadLogs();",
+                                    "    } else {",
+                                    "        access.queryById('searchColumnLog').setValue(access.logColumnName);",
+                                    "        var searchTerm = access.queryById('searchTermLog');",
+                                    "        var searchOperation = access.queryById('searchOperationLog');",
+                                    "        searchOperation.setDisabled(false);",
+                                    "        searchOperation.setValue('=');",
+                                    "        searchTerm.setValue(access.logColumnValue);",
+                                    "        searchTerm.setDisabled(false);",
+                                    "        access.queryById('logFilterButton').setDisabled(false);",
+                                    "        access.logFilterColumn = searchColumn.getValue();",
+                                    "        access.logFilterOperation = searchOperation.getValue();",
+                                    "        access.logFilterTerm = searchTerm.getValue();",
+                                    "        if(access.logFilterColumn !== \"\"){",
+                                    "           access.loadLogs();",
+                                    "           access.setFilterButtonState('clear','logFilterButton');",
+                                    "        }else {",
+                                    "           Ext.Msg.alert(\"Error\",\"No Filter Set\");",
+                                    "           return false;",
+                                    "        }",
+                                    "    }",
+                                    "",
+                                    "}"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onMenuitemClick",
+                            "designerId": "1f3383ee-aba7-4858-acb3-a08b0698a40b"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

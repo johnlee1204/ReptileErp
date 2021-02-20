@@ -80,7 +80,7 @@ class AgileErrorHandler
 			$errorType = 'exception';
 		}
 
-		//$this->logError($errorType, $exception->getMessage(), $exceptionLine, $exceptionFile, $exception->getTraceAsString(), $exceptionExtraData);
+		$this->logError($errorType, $exception->getMessage(), $exceptionLine, $exceptionFile, $exception->getTraceAsString(), $exceptionExtraData);
 		$this->outputErrorMessage($outputMessage, $outputDetails);
 	}
 
@@ -223,7 +223,7 @@ class AgileErrorHandler
 			$message[] = print_r($inputData, true);
 			$message[] = "</pre>";
 
-			@mail($to, $subject, implode("\r\n", $message), implode("\r\n",$headers));
+			//@mail($to, $subject, implode("\r\n", $message), implode("\r\n",$headers));
 		}
 
 		try{

@@ -1,0 +1,545 @@
+{
+    "type": "Ext.app.ViewModel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "accesslogs",
+        "designer|userClassName": "AccessLogsViewModel"
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string"
+    },
+    "designerId": "17bf8914-ca12-4f7c-a9bf-264bfe21deab",
+    "cn": [
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "LogComboStore"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyStore",
+            "designerId": "5ecd4796-2849-4b4c-ba10-844d53871cb8",
+            "cn": [
+                {
+                    "type": "Ext.data.proxy.Ajax",
+                    "reference": {
+                        "name": "proxy",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "noCache": false
+                    },
+                    "configAlternates": {
+                        "noCache": "boolean"
+                    },
+                    "name": "MyAjaxProxy",
+                    "designerId": "71f502dd-513e-4f22-b16d-8c1896538138",
+                    "cn": [
+                        {
+                            "type": "Ext.data.reader.Array",
+                            "reference": {
+                                "name": "reader",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "MyArrayReader",
+                            "designerId": "9d981153-7a35-4f13-bea0-a0ded837eec1"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "appName"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField",
+                    "designerId": "16851a89-204a-469b-bb2c-103d2ae1cf3a"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "appValue"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField10",
+                    "designerId": "6db8f920-2625-4b10-9575-8c046e36cddc"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "LogGridStore",
+                "pageSize": 100,
+                "remoteFilter": true,
+                "remoteSort": true
+            },
+            "configAlternates": {
+                "name": "string",
+                "remoteFilter": "boolean",
+                "remoteSort": "boolean",
+                "pageSize": "number"
+            },
+            "name": "MyStore1",
+            "designerId": "4218b90d-2164-4a52-bdce-b78c5bd9b6f6",
+            "cn": [
+                {
+                    "type": "Ext.data.proxy.Ajax",
+                    "reference": {
+                        "name": "proxy",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "actionMethods": [
+                            "{\"create\":\"POST\",\"read\":\"POST\",\"update\":\"POST\",\"destroy\":\"POST\"}"
+                        ],
+                        "noCache": false,
+                        "simpleSortMode": true,
+                        "url": "readAccessLogs"
+                    },
+                    "configAlternates": {
+                        "actionMethods": "object",
+                        "simpleSortMode": "boolean",
+                        "url": "string",
+                        "noCache": "boolean"
+                    },
+                    "name": "MyAjaxProxy1",
+                    "designerId": "951a98f4-6730-4db2-ad7b-cf1e5ce5b2f6",
+                    "cn": [
+                        {
+                            "type": "Ext.data.reader.Array",
+                            "reference": {
+                                "name": "reader",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "rootProperty": "data",
+                                "totalProperty": "totalRows"
+                            },
+                            "configAlternates": {
+                                "rootProperty": "string",
+                                "successProperty": "string",
+                                "totalProperty": "string"
+                            },
+                            "name": "MyArrayReader1",
+                            "designerId": "76436095-08f2-4eff-97d9-47e9a6d0cb61"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.data.field.Date",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dateFormat": "F j, Y h:ia",
+                        "dateReadFormat": "Y-m-d H:i:s",
+                        "name": "date"
+                    },
+                    "configAlternates": {
+                        "name": "string",
+                        "dateFormat": "string",
+                        "dateReadFormat": "string"
+                    },
+                    "name": "MyDate1",
+                    "designerId": "68739cca-f772-4a60-a889-28dc2f991c82"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "ip"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField2",
+                    "designerId": "1b884746-e406-4db5-abac-e2a2848087e8"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "uri"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField3",
+                    "designerId": "65f5c341-a362-4c07-8f06-c82644ffb69b"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "class"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField4",
+                    "designerId": "9f1a6e0b-c97a-4967-9391-f6e5c35cce57"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "method"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField5",
+                    "designerId": "6c5ddbd7-50fe-403d-af45-fa7b397e02d8"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "referrer"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField6",
+                    "designerId": "d2976688-d7c3-4e00-a8ac-785b4e7965eb"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "httpType"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField7",
+                    "designerId": "ecf1b431-bf82-4ef0-b0d6-f621517ce092"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "query"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField8",
+                    "designerId": "883251f1-d717-4967-ae19-4494fa387122"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "loggedIn"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField1",
+                    "designerId": "f0e17dc8-9a3b-4219-bb1e-43a6b7c89b99"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "userId"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField29",
+                    "designerId": "6d573335-47ea-4476-9a6f-39640cd9d26e"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "userName"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField19",
+                    "designerId": "2b3aa8e6-ee7f-4a18-aa38-8eb11b8af90d"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "notFound"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField9",
+                    "designerId": "a7fe2d08-3de4-42c8-815b-c41ebd6444dc"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "authorized"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField20",
+                    "designerId": "6893fb57-664a-4637-8c95-51b2686f504a"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "get"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField11",
+                    "designerId": "fcd95cd5-f8cf-450e-b94c-59fc252f98b6"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "post"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField12",
+                    "designerId": "ef6a9815-dd40-4548-9a98-5b0e210fefa6"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "json"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField47",
+                    "designerId": "80b49ede-cd48-4cb7-b594-e71fee86abed"
+                },
+                {
+                    "type": "Ext.util.Sorter",
+                    "reference": {
+                        "name": "sorters",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "direction": "DESC",
+                        "property": "date"
+                    },
+                    "configAlternates": {
+                        "direction": "string",
+                        "property": "string"
+                    },
+                    "name": "MySorter1",
+                    "designerId": "aa012f5a-285b-4e83-b1ad-ae2d5a4baf4f"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "LogColumnStore"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyStore5",
+            "designerId": "72c7007a-087c-4924-8013-3b1dfbb009fa",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "store",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "columnName"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField30",
+                    "designerId": "54846ae7-6abb-4c81-bf4d-1c07061e4957"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "data": [
+                    "[{comparison: 'Greater Than (>)', value: '>'},",
+                    "{comparison: 'Less Than (<)', value: '<'},",
+                    "{comparison: 'Equal To (=)', value: '='},",
+                    "{comparison: 'Like (%%)', value: 'like'},",
+                    "{comparison: 'Not Equal To (≠)', value: '<>'},",
+                    "{comparison: 'Greater Than or Equal To (>=)', value: '>='},",
+                    "{comparison: 'Less Than or Equal To (<=)', value: '<='}]"
+                ],
+                "name": "OperationStore"
+            },
+            "configAlternates": {
+                "name": "string",
+                "data": "array"
+            },
+            "name": "MyStore8",
+            "designerId": "1a253e76-8b29-4cb5-914a-f76fbe15bbd7",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "comparison"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField31",
+                    "designerId": "3d157aff-9acb-47dc-a280-e994de22d86d"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "value"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField32",
+                    "designerId": "53ee6251-116e-4714-99ed-2602c9d9d097"
+                }
+            ]
+        }
+    ]
+}

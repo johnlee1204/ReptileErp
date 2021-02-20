@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5b676c5f-3752-482d-8eb6-020532151a45" name="Default" comment="Updated to 6.6&#10;Added support for Job log expandable rows">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/Log.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/Log.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="PhpServers">
+    <servers>
+      <server host="dev.local" id="88a90e95-3146-4800-ba8e-e5e7f4e7af3f" name="dev.local" use_path_mappings="true">
+        <path_mappings>
+          <mapping local-root="$PROJECT_DIR$/../Agile" remote-root="C:/server/Data/ApacheData/dev.local/Agile" />
+          <mapping local-root="$PROJECT_DIR$" remote-root="C:/server/Data/ApacheData/dev.local/Log" />
+        </path_mappings>
+      </server>
+    </servers>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/../Agile" />
+      <path value="$PROJECT_DIR$/../inc/php" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="1RiGi7071FaqAZPg35OWSVOza9d" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+    <ConfirmationsSetting value="2" id="Remove" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="break&#9;ACTION&#9;PhpDebugBreakAtFirstLine" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js-jscs-nodeInterpreter" value="C:\Server\Programs\nodejs\node.exe" />
+    <property name="js.eslint.eslintPackage" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path" value="node" />
+    <property name="settings.editor.selected.configurable" value="vcs.Subversion" />
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration useDefault="false">http://devsvn.fwe.com:18080/svn/</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5b676c5f-3752-482d-8eb6-020532151a45" name="Default" comment="" />
+      <created>1491238988336</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1491238988336</updated>
+      <workItem from="1491238989590" duration="2034000" />
+      <workItem from="1529513831425" duration="13213000" />
+      <workItem from="1529595534872" duration="3064000" />
+      <workItem from="1536163717625" duration="3873000" />
+      <workItem from="1536247188293" duration="20000" />
+      <workItem from="1556222937345" duration="1368000" />
+      <workItem from="1570142627712" duration="2852000" />
+      <workItem from="1570485888684" duration="3154000" />
+      <workItem from="1570554103194" duration="654000" />
+      <workItem from="1570649128231" duration="45000" />
+      <workItem from="1579817363841" duration="59000" />
+      <workItem from="1579817444654" duration="2216000" />
+      <workItem from="1591890778563" duration="994000" />
+      <workItem from="1592312819127" duration="769000" />
+      <workItem from="1594158992017" duration="3795000" />
+      <workItem from="1594218790320" duration="2008000" />
+      <workItem from="1594668736471" duration="1343000" />
+      <workItem from="1595429635285" duration="87000" />
+      <workItem from="1595860450257" duration="936000" />
+      <workItem from="1596809370787" duration="139000" />
+    </task>
+    <task id="LOCAL-00001" summary="Converted to tabs">
+      <created>1529515982097</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1529515982097</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Cleaned up more tabs and cleaned up some basic things to remove warnings">
+      <created>1529516222917</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1529516222917</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Finished up Application Log Tab.&#10;Filters &amp; Operations work as expected">
+      <created>1529600929180</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1529600929181</updated>
+    </task>
+    <task id="LOCAL-00004" summary="removed console.log">
+      <created>1529601032371</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1529601032371</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Made some adjustments for external loading of application log">
+      <created>1536182787742</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1536182787742</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Updated to 6.6&#10;Added support for Job log expandable rows">
+      <created>1570148476420</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1570148476420</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Updated to 6.6&#10;Added support for Job log expandable rows">
+      <created>1570494614810</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1570494614810</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="Converted to tabs" />
+    <MESSAGE value="Cleaned up more tabs and cleaned up some basic things to remove warnings" />
+    <MESSAGE value="Finished up Application Log Tab.&#10;Filters &amp; Operations work as expected" />
+    <MESSAGE value="removed console.log" />
+    <MESSAGE value="Made some adjustments for external loading of application log" />
+    <MESSAGE value="Updated Log to show json columns" />
+    <MESSAGE value="Updated to 6.6&#10;Added support for Job log expandable rows" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated to 6.6&#10;Added support for Job log expandable rows" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="987" y="370" key="FileChooserDialogImpl" timestamp="1595429720866">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="987" y="370" key="FileChooserDialogImpl/-2560.0.2560.1400/0.0.2560.1400/2560.165.1920.1040@0.0.2560.1400" timestamp="1595429720866" />
+    <state x="740" y="275" key="FileChooserDialogImpl/3840.0.1536.832/1920.0.1920.1040/0.0.1920.1040/-1920.111.1920.1040@0.0.1920.1040" timestamp="1592314421446" />
+    <state x="2660" y="275" key="FileChooserDialogImpl/3840.0.1536.832/1920.0.1920.1040/0.0.1920.1040/-1920.111.1920.1040@1920.0.1920.1040" timestamp="1591892765913" />
+    <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1592314414038">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="667" y="253" width="585" height="534" key="find.popup/3840.0.1536.832/1920.0.1920.1040/0.0.1920.1040/-1920.111.1920.1040@0.0.1920.1040" timestamp="1592314414038" />
+  </component>
+</project>

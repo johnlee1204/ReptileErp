@@ -1,0 +1,79 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "closeAction": "hide",
+        "designer|userAlias": "Textdetailwindow",
+        "designer|userClassName": "TextDetailWindow",
+        "height": 250,
+        "layout": "fit",
+        "title": "Details",
+        "width": 400
+    },
+    "configAlternates": {
+        "closeAction": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "layout": "string",
+        "title": "string",
+        "width": "auto"
+    },
+    "name": "MyWindow",
+    "designerId": "a8cf7e97-479e-448f-83e6-049a92e1fbff",
+    "viewControllerInstanceId": "b0d795a9-0155-41e3-b85e-03e844b3e74b",
+    "viewModelInstanceId": "d456bccd-646a-4773-9ff3-6b2593e1a651",
+    "cn": [
+        {
+            "type": "Ext.form.field.TextArea",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": null,
+                "itemId": "text"
+            },
+            "configAlternates": {
+                "editable": "boolean",
+                "fieldLabel": "string",
+                "itemId": "string"
+            },
+            "name": "MyTextArea5",
+            "designerId": "03da4b6d-cd21-438b-bbd1-62caaea54462"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "text"
+                ],
+                "fn": "setText",
+                "implHandler": [
+                    "this.queryById('text').setValue(text);",
+                    "this.show();",
+                    "",
+                    "this.setSize('60%','60%');",
+                    "this.center();"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "setText",
+            "designerId": "9cc8efd9-c5da-46d1-b09e-6b5f945903df"
+        }
+    ]
+}

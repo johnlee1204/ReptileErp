@@ -285,14 +285,6 @@ class AgileRequestRouter{
 	function logRequest($notFound,$authorized){
 		$standardLogData = $this->AgileApp->readStandardLogColumnValues();
 
-		if($standardLogData['class'] == 'shop_floor' && $standardLogData['method'] == 'checkforlatestversion'){
-			return;
-		}
-
-		if($standardLogData['class'] == 'qccamerabarcodetracker' && $standardLogData['method'] == 'getlivephoto'){
-			return;
-		}
-
 		if($standardLogData['class'] == 'tv'){
 			return;
 		}
@@ -302,16 +294,16 @@ class AgileRequestRouter{
 		}
 
 		$insertData = array_merge($standardLogData, array(
-			'notFound' => $notFound,
-			'authorized' => $authorized
+			'notFound' => intval($notFound),
+			'authorized' => intval($authorized)
 		));
 
-//		try{
-//			$this->AgileApp->systemDb->insert($this->AgileApp->systemConfigs['table']['logAccess'], $insertData);
-//		}catch(Exception $ex){
-//			echo "<HR>\r\nFailed to write to access log. Your database config is bad.\r\n<HR>\r\n";
-//			echo $ex->getMessage(),"\r\n<HR>\r\n";
-//			exit;
-//		}
+		try{
+			$this->AgileApp->systemDb->insert($this->AgileApp->systemConfigs['table']['logAccess'], $insertData);
+		}catch(Exception $ex){
+			echo "<HR>\r\nFailed to write to access log. Your database config is bad.\r\n<HR>\r\n";
+			echo $ex->getMessage(),"\r\n<HR>\r\n";
+			exit;
+		}
 	}
 }

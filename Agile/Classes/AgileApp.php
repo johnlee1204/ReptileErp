@@ -100,14 +100,14 @@ class AgileApp {
 
 		try{
 			if(isset($this->SessionManager)){
-				$loggedIn = $this->SessionManager->getAuthenticated();
+				$loggedIn = intval($this->SessionManager->getAuthenticated());
 			}else{
-				$loggedIn = false;
+				$loggedIn = 0;
 			}
 
 			if ($loggedIn) {
-				$session = $this->SessionManager->getUserInfoFromSession();
-				$userId = $session['userId'];
+				$session = $this->SessionManager->getUserDataFromSession();
+				$userId = $session['employeeId'];
 				$userName = $session['userName'];
 			} else {
 				$userId = '';
@@ -141,8 +141,9 @@ class AgileApp {
 			$loggedPost = "[POST REDACTED]";
 		}
 
+		$currentDate = date('Y-m-d H:i:s');
 		return array(
-			'date' => 'getdate()',
+			'date' => $currentDate,
 			'ip' => $ip,
 			'uri' => $_SERVER['REQUEST_URI'],
 			'class' => $lowerClass,
@@ -153,7 +154,7 @@ class AgileApp {
 			'loggedIn' => $loggedIn,
 			'userId' => $userId,
 			'userName' => $userName,
-			'get' => print_r($_GET, true),
+			'`get`' => print_r($_GET, true),
 			'post' => print_r($loggedPost, true),
 			'json' => $loggedJson
 		);

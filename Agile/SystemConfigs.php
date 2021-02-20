@@ -43,8 +43,8 @@ $systemConfigs['table']['groups'] = $systemConfigs['database']['systemDatabase']
 $systemConfigs['table']['userGroups'] = $systemConfigs['database']['systemDatabase'] .'.userGroups';
 $systemConfigs['table']['sessions'] = $systemConfigs['database']['systemDatabase'] .'.Sessions';
 $systemConfigs['table']['groupPermissions'] = $systemConfigs['database']['systemDatabase'] .'.groupPermissions';
-//$systemConfigs['table']['logAccess'] = $systemConfigs['database']['systemDatabase'] .'.logAccess';
-//$systemConfigs['table']['logException'] = $systemConfigs['database']['systemDatabase'] .'.logException';
+$systemConfigs['table']['logAccess'] = $systemConfigs['database']['systemDatabase'] .'.logAccess';
+$systemConfigs['table']['logException'] = $systemConfigs['database']['systemDatabase'] .'.logException';
 
 //$systemConfigs['exceptionEmailErrorTypes'] = array('error','shutdown','exception','useremail');
 

@@ -1,0 +1,20 @@
+{
+    "type": "jsresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "js_o2l0ggiq",
+        "includeInBundle": true,
+        "url": "/inc/js/docForm/NiceGridMenu.js"
+    },
+    "configAlternates": {
+        "designer|userClassName": "string",
+        "includeInBundle": "boolean",
+        "url": "uri"
+    },
+    "name": "js1",
+    "designerId": "7055dfba-4737-4db1-b85b-fd083b9738b3"
+}

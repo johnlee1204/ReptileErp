@@ -1,0 +1,68 @@
+{
+    "name": "Log",
+    "settings": {
+        "cmd": {
+            "cmdVersion": ""
+        },
+        "urlPrefixTemplate": "http://dev.local/Log/",
+        "exportPath": "C:/Users/johnm/Desktop/Websites/LeeSheet/Log",
+        "buildShouldOverwriteIndex": true,
+        "generateArchitectVersion": false,
+        "spacesToIndent": 4,
+        "lineEnding": "CRLF",
+        "genTimestamps": false,
+        "cacheBust": false,
+        "installStatus": "Not Installed",
+        "canvasControls": {
+            "viewportSize": {
+                "name": "Large",
+                "builtIn": true,
+                "height": 1024,
+                "width": 1280
+            }
+        },
+        "sdkPath": "",
+        "displayfield-ExtBox1-1153-inputEl": "a new version of the framework is available",
+        "urlPrefix": "http://dev.local/Log/",
+        "displayfield-ExtBox1-1127-inputEl": "a new version of the framework is available",
+        "displayfield-ExtBox1-1124-inputEl": "a new version of the framework is available",
+        "displayfield-ExtBox1-1123-inputEl": "a new version of the framework is available"
+    },
+    "xdsVersion": "4.2.5",
+    "xdsBuild": 420,
+    "schemaVersion": 1,
+    "upgradeVersion": 310000000001,
+    "framework": "ext66",
+    "viewOrderMap": {
+        "view": [
+            "053ae044-67ec-46bf-9cce-184ee28719b6",
+            "3688a79a-8866-4b04-a5ef-c28902ff5de0",
+            "2a78d66d-0f6c-4ab7-a26c-7b4200293bd2",
+            "a8cf7e97-479e-448f-83e6-049a92e1fbff",
+            "d456bccd-646a-4773-9ff3-6b2593e1a651",
+            "b0d795a9-0155-41e3-b85e-03e844b3e74b",
+            "2aa23d2e-c002-4bab-8b75-1584e739fcf3",
+            "77afba13-f5ba-4a02-afa7-203f406e7221",
+            "6dfb6b52-0e93-43ff-afde-8d5898259114",
+            "0a1f841c-1eb2-42bd-9af1-aff53fbb21ed",
+            "17bf8914-ca12-4f7c-a9bf-264bfe21deab",
+            "c2ccbb65-c810-40e3-b6c1-51a8a512f4b9"
+        ],
+        "store": [],
+        "controller": [],
+        "model": [],
+        "resource": [
+            "74ef414f-0317-473b-9a06-1be223060cde",
+            "569abc86-f4db-4a4a-82f2-df820ebacd11",
+            "579400b4-535b-4064-8c3c-b53b35f9184a",
+            "6baa88a2-afba-44a6-b180-ec268e472de6",
+            "3f347585-3643-476f-99a7-36f827f4a118",
+            "7055dfba-4737-4db1-b85b-fd083b9738b3",
+            "27edcf93-1b81-4818-8799-8ad2e676f42a",
+            "3e7e11ad-08db-44e6-940a-e24d0f500f84"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

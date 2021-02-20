@@ -1,0 +1,1731 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyBorder": true,
+        "bodyStyle": "background:none;",
+        "designer|uiInterfaceName": "default",
+        "designer|userAlias": "accesslogs",
+        "designer|userClassName": "AccessLogs",
+        "height": null,
+        "icon": "/inc/img/silk_icons/table.png",
+        "itemId": "AccessLogs",
+        "layout": "fit",
+        "title": "Access Logs"
+    },
+    "configAlternates": {
+        "bodyPadding": "auto",
+        "border": "boolean",
+        "frame": "boolean",
+        "height": "auto",
+        "itemId": "string",
+        "layout": "string",
+        "title": "string",
+        "bodyBorder": "boolean",
+        "bodyStyle": "string",
+        "designer|uiInterfaceName": "string",
+        "icon": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string"
+    },
+    "name": "MyPanel3",
+    "designerId": "0a1f841c-1eb2-42bd-9af1-aff53fbb21ed",
+    "viewControllerInstanceId": "c2ccbb65-c810-40e3-b6c1-51a8a512f4b9",
+    "viewModelInstanceId": "17bf8914-ca12-4f7c-a9bf-264bfe21deab",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "border": false,
+                "designer|uiInterfaceName": "default-framed",
+                "frame": true,
+                "frameHeader": false,
+                "itemId": "logSelectPanel",
+                "layout": "auto",
+                "maxHeight": 60,
+                "ui": "default-framed"
+            },
+            "configAlternates": {
+                "border": "boolean",
+                "designer|snapToGrid": "number",
+                "designer|uiInterfaceName": "string",
+                "frame": "boolean",
+                "frameHeader": "boolean",
+                "height": "auto",
+                "itemId": "string",
+                "layout": "string",
+                "maxHeight": "number",
+                "ui": "string"
+            },
+            "name": "MyForm",
+            "designerId": "2b645a69-ea71-44e8-87e5-e2a8bd271348",
+            "cn": [
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "floatBox"
+                        ],
+                        "container|align": "stretch",
+                        "layout": "vbox",
+                        "margin": "5 10 0 0",
+                        "width": 650
+                    },
+                    "configAlternates": {
+                        "cls": "typedarray",
+                        "container|align": "string",
+                        "layout": "string",
+                        "margin": "auto",
+                        "width": "auto"
+                    },
+                    "name": "MyContainer13",
+                    "designerId": "0da68974-6738-40ac-8ee9-776b6fcaae2b",
+                    "cn": [
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "floatBox"
+                                ],
+                                "container|align": "stretch",
+                                "layout": "hbox",
+                                "margin": "0 0 5 0"
+                            },
+                            "configAlternates": {
+                                "cls": "typedarray",
+                                "container|align": "string",
+                                "layout": "string",
+                                "margin": "auto",
+                                "width": "auto"
+                            },
+                            "name": "MyContainer12",
+                            "designerId": "ebc147d4-3c76-471b-adb2-a3b8c8e25a06",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.field.ComboBox",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "displayField": "appName",
+                                        "fieldLabel": "App",
+                                        "itemId": "appName",
+                                        "labelWidth": 60,
+                                        "margin": "0 0 0 10",
+                                        "matchFieldWidth": false,
+                                        "maxWidth": 300,
+                                        "minChars": 1,
+                                        "name": "appName",
+                                        "queryDelay": 75,
+                                        "queryMode": "local",
+                                        "store": [
+                                            "{LogComboStore}"
+                                        ],
+                                        "typeAhead": true,
+                                        "value": [
+                                            "'[ ALL ]'"
+                                        ],
+                                        "valueField": "appValue",
+                                        "width": 500
+                                    },
+                                    "configAlternates": {
+                                        "store": "binding",
+                                        "displayField": "datafield",
+                                        "editable": "boolean",
+                                        "fieldLabel": "string",
+                                        "itemId": "string",
+                                        "labelWidth": "number",
+                                        "layout|x": "number",
+                                        "layout|y": "number",
+                                        "maxWidth": "number",
+                                        "name": "string",
+                                        "queryMode": "string",
+                                        "valueField": "datafield",
+                                        "width": "auto",
+                                        "minChars": "number",
+                                        "queryDelay": "number",
+                                        "typeAhead": "boolean",
+                                        "margin": "auto",
+                                        "matchFieldWidth": "boolean",
+                                        "value": "object"
+                                    },
+                                    "name": "MyComboBox",
+                                    "designerId": "8a6a8cc5-b07a-4801-9aeb-b461e1286e0f",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onCombobox2Select",
+                                                "implHandler": [
+                                                    "this.loadLogs();"
+                                                ],
+                                                "name": "select",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onCombobox2Select",
+                                            "designerId": "e89090c1-ac8b-4119-b00b-5093ee8014d3"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.field.ComboBox",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "displayField": "columnName",
+                                        "fieldLabel": "Column",
+                                        "itemId": "searchColumnLog",
+                                        "labelWidth": 60,
+                                        "layout|flex": 1,
+                                        "margin": "0 0 0 15",
+                                        "maxWidth": 300,
+                                        "name": "searchColumn",
+                                        "queryMode": "local",
+                                        "store": [
+                                            "{LogColumnStore}"
+                                        ],
+                                        "valueField": "columnName"
+                                    },
+                                    "configAlternates": {
+                                        "store": "binding",
+                                        "displayField": "datafield",
+                                        "fieldLabel": "string",
+                                        "itemId": "string",
+                                        "labelWidth": "number",
+                                        "layout|flex": "number",
+                                        "margin": "auto",
+                                        "maxWidth": "number",
+                                        "name": "string",
+                                        "valueField": "datafield",
+                                        "queryMode": "string"
+                                    },
+                                    "name": "MyComboBox3",
+                                    "designerId": "a4bb4f3b-509a-4286-97a8-44accf86fd5e",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onSearchColumnLogSelect",
+                                                "implHandler": [
+                                                    "this.queryById('searchTermLog').setDisabled(false);",
+                                                    "this.queryById('logFilterButton').setDisabled(false);",
+                                                    "this.queryById('searchOperationLog').setDisabled(false);",
+                                                    "if(record.data.columnName !== this.logFilterColumn){",
+                                                    "    this.setFilterButtonState('filter','logFilterButton');",
+                                                    "}"
+                                                ],
+                                                "name": "select",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onSearchColumnLogSelect",
+                                            "designerId": "f2233ce9-a141-4b93-af62-e397be465dbb"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "stretch",
+                                "layout": "hbox",
+                                "margin": "0 10 0 0"
+                            },
+                            "configAlternates": {
+                                "container|align": "string",
+                                "layout": "string",
+                                "margin": "auto"
+                            },
+                            "name": "MyContainer17",
+                            "designerId": "5ad69feb-3022-425b-8e96-cf87233bf0b4",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.field.ComboBox",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "disabled": true,
+                                        "displayField": "comparison",
+                                        "editable": false,
+                                        "fieldLabel": "Operation",
+                                        "itemId": "searchOperationLog",
+                                        "labelWidth": 60,
+                                        "layout|flex": 1,
+                                        "margin": "0 0 0 10",
+                                        "matchFieldWidth": false,
+                                        "maxWidth": 210,
+                                        "name": "searchOperation",
+                                        "store": [
+                                            "{OperationStore}"
+                                        ],
+                                        "valueField": "value"
+                                    },
+                                    "configAlternates": {
+                                        "store": "binding",
+                                        "disabled": "boolean",
+                                        "displayField": "datafield",
+                                        "editable": "boolean",
+                                        "fieldLabel": "string",
+                                        "itemId": "string",
+                                        "labelWidth": "number",
+                                        "layout|flex": "number",
+                                        "margin": "auto",
+                                        "matchFieldWidth": "boolean",
+                                        "maxWidth": "number",
+                                        "valueField": "datafield",
+                                        "name": "string"
+                                    },
+                                    "name": "MyComboBox4",
+                                    "designerId": "59155798-a1c0-4a53-a2d7-e90187c44fd0"
+                                },
+                                {
+                                    "type": "Ext.form.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "disabled": true,
+                                        "enableKeyEvents": true,
+                                        "fieldLabel": "Term",
+                                        "itemId": "searchTermLog",
+                                        "labelWidth": 40,
+                                        "layout|flex": 1,
+                                        "margin": "0 10 0 15",
+                                        "maxHeight": 25,
+                                        "name": "searchTerm",
+                                        "width": 300
+                                    },
+                                    "configAlternates": {
+                                        "disabled": "boolean",
+                                        "enableKeyEvents": "boolean",
+                                        "fieldLabel": "string",
+                                        "itemId": "string",
+                                        "labelWidth": "number",
+                                        "layout|flex": "number",
+                                        "margin": "auto",
+                                        "maxHeight": "number",
+                                        "name": "string",
+                                        "width": "auto"
+                                    },
+                                    "name": "MyTextField1",
+                                    "designerId": "fab39407-fee1-418b-9ca8-361f55cc9ee2",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onSearchTermLogKeypress",
+                                                "implHandler": [
+                                                    "if(e.getKey() === e.ENTER){",
+                                                    "    this.loadLogs();",
+                                                    "}"
+                                                ],
+                                                "name": "keypress",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onSearchTermLogKeypress",
+                                            "designerId": "f25c22b6-3600-4f17-9401-c4f2eafca6c3"
+                                        },
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onSearchTermLogChange",
+                                                "implHandler": [
+                                                    "if(newValue !== this.logColumn){",
+                                                    "    this.setFilterButtonState('filter','logFilterButton');",
+                                                    "}"
+                                                ],
+                                                "name": "change",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onSearchTermLogChange",
+                                            "designerId": "55724a74-dbaa-47f8-8479-3e53fe35df51"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "disabled": true,
+                                        "icon": "/inc/img/silk_icons/find.png",
+                                        "itemId": "logFilterButton",
+                                        "layout|flex": 1,
+                                        "margin": "0 15 0 10",
+                                        "maxWidth": 70,
+                                        "text": "Filter"
+                                    },
+                                    "configAlternates": {
+                                        "disabled": "boolean",
+                                        "icon": "string",
+                                        "itemId": "string",
+                                        "layout|flex": "number",
+                                        "margin": "auto",
+                                        "maxWidth": "number",
+                                        "text": "string"
+                                    },
+                                    "name": "MyButton3",
+                                    "designerId": "f734cdfb-9a21-4d38-b59e-7199dc001890",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onLogFilterButtonClick",
+                                                "implHandler": [
+                                                    "var searchColumn = this.queryById('searchColumnLog');",
+                                                    "var searchTerm = this.queryById('searchTermLog');",
+                                                    "var searchOperation = this.queryById('searchOperationLog');",
+                                                    "if(this.queryById('logFilterButton').buttonState === 'filter'){",
+                                                    "    this.logFilterColumn = searchColumn.getValue();",
+                                                    "    this.logFilterTerm = searchTerm.getValue();",
+                                                    "    this.logFilterOperation = searchOperation.getValue();",
+                                                    "    if(this.logFiltercolumn !== \"\"){",
+                                                    "        this.loadLogs();",
+                                                    "        this.setFilterButtonState('clear','logFilterButton');",
+                                                    "    } else {",
+                                                    "        Ext.Msg.alert(\"Error\",\"No Filter Set\");",
+                                                    "    }",
+                                                    "} else {",
+                                                    "    this.logFilterColumn = null;",
+                                                    "    this.logFilterTerm = null;",
+                                                    "    searchOperation.reset();",
+                                                    "    searchColumn.reset();",
+                                                    "    searchTerm.reset();",
+                                                    "    searchTerm.setDisabled(true);",
+                                                    "    searchOperation.setDisabled(true);",
+                                                    "    this.setFilterButtonState('filter','logFilterButton');",
+                                                    "    this.loadLogs();",
+                                                    "}"
+                                                ],
+                                                "name": "click",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onLogFilterButtonClick",
+                                            "designerId": "ae4b7cf3-bd80-47e6-b052-f8d1e82c72d5"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "stretch",
+                        "layout": "vbox",
+                        "margin": "5 0 0 0",
+                        "width": 440
+                    },
+                    "configAlternates": {
+                        "container|align": "string",
+                        "layout": "string",
+                        "margin": "auto",
+                        "width": "auto"
+                    },
+                    "name": "MyContainer14",
+                    "designerId": "35f2af89-a824-4aa2-b5c6-fea7912584d8",
+                    "cn": [
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "floatBox"
+                                ],
+                                "container|align": "stretch",
+                                "layout": "hbox",
+                                "margin": "0 10 0 0",
+                                "width": 420
+                            },
+                            "configAlternates": {
+                                "cls": "typedarray",
+                                "container|align": "string",
+                                "layout": "string",
+                                "margin": "auto",
+                                "width": "auto"
+                            },
+                            "name": "MyContainer15",
+                            "designerId": "c8227534-2c78-41d2-9a0a-3c112997171f",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.field.Date",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fieldLabel": "Date From",
+                                        "itemId": "dateFromLog",
+                                        "labelWidth": 75,
+                                        "name": "dateFrom",
+                                        "submitFormat": "Y-m-d",
+                                        "value": [
+                                            "new Date()"
+                                        ],
+                                        "width": 200
+                                    },
+                                    "configAlternates": {
+                                        "fieldLabel": "string",
+                                        "itemId": "string",
+                                        "labelWidth": "number",
+                                        "layout|x": "number",
+                                        "layout|y": "number",
+                                        "name": "string",
+                                        "submitFormat": "string",
+                                        "width": "auto",
+                                        "value": "object"
+                                    },
+                                    "name": "MyDateField",
+                                    "designerId": "ba3fdce6-d1f5-4e8b-8e6b-f4c324faf43e",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onDateFromChange",
+                                                "implHandler": [
+                                                    "this.loadLogs();"
+                                                ],
+                                                "name": "change",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onDateFromChange",
+                                            "designerId": "c08b7478-72c2-4a63-adc3-0d3f42e3d549"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.field.Date",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fieldLabel": "Date To",
+                                        "itemId": "dateToLog",
+                                        "labelWidth": 65,
+                                        "margin": "0 0 0 25",
+                                        "name": "dateTo",
+                                        "submitFormat": "Y-m-d",
+                                        "value": [
+                                            "new Date()"
+                                        ],
+                                        "width": 200
+                                    },
+                                    "configAlternates": {
+                                        "fieldLabel": "string",
+                                        "itemId": "string",
+                                        "labelWidth": "number",
+                                        "layout|x": "number",
+                                        "layout|y": "number",
+                                        "name": "string",
+                                        "submitFormat": "string",
+                                        "width": "auto",
+                                        "margin": "auto",
+                                        "value": "object"
+                                    },
+                                    "name": "MyDateField1",
+                                    "designerId": "7b544b44-ab0a-4105-8dd3-1d76763e22f4",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onDateToChange",
+                                                "implHandler": [
+                                                    "this.loadLogs();"
+                                                ],
+                                                "name": "change",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onDateToChange",
+                                            "designerId": "da8ece64-9eb6-433e-b57e-2bd4f6f36833"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "floatBox"
+                        ],
+                        "layout": "hbox",
+                        "margin": "0 10 0 0",
+                        "width": 430
+                    },
+                    "configAlternates": {
+                        "cls": "typedarray",
+                        "container|align": "string",
+                        "layout": "string",
+                        "margin": "auto",
+                        "width": "auto"
+                    },
+                    "name": "MyContainer16",
+                    "designerId": "37228624-9b73-47c6-8af5-427ef9f0c64b",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Time",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Time From",
+                                "format": "G:i",
+                                "itemId": "timeFromLog",
+                                "labelWidth": 75,
+                                "margin": "5 0 0 0",
+                                "name": "timeFrom",
+                                "value": "0:00",
+                                "width": 200
+                            },
+                            "configAlternates": {
+                                "value": "string",
+                                "fieldLabel": "string",
+                                "format": "string",
+                                "itemId": "string",
+                                "labelWidth": "number",
+                                "layout|x": "number",
+                                "layout|y": "number",
+                                "name": "string",
+                                "width": "auto",
+                                "margin": "auto"
+                            },
+                            "name": "MyTimeField2",
+                            "designerId": "7c692eab-6fc9-4f3a-83da-2a15966bbb88",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onDateFromTimeChange",
+                                        "implHandler": [
+                                            "this.loadLogs();"
+                                        ],
+                                        "name": "change",
+                                        "scope": "me"
+                                    },
+                                    "configAlternates": {
+                                        "fn": "string",
+                                        "implHandler": "code",
+                                        "name": "string",
+                                        "scope": "string"
+                                    },
+                                    "name": "onDateFromTimeChange",
+                                    "designerId": "82126236-ac6b-4e71-adcd-b6a8fdf199a2"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.field.Time",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Time To",
+                                "format": "G:i",
+                                "itemId": "timeToLog",
+                                "labelWidth": 65,
+                                "margin": "5 0 0 25",
+                                "name": "timeTo",
+                                "value": "23:59",
+                                "width": 200
+                            },
+                            "configAlternates": {
+                                "value": "string",
+                                "fieldLabel": "string",
+                                "format": "string",
+                                "itemId": "string",
+                                "labelWidth": "number",
+                                "layout|x": "number",
+                                "layout|y": "number",
+                                "name": "string",
+                                "width": "auto",
+                                "margin": "auto"
+                            },
+                            "name": "MyTimeField3",
+                            "designerId": "b1114b86-1102-494b-8a18-ba740a3fb829",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onDateToTimeChange",
+                                        "implHandler": [
+                                            "this.loadLogs();"
+                                        ],
+                                        "name": "change",
+                                        "scope": "me"
+                                    },
+                                    "configAlternates": {
+                                        "fn": "string",
+                                        "implHandler": "code",
+                                        "name": "string",
+                                        "scope": "string"
+                                    },
+                                    "name": "onDateToTimeChange",
+                                    "designerId": "1dbf91c4-58f3-45df-83b3-9f7ba62ff58c"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "itemId": "GridContainer",
+                "layout": "vbox"
+            },
+            "configAlternates": {
+                "container|align": "string",
+                "itemId": "string",
+                "layout": "string"
+            },
+            "name": "MyContainer",
+            "designerId": "b8d9bf7d-acb4-45b8-9b2b-11315c817d84",
+            "cn": [
+                {
+                    "type": "Ext.grid.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "bodyBorder": false,
+                        "border": true,
+                        "layout|flex": 1,
+                        "store": [
+                            "{LogGridStore}"
+                        ],
+                        "title": null
+                    },
+                    "configAlternates": {
+                        "store": "binding",
+                        "bodyBorder": "boolean",
+                        "border": "boolean",
+                        "layout|flex": "number",
+                        "title": "string"
+                    },
+                    "name": "MyGridPanel",
+                    "designerId": "a63c06a3-1dc6-478f-9507-4b2207710eda",
+                    "cn": [
+                        {
+                            "type": "Ext.toolbar.Paging",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "displayInfo": true,
+                                "dock": "top",
+                                "width": 360
+                            },
+                            "configAlternates": {
+                                "displayInfo": "boolean",
+                                "dock": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyPagingToolbar",
+                            "designerId": "c64cfdf5-4e67-4d8c-a839-b91e8fd19455",
+                            "cn": [
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "icon": "/inc/img/silk_icons/page_white_excel.png",
+                                        "layout|flex": null,
+                                        "text": "Download"
+                                    },
+                                    "configAlternates": {
+                                        "icon": "string",
+                                        "layout|flex": "number",
+                                        "text": "string"
+                                    },
+                                    "name": "MyButton1",
+                                    "designerId": "3e4dd0d5-56f7-4c26-ab41-b66beda13f52",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onButtonClick",
+                                                "implHandler": [
+                                                    "if(this.queryById('appName').getValue() === null){",
+                                                    "    return false;",
+                                                    "}",
+                                                    "",
+                                                    "this.exportToCSV();"
+                                                ],
+                                                "name": "click",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onButtonClick",
+                                            "designerId": "cee6bf60-174b-4433-b5c7-16146fcab55a"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.view.Table",
+                            "reference": {
+                                "name": "viewConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "enableTextSelection": true
+                            },
+                            "configAlternates": {
+                                "enableTextSelection": "boolean"
+                            },
+                            "name": "MyTable",
+                            "designerId": "c53d72ae-d7c0-465f-8ee7-a2392058166a"
+                        },
+                        {
+                            "type": "Ext.grid.column.Date",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "date",
+                                "format": "F j, Y h:ia",
+                                "text": "Date",
+                                "width": 167
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string",
+                                "format": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyDateColumn",
+                            "designerId": "0cc97b14-8b82-45e2-88e7-8ee5c48241b0"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "ip",
+                                "text": "IP"
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string"
+                            },
+                            "name": "MyColumn1",
+                            "designerId": "350b5ebb-6155-4577-9193-f5f2fdc9d5ac"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "uri",
+                                "hidden": true,
+                                "text": "URI",
+                                "width": 300
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "hidden": "boolean",
+                                "text": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyColumn",
+                            "designerId": "bbf7819f-e336-4f73-8890-17b70e806148"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "class",
+                                "text": "Class",
+                                "width": 150
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyColumn2",
+                            "designerId": "06c534ff-4eb8-4a85-9d41-9416fb225e4f"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "method",
+                                "text": "Method",
+                                "width": 150
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyColumn3",
+                            "designerId": "2c70189c-76fb-4b97-8139-4981cf74ab0d"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "referrer",
+                                "text": "Referrer",
+                                "width": 200
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyColumn4",
+                            "designerId": "5a9ab1c7-10f5-45b7-a000-8860e9b4b898"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "httpType",
+                                "text": "HTTP Type"
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string"
+                            },
+                            "name": "MyColumn5",
+                            "designerId": "89b5102e-d3fc-481c-8ab1-3cc7089f8277"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "query",
+                                "text": "Query"
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string"
+                            },
+                            "name": "MyColumn6",
+                            "designerId": "47dc7853-f615-4f58-b2c8-9681062c6ded"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "loggedIn",
+                                "text": "Logged In"
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string"
+                            },
+                            "name": "MyColumn8",
+                            "designerId": "2941f004-9bac-46c9-86d1-a462caf00b10"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "userId",
+                                "hidden": true,
+                                "text": "User Id"
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "hidden": "boolean",
+                                "text": "string"
+                            },
+                            "name": "MyColumn10",
+                            "designerId": "66d03567-abce-44b4-ad00-91657be5b562"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "userName",
+                                "text": "User Name"
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string"
+                            },
+                            "name": "MyColumn31",
+                            "designerId": "692a23c7-e2d6-4397-a909-5b51f2a4b31e"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "notFound",
+                                "text": "Not Found"
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string"
+                            },
+                            "name": "MyColumn9",
+                            "designerId": "50dd25a7-032c-4c69-824f-4c2a2a6bd5d8"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "authorized",
+                                "text": "Authorized"
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string"
+                            },
+                            "name": "MyColumn11",
+                            "designerId": "c00b0a24-f9ef-410a-9709-66d9e94624e9"
+                        },
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onGridpanelSelect",
+                                "implHandler": [
+                                    "if(record.length < 1){",
+                                    "    return false;",
+                                    "}",
+                                    "",
+                                    "",
+                                    "this.queryById('getLog').setValue(record.data.get);",
+                                    "this.queryById('postLog').setValue(record.data.post);",
+                                    "this.queryById('jsonLog').setValue(record.data.json);"
+                                ],
+                                "name": "select",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onGridpanelSelect",
+                            "designerId": "d24035ac-b8b9-438e-9986-68c551d2026c"
+                        },
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onGridpanelCellContextMenu",
+                                "implHandler": [
+                                    "e.preventDefault();",
+                                    "this.logColumnName = e.position.column.dataIndex;",
+                                    "this.logColumnValue = record.getData()[this.logColumnName];",
+                                    "this.contextMenu.showAt(e.getXY());"
+                                ],
+                                "name": "cellcontextmenu",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onGridpanelCellContextMenu",
+                            "designerId": "feb272b5-f737-4526-ae84-ccaca302fc40"
+                        },
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onGridpanelCellDblClick",
+                                "implHandler": [
+                                    "this.showTextDetailWindow(record.get(e.position.column.dataIndex));"
+                                ],
+                                "name": "celldblclick",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onGridpanelCellDblClick",
+                            "designerId": "2e63db87-3650-4d3a-b9c6-1b6625974e1a"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "stretch",
+                        "itemId": "TextContainer",
+                        "layout": "hbox",
+                        "resizable": [
+                            "{",
+                            "pinned:true",
+                            "}"
+                        ],
+                        "resizeHandles": "n",
+                        "width": null
+                    },
+                    "configAlternates": {
+                        "container|align": "string",
+                        "itemId": "string",
+                        "layout": "string",
+                        "margin": "auto",
+                        "resizable": "object",
+                        "resizeHandles": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyContainer1",
+                    "designerId": "9b3bfd54-4df1-4763-94e0-0de55a63e9b4",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.TextArea",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "border": null,
+                                "editable": false,
+                                "fieldLabel": "&nbsp;GET Request Data",
+                                "flex": 1,
+                                "height": 250,
+                                "itemId": "getLog",
+                                "labelAlign": "top",
+                                "layout|flex": null,
+                                "margin": null,
+                                "maxHeight": null,
+                                "padding": "5 0 0 0"
+                            },
+                            "configAlternates": {
+                                "border": "auto",
+                                "editable": "boolean",
+                                "fieldLabel": "string",
+                                "height": "auto",
+                                "itemId": "string",
+                                "labelAlign": "string",
+                                "layout|flex": "number",
+                                "margin": "auto",
+                                "maxHeight": "number",
+                                "padding": "auto",
+                                "width": "auto",
+                                "flex": "number"
+                            },
+                            "name": "MyTextArea",
+                            "designerId": "02179a0f-039a-4d1c-a119-6dccb59a93bc",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onGetLogRender",
+                                        "implHandler": [
+                                            "component.el.on('dblclick',this.dblClickField,this,component);"
+                                        ],
+                                        "name": "render",
+                                        "scope": "me"
+                                    },
+                                    "configAlternates": {
+                                        "fn": "string",
+                                        "implHandler": "code",
+                                        "name": "string",
+                                        "scope": "string"
+                                    },
+                                    "name": "onGetLogRender",
+                                    "designerId": "d4017d69-bc32-4992-9bef-b7644e7382b8"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.field.TextArea",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "border": null,
+                                "editable": false,
+                                "fieldLabel": "POST Request Data",
+                                "flex": 1,
+                                "height": 250,
+                                "itemId": "postLog",
+                                "labelAlign": "top",
+                                "layout|flex": null,
+                                "margin": null,
+                                "maxHeight": null,
+                                "maxWidth": null,
+                                "padding": "5 0 0 0"
+                            },
+                            "configAlternates": {
+                                "border": "auto",
+                                "editable": "boolean",
+                                "fieldLabel": "string",
+                                "height": "auto",
+                                "itemId": "string",
+                                "labelAlign": "string",
+                                "layout|flex": "number",
+                                "margin": "auto",
+                                "maxHeight": "number",
+                                "maxWidth": "number",
+                                "padding": "auto",
+                                "width": "auto",
+                                "flex": "number"
+                            },
+                            "name": "MyTextArea2",
+                            "designerId": "010eb54c-560f-4b55-9da3-3b16238a38e0",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onPostLogRender",
+                                        "implHandler": [
+                                            "component.el.on('dblclick',this.dblClickField,this,component);"
+                                        ],
+                                        "name": "render",
+                                        "scope": "me"
+                                    },
+                                    "configAlternates": {
+                                        "fn": "string",
+                                        "implHandler": "code",
+                                        "name": "string",
+                                        "scope": "string"
+                                    },
+                                    "name": "onPostLogRender",
+                                    "designerId": "f7fe696e-1f0e-470f-922a-ade14580fd56"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.field.TextArea",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "border": null,
+                                "editable": false,
+                                "fieldLabel": "JSON Data",
+                                "flex": 1,
+                                "height": 250,
+                                "itemId": "jsonLog",
+                                "labelAlign": "top",
+                                "layout|flex": null,
+                                "margin": null,
+                                "maxHeight": null,
+                                "maxWidth": null,
+                                "padding": "5 0 0 0"
+                            },
+                            "configAlternates": {
+                                "border": "auto",
+                                "editable": "boolean",
+                                "fieldLabel": "string",
+                                "height": "auto",
+                                "itemId": "string",
+                                "labelAlign": "string",
+                                "layout|flex": "number",
+                                "margin": "auto",
+                                "maxHeight": "number",
+                                "maxWidth": "number",
+                                "padding": "auto",
+                                "width": "auto",
+                                "flex": "number"
+                            },
+                            "name": "MyTextArea7",
+                            "designerId": "9f038384-c3c3-4826-ab64-a7f01a3ca76e",
+                            "cn": [
+                                {
+                                    "type": "basiceventbinding",
+                                    "reference": {
+                                        "name": "listeners",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fn": "onPostLogRender1",
+                                        "implHandler": [
+                                            "component.el.on('dblclick',this.dblClickField,this,component);"
+                                        ],
+                                        "name": "render",
+                                        "scope": "me"
+                                    },
+                                    "configAlternates": {
+                                        "fn": "string",
+                                        "implHandler": "code",
+                                        "name": "string",
+                                        "scope": "string"
+                                    },
+                                    "name": "onPostLogRender1",
+                                    "designerId": "0347a86d-f2c1-45fd-be98-1163c3d6319c"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "loadLogs",
+                "implHandler": [
+                    "this.queryById('getLog').setValue(\"\");",
+                    "this.queryById('postLog').setValue(\"\");",
+                    "",
+                    "var submitData = this.queryById('logSelectPanel').getValues();",
+                    "",
+                    "if(!submitData.appName){",
+                    "    return false;",
+                    "}",
+                    "",
+                    "var params = {appName:submitData.appName};",
+                    "",
+                    "if(submitData.dateFrom){",
+                    "    params.dateFrom = submitData.dateFrom;",
+                    "}",
+                    "",
+                    "if(submitData.dateTo){",
+                    "    params.dateTo = submitData.dateTo;",
+                    "}",
+                    "",
+                    "if(submitData.timeTo){",
+                    "    params.timeTo = submitData.timeTo;",
+                    "}",
+                    "",
+                    "if(submitData.timeFrom){",
+                    "    params.timeFrom = submitData.timeFrom;",
+                    "}",
+                    "",
+                    "if(submitData.searchColumn){",
+                    "    params.searchColumn = submitData.searchColumn;",
+                    "}",
+                    "",
+                    "if(submitData.searchOperation){",
+                    "    params.searchOperation = submitData.searchOperation;",
+                    "}",
+                    "",
+                    "if(submitData.searchTerm){",
+                    "    params.searchTerm = submitData.searchTerm;",
+                    "}",
+                    "",
+                    "",
+                    "var logGridStore = this.getViewModel().getStore('LogGridStore');",
+                    "",
+                    "logGridStore.getProxy().setExtraParams(params);",
+                    "logGridStore.loadPage(1);"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "loadLogs",
+            "designerId": "927a4760-161e-4d4f-bab8-40e002015278"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "state",
+                    "itemId"
+                ],
+                "fn": "setFilterButtonState",
+                "implHandler": [
+                    "var button = this.queryById(itemId);",
+                    "if(state === 'clear'){",
+                    "    button.buttonState = 'clear';",
+                    "    button.setText('Clear');",
+                    "    button.setIcon('/inc/img/silk_icons/cancel.png');",
+                    "} else {",
+                    "    button.buttonState = 'filter';",
+                    "    button.setText('Filter');",
+                    "    button.setIcon('/inc/img/silk_icons/find.png');",
+                    "}"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "setFilterButtonState",
+            "designerId": "ab547ad2-bf5c-4cd9-945c-e96c1e60c796"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "text"
+                ],
+                "fn": "showTextDetailWindow",
+                "implHandler": [
+                    "if(!this.textWindow){",
+                    "    this.textWindow = Ext.create('widget.Textdetailwindow');",
+                    "}",
+                    "this.textWindow.setText(text);"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "showTextDetailWindow",
+            "designerId": "3da75e6d-da68-44c5-8011-732860ad96bf"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "event",
+                    "el",
+                    "component"
+                ],
+                "fn": "dblClickField",
+                "implHandler": [
+                    "this.showTextDetailWindow(component.getValue());"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "dblClickField",
+            "designerId": "67351f7c-43fa-42e9-be01-3ca12ce6a7be"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "exportToCSV",
+                "implHandler": [
+                    "var submitData = this.queryById('logSelectPanel').getValues();",
+                    "",
+                    "if(!submitData.appName){",
+                    "    return false;",
+                    "}",
+                    "",
+                    "var params =",
+                    "",
+                    "    {",
+                    "        tab:'log',",
+                    "        appName:submitData.appName",
+                    "    };",
+                    "",
+                    "if(submitData.dateFrom){",
+                    "    params.dateFrom = submitData.dateFrom;",
+                    "}",
+                    "",
+                    "if(submitData.dateTo){",
+                    "    params.dateTo = submitData.dateTo;",
+                    "}",
+                    "",
+                    "window.location.href = \"exportToCSV?\"+ Ext.Object.toQueryString(params);"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "exportToCSV",
+            "designerId": "fff0fee6-146f-4ac9-aa56-5fa7aac44cc8"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onAccessLogsRender",
+                "implHandler": [
+                    "this.loadLogs();"
+                ],
+                "name": "render",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onAccessLogsRender",
+            "designerId": "7bc47fc5-ac1c-4024-8faa-0e6c81b51a2a"
+        }
+    ]
+}

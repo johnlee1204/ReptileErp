@@ -249,19 +249,19 @@ class AgileRouter
 	}
 
 	function logRequest($notFound,$authorized){
-		//$standardLogData = $this->AgileApp->readStandardLogColumnValues();
+		$standardLogData = $this->AgileApp->readStandardLogColumnValues();
 
-		//$insertData = array_merge($standardLogData, array(
-		//	'notFound' => $notFound,
-		//	'authorized' => $authorized
-		//));
+		$insertData = array_merge($standardLogData, array(
+			'notFound' => intval($notFound),
+			'authorized' => intval($authorized)
+		));
 
-		//try{
-		//	$this->AgileApp->systemDb->insert($this->AgileApp->systemConfigs['table']['logAccess'], $insertData);
-		//}catch(Exception $ex){
-		//	echo "<HR>\r\nFailed to write to access log. Your database config is bad.\r\n<HR>\r\n";
-		//	echo $ex->getMessage(),"\r\n<HR>\r\n";
-		//	exit;
-		//}
+		try{
+			$this->AgileApp->systemDb->insert($this->AgileApp->systemConfigs['table']['logAccess'], $insertData);
+		}catch(Exception $ex){
+			echo "<HR>\r\nFailed to write to access log. Your database config is bad.\r\n<HR>\r\n";
+			echo $ex->getMessage(),"\r\n<HR>\r\n";
+			exit;
+		}
 	}
 }
