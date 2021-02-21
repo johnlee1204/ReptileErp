@@ -274,7 +274,7 @@ Ext.define('Schedule.view.Schedule', {
 			});
 		}
 
-		this.addEventWindow.setTitle("Add Event");
+		this.addEventWindow.setTitle("Add Shift");
 
 		this.addEventWindow.show(null, function(){
 			this.addEventWindow.setDates(context.event.data, "Create");
@@ -295,7 +295,7 @@ Ext.define('Schedule.view.Schedule', {
 			});
 		}
 
-		this.addEventWindow.setTitle("Edit Event");
+		this.addEventWindow.setTitle("Edit Shift");
 
 		this.addEventWindow.show(null, function(){
 			this.addEventWindow.setDates(context.event.data, "Update");

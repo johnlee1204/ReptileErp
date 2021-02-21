@@ -298,7 +298,7 @@ class Log extends AgileBaseController {
 				$sort = $params['sort']." ".$params['dir'];
 			}
 			else {
-				$sort = "CAST({$params['sort']} AS NVARCHAR(MAX)) ".$params['dir'];
+				$sort = $params['sort'] . " " . $params['dir'];
 			}
 
 			$query =
@@ -424,7 +424,7 @@ class Log extends AgileBaseController {
 				$sort = $params['sort']." ".$params['dir'];
 			}
 			else {
-				$sort = "CAST({$params['sort']} AS NVARCHAR(MAX)) ".$params['dir'];
+				$sort = $params['sort'] . " " . $params['dir'];
 			}
 
 			$query =
