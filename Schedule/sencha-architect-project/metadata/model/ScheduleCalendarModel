@@ -1,0 +1,20 @@
+{
+    "type": "Ext.calendar.model.Calendar",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "ScheduleCalendarModel",
+        "eventStoreDefaults": [
+            "{\"type\":\"calendar-events\",\"proxy\":{\"type\":\"ajax\", url:\"/Schedule/readSchedule\", reader:{rootProperty:\"data\"}}}"
+        ]
+    },
+    "configAlternates": {
+        "designer|userClassName": "string",
+        "eventStoreDefaults": "object"
+    },
+    "name": "MyCalendar1",
+    "designerId": "b555a1df-a148-4e7b-a910-4809f4e567e2"
+}

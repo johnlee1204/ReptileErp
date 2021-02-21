@@ -20,10 +20,17 @@ Ext.Loader.setConfig({
 
 
 Ext.application({
+	models: [
+		'ScheduleCalendarModel'
+	],
+	stores: [
+		'ScheduleCalandarStore'
+	],
 	views: [
 		'MyViewport',
 		'Schedule',
-		'LaborForm'
+		'LaborForm',
+		'AddEventForm'
 	],
 	name: 'Schedule',
 

@@ -1,0 +1,40 @@
+{
+    "type": "Ext.calendar.store.Calendars",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": true,
+        "designer|userClassName": "ScheduleCalandarStore",
+        "model": "ScheduleCalendarModel",
+        "storeId": "ScheduleCalandarStore"
+    },
+    "configAlternates": {
+        "autoLoad": "boolean",
+        "designer|userClassName": "string",
+        "model": "model",
+        "storeId": "string"
+    },
+    "name": "MyCalendars",
+    "designerId": "2e318447-f689-40d1-9b64-04f56103107b",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "url": "/Schedule/resources/calandars.json"
+            },
+            "configAlternates": {
+                "url": "string"
+            },
+            "name": "MyAjaxProxy",
+            "designerId": "ea2daf0a-227a-4391-8961-bda23504e9f3"
+        }
+    ]
+}

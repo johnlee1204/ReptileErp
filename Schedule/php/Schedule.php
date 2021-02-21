@@ -16,7 +16,11 @@ class Schedule extends AgileBaseController {
 		'readEmployeeLaborHistory' => 'read',
 		'readLabor' => 'read',
 		'updateLabor' => 'update',
-		'deleteLabor' => 'delete'
+		'deleteLabor' => 'delete',
+		'readSchedule' => 'read',
+		'createShift' => 'create',
+		'updateShift' => 'update',
+		'deleteShift' => 'delete'
 	];
 
 	function readAppInitData() {
@@ -91,4 +95,48 @@ class Schedule extends AgileBaseController {
 
 		$this->outputSuccess();
 	}
+
+	function readSchedule() {
+		$this->outputSuccessData(ScheduleModel::readSchedule());
+	}
+
+	function createShift() {
+		$inputs = Validation::validateJsonInput([
+			'employeeId' => 'notBlank',
+			'startDate' => 'notBlank',
+			'startTime' => 'notBlank',
+			'endDate' => 'notBlank',
+			'endTime' => 'notBlank'
+		]);
+
+		ScheduleModel::createShift($inputs);
+
+		$this->outputSuccess();
+	}
+
+	function updateShift() {
+		$inputs = Validation::validateJsonInput([
+			'scheduleId' => 'numeric',
+			'employeeId' => 'notBlank',
+			'startDate' => 'notBlank',
+			'startTime' => 'notBlank',
+			'endDate' => 'notBlank',
+			'endTime' => 'notBlank'
+		]);
+
+		ScheduleModel::updateShift($inputs);
+
+		$this->outputSuccess();
+	}
+
+	function deleteShift() {
+		$input = Validation::validateJsonInput([
+			'scheduleId' => 'numeric'
+		]);
+
+		ScheduleModel::deleteShift($input['scheduleId']);
+
+		$this->outputSuccess();
+	}
+
 }

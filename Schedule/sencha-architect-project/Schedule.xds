@@ -41,13 +41,20 @@
             "8e77139f-bc05-4a61-ab7b-54ee0eb6e2c6",
             "25da0455-50eb-4270-aa4e-2f68c67958d0",
             "71815d24-b26a-4c88-80ec-bd0db01c5351",
-            "b185ad1e-c2c2-4ca7-a8d3-1ed4ded5e75e"
+            "b185ad1e-c2c2-4ca7-a8d3-1ed4ded5e75e",
+            "2a68e3dc-a354-4512-a9fb-b21070d96ad2",
+            "676b5312-6fb7-4ccd-bee9-c826282149e4",
+            "a92e351c-ca4d-4224-a69e-a78b4d3401c1"
         ],
-        "store": [],
+        "store": [
+            "2e318447-f689-40d1-9b64-04f56103107b"
+        ],
         "controller": [],
-        "model": [],
+        "model": [
+            "b555a1df-a148-4e7b-a910-4809f4e567e2"
+        ],
         "resource": [
-            "1d91979e-5faa-4478-a892-33eb5de2b56f",
+            "b8dc77db-93b4-4b45-8c89-fb0c7049588c",
             "173a740e-293e-4e00-b40c-9a50fb2577d4",
             "5ba3958c-da75-475c-be62-0204422d23cf",
             "e9dfff16-f6c8-498c-ac8a-f008ed4717e3",
@@ -59,7 +66,9 @@
             "40e1fc54-dc2c-477a-9667-8688a4e3389a",
             "6d3863bd-00b5-4ae1-a676-10327db4a8d1",
             "d94af485-d9b9-41ab-b418-64b8a3917c66",
-            "821c6f6c-8dbc-48df-862f-d71636aeceba"
+            "821c6f6c-8dbc-48df-862f-d71636aeceba",
+            "eb332f3b-866a-498c-b6d9-43f51089e82a",
+            "5a3ee65c-4105-4df8-8477-0bac34e89115"
         ],
         "app": [
             "application"

@@ -1,0 +1,20 @@
+{
+    "type": "jsresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "js_35iyliza",
+        "includeInBundle": true,
+        "url": "/js-lib/ext-7.3-latest/build/packages/calendar/classic/calendar-debug.js"
+    },
+    "configAlternates": {
+        "designer|userClassName": "string",
+        "includeInBundle": "boolean",
+        "url": "uri"
+    },
+    "name": "js4",
+    "designerId": "eb332f3b-866a-498c-b6d9-43f51089e82a"
+}

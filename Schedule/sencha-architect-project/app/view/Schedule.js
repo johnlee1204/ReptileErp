@@ -22,6 +22,10 @@ Ext.define('Schedule.view.Schedule', {
 		'Schedule.view.LaborForm',
 		'Ext.tab.Panel',
 		'Ext.tab.Tab',
+		'Ext.calendar.panel.Panel',
+		'Ext.calendar.panel.Month',
+		'Ext.calendar.view.Month',
+		'Ext.button.Segmented',
 		'Ext.grid.Panel',
 		'Ext.grid.column.Date',
 		'Ext.view.Table',
@@ -50,8 +54,50 @@ Ext.define('Schedule.view.Schedule', {
 			items: [
 				{
 					xtype: 'panel',
+					flex: 1,
 					bodyStyle: 'background:none',
 					title: 'Schedule',
+					layout: {
+						type: 'vbox',
+						align: 'stretch'
+					},
+					items: [
+						{
+							xtype: 'calendar',
+							flex: 1,
+							itemId: 'calendar',
+							store: 'ScheduleCalandarStore',
+							views: {
+								month: {
+									xtype: 'calendar-month',
+									label: 'Month',
+									listeners: {
+										beforeeventadd: 'onCalendarmonthBeforeEventadd',
+										beforeeventedit: 'onCalendarmonthBeforeEventedit',
+										eventdrop: 'onCalendarmonthEventdrop'
+									},
+									view: {
+										xtype: 'calendar-monthview',
+										addForm: {
+											xtype: 'addeventform'
+										},
+										editForm: {
+											xtype: 'addeventform'
+										}
+									}
+								}
+							},
+							switcher: {
+								xtype: 'segmentedbutton',
+								hidden: true
+							}
+						}
+					]
+				},
+				{
+					xtype: 'panel',
+					bodyStyle: 'background:none',
+					title: 'Labor History',
 					layout: {
 						type: 'vbox',
 						align: 'stretch'
@@ -214,6 +260,79 @@ Ext.define('Schedule.view.Schedule', {
 	],
 	listeners: {
 		afterrender: 'onPanelAfterRender'
+	},
+
+	onCalendarmonthBeforeEventadd: function(base, context, eOpts) {
+		if(!this.addEventWindow) {
+			this.addEventWindow = Ext.create("Schedule.view.AddEventForm", {
+				listeners:{
+					scope:this,
+					eventadded:function() {
+						this.queryById('calendar').getStore().load();
+					}
+				}
+			});
+		}
+
+		this.addEventWindow.setTitle("Add Event");
+
+		this.addEventWindow.show(null, function(){
+			this.addEventWindow.setDates(context.event.data, "Create");
+		}, this);
+
+		return false;
+	},
+
+	onCalendarmonthBeforeEventedit: function(base, context, eOpts) {
+		if(!this.addEventWindow) {
+			this.addEventWindow = Ext.create("Schedule.view.AddEventForm", {
+				listeners:{
+					scope:this,
+					eventadded:function() {
+						this.queryById('calendar').getStore().load();
+					}
+				}
+			});
+		}
+
+		this.addEventWindow.setTitle("Edit Event");
+
+		this.addEventWindow.show(null, function(){
+			this.addEventWindow.setDates(context.event.data, "Update");
+		}, this);
+
+		return false;
+	},
+
+	onCalendarmonthEventdrop: function(calendarweeksview, context, eOpts) {
+		console.log(context);
+		let startDate = new Date(context.event.data.startDate);
+		startDateString = (startDate.getYear() + 1900) + "-" + (startDate.getMonth() + 1) + "-" + startDate.getDate();
+		startTime = startDate.getHours() + ":" + startDate.getMinutes() + ":" + startDate.getSeconds();
+
+		let endDate = new Date(context.event.data.endDate);
+		endDateString = (endDate.getYear() + 1900) + "-" + (endDate.getMonth() + 1) + "-" + endDate.getDate();
+		endTime = endDate.getHours() + ":" + endDate.getMinutes() + ":" + endDate.getSeconds();
+
+		AERP.Ajax.request({
+			url:'/Schedule/updateShift',
+			jsonData:{
+				scheduleId:context.event.data.scheduleId,
+				employeeId:context.event.data.employeeId,
+				startDate:startDateString,
+				startTime:startTime,
+				endDate:endDateString,
+				endTime:endTime
+			},
+			success:function(reply) {
+				this.queryById('calendar').getStore().load();
+			},
+			failure:function() {
+				this.queryById('calendar').getStore().load();
+			},
+			scope:this,
+			mask:this
+		});
 	},
 
 	onEmployeeScheduleGridSelectionChange: function(model, selected, eOpts) {

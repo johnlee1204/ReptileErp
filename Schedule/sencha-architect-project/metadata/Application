@@ -6,16 +6,25 @@
     },
     "codeClass": null,
     "userConfig": {
+        "models": [
+            "ScheduleCalendarModel"
+        ],
         "name": "Schedule",
+        "stores": [
+            "ScheduleCalandarStore"
+        ],
         "views": [
             "MyViewport",
             "Schedule",
-            "LaborForm"
+            "LaborForm",
+            "AddEventForm"
         ]
     },
     "configAlternates": {
         "name": "string",
-        "views": "typedarray"
+        "views": "typedarray",
+        "models": "typedarray",
+        "stores": "typedarray"
     },
     "name": "Application",
     "designerId": "application"

@@ -62,8 +62,255 @@
                     "userConfig": {
                         "bodyStyle": "background:none",
                         "container|align": "stretch",
+                        "flex": 1,
                         "layout": "vbox",
                         "title": "Schedule"
+                    },
+                    "configAlternates": {
+                        "bodyStyle": "string",
+                        "container|align": "string",
+                        "flex": "number",
+                        "layout": "string",
+                        "title": "string"
+                    },
+                    "name": "MyPanel2",
+                    "designerId": "ba633f45-848f-4aaa-a929-014147c40a34",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "TabConfig2",
+                            "designerId": "eba4ca05-5af3-4dd2-9a5b-7094f35989d2"
+                        },
+                        {
+                            "type": "Ext.calendar.panel.Panel",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "flex": 1,
+                                "itemId": "calendar",
+                                "store": "ScheduleCalandarStore"
+                            },
+                            "configAlternates": {
+                                "flex": "number",
+                                "itemId": "string",
+                                "store": "store"
+                            },
+                            "name": "MyCalendar",
+                            "designerId": "95c23ff1-2a74-494e-bd25-0ee6ab2f5a84",
+                            "cn": [
+                                {
+                                    "type": "Ext.calendar.panel.Month",
+                                    "reference": {
+                                        "name": "views",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "label": "Month"
+                                    },
+                                    "configAlternates": {
+                                        "label": "string"
+                                    },
+                                    "name": "MyMonth",
+                                    "designerId": "f0a6c381-a6dd-4c36-922d-a3b9dff74703",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onCalendarmonthBeforeEventadd",
+                                                "implHandler": [
+                                                    "if(!this.addEventWindow) {",
+                                                    "\tthis.addEventWindow = Ext.create(\"Schedule.view.AddEventForm\", {",
+                                                    "\t\tlisteners:{",
+                                                    "\t\t\tscope:this,",
+                                                    "\t\t\teventadded:function() {",
+                                                    "\t\t\t\tthis.queryById('calendar').getStore().load();",
+                                                    "\t\t\t}",
+                                                    "\t\t}",
+                                                    "\t});",
+                                                    "}",
+                                                    "",
+                                                    "this.addEventWindow.setTitle(\"Add Event\");",
+                                                    "",
+                                                    "this.addEventWindow.show(null, function(){",
+                                                    "\tthis.addEventWindow.setDates(context.event.data, \"Create\");",
+                                                    "}, this);",
+                                                    "",
+                                                    "return false;"
+                                                ],
+                                                "name": "beforeeventadd",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onCalendarmonthBeforeEventadd",
+                                            "designerId": "684ec26a-c1ad-4c2b-8c2c-469efe072ed3"
+                                        },
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onCalendarmonthBeforeEventedit",
+                                                "implHandler": [
+                                                    "if(!this.addEventWindow) {",
+                                                    "\tthis.addEventWindow = Ext.create(\"Schedule.view.AddEventForm\", {",
+                                                    "\t\tlisteners:{",
+                                                    "\t\t\tscope:this,",
+                                                    "\t\t\teventadded:function() {",
+                                                    "\t\t\t\tthis.queryById('calendar').getStore().load();",
+                                                    "\t\t\t}",
+                                                    "\t\t}",
+                                                    "\t});",
+                                                    "}",
+                                                    "",
+                                                    "this.addEventWindow.setTitle(\"Edit Event\");",
+                                                    "",
+                                                    "this.addEventWindow.show(null, function(){",
+                                                    "\tthis.addEventWindow.setDates(context.event.data, \"Update\");",
+                                                    "}, this);",
+                                                    "",
+                                                    "return false;"
+                                                ],
+                                                "name": "beforeeventedit",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onCalendarmonthBeforeEventedit",
+                                            "designerId": "458dfe8f-714a-4e24-ad5a-b26fa284f40c"
+                                        },
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onCalendarmonthEventdrop",
+                                                "implHandler": [
+                                                    "console.log(context);",
+                                                    "let startDate = new Date(context.event.data.startDate);",
+                                                    "startDateString = (startDate.getYear() + 1900) + \"-\" + (startDate.getMonth() + 1) + \"-\" + startDate.getDate();",
+                                                    "startTime = startDate.getHours() + \":\" + startDate.getMinutes() + \":\" + startDate.getSeconds();",
+                                                    "",
+                                                    "let endDate = new Date(context.event.data.endDate);",
+                                                    "endDateString = (endDate.getYear() + 1900) + \"-\" + (endDate.getMonth() + 1) + \"-\" + endDate.getDate();",
+                                                    "endTime = endDate.getHours() + \":\" + endDate.getMinutes() + \":\" + endDate.getSeconds();",
+                                                    "",
+                                                    "AERP.Ajax.request({",
+                                                    "\turl:'/Schedule/updateShift',",
+                                                    "\tjsonData:{",
+                                                    "\t\tscheduleId:context.event.data.scheduleId,",
+                                                    "\t\temployeeId:context.event.data.employeeId,",
+                                                    "\t\tstartDate:startDateString,",
+                                                    "\t\tstartTime:startTime,",
+                                                    "\t\tendDate:endDateString,",
+                                                    "\t\tendTime:endTime",
+                                                    "\t},",
+                                                    "\tsuccess:function(reply) {",
+                                                    "\t\tthis.queryById('calendar').getStore().load();",
+                                                    "\t},",
+                                                    "\tfailure:function() {",
+                                                    "\t\tthis.queryById('calendar').getStore().load();",
+                                                    "\t},",
+                                                    "\tscope:this,",
+                                                    "\tmask:this",
+                                                    "});"
+                                                ],
+                                                "name": "eventdrop",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onCalendarmonthEventdrop",
+                                            "designerId": "fe9157d1-d405-4e32-9f4a-422402792ff9"
+                                        },
+                                        {
+                                            "type": "Ext.calendar.view.Month",
+                                            "reference": {
+                                                "name": "view",
+                                                "type": "object"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "addForm": [
+                                                    "{\"xtype\":\"addeventform\"}"
+                                                ],
+                                                "editForm": [
+                                                    "{\"xtype\":\"addeventform\"}"
+                                                ]
+                                            },
+                                            "configAlternates": {
+                                                "addForm": "object",
+                                                "editForm": "object"
+                                            },
+                                            "name": "MyMonth1",
+                                            "designerId": "ddf3786b-a2de-48a5-93e9-8e4922a95147"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.calendar.legacy.Switcher",
+                                    "reference": {
+                                        "name": "switcher",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "hidden": true
+                                    },
+                                    "configAlternates": {
+                                        "hidden": "boolean"
+                                    },
+                                    "name": "MySwitcher",
+                                    "designerId": "9e95781b-d172-4f43-b12c-af30af7f1945"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.panel.Panel",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "bodyStyle": "background:none",
+                        "container|align": "stretch",
+                        "layout": "vbox",
+                        "title": "Labor History"
                     },
                     "configAlternates": {
                         "bodyStyle": "string",

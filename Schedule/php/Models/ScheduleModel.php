@@ -195,4 +195,77 @@ class ScheduleModel extends AgileModel{
 			['laborId' => $laborId]
 		);
 	}
+
+	static function readSchedule() {
+		return self::$database->fetch_all_assoc("
+			SELECT
+				scheduleId id,
+				scheduleId,
+				Schedule.employeeId,
+				startTime startDate,
+				endTime endDate,
+				#hours,
+				1 as calendarId,
+				CONCAT(DATE_FORMAT(startTime, '%p'),' - ',DATE_FORMAT(endTime, '%h:%i %p'), ' ' ,Employee.firstName, ' ', Employee.lastName) title
+			FROM Schedule
+			JOIN Employee ON Employee.employeeId = Schedule.employeeId
+		");
+	}
+
+	static function createShift($inputs) {
+		$startDate = date("Y-m-d H:i:s", strtotime($inputs['startDate'] . ' ' . $inputs['startTime']));
+		$endDate = date("Y-m-d H:i:s", strtotime($inputs['endDate'] . ' ' . $inputs['endTime']));
+
+		$hoursWorked = NULL;
+		$hoursWorked = strtotime($endDate) - strtotime($startDate);
+		$hoursWorked = $hoursWorked / ( 60 * 60 );
+
+		if($hoursWorked < 0) {
+			throw new AgileUserMessageException("End time must be after Start time!");
+		}
+
+
+		self::$database->insert(
+			'Schedule',
+			[
+				'employeeId' => $inputs['employeeId'],
+				'startTime' => $startDate,
+				'endTime' => $endDate,
+				'hours' => $hoursWorked
+			]
+		);
+	}
+
+	static function updateShift($inputs) {
+		$startDate = date("Y-m-d H:i:s", strtotime($inputs['startDate'] . ' ' . $inputs['startTime']));
+		$endDate = date("Y-m-d H:i:s", strtotime($inputs['endDate'] . ' ' . $inputs['endTime']));
+
+		$hoursWorked = NULL;
+		$hoursWorked = strtotime($endDate) - strtotime($startDate);
+		$hoursWorked = $hoursWorked / ( 60 * 60 );
+
+		if($hoursWorked < 0) {
+			throw new AgileUserMessageException("End time must be after Start time!");
+		}
+
+
+		self::$database->update(
+			'Schedule',
+			[
+				'employeeId' => $inputs['employeeId'],
+				'startTime' => $startDate,
+				'endTime' => $endDate,
+				'hours' => $hoursWorked
+			],
+			['scheduleId' => $inputs['scheduleId']]
+		);
+	}
+
+	static function deleteShift($scheduleId) {
+		self::$database->delete(
+			"Schedule",
+			['scheduleId' => $scheduleId]
+		);
+	}
+
 }

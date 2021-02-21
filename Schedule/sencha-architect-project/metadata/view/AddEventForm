@@ -1,0 +1,514 @@
+{
+    "type": "Ext.window.Window",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyPadding": 10,
+        "bodyStyle": "background:none",
+        "closeAction": "hide",
+        "designer|userAlias": "addeventform",
+        "designer|userClassName": "AddEventForm",
+        "height": 228,
+        "layout": "vbox",
+        "title": "Add Shift",
+        "width": 493
+    },
+    "configAlternates": {
+        "bodyPadding": "auto",
+        "bodyStyle": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "layout": "string",
+        "title": "string",
+        "width": "auto",
+        "closeAction": "string"
+    },
+    "designerId": "2a68e3dc-a354-4512-a9fb-b21070d96ad2",
+    "viewControllerInstanceId": "a92e351c-ca4d-4224-a69e-a78b4d3401c1",
+    "viewModelInstanceId": "676b5312-6fb7-4ccd-bee9-c826282149e4",
+    "cn": [
+        {
+            "type": "Ext.form.field.ComboBox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "displayField": "name",
+                "fieldLabel": "Employee",
+                "forceSelection": true,
+                "itemId": "employee",
+                "queryMode": "local",
+                "store": [
+                    "{EmployeeStore}"
+                ],
+                "valueField": "employeeId"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string",
+                "store": "binding",
+                "displayField": "datafield",
+                "forceSelection": "boolean",
+                "queryMode": "string",
+                "valueField": "datafield"
+            },
+            "name": "MyComboBox",
+            "designerId": "b2ed436f-cde4-4139-8c6d-1cfdfd7ddb5a"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "layout": "hbox"
+            },
+            "configAlternates": {
+                "container|align": "string",
+                "layout": "string"
+            },
+            "name": "MyContainer4",
+            "designerId": "59fbe901-01ac-4de1-b6f3-2808825a1375",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Date",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Start Date",
+                        "itemId": "startDate",
+                        "submitFormat": "Y-m-d",
+                        "width": 214
+                    },
+                    "configAlternates": {
+                        "fieldLabel": "string",
+                        "itemId": "string",
+                        "width": "auto",
+                        "submitFormat": "string"
+                    },
+                    "name": "MyDateField",
+                    "designerId": "da0f4aad-51f3-4ce6-b988-89eddf3113b2"
+                },
+                {
+                    "type": "Ext.form.field.Time",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Start Time",
+                        "itemId": "startTime",
+                        "labelWidth": 60,
+                        "margin": "0 0 0 15",
+                        "submitFormat": "H:i:s",
+                        "width": 204
+                    },
+                    "configAlternates": {
+                        "fieldLabel": "string",
+                        "itemId": "string",
+                        "margin": "auto",
+                        "width": "auto",
+                        "labelWidth": "number",
+                        "submitFormat": "string"
+                    },
+                    "name": "MyTimeField",
+                    "designerId": "4f2142e1-0959-4abc-b87a-e65278d1d9f1"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "layout": "hbox",
+                "margin": "5 0 0 0 "
+            },
+            "configAlternates": {
+                "container|align": "string",
+                "layout": "string",
+                "margin": "auto"
+            },
+            "name": "MyContainer5",
+            "designerId": "cc748cc7-ac62-4165-816c-9c5e9e6661d8",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Date",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "End Date",
+                        "itemId": "endDate",
+                        "submitFormat": "Y-m-d",
+                        "width": 214
+                    },
+                    "configAlternates": {
+                        "fieldLabel": "string",
+                        "itemId": "string",
+                        "width": "auto",
+                        "submitFormat": "string"
+                    },
+                    "name": "MyDateField",
+                    "designerId": "ec3efe0a-5e40-4c73-9b34-72a34a34066a"
+                },
+                {
+                    "type": "Ext.form.field.Time",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "End Time",
+                        "itemId": "endTime",
+                        "labelWidth": 60,
+                        "margin": "0 0 0 15",
+                        "submitFormat": "H:i:s",
+                        "width": 204
+                    },
+                    "configAlternates": {
+                        "fieldLabel": "string",
+                        "itemId": "string",
+                        "margin": "auto",
+                        "width": "auto",
+                        "labelWidth": "number",
+                        "submitFormat": "string"
+                    },
+                    "name": "MyTimeField",
+                    "designerId": "0198b3f9-ea0a-4b90-ad82-3311dd0aa1ea"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "layout": "hbox",
+                "layout|flex": 1
+            },
+            "configAlternates": {
+                "container|align": "string",
+                "layout": "string",
+                "layout|flex": "number"
+            },
+            "name": "MyContainer6",
+            "designerId": "4cc37859-66d3-4f71-9dc6-3212fbb352cb",
+            "cn": [
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": 49,
+                        "icon": "/inc/img/silk_icons/disk.png",
+                        "margin": "30 0 0 100",
+                        "text": "Save",
+                        "width": 105
+                    },
+                    "configAlternates": {
+                        "height": "auto",
+                        "icon": "string",
+                        "margin": "auto",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyButton2",
+                    "designerId": "1bb56dc1-2014-4ceb-8806-b137136be438",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onButtonClick",
+                                "implHandler": [
+                                    "if(this.scheduleId) {",
+                                    "\tAERP.Ajax.request({",
+                                    "\t\turl:'/Schedule/updateShift',",
+                                    "\t\tjsonData:{",
+                                    "\t\t\tscheduleId:this.scheduleId,",
+                                    "\t\t\temployeeId:this.queryById('employee').getValue(),",
+                                    "\t\t\tstartDate:this.queryById('startDate').getSubmitValue(),",
+                                    "\t\t\tstartTime:this.queryById('startTime').getSubmitValue(),",
+                                    "\t\t\tendDate:this.queryById('endDate').getSubmitValue(),",
+                                    "\t\t\tendTime:this.queryById('endTime').getSubmitValue()",
+                                    "\t\t},",
+                                    "\t\tsuccess:function(reply) {",
+                                    "\t\t\tthis.resetFields();",
+                                    "\t\t\tthis.fireEvent('eventadded');",
+                                    "\t\t\tthis.close();",
+                                    "\t\t},",
+                                    "\t\tscope:this,",
+                                    "\t\tmask:this",
+                                    "\t});",
+                                    "} else {",
+                                    "\tAERP.Ajax.request({",
+                                    "\t\turl:'/Schedule/createShift',",
+                                    "\t\tjsonData:{",
+                                    "\t\t\temployeeId:this.queryById('employee').getValue(),",
+                                    "\t\t\tstartDate:this.queryById('startDate').getSubmitValue(),",
+                                    "\t\t\tstartTime:this.queryById('startTime').getSubmitValue(),",
+                                    "\t\t\tendDate:this.queryById('endDate').getSubmitValue(),",
+                                    "\t\t\tendTime:this.queryById('endTime').getSubmitValue()",
+                                    "\t\t},",
+                                    "\t\tsuccess:function(reply) {",
+                                    "\t\t\tthis.resetFields();",
+                                    "\t\t\tthis.fireEvent('eventadded');",
+                                    "\t\t\tthis.close();",
+                                    "\t\t},",
+                                    "\t\tscope:this,",
+                                    "\t\tmask:this",
+                                    "\t});",
+                                    "}",
+                                    ""
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onButtonClick",
+                            "designerId": "c313eb81-5c38-44c0-8d9f-27f65f11fdda"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": 49,
+                        "hidden": true,
+                        "icon": "/inc/img/silk_icons/delete.png",
+                        "itemId": "deleteButton",
+                        "margin": "30 0 0 100",
+                        "text": "Delete",
+                        "width": 105
+                    },
+                    "configAlternates": {
+                        "height": "auto",
+                        "icon": "string",
+                        "margin": "auto",
+                        "text": "string",
+                        "width": "auto",
+                        "hidden": "boolean",
+                        "itemId": "string"
+                    },
+                    "name": "MyButton3",
+                    "designerId": "9dcf5ad9-63b6-43da-91a5-f8ac8d230e2f",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onButtonClick1",
+                                "implHandler": [
+                                    "AERP.Ajax.request({",
+                                    "\turl:'/Schedule/deleteShift',",
+                                    "\tjsonData:{",
+                                    "\t\tscheduleId:this.scheduleId,",
+                                    "\t\temployeeId:this.queryById('employee').getValue(),",
+                                    "\t\tstartDate:this.queryById('startDate').getSubmitValue(),",
+                                    "\t\tstartTime:this.queryById('startTime').getSubmitValue(),",
+                                    "\t\tendDate:this.queryById('endDate').getSubmitValue(),",
+                                    "\t\tendTime:this.queryById('endTime').getSubmitValue()",
+                                    "\t},",
+                                    "\tsuccess:function(reply) {",
+                                    "\t\tthis.resetFields();",
+                                    "\t\tthis.fireEvent('eventadded');",
+                                    "\t\tthis.close();",
+                                    "\t},",
+                                    "\tscope:this,",
+                                    "\tmask:this",
+                                    "});"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onButtonClick1",
+                            "designerId": "11be78c6-6f0e-419a-a16e-7140a31151f2"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onWindowAfterRender",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Schedule/readAppInitData',",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore(\"EmployeeStore\").loadData(reply.employees);",
+                    "\t\tif(this.employeeId) {",
+                    "\t\t\tthis.queryById('employee').setValue(this.employeeId);",
+                    "\t\t}",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onWindowAfterRender",
+            "designerId": "5184db0c-7c40-4057-8378-9851541988fa"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "data",
+                    "type"
+                ],
+                "fn": "setDates",
+                "implHandler": [
+                    "let startDate = data.startDate;",
+                    "let endDate = data.endDate;",
+                    "",
+                    "if(type === \"Update\") {",
+                    "\tthis.queryById('employee').setValue(data.employeeId);",
+                    "\tthis.employeeId = data.employeeId;",
+                    "\tthis.scheduleId = data.scheduleId;",
+                    "\tthis.queryById('deleteButton').show();",
+                    "",
+                    "\tlet startTime = new Date(\"Tue Jan 01 2008 \" + (data.startDate.getHours() + \"\").padStart(2,\"0\") + \":\" + (data.startDate.getMinutes() + \"\").padStart(2,\"0\") + \":00 GMT-0600\");",
+                    "\tlet endTime = new Date(\"Tue Jan 01 2008 \" + (data.endDate.getHours() + \"\").padStart(2,\"0\") + \":\" + (data.endDate.getMinutes() + \"\").padStart(2,\"0\") + \":00 GMT-0600\");",
+                    "",
+                    "\tthis.queryById('startTime').setValue(startTime);",
+                    "\tthis.queryById('endTime').setValue(endTime);",
+                    "",
+                    "} else {",
+                    "\tthis.queryById('deleteButton').hide();",
+                    "\tstartDate.setDate(startDate.getDate() + 1);",
+                    "}",
+                    "",
+                    "this.queryById('startDate').setValue(startDate);",
+                    "this.queryById('endDate').setValue(endDate);",
+                    ""
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "setDates",
+            "designerId": "00a8ec8d-ad77-42f4-8b61-4da715462b24"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "resetFields",
+                "implHandler": [
+                    "this.scheduleId = null;",
+                    "this.queryById('employee').reset();",
+                    "this.queryById('startDate').reset();",
+                    "this.queryById('startTime').reset();",
+                    "this.queryById('endDate').reset();",
+                    "this.queryById('endTime').reset();"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "resetFields",
+            "designerId": "e67b65b2-e19a-43f0-9f4e-a2180bbf17f0"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onWindowBeforeHide",
+                "implHandler": [
+                    "this.resetFields();"
+                ],
+                "name": "beforehide",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onWindowBeforeHide",
+            "designerId": "285df0f2-ad8d-4ef9-96b3-701d26940a5c"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "type": "cssresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "css_z9efhm5b",
+        "url": "/js-lib/ext-7.3-latest/build/packages/calendar/classic/classic/resources/calendar-all.css"
+    },
+    "configAlternates": {
+        "designer|userClassName": "string",
+        "url": "uri"
+    },
+    "name": "css3",
+    "designerId": "5a3ee65c-4105-4df8-8477-0bac34e89115"
+}
