@@ -110,13 +110,13 @@ class AgileApp {
 				$userId = $session['employeeId'];
 				$userName = $session['userName'];
 			} else {
-				$userId = '';
+				$userId = NULL;
 				$userName = '';
 			}
 
 		}catch (Exception $exception){
 			$loggedIn = false;
-			$userId = '';
+			$userId = NULL;
 			$userName = '';
 		}
 
