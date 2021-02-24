@@ -295,7 +295,7 @@ Ext.define('Schedule.view.Schedule', {
 			});
 		}
 
-		this.addEventWindow.setTitle("Edit Shift");
+		this.addEventWindow.setTitle("Edit");
 
 		this.addEventWindow.show(null, function(){
 			this.addEventWindow.setDates(context.event.data, "Update");
@@ -305,7 +305,6 @@ Ext.define('Schedule.view.Schedule', {
 	},
 
 	onCalendarmonthEventdrop: function(calendarweeksview, context, eOpts) {
-		console.log(context);
 		let startDate = new Date(context.event.data.startDate);
 		startDateString = (startDate.getYear() + 1900) + "-" + (startDate.getMonth() + 1) + "-" + startDate.getDate();
 		startTime = startDate.getHours() + ":" + startDate.getMinutes() + ":" + startDate.getSeconds();

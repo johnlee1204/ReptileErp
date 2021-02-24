@@ -64,6 +64,73 @@
                     "designerId": "a76382b4-1b53-42a3-b025-7794dc30e36d"
                 }
             ]
+        },
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "data": [
+                    "[",
+                    "\t{",
+                    "\t\t\"value\": 1,",
+                    "\t\t\"display\": \"Shift\"",
+                    "\t},",
+                    "\t{",
+                    "\t\t\"value\": 2,",
+                    "\t\t\"display\": \"Event\"",
+                    "\t},",
+                    "\t{",
+                    "\t\t\"value\": 3,",
+                    "\t\t\"display\": \"Meeting\"",
+                    "\t}",
+                    "]"
+                ],
+                "name": "TypeStore"
+            },
+            "configAlternates": {
+                "data": "array",
+                "name": "string"
+            },
+            "name": "MyStore4",
+            "designerId": "1afe2b62-decd-4254-a3fb-d097bf554889",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "value"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField11",
+                    "designerId": "32096ac6-21ff-49d5-a013-21f426e48bf4"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "display"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField12",
+                    "designerId": "8688c47f-fe87-4d4c-bdfc-72dc82739c42"
+                }
+            ]
         }
     ]
 }

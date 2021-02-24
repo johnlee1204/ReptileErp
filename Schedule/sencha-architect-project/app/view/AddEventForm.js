@@ -39,16 +39,44 @@ Ext.define('Schedule.view.AddEventForm', {
 
 	items: [
 		{
-			xtype: 'combobox',
-			itemId: 'employee',
-			fieldLabel: 'Employee',
-			displayField: 'name',
-			forceSelection: true,
-			queryMode: 'local',
-			valueField: 'employeeId',
-			bind: {
-				store: '{EmployeeStore}'
-			}
+			xtype: 'container',
+			margin: '0 0 5 0',
+			layout: {
+				type: 'hbox',
+				align: 'stretch'
+			},
+			items: [
+				{
+					xtype: 'combobox',
+					itemId: 'employee',
+					fieldLabel: 'Employee',
+					displayField: 'name',
+					forceSelection: true,
+					queryMode: 'local',
+					valueField: 'employeeId',
+					bind: {
+						store: '{EmployeeStore}'
+					}
+				},
+				{
+					xtype: 'combobox',
+					itemId: 'type',
+					margin: '0 0 0 5',
+					width: 173,
+					fieldLabel: 'Type',
+					labelWidth: 40,
+					displayField: 'display',
+					forceSelection: true,
+					queryMode: 'local',
+					valueField: 'value',
+					bind: {
+						store: '{TypeStore}'
+					},
+					listeners: {
+						select: 'onTypeSelect'
+					}
+				}
+			]
 		},
 		{
 			xtype: 'container',
@@ -102,6 +130,13 @@ Ext.define('Schedule.view.AddEventForm', {
 			]
 		},
 		{
+			xtype: 'textfield',
+			itemId: 'title',
+			margin: '5 0 0 0',
+			width: 433,
+			fieldLabel: 'Title'
+		},
+		{
 			xtype: 'container',
 			flex: 1,
 			layout: {
@@ -141,6 +176,20 @@ Ext.define('Schedule.view.AddEventForm', {
 		beforehide: 'onWindowBeforeHide'
 	},
 
+	onTypeSelect: function(combo, record, eOpts) {
+		let title = this.queryById('title');
+		title.reset();
+		if(record.data.display === "Shift") {
+			title.disable();
+		} else {
+			title.enable();
+		}
+
+		if(this.getTitle() !== "Edit") {
+			this.setTitle("Add " + record.data.display);
+		}
+	},
+
 	onButtonClick: function(button, e, eOpts) {
 		if(this.scheduleId) {
 			AERP.Ajax.request({
@@ -151,7 +200,9 @@ Ext.define('Schedule.view.AddEventForm', {
 					startDate:this.queryById('startDate').getSubmitValue(),
 					startTime:this.queryById('startTime').getSubmitValue(),
 					endDate:this.queryById('endDate').getSubmitValue(),
-					endTime:this.queryById('endTime').getSubmitValue()
+					endTime:this.queryById('endTime').getSubmitValue(),
+					type:this.queryById('type').getValue(),
+					title:this.queryById('title').getValue()
 				},
 				success:function(reply) {
 					this.resetFields();
@@ -169,7 +220,9 @@ Ext.define('Schedule.view.AddEventForm', {
 					startDate:this.queryById('startDate').getSubmitValue(),
 					startTime:this.queryById('startTime').getSubmitValue(),
 					endDate:this.queryById('endDate').getSubmitValue(),
-					endTime:this.queryById('endTime').getSubmitValue()
+					endTime:this.queryById('endTime').getSubmitValue(),
+					type:this.queryById('type').getValue(),
+					title:this.queryById('title').getValue()
 				},
 				success:function(reply) {
 					this.resetFields();
@@ -225,6 +278,21 @@ Ext.define('Schedule.view.AddEventForm', {
 	setDates: function(data, type) {
 		let startDate = data.startDate;
 		let endDate = data.endDate;
+		let title = this.queryById('title');
+		title.reset();
+
+		if(data.calendarId) {
+			this.queryById('type').setValue(data.calendarId);
+			if(data.calendarId !== 1) {
+				title.enable();
+				title.setValue(data.title);
+			} else {
+				title.disable();
+			}
+		} else {
+			this.queryById('type').setValue(1);
+			title.disable();
+		}
 
 		if(type === "Update") {
 			this.queryById('employee').setValue(data.employeeId);
@@ -245,7 +313,6 @@ Ext.define('Schedule.view.AddEventForm', {
 
 		this.queryById('startDate').setValue(startDate);
 		this.queryById('endDate').setValue(endDate);
-
 	},
 
 	resetFields: function() {
@@ -255,6 +322,8 @@ Ext.define('Schedule.view.AddEventForm', {
 		this.queryById('startTime').reset();
 		this.queryById('endDate').reset();
 		this.queryById('endTime').reset();
+		this.queryById('type').reset();
+		this.queryById('title').reset();
 	}
 
 });

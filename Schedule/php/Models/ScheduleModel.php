@@ -196,7 +196,7 @@ class ScheduleModel extends AgileModel{
 		);
 	}
 
-	static function readSchedule() {
+	static function readSchedule($calendarId) {
 		return self::$database->fetch_all_assoc("
 			SELECT
 				scheduleId id,
@@ -205,11 +205,16 @@ class ScheduleModel extends AgileModel{
 				startTime startDate,
 				endTime endDate,
 				#hours,
-				1 as calendarId,
-				CONCAT(DATE_FORMAT(startTime, '%p'),' - ',DATE_FORMAT(endTime, '%h:%i %p'), ' ' ,Employee.firstName, ' ', Employee.lastName) title
+				FLOOR( RAND() * (3-1) + 1) as calendarId,
+				CASE
+					WHEN calendarId = 1 THEN CONCAT(CASE WHEN DATEDIFF(endTime,startTime) > 1 THEN DATE_FORMAT(startTime, '%h:%i %p') ELSE DATE_FORMAT(startTime, '%p') END,' - ',DATE_FORMAT(endTime, '%h:%i %p'), ' ' ,Employee.firstName, ' ', Employee.lastName)
+					ELSE title
+				END title
 			FROM Schedule
 			JOIN Employee ON Employee.employeeId = Schedule.employeeId
-		");
+			WHERE
+				calendarId = ?
+		", [$calendarId]);
 	}
 
 	static function createShift($inputs) {
@@ -224,14 +229,15 @@ class ScheduleModel extends AgileModel{
 			throw new AgileUserMessageException("End time must be after Start time!");
 		}
 
-
 		self::$database->insert(
 			'Schedule',
 			[
 				'employeeId' => $inputs['employeeId'],
 				'startTime' => $startDate,
 				'endTime' => $endDate,
-				'hours' => $hoursWorked
+				'hours' => $hoursWorked,
+				'calendarId' => $inputs['type'],
+				'title' => $inputs['title']
 			]
 		);
 	}
@@ -255,7 +261,9 @@ class ScheduleModel extends AgileModel{
 				'employeeId' => $inputs['employeeId'],
 				'startTime' => $startDate,
 				'endTime' => $endDate,
-				'hours' => $hoursWorked
+				'hours' => $hoursWorked,
+				'calendarId' => $inputs['type'],
+				'title' => $inputs['title']
 			],
 			['scheduleId' => $inputs['scheduleId']]
 		);

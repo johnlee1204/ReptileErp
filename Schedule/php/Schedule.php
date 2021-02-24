@@ -97,7 +97,11 @@ class Schedule extends AgileBaseController {
 	}
 
 	function readSchedule() {
-		$this->outputSuccessData(ScheduleModel::readSchedule());
+		$input = Validation::validateGet([
+			'calendar' => 'numeric'
+		]);
+
+		$this->outputSuccessData(ScheduleModel::readSchedule($input['calendar']));
 	}
 
 	function createShift() {
@@ -106,7 +110,9 @@ class Schedule extends AgileBaseController {
 			'startDate' => 'notBlank',
 			'startTime' => 'notBlank',
 			'endDate' => 'notBlank',
-			'endTime' => 'notBlank'
+			'endTime' => 'notBlank',
+			'type' => 'numeric',
+			'title'
 		]);
 
 		ScheduleModel::createShift($inputs);
@@ -121,7 +127,9 @@ class Schedule extends AgileBaseController {
 			'startDate' => 'notBlank',
 			'startTime' => 'notBlank',
 			'endDate' => 'notBlank',
-			'endTime' => 'notBlank'
+			'endTime' => 'notBlank',
+			'type' => 'numeric',
+			'title'
 		]);
 
 		ScheduleModel::updateShift($inputs);

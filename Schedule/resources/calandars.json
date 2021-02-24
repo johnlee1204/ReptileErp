@@ -1,4 +1,14 @@
-[{
-    "id": 1,
-    "title": "Schedule"
-}]
+[
+	{
+    	"id": 1,
+    	"title": "Shifts"
+	},
+	{
+		"id": 2,
+    	"title": "Events"
+	},
+	{
+		"id": 3,
+    	"title": "Meetings"
+	}
+]

@@ -32,6 +32,30 @@ Ext.define('Schedule.view.AddEventFormViewModel', {
 					name: 'name'
 				}
 			]
+		},
+		TypeStore: {
+			data: [
+				{
+					value: 1,
+					display: 'Shift'
+				},
+				{
+					value: 2,
+					display: 'Event'
+				},
+				{
+					value: 3,
+					display: 'Meeting'
+				}
+			],
+			fields: [
+				{
+					name: 'value'
+				},
+				{
+					name: 'display'
+				}
+			]
 		}
 	}
 

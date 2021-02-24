@@ -184,7 +184,7 @@
                                                     "\t});",
                                                     "}",
                                                     "",
-                                                    "this.addEventWindow.setTitle(\"Edit Shift\");",
+                                                    "this.addEventWindow.setTitle(\"Edit\");",
                                                     "",
                                                     "this.addEventWindow.show(null, function(){",
                                                     "\tthis.addEventWindow.setDates(context.event.data, \"Update\");",
@@ -214,7 +214,6 @@
                                             "userConfig": {
                                                 "fn": "onCalendarmonthEventdrop",
                                                 "implHandler": [
-                                                    "console.log(context);",
                                                     "let startDate = new Date(context.event.data.startDate);",
                                                     "startDateString = (startDate.getYear() + 1900) + \"-\" + (startDate.getMonth() + 1) + \"-\" + startDate.getDate();",
                                                     "startTime = startDate.getHours() + \":\" + startDate.getMinutes() + \":\" + startDate.getSeconds();",

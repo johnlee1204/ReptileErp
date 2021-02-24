@@ -32,34 +32,128 @@
     "viewModelInstanceId": "676b5312-6fb7-4ccd-bee9-c826282149e4",
     "cn": [
         {
-            "type": "Ext.form.field.ComboBox",
+            "type": "Ext.container.Container",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "displayField": "name",
-                "fieldLabel": "Employee",
-                "forceSelection": true,
-                "itemId": "employee",
-                "queryMode": "local",
-                "store": [
-                    "{EmployeeStore}"
-                ],
-                "valueField": "employeeId"
+                "container|align": "stretch",
+                "layout": "hbox",
+                "margin": "0 0 5 0"
             },
             "configAlternates": {
-                "fieldLabel": "string",
-                "itemId": "string",
-                "store": "binding",
-                "displayField": "datafield",
-                "forceSelection": "boolean",
-                "queryMode": "string",
-                "valueField": "datafield"
+                "container|align": "string",
+                "layout": "string",
+                "margin": "auto"
             },
-            "name": "MyComboBox",
-            "designerId": "b2ed436f-cde4-4139-8c6d-1cfdfd7ddb5a"
+            "name": "MyContainer7",
+            "designerId": "e4409ca9-619e-4039-9891-5b4b177c7469",
+            "cn": [
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayField": "name",
+                        "fieldLabel": "Employee",
+                        "forceSelection": true,
+                        "itemId": "employee",
+                        "queryMode": "local",
+                        "store": [
+                            "{EmployeeStore}"
+                        ],
+                        "valueField": "employeeId"
+                    },
+                    "configAlternates": {
+                        "fieldLabel": "string",
+                        "itemId": "string",
+                        "store": "binding",
+                        "displayField": "datafield",
+                        "forceSelection": "boolean",
+                        "queryMode": "string",
+                        "valueField": "datafield"
+                    },
+                    "name": "MyComboBox",
+                    "designerId": "b2ed436f-cde4-4139-8c6d-1cfdfd7ddb5a"
+                },
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayField": "display",
+                        "fieldLabel": "Type",
+                        "forceSelection": true,
+                        "itemId": "type",
+                        "labelWidth": 40,
+                        "margin": "0 0 0 5",
+                        "queryMode": "local",
+                        "store": [
+                            "{TypeStore}"
+                        ],
+                        "valueField": "value",
+                        "width": 173
+                    },
+                    "configAlternates": {
+                        "fieldLabel": "string",
+                        "itemId": "string",
+                        "store": "binding",
+                        "displayField": "datafield",
+                        "forceSelection": "boolean",
+                        "queryMode": "string",
+                        "valueField": "datafield",
+                        "labelWidth": "number",
+                        "margin": "auto",
+                        "width": "auto"
+                    },
+                    "name": "MyComboBox1",
+                    "designerId": "4e4ca8b5-0167-4b91-81cf-5bcd70a34885",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onTypeSelect",
+                                "implHandler": [
+                                    "let title = this.queryById('title');",
+                                    "title.reset();",
+                                    "if(record.data.display === \"Shift\") {",
+                                    "\ttitle.disable();",
+                                    "} else {",
+                                    "\ttitle.enable();",
+                                    "}",
+                                    "",
+                                    "if(this.getTitle() !== \"Edit\") {",
+                                    "\tthis.setTitle(\"Add \" + record.data.display);",
+                                    "}"
+                                ],
+                                "name": "select",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onTypeSelect",
+                            "designerId": "8114e311-08c5-4165-8fe3-82914fa585bf"
+                        }
+                    ]
+                }
+            ]
         },
         {
             "type": "Ext.container.Container",
@@ -200,6 +294,28 @@
             ]
         },
         {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Title",
+                "itemId": "title",
+                "margin": "5 0 0 0",
+                "width": 433
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string",
+                "margin": "auto",
+                "width": "auto"
+            },
+            "name": "MyTextField3",
+            "designerId": "02e94151-73da-45d4-bde2-7a14e585e4ef"
+        },
+        {
             "type": "Ext.container.Container",
             "reference": {
                 "name": "items",
@@ -262,7 +378,9 @@
                                     "\t\t\tstartDate:this.queryById('startDate').getSubmitValue(),",
                                     "\t\t\tstartTime:this.queryById('startTime').getSubmitValue(),",
                                     "\t\t\tendDate:this.queryById('endDate').getSubmitValue(),",
-                                    "\t\t\tendTime:this.queryById('endTime').getSubmitValue()",
+                                    "\t\t\tendTime:this.queryById('endTime').getSubmitValue(),",
+                                    "\t\t\ttype:this.queryById('type').getValue(),",
+                                    "\t\t\ttitle:this.queryById('title').getValue()",
                                     "\t\t},",
                                     "\t\tsuccess:function(reply) {",
                                     "\t\t\tthis.resetFields();",
@@ -280,7 +398,9 @@
                                     "\t\t\tstartDate:this.queryById('startDate').getSubmitValue(),",
                                     "\t\t\tstartTime:this.queryById('startTime').getSubmitValue(),",
                                     "\t\t\tendDate:this.queryById('endDate').getSubmitValue(),",
-                                    "\t\t\tendTime:this.queryById('endTime').getSubmitValue()",
+                                    "\t\t\tendTime:this.queryById('endTime').getSubmitValue(),",
+                                    "\t\t\ttype:this.queryById('type').getValue(),",
+                                    "\t\t\ttitle:this.queryById('title').getValue()",
                                     "\t\t},",
                                     "\t\tsuccess:function(reply) {",
                                     "\t\t\tthis.resetFields();",
@@ -430,6 +550,21 @@
                 "implHandler": [
                     "let startDate = data.startDate;",
                     "let endDate = data.endDate;",
+                    "let title = this.queryById('title');",
+                    "title.reset();",
+                    "",
+                    "if(data.calendarId) {",
+                    "\tthis.queryById('type').setValue(data.calendarId);",
+                    "\tif(data.calendarId !== 1) {",
+                    "\t\ttitle.enable();",
+                    "\t\ttitle.setValue(data.title);",
+                    "\t} else {",
+                    "\t\ttitle.disable();",
+                    "\t}",
+                    "} else {",
+                    "\tthis.queryById('type').setValue(1);",
+                    "\ttitle.disable();",
+                    "}",
                     "",
                     "if(type === \"Update\") {",
                     "\tthis.queryById('employee').setValue(data.employeeId);",
@@ -449,8 +584,7 @@
                     "}",
                     "",
                     "this.queryById('startDate').setValue(startDate);",
-                    "this.queryById('endDate').setValue(endDate);",
-                    ""
+                    "this.queryById('endDate').setValue(endDate);"
                 ]
             },
             "configAlternates": {
@@ -476,7 +610,9 @@
                     "this.queryById('startDate').reset();",
                     "this.queryById('startTime').reset();",
                     "this.queryById('endDate').reset();",
-                    "this.queryById('endTime').reset();"
+                    "this.queryById('endTime').reset();",
+                    "this.queryById('type').reset();",
+                    "this.queryById('title').reset();"
                 ]
             },
             "configAlternates": {
