@@ -305,7 +305,7 @@ class AgileUserModel{
 		$this->database->insert($this->userTable,$insertUserData);
 		$insertResult = $this->database->fetch_assoc("SELECT LAST_INSERT_ID() as insertId");
 		$groupInserts = array();
-		if(isset($userData['groupIds'])) {
+		if(isset($userData['groupIds']) && is_array($userData['groupIds'])) {
 			foreach ($userData['groupIds'] as $groupId) {
 				if (!is_numeric($groupId)) {
 					throw new Exception('Invalid GroupId\'s');

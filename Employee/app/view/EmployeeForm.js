@@ -117,10 +117,19 @@ Ext.define('Employee.view.EmployeeForm', {
 			bind: {
 				store: '{PermissionStore}'
 			}
+		},
+		{
+			xtype: 'container',
+			html: '<img class = \'fireButton\' src=\'/Employee/project-files/fire.png\'>',
+			style: 'object-fit:contain;border-radius: 50%;',
+			listeners: {
+				afterrender: 'onContainerAfterRender'
+			}
 		}
 	],
 	listeners: {
-		afterrender: 'onPanelAfterRender'
+		afterrender: 'onPanelAfterRender',
+		docFormStateChanged: 'onPanelDocFormStateChangeD'
 	},
 
 	onPositionAfterRender: function(component, eOpts) {
@@ -141,6 +150,14 @@ Ext.define('Employee.view.EmployeeForm', {
 
 	},
 
+	onContainerAfterRender: function(component, eOpts) {
+		component.el.on('click', function(event, target) {
+			if(target.className === "fireButton") {
+				this.deleteEmployee();
+			}
+		}, this);
+	},
+
 	onPanelAfterRender: function(component, eOpts) {
 		this.docFormInit({
 			toolbarId:'employeeFormToolbar',
@@ -148,6 +165,7 @@ Ext.define('Employee.view.EmployeeForm', {
 			saveFn:'updateEmployee',
 			deleteFn:'deleteEmployee'
 		});
+
 
 		AERP.Ajax.request({
 			url:'/Employee/readAppInitData',
@@ -159,6 +177,10 @@ Ext.define('Employee.view.EmployeeForm', {
 		});
 
 		this.readPositions();
+	},
+
+	onPanelDocFormStateChangeD: function(panel) {
+		this.docFormBtns.deleteBtn.hide();
 	},
 
 	readPositions: function() {

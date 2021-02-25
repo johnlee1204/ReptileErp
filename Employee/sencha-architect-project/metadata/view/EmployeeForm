@@ -315,6 +315,54 @@
             "designerId": "cafd02d4-d0dc-43e2-9c5c-8798f2eac4c8"
         },
         {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "html": "<img class = 'fireButton' src='/Employee/project-files/fire.png'>",
+                "style": "object-fit:contain;border-radius: 50%;"
+            },
+            "configAlternates": {
+                "html": "string",
+                "style": "string"
+            },
+            "name": "MyContainer",
+            "designerId": "430191e2-2c60-4011-b347-d4532c8eeae7",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onContainerAfterRender",
+                        "implHandler": [
+                            "component.el.on('click', function(event, target) {",
+                            "\tif(target.className === \"fireButton\") {",
+                            "\t\tthis.deleteEmployee();",
+                            "\t}",
+                            "}, this);"
+                        ],
+                        "name": "afterrender",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onContainerAfterRender",
+                    "designerId": "9689fd9a-b007-4bf1-a840-fc41417c898c"
+                }
+            ]
+        },
+        {
             "type": "basiceventbinding",
             "reference": {
                 "name": "listeners",
@@ -330,6 +378,7 @@
                     "\tsaveFn:'updateEmployee',",
                     "\tdeleteFn:'deleteEmployee'",
                     "});",
+                    "",
                     "",
                     "AERP.Ajax.request({",
                     "\turl:'/Employee/readAppInitData',",
@@ -353,6 +402,34 @@
             },
             "name": "onPanelAfterRender",
             "designerId": "2cec14e2-5738-4e41-a7ab-5b8a42fa316b"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "panel"
+                ],
+                "fn": "onPanelDocFormStateChangeD",
+                "implHandler": [
+                    "this.docFormBtns.deleteBtn.hide();"
+                ],
+                "name": "docFormStateChanged",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelDocFormStateChangeD",
+            "designerId": "4caec55a-e5bc-400c-8cc0-cc9f66a7507f"
         },
         {
             "type": "basicfunction",
