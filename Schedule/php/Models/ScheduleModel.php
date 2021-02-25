@@ -276,4 +276,11 @@ class ScheduleModel extends AgileModel{
 		);
 	}
 
+	static function deleteShiftByTitle($title) {
+		self::$database->delete(
+			"Schedule",
+			['title' => $title]
+		);
+	}
+
 }

@@ -23,6 +23,9 @@ Ext.define('UserToolbar.view.UserToolbar', {
 		'Ext.toolbar.Spacer'
 	],
 
+	viewModel: {
+		type: 'usertoolbar'
+	},
 	dock: 'top',
 	defaultButtonUI: 'default',
 	defaultListenerScope: true,
@@ -115,7 +118,8 @@ Ext.define('UserToolbar.view.UserToolbar', {
 				listeners:{
 					scope:this,
 					click:function() {
-						window.open(buttons[i].linkPath);
+						//window.open(buttons[i].linkPath);
+						window.location.href = buttons[i].linkPath;
 					}
 				}
 			});
@@ -211,7 +215,8 @@ Ext.define('UserToolbar.view.UserToolbar', {
 					xtype:'menuitem',
 					text:allApps[i][j].linkName,
 					listeners:{scope:this, click:function() {
-						window.open(allApps[i][j].linkPath);
+						//window.open(allApps[i][j].linkPath);
+						window.location.href = allApps[i][j].linkPath;
 					}}};
 
 				if(allApps[i][j].iconPath) {

@@ -181,7 +181,7 @@ class LogModel {
 		$total = $totalResults[0]['total'];
 
 		$outputData = array();
-		
+
 		foreach($data as $row){
 			$row = FormatModel::formatQueryOutput($row,$logTableColumns);
 			$outputData[] = array_values($row);

@@ -116,7 +116,7 @@ Ext.define('PetMaster.view.PetMaster', {
 					xtype: 'panel',
 					bodyPadding: 10,
 					bodyStyle: 'background:none',
-					title: 'Pet',
+					title: 'Reptile',
 					layout: {
 						type: 'hbox',
 						align: 'stretch'
@@ -287,6 +287,12 @@ Ext.define('PetMaster.view.PetMaster', {
 									]
 								},
 								{
+									xtype: 'textfield',
+									itemId: 'rack',
+									fieldLabel: 'Rack',
+									labelAlign: 'right'
+								},
+								{
 									xtype: 'combobox',
 									itemId: 'food',
 									fieldLabel: 'Food',
@@ -397,13 +403,15 @@ Ext.define('PetMaster.view.PetMaster', {
 				},
 				{
 					xtype: 'petlog',
-					itemId: 'petLog'
+					itemId: 'petLog',
+					title: 'Reptile Log'
 				}
 			]
 		}
 	],
 	listeners: {
-		afterrender: 'onPanelAfterRender'
+		afterrender: 'onPanelAfterRender',
+		docFormStateChanged: 'onPanelDocFormStateChangeD'
 	},
 
 	onTypeAfterRender: function(component, eOpts) {
@@ -546,6 +554,17 @@ Ext.define('PetMaster.view.PetMaster', {
 			allowedExtensions:['png', 'jpg', 'jpeg'],
 			maxFileSize:50
 		});
+	},
+
+	onPanelDocFormStateChangeD: function(panel) {
+		let readOnlyFields = ['rack'];
+
+		for(let i in readOnlyFields) {
+			let field = this.queryById(readOnlyFields[i]);
+
+			field.addCls('docFormReadOnly');
+			field.setReadOnly(true);
+		}
 	},
 
 	buildNiceGridMenu: function() {

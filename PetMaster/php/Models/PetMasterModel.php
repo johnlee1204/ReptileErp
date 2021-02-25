@@ -2,38 +2,40 @@
 
 namespace PetMaster\Models;
 use AgileModel;
+use AgileUserMessageException;
 use PetMaster\Tables\PetMasterLog;
+use Schedule\Models\ScheduleModel;
 
 class PetMasterModel extends AgileModel {
 	static function readPet($petId) {
 
-		self::$database->select(
-			'Pet',
-			[
-				'petId',
-				'serial',
-				'type',
-				'price',
-				'sex',
-				'birthDate',
-				'receiveDate',
-				'sellDate',
-				'vendor',
-				'cost',
-				'habitatId',
-				'food',
-				'feedingQuantity',
-				'feedingFrequency',
-				'customer',
-				'notes',
-				'weight',
-				'sellPrice',
-				'status'
-			],
-			['petId' => $petId]
-		);
-
-		return self::$database->fetch_assoc();
+		return self::$database->fetch_assoc("
+			SELECT
+				Pet.petId,
+				Pet.serial,
+				Pet.type,
+				Pet.price,
+				Pet.sex,
+				Pet.birthDate,
+				Pet.receiveDate,
+				Pet.sellDate,
+				Pet.vendor,
+				Pet.cost,
+				Pet.habitatId,
+				Habitat.rack,
+				Pet.food,
+				Pet.feedingQuantity,
+				Pet.feedingFrequency,
+				Pet.customer,
+				Pet.notes,
+				Pet.weight,
+				Pet.sellPrice,
+				Pet.status
+			FROM Pet
+			LEFT JOIN Habitat ON Habitat.habitatId = Pet.habitatId
+			WHERE
+				petId = ?
+		", [$petId]);
 	}
 
 	static function createPet($inputs) {
@@ -61,6 +63,25 @@ class PetMasterModel extends AgileModel {
 		if($inputs['weight'] === "") {
 			$inputs['weight'] = 0;
 		}
+
+		if($inputs['sellDate'] != NULL) {
+			$userInformation = self::$agileApp->SessionManager->getUserDataFromSession();
+			$startDate = date("Y-m-d", strtotime($inputs['sellDate']));
+			$endDate = date("Y-m-d", strtotime($inputs['sellDate']));
+			$startTime = "09:00:00";
+			$endTime = "17:00:00";
+
+			ScheduleModel::createShift([
+				'employeeId' => $userInformation['employeeId'],
+				'startDate' => $startDate,
+				'endDate' => $endDate,
+				'startTime' => $startTime,
+				'endTime' => $endTime,
+				'hours' => NULL,
+				'type' => 2,
+				'title' => 'Sell Reptile Serial: ' . $inputs['serial']
+			]);
+			}
 
 		self::$database->insert(
 			'Pet',
@@ -102,6 +123,7 @@ class PetMasterModel extends AgileModel {
 	}
 
 	static function updatePet($inputs) {
+
 		if($inputs['sellDate'] === "") {
 			$inputs['sellDate'] = NULL;
 		}
@@ -128,6 +150,30 @@ class PetMasterModel extends AgileModel {
 		}
 
 		$oldReptile = self::readPet($inputs['petId']);
+
+		$userInformation = self::$agileApp->SessionManager->getUserDataFromSession();
+
+		if($oldReptile['sellDate'] !== $inputs['sellDate']) {
+
+			ScheduleModel::deleteShiftByTitle('Sell Reptile Serial: ' . $inputs['serial']);
+
+			if($inputs['sellDate'] !== NULL) {
+				$startDate = date("Y-m-d", strtotime($inputs['sellDate']));
+				$endDate = date("Y-m-d", strtotime($inputs['sellDate']));
+				$startTime = "09:00:00";
+				$endTime = "17:00:00";
+				ScheduleModel::createShift([
+					'employeeId' => $userInformation['employeeId'],
+					'startDate' => $startDate,
+					'endDate' => $endDate,
+					'startTime' => $startTime,
+					'endTime' => $endTime,
+					'hours' => NULL,
+					'type' => 2,
+					'title' => 'Sell Reptile Serial: ' . $inputs['serial']
+				]);
+			}
+		}
 
 		self::$database->update(
 			'Pet',

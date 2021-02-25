@@ -34,17 +34,19 @@ class Habitat extends AgileBaseController {
 	}
 
 	function createHabitat() {
-		$input = Validation::validateJsonInput([
-			'habitatName' => 'notBlank'
+		$inputs = Validation::validateJsonInput([
+			'habitatName' => 'notBlank',
+			'rack'
 		]);
 
-		$this->outputSuccessData(HabitatModel::createHabitat($input['habitatName']));
+		$this->outputSuccessData(HabitatModel::createHabitat($inputs));
 	}
 
 	function updateHabitat() {
 		$inputs = Validation::validateJsonInput([
 			'habitatId' => 'numeric',
-			'habitatName' => 'notBlank'
+			'habitatName' => 'notBlank',
+			'rack'
 		]);
 
 		HabitatModel::updateHabitat($inputs);

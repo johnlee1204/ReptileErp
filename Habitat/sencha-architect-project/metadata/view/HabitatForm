@@ -65,6 +65,26 @@
             "designerId": "4832fbbf-a677-4b4a-9527-b2c98d588f89"
         },
         {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Rack",
+                "itemId": "rack",
+                "labelAlign": "right"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string",
+                "labelAlign": "string"
+            },
+            "name": "MyTextField1",
+            "designerId": "b839e6ee-f411-4459-8955-7956625268e8"
+        },
+        {
             "type": "basiceventbinding",
             "reference": {
                 "name": "listeners",

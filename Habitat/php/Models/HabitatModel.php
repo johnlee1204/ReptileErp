@@ -67,18 +67,19 @@ class HabitatModel extends AgileModel {
 	static function readHabitat($habitatId) {
 		return self::$database->fetch_assoc("
 			SELECT
-				habitatName
+				habitatName,
+				rack
 			FROM Habitat
 			WHERE
 				habitatId = ?
 		", [$habitatId]);
 	}
 
-	static function createHabitat($habitatName) {
+	static function createHabitat($inputs) {
 		self::$database->query("
-			INSERT INTO Habitat(habitatName)
-			VALUES(?)
-		", [$habitatName]);
+			INSERT INTO Habitat(habitatName, rack)
+			VALUES(?, ?)
+		", [$inputs['habitatName'], $inputs['rack']]);
 
 		return self::$database->fetch_assoc("
 			SELECT
@@ -91,10 +92,11 @@ class HabitatModel extends AgileModel {
 		self::$database->query("
 			UPDATE Habitat
 			SET
-				habitatName = ?
+				habitatName = ?,
+				rack = ?
 			WHERE
 				habitatId = ?
-		", [$inputs['habitatName'], $inputs['habitatId']]);
+		", [$inputs['habitatName'], $inputs['rack'], $inputs['habitatId']]);
 	}
 
 	static function deleteHabitat($habitatId) {

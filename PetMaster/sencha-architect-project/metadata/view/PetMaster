@@ -278,7 +278,7 @@
                         "bodyStyle": "background:none",
                         "container|align": "stretch",
                         "layout": "hbox",
-                        "title": "Pet"
+                        "title": "Reptile"
                     },
                     "configAlternates": {
                         "title": "string",
@@ -909,6 +909,26 @@
                                     ]
                                 },
                                 {
+                                    "type": "Ext.form.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fieldLabel": "Rack",
+                                        "itemId": "rack",
+                                        "labelAlign": "right"
+                                    },
+                                    "configAlternates": {
+                                        "fieldLabel": "string",
+                                        "itemId": "string",
+                                        "labelAlign": "string"
+                                    },
+                                    "name": "MyTextField10",
+                                    "designerId": "cff3166b-682d-428d-a875-5d1ee5863a11"
+                                },
+                                {
                                     "type": "Ext.form.field.ComboBox",
                                     "reference": {
                                         "name": "items",
@@ -1290,10 +1310,12 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "itemId": "petLog"
+                        "itemId": "petLog",
+                        "title": "Reptile Log"
                     },
                     "configAlternates": {
-                        "itemId": "string"
+                        "itemId": "string",
+                        "title": "string"
                     },
                     "name": "petlog",
                     "designerId": "520e7bff-8139-43f6-ad2c-7a3bebc8811c",
@@ -1383,6 +1405,41 @@
             },
             "name": "onPanelAfterRender",
             "designerId": "fb6c4f0f-8860-4330-9b10-8f2957e0b620"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "panel"
+                ],
+                "fn": "onPanelDocFormStateChangeD",
+                "implHandler": [
+                    "let readOnlyFields = ['rack'];",
+                    "",
+                    "for(let i in readOnlyFields) {",
+                    "\tlet field = this.queryById(readOnlyFields[i]);",
+                    "\t",
+                    "\tfield.addCls('docFormReadOnly');",
+                    "\tfield.setReadOnly(true);",
+                    "}"
+                ],
+                "name": "docFormStateChanged",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelDocFormStateChangeD",
+            "designerId": "4b86319e-5015-4642-9794-6ab92a20c747"
         },
         {
             "type": "basicfunction",

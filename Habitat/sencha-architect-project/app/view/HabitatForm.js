@@ -46,6 +46,12 @@ Ext.define('Habitat.view.HabitatForm', {
 			itemId: 'habitatName',
 			fieldLabel: 'Habitat Name',
 			labelAlign: 'right'
+		},
+		{
+			xtype: 'textfield',
+			itemId: 'rack',
+			fieldLabel: 'Rack',
+			labelAlign: 'right'
 		}
 	],
 	listeners: {
