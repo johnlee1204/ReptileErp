@@ -1,0 +1,113 @@
+{
+    "type": "Ext.app.ViewModel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "applicationlogs",
+        "designer|userClassName": "ApplicationLogsViewModel"
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string"
+    },
+    "designerId": "603a772a-565a-4b2c-ae21-f64825f9b072",
+    "cn": [
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "AppStore"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyStore7",
+            "designerId": "aa6d05ac-c01d-457a-b2e2-bdadbd969d3f",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "app"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField33",
+                    "designerId": "f3b7bcce-8d6b-463d-8613-6ab4551f0296"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "data": [
+                    "[{comparison: 'Greater Than (>)', value: '>'},",
+                    "{comparison: 'Less Than (<)', value: '<'},",
+                    "{comparison: 'Equal To (=)', value: '='},",
+                    "{comparison: 'Like (%%)', value: 'like'},",
+                    "{comparison: 'Not Equal To (≠)', value: '<>'},",
+                    "{comparison: 'Greater Than or Equal To (>=)', value: '>='},",
+                    "{comparison: 'Less Than or Equal To (<=)', value: '<='}]"
+                ],
+                "name": "OperationStore"
+            },
+            "configAlternates": {
+                "name": "string",
+                "data": "array"
+            },
+            "name": "MyStore6",
+            "designerId": "a9c57e59-bd43-4e46-ac04-f2d88843a13c",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "comparison"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField31",
+                    "designerId": "4897d992-d137-42a5-9a35-536a65b0a0df"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "value"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField32",
+                    "designerId": "39ef8b9d-78cc-43a5-8c01-b941355cabb7"
+                }
+            ]
+        }
+    ]
+}

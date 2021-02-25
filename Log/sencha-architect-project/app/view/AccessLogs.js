@@ -26,7 +26,7 @@ Ext.define('Log.view.AccessLogs', {
         'Ext.grid.Panel',
         'Ext.toolbar.Paging',
         'Ext.view.Table',
-        'Ext.grid.column.Date',
+        'Ext.grid.column.Column',
         'Ext.form.field.TextArea'
     ],
 
@@ -304,11 +304,9 @@ Ext.define('Log.view.AccessLogs', {
                     },
                     columns: [
                         {
-                            xtype: 'datecolumn',
-                            width: 167,
+                            xtype: 'gridcolumn',
                             dataIndex: 'date',
-                            text: 'Date',
-                            format: 'F j, Y h:ia'
+                            text: 'Date'
                         },
                         {
                             xtype: 'gridcolumn',

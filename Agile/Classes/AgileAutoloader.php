@@ -36,9 +36,7 @@ class AgileAutoloader {
 		);
 
 		foreach($validLocations as $location){
-			echo 2;
 			if(true === $this->requireClassFile($location, $className)){
-				echo 3;
 				return true;
 			}
 		}
@@ -48,7 +46,7 @@ class AgileAutoloader {
 	private function loadControllerClass($className, $controller,$type,$class){
 		switch($type){
 			case 'Tables':
-				$folder = 'tables';
+				$folder = 'Tables';
 				break;
 			case 'Models':
 				$folder = 'Models';

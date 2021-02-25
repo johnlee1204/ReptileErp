@@ -78,7 +78,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "dataIndex": "name",
+                        "dataIndex": "serial",
                         "text": "Serial"
                     },
                     "configAlternates": {

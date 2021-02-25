@@ -161,23 +161,19 @@
                     ]
                 },
                 {
-                    "type": "Ext.data.field.Date",
+                    "type": "Ext.data.field.Field",
                     "reference": {
                         "name": "fields",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "dateFormat": "F j, Y h:ia",
-                        "dateReadFormat": "Y-m-d H:i:s",
                         "name": "date"
                     },
                     "configAlternates": {
-                        "name": "string",
-                        "dateFormat": "string",
-                        "dateReadFormat": "string"
+                        "name": "string"
                     },
-                    "name": "MyDate1",
+                    "name": "MyField21",
                     "designerId": "68739cca-f772-4a60-a889-28dc2f991c82"
                 },
                 {

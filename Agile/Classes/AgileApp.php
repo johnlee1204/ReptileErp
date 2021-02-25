@@ -29,6 +29,12 @@ class AgileApp {
 		require_once($this->systemConfigs['systemPath']."inc/php/classes/Validation.php");
 		require_once($this->systemConfigs['systemPath']."inc/php/classes/SmartTruncate.php");
 
+		require_once($systemClassPath . 'AgileLibrary.php');
+		require_once($systemClassPath . 'AgileTableInterface.php');
+		require_once($systemClassPath . 'AgileTable.php');
+		require_once($systemClassPath . 'AgileLog.php');
+		require_once($systemClassPath . 'Columns.php');
+
 		require_once($systemClassPath . 'AgileErrorHandler.php');
 		$this->ErrorHandler = new AgileErrorHandler($this);
 

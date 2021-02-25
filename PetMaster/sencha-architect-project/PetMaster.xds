@@ -7,7 +7,7 @@
             "frameworkVersion": ""
         },
         "urlPrefixTemplate": "http://dev.local/",
-        "exportPath": "C:/Users/jlee/Desktop/Websites/LeeSheet/PetMaster",
+        "exportPath": "C:/Users/johnm/Desktop/Websites/LeeSheet/PetMaster",
         "buildShouldOverwriteIndex": true,
         "generateArchitectVersion": false,
         "spacesToIndent": "tab",
@@ -26,8 +26,8 @@
         "sdkPath": "",
         "urlPrefix": "http://dev.local/"
     },
-    "xdsVersion": "4.2.6",
-    "xdsBuild": 425,
+    "xdsVersion": "4.2.5",
+    "xdsBuild": 420,
     "schemaVersion": 1,
     "upgradeVersion": 310000000001,
     "framework": "ext66",
@@ -44,13 +44,16 @@
             "6ea7c29d-9a0a-4959-81d3-3b3c0b728f9d",
             "6396ae7d-cc0d-4c24-b5d6-c766e62e3fa3",
             "27d08ea0-3f82-403f-a1c2-45043ec23b0c",
-            "29f38074-1ab1-4b0f-89d5-448731dc6375"
+            "29f38074-1ab1-4b0f-89d5-448731dc6375",
+            "4a4a2827-01e6-4649-816e-93d0e9d0bd5d",
+            "7537e7d7-c243-4b53-878d-a38c78122bf9",
+            "d3f852b6-5d0f-4c8a-b6e3-b40e4565d73f"
         ],
         "store": [],
         "controller": [],
         "model": [],
         "resource": [
-            "608cffd6-c1ab-4127-a59c-e63629ed11f5",
+            "e5b46641-e125-4114-9833-0fe7c57eac18",
             "173a740e-293e-4e00-b40c-9a50fb2577d4",
             "5ba3958c-da75-475c-be62-0204422d23cf",
             "e9dfff16-f6c8-498c-ac8a-f008ed4717e3",

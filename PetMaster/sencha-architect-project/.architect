@@ -213,6 +213,14 @@
                                     "id": "ba618644-70b1-48bb-8a99-3234e5c58ec0"
                                 }
                             ]
+                        },
+                        {
+                            "id": "520e7bff-8139-43f6-ad2c-7a3bebc8811c",
+                            "cn": [
+                                {
+                                    "id": "5528a4ea-1590-4e77-b269-8c5fcff4b529"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -434,12 +442,29 @@
         "29f38074-1ab1-4b0f-89d5-448731dc6375": {
             "id": "29f38074-1ab1-4b0f-89d5-448731dc6375"
         },
+        "4a4a2827-01e6-4649-816e-93d0e9d0bd5d": {
+            "id": "4a4a2827-01e6-4649-816e-93d0e9d0bd5d",
+            "cn": [
+                {
+                    "id": "d46137cd-52dc-479d-b275-17c08726e168"
+                },
+                {
+                    "id": "ce8793f7-549c-4e83-9455-c787dc5b86a8"
+                }
+            ]
+        },
+        "7537e7d7-c243-4b53-878d-a38c78122bf9": {
+            "id": "7537e7d7-c243-4b53-878d-a38c78122bf9"
+        },
+        "d3f852b6-5d0f-4c8a-b6e3-b40e4565d73f": {
+            "id": "d3f852b6-5d0f-4c8a-b6e3-b40e4565d73f"
+        },
         "store": true,
         "model": true,
         "controller": true,
         "resource": true,
-        "608cffd6-c1ab-4127-a59c-e63629ed11f5": {
-            "id": "608cffd6-c1ab-4127-a59c-e63629ed11f5"
+        "e5b46641-e125-4114-9833-0fe7c57eac18": {
+            "id": "e5b46641-e125-4114-9833-0fe7c57eac18"
         },
         "173a740e-293e-4e00-b40c-9a50fb2577d4": {
             "id": "173a740e-293e-4e00-b40c-9a50fb2577d4"
@@ -484,15 +509,18 @@
             "f565af02-a06d-4dc3-95d1-9c4c266bfbf2",
             "application",
             "a84780cb-17ec-47b4-8078-f6f0655be439",
-            "79f3f913-02f7-4a07-8ef4-c3f24245093b"
+            "79f3f913-02f7-4a07-8ef4-c3f24245093b",
+            "5b940d7f-aafb-4c6e-9ca6-33a5a3276cf7",
+            "4a4a2827-01e6-4649-816e-93d0e9d0bd5d",
+            "173a740e-293e-4e00-b40c-9a50fb2577d4"
         ]
     },
     "canvasState": {
         "topInstance": null
     },
     "inspectorState": {
-        "topInstance": "application",
-        "selectedInstance": "application"
+        "topInstance": "173a740e-293e-4e00-b40c-9a50fb2577d4",
+        "selectedInstance": "173a740e-293e-4e00-b40c-9a50fb2577d4"
     },
     "editMode": "code",
     "userSettings": {

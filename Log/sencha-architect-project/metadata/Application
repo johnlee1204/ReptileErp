@@ -10,7 +10,10 @@
         "views": [
             "MainView",
             "TextDetailWindow",
-            "AccessLogs"
+            "ApplicationLogs",
+            "Exceptions",
+            "AccessLogs",
+            "ApplicationLogPanel"
         ]
     },
     "configAlternates": {

@@ -81,7 +81,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "fieldLabel": "Serial",
-                        "itemId": "name",
+                        "itemId": "serial",
                         "labelAlign": "right",
                         "labelWidth": 60
                     },
@@ -1271,8 +1271,43 @@
                                 "type": "object"
                             },
                             "codeClass": null,
+                            "userConfig": {
+                                "hidden": true
+                            },
+                            "configAlternates": {
+                                "hidden": "boolean"
+                            },
                             "name": "TabConfig1",
                             "designerId": "ba618644-70b1-48bb-8a99-3234e5c58ec0"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "petLog"
+                    },
+                    "configAlternates": {
+                        "itemId": "string"
+                    },
+                    "name": "petlog",
+                    "designerId": "520e7bff-8139-43f6-ad2c-7a3bebc8811c",
+                    "masterInstanceId": "4a4a2827-01e6-4649-816e-93d0e9d0bd5d",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "TabConfig2",
+                            "designerId": "5528a4ea-1590-4e77-b269-8c5fcff4b529"
                         }
                     ]
                 }
@@ -1308,7 +1343,7 @@
                     "\tsaveFn:'updatePet',",
                     "\tdeleteFn:'deletePet',",
                     "\tsearchFn:'searchPets',",
-                    "\tsearchableFields:['name', 'type', 'receiveDate', 'sellDate']",
+                    "\tsearchableFields:['serial', 'type', 'receiveDate', 'sellDate']",
                     "});",
                     "",
                     "var listeners = {",
@@ -1525,6 +1560,8 @@
                     "\t\tthis.fileDropper.setUploadUrl(url);",
                     "",
                     "\t\tthis.readPetAttachments();",
+                    "\t\t",
+                    "\t\tthis.queryById('petLog').filterPet(petId);",
                     "",
                     "\t\tthis.docFormLoadFormData(reply);",
                     "\t},",
@@ -1716,7 +1753,7 @@
                     "",
                     "this.petSearchWindow.show();",
                     "this.petSearchWindow.searchPets({",
-                    "\tname:this.queryById('name').getValue(),",
+                    "\tserial:this.queryById('serial').getValue(),",
                     "\ttype:this.queryById('type').getValue(),",
                     "\treceiveDate:this.queryById('receiveDate').getSubmitValue(),",
                     "\tsellDate:this.queryById('sellDate').getSubmitValue()",

@@ -56,7 +56,7 @@ Ext.define('PetMaster.view.PetSearch', {
 			columns: [
 				{
 					xtype: 'gridcolumn',
-					dataIndex: 'name',
+					dataIndex: 'serial',
 					text: 'Serial'
 				},
 				{

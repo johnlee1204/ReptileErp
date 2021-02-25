@@ -2,6 +2,7 @@
 
 namespace PetMaster\Models;
 use AgileModel;
+use PetMaster\Tables\PetMasterLog;
 
 class PetMasterModel extends AgileModel {
 	static function readPet($petId) {
@@ -10,7 +11,7 @@ class PetMasterModel extends AgileModel {
 			'Pet',
 			[
 				'petId',
-				'name',
+				'serial',
 				'type',
 				'price',
 				'sex',
@@ -64,7 +65,7 @@ class PetMasterModel extends AgileModel {
 		self::$database->insert(
 			'Pet',
 			[
-				'name' => $inputs['name'],
+				'serial' => $inputs['serial'],
 				'type' => $inputs['type'],
 				'price' => $inputs['price'],
 				'sex' => $inputs['sex'],
@@ -85,7 +86,19 @@ class PetMasterModel extends AgileModel {
 			]
 		);
 
-		return self::readLatestPetId();
+		$petId = self::readLatestPetId();
+
+		PetMasterLog::log(
+			self::$database,
+			[
+				'action' => "Create Reptile",
+				'petId' => $petId,
+				'serial' => $inputs['serial'],
+				'changes' => PetMasterLog::calculateDelta([], $inputs)
+			]
+		);
+
+		return $petId;
 	}
 
 	static function updatePet($inputs) {
@@ -114,10 +127,12 @@ class PetMasterModel extends AgileModel {
 			$inputs['weight'] = 0;
 		}
 
+		$oldReptile = self::readPet($inputs['petId']);
+
 		self::$database->update(
 			'Pet',
 			[
-				'name' => $inputs['name'],
+				'serial' => $inputs['serial'],
 				'type' => $inputs['type'],
 				'price' => $inputs['price'],
 				'sex' => $inputs['sex'],
@@ -140,12 +155,36 @@ class PetMasterModel extends AgileModel {
 				'petId' => $inputs['petId']
 			]
 		);
+
+		$newReptile = self::readPet($inputs['petId']);
+
+		PetMasterLog::log(
+			self::$database,
+			[
+				'action' => "Update Reptile",
+				'petId' => $inputs['petId'],
+				'serial' => $inputs['serial'],
+				'changes' => PetMasterLog::calculateDelta($oldReptile, $newReptile)
+			]
+		);
 	}
 
 	static function deletePet($petId) {
+		$oldReptile = self::readPet($petId);
+
 		self::$database->delete(
 			'Pet',
 			['petId' => $petId]
+		);
+
+		PetMasterLog::log(
+			self::$database,
+			[
+				'action' => "Delete Reptile",
+				'petId' => $petId,
+				'serial' => $oldReptile['serial'],
+				'changes' => PetMasterLog::calculateDelta($oldReptile, [])
+			]
 		);
 	}
 
@@ -161,9 +200,9 @@ class PetMasterModel extends AgileModel {
 		$where = "";
 		$params = [];
 
-		if($inputs['name']) {
-			$where .= " AND name LIKE CONCAT('%', ?, '%')";
-			$params[] = $inputs['name'];
+		if($inputs['serial']) {
+			$where .= " AND serial LIKE CONCAT('%', ?, '%')";
+			$params[] = $inputs['serial'];
 		}
 
 		if($inputs['type']) {
@@ -184,7 +223,7 @@ class PetMasterModel extends AgileModel {
 		return self::$database->fetch_all_row("
 			SELECT
 				petId,
-				name,
+				serial,
 				type,
 				sex,
 				receiveDate,

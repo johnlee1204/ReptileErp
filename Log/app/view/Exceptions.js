@@ -26,7 +26,7 @@ Ext.define('Log.view.Exceptions', {
         'Ext.form.CheckboxGroup',
         'Ext.form.field.Checkbox',
         'Ext.grid.Panel',
-        'Ext.grid.column.Date',
+        'Ext.grid.column.Column',
         'Ext.view.Table',
         'Ext.toolbar.Paging',
         'Ext.form.field.TextArea'
@@ -341,12 +341,10 @@ Ext.define('Log.view.Exceptions', {
                     },
                     columns: [
                         {
-                            xtype: 'datecolumn',
+                            xtype: 'gridcolumn',
                             itemId: 'date',
-                            width: 167,
                             dataIndex: 'date',
-                            text: 'Date',
-                            format: 'F j, Y h:ia'
+                            text: 'Date'
                         },
                         {
                             xtype: 'gridcolumn',

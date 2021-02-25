@@ -1,0 +1,47 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyBorder": true,
+        "bodyStyle": "background:none;",
+        "designer|uiInterfaceName": "default",
+        "designer|userAlias": "applicationlogpanel",
+        "designer|userClassName": "ApplicationLogPanel",
+        "height": 626,
+        "icon": "/inc/img/silk_icons/application_view_tile.png",
+        "layout": "fit",
+        "title": "Application Log"
+    },
+    "configAlternates": {
+        "bodyBorder": "boolean",
+        "bodyStyle": "string",
+        "designer|uiInterfaceName": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "icon": "string",
+        "layout": "string",
+        "title": "string"
+    },
+    "name": "MyPanel",
+    "designerId": "310a79d2-91e7-4640-8261-8745ea63074d",
+    "viewControllerInstanceId": "8b1f23d7-7de9-47d3-b3fd-1b70e8d53744",
+    "viewModelInstanceId": "4742eb46-e67d-4645-be00-2944cf0f6e10",
+    "cn": [
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "name": "applicationlogs",
+            "designerId": "7f797297-58cb-433e-876a-35b8b87aaf8e",
+            "masterInstanceId": "e2c1a5b0-f7fa-4681-b8ff-a4eefe548d6c"
+        }
+    ]
+}

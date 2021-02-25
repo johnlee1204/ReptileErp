@@ -29,7 +29,7 @@ Ext.define('PetMaster.view.PetSearchViewModel', {
 					name: 'petId'
 				},
 				{
-					name: 'name'
+					name: 'serial'
 				},
 				{
 					name: 'type'

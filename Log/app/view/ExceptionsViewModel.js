@@ -21,8 +21,8 @@ Ext.define('Log.view.ExceptionsViewModel', {
         'Ext.data.Store',
         'Ext.data.proxy.Ajax',
         'Ext.data.reader.Array',
-        'Ext.util.Sorter',
-        'Ext.data.field.Date'
+        'Ext.data.field.Field',
+        'Ext.util.Sorter'
     ],
 
     stores: {
@@ -70,10 +70,7 @@ Ext.define('Log.view.ExceptionsViewModel', {
             },
             fields: [
                 {
-                    type: 'date',
-                    name: 'date',
-                    dateFormat: 'F j, Y h:ia',
-                    dateReadFormat: 'Y-m-d H:i:s'
+                    name: 'date'
                 },
                 {
                     name: 'ip'

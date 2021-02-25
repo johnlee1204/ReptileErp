@@ -1,0 +1,1408 @@
+{
+    "type": "Ext.container.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userAlias": "applicationlogs",
+        "designer|userClassName": "ApplicationLogs",
+        "layout": "vbox"
+    },
+    "configAlternates": {
+        "container|align": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "layout": "string",
+        "title": "string",
+        "bodyBorder": "boolean",
+        "bodyStyle": "string",
+        "height": "auto",
+        "icon": "string"
+    },
+    "designerId": "e2c1a5b0-f7fa-4681-b8ff-a4eefe548d6c",
+    "viewControllerInstanceId": "4a84309f-133b-4aa4-8b81-3e9b6bfb6391",
+    "viewModelInstanceId": "603a772a-565a-4b2c-ae21-f64825f9b072",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "bodyStyle": "background:none;",
+                "border": false,
+                "docFormSkip": true,
+                "itemId": "filters",
+                "layout": "hbox",
+                "margin": "0 0 5px 0",
+                "padding": 5
+            },
+            "configAlternates": {
+                "designer|displayName": "string",
+                "layout": "string",
+                "padding": "auto",
+                "bodyStyle": "string",
+                "border": "boolean",
+                "itemId": "string",
+                "margin": "auto",
+                "docFormSkip": "boolean"
+            },
+            "name": "MyForm2",
+            "designerId": "c461f704-e870-4e71-ba0e-9e3274bbf23b",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "docFormSkip",
+                    "type": "string"
+                }
+            ],
+            "cn": [
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "cls": [
+                            "floatBox"
+                        ],
+                        "container|align": "stretch",
+                        "flex": null,
+                        "height": null,
+                        "layout": "vbox",
+                        "minHeight": null,
+                        "style": null,
+                        "width": 650
+                    },
+                    "configAlternates": {
+                        "cls": "typedarray",
+                        "height": "auto",
+                        "layout": "string",
+                        "margin": "auto",
+                        "style": "object",
+                        "width": "auto",
+                        "container|align": "string",
+                        "flex": "number",
+                        "minHeight": "number"
+                    },
+                    "name": "MyContainer23",
+                    "designerId": "b5640512-0dbc-4461-87db-ccb062b955c4",
+                    "cn": [
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "stretch",
+                                "flex": null,
+                                "height": null,
+                                "layout": "hbox",
+                                "layout|flex": 1,
+                                "margin": "0 0 5 0"
+                            },
+                            "configAlternates": {
+                                "container|align": "string",
+                                "layout": "string",
+                                "flex": "number",
+                                "height": "auto",
+                                "layout|flex": "number",
+                                "margin": "auto"
+                            },
+                            "name": "MyContainer18",
+                            "designerId": "71effa66-d330-4668-8eaa-185704ef6c9d",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.field.ComboBox",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "anyMatch": true,
+                                        "displayField": "app",
+                                        "fieldLabel": "App",
+                                        "forceSelection": true,
+                                        "itemId": "appCombo",
+                                        "labelWidth": 60,
+                                        "layout|flex": 1,
+                                        "margin": "0 5 0 10",
+                                        "maxWidth": 300,
+                                        "queryMode": "local",
+                                        "store": [
+                                            "{AppStore}"
+                                        ],
+                                        "typeAheadDelay": 50,
+                                        "valueField": "app"
+                                    },
+                                    "configAlternates": {
+                                        "fieldLabel": "string",
+                                        "store": "binding",
+                                        "anyMatch": "boolean",
+                                        "displayField": "datafield",
+                                        "forceSelection": "boolean",
+                                        "queryMode": "string",
+                                        "typeAheadDelay": "number",
+                                        "valueField": "datafield",
+                                        "labelWidth": "number",
+                                        "layout|flex": "number",
+                                        "margin": "auto",
+                                        "maxWidth": "number",
+                                        "itemId": "string"
+                                    },
+                                    "name": "MyComboBox5",
+                                    "designerId": "80a524d2-b727-4b10-8d51-761eb1c15461",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onComboboxSelect",
+                                                "implHandler": [
+                                                    "this.switchAppLog(record.data.app);"
+                                                ],
+                                                "name": "select",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onComboboxSelect",
+                                            "designerId": "e95280a8-8f41-45e4-8753-14cf314a37ab"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.field.ComboBox",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "displayField": "display",
+                                        "fieldLabel": "Column",
+                                        "flex": null,
+                                        "itemId": "searchColumn",
+                                        "labelWidth": 60,
+                                        "layout|flex": 1,
+                                        "margin": "0 0 0 10",
+                                        "maxWidth": 300,
+                                        "name": "searchColumn",
+                                        "queryMode": "local",
+                                        "valueField": "value",
+                                        "width": null
+                                    },
+                                    "configAlternates": {
+                                        "fieldLabel": "string",
+                                        "labelWidth": "number",
+                                        "width": "auto",
+                                        "flex": "number",
+                                        "displayField": "datafield",
+                                        "itemId": "string",
+                                        "name": "string",
+                                        "valueField": "datafield",
+                                        "queryMode": "string",
+                                        "layout|flex": "number",
+                                        "margin": "auto",
+                                        "maxWidth": "number",
+                                        "store": "binding"
+                                    },
+                                    "name": "MyComboBox1",
+                                    "designerId": "0e3008da-c95f-4124-ad60-dc8635811c5e"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "container|align": "stretch",
+                                "flex": null,
+                                "height": null,
+                                "layout": "hbox",
+                                "margin": "0 10 0 0"
+                            },
+                            "configAlternates": {
+                                "container|align": "string",
+                                "layout": "string",
+                                "flex": "number",
+                                "height": "auto",
+                                "margin": "auto"
+                            },
+                            "name": "MyContainer9",
+                            "designerId": "36a5a018-a9b7-4aa7-8a33-57c68446cadc",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.field.ComboBox",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "displayField": "comparison",
+                                        "editable": false,
+                                        "fieldLabel": "Operation",
+                                        "itemId": "searchOperation",
+                                        "labelWidth": 60,
+                                        "layout|flex": 1,
+                                        "margin": "0 0 0 10",
+                                        "matchFieldWidth": false,
+                                        "maxWidth": 210,
+                                        "name": "searchOperation",
+                                        "store": [
+                                            "{OperationStore}"
+                                        ],
+                                        "valueField": "value"
+                                    },
+                                    "configAlternates": {
+                                        "fieldLabel": "string",
+                                        "labelWidth": "number",
+                                        "layout|flex": "number",
+                                        "margin": "auto",
+                                        "maxWidth": "number",
+                                        "store": "binding",
+                                        "displayField": "datafield",
+                                        "editable": "boolean",
+                                        "matchFieldWidth": "boolean",
+                                        "valueField": "datafield",
+                                        "disabled": "boolean",
+                                        "itemId": "string",
+                                        "name": "string"
+                                    },
+                                    "name": "MyComboBox2",
+                                    "designerId": "81e65933-a599-4f39-a454-e0e7205a92b4"
+                                },
+                                {
+                                    "type": "Ext.form.field.Text",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "enableKeyEvents": true,
+                                        "fieldLabel": "Term",
+                                        "flex": null,
+                                        "height": null,
+                                        "itemId": "searchTerm",
+                                        "labelWidth": 40,
+                                        "margin": "0 10 0 15",
+                                        "maxHeight": 25,
+                                        "name": "searchTerm",
+                                        "width": 221
+                                    },
+                                    "configAlternates": {
+                                        "fieldLabel": "string",
+                                        "height": "auto",
+                                        "labelWidth": "number",
+                                        "margin": "auto",
+                                        "maxHeight": "number",
+                                        "width": "auto",
+                                        "flex": "number",
+                                        "disabled": "boolean",
+                                        "enableKeyEvents": "boolean",
+                                        "itemId": "string",
+                                        "name": "string"
+                                    },
+                                    "name": "MyTextField",
+                                    "designerId": "9f9fd209-c0cc-428f-976c-65c6af6893cc",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onTextfieldKeypress1",
+                                                "implHandler": [
+                                                    "if(e.getKey() === e.ENTER){",
+                                                    "    this.loadAppLog();",
+                                                    "}"
+                                                ],
+                                                "name": "keypress",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onTextfieldKeypress1",
+                                            "designerId": "1852bb71-c16f-4a6e-9705-8edc03135a80"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "icon": "/inc/img/silk_icons/find.png",
+                                        "itemId": "filterButton",
+                                        "layout|flex": 1,
+                                        "margin": "0 0 0 10",
+                                        "maxWidth": 70,
+                                        "text": "Filter"
+                                    },
+                                    "configAlternates": {
+                                        "disabled": "boolean",
+                                        "icon": "string",
+                                        "itemId": "string",
+                                        "layout|flex": "number",
+                                        "margin": "auto",
+                                        "maxWidth": "number",
+                                        "text": "string"
+                                    },
+                                    "name": "MyButton2",
+                                    "designerId": "ba256dc6-db8b-4ec2-9398-249b0f90f15f",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onExceptionFilterButtonClick1",
+                                                "implHandler": [
+                                                    "this.loadAppLog();"
+                                                ],
+                                                "name": "click",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onExceptionFilterButtonClick1",
+                                            "designerId": "57b5facc-fb9d-4d7b-a0c8-e371a770aa47"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "icon": "/inc/img/silk_icons/cross.png",
+                                        "itemId": "filterButton1",
+                                        "layout|flex": 1,
+                                        "margin": "0 0 0 10",
+                                        "maxWidth": 70,
+                                        "text": "Clear"
+                                    },
+                                    "configAlternates": {
+                                        "disabled": "boolean",
+                                        "icon": "string",
+                                        "itemId": "string",
+                                        "layout|flex": "number",
+                                        "margin": "auto",
+                                        "maxWidth": "number",
+                                        "text": "string"
+                                    },
+                                    "name": "MyButton4",
+                                    "designerId": "3cfafb1b-3c7c-45d9-92e3-f033ae267f8d",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onExceptionFilterButtonClick11",
+                                                "implHandler": [
+                                                    "this.clearFilter();"
+                                                ],
+                                                "name": "click",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onExceptionFilterButtonClick11",
+                                            "designerId": "6678bbbf-8da2-4b3d-902f-b3ae3dbc535c"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "container|align": "stretch",
+                        "designer|displayName": "Date And Time Wrap",
+                        "layout": "vbox",
+                        "margin": "0 0 0 5px"
+                    },
+                    "configAlternates": {
+                        "container|align": "string",
+                        "designer|displayName": "string",
+                        "layout": "string",
+                        "margin": "auto"
+                    },
+                    "name": "MyContainer21",
+                    "designerId": "36368b1d-ae09-489d-a7d7-0fff80d8e410",
+                    "cn": [
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "floatBox"
+                                ],
+                                "container|align": "stretch",
+                                "designer|displayName": "Date Wrap",
+                                "layout": "hbox",
+                                "margin": "0 10 0 0",
+                                "width": 420
+                            },
+                            "configAlternates": {
+                                "cls": "typedarray",
+                                "container|align": "string",
+                                "layout": "string",
+                                "margin": "auto",
+                                "width": "auto",
+                                "designer|displayName": "string"
+                            },
+                            "name": "MyContainer15",
+                            "designerId": "5b988c25-2f55-491e-9f0d-f5fea11e3c08",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.field.Date",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fieldLabel": "Date From",
+                                        "itemId": "dateFrom",
+                                        "labelWidth": 75,
+                                        "name": "dateFrom",
+                                        "submitFormat": "Y-m-d",
+                                        "width": 200
+                                    },
+                                    "configAlternates": {
+                                        "fieldLabel": "string",
+                                        "itemId": "string",
+                                        "labelWidth": "number",
+                                        "layout|x": "number",
+                                        "layout|y": "number",
+                                        "name": "string",
+                                        "submitFormat": "string",
+                                        "width": "auto"
+                                    },
+                                    "name": "MyDateField",
+                                    "designerId": "412a0798-1e9b-49b7-bed2-527a703be321",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onDateFromChange1",
+                                                "implHandler": [
+                                                    "this.loadAppLog();"
+                                                ],
+                                                "name": "change",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onDateFromChange1",
+                                            "designerId": "03a18a23-183c-41f0-8f02-0f1f0fc98f0c"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.field.Date",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fieldLabel": "Date To",
+                                        "itemId": "dateTo",
+                                        "labelWidth": 65,
+                                        "margin": "0 0 0 25",
+                                        "name": "dateTo",
+                                        "submitFormat": "Y-m-d",
+                                        "width": 200
+                                    },
+                                    "configAlternates": {
+                                        "fieldLabel": "string",
+                                        "itemId": "string",
+                                        "labelWidth": "number",
+                                        "layout|x": "number",
+                                        "layout|y": "number",
+                                        "name": "string",
+                                        "submitFormat": "string",
+                                        "width": "auto",
+                                        "margin": "auto"
+                                    },
+                                    "name": "MyDateField1",
+                                    "designerId": "1f3a5fb8-61b7-45ea-a03a-da403b1eb7c7",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onDateToChange1",
+                                                "implHandler": [
+                                                    "this.loadAppLog();"
+                                                ],
+                                                "name": "change",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onDateToChange1",
+                                            "designerId": "601b8ac0-1763-472a-b82a-808031f092c2"
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "cls": [
+                                    "floatBox"
+                                ],
+                                "designer|displayName": "Time Wrap",
+                                "layout": "hbox",
+                                "margin": "0 10 0 0",
+                                "width": 430
+                            },
+                            "configAlternates": {
+                                "cls": "typedarray",
+                                "container|align": "string",
+                                "layout": "string",
+                                "margin": "auto",
+                                "width": "auto",
+                                "designer|displayName": "string"
+                            },
+                            "name": "MyContainer20",
+                            "designerId": "dbeba579-3617-4252-bdf1-7366ba2fd5f5",
+                            "cn": [
+                                {
+                                    "type": "Ext.form.field.Time",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fieldLabel": "Time From",
+                                        "format": "G:i",
+                                        "itemId": "timeFrom",
+                                        "labelWidth": 75,
+                                        "margin": "5 0 0 0",
+                                        "name": "timeFrom",
+                                        "value": "0:00",
+                                        "width": 200
+                                    },
+                                    "configAlternates": {
+                                        "value": "string",
+                                        "fieldLabel": "string",
+                                        "format": "string",
+                                        "itemId": "string",
+                                        "labelWidth": "number",
+                                        "layout|x": "number",
+                                        "layout|y": "number",
+                                        "name": "string",
+                                        "width": "auto",
+                                        "margin": "auto"
+                                    },
+                                    "name": "MyTimeField2",
+                                    "designerId": "ff07bc60-ec84-4cdd-890a-38a3bd2cee76",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onDateFromTimeChange1",
+                                                "implHandler": [
+                                                    "this.loadAppLog();"
+                                                ],
+                                                "name": "change",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onDateFromTimeChange1",
+                                            "designerId": "da005025-eeba-4278-b4f6-98710c9874a7"
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "Ext.form.field.Time",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "fieldLabel": "Time To",
+                                        "format": "G:i",
+                                        "itemId": "timeTo",
+                                        "labelWidth": 65,
+                                        "margin": "5 0 0 25",
+                                        "name": "timeTo",
+                                        "value": "23:59",
+                                        "width": 200
+                                    },
+                                    "configAlternates": {
+                                        "value": "string",
+                                        "fieldLabel": "string",
+                                        "format": "string",
+                                        "itemId": "string",
+                                        "labelWidth": "number",
+                                        "layout|x": "number",
+                                        "layout|y": "number",
+                                        "name": "string",
+                                        "width": "auto",
+                                        "margin": "auto"
+                                    },
+                                    "name": "MyTimeField3",
+                                    "designerId": "570bc6e9-2fbb-4b30-b4ad-311d000801d0",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onDateToTimeChange1",
+                                                "implHandler": [
+                                                    "this.loadAppLog();"
+                                                ],
+                                                "name": "change",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onDateToTimeChange1",
+                                            "designerId": "3825447c-4914-4545-8acc-5414f8005470"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "html": "<link rel=\"stylesheet\" type=\"text/css\" href=\"/inc/css/history.css\">",
+                "itemId": "cssCode"
+            },
+            "configAlternates": {
+                "html": "string",
+                "itemId": "string"
+            },
+            "name": "MyContainer25",
+            "designerId": "79c097c3-042d-4cab-bafc-a42c34145b33"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "flex": 1,
+                "itemId": "results",
+                "layout": "fit"
+            },
+            "configAlternates": {
+                "flex": "number",
+                "itemId": "string",
+                "layout": "string",
+                "margin": "auto"
+            },
+            "name": "MyContainer22",
+            "designerId": "8dbd011d-af7f-4c46-9ad4-98d1f5988b82"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "dataBoxes",
+                "layout": "fit",
+                "margin": "5px",
+                "resizable": true,
+                "resizeHandles": "n"
+            },
+            "configAlternates": {
+                "layout": "string",
+                "resizable": "boolean",
+                "resizeHandles": "string",
+                "margin": "auto",
+                "itemId": "string"
+            },
+            "name": "MyContainer19",
+            "designerId": "6a6a99b4-4467-4996-82f5-81b1e5af4ab8",
+            "cn": [
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Data",
+                        "frame": false,
+                        "height": 188,
+                        "itemId": "dataBox",
+                        "labelAlign": "top"
+                    },
+                    "configAlternates": {
+                        "fieldLabel": "string",
+                        "frame": "boolean",
+                        "height": "auto",
+                        "itemId": "string",
+                        "labelAlign": "string"
+                    },
+                    "name": "MyTextArea6",
+                    "designerId": "4ded528a-c867-4f29-a517-2e783b3ca448",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onDataBoxAfterRender",
+                                "implHandler": [
+                                    "component.el.on('dblclick',function(event, el, component){",
+                                    "    this.showTextDetailWindow(component.getValue());",
+                                    "},this,component);"
+                                ],
+                                "name": "afterrender",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onDataBoxAfterRender",
+                            "designerId": "28721536-e80f-4bf0-b21c-5a22d350d623"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "app",
+                    "autoLoad"
+                ],
+                "fn": "switchAppLog",
+                "implHandler": [
+                    "if(typeof autoLoad == 'undefined'){",
+                    "    autoLoad = true;",
+                    "}",
+                    "",
+                    "this.mask('Loading...');",
+                    "this.logMetadataLoaded = false;",
+                    "AERP.Ajax.request({",
+                    "    url:this.appLocation+'readApplicationLogMetadata',",
+                    "    params:{appName:app},",
+                    "    success:function(reply){",
+                    "        this.unmask();",
+                    "        this.appName = app;",
+                    "        this.generateAppLogGrid(reply.columns,reply.table);",
+                    "        this.fireEvent('logMetadataLoaded');",
+                    "        this.logMetadataLoaded = true;",
+                    "        if(autoLoad){",
+                    "            this.loadAppLog();",
+                    "        }",
+                    "    },",
+                    "    failure:function(){",
+                    "        this.unmask();",
+                    "    },",
+                    "    scope:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "switchAppLog",
+            "designerId": "3bbc44ff-bd4b-4761-ad78-0788ea9453f9"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "text"
+                ],
+                "fn": "showTextDetailWindow",
+                "implHandler": [
+                    "if(!this.textWindow){",
+                    "    this.textWindow = Ext.create('Log.view.TextDetailWindow');",
+                    "}",
+                    "try{",
+                    "    this.textWindow.setText(JSON.stringify(JSON.parse(text),null,2));",
+                    "}catch(e){",
+                    "    this.textWindow.setText(text);",
+                    "}",
+                    ""
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "showTextDetailWindow",
+            "designerId": "5b594888-15bc-4272-b396-fc4ff83afb39"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "columnData",
+                    "tableData"
+                ],
+                "fn": "generateAppLogGrid",
+                "implHandler": [
+                    "if(this.gridContextMenu){",
+                    "    this.gridContextMenu.destroy();",
+                    "}",
+                    "if(this.paging){",
+                    "    this.paging.destroy();",
+                    "}",
+                    "if(this.grid){",
+                    "    this.grid.destroy();",
+                    "}",
+                    "if(this.store){",
+                    "    this.store.removeAll();",
+                    "    this.store.destroy();",
+                    "}",
+                    "if(this.columnStore){",
+                    "    this.columnStore.removeAll();",
+                    "    this.columnStore.destroy();",
+                    "}",
+                    "",
+                    "var columnStoreData = [{display:'[ NONE ]',value:''}];",
+                    "var fields = [];",
+                    "var columns = [];",
+                    "for(var i in columnData){",
+                    "    fields.push({name:columnData[i].column});",
+                    "    columnStoreData.push({display:columnData[i].label,value:columnData[i].column});",
+                    "    columns.push({",
+                    "        dataIndex: columnData[i].column,",
+                    "        text: columnData[i].label,",
+                    "        width: columnData[i].width,",
+                    "        hidden: columnData[i].hidden",
+                    "    });",
+                    "}",
+                    "",
+                    "this.columnStore = Ext.create('Ext.data.Store', {",
+                    "    storeId: 'AppLogColumnStore',",
+                    "    fields: [",
+                    "        {name: 'display'},",
+                    "        {name: 'value'}",
+                    "    ],",
+                    "});",
+                    "this.columnStore.loadData(columnStoreData);",
+                    "",
+                    "this.queryById('searchColumn').setStore(this.columnStore);",
+                    "",
+                    "this.store = Ext.create('Ext.data.Store', {",
+                    "    storeId: 'AppLogGridStore',",
+                    "    fields: fields,",
+                    "    sorters: {",
+                    "        direction: 'DESC',",
+                    "        property: 'date'",
+                    "    },",
+                    "    pageSize: 100,",
+                    "    remoteFilter: true,",
+                    "    remoteSort: true,",
+                    "    proxy: {",
+                    "        type: 'ajax',",
+                    "        noCache: false,",
+                    "        simpleSortMode: true,",
+                    "        url: this.appLocation+'readApplicationLog',",
+                    "        actionMethods: {",
+                    "            create: 'POST',",
+                    "            read: 'POST',",
+                    "            update: 'POST',",
+                    "            destroy: 'POST'",
+                    "        },",
+                    "        reader: {",
+                    "            type: 'array',",
+                    "            rootProperty: 'data',",
+                    "            totalProperty: 'totalRows'",
+                    "        }",
+                    "    }",
+                    "});",
+                    "",
+                    "this.paging = Ext.create('Ext.toolbar.Paging',{",
+                    "    dock:'top',",
+                    "    displayInfo:true",
+                    "});",
+                    "",
+                    "this.gridContextMenu = Ext.create('Ext.menu.Menu',{",
+                    "    itemId: 'contextMenu',",
+                    "    width: 120,",
+                    "    items: [",
+                    "        {",
+                    "            xtype: 'menuitem',",
+                    "            itemId: 'gridContextMenuFilter',",
+                    "            icon: '/inc/img/silk_icons/find.png',",
+                    "            text: 'Filter',",
+                    "            listeners: {",
+                    "                click: function(){",
+                    "                    if(this.menuFilterColumn === 'date'){",
+                    "                        this.queryById('dateTo').setValue(this.menuFilterTerm.substr(0,10));",
+                    "                        this.queryById('timeTo').setValue(this.menuFilterTerm.substr(11,5));",
+                    "                    } else {",
+                    "                        this.queryById('searchColumn').setValue(this.menuFilterColumn);",
+                    "                        this.queryById('searchOperation').setValue('=');",
+                    "                        this.queryById('searchTerm').setValue(this.menuFilterTerm);",
+                    "                    }",
+                    "",
+                    "                    this.loadAppLog();",
+                    "                },",
+                    "                scope:this",
+                    "            }",
+                    "        },{",
+                    "            xtype: 'menuitem',",
+                    "            itemId: 'gridContextMenuJob',",
+                    "            icon: '/inc/img/silk_icons/application_cascade.png',",
+                    "            text: 'View Job',",
+                    "            listeners: {",
+                    "                click: function(){",
+                    "                    window.open('/job?job='+this.menuFilterTerm,'_blank');",
+                    "                },",
+                    "                scope:this",
+                    "            }",
+                    "        }",
+                    "    ]",
+                    "});",
+                    "",
+                    "if(!this.expanderTemplate){",
+                    "    this.expanderTemplate = Ext.create('Ext.XTemplate', '{[this.formatChanges(values)]}', {",
+                    "        formatChanges: function(rowData) {",
+                    "            var table = '';",
+                    "",
+                    "            var changes;",
+                    "            try{ changes = Ext.JSON.decode(rowData.changes); }catch(ex){ changes = false; }",
+                    "            if(changes !== false){",
+                    "                table += '<table class=\"historyTable\">';",
+                    "                table +='<tr><th class=\"historyField\">Field</th> <th class=\"historyBefore\">Before</th> <th class=\"historyAfter\">After</th></tr>';",
+                    "                for(var field in changes){",
+                    "                    table +='<tr>';",
+                    "                    table +='<td>';",
+                    "                    table +=field;",
+                    "                    table +='</td>';",
+                    "                    table +='<td>';",
+                    "                    table +=changes[field].before;",
+                    "                    table +='</td>';",
+                    "                    table +='<td>';",
+                    "                    table +=changes[field].after;",
+                    "                    table +='</td>';",
+                    "                    table +='</tr>';",
+                    "                }",
+                    "                table +='</table>';",
+                    "            }",
+                    "",
+                    "            var logData;",
+                    "            try{ logData = Ext.JSON.decode(rowData.data); } catch(ex){logData = false; }",
+                    "            if(logData !== false){",
+                    "",
+                    "                table += '<table class=\"historyTable\">';",
+                    "                table +='<tr><th class=\"historyField\">Data</th> <th class=\"historyBefore\">Value</th></tr>';",
+                    "                for(var column in logData){",
+                    "                    table +='<tr>';",
+                    "                    table +='<td>';",
+                    "                    table +=column;",
+                    "                    table +='</td>';",
+                    "                    table +='<td>';",
+                    "                    table +=logData[column];",
+                    "                    table +='</td>';",
+                    "                    table +='</tr>';",
+                    "                }",
+                    "                table +='</table>';",
+                    "            }",
+                    "",
+                    "            return table;",
+                    "        }",
+                    "    });",
+                    "}",
+                    "",
+                    "var plugins = [];",
+                    "if(tableData.comparison){",
+                    "    plugins.push({",
+                    "        ptype: 'rowexpander',",
+                    "        expandOnEnter: true,",
+                    "        rowBodyTpl: this.expanderTemplate,",
+                    "        selectRowOnExpand: true",
+                    "    });",
+                    "}",
+                    "",
+                    "this.grid = Ext.create('Ext.grid.Panel', {",
+                    "    store: this.store,",
+                    "    columns:columns,",
+                    "    viewConfig: {",
+                    "        enableTextSelection: true",
+                    "    },",
+                    "    listeners:{",
+                    "        selectionchange:function(model, selected, eOpts){",
+                    "            if(selected.length !== 1){",
+                    "                return;",
+                    "            }",
+                    "            if(selected[0].data.data){",
+                    "                try{",
+                    "                    this.queryById('dataBox').setValue(JSON.stringify(JSON.parse(selected[0].data.data),null,2));",
+                    "                }catch(e){",
+                    "                    this.queryById('dataBox').setValue(selected[0].data.data);",
+                    "                }",
+                    "            }",
+                    "        },",
+                    "        celldblclick: function(tableview, td, cellIndex, record, tr, rowIndex, e, eOpts) {",
+                    "            this.menuFilterColumn = e.position.column.dataIndex;",
+                    "            this.menuFilterTerm = record.getData()[this.menuFilterColumn];",
+                    "            if(typeof this.menuFilterTerm == 'undefined'){ //Happens when dbl clicking margins (Those aren't cells!)",
+                    "                return;",
+                    "            }",
+                    "            var termLength = this.menuFilterTerm.length;",
+                    "            if((termLength === 5 || termLength === 10) && this.menuFilterColumn.toLowerCase().includes('job')){",
+                    "                window.open('/job?job='+this.menuFilterTerm,'_blank');",
+                    "                return;",
+                    "            }",
+                    "        },",
+                    "        cellcontextmenu:function(tableview, td, cellIndex, record, tr, rowIndex, e, eOpts){",
+                    "            e.preventDefault();",
+                    "            this.menuFilterColumn = e.position.column.dataIndex;",
+                    "            this.menuFilterTerm = record.getData()[this.menuFilterColumn];",
+                    "            var termLength = this.menuFilterTerm.length;",
+                    "            var gridContextMenuJob = this.gridContextMenu.queryById('gridContextMenuJob');",
+                    "            var menuLength = 0;",
+                    "            gridContextMenuJob.hide();",
+                    "            if((termLength === 5 || termLength === 10) && this.menuFilterColumn.toLowerCase().includes('job')){",
+                    "                gridContextMenuJob.show();",
+                    "                menuLength++;",
+                    "            }",
+                    "            var gridContextMenuFilter = this.gridContextMenu.queryById('gridContextMenuFilter');",
+                    "            gridContextMenuFilter.hide();",
+                    "            if(!this.hideFilters){",
+                    "                gridContextMenuFilter.show();",
+                    "                menuLength++;",
+                    "            }",
+                    "            if(menuLength <= 0){",
+                    "                return;",
+                    "            }",
+                    "            this.gridContextMenu.showAt(e.getXY());",
+                    "        },",
+                    "        scope:this",
+                    "    },",
+                    "    plugins: plugins,",
+                    "    dockedItems: [this.paging]",
+                    "});",
+                    "",
+                    "this.queryById('results').add(this.grid);"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "generateAppLogGrid",
+            "designerId": "6816713d-0aec-493c-9a3b-ca1041715940"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "loadAppLog",
+                "implHandler": [
+                    "if(!this.appName){",
+                    "    this.loadWhenReady = true;",
+                    "    return;",
+                    "}",
+                    "",
+                    "this.queryById('dataBox').setValue(\"\");",
+                    "",
+                    "var filterData = this.queryById('filters').getValues();",
+                    "if(this.manualFilters){",
+                    "    filterData = this.manualFilters;",
+                    "}",
+                    "",
+                    "var params = {appName:this.appName};",
+                    "",
+                    "if(filterData.dateFrom){",
+                    "    params.dateFrom = filterData.dateFrom;",
+                    "}",
+                    "",
+                    "if(filterData.dateTo){",
+                    "    params.dateTo = filterData.dateTo;",
+                    "}",
+                    "",
+                    "if(filterData.timeTo){",
+                    "    params.timeTo = filterData.timeTo;",
+                    "}",
+                    "",
+                    "if(filterData.timeFrom){",
+                    "    params.timeFrom = filterData.timeFrom;",
+                    "}",
+                    "",
+                    "",
+                    "if(filterData.searchColumn && filterData.searchColumn !== ''){",
+                    "    if(filterData.searchOperation && filterData.searchTerm){",
+                    "        params.searchColumn = filterData.searchColumn;",
+                    "        params.searchOperation = filterData.searchOperation;",
+                    "        params.searchTerm = filterData.searchTerm;",
+                    "    }",
+                    "}",
+                    "",
+                    "this.store.getProxy().setExtraParams(params);",
+                    "this.store.loadPage(1);"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "loadAppLog",
+            "designerId": "20566506-ade1-47d6-9441-40e574c91d20"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "if(!this.singleApp){",
+                    "    this.singleApp = false;",
+                    "}",
+                    "",
+                    "if(this.hideFilters){",
+                    "    this.queryById('filters').hide();",
+                    "}",
+                    "",
+                    "if(this.hideData){",
+                    "    this.queryById('dataBoxes').hide();",
+                    "}",
+                    "",
+                    "if(!this.appLocation){",
+                    "    //If it wasn't defined before rendered.",
+                    "    this.appLocation = '/Log/';",
+                    "}",
+                    "",
+                    "this.queryById('dateFrom').setValue(new Date());",
+                    "this.queryById('dateTo').setValue(new Date());",
+                    "",
+                    "if(!this.singleApp){",
+                    "    AERP.Ajax.request({",
+                    "        url:this.appLocation+'readApplicationLogApps',",
+                    "        success:function(reply){",
+                    "            this.lookupViewModel().getStore('AppStore').loadData(reply.appLogApps);",
+                    "        },",
+                    "        scope:this",
+                    "    });",
+                    "}else{",
+                    "    if(!this.hideFilters){",
+                    "        this.queryById('appCombo').hide();",
+                    "    }",
+                    "    this.switchAppLog(this.singleApp,false);",
+                    "}"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string",
+                "delay": "number"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "2dbcdd61-4f43-4b3b-ade8-daa4143ac3c7"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "clearFilter",
+                "implHandler": [
+                    "this.queryById('searchColumn').setValue('');",
+                    "this.queryById('searchOperation').setValue('');",
+                    "this.queryById('searchTerm').setValue('');",
+                    "this.loadAppLog();"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "clearFilter",
+            "designerId": "558682fc-dfd9-49a5-9723-2af49577ca20"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "folder"
+                ],
+                "fn": "changeAppLocation",
+                "implHandler": [
+                    "//This function is used for InventoryLog so we can use slightly modified functions to force the loading of one specific log.",
+                    "//Kind of a temp thing until we finalize showing different logs to different people, etc.",
+                    "this.appLocation = folder;"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "changeAppLocation",
+            "designerId": "941ce67a-0d08-4b83-b570-52a7bf7de778"
+        }
+    ]
+}

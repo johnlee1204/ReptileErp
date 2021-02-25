@@ -13,9 +13,9 @@ class LogModel {
 	 * @return array
 	 */
 	static function readApplicationLogApps($dbc){
-		$prefix = 'log_';
-		$prefixLength = strlen($prefix);
-		$tables = $dbc->fetch_all_assoc("SELECT TABLE_NAME AS tableName FROM AgileFweData.INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND TABLE_NAME LIKE ?+'%' ORDER BY TABLE_NAME",array($prefix));
+		$prefix = 'log\_';
+		$prefixLength = strlen($prefix) - 1;
+		$tables = $dbc->fetch_all_assoc("SELECT table_name as tableName FROM INFORMATION_SCHEMA.TABLES WHERE table_schema = 'LeeSheet' AND table_type = 'BASE TABLE' AND TABLE_NAME LIKE CONCAT(?,'%') ORDER BY TABLE_NAME",array($prefix));
 		$apps = array();
 		foreach($tables as $table){
 			$apps[] = array(substr($table['tableName'],$prefixLength));
@@ -98,24 +98,17 @@ class LogModel {
 		$searchOperation = $params['searchOperation'];
 		$searchTerm = $params['searchTerm'];
 
-
-		//$columnResults = $dbc->fetch_all_assoc("SELECT COLUMN_NAME column FROM AgileFwe.INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'log_'+?",array($appName));
-		//$columns = array();
-		//foreach($columnResults as $result){
-		//	$columns[] = $result['column'];
-		//}
-
 		/** @var AgileLog $logTableClass */
 		$logTableClass = $appName."\\Tables\\".$appName.'Log';
 		$logTableColumns = $logTableClass::readColumns();
 		$logTableData = $logTableClass::readTable();
-		$logTable = $logTableData['database'].'..'.$logTableData['table'];
+		$logTable = $logTableData['database'].'.'.$logTableData['table'];
 
 		$outputColumns = array();
 		$columns = array();
 		foreach($logTableColumns as $columnName => $columnData){
 			if(isset($columnData[Column::COLUMN])){
-				$columns[] = '['.$columnData[Column::COLUMN].'] as '.$columnName;
+				$columns[] = '`'.$columnData[Column::COLUMN].'` as '.$columnName;
 				$outputColumns[] = $columnName;
 			}
 		}
@@ -170,9 +163,6 @@ class LogModel {
 			WHERE rowNum > ? and rowNum <= ? ORDER BY {$finalSortBy}
 		";
 
-		//echo $sql;
-		//die();
-
 		$totalSql = "
         select count(date) as total
         FROM {$logTable}
@@ -191,6 +181,7 @@ class LogModel {
 		$total = $totalResults[0]['total'];
 
 		$outputData = array();
+		
 		foreach($data as $row){
 			$row = FormatModel::formatQueryOutput($row,$logTableColumns);
 			$outputData[] = array_values($row);

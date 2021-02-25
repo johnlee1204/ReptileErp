@@ -23,7 +23,10 @@ Ext.application({
     views: [
         'MainView',
         'TextDetailWindow',
-        'AccessLogs'
+        'ApplicationLogs',
+        'Exceptions',
+        'AccessLogs',
+        'ApplicationLogPanel'
     ],
     name: 'Log',
 

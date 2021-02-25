@@ -951,7 +951,7 @@
                             "designerId": "c53d72ae-d7c0-465f-8ee7-a2392058166a"
                         },
                         {
-                            "type": "Ext.grid.column.Date",
+                            "type": "Ext.grid.column.Column",
                             "reference": {
                                 "name": "columns",
                                 "type": "array"
@@ -959,17 +959,13 @@
                             "codeClass": null,
                             "userConfig": {
                                 "dataIndex": "date",
-                                "format": "F j, Y h:ia",
-                                "text": "Date",
-                                "width": 167
+                                "text": "Date"
                             },
                             "configAlternates": {
                                 "dataIndex": "datafield",
-                                "text": "string",
-                                "format": "string",
-                                "width": "auto"
+                                "text": "string"
                             },
-                            "name": "MyDateColumn",
+                            "name": "MyColumn20",
                             "designerId": "0cc97b14-8b82-45e2-88e7-8ee5c48241b0"
                         },
                         {

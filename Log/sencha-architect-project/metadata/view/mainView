@@ -123,6 +123,29 @@
                     ]
                 },
                 {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "name": "applicationlogpanel",
+                    "designerId": "d842d3d7-8f08-4c57-8b8f-136b0364d604",
+                    "masterInstanceId": "310a79d2-91e7-4640-8261-8745ea63074d",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "TabConfig",
+                            "designerId": "f6a789ef-92b2-4a69-8429-4f90410b5a72"
+                        }
+                    ]
+                },
+                {
                     "type": "basiceventbinding",
                     "reference": {
                         "name": "listeners",

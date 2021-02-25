@@ -1,7 +1,8 @@
 <?php
 
-use DropDownSelectionEditor\Models\DropDownSelectionEditorModel;
 use PetMaster\Models\PetMasterModel;
+use PetMaster\Tables\PetMasterLog;
+
 class PetMaster extends AgileBaseController {
 
 	static $AgilePermissions = [
@@ -33,7 +34,7 @@ class PetMaster extends AgileBaseController {
 
 	function createPet() {
 		$inputs = Validation::validateJsonInput([
-			'name' => 'notBlank',
+			'serial' => 'notBlank',
 			'type' => 'notBlank',
 			'price' => 'numericOrNull',
 			'sex' => 'notBlank',
@@ -53,13 +54,17 @@ class PetMaster extends AgileBaseController {
 			'sellPrice'
 		]);
 
-		$this->outputSuccessData(PetMasterModel::createPet($inputs));
+		$this->database->begin_transaction();
+		$newId = PetMasterModel::createPet($inputs);
+		$this->database->commit_transaction();
+
+		$this->outputSuccessData($newId);
 	}
 
 	function updatePet() {
 		$inputs = Validation::validateJsonInput([
 			'petId' => 'numeric',
-			'name' => 'notBlank',
+			'serial' => 'notBlank',
 			'type' => 'notBlank',
 			'price' => 'numericOrNull',
 			'sex' => 'notBlank',
@@ -79,7 +84,9 @@ class PetMaster extends AgileBaseController {
 			'sellPrice'
 		]);
 
+		$this->database->begin_transaction();
 		PetMasterModel::updatePet($inputs);
+		$this->database->commit_transaction();
 
 		$this->outputSuccess();
 	}
@@ -89,14 +96,16 @@ class PetMaster extends AgileBaseController {
 			'petId' => 'numeric'
 		]);
 
+		$this->database->begin_transaction();
 		PetMasterModel::deletePet($input['petId']);
+		$this->database->commit_transaction();
 
 		$this->outputSuccess();
 	}
 
 	function searchPets() {
 		$inputs = Validation::validateJsonInput([
-			'name',
+			'serial',
 			'type',
 			'receiveDate',
 			'sellDate',

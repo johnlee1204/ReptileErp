@@ -21,6 +21,7 @@ Ext.define('Log.view.MainView', {
         'Log.view.MainViewViewModel',
         'Log.view.Exceptions',
         'Log.view.AccessLogs',
+        'Log.view.ApplicationLogPanel',
         'Ext.toolbar.Toolbar',
         'Ext.tab.Panel',
         'Ext.tab.Tab',
@@ -57,6 +58,9 @@ Ext.define('Log.view.MainView', {
                 {
                     xtype: 'accesslogs',
                     itemId: 'accessLogs'
+                },
+                {
+                    xtype: 'applicationlogpanel'
                 }
             ],
             listeners: {

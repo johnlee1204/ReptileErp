@@ -23,6 +23,7 @@ Ext.define('PetMaster.view.PetMaster', {
 	requires: [
 		'PetMaster.view.PetMasterViewModel',
 		'PetMaster.view.HabitatData',
+		'PetMaster.view.PetLog',
 		'Ext.toolbar.Toolbar',
 		'Ext.form.field.ComboBox',
 		'Ext.tab.Panel',
@@ -63,7 +64,7 @@ Ext.define('PetMaster.view.PetMaster', {
 			items: [
 				{
 					xtype: 'textfield',
-					itemId: 'name',
+					itemId: 'serial',
 					fieldLabel: 'Serial',
 					labelAlign: 'right',
 					labelWidth: 60
@@ -388,7 +389,15 @@ Ext.define('PetMaster.view.PetMaster', {
 				},
 				{
 					xtype: 'habitatdata',
-					itemId: 'habitatData'
+					itemId: 'habitatData',
+					tabConfig: {
+						xtype: 'tab',
+						hidden: true
+					}
+				},
+				{
+					xtype: 'petlog',
+					itemId: 'petLog'
 				}
 			]
 		}
@@ -509,7 +518,7 @@ Ext.define('PetMaster.view.PetMaster', {
 			saveFn:'updatePet',
 			deleteFn:'deletePet',
 			searchFn:'searchPets',
-			searchableFields:['name', 'type', 'receiveDate', 'sellDate']
+			searchableFields:['serial', 'type', 'receiveDate', 'sellDate']
 		});
 
 		var listeners = {
@@ -620,6 +629,8 @@ Ext.define('PetMaster.view.PetMaster', {
 
 				this.readPetAttachments();
 
+				this.queryById('petLog').filterPet(petId);
+
 				this.docFormLoadFormData(reply);
 			},
 			scope:this,
@@ -706,7 +717,7 @@ Ext.define('PetMaster.view.PetMaster', {
 
 		this.petSearchWindow.show();
 		this.petSearchWindow.searchPets({
-			name:this.queryById('name').getValue(),
+			serial:this.queryById('serial').getValue(),
 			type:this.queryById('type').getValue(),
 			receiveDate:this.queryById('receiveDate').getSubmitValue(),
 			sellDate:this.queryById('sellDate').getSubmitValue()
