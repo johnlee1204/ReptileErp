@@ -26,8 +26,8 @@ class AgileApp {
 		require_once($systemClassPath . 'AgileJson.php');
 		require_once($systemClassPath . 'AgileUserMessageException.php');
 		require_once($systemClassPath . 'AgileBaseController.php');
-		require_once($this->systemConfigs['systemPath']."inc/php/classes/Validation.php");
-		require_once($this->systemConfigs['systemPath']."inc/php/classes/SmartTruncate.php");
+		require_once($this->systemConfigs['systemPath']."inc/php/Classes/Validation.php");
+		require_once($this->systemConfigs['systemPath']."inc/php/Classes/SmartTruncate.php");
 
 		require_once($systemClassPath . 'AgileLibrary.php');
 		require_once($systemClassPath . 'AgileTableInterface.php');

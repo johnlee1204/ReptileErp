@@ -22,8 +22,8 @@ class Email extends AgileLibrary{
 			'cc' => null,
 			'bcc' => null,
 			'headers' => null,
-			'from' => 'Fwe Intranet',
-			'fromEmail' => 'fwecoadmin@fweco.net',
+			'from' => 'Swift Reptiles',
+			'fromEmail' => 'webmaster@leesheet.com',
 			'subject' => 'subject',
 			'message' => 'message',
 			'showSourceFooter' => true
@@ -89,6 +89,7 @@ class Email extends AgileLibrary{
 	private static function generateHeaders(){
 		$headers = array();
 		$headers[] = "From: ".self::$config['from']." <".self::$config['fromEmail'].">";
+
 		if(self::$config['cc'] !== null && trim(self::$config['cc']) !== ''){
 			$headers[] = "Cc: ".self::$config['cc'];
 		}
@@ -97,6 +98,9 @@ class Email extends AgileLibrary{
 		}
 		$headers[] = "MIME-Version: 1.0";
 		$headers[] = "Content-Type: text/html; charset=ISO-8859-1";
+		$headers[] = "Reply-To: Swift Reptiles <webmaster@leesheet.com>";
+		$headers[] = "Return-Path: Swift Reptiles <webmaster@leesheet.com>";
+		$headers[] = "Organization: Shwift Reptiles";
 		return implode("\r\n", $headers);
 	}
 
@@ -117,6 +121,6 @@ class Email extends AgileLibrary{
 			$backtraceStr .= ':'.$backtrace[0]['line'];
 		}
 
-		return "<BR/>\r\n<BR/>\r\nSent at ".date('Y-m-d g:ia').' from '.$_SERVER['SERVER_NAME']."<BR\>\r\n<span style=\"color:#BBB\">{$backtraceStr}</span>";
+		//return "<BR/>\r\n<BR/>\r\nSent at ".date('Y-m-d g:ia').' from '.$_SERVER['SERVER_NAME']."<BR\>\r\n<span style=\"color:#BBB\">{$backtraceStr}</span>";
 	}
 }

@@ -2,6 +2,7 @@
 
 
 use Employee\Models\EmployeeModel;
+//use inc\php\classes\Email;
 
 class Employee extends AgileBaseController {
 
@@ -12,7 +13,7 @@ class Employee extends AgileBaseController {
 		'readEmployee' => 'read',
 		'createEmployee' => 'create',
 		'updateEmployee' => 'update',
-		'deleteEmployee' => 'delete',
+		'deleteEmployee' => 'delete'
 	];
 
 	function readAppInitData() {

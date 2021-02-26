@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="0805ee84-5655-4603-b9bb-90a22b3cf7f0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Agile/Classes/AgileApp.php" beforeDir="false" afterPath="$PROJECT_DIR$/../Agile/Classes/AgileApp.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/Employee.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/Employee.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../error.log" beforeDir="false" afterPath="$PROJECT_DIR$/../error.log" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/../inc/php" />
+      <path value="$PROJECT_DIR$/../Agile" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="1p1yfL0dk29TtNkrR1uOUjD3pEY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Agile" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0805ee84-5655-4603-b9bb-90a22b3cf7f0" name="Default Changelist" comment="" />
+      <created>1614364992938</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1614364992938</updated>
+      <workItem from="1614364994160" duration="2689000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="987" y="343" key="#PHP" timestamp="1614365024173">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="987" y="343" key="#PHP/-2560.0.2560.1400/0.0.2560.1400/2560.165.1920.1040@0.0.2560.1400" timestamp="1614365024173" />
+    <state x="1059" y="455" key="FileChooserDialogImpl" timestamp="1614365022924">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1059" y="455" key="FileChooserDialogImpl/-2560.0.2560.1400/0.0.2560.1400/2560.165.1920.1040@0.0.2560.1400" timestamp="1614365022924" />
+    <state x="987" y="433" width="585" height="534" key="find.popup" timestamp="1614365451686">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="987" y="433" width="585" height="534" key="find.popup/-2560.0.2560.1400/0.0.2560.1400/2560.165.1920.1040@0.0.2560.1400" timestamp="1614365451686" />
+  </component>
+</project>
