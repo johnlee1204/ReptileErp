@@ -553,6 +553,9 @@
                     "let title = this.queryById('title');",
                     "title.reset();",
                     "",
+                    "this.queryById('employee').enable();",
+                    "this.queryById('type').enable();",
+                    "",
                     "if(data.calendarId) {",
                     "\tthis.queryById('type').setValue(data.calendarId);",
                     "\tif(data.calendarId !== 1) {",
@@ -584,7 +587,22 @@
                     "}",
                     "",
                     "this.queryById('startDate').setValue(startDate);",
-                    "this.queryById('endDate').setValue(endDate);"
+                    "this.queryById('endDate').setValue(endDate);",
+                    "",
+                    "if(data.isScheduleAdmin === false) {",
+                    "\ttitle.disable();",
+                    "\tthis.setTitle(\"Request Time Off\");",
+                    "\tthis.queryById('type').setValue(4);",
+                    "\tthis.queryById('type').disable();",
+                    "\tthis.queryById('employee').setValue(data.employeeId);",
+                    "\tthis.employeeId = data.employeeId;",
+                    "\tthis.queryById('employee').disable();",
+                    "\tlet startTime = new Date(\"Tue Jan 01 2008 00:00:00 GMT-0600\");",
+                    "\tlet endTime = new Date(\"Tue Jan 01 2008 23:59:59 GMT-0600\");",
+                    "",
+                    "\tthis.queryById('startTime').setValue(startTime);",
+                    "\tthis.queryById('endTime').setValue(endTime);",
+                    "}"
                 ]
             },
             "configAlternates": {

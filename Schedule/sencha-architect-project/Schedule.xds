@@ -24,13 +24,14 @@
             }
         },
         "sdkPath": "",
-        "urlPrefix": "http://dev.local/"
+        "urlPrefix": "http://dev.local/",
+        "displayfield-ExtBox1-1149-inputEl": "a new version of the framework is available"
     },
-    "xdsVersion": "4.2.5",
-    "xdsBuild": 420,
+    "xdsVersion": "4.2.9",
+    "xdsBuild": 443,
     "schemaVersion": 1,
     "upgradeVersion": 310000000001,
-    "framework": "ext66",
+    "framework": "ext73",
     "viewOrderMap": {
         "view": [
             "79f3f913-02f7-4a07-8ef4-c3f24245093b",
@@ -54,7 +55,7 @@
             "b555a1df-a148-4e7b-a910-4809f4e567e2"
         ],
         "resource": [
-            "0e5f5053-5e39-45f3-825f-771d032de4c4",
+            "5ae8f56b-d8d8-4da2-8f60-24578a562063",
             "173a740e-293e-4e00-b40c-9a50fb2577d4",
             "5ba3958c-da75-475c-be62-0204422d23cf",
             "e9dfff16-f6c8-498c-ac8a-f008ed4717e3",

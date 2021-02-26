@@ -13,7 +13,8 @@
         "layout": "vbox",
         "mixins": [
             "['DocForm']"
-        ]
+        ],
+        "width": 450
     },
     "configAlternates": {
         "bodyPadding": "auto",
@@ -21,7 +22,8 @@
         "designer|userAlias": "string",
         "designer|userClassName": "string",
         "layout": "string",
-        "mixins": "object"
+        "mixins": "object",
+        "width": "auto"
     },
     "name": "MyPanel",
     "designerId": "e9dc3894-68b1-4910-a175-504a0559dda2",
@@ -322,12 +324,18 @@
             },
             "codeClass": null,
             "userConfig": {
+                "hidden": true,
                 "html": "<img class = 'fireButton' src='/Employee/project-files/fire.png'>",
-                "style": "object-fit:contain;border-radius: 50%;"
+                "itemId": "fireButton",
+                "style": "object-fit:contain;border-radius: 50%;",
+                "width": 450
             },
             "configAlternates": {
                 "html": "string",
-                "style": "string"
+                "style": "string",
+                "hidden": "boolean",
+                "itemId": "string",
+                "width": "auto"
             },
             "name": "MyContainer",
             "designerId": "430191e2-2c60-4011-b347-d4532c8eeae7",
@@ -477,6 +485,12 @@
                     "\tjsonData:{employeeId:employeeId},",
                     "\tsuccess:function(reply) {",
                     "\t\tthis.employeeId = employeeId;",
+                    "\t\tlet fireButton = this.queryById('fireButton');",
+                    "\t\tif(reply.data.position !== \"Owner\" && reply.data.position !== \"Software Developer\") {",
+                    "\t\t\tfireButton.show();",
+                    "\t\t} else {",
+                    "\t\t\tfireButton.hide();",
+                    "\t\t}",
                     "\t\tthis.docFormLoadFormData(reply);",
                     "\t},",
                     "\tscope:this,",

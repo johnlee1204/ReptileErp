@@ -18,14 +18,17 @@ class Schedule extends AgileBaseController {
 		'updateLabor' => 'update',
 		'deleteLabor' => 'delete',
 		'readSchedule' => 'read',
-		'createShift' => 'create',
+		'createShift' => 'read',
 		'updateShift' => 'update',
 		'deleteShift' => 'delete'
 	];
 
 	function readAppInitData() {
+		$userInformation = $this->AgileApp->SessionManager->getUserDataFromSession();
 		$this->outputSuccess([
-			'employees' => EmployeeModel::readEmployeesComboData()
+			'employees' => EmployeeModel::readEmployeesComboData(),
+			'employeeId' => $userInformation['employeeId'],
+			'isScheduleAdmin' => ScheduleModel::isScheduleAdmin()
 		]);
 	}
 

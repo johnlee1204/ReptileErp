@@ -114,10 +114,17 @@
                                     },
                                     "codeClass": null,
                                     "userConfig": {
+                                        "eventDefaults": [
+                                            "{",
+                                            "\txtype:\"calendar-event\",",
+                                            "\ttimeFormat:' '",
+                                            "}"
+                                        ],
                                         "label": "Month"
                                     },
                                     "configAlternates": {
-                                        "label": "string"
+                                        "label": "string",
+                                        "eventDefaults": "object"
                                     },
                                     "name": "MyMonth",
                                     "designerId": "f0a6c381-a6dd-4c36-922d-a3b9dff74703",
@@ -144,6 +151,9 @@
                                                     "}",
                                                     "",
                                                     "this.addEventWindow.setTitle(\"Add Shift\");",
+                                                    "",
+                                                    "context.event.data.isScheduleAdmin = this.isScheduleAdmin;",
+                                                    "context.event.data.employeeId = this.employeeId;",
                                                     "",
                                                     "this.addEventWindow.show(null, function(){",
                                                     "\tthis.addEventWindow.setDates(context.event.data, \"Create\");",
@@ -173,6 +183,10 @@
                                             "userConfig": {
                                                 "fn": "onCalendarmonthBeforeEventedit",
                                                 "implHandler": [
+                                                    "if(!this.isScheduleAdmin) {",
+                                                    "\treturn false;",
+                                                    "}",
+                                                    "",
                                                     "if(!this.addEventWindow) {",
                                                     "\tthis.addEventWindow = Ext.create(\"Schedule.view.AddEventForm\", {",
                                                     "\t\tlisteners:{",
@@ -214,6 +228,13 @@
                                             "userConfig": {
                                                 "fn": "onCalendarmonthEventdrop",
                                                 "implHandler": [
+                                                    "let calendarStore = this.queryById('calendar').getStore();",
+                                                    "",
+                                                    "if(!this.isScheduleAdmin) {",
+                                                    "\tcalendarStore.load();",
+                                                    "\treturn;",
+                                                    "}",
+                                                    "",
                                                     "let startDate = new Date(context.event.data.startDate);",
                                                     "startDateString = (startDate.getYear() + 1900) + \"-\" + (startDate.getMonth() + 1) + \"-\" + startDate.getDate();",
                                                     "startTime = startDate.getHours() + \":\" + startDate.getMinutes() + \":\" + startDate.getSeconds();",
@@ -230,13 +251,15 @@
                                                     "\t\tstartDate:startDateString,",
                                                     "\t\tstartTime:startTime,",
                                                     "\t\tendDate:endDateString,",
-                                                    "\t\tendTime:endTime",
+                                                    "\t\tendTime:endTime,",
+                                                    "\t\ttype:context.event.data.calendarId,",
+                                                    "\t\ttitle:context.event.data.title",
                                                     "\t},",
                                                     "\tsuccess:function(reply) {",
-                                                    "\t\tthis.queryById('calendar').getStore().load();",
+                                                    "\t\tcalendarStore.load();",
                                                     "\t},",
                                                     "\tfailure:function() {",
-                                                    "\t\tthis.queryById('calendar').getStore().load();",
+                                                    "\t\tcalendarStore.load();",
                                                     "\t},",
                                                     "\tscope:this,",
                                                     "\tmask:this",
@@ -933,6 +956,8 @@
                     "\turl:'/Schedule/readAppInitData',",
                     "\tsuccess:function(reply) {",
                     "\t\tthis.getViewModel().getStore('EmployeeStore').loadData(reply.employees);",
+                    "\t\tthis.employeeId = reply.employeeId;",
+                    "\t\tthis.isScheduleAdmin = reply.isScheduleAdmin;",
                     "\t},",
                     "\tscope:this,",
                     "\tmask:this",

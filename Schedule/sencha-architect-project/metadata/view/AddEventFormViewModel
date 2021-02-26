@@ -86,6 +86,10 @@
                     "\t{",
                     "\t\t\"value\": 3,",
                     "\t\t\"display\": \"Meeting\"",
+                    "\t},",
+                    "\t{",
+                    "\t\t\"value\": 4,",
+                    "\t\t\"display\": \"Time Off\"",
                     "\t}",
                     "]"
                 ],

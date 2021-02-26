@@ -226,8 +226,8 @@
         "model": true,
         "controller": true,
         "resource": true,
-        "995f8ad2-56da-425f-aa22-cee781e1616b": {
-            "id": "995f8ad2-56da-425f-aa22-cee781e1616b"
+        "529029ad-eb7e-4d82-99eb-e67d2e79d6d7": {
+            "id": "529029ad-eb7e-4d82-99eb-e67d2e79d6d7"
         },
         "173a740e-293e-4e00-b40c-9a50fb2577d4": {
             "id": "173a740e-293e-4e00-b40c-9a50fb2577d4"
@@ -280,7 +280,7 @@
     },
     "inspectorState": {
         "topInstance": "e9dc3894-68b1-4910-a175-504a0559dda2",
-        "selectedInstance": "4caec55a-e5bc-400c-8cc0-cc9f66a7507f"
+        "selectedInstance": "70951518-32e3-429d-a9bb-1d1dac404598"
     },
     "editMode": "code",
     "userSettings": {

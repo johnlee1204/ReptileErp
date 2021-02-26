@@ -81,8 +81,7 @@ class ScheduleModel extends AgileModel{
 
 	static function readEmployeeSchedule() {
 		$userInformation = self::$agileApp->SessionManager->getUserDataFromSession();
-		$groupModel = self::$agileApp->loadModel('AgileGroupModel');
-		$viewAll = $groupModel->checkIfUserInGroup($userInformation['employeeId'], "Schedule Admin");
+		$viewAll = self::isScheduleAdmin();
 
 		$where = "";
 		$params = [];
@@ -207,9 +206,11 @@ class ScheduleModel extends AgileModel{
 				#hours,
 				FLOOR( RAND() * (3-1) + 1) as calendarId,
 				CASE
-					WHEN calendarId = 1 THEN CONCAT(CASE WHEN DATEDIFF(endTime,startTime) > 1 THEN DATE_FORMAT(startTime, '%h:%i %p') ELSE DATE_FORMAT(startTime, '%p') END,' - ',DATE_FORMAT(endTime, '%h:%i %p'), ' ' ,Employee.firstName, ' ', Employee.lastName)
+					WHEN calendarId = 1 THEN CONCAT(CASE WHEN DATEDIFF(endTime,startTime) > 1 THEN DATE_FORMAT(startTime, '%h:%i %p') ELSE DATE_FORMAT(startTime, '%h:%i %p') END,' - ',DATE_FORMAT(endTime, '%h:%i %p'), ' ' ,Employee.firstName, ' ', Employee.lastName)	
+					WHEN calendarId = 4 THEN CONCAT(Employee.firstName, ' ', Employee.lastName, ' Time Off')
 					ELSE title
-				END title
+				END title,
+				CASE WHEN calendarId = 4 THEN 1 ELSE 0 END allDay
 			FROM Schedule
 			JOIN Employee ON Employee.employeeId = Schedule.employeeId
 			WHERE
@@ -281,6 +282,15 @@ class ScheduleModel extends AgileModel{
 			"Schedule",
 			['title' => $title]
 		);
+	}
+
+	static function isScheduleAdmin() {
+		$userInformation = self::$agileApp->SessionManager->getUserDataFromSession();
+		if($userInformation === FALSE) {
+			return FALSE;
+		}
+		$groupModel = self::$agileApp->loadModel('AgileGroupModel');
+		return $groupModel->checkIfUserInGroup($userInformation['employeeId'], "Schedule Admin");
 	}
 
 }
