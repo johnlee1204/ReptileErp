@@ -15,7 +15,7 @@
             }
         },
         "urlPrefix": "http://agiledev.local/intranet2/GroupManager",
-        "exportPath": "C:/Users/jlee/Desktop/Websites/LeeSheet/UserGroup",
+        "exportPath": "C:/Users/johnm/Desktop/Websites/LeeSheet/UserGroup",
         "spacesToIndent": "tab",
         "sdkPath": "",
         "lineEnding": "LF",
@@ -34,11 +34,11 @@
         "displayfield-ExtBox1-1174-inputEl": "a new version of the framework is available",
         "displayfield-ExtBox1-1227-inputEl": "a new version of the framework is available"
     },
-    "xdsVersion": "4.2.6",
-    "xdsBuild": 425,
+    "xdsVersion": "4.2.9",
+    "xdsBuild": 443,
     "schemaVersion": 1,
     "upgradeVersion": 310000000001,
-    "framework": "ext66",
+    "framework": "ext73",
     "viewOrderMap": {
         "view": [
             "880911ba-063d-4c5e-b92e-3dce2c3d595d",
@@ -55,7 +55,7 @@
             "97a1c7b6-2c20-4958-a659-56352b4b5776"
         ],
         "resource": [
-            "fae3ce05-5be2-4f38-9da7-6180030a5106",
+            "6a20721c-3347-4bfa-a6ec-1f34ffcb703b",
             "d20b7011-dfbf-48ca-8d99-8ec2dd9b4f69",
             "b2f6d110-a1b3-4a14-8de3-735c32e47d79"
         ],

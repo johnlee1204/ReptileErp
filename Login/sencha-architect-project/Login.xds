@@ -13,7 +13,7 @@
                 "width": null
             }
         },
-        "exportPath": "C:/Users/jlee/Desktop/Websites/LeeSheet/Login",
+        "exportPath": "C:/Users/johnm/Desktop/Websites/LeeSheet/Login",
         "buildShouldOverwriteIndex": true,
         "generateArchitectVersion": false,
         "spacesToIndent": "tab",
@@ -24,11 +24,11 @@
         "urlPrefixTemplate": "http://dev.local/",
         "displayfield-ExtBox1-1136-inputEl": "a new version of the framework is available"
     },
-    "xdsVersion": "4.2.5",
-    "xdsBuild": 420,
+    "xdsVersion": "4.2.9",
+    "xdsBuild": 443,
     "schemaVersion": 1,
     "upgradeVersion": 310000000001,
-    "framework": "ext66",
+    "framework": "ext73",
     "viewOrderMap": {
         "view": [
             "93d41c65-f591-4890-be76-77059791a669",
@@ -42,7 +42,7 @@
         "controller": [],
         "model": [],
         "resource": [
-            "77843dae-cbcf-4723-9d2f-e9a5ca4ffdbc",
+            "e0765766-d5c6-4eb9-92f1-7a7eb125fbdc",
             "f28aed9e-aba1-492d-af91-b5b66c08c5d6",
             "2bb67d18-6864-4f24-ac34-87c03b8df87a"
         ],

@@ -26,11 +26,11 @@
         "sdkPath": "",
         "urlPrefix": "http://dev.local/"
     },
-    "xdsVersion": "4.2.5",
-    "xdsBuild": 420,
+    "xdsVersion": "4.2.9",
+    "xdsBuild": 443,
     "schemaVersion": 1,
     "upgradeVersion": 310000000001,
-    "framework": "ext66",
+    "framework": "ext73",
     "viewOrderMap": {
         "view": [
             "79f3f913-02f7-4a07-8ef4-c3f24245093b",
@@ -47,7 +47,7 @@
         "controller": [],
         "model": [],
         "resource": [
-            "dd36b052-b45a-4cba-8ef8-b849915443fa",
+            "5e04ba25-ba51-41d1-bb65-7ec52d6800a1",
             "173a740e-293e-4e00-b40c-9a50fb2577d4",
             "5ba3958c-da75-475c-be62-0204422d23cf",
             "e9dfff16-f6c8-498c-ac8a-f008ed4717e3",

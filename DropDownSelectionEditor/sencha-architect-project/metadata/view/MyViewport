@@ -59,7 +59,7 @@
                         "type": "array"
                     },
                     "codeClass": null,
-                    "name": "DropDownSelectionEditor",
+                    "name": "dropdownselectioneditor",
                     "designerId": "38b67402-0ac9-4d82-ae03-004462aad200",
                     "masterInstanceId": "d38c2cf0-9e53-498a-8521-da773f47156a"
                 }
