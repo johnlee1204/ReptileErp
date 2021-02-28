@@ -1,0 +1,242 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyPadding": 10,
+        "bodyStyle": "background:none",
+        "designer|userAlias": "locationform",
+        "designer|userClassName": "LocationForm",
+        "flex": 1,
+        "mixins": [
+            "['DocForm']"
+        ]
+    },
+    "configAlternates": {
+        "bodyPadding": "auto",
+        "bodyStyle": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "flex": "number",
+        "mixins": "object"
+    },
+    "name": "MyPanel",
+    "designerId": "3ca52fa3-fdd0-4e5a-a5d5-2cb2a1949e1c",
+    "viewControllerInstanceId": "a3d7c155-0250-45fe-9fad-8b56a8fd2828",
+    "viewModelInstanceId": "211a99d2-615d-40b5-9634-710b8cbc46ce",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "itemId": "locationFormToolbar"
+            },
+            "configAlternates": {
+                "dock": "string",
+                "itemId": "string"
+            },
+            "name": "MyToolbar1",
+            "designerId": "28aa8887-b9f4-4a96-980f-73a41d797ef6"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Name",
+                "itemId": "locationName"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string"
+            },
+            "name": "MyTextField",
+            "designerId": "bbf9f2bc-8714-45f8-98c9-f3bb88d447d2"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Description",
+                "itemId": "locationDescription"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string"
+            },
+            "name": "MyTextField1",
+            "designerId": "01f27c3c-ad95-46d0-8719-5468e75bbb0f"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.docFormInit({",
+                    "\ttoolbarId:\"locationFormToolbar\",",
+                    "\taddFn:\"createLocation\",",
+                    "\tsaveFn:\"updateLocation\",",
+                    "\tdeleteFn:\"deleteLocation\"",
+                    "});"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "41c03cc1-34be-4d79-80a9-0dc3d1de90bd"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "locationId"
+                ],
+                "fn": "readLocation",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:\"/AgileInventory/readLocation\",",
+                    "\tjsonData:{locationId:locationId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.locationId = locationId;",
+                    "\t\tthis.docFormLoadFormData(reply);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readLocation",
+            "designerId": "8cdd065e-8965-4757-ab78-6c493f496918"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "createLocation",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:\"/AgileInventory/createLocation\",",
+                    "\tjsonData:this.docFormGetAllFieldValues(),",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readLocation(reply.data);",
+                    "\t\tthis.fireEvent('locationchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "createLocation",
+            "designerId": "6875fc0b-b66c-4759-a4a7-5a05974315c6"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "updateLocation",
+                "implHandler": [
+                    "let jsonData = this.docFormGetAllFieldValues();",
+                    "jsonData.locationId = this.locationId;",
+                    "",
+                    "AERP.Ajax.request({",
+                    "\turl:\"/AgileInventory/updateLocation\",",
+                    "\tjsonData:jsonData,",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readLocation(this.locationId);",
+                    "\t\tthis.fireEvent('locationchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "updateLocation",
+            "designerId": "8f17bdc6-d1d7-49ff-9508-db8cf217aaee"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "deleteLocation",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:\"/AgileInventory/deleteLocation\",",
+                    "\tjsonData:{locationId:this.locationId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.locationId = null;",
+                    "\t\tthis.docFormReset();",
+                    "\t\tthis.fireEvent('locationchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "deleteLocation",
+            "designerId": "33d7b652-97a1-4695-9600-d8a0c0956391"
+        }
+    ]
+}

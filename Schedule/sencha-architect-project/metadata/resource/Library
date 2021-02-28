@@ -7,6 +7,7 @@
     "codeClass": null,
     "userConfig": {
         "basePath": "/js-lib/ext-7.3-latest/build/",
+        "debug": true,
         "designer|userClassName": "Library",
         "libraryRequires": [
             "calendar"
@@ -17,7 +18,8 @@
         "basePath": "uri",
         "designer|userClassName": "string",
         "theme": "string",
-        "libraryRequires": "typedarray"
+        "libraryRequires": "typedarray",
+        "debug": "boolean"
     },
     "name": "Library",
     "designerId": "173a740e-293e-4e00-b40c-9a50fb2577d4"

@@ -1,0 +1,234 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyStyle": "background:none",
+        "container|align": "stretch",
+        "designer|userAlias": "locations",
+        "designer|userClassName": "Locations",
+        "layout": "hbox",
+        "title": "Locations"
+    },
+    "configAlternates": {
+        "container|align": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "layout": "string",
+        "title": "string",
+        "bodyStyle": "string"
+    },
+    "name": "MyPanel1",
+    "designerId": "235e4ec8-3cfa-4114-80c5-77c9638292e6",
+    "viewControllerInstanceId": "5241224c-f4c7-4597-8942-3268709c1356",
+    "viewModelInstanceId": "c23c3e42-85df-4668-a863-1f398046d8e9",
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "flex": 1,
+                "store": [
+                    "{LocationStore}"
+                ]
+            },
+            "configAlternates": {
+                "store": "binding",
+                "flex": "number"
+            },
+            "name": "MyGridPanel3",
+            "designerId": "567223c4-543e-49b5-8fc8-6337eb66400a",
+            "cn": [
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "locationName",
+                        "text": "Location"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyColumn4",
+                    "designerId": "ad621c21-a7bb-4b03-bf20-9b931ac2c99b"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "locationDescription",
+                        "text": "Description",
+                        "width": 117
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyColumn5",
+                    "designerId": "bebf8a2d-8449-48ec-b276-4cc9e71dc2ea"
+                },
+                {
+                    "type": "Ext.view.Table",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "enableTextSelection": true
+                    },
+                    "configAlternates": {
+                        "enableTextSelection": "boolean"
+                    },
+                    "name": "MyTable1",
+                    "designerId": "e0a99bab-bbb9-473b-83f4-0f1b0ed21477"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onGridpanelSelectionChange",
+                        "implHandler": [
+                            "if(!selected || selected.length !== 1) {",
+                            "\treturn;",
+                            "}",
+                            "",
+                            "selected = selected[0];",
+                            "",
+                            "this.queryById('locationForm').readLocation(selected.data.locationId);"
+                        ],
+                        "name": "selectionchange",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onGridpanelSelectionChange",
+                    "designerId": "f05b61d5-3670-4737-8ee2-14564c0eb277"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "locationForm"
+            },
+            "configAlternates": {
+                "itemId": "string"
+            },
+            "name": "locationform",
+            "designerId": "ee83e0eb-7082-4e24-ae5e-79bf0376c662",
+            "masterInstanceId": "3ca52fa3-fdd0-4e5a-a5d5-2cb2a1949e1c",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "panel"
+                        ],
+                        "fn": "onPanelLocationChangeD",
+                        "implHandler": [
+                            "this.readLocations();"
+                        ],
+                        "name": "locationchanged",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "designer|params": "typedarray",
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onPanelLocationChangeD",
+                    "designerId": "6c8818e0-90aa-44a6-86f4-4792c44ad617"
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.readLocations();"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "762bb13c-59d3-4c68-940a-5838377efdf1"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "readLocations",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/AgileInventory/readLocations',",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore('LocationStore').loadData(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readLocations",
+            "designerId": "60129cc2-b32c-4a09-b19b-33360df1e878"
+        }
+    ]
+}

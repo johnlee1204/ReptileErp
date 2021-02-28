@@ -28,7 +28,7 @@ Ext.define('DocForm',{
 		}
 
 		var toolbar = this.queryById(config.toolbarId);
-		toolbar.setHeight(27);
+		//toolbar.setHeight(36);
 
 		this.btnFunctions = {
 			'newFn':this.docFormNew, //Move into new state
@@ -153,9 +153,10 @@ Ext.define('DocForm',{
 
 		this.docFormBtns.containerStructure = Ext.create({
 			xtype: 'container',
+			//flex:1,
 			defaults: {
 				layout: 'fit',
-				width: 80,
+				width: 100,
 				margin: '0 8 0 8'
 			},
 			layout: {

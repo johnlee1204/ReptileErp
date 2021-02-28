@@ -32,8 +32,8 @@ $systemConfigs["session"]["cookiePath"] = $systemConfigs["publicRoot"];
 //$systemConfigs["systemRouterConfigs"] = array();
 //$systemConfigs["systemRouterConfigs"]["routerAppsPath"] = "DesktopApps";
 $systemConfigs["router"] = array();
-$systemConfigs["router"]["rootClass"] = "Links";
-$systemConfigs["router"]["rootMethod"]  = "redirectToLinks";
+$systemConfigs["router"]["rootClass"] = "/";//"Links";
+$systemConfigs["router"]["rootMethod"]  = "index";//"redirectToLinks";
 
 $systemConfigs['table'] = array();
 $systemConfigs['table']['users'] = $systemConfigs['database']['systemDatabase'] .'.Employee';

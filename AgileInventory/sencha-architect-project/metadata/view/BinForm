@@ -1,0 +1,301 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyPadding": 10,
+        "bodyStyle": "background:none",
+        "designer|userAlias": "binform",
+        "designer|userClassName": "BinForm",
+        "flex": 1,
+        "mixins": [
+            "['DocForm']"
+        ]
+    },
+    "configAlternates": {
+        "bodyPadding": "auto",
+        "bodyStyle": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "flex": "number",
+        "mixins": "object"
+    },
+    "name": "LocationForm1",
+    "designerId": "1aa85952-4e39-48cb-ac1b-2427d615568a",
+    "viewControllerInstanceId": "03039005-6e1c-4fbf-926f-16e61aed0830",
+    "viewModelInstanceId": "4d4ae7e8-4cc4-49c3-88e1-27c33fefcf65",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "itemId": "binFormToolbar"
+            },
+            "configAlternates": {
+                "dock": "string",
+                "itemId": "string"
+            },
+            "name": "MyToolbar1",
+            "designerId": "8962b4c8-ae37-414a-98d4-65b2696471fd"
+        },
+        {
+            "type": "Ext.form.field.ComboBox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "displayField": "locationName",
+                "fieldLabel": "Location",
+                "forceSelection": true,
+                "itemId": "location",
+                "queryMode": "local",
+                "store": [
+                    "{LocationStore}"
+                ],
+                "valueField": "locationId"
+            },
+            "configAlternates": {
+                "store": "binding",
+                "displayField": "datafield",
+                "fieldLabel": "string",
+                "forceSelection": "boolean",
+                "itemId": "string",
+                "queryMode": "string",
+                "valueField": "datafield"
+            },
+            "name": "MyComboBox",
+            "designerId": "36b831fa-719a-46cd-9b10-ba399a7da3fd"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Name",
+                "itemId": "binName"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string"
+            },
+            "name": "MyTextField",
+            "designerId": "52abb4c7-d85f-41f6-8740-48d5e6178e3e"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Description",
+                "itemId": "binDescription"
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "itemId": "string"
+            },
+            "name": "MyTextField1",
+            "designerId": "c78077ee-3946-4726-917b-2e4d431ac0af"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.docFormInit({",
+                    "\ttoolbarId:\"binFormToolbar\",",
+                    "\taddFn:\"createBin\",",
+                    "\tsaveFn:\"updateBin\",",
+                    "\tdeleteFn:\"deleteBin\"",
+                    "});",
+                    "",
+                    "this.readLocations();"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "b2d6a76b-ab6b-42e8-93c4-8630df2a26a5"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "readLocations",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/AgileInventory/readLocations',",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore('LocationStore').loadData(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readLocations",
+            "designerId": "8c9ebd52-52a2-49d7-9152-7d9c6cbd8327"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "binId"
+                ],
+                "fn": "readBin",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:\"/AgileInventory/readBin\",",
+                    "\tjsonData:{binId:binId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.binId = binId;",
+                    "\t\tthis.docFormLoadFormData(reply);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readBin",
+            "designerId": "48b4b2db-1c6b-4bc1-a68e-ac4dd1c76d60"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "createBin",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:\"/AgileInventory/createBin\",",
+                    "\tjsonData:this.docFormGetAllFieldValues(),",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readBin(reply.data);",
+                    "\t\tthis.fireEvent('binchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "createBin",
+            "designerId": "7e435896-8c9d-42fd-b7db-d7d3c7636eb8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "updateBin",
+                "implHandler": [
+                    "let jsonData = this.docFormGetAllFieldValues();",
+                    "jsonData.binId = this.binId;",
+                    "",
+                    "AERP.Ajax.request({",
+                    "\turl:\"/AgileInventory/updateBin\",",
+                    "\tjsonData:jsonData,",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readBin(this.binId);",
+                    "\t\tthis.fireEvent('binchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "updateBin",
+            "designerId": "6608aef7-7c4b-42ef-9b24-bc3849be2201"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "deleteBin",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:\"/AgileInventory/deleteBin\",",
+                    "\tjsonData:{binId:this.binId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.binId = null;",
+                    "\t\tthis.docFormReset();",
+                    "\t\tthis.fireEvent('binchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "deleteBin",
+            "designerId": "49c58ee6-925e-48af-801f-217cd4013894"
+        }
+    ]
+}

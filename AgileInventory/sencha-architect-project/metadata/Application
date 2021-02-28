@@ -1,0 +1,28 @@
+{
+    "type": "Ext.app.Application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "name": "AgileInventory",
+        "views": [
+            "MyViewport",
+            "AgileInventory",
+            "DrillDown",
+            "Locations",
+            "LocationForm",
+            "Bins",
+            "BinForm",
+            "Products",
+            "ProductForm"
+        ]
+    },
+    "configAlternates": {
+        "name": "string",
+        "views": "typedarray"
+    },
+    "name": "Application",
+    "designerId": "application"
+}

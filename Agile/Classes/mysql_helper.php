@@ -17,6 +17,10 @@ class mysql_helper
 		}
 	}
 
+	public function selectDatabase($database) {
+		$this->connection->select_db($database);
+	}
+
 	public function fetch_assoc($sql = FALSE, $params = []) {
 		if($sql !== FALSE) {
 			$statement = $this->query($sql, $params);
@@ -132,7 +136,7 @@ class mysql_helper
 		return $this->connection->insert_id;
 	}
 
-	function build_insert_query($table, $data, $outputIdColumn=null){
+	function build_insert_query($table, $data){
 
 		if(count($data) < 1){
 			throw new Exception('Error building query, empty data array passed');
@@ -153,13 +157,8 @@ class mysql_helper
 		}
 		$valueStr = implode(',',$valueStr);
 
-		if($outputIdColumn !== null){
-			$outputSql = "OUTPUT INSERTED.{$outputIdColumn}";
-		}else{
-			$outputSql = "";
-		}
 
-		$query = "INSERT INTO {$table} ({$columns}) {$outputSql} VALUES ({$valueStr})";
+		$query = "INSERT INTO {$table} ({$columns}) VALUES ({$valueStr})";
 
 		return array(
 			"query"=>$query,
@@ -174,14 +173,12 @@ class mysql_helper
 	 * @return array|null
 	 * @throws Exception
 	 */
-	function insert($table, $data, $outputIdColumn=null){
-		$queryData = $this->build_insert_query($table, $data, $outputIdColumn);
+	function insert($table, $data){
+		$queryData = $this->build_insert_query($table, $data);
 
 		$this->query($queryData["query"], $queryData['values']);
 
-		if($outputIdColumn !== null){
-			return $this->fetch_assoc();
-		}
+		return $this->fetch_assoc("SELECT LAST_INSERT_ID() id");
 	}
 
 	/**

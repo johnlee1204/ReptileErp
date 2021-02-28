@@ -7,7 +7,7 @@
             "frameworkVersion": ""
         },
         "urlPrefixTemplate": "http://dev.local/",
-        "exportPath": "J:/Data/ApacheData/dev.local/SenchaArchitectTemplate",
+        "exportPath": "C:/Users/johnm/Desktop/Websites/LeeSheet/SenchaArchitectTemplate",
         "buildShouldOverwriteIndex": true,
         "generateArchitectVersion": false,
         "spacesToIndent": "tab",
@@ -24,13 +24,14 @@
             }
         },
         "sdkPath": "",
-        "urlPrefix": "http://dev.local/"
+        "urlPrefix": "http://dev.local/",
+        "displayfield-ExtBox1-1123-inputEl": "a new version of the framework is available"
     },
-    "xdsVersion": "4.2.5",
-    "xdsBuild": 425,
+    "xdsVersion": "4.2.9",
+    "xdsBuild": 443,
     "schemaVersion": 1,
     "upgradeVersion": 310000000001,
-    "framework": "ext66",
+    "framework": "ext73",
     "viewOrderMap": {
         "view": [
             "79f3f913-02f7-4a07-8ef4-c3f24245093b",
@@ -44,7 +45,7 @@
         "controller": [],
         "model": [],
         "resource": [
-            "7f0d6ead-becd-478e-89ff-fa4f858286c7",
+            "3d62a5d8-b1fe-4eab-81a1-539499dcafc6",
             "173a740e-293e-4e00-b40c-9a50fb2577d4",
             "5ba3958c-da75-475c-be62-0204422d23cf",
             "e9dfff16-f6c8-498c-ac8a-f008ed4717e3",

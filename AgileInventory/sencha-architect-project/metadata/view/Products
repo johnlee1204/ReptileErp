@@ -1,0 +1,238 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyStyle": "background:none",
+        "container|align": "stretch",
+        "designer|userAlias": "products",
+        "designer|userClassName": "Products",
+        "layout": "hbox",
+        "title": "Products"
+    },
+    "configAlternates": {
+        "bodyStyle": "string",
+        "container|align": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "layout": "string",
+        "title": "string"
+    },
+    "name": "MyPanel",
+    "designerId": "b34f22ba-138c-45bc-a2c4-8ae1460e9eb5",
+    "viewControllerInstanceId": "72ae290e-3ec5-4bc6-a9ea-9d92c1f0c99a",
+    "viewModelInstanceId": "a47fa027-11d9-4ba9-8f72-73ac596540f0",
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "flex": 1,
+                "store": [
+                    "{ProductStore}"
+                ]
+            },
+            "configAlternates": {
+                "store": "binding",
+                "flex": "number"
+            },
+            "name": "MyGridPanel4",
+            "designerId": "891be78f-17cc-442e-a1a7-4015bbeaeaa6",
+            "cn": [
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "productName",
+                        "text": "Product",
+                        "width": 197
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyColumn7",
+                    "designerId": "d1dfefc6-0ee0-4a79-bc1c-749780489dfa"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "productDescription",
+                        "text": "Description",
+                        "width": 234
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyColumn8",
+                    "designerId": "2015de4e-a289-41fc-b44a-e9ac6779fa81"
+                },
+                {
+                    "type": "Ext.view.Table",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "enableTextSelection": true
+                    },
+                    "configAlternates": {
+                        "enableTextSelection": "boolean"
+                    },
+                    "name": "MyTable2",
+                    "designerId": "82f1caff-34f7-4e04-97ff-bc872fddacb8"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onGridpanelSelectionChange",
+                        "implHandler": [
+                            "if(!selected || selected.length !== 1) {",
+                            "\treturn;",
+                            "}",
+                            "",
+                            "selected = selected[0];",
+                            "",
+                            "this.queryById(\"productForm\").readProduct(selected.data.productId);"
+                        ],
+                        "name": "selectionchange",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onGridpanelSelectionChange",
+                    "designerId": "013ce0e2-a074-42c7-930d-925a6f241b6e"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "productForm",
+                "layout|flex": 1
+            },
+            "configAlternates": {
+                "itemId": "string",
+                "layout|flex": "number"
+            },
+            "name": "productform",
+            "designerId": "904ad37a-f22c-4562-8178-a54eb5db31a2",
+            "masterInstanceId": "44432c63-82d3-4628-80a9-1fbed32fcc67",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "panel"
+                        ],
+                        "fn": "onPanelProductChangeD",
+                        "implHandler": [
+                            "this.readProducts();"
+                        ],
+                        "name": "productchanged",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "designer|params": "typedarray",
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onPanelProductChangeD",
+                    "designerId": "69d13b3c-84d7-41e2-a468-fca0533c6f41"
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.readProducts();"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "93feef00-152a-4704-9657-a4cc305fca1f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "readProducts",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:\"/AgileInventory/readProducts\",",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore(\"ProductStore\").loadData(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readProducts",
+            "designerId": "af22f5b8-f975-4047-a840-e60a7e6802d6"
+        }
+    ]
+}

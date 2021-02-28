@@ -1,0 +1,88 @@
+{
+    "name": "AgileInventory",
+    "settings": {
+        "cmd": {
+            "license": "",
+            "cmdVersion": "",
+            "frameworkVersion": ""
+        },
+        "urlPrefixTemplate": "http://dev.local/",
+        "exportPath": "C:/Users/johnm/Desktop/Websites/LeeSheet/AgileInventory",
+        "buildShouldOverwriteIndex": true,
+        "generateArchitectVersion": false,
+        "spacesToIndent": "tab",
+        "lineEnding": "CRLF",
+        "genTimestamps": false,
+        "cacheBust": false,
+        "installStatus": "Not Installed",
+        "canvasControls": {
+            "viewportSize": {
+                "name": "Auto Expand",
+                "builtIn": true,
+                "height": null,
+                "width": null
+            }
+        },
+        "sdkPath": "",
+        "urlPrefix": "http://dev.local/",
+        "displayfield-ExtBox1-1123-inputEl": "a new version of the framework is available"
+    },
+    "xdsVersion": "4.2.9",
+    "xdsBuild": 443,
+    "schemaVersion": 1,
+    "upgradeVersion": 310000000001,
+    "framework": "ext73",
+    "viewOrderMap": {
+        "view": [
+            "79f3f913-02f7-4a07-8ef4-c3f24245093b",
+            "0202bb2a-4780-44c2-a06f-4de52c206d34",
+            "9f9c802f-7311-4f1e-8bd1-2b212c501096",
+            "d38c2cf0-9e53-498a-8521-da773f47156a",
+            "f565af02-a06d-4dc3-95d1-9c4c266bfbf2",
+            "8e77139f-bc05-4a61-ab7b-54ee0eb6e2c6",
+            "ee8e0c03-e1d0-4f21-91a6-fb0f758f99be",
+            "f46d5ab1-cf96-47dc-8156-f7f9a8b68030",
+            "d43b2267-ab77-4814-8326-9e98e6d9178d",
+            "235e4ec8-3cfa-4114-80c5-77c9638292e6",
+            "31f046ae-df44-4e29-8f92-74fa7110c54c",
+            "c23c3e42-85df-4668-a863-1f398046d8e9",
+            "10cb9287-8cd8-46eb-8acf-fb35d6733e28",
+            "5241224c-f4c7-4597-8942-3268709c1356",
+            "f55dfc61-1c10-45e7-9384-66b409963dbf",
+            "3ca52fa3-fdd0-4e5a-a5d5-2cb2a1949e1c",
+            "1aa85952-4e39-48cb-ac1b-2427d615568a",
+            "211a99d2-615d-40b5-9634-710b8cbc46ce",
+            "4d4ae7e8-4cc4-49c3-88e1-27c33fefcf65",
+            "a3d7c155-0250-45fe-9fad-8b56a8fd2828",
+            "03039005-6e1c-4fbf-926f-16e61aed0830",
+            "b34f22ba-138c-45bc-a2c4-8ae1460e9eb5",
+            "a47fa027-11d9-4ba9-8f72-73ac596540f0",
+            "72ae290e-3ec5-4bc6-a9ea-9d92c1f0c99a",
+            "44432c63-82d3-4628-80a9-1fbed32fcc67",
+            "8cad60ff-40b6-4a3f-9bbc-274c40f67089",
+            "282813a5-3f6f-4f15-b1fc-82d0f5cc682c"
+        ],
+        "store": [],
+        "controller": [],
+        "model": [],
+        "resource": [
+            "97cf4c56-1fc1-44e4-9625-3b7399d33338",
+            "173a740e-293e-4e00-b40c-9a50fb2577d4",
+            "5ba3958c-da75-475c-be62-0204422d23cf",
+            "e9dfff16-f6c8-498c-ac8a-f008ed4717e3",
+            "9aedfc58-92ea-40fc-ab2c-d367a700d152",
+            "b93c98a7-a0df-46e7-ad43-dc724ce6e833",
+            "44b5bcd2-b3c3-4c22-b66e-6ea84a8d7455",
+            "1d6673bb-a3a3-4208-8f47-7a811036c3b8",
+            "1dbd3c0d-5d1c-4cd8-86d0-2cbe0fd92178",
+            "40e1fc54-dc2c-477a-9667-8688a4e3389a",
+            "6d3863bd-00b5-4ae1-a676-10327db4a8d1",
+            "d94af485-d9b9-41ab-b418-64b8a3917c66",
+            "bdfbf36b-a382-4646-ab91-ce05be10b600",
+            "edae445e-5442-4288-8342-a6e3b7aff09a"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

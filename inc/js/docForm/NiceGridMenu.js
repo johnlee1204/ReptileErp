@@ -80,7 +80,7 @@ Ext.define('NiceGridMenu',{
 			);
 			this.config.filterToolbar = Ext.create("Ext.toolbar.Toolbar", {
 				itemId:'filterToolbar',
-				height:27,
+				//height:27,
 				defaultButtonUI:'default',
 				items:[
 					Ext.create('Ext.container.Container', {html:"Filter: ", margin:'0 0 0 10'})
@@ -100,7 +100,7 @@ Ext.define('NiceGridMenu',{
 
 		this.toolbar = this.config.toolbar;
 
-		this.toolbar.setHeight(26);
+		//this.toolbar.setHeight(26);
 
 		this.toolbar.defaultButtonUI = 'default';
 		this.toolbar.defaults = {
