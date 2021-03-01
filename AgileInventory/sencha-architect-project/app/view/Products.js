@@ -21,6 +21,8 @@ Ext.define('AgileInventory.view.Products', {
 		'AgileInventory.view.ProductsViewModel',
 		'AgileInventory.view.ProductForm',
 		'Ext.grid.Panel',
+		'Ext.toolbar.Toolbar',
+		'Ext.button.Button',
 		'Ext.grid.column.Column',
 		'Ext.view.Table'
 	],
@@ -43,6 +45,22 @@ Ext.define('AgileInventory.view.Products', {
 			bind: {
 				store: '{ProductStore}'
 			},
+			dockedItems: [
+				{
+					xtype: 'toolbar',
+					dock: 'top',
+					items: [
+						{
+							xtype: 'button',
+							margin: '5 0 0 0 ',
+							text: 'Import Products',
+							listeners: {
+								click: 'onButtonClick2'
+							}
+						}
+					]
+				}
+			],
 			columns: [
 				{
 					xtype: 'gridcolumn',
@@ -75,6 +93,18 @@ Ext.define('AgileInventory.view.Products', {
 	],
 	listeners: {
 		afterrender: 'onPanelAfterRender'
+	},
+
+	onButtonClick2: function(button, e, eOpts) {
+		AERP.Ajax.request({
+			url:"/AgileInventory/importProducts",
+			success:function(reply) {
+				Ext.Msg.alert("Success", reply.data + " Products Imported!");
+				this.readProducts();
+			},
+			scope:this,
+			mask:this
+		});
 	},
 
 	onGridpanelSelectionChange: function(model, selected, eOpts) {

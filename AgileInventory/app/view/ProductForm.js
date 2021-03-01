@@ -173,17 +173,7 @@ Ext.define('AgileInventory.view.ProductForm', {
 							]
 						},
 						{
-							xtype: 'container',
-							items: [
-								{
-									xtype: 'button',
-									margin: '5 0 0 0 ',
-									text: 'Add Webook',
-									listeners: {
-										click: 'onButtonClick2'
-									}
-								}
-							]
+							xtype: 'container'
 						}
 					]
 				},
@@ -671,17 +661,6 @@ Ext.define('AgileInventory.view.ProductForm', {
 
 	onComboboxSelect1: function(combo, record, eOpts) {
 		this.readBinsForLocation(record.data.locationId, "secondaryBin");
-	},
-
-	onButtonClick2: function(button, e, eOpts) {
-		AERP.Ajax.request({
-			url:"/AgileInventory/addWebHook",
-			success:function(reply) {
-				Ext.Msg.alert("Success", "Webook added!");
-			},
-			scope:this,
-			mask:this
-		});
 	},
 
 	onAdjustmentLocationSelect: function(combo, record, eOpts) {

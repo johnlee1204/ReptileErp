@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="56045d14-4de5-4aaf-b71a-11d249f6faa0" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/view/ProductForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/ProductForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/Products.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/Products.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/AgileInventory.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/AgileInventory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/.architect" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/.architect" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/AgileInventory.xds" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/AgileInventory.xds" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/app/view/ProductForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/app/view/ProductForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/app/view/Products.js" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/app/view/Products.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/Application" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/Application" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/Library" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/Library" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/css_758r6p00" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/css_758r6p00" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/css_9hyjmlqx" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/css_9hyjmlqx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/css_9omwgls9" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/css_9omwgls9" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/css_plpa60hr" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/css_plpa60hr" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/css_q6lufyov" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/css_q6lufyov" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/js_22nvu4io" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/js_22nvu4io" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/js_3sfg1h7p" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/js_3sfg1h7p" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/js_47203077" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/js_47203077" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/js_7yye1qdf" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/js_7yye1qdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/js_f6hy2gi7" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/js_f6hy2gi7" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/js_lebyz3a8" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/js_lebyz3a8" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/js_nj24260v" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/js_nj24260v" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/AgileInventory" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/AgileInventory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/AgileInventoryViewController" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/AgileInventoryViewController" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/AgileInventoryViewModel" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/AgileInventoryViewModel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/BinForm" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/BinForm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/BinFormViewModel" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/BinFormViewModel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/Bins" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/Bins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/DrillDown" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/DrillDown" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/DrillDownViewController" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/DrillDownViewController" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/DrillDownViewModel" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/DrillDownViewModel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/LocationForm" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/LocationForm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/LocationFormViewController" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/LocationFormViewController" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/LocationFormViewController1" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/LocationFormViewController1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/LocationFormViewModel" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/LocationFormViewModel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/Locations" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/Locations" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/LocationsViewController" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/LocationsViewController" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/LocationsViewController1" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/LocationsViewController1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/LocationsViewModel" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/LocationsViewModel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/LocationsViewModel1" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/LocationsViewModel1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/MyViewport" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/MyViewport" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/MyViewportViewController" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/MyViewportViewController" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/MyViewportViewModel" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/MyViewportViewModel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/ProductForm" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/ProductForm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/ProductFormViewController" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/ProductFormViewController" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/ProductFormViewModel" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/ProductFormViewModel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/Products" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/Products" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/ProductsViewController" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/ProductsViewController" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/ProductsViewModel" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/ProductsViewModel" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/../Agile" />
+      <path value="$PROJECT_DIR$/../inc/php" />
+      <path value="$PROJECT_DIR$/../Libraries" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="1p9vVaijFpxVPV7HaPz7VX9Ibat" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Libraries" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="56045d14-4de5-4aaf-b71a-11d249f6faa0" name="Default Changelist" comment="" />
+      <created>1614608144495</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1614608144495</updated>
+      <workItem from="1614608145851" duration="2542000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="987" y="343" key="#PHP" timestamp="1614608524032">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="987" y="343" key="#PHP/-2560.0.2560.1400/0.0.2560.1400/2560.165.1920.1040@0.0.2560.1400" timestamp="1614608524032" />
+    <state x="1059" y="455" key="FileChooserDialogImpl" timestamp="1614608523087">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1059" y="455" key="FileChooserDialogImpl/-2560.0.2560.1400/0.0.2560.1400/2560.165.1920.1040@0.0.2560.1400" timestamp="1614608523087" />
+  </component>
+</project>

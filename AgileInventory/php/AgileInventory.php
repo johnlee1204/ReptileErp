@@ -340,22 +340,6 @@ class AgileInventory extends AgileBaseController {
 
 		$accessToken = $reply['access_token'];
 
-		$this->database->delete(
-			'AccessToken',
-			[
-				'shop' => $shop,
-				'accessToken' => $accessToken
-			]
-		);
-
-		$this->database->insert(
-			'AccessToken',
-			[
-				'shop' => $shop,
-				'accessToken' => $accessToken
-			]
-		);
-
 		$session = NULL;
 
 		if(isset($_COOKIE['AgileInventory'])) {
@@ -381,6 +365,35 @@ class AgileInventory extends AgileBaseController {
 					'shop' => $shop
 				]
 			);
+		}
+
+		$this->database->select(
+			'AccessToken',
+			['shop'],
+			[
+				'shop' => $shop,
+				'accessToken' => $accessToken
+			]
+		);
+
+		$accessTokenRecord = $this->database->fetch_assoc();
+
+		if($accessTokenRecord === NULL) { //permissions first granted
+			$this->database->delete(
+				'AccessToken',
+				[
+					'shop' => $shop
+				]
+			);
+
+			$this->database->insert(
+				'AccessToken',
+				[
+					'shop' => $shop,
+					'accessToken' => $accessToken
+				]
+			);
+			$this->importProducts();
 		}
 
 		header('Location: https://leesheet.com/AgileInventory');
@@ -431,5 +444,47 @@ class AgileInventory extends AgileBaseController {
 			$return .= chr(mt_rand(0, 255));
 		}
 		return $return;
+	}
+
+	public function importProducts($outputSuccess = TRUE) {
+		$shop = AgileInventoryModel::readShopFromCookie();
+		$accessToken = AgileInventoryModel::readAccessToken();
+		$apiKey = "22c5eb452caddfcd8a9a0ffaed31a38d";
+		$reply = Curl::get("https://" . $apiKey . ':' . $accessToken . '@'. $shop . "/admin/api/2021-01/products.json");
+		if(!(isset($reply['products']) && is_array($reply['products']))) {
+			return;
+		}
+
+		$productsImported = 0;
+
+		foreach($reply['products'] as $product) {
+
+			$this->database->select(
+				"Product",
+				['productId'],
+				['shopifyProductId' => $product['id']]
+			);
+
+			$productRecord = $this->database->fetch_assoc();
+
+			if($productRecord !== NULL) {
+				continue;
+			}
+
+			$this->database->insert(
+				"Product",
+				[
+					'productName' => $product['title'],
+					'productDescription' => '',
+					'shopifyProductId' => $product['id'],
+					'shop' => $shop
+				]
+			);
+			$productsImported++;
+		}
+
+		if($outputSuccess) {
+			$this->outputSuccessData($productsImported);
+		}
 	}
 }

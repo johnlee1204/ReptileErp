@@ -7,7 +7,7 @@
             "frameworkVersion": ""
         },
         "urlPrefixTemplate": "http://dev.local/",
-        "exportPath": "C:/Users/johnm/Desktop/Websites/LeeSheet/AgileInventory",
+        "exportPath": "C:/Users/jlee/Desktop/Websites/LeeSheet/AgileInventory",
         "buildShouldOverwriteIndex": true,
         "generateArchitectVersion": false,
         "spacesToIndent": "tab",
@@ -66,7 +66,7 @@
         "controller": [],
         "model": [],
         "resource": [
-            "7be6faf7-9909-43f2-881c-ef9a8a3bfa5c",
+            "d821df4b-4e9d-47e3-a4eb-04fe109ec692",
             "173a740e-293e-4e00-b40c-9a50fb2577d4",
             "5ba3958c-da75-475c-be62-0204422d23cf",
             "e9dfff16-f6c8-498c-ac8a-f008ed4717e3",
