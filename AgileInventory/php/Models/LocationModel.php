@@ -8,6 +8,7 @@ use AgileModel;
 
 class LocationModel extends AgileModel {
 	static function readLocations() {
+		$shop = AgileInventoryModel::readShopFromCookie();
 		self::$database->select(
 			"Location",
 			[
@@ -15,7 +16,7 @@ class LocationModel extends AgileModel {
 				'locationName',
 				'locationDescription'
 			],
-			[],
+			['shop' => $shop],
 			'ORDER BY locationName'
 		);
 
@@ -23,24 +24,30 @@ class LocationModel extends AgileModel {
 	}
 
 	static function readLocation($locationId) {
+		$shop = AgileInventoryModel::readShopFromCookie();
 		self::$database->select(
 			"Location",
 			[
 				'locationName',
 				'locationDescription'
 			],
-			['locationId' => $locationId]
+			[
+				'locationId' => $locationId,
+				'shop' => $shop
+			]
 		);
 
 		return self::$database->fetch_assoc();
 	}
 
 	static function createLocation($inputs) {
+		$shop = AgileInventoryModel::readShopFromCookie();
 		$locationId = self::$database->insert(
 			"Location",
 			[
 				'locationName' => $inputs['locationName'],
-				'locationDescription' => $inputs['locationDescription']
+				'locationDescription' => $inputs['locationDescription'],
+				'shop' => $shop
 			]
 		);
 
@@ -48,20 +55,28 @@ class LocationModel extends AgileModel {
 	}
 
 	static function updateLocation($inputs) {
+		$shop = AgileInventoryModel::readShopFromCookie();
 		self::$database->update(
 			"Location",
 			[
 				'locationName' => $inputs['locationName'],
 				'locationDescription' => $inputs['locationDescription']
 			],
-			['locationId' => $inputs['locationId']]
+			[
+				'locationId' => $inputs['locationId'],
+				'shop' => $shop
+			]
 		);
 	}
 
 	static function deleteLocation($locationId) {
+		$shop = AgileInventoryModel::readShopFromCookie();
 		self::$database->delete(
 			"Location",
-			['locationId' => $locationId]
+			[
+				'locationId' => $locationId,
+				'shop' => $shop
+			]
 		);
 	}
 

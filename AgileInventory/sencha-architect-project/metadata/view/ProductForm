@@ -413,6 +413,69 @@
                                     ]
                                 }
                             ]
+                        },
+                        {
+                            "type": "Ext.container.Container",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "name": "MyContainer11",
+                            "designerId": "cb5b47f6-de76-47a6-ac8c-042fe050fbb6",
+                            "cn": [
+                                {
+                                    "type": "Ext.button.Button",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "margin": "5 0 0 0 ",
+                                        "text": "Add Webook"
+                                    },
+                                    "configAlternates": {
+                                        "margin": "auto",
+                                        "text": "string"
+                                    },
+                                    "name": "MyButton2",
+                                    "designerId": "27e5d4ef-9fc6-4d86-a8ce-6fe3ab9de3bf",
+                                    "cn": [
+                                        {
+                                            "type": "basiceventbinding",
+                                            "reference": {
+                                                "name": "listeners",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "fn": "onButtonClick2",
+                                                "implHandler": [
+                                                    "AERP.Ajax.request({",
+                                                    "\turl:\"/AgileInventory/addWebHook\",",
+                                                    "\tsuccess:function(reply) {",
+                                                    "\t\tExt.Msg.alert(\"Success\", \"Webook added!\");",
+                                                    "\t},",
+                                                    "\tscope:this,",
+                                                    "\tmask:this",
+                                                    "});"
+                                                ],
+                                                "name": "click",
+                                                "scope": "me"
+                                            },
+                                            "configAlternates": {
+                                                "fn": "string",
+                                                "implHandler": "code",
+                                                "name": "string",
+                                                "scope": "string"
+                                            },
+                                            "name": "onButtonClick2",
+                                            "designerId": "91cb22fc-5c33-4e84-be74-e26b719a967b"
+                                        }
+                                    ]
+                                }
+                            ]
                         }
                     ]
                 },

@@ -9,18 +9,22 @@ use AgileModel;
 class ProductModel extends AgileModel {
 
 	static function readProducts() {
+		$shop = AgileInventoryModel::readShopFromCookie();
 		return self::$database->fetch_all_row("
 			SELECT
 				Product.productId,
 				Product.productName,
 				Product.productDescription
 			FROM Product
+			WHERE
+				Product.shop = ?
 			ORDER BY Product.productName
-		");
+		", [$shop]);
 	}
 
 	static function readProduct($productId) {
-		return self::$database->fetch_assoc("
+		$shop = AgileInventoryModel::readShopFromCookie();
+		return self::$database->fetch_assoc("			
 			SELECT
 				Product.productId,
 				Product.productName,
@@ -38,18 +42,21 @@ class ProductModel extends AgileModel {
 				Product.secondaryBinId secondaryBin,
 				SecondaryBin.binName secondaryBinName
 			FROM Product
-			LEFT JOIN Location PrimaryLocation ON PrimaryLocation.locationId = Product.primaryLocationId
-			LEFT JOIN Bin PrimaryBin ON PrimaryBin.binId = Product.primaryBinId
+			LEFT JOIN Location PrimaryLocation ON PrimaryLocation.locationId = Product.primaryLocationId AND PrimaryLocation.shop = ?
+			LEFT JOIN Bin PrimaryBin ON PrimaryBin.binId = Product.primaryBinId AND PrimaryBin.shop = ?
 		
-			LEFT JOIN Location SecondaryLocation ON SecondaryLocation.locationId = Product.primaryLocationId
-			LEFT JOIN Bin SecondaryBin ON SecondaryBin.binId = Product.primaryBinId
+			LEFT JOIN Location SecondaryLocation ON SecondaryLocation.locationId = Product.primaryLocationId AND SecondaryLocation.shop = ?
+			LEFT JOIN Bin SecondaryBin ON SecondaryBin.binId = Product.primaryBinId AND SecondaryBin.shop = ?
 			
 			WHERE
 				Product.productId = ?
-		", [$productId]);
+			AND
+				Product.shop = ?
+		", [$shop, $shop, $shop, $shop, $productId, $shop]);
 	}
 
 	static function createProduct($inputs) {
+		$shop = AgileInventoryModel::readShopFromCookie();
 		$productId = self::$database->insert(
 			"Product",
 			[
@@ -58,7 +65,8 @@ class ProductModel extends AgileModel {
 				'primaryLocationId' => $inputs['primaryLocation'],
 				'primaryBinId' => $inputs['primaryBin'],
 				'secondaryLocationId' => $inputs['secondaryLocation'],
-				'secondaryBinId' => $inputs['secondaryBin']
+				'secondaryBinId' => $inputs['secondaryBin'],
+				'shop' => $shop
 			]
 		);
 
@@ -66,6 +74,7 @@ class ProductModel extends AgileModel {
 	}
 
 	static function updateProduct($inputs) {
+		$shop = AgileInventoryModel::readShopFromCookie();
 		self::$database->update(
 			"Product",
 			[
@@ -76,18 +85,26 @@ class ProductModel extends AgileModel {
 				'secondaryLocationId' => $inputs['secondaryLocation'],
 				'secondaryBinId' => $inputs['secondaryBin']
 			],
-			['productId' => $inputs['productId']]
+			[
+				'productId' => $inputs['productId'],
+				'shop' => $shop
+			]
 		);
 	}
 
 	static function deleteProduct($productId) {
+		$shop = AgileInventoryModel::readShopFromCookie();
 		self::$database->delete(
 			"Product",
-			['productId' => $productId]
+			[
+				'productId' => $productId,
+				'shop' => $shop
+			]
 		);
 	}
 
 	static function readOnHand($productId) {
+		$shop = AgileInventoryModel::readShopFromCookie();
 		return self::$database->fetch_all_row("
 			SELECT
 				OnHand.onHandId,
@@ -103,16 +120,20 @@ class ProductModel extends AgileModel {
 					ELSE ''
 				END designation
 			FROM OnHand
-			LEFT JOIN Location ON Location.locationId = OnHand.locationId
-			LEFT JOIN Bin ON Bin.binId = OnHand.binId
-			LEFT JOIN Product ProductPrimaryDesignation ON ProductPrimaryDesignation.productId = OnHand.productId AND ProductPrimaryDesignation.primaryBinId = OnHand.binId
-			LEFT JOIN Product ProductSecondaryDesignation ON ProductSecondaryDesignation.productId = OnHand.productId AND ProductSecondaryDesignation.secondaryBinId = OnHand.binId
-			WHERE OnHand.productId = ?
+			LEFT JOIN Location ON Location.locationId = OnHand.locationId AND Location.shop = ?
+			LEFT JOIN Bin ON Bin.binId = OnHand.binId AND Bin.shop = ?
+			LEFT JOIN Product ProductPrimaryDesignation ON ProductPrimaryDesignation.productId = OnHand.productId AND ProductPrimaryDesignation.primaryBinId = OnHand.binId AND ProductPrimaryDesignation.shop = ?
+			LEFT JOIN Product ProductSecondaryDesignation ON ProductSecondaryDesignation.productId = OnHand.productId AND ProductSecondaryDesignation.secondaryBinId = OnHand.binId AND ProductSecondaryDesignation.shop = ?
+			WHERE
+				OnHand.productId = ?
+			AND
+				OnHand.shop = ?
 			ORDER BY quantity DESC
-		", [$productId]);
+		", [$shop, $shop, $shop, $shop, $productId, $shop]);
 	}
 
 	static function readTransactionHistory($productId) {
+		$shop = AgileInventoryModel::readShopFromCookie();
 		return self::$database->fetch_all_row("
 			SELECT
 				Transaction.transactionId,
@@ -126,13 +147,16 @@ class ProductModel extends AgileModel {
 				Transaction.comment,
 				Transaction.type
 			FROM Transaction
-			LEFT JOIN Bin FromBin ON FromBin.binId = Transaction.fromBinId
-			LEFT JOIN Bin ToBin ON ToBin.binId = Transaction.toBinId
-			LEFT JOIN Location FromLocation ON FromLocation.locationId = Transaction.fromLocationId
-			LEFT JOIN Location ToLocation ON ToLocation.locationId = Transaction.toLocationId
-			WHERE Transaction.productId = ?
+			LEFT JOIN Bin FromBin ON FromBin.binId = Transaction.fromBinId AND FromBin.shop = ?
+			LEFT JOIN Bin ToBin ON ToBin.binId = Transaction.toBinId AND ToBin.shop = ?
+			LEFT JOIN Location FromLocation ON FromLocation.locationId = Transaction.fromLocationId AND FromLocation.shop = ?
+			LEFT JOIN Location ToLocation ON ToLocation.locationId = Transaction.toLocationId AND ToLocation.shop = ?
+			WHERE
+				Transaction.productId = ?
+			AND
+				Transaction.shop = ?
 			ORDER BY transactionDate DESC
-		", [$productId]);
+		", [$shop, $shop, $shop, $shop, $productId, $shop]);
 	}
 
 }

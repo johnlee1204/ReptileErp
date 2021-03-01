@@ -15,7 +15,10 @@ class AgileInventoryModel extends AgileModel
 				'binName',
 				'binDescription'
 			],
-			['locationId' => $locationId],
+			[
+				'locationId' => $locationId,
+				'shop' => self::readShopFromCookie()
+			],
 			'ORDER BY binName'
 		);
 
@@ -23,6 +26,7 @@ class AgileInventoryModel extends AgileModel
 	}
 
 	static function readOnHandForBin($binId) {
+		$shop = self::readShopFromCookie();
 		return self::$database->fetch_all_row("
 			SELECT
 				OnHand.onHandId,
@@ -32,14 +36,17 @@ class AgileInventoryModel extends AgileModel
 				Product.productDescription,
 				OnHand.quantity
 			FROM OnHand
-			LEFT JOIN Bin ON Bin.binId = OnHand.binId
-			LEFT JOIN Product ON Product.productId = OnHand.productId
+			LEFT JOIN Bin ON Bin.binId = OnHand.binId AND Bin.shop = ?
+			LEFT JOIN Product ON Product.productId = OnHand.productId AND OnHand.shop = ?
 			WHERE
 				OnHand.binId = ?
-		", [$binId]);
+			AND
+				OnHand.shop = ?
+		", [$shop, $shop, $binId, $shop]);
 	}
 
 	static function readOnHandForLocation($locationId) {
+		$shop = self::readShopFromCookie();
 		return self::$database->fetch_all_row("
 			SELECT
 				OnHand.onHandId,
@@ -49,14 +56,17 @@ class AgileInventoryModel extends AgileModel
 				Product.productDescription,
 				OnHand.quantity
 			FROM OnHand
-			LEFT JOIN Bin ON Bin.binId = OnHand.binId
-			LEFT JOIN Product ON Product.productId = OnHand.productId
+			LEFT JOIN Bin ON Bin.binId = OnHand.binId AND Bin.shop = ?
+			LEFT JOIN Product ON Product.productId = OnHand.productId AND Product.shop = ?
 			WHERE
 				Bin.locationId = ?
-		", [$locationId]);
+			AND
+				OnHand.shop = ?
+		", [$shop, $shop, $locationId, $shop]);
 	}
 
 	static function adjustQuantity($inputs) {
+		$shop = self::readShopFromCookie();
 		if(!isset($inputs['comment'])) {
 			$inputs['comment'] = "";
 		}
@@ -92,7 +102,8 @@ class AgileInventoryModel extends AgileModel
 				'name' => $inputs['name'],
 				'comment' => $inputs['comment'],
 				'type' => 'Adjustment',
-				'quantity' => $inputs['adjustmentQuantity']
+				'quantity' => $inputs['adjustmentQuantity'],
+				'shop' => $shop
 			]
 		);
 
@@ -105,7 +116,8 @@ class AgileInventoryModel extends AgileModel
 			[
 				'locationId' => $inputs['adjustmentLocation'],
 				'binId' => $inputs['adjustmentBin'],
-				'productId' => $inputs['productId']
+				'productId' => $inputs['productId'],
+				'shop' => $shop
 			]
 		);
 
@@ -118,7 +130,8 @@ class AgileInventoryModel extends AgileModel
 					'locationId' => $inputs['adjustmentLocation'],
 					'binId' => $inputs['adjustmentBin'],
 					'productId' => $inputs['productId'],
-					'quantity' => $inputs['adjustmentQuantity']
+					'quantity' => $inputs['adjustmentQuantity'],
+					'shop' => $shop
 				]
 			);
 			$currentOnHandQuantity = 0;
@@ -126,7 +139,10 @@ class AgileInventoryModel extends AgileModel
 			self::$database->update(
 				"OnHand",
 				['quantity' => $onHandRecord['quantity'] + $inputs['adjustmentQuantity']],
-				['onHandId' => $onHandRecord['onHandId']]
+				[
+					'onHandId' => $onHandRecord['onHandId'],
+					'shop' => $shop
+				]
 			);
 			$currentOnHandQuantity = $onHandRecord['quantity'];
 		}
@@ -137,11 +153,15 @@ class AgileInventoryModel extends AgileModel
 
 		self::$database->delete(
 			"OnHand",
-			['quantity' => 0]
+			[
+				'quantity' => 0,
+				'shop' => $shop
+			]
 		);
 	}
 
 	static function transferQuantity($inputs) {
+		$shop = self::readShopFromCookie();
 		if(!isset($inputs['comment'])) {
 			$inputs['comment'] = "";
 		}
@@ -167,7 +187,8 @@ class AgileInventoryModel extends AgileModel
 				'name' => $inputs['name'],
 				'comment' => $inputs['comment'],
 				'type' => 'Transfer',
-				'quantity' => $inputs['transferQuantity']
+				'quantity' => $inputs['transferQuantity'],
+				'shop' => $shop
 			]
 		);
 
@@ -180,7 +201,8 @@ class AgileInventoryModel extends AgileModel
 			[
 				'locationId' => $inputs['transferToLocation'],
 				'binId' => $inputs['transferToBin'],
-				'productId' => $inputs['productId']
+				'productId' => $inputs['productId'],
+				'shop' => $shop
 			]
 		);
 
@@ -193,14 +215,18 @@ class AgileInventoryModel extends AgileModel
 					'locationId' => $inputs['transferToLocation'],
 					'binId' => $inputs['transferToBin'],
 					'productId' => $inputs['productId'],
-					'quantity' => $inputs['transferQuantity']
+					'quantity' => $inputs['transferQuantity'],
+					'shop' => $shop
 				]
 			);
 		} else {
 			self::$database->update(
 				"OnHand",
 				['quantity' => $toOnHandRecord['quantity'] + $inputs['transferQuantity']],
-				['onHandId' => $toOnHandRecord['onHandId']]
+				[
+					'onHandId' => $toOnHandRecord['onHandId'],
+					'shop' => $shop
+				]
 			);
 		}
 
@@ -215,7 +241,8 @@ class AgileInventoryModel extends AgileModel
 			[
 				'locationId' => $inputs['transferFromLocation'],
 				'binId' => $inputs['transferFromBin'],
-				'productId' => $inputs['productId']
+				'productId' => $inputs['productId'],
+				'shop' => $shop
 			]
 		);
 
@@ -228,7 +255,8 @@ class AgileInventoryModel extends AgileModel
 					'locationId' => $inputs['transferFromLocation'],
 					'binId' => $inputs['transferFromBin'],
 					'productId' => $inputs['productId'],
-					'quantity' => $inputs['transferQuantity']
+					'quantity' => $inputs['transferQuantity'],
+					'shop' => $shop
 				]
 			);
 			$fromOnHandQuantity = 0;
@@ -236,7 +264,10 @@ class AgileInventoryModel extends AgileModel
 			self::$database->update(
 				"OnHand",
 				['quantity' => $fromOnHandRecord['quantity'] + $inputs['transferQuantity']],
-				['onHandId' => $fromOnHandRecord['onHandId']]
+				[
+					'onHandId' => $fromOnHandRecord['onHandId'],
+					'shop' => $shop
+				]
 			);
 			$fromOnHandQuantity = $fromOnHandRecord['quantity'];
 		}
@@ -247,7 +278,51 @@ class AgileInventoryModel extends AgileModel
 
 		self::$database->delete(
 			"OnHand",
-			['quantity' => 0]
+			[
+				'quantity' => 0,
+				'shop' => $shop
+			]
 		);
+	}
+
+	static function readShopFromCookie() {
+		if(!isset($_COOKIE['AgileInventory'])) {
+			throw new AgileUserMessageException("Not Logged In! Open App through Shopify Admin!");
+		}
+
+		self::$database->select(
+			"Session",
+			['shop'],
+			[
+				'sessionId' => $_COOKIE['AgileInventory']
+			]
+		);
+
+		$session = self::$database->fetch_assoc();
+
+		if($session === NULL) {
+			throw new AgileUserMessageException("Not Logged In! Open App through Shopify Admin!");
+		}
+
+		return $session['shop'];
+	}
+
+	static function readAccessToken() {
+		$shop = self::readShopFromCookie();
+
+		self::$database->select(
+			"AccessToken",
+			['accessToken'],
+			[
+				'shop' => $shop
+			]
+		);
+
+		$accessToken = self::$database->fetch_assoc();
+		if($accessToken === NULL) {
+			throw new AgileUserMessageException("Could not find Access Token!");
+		}
+
+		return $accessToken['accessToken'];
 	}
 }

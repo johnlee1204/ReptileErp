@@ -8,26 +8,29 @@ use AgileModel;
 
 class BinModel extends AgileModel {
 	static function readBins() {
-		return self::$database->fetch_all_row("
+		$shop = AgileInventoryModel::readShopFromCookie();
+		return self::$database->fetch_all_row("			
 			SELECT
 				binId,
 				binName,
 				binDescription,
 				locationName location
 			FROM Bin
-			LEFT JOIN Location ON Location.locationId = Bin.locationId
+			LEFT JOIN Location ON Location.locationId = Bin.locationId AND Location.shop = ?
+			WHERE Bin.shop = ?
 			ORDER BY binName
-		");
+		", [$shop, $shop]);
 	}
 
 	static function readBinsCombo() {
+		$shop = AgileInventoryModel::readShopFromCookie();
 		self::$database->select(
 			"Bin",
 			[
 				'binId',
 				'binName'
 			],
-			[],
+			['shop' => $shop],
 			'ORDER BY binName'
 		);
 
@@ -35,6 +38,7 @@ class BinModel extends AgileModel {
 	}
 
 	static function readBin($binId) {
+		$shop = AgileInventoryModel::readShopFromCookie();
 
 		self::$database->select(
 			"Bin",
@@ -43,19 +47,24 @@ class BinModel extends AgileModel {
 				'binDescription',
 				'locationId location'
 			],
-			['binId' => $binId]
+			[
+				'binId' => $binId,
+				'shop' => $shop
+			]
 		);
 
 		return self::$database->fetch_assoc();
 	}
 
 	static function createBin($inputs) {
+		$shop = AgileInventoryModel::readShopFromCookie();
 		$binId = self::$database->insert(
 			"Bin",
 			[
 				'binName' => $inputs['binName'],
 				'binDescription' => $inputs['binDescription'],
-				'locationId' => $inputs['location']
+				'locationId' => $inputs['location'],
+				'shop' => $shop
 			]
 		);
 
@@ -63,6 +72,7 @@ class BinModel extends AgileModel {
 	}
 
 	static function updateBin($inputs) {
+		$shop = AgileInventoryModel::readShopFromCookie();
 		self::$database->update(
 			"Bin",
 			[
@@ -70,14 +80,21 @@ class BinModel extends AgileModel {
 				'binDescription' => $inputs['binDescription'],
 				'locationId' => $inputs['location']
 			],
-			['binId' => $inputs['binId']]
+			[
+				'binId' => $inputs['binId'],
+				'shop' => $shop
+			]
 		);
 	}
 
 	static function deleteBin($binId) {
+		$shop = AgileInventoryModel::readShopFromCookie();
 		self::$database->delete(
 			"Bin",
-			['binId' => $binId]
+			[
+				'binId' => $binId,
+				'shop' => $shop
+			]
 		);
 	}
 
