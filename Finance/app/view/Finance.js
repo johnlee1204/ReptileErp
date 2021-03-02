@@ -78,8 +78,8 @@ Ext.define('Finance.view.Finance', {
 						},
 						{
 							xtype: 'datecolumn',
-							width: 129,
 							dataIndex: 'date',
+							width: 129,
 							text: 'Date',
 							format: 'F j, Y'
 						},
@@ -90,11 +90,24 @@ Ext.define('Finance.view.Finance', {
 						},
 						{
 							xtype: 'gridcolumn',
+							dataIndex: 'category',
+							text: 'Category'
+						},
+						{
+							xtype: 'gridcolumn',
 							width: 300,
 							dataIndex: 'notes',
 							text: 'Notes'
 						}
 					],
+					viewConfig: {
+						getRowClass: function(record, rowIndex, rowParams, store) {
+							if(record.data.category === "Gecko") {
+								return 'row-green';
+							}
+						},
+						enableTextSelection: true
+					},
 					listeners: {
 						selectionchange: 'onLedgerGridSelectionChange'
 					}

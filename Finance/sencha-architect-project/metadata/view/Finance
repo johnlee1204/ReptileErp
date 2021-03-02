@@ -214,6 +214,24 @@
                             },
                             "codeClass": null,
                             "userConfig": {
+                                "dataIndex": "category",
+                                "text": "Category"
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string"
+                            },
+                            "name": "MyColumn3",
+                            "designerId": "4f9ea256-c34c-491d-94e1-e4f6363765b8"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
                                 "dataIndex": "notes",
                                 "text": "Notes",
                                 "width": 300
@@ -233,8 +251,45 @@
                                 "type": "object"
                             },
                             "codeClass": null,
+                            "userConfig": {
+                                "enableTextSelection": true
+                            },
+                            "configAlternates": {
+                                "enableTextSelection": "boolean"
+                            },
                             "name": "MyTable",
-                            "designerId": "939631a3-cfae-439a-b11d-531d456bb8e0"
+                            "designerId": "939631a3-cfae-439a-b11d-531d456bb8e0",
+                            "cn": [
+                                {
+                                    "type": "fixedfunction",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "designer|params": [
+                                            "record",
+                                            "rowIndex",
+                                            "rowParams",
+                                            "store"
+                                        ],
+                                        "fn": "getRowClass",
+                                        "implHandler": [
+                                            "if(record.data.category === \"Gecko\") {",
+                                            "\treturn 'row-green';",
+                                            "}"
+                                        ]
+                                    },
+                                    "configAlternates": {
+                                        "designer|params": "typedarray",
+                                        "fn": "string",
+                                        "implHandler": "code"
+                                    },
+                                    "name": "getRowClass",
+                                    "designerId": "dd4af0a9-569e-401d-b283-ff8ed5247976"
+                                }
+                            ]
                         },
                         {
                             "type": "basiceventbinding",

@@ -54,12 +54,34 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "dataIndex": "locationName",
-                        "text": "Location"
+                        "dataIndex": "facility",
+                        "text": "Facility",
+                        "width": 139
                     },
                     "configAlternates": {
                         "dataIndex": "datafield",
-                        "text": "string"
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyColumn24",
+                    "designerId": "8c9d9e6b-0d45-4048-a0a0-9bc9b6a83536"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "locationName",
+                        "text": "Location",
+                        "width": 127
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
                     },
                     "name": "MyColumn4",
                     "designerId": "ad621c21-a7bb-4b03-bf20-9b931ac2c99b"

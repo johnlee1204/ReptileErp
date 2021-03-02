@@ -33,6 +33,9 @@ Ext.define('AgileInventory.view.LocationsViewModel', {
 				},
 				{
 					name: 'locationDescription'
+				},
+				{
+					name: 'facility'
 				}
 			]
 		}

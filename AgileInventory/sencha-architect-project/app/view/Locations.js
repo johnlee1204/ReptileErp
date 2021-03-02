@@ -46,6 +46,13 @@ Ext.define('AgileInventory.view.Locations', {
 			columns: [
 				{
 					xtype: 'gridcolumn',
+					width: 139,
+					dataIndex: 'facility',
+					text: 'Facility'
+				},
+				{
+					xtype: 'gridcolumn',
+					width: 127,
 					dataIndex: 'locationName',
 					text: 'Location'
 				},

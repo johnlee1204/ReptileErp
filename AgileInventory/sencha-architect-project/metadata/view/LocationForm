@@ -83,6 +83,36 @@
             "designerId": "01f27c3c-ad95-46d0-8719-5468e75bbb0f"
         },
         {
+            "type": "Ext.form.field.ComboBox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "displayField": "facilityName",
+                "fieldLabel": "Facility",
+                "forceSelection": true,
+                "itemId": "facility",
+                "queryMode": "local",
+                "store": [
+                    "{FacilityStore}"
+                ],
+                "valueField": "facilityId"
+            },
+            "configAlternates": {
+                "store": "binding",
+                "displayField": "datafield",
+                "fieldLabel": "string",
+                "forceSelection": "boolean",
+                "itemId": "string",
+                "queryMode": "string",
+                "valueField": "datafield"
+            },
+            "name": "MyComboBox6",
+            "designerId": "6ea9d65c-f2d1-47a9-bd6d-56ccf684af4d"
+        },
+        {
             "type": "basiceventbinding",
             "reference": {
                 "name": "listeners",
@@ -97,6 +127,15 @@
                     "\taddFn:\"createLocation\",",
                     "\tsaveFn:\"updateLocation\",",
                     "\tdeleteFn:\"deleteLocation\"",
+                    "});",
+                    "",
+                    "AERP.Ajax.request({",
+                    "\turl:\"/AgileInventory/readLocationInitData\",",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore('FacilityStore').loadData(reply.facilities);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
                     "});"
                 ],
                 "name": "afterrender",

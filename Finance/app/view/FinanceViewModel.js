@@ -42,6 +42,9 @@ Ext.define('Finance.view.FinanceViewModel', {
 				},
 				{
 					name: 'notes'
+				},
+				{
+					name: 'category'
 				}
 			]
 		}

@@ -23,7 +23,7 @@ Ext.define('AgileInventory.view.LocationForm', {
 	requires: [
 		'AgileInventory.view.LocationFormViewModel',
 		'Ext.toolbar.Toolbar',
-		'Ext.form.field.Text'
+		'Ext.form.field.ComboBox'
 	],
 
 	viewModel: {
@@ -51,6 +51,18 @@ Ext.define('AgileInventory.view.LocationForm', {
 			xtype: 'textfield',
 			itemId: 'locationDescription',
 			fieldLabel: 'Description'
+		},
+		{
+			xtype: 'combobox',
+			itemId: 'facility',
+			fieldLabel: 'Facility',
+			displayField: 'facilityName',
+			forceSelection: true,
+			queryMode: 'local',
+			valueField: 'facilityId',
+			bind: {
+				store: '{FacilityStore}'
+			}
 		}
 	],
 	listeners: {
@@ -63,6 +75,15 @@ Ext.define('AgileInventory.view.LocationForm', {
 			addFn:"createLocation",
 			saveFn:"updateLocation",
 			deleteFn:"deleteLocation"
+		});
+
+		AERP.Ajax.request({
+			url:"/AgileInventory/readLocationInitData",
+			success:function(reply) {
+				this.getViewModel().getStore('FacilityStore').loadData(reply.facilities);
+			},
+			scope:this,
+			mask:this
 		});
 	},
 

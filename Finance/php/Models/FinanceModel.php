@@ -11,7 +11,8 @@ class FinanceModel extends AgileModel {
 				amount,
 				transactionDate,
 				CONCAT(Employee.firstName, ' ', Employee.lastName) name,
-				notes
+				notes,
+				category
 			FROM Ledger
 			LEFT JOIN Employee ON Employee.employeeId = Ledger.employeeId
 			ORDER BY transactionDate DESC
@@ -42,7 +43,8 @@ class FinanceModel extends AgileModel {
 				amount,
 				transactionDate,
 				employeeId,
-				notes
+				notes,
+				category
 			FROM Ledger
 			WHERE
 				ledgerId = ?
@@ -62,7 +64,8 @@ class FinanceModel extends AgileModel {
 				'amount' => $inputs['amount'],
 				'transactionDate' => $inputs['transactionDate'],
 				'employeeId' => $userInformation['employeeId'],
-				'notes' => $inputs['notes']
+				'notes' => $inputs['notes'],
+				'category' => $inputs['category']
 			]
 		);
 
@@ -77,7 +80,8 @@ class FinanceModel extends AgileModel {
 			[
 				'amount' => $inputs['amount'],
 				'transactionDate' => $inputs['transactionDate'],
-				'notes' => $inputs['notes']
+				'notes' => $inputs['notes'],
+				'category' => $inputs['category']
 			],
 			['ledgerId' => $inputs['ledgerId']]
 		);

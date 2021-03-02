@@ -15,6 +15,24 @@
 
 Ext.define('AgileInventory.view.LocationFormViewModel', {
 	extend: 'Ext.app.ViewModel',
-	alias: 'viewmodel.locationform'
+	alias: 'viewmodel.locationform',
+
+	requires: [
+		'Ext.data.Store',
+		'Ext.data.field.Field'
+	],
+
+	stores: {
+		FacilityStore: {
+			fields: [
+				{
+					name: 'facilityId'
+				},
+				{
+					name: 'facilityName'
+				}
+			]
+		}
+	}
 
 });

@@ -29,7 +29,8 @@ Ext.application({
 		'Bins',
 		'BinForm',
 		'Products',
-		'ProductForm'
+		'ProductForm',
+		'Facilities'
 	],
 	name: 'AgileInventory',
 

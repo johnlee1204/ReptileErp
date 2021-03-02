@@ -13,5 +13,57 @@
         "designer|userAlias": "string",
         "designer|userClassName": "string"
     },
-    "designerId": "211a99d2-615d-40b5-9634-710b8cbc46ce"
+    "designerId": "211a99d2-615d-40b5-9634-710b8cbc46ce",
+    "cn": [
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "FacilityStore"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyStore21",
+            "designerId": "9df0f8e6-ec7e-4e20-bfe8-e3d9f940c13f",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "facilityId"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField52",
+                    "designerId": "7d6ea57c-9a0f-4a99-ad7b-9c63a87b9856"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "facilityName"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField53",
+                    "designerId": "05081b60-5176-43d0-b766-983874953950"
+                }
+            ]
+        }
+    ]
 }

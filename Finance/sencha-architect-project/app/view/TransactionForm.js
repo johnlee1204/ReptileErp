@@ -24,6 +24,7 @@ Ext.define('Finance.view.TransactionForm', {
 		'Finance.view.TransactionFormViewModel',
 		'Ext.toolbar.Toolbar',
 		'Ext.form.field.Date',
+		'Ext.form.field.ComboBox',
 		'Ext.form.field.TextArea'
 	],
 
@@ -52,7 +53,24 @@ Ext.define('Finance.view.TransactionForm', {
 			xtype: 'datefield',
 			itemId: 'transactionDate',
 			fieldLabel: 'Date',
-			format: 'Y-m-d'
+			format: 'Y-m-d',
+			listeners: {
+				afterrender: 'onTransactionDateAfterRender'
+			}
+		},
+		{
+			xtype: 'combobox',
+			itemId: 'category',
+			fieldLabel: 'Category',
+			displayField: 'category',
+			queryMode: 'local',
+			valueField: 'category',
+			bind: {
+				store: '{CategoryStore}'
+			},
+			listeners: {
+				afterrender: 'onCategoryAfterRender'
+			}
 		},
 		{
 			xtype: 'textareafield',
@@ -64,6 +82,30 @@ Ext.define('Finance.view.TransactionForm', {
 		afterrender: 'onPanelAfterRender'
 	},
 
+	onTransactionDateAfterRender: function(component, eOpts) {
+		component.el.on('dblclick', function() {
+			component.setValue(new Date());
+		});
+	},
+
+	onCategoryAfterRender: function(component, eOpts) {
+		AppWindowManager.appOn('dropDownSelectionEditor', {
+			scope:this,
+			selectionchanged:function() {
+				this.readCategories();
+			}
+		});
+
+		component.el.on({
+		    contextmenu: function(event) {
+		        event.stopEvent();
+		        AppWindowManager.appLink('dropDownSelectionEditor', {dataKey:'financeCategory'});
+		    },
+		    scope:this
+		});
+
+	},
+
 	onPanelAfterRender: function(component, eOpts) {
 		this.docFormInit({
 			toolbarId:'transactionFormToolbar',
@@ -71,6 +113,8 @@ Ext.define('Finance.view.TransactionForm', {
 			saveFn:'updateTransaction',
 			deleteFn:'deleteTransaction'
 		});
+
+		this.readCategories();
 	},
 
 	readTransaction: function(ledgerId) {
@@ -123,6 +167,18 @@ Ext.define('Finance.view.TransactionForm', {
 				this.ledgerId = null;
 				this.docFormReset();
 				this.fireEvent('ledgerchanged');
+			},
+			scope:this,
+			mask:this
+		});
+	},
+
+	readCategories: function() {
+		AERP.Ajax.request({
+			url:'/DropDownSelectionEditor/readSelectionsForCombo',
+			jsonData:{selectionKey:'financeCategory'},
+			success:function(reply) {
+				this.getViewModel().getStore('CategoryStore').loadData(reply.data);
 			},
 			scope:this,
 			mask:this

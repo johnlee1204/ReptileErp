@@ -36,13 +36,13 @@ class AgileInventoryModel extends AgileModel
 				Product.productDescription,
 				OnHand.quantity
 			FROM OnHand
-			LEFT JOIN Bin ON Bin.binId = OnHand.binId AND Bin.shop = ?
-			LEFT JOIN Product ON Product.productId = OnHand.productId AND OnHand.shop = ?
+			LEFT JOIN Bin ON Bin.binId = OnHand.binId AND Bin.shop = OnHand.shop
+			LEFT JOIN Product ON Product.productId = OnHand.productId AND Product.shop = OnHand.shop
 			WHERE
 				OnHand.binId = ?
 			AND
 				OnHand.shop = ?
-		", [$shop, $shop, $binId, $shop]);
+		", [$binId]);
 	}
 
 	static function readOnHandForLocation($locationId) {
@@ -56,13 +56,13 @@ class AgileInventoryModel extends AgileModel
 				Product.productDescription,
 				OnHand.quantity
 			FROM OnHand
-			LEFT JOIN Bin ON Bin.binId = OnHand.binId AND Bin.shop = ?
-			LEFT JOIN Product ON Product.productId = OnHand.productId AND Product.shop = ?
+			LEFT JOIN Bin ON Bin.binId = OnHand.binId AND Bin.shop = OnHand.shop
+			LEFT JOIN Product ON Product.productId = OnHand.productId AND Product.shop = OnHand.shop
 			WHERE
 				Bin.locationId = ?
 			AND
 				OnHand.shop = ?
-		", [$shop, $shop, $locationId, $shop]);
+		", [$locationId, $shop]);
 	}
 
 	static function adjustQuantity($inputs) {
@@ -286,8 +286,9 @@ class AgileInventoryModel extends AgileModel
 	}
 
 	static function readShopFromCookie() {
+		$errorMessage = "Not Logged In! Open App through Shopify Admin!<BR><center><a href = 'https://shopify.com/'>Shopify</a></center>";
 		if(!isset($_COOKIE['AgileInventory'])) {
-			throw new AgileUserMessageException("Not Logged In! Open App through Shopify Admin!");
+			throw new AgileUserMessageException($errorMessage);
 		}
 
 		self::$database->select(
@@ -301,7 +302,7 @@ class AgileInventoryModel extends AgileModel
 		$session = self::$database->fetch_assoc();
 
 		if($session === NULL) {
-			throw new AgileUserMessageException("Not Logged In! Open App through Shopify Admin!");
+			throw new AgileUserMessageException($errorMessage);
 		}
 
 		return $session['shop'];
@@ -324,5 +325,24 @@ class AgileInventoryModel extends AgileModel
 		}
 
 		return $accessToken['accessToken'];
+	}
+
+	static function readShopInfo() {
+		$shop = self::readShopFromCookie();
+		self::$database->select(
+			'Shop',
+			[
+				'shopName'
+			],
+			['shop' => $shop]
+		);
+
+		$shopInfo = self::$database->fetch_assoc();
+
+		if($shopInfo === NULL) {
+			throw new AgileUserMessageException("Cannot find Shop!");
+		}
+
+		return $shopInfo['shopName'];
 	}
 }

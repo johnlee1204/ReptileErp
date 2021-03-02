@@ -6,14 +6,14 @@
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userAlias": "locations",
-        "designer|userClassName": "LocationsViewModel"
+        "designer|userAlias": "facilities",
+        "designer|userClassName": "FacilitiesViewModel"
     },
     "configAlternates": {
         "designer|userAlias": "string",
         "designer|userClassName": "string"
     },
-    "designerId": "c23c3e42-85df-4668-a863-1f398046d8e9",
+    "designerId": "924b4fa1-64c1-426a-a4e5-f6e3664698d6",
     "cn": [
         {
             "type": "Ext.data.Store",
@@ -23,13 +23,13 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "LocationStore"
+                "name": "FacilityStore"
             },
             "configAlternates": {
                 "name": "string"
             },
-            "name": "MyStore4",
-            "designerId": "2c4a32e3-d0df-4f90-aadb-f515195ca417",
+            "name": "MyStore1",
+            "designerId": "6951ecd0-8860-41ac-9639-93072bfdb01c",
             "cn": [
                 {
                     "type": "Ext.data.field.Field",
@@ -39,13 +39,13 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "name": "locationId"
+                        "name": "facilityId"
                     },
                     "configAlternates": {
                         "name": "string"
                     },
-                    "name": "MyField12",
-                    "designerId": "8c4ca22d-84cb-4771-8182-73beae1fbc72"
+                    "name": "MyField48",
+                    "designerId": "889dcf05-a3da-4bbe-957f-60901925729a"
                 },
                 {
                     "type": "Ext.data.field.Field",
@@ -55,13 +55,13 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "name": "locationName"
+                        "name": "facilityName"
                     },
                     "configAlternates": {
                         "name": "string"
                     },
-                    "name": "MyField13",
-                    "designerId": "2244dcbf-863c-4cba-8786-605c36174cab"
+                    "name": "MyField49",
+                    "designerId": "e375a478-3f9a-47d9-95af-33d7faa4c4f1"
                 },
                 {
                     "type": "Ext.data.field.Field",
@@ -71,13 +71,13 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "name": "locationDescription"
+                        "name": "facilityDescription"
                     },
                     "configAlternates": {
                         "name": "string"
                     },
-                    "name": "MyField14",
-                    "designerId": "2eb23b07-b616-4b25-a63a-c7c4c1a09852"
+                    "name": "MyField50",
+                    "designerId": "db886908-377b-430f-be90-21ee5aea7620"
                 },
                 {
                     "type": "Ext.data.field.Field",
@@ -87,13 +87,13 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "name": "facility"
+                        "name": "address"
                     },
                     "configAlternates": {
                         "name": "string"
                     },
-                    "name": "MyField54",
-                    "designerId": "18090988-7bc6-49a2-b38c-6737474cdad8"
+                    "name": "MyField51",
+                    "designerId": "a22357a8-0397-4435-a115-b681b0f280be"
                 }
             ]
         }

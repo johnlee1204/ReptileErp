@@ -89,7 +89,103 @@
                 "itemId": "string"
             },
             "name": "MyDateField",
-            "designerId": "0ff2985c-631a-4ab3-8620-5dee001031cb"
+            "designerId": "0ff2985c-631a-4ab3-8620-5dee001031cb",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onTransactionDateAfterRender",
+                        "implHandler": [
+                            "component.el.on('dblclick', function() {",
+                            "\tcomponent.setValue(new Date());",
+                            "});"
+                        ],
+                        "name": "afterrender",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onTransactionDateAfterRender",
+                    "designerId": "e8bfde70-4d90-47dc-bc29-e6a4ac7ed863"
+                }
+            ]
+        },
+        {
+            "type": "Ext.form.field.ComboBox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "displayField": "category",
+                "fieldLabel": "Category",
+                "itemId": "category",
+                "queryMode": "local",
+                "store": [
+                    "{CategoryStore}"
+                ],
+                "valueField": "category"
+            },
+            "configAlternates": {
+                "store": "binding",
+                "displayField": "datafield",
+                "fieldLabel": "string",
+                "itemId": "string",
+                "queryMode": "string",
+                "valueField": "datafield"
+            },
+            "name": "MyComboBox",
+            "designerId": "437bd2c9-84ca-43fa-badb-0eca71a840ed",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onCategoryAfterRender",
+                        "implHandler": [
+                            "AppWindowManager.appOn('dropDownSelectionEditor', {",
+                            "\tscope:this,",
+                            "\tselectionchanged:function() {",
+                            "\t\tthis.readCategories();",
+                            "\t}",
+                            "});",
+                            "",
+                            "component.el.on({",
+                            "    contextmenu: function(event) {",
+                            "        event.stopEvent();",
+                            "        AppWindowManager.appLink('dropDownSelectionEditor', {dataKey:'financeCategory'});",
+                            "    },",
+                            "    scope:this",
+                            "});",
+                            ""
+                        ],
+                        "name": "afterrender",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onCategoryAfterRender",
+                    "designerId": "4e40002e-a2c4-4600-a074-e3776cd55cbe"
+                }
+            ]
         },
         {
             "type": "Ext.form.field.TextArea",
@@ -124,7 +220,9 @@
                     "\taddFn:'createTransaction',",
                     "\tsaveFn:'updateTransaction',",
                     "\tdeleteFn:'deleteTransaction'",
-                    "});"
+                    "});",
+                    "",
+                    "this.readCategories();"
                 ],
                 "name": "afterrender",
                 "scope": "me"
@@ -264,6 +362,34 @@
             },
             "name": "deleteTransaction",
             "designerId": "c55fbb3c-9283-401c-9e03-6a8ad883430f"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "readCategories",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/DropDownSelectionEditor/readSelectionsForCombo',",
+                    "\tjsonData:{selectionKey:'financeCategory'},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore('CategoryStore').loadData(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readCategories",
+            "designerId": "7d826f42-a6b7-4af4-8e4d-db86a30158d8"
         }
     ]
 }

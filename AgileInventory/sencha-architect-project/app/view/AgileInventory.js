@@ -21,6 +21,7 @@ Ext.define('AgileInventory.view.AgileInventory', {
 		'AgileInventory.view.AgileInventoryViewModel',
 		'AgileInventory.view.Products',
 		'AgileInventory.view.DrillDown',
+		'AgileInventory.view.Facilities',
 		'AgileInventory.view.Locations',
 		'AgileInventory.view.Bins',
 		'Ext.tab.Panel',
@@ -34,6 +35,7 @@ Ext.define('AgileInventory.view.AgileInventory', {
 	minHeight: 500,
 	minWidth: 500,
 	title: 'Agile Inventory',
+	defaultListenerScope: true,
 
 	layout: {
 		type: 'vbox',
@@ -44,12 +46,16 @@ Ext.define('AgileInventory.view.AgileInventory', {
 			xtype: 'tabpanel',
 			flex: 1,
 			bodyStyle: 'background:none',
+			activeTab: 0,
 			items: [
 				{
 					xtype: 'products'
 				},
 				{
 					xtype: 'drilldown'
+				},
+				{
+					xtype: 'facilities'
 				},
 				{
 					xtype: 'locations'
@@ -59,6 +65,20 @@ Ext.define('AgileInventory.view.AgileInventory', {
 				}
 			]
 		}
-	]
+	],
+	listeners: {
+		afterrender: 'onPanelAfterRender'
+	},
+
+	onPanelAfterRender: function(component, eOpts) {
+		AERP.Ajax.request({
+			url:"/AgileInventory/readAppInitData",
+			success:function(reply) {
+
+			},
+			scope:this,
+			mask:this
+		});
+	}
 
 });

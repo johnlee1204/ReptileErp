@@ -16,10 +16,10 @@ class BinModel extends AgileModel {
 				binDescription,
 				locationName location
 			FROM Bin
-			LEFT JOIN Location ON Location.locationId = Bin.locationId AND Location.shop = ?
+			LEFT JOIN Location ON Location.locationId = Bin.locationId AND Location.shop = Bin.shop
 			WHERE Bin.shop = ?
 			ORDER BY binName
-		", [$shop, $shop]);
+		", [$shop]);
 	}
 
 	static function readBinsCombo() {

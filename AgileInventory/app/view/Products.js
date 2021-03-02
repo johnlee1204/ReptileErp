@@ -52,6 +52,14 @@ Ext.define('AgileInventory.view.Products', {
 					items: [
 						{
 							xtype: 'button',
+							icon: '/inc/img/silk_icons/arrow_refresh.png',
+							text: 'Refresh',
+							listeners: {
+								click: 'onButtonClick'
+							}
+						},
+						{
+							xtype: 'button',
 							margin: '5 0 0 0 ',
 							text: 'Import Products',
 							listeners: {
@@ -93,6 +101,10 @@ Ext.define('AgileInventory.view.Products', {
 	],
 	listeners: {
 		afterrender: 'onPanelAfterRender'
+	},
+
+	onButtonClick: function(button, e, eOpts) {
+		this.readProducts();
 	},
 
 	onButtonClick2: function(button, e, eOpts) {

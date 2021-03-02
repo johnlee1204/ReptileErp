@@ -9,18 +9,18 @@ use AgileModel;
 class LocationModel extends AgileModel {
 	static function readLocations() {
 		$shop = AgileInventoryModel::readShopFromCookie();
-		self::$database->select(
-			"Location",
-			[
-				'locationId',
-				'locationName',
-				'locationDescription'
-			],
-			['shop' => $shop],
-			'ORDER BY locationName'
-		);
-
-		return self::$database->fetch_all_row();
+		return self::$database->fetch_all_row("
+			SELECT
+				locationId,
+				locationName,
+				locationDescription,
+				facilityName
+			FROM Location
+			LEFT JOIN Facility ON Facility.facilityId = Location.facilityId AND Facility.shop = Location.shop
+			WHERE
+				Location.shop = ?
+			ORDER BY locationName
+		", [$shop]);
 	}
 
 	static function readLocation($locationId) {
@@ -29,7 +29,8 @@ class LocationModel extends AgileModel {
 			"Location",
 			[
 				'locationName',
-				'locationDescription'
+				'locationDescription',
+				'facilityId facility'
 			],
 			[
 				'locationId' => $locationId,
@@ -47,6 +48,7 @@ class LocationModel extends AgileModel {
 			[
 				'locationName' => $inputs['locationName'],
 				'locationDescription' => $inputs['locationDescription'],
+				'facilityId' => $inputs['facility'],
 				'shop' => $shop
 			]
 		);
@@ -60,7 +62,8 @@ class LocationModel extends AgileModel {
 			"Location",
 			[
 				'locationName' => $inputs['locationName'],
-				'locationDescription' => $inputs['locationDescription']
+				'locationDescription' => $inputs['locationDescription'],
+				'facilityId' => $inputs['facility'],
 			],
 			[
 				'locationId' => $inputs['locationId'],

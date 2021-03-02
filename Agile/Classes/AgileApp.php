@@ -67,7 +67,6 @@ class AgileApp {
 		require_once($systemClassPath . 'AgilePermissions.php');
 		$this->PermissionsManager = new AgilePermissions($this);
 
-
 		//Route the Request
 		$this->RequestRouter->routeRequest();
 	}
@@ -160,9 +159,9 @@ class AgileApp {
 			'loggedIn' => $loggedIn,
 			'userId' => $userId,
 			'userName' => $userName,
-			'`get`' => print_r($_GET, true),
-			'post' => print_r($loggedPost, true),
-			'json' => $loggedJson
+			'`get`' => substr(print_r($_GET, true), 0, 1000),
+			'post' => substr(print_r($loggedPost, true), 0, 1000),
+			'json' => substr($loggedJson, 0, 1000)
 		);
 	}
 }

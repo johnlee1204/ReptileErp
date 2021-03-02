@@ -22,7 +22,7 @@ class AgileRequestRouter{
 		$this->AgileApp = $AgileApp;
 		$this->configs = $AgileApp->systemConfigs['router'];
 
-		$this->debugRequest = false;
+		$this->debugRequest = FALSE;
 
 		if(isset($_GET['debugrouter'])){
 			error_reporting(E_ALL);
@@ -38,7 +38,6 @@ class AgileRequestRouter{
 
 	function routeRequest(){
 		//Was requested over ajax
-
 		$this->ajaxRequested = (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest');
 
 		$this->debugOutput('called AgileRequestRouter::routeRequest()');
@@ -208,7 +207,6 @@ class AgileRequestRouter{
 			return;
 		}
 		$this->logRequest(false,true);
-
 		$routeMethod = $this->routeMethod;
 		$ClassInstance->$routeMethod();
 		return;
@@ -284,14 +282,6 @@ class AgileRequestRouter{
 
 	function logRequest($notFound,$authorized){
 		$standardLogData = $this->AgileApp->readStandardLogColumnValues();
-
-		if($standardLogData['class'] == 'tv'){
-			return;
-		}
-
-		if($standardLogData['class'] == 'prtg'){
-			return;
-		}
 
 		$insertData = array_merge($standardLogData, array(
 			'notFound' => intval($notFound),

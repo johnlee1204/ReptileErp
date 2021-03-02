@@ -42,17 +42,17 @@ class ProductModel extends AgileModel {
 				Product.secondaryBinId secondaryBin,
 				SecondaryBin.binName secondaryBinName
 			FROM Product
-			LEFT JOIN Location PrimaryLocation ON PrimaryLocation.locationId = Product.primaryLocationId AND PrimaryLocation.shop = ?
-			LEFT JOIN Bin PrimaryBin ON PrimaryBin.binId = Product.primaryBinId AND PrimaryBin.shop = ?
+			LEFT JOIN Location PrimaryLocation ON PrimaryLocation.locationId = Product.primaryLocationId AND PrimaryLocation.shop = Product.shop
+			LEFT JOIN Bin PrimaryBin ON PrimaryBin.binId = Product.primaryBinId AND PrimaryBin.shop = Product.shop
 		
-			LEFT JOIN Location SecondaryLocation ON SecondaryLocation.locationId = Product.primaryLocationId AND SecondaryLocation.shop = ?
-			LEFT JOIN Bin SecondaryBin ON SecondaryBin.binId = Product.primaryBinId AND SecondaryBin.shop = ?
+			LEFT JOIN Location SecondaryLocation ON SecondaryLocation.locationId = Product.primaryLocationId AND SecondaryLocation.shop = Product.shop
+			LEFT JOIN Bin SecondaryBin ON SecondaryBin.binId = Product.primaryBinId AND SecondaryBin.shop = Product.shop
 			
 			WHERE
 				Product.productId = ?
 			AND
 				Product.shop = ?
-		", [$shop, $shop, $shop, $shop, $productId, $shop]);
+		", [$productId, $shop]);
 	}
 
 	static function createProduct($inputs) {
@@ -120,16 +120,16 @@ class ProductModel extends AgileModel {
 					ELSE ''
 				END designation
 			FROM OnHand
-			LEFT JOIN Location ON Location.locationId = OnHand.locationId AND Location.shop = ?
-			LEFT JOIN Bin ON Bin.binId = OnHand.binId AND Bin.shop = ?
-			LEFT JOIN Product ProductPrimaryDesignation ON ProductPrimaryDesignation.productId = OnHand.productId AND ProductPrimaryDesignation.primaryBinId = OnHand.binId AND ProductPrimaryDesignation.shop = ?
-			LEFT JOIN Product ProductSecondaryDesignation ON ProductSecondaryDesignation.productId = OnHand.productId AND ProductSecondaryDesignation.secondaryBinId = OnHand.binId AND ProductSecondaryDesignation.shop = ?
+			LEFT JOIN Location ON Location.locationId = OnHand.locationId AND Location.shop = OnHand.shop
+			LEFT JOIN Bin ON Bin.binId = OnHand.binId AND Bin.shop = OnHand.shop
+			LEFT JOIN Product ProductPrimaryDesignation ON ProductPrimaryDesignation.productId = OnHand.productId AND ProductPrimaryDesignation.primaryBinId = OnHand.binId AND ProductPrimaryDesignation.shop = OnHand.shop
+			LEFT JOIN Product ProductSecondaryDesignation ON ProductSecondaryDesignation.productId = OnHand.productId AND ProductSecondaryDesignation.secondaryBinId = OnHand.binId AND ProductSecondaryDesignation.shop = OnHand.shop
 			WHERE
 				OnHand.productId = ?
 			AND
 				OnHand.shop = ?
 			ORDER BY quantity DESC
-		", [$shop, $shop, $shop, $shop, $productId, $shop]);
+		", [$productId, $shop]);
 	}
 
 	static function readTransactionHistory($productId) {
@@ -147,16 +147,16 @@ class ProductModel extends AgileModel {
 				Transaction.comment,
 				Transaction.type
 			FROM Transaction
-			LEFT JOIN Bin FromBin ON FromBin.binId = Transaction.fromBinId AND FromBin.shop = ?
-			LEFT JOIN Bin ToBin ON ToBin.binId = Transaction.toBinId AND ToBin.shop = ?
-			LEFT JOIN Location FromLocation ON FromLocation.locationId = Transaction.fromLocationId AND FromLocation.shop = ?
-			LEFT JOIN Location ToLocation ON ToLocation.locationId = Transaction.toLocationId AND ToLocation.shop = ?
+			LEFT JOIN Bin FromBin ON FromBin.binId = Transaction.fromBinId AND FromBin.shop = Transaction.shop
+			LEFT JOIN Bin ToBin ON ToBin.binId = Transaction.toBinId AND ToBin.shop = Transaction.shop
+			LEFT JOIN Location FromLocation ON FromLocation.locationId = Transaction.fromLocationId AND FromLocation.shop = Transaction.shop
+			LEFT JOIN Location ToLocation ON ToLocation.locationId = Transaction.toLocationId AND ToLocation.shop = Transaction.shop
 			WHERE
 				Transaction.productId = ?
 			AND
 				Transaction.shop = ?
 			ORDER BY transactionDate DESC
-		", [$shop, $shop, $shop, $shop, $productId, $shop]);
+		", [$productId, $shop]);
 	}
 
 }

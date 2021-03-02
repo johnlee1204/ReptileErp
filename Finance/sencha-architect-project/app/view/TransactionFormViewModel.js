@@ -15,6 +15,21 @@
 
 Ext.define('Finance.view.TransactionFormViewModel', {
 	extend: 'Ext.app.ViewModel',
-	alias: 'viewmodel.transactionform'
+	alias: 'viewmodel.transactionform',
+
+	requires: [
+		'Ext.data.Store',
+		'Ext.data.field.Field'
+	],
+
+	stores: {
+		CategoryStore: {
+			fields: [
+				{
+					name: 'category'
+				}
+			]
+		}
+	}
 
 });

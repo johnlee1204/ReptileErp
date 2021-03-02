@@ -231,7 +231,7 @@ class mysql_helper
 	 */
 	function delete($table, $filters){
 		$query = "DELETE FROM {$table} WHERE ";
-
+		$filterValuesArr = [];
 		if( count($filters) > 0 ){
 			$filterColumnsArr = array();
 			$filterValuesArr = array();
@@ -240,6 +240,8 @@ class mysql_helper
 				$filterColumnsArr[] = "{$filterColumn} = ?";
 			}
 			$query .= implode(' AND ',$filterColumnsArr);
+		} else {
+			$query .= "1 = 1";
 		}
 
 		$this->query($query, array_values($filterValuesArr));
