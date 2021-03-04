@@ -151,6 +151,37 @@
             "designerId": "41c03cc1-34be-4d79-80a9-0dc3d1de90bd"
         },
         {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "newData"
+                ],
+                "fn": "onPanelDocFormBeforeNew",
+                "implHandler": [
+                    "let facilityStore = this.getViewModel().getStore('FacilityStore');",
+                    "if(facilityStore.getCount() === 1) {",
+                    "\tnewData.data.facility = facilityStore.first().data.facilityId;",
+                    "}"
+                ],
+                "name": "docFormBeforeNew",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelDocFormBeforeNew",
+            "designerId": "0e68bc4d-4c0e-4bce-91e8-e65d256fb588"
+        },
+        {
             "type": "basicfunction",
             "reference": {
                 "name": "items",

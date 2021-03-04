@@ -194,6 +194,42 @@
                     "designerId": "20ff605a-fbd8-407a-9b4a-fc15130a12d8"
                 },
                 {
+                    "type": "Ext.data.field.Date",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dateReadFormat": "Y-m-d H:i:s",
+                        "name": "lastLogin"
+                    },
+                    "configAlternates": {
+                        "name": "string",
+                        "dateReadFormat": "string"
+                    },
+                    "name": "MyDate1",
+                    "designerId": "a6a181d0-0a0f-4e0c-9f16-3be408e0162b"
+                },
+                {
+                    "type": "Ext.data.field.Date",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dateReadFormat": "Y-m-d H:i:s",
+                        "name": "lastActivity"
+                    },
+                    "configAlternates": {
+                        "name": "string",
+                        "dateReadFormat": "string"
+                    },
+                    "name": "MyDate2",
+                    "designerId": "3b6d9216-d989-41e2-9303-c94a6fe1b38e"
+                },
+                {
                     "type": "Ext.util.Sorter",
                     "reference": {
                         "name": "sorters",

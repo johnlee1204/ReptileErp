@@ -19,6 +19,7 @@ Ext.define('AgileInventory.view.Facilities', {
 
 	requires: [
 		'AgileInventory.view.FacilitiesViewModel',
+		'AgileInventory.view.FacilityForm',
 		'Ext.grid.Panel',
 		'Ext.grid.column.Column',
 		'Ext.view.Table'
@@ -32,7 +33,7 @@ Ext.define('AgileInventory.view.Facilities', {
 	defaultListenerScope: true,
 
 	layout: {
-		type: 'vbox',
+		type: 'hbox',
 		align: 'stretch'
 	},
 	items: [
@@ -57,18 +58,52 @@ Ext.define('AgileInventory.view.Facilities', {
 				},
 				{
 					xtype: 'gridcolumn',
+					renderer: function(value, metaData, record, rowIndex, colIndex, store, view) {
+						if(value.trim() === ", ,") {
+							return "";
+						}
+
+						return value;
+					},
 					width: 372,
 					dataIndex: 'address',
 					text: 'Address'
 				}
-			]
+			],
+			viewConfig: {
+				enableTextSelection: true
+			},
+			listeners: {
+				selectionchange: 'onGridpanelSelectionChange'
+			}
+		},
+		{
+			xtype: 'facilityform',
+			itemId: 'facilityForm',
+			listeners: {
+				facilitychanged: 'onPanelFacilityChangeD'
+			}
 		}
 	],
 	listeners: {
 		afterrender: 'onPanelAfterRender'
 	},
 
+	onGridpanelSelectionChange: function(model, selected, eOpts) {
+		if(!selected || selected.length !== 1) {
+			return;
+		}
+
+		selected = selected[0];
+
+		this.queryById('facilityForm').readFacility(selected.data.facilityId);
+	},
+
 	onPanelAfterRender: function(component, eOpts) {
+		this.readFacilities();
+	},
+
+	onPanelFacilityChangeD: function(panel) {
 		this.readFacilities();
 	},
 

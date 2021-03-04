@@ -9,8 +9,10 @@ use AgileInventory\Models\ProductModel;
 use Libraries\Curl;
 
 class AgileInventory extends AgileBaseController {
+	private $apiKey;
 	function init() {
 		$this->database->selectDatabase("AgileInventory");
+		$this->apiKey = "22c5eb452caddfcd8a9a0ffaed31a38d";
 	}
 
 	function readAppInitData() {
@@ -23,64 +25,69 @@ class AgileInventory extends AgileBaseController {
 		]);
 	}
 
-	function deleteEverything() {
-		$input = Validation::validateGet([
-			'shop' => ['default' => NULL]
-		]);
-
-		$shopFilter = [];
-		if($input['shop'] !== NULL) {
-			$shopFilter = ['shop' => $input['shop']];
-		}
-
-		$this->database->delete(
-			"AccessToken",
-			$shopFilter
-		);
-
-		$this->database->delete(
-			"Bin",
-			$shopFilter
-		);
-
-		$this->database->delete(
-			"Location",
-			$shopFilter
-		);
-
-		$this->database->delete(
-			"Facility",
-			$shopFilter
-		);
-
-		$this->database->delete(
-			"OnHand",
-			$shopFilter
-		);
-
-		$this->database->delete(
-			"Product",
-			$shopFilter
-		);
-
-		$this->database->delete(
-			"Session",
-			$shopFilter
-		);
-
-		$this->database->delete(
-			"Transaction",
-			$shopFilter
-		);
-
-		$this->database->delete(
-			"Shop",
-			$shopFilter
-		);
-	}
-
 	function readFacilities() {
 		$this->outputSuccessData(FacilityModel::readFacilities());
+	}
+
+	function readFacility() {
+		$input = Validation::validateJsonInput([
+			'facilityId' => 'numeric'
+		]);
+
+		$this->outputSuccessData(FacilityModel::readFacility($input['facilityId']));
+	}
+
+	function createFacility() {
+		$inputs = Validation::validateJsonInput([
+			'facilityName' => 'notBlank',
+			'facilityDescription',
+			'address1',
+			'address2',
+			'city',
+			'province',
+			'zip',
+			'country',
+			'phone',
+		]);
+
+		$this->database->begin_transaction();
+		$facilityId = FacilityModel::createFacility($inputs);
+		$this->database->commit_transaction();
+
+		$this->outputSuccessData($facilityId);
+	}
+
+	function updateFacility() {
+		$inputs = Validation::validateJsonInput([
+			'facilityId' => 'numeric',
+			'facilityName' => 'notBlank',
+			'facilityDescription',
+			'address1',
+			'address2',
+			'city',
+			'province',
+			'zip',
+			'country',
+			'phone',
+		]);
+
+		$this->database->begin_transaction();
+		FacilityModel::updateFacility($inputs);
+		$this->database->commit_transaction();
+
+		$this->outputSuccess();
+	}
+
+	function deleteFacility() {
+		$input = Validation::validateJsonInput([
+			'facilityId' => 'numeric'
+		]);
+
+		$this->database->begin_transaction();
+		FacilityModel::deleteFacility($input['facilityId']);
+		$this->database->commit_transaction();
+
+		$this->outputSuccess();
 	}
 
 	function readLocations() {
@@ -237,6 +244,7 @@ class AgileInventory extends AgileBaseController {
 
 		$this->database->begin_transaction();
 		$productId = ProductModel::createProduct($inputs);
+		$this->shopifyCreateProduct($inputs, $productId);
 		$this->database->commit_transaction();
 
 		$this->outputSuccessData($productId);
@@ -255,6 +263,7 @@ class AgileInventory extends AgileBaseController {
 
 		$this->database->begin_transaction();
 		ProductModel::updateProduct($inputs);
+		$this->shopifyUpdateProduct($inputs);
 		$this->database->commit_transaction();
 
 		$this->outputSuccess();
@@ -266,7 +275,9 @@ class AgileInventory extends AgileBaseController {
 		]);
 
 		$this->database->begin_transaction();
+		$product = ProductModel::readProduct($input['productId']);
 		ProductModel::deleteProduct($input['productId']);
+		$this->shopifyDeleteProduct($product['shopifyProductId']);
 		$this->database->commit_transaction();
 
 		$this->outputSuccess();
@@ -323,16 +334,14 @@ class AgileInventory extends AgileBaseController {
 
 	function readWebHooks() {
 		$store = AgileInventoryModel::readShopFromCookie();
-		$apiKey = "22c5eb452caddfcd8a9a0ffaed31a38d";
 		$accessToken = AgileInventoryModel::readAccessToken();
-		echo "<pre>";print_r(Curl::get("https://" . $apiKey . ':' . $accessToken . '@' . $store . "/admin/api/2021-01/webhooks.json"));
+		echo "<pre>";print_r(Curl::get("https://" . $this->apiKey . ':' . $accessToken . '@' . $store . "/admin/api/2021-01/webhooks.json"));
 	}
 
 	function readShop() {
 		$store = AgileInventoryModel::readShopFromCookie();
-		$apiKey = "22c5eb452caddfcd8a9a0ffaed31a38d";
 		$accessToken = AgileInventoryModel::readAccessToken();
-		$reply = Curl::get("https://" . $apiKey . ':' . $accessToken . '@' . $store . "/admin/api/2021-01/shop.json");
+		$reply = Curl::get("https://" . $this->apiKey . ':' . $accessToken . '@' . $store . "/admin/api/2021-01/shop.json");
 		$reply = $reply['shop'];
 		$this->database->insert(
 			'Shop',
@@ -347,12 +356,28 @@ class AgileInventory extends AgileBaseController {
 
 	function addWebHooks() {
 		$store = AgileInventoryModel::readShopFromCookie();
-			$apiKey = "22c5eb452caddfcd8a9a0ffaed31a38d";
+
 		$accessToken = AgileInventoryModel::readAccessToken();
-		Curl::postJson("https://" . $apiKey . ':' . $accessToken . '@' . $store . "/admin/api/2021-01/webhooks.json", [
+		Curl::postJson("https://" . $this->apiKey . ':' . $accessToken . '@' . $store . "/admin/api/2021-01/webhooks.json", [
 			'webhook' => [
 				'topic' => "products/create",
 				'address' => "https://leesheet.com/AgileInventory/webHookProductAdded",
+				'format' => "json"
+			]
+		]);
+
+		Curl::postJson("https://" . $this->apiKey . ':' . $accessToken . '@' . $store . "/admin/api/2021-01/webhooks.json", [
+			'webhook' => [
+				'topic' => "products/update",
+				'address' => "https://leesheet.com/AgileInventory/webHookProductUpdated",
+				'format' => "json"
+			]
+		]);
+
+		Curl::postJson("https://" . $this->apiKey . ':' . $accessToken . '@' . $store . "/admin/api/2021-01/webhooks.json", [
+			'webhook' => [
+				'topic' => "products/delete",
+				'address' => "https://leesheet.com/AgileInventory/webHookProductDeleted",
 				'format' => "json"
 			]
 		]);
@@ -360,9 +385,8 @@ class AgileInventory extends AgileBaseController {
 
 	function deleteWebHook() {
 		$store = AgileInventoryModel::readShopFromCookie();
-		$apiKey = "22c5eb452caddfcd8a9a0ffaed31a38d";
 		$accessToken = AgileInventoryModel::readAccessToken();
-		var_dump(Curl::sendRequest("DELETE", "https://" . $apiKey . ':' . $accessToken . '@' . $store . "/admin/api/2021-01/webhooks/1013564670138.json"));
+		var_dump(Curl::sendRequest("DELETE", "https://" . $this->apiKey . ':' . $accessToken . '@' . $store . "/admin/api/2021-01/webhooks/1013564670138.json"));
 	}
 
 	function testWebHook() {
@@ -387,6 +411,41 @@ class AgileInventory extends AgileBaseController {
 		);
 	}
 
+	function webHookProductUpdated() {
+		$productInfoJson = $loggedJson = file_get_contents('php://input');
+		$productInfo = json_decode($productInfoJson, TRUE);
+		$headers = apache_request_headers();
+		if(!$this->verify_webhook($productInfoJson, $headers['X-Shopify-Hmac-Sha256'])) {
+			exit;
+		}
+		$this->database->update(
+			"Product",
+			[
+				'productName' => $productInfo['title'],
+			],
+			[
+				'shopifyProductId' => $productInfo['id'],
+				'shop' => $headers['X-Shopify-Shop-Domain']
+			]
+		);
+	}
+
+	function webHookProductDeleted() {
+		$productInfoJson = $loggedJson = file_get_contents('php://input');
+		$productInfo = json_decode($productInfoJson, TRUE);
+		$headers = apache_request_headers();
+		if(!$this->verify_webhook($productInfoJson, $headers['X-Shopify-Hmac-Sha256'])) {
+			exit;
+		}
+		$this->database->delete(
+			"Product",
+			[
+				'shopifyProductId' => $productInfo['id'],
+				'shop' => $headers['X-Shopify-Shop-Domain']
+			]
+		);
+	}
+
 	function verify_webhook($data, $hmac_header)
 	{
 		$secretKey = "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";
@@ -396,17 +455,15 @@ class AgileInventory extends AgileBaseController {
 
 	function appInstalled() {
 		$shop = $_GET['shop'];
-		$apiKey = "22c5eb452caddfcd8a9a0ffaed31a38d";
 		$redirectUri = 'https://leesheet.com/AgileInventory/permissionsGranted';
 		$nonce = $this->getNonce($_GET['hmac'], $shop);
-		header('Location: https://' . $shop . '/admin/oauth/authorize?client_id=' . $apiKey . '&scope=read_products,read_locations&redirect_uri=' . $redirectUri . '&state=' . $nonce . '&grant_options[]={per-user}');
+		header('Location: https://' . $shop . '/admin/oauth/authorize?client_id=' . $this->apiKey . '&scope=write_products,read_locations&redirect_uri=' . $redirectUri . '&state=' . $nonce . '&grant_options[]={per-user}');
 		exit;
 	}
 
 	function permissionsGranted() {
 		//https://example.org/some/redirect/uri?code={authorization_code}&hmac=da9d83c171400a41f8db91a950508985&timestamp=1409617544&state={nonce}&shop={hostname}
 		$shop = $_GET['shop'];
-		$apiKey = "22c5eb452caddfcd8a9a0ffaed31a38d";
 		$secretKey = "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";
 		$authCode = $_GET['code'];
 		$hmac = $_GET['hmac'];
@@ -440,7 +497,7 @@ class AgileInventory extends AgileBaseController {
 
 
 		$reply = Curl::post("https://" . $shop . "/admin/oauth/access_token", [
-			'client_id' => $apiKey,
+			'client_id' => $this->apiKey,
 			'client_secret' => $secretKey,
 			'code' => $authCode
 		]);
@@ -504,6 +561,7 @@ class AgileInventory extends AgileBaseController {
 			$this->importProducts(FALSE);
 			$this->importLocations();
 			$this->readShop();
+			$this->addWebHooks();
 		}
 
 		header('Location: https://leesheet.com/AgileInventory');
@@ -559,8 +617,7 @@ class AgileInventory extends AgileBaseController {
 	public function importProducts($outputSuccess = TRUE) {
 		$shop = AgileInventoryModel::readShopFromCookie();
 		$accessToken = AgileInventoryModel::readAccessToken();
-		$apiKey = "22c5eb452caddfcd8a9a0ffaed31a38d";
-		$reply = Curl::get("https://" . $apiKey . ':' . $accessToken . '@'. $shop . "/admin/api/2021-01/products.json");
+		$reply = Curl::get("https://" . $this->apiKey . ':' . $accessToken . '@'. $shop . "/admin/api/2021-01/products.json");
 		if(!(isset($reply['products']) && is_array($reply['products']))) {
 			return;
 		}
@@ -598,11 +655,71 @@ class AgileInventory extends AgileBaseController {
 		}
 	}
 
+	public function shopifyCreateProduct($inputs, $productId) {
+		$shop = AgileInventoryModel::readShopFromCookie();
+		$accessToken = AgileInventoryModel::readAccessToken();
+		$reply = Curl::postJson("https://" . $this->apiKey . ':' . $accessToken . '@'. $shop . "/admin/api/2021-01/products.json", [
+			'product' => [
+				'title' => $inputs['productName'],
+				'body_html' => '',
+				'vendor' => '',
+				'product_type' => '',
+				'tags' => []
+			]
+		]);
+
+		if(isset($reply['errors'])) {
+			throw new Exception(var_export($reply));
+		}
+
+		$this->database->update(
+			"Product",
+			['shopifyProductId' => $reply['product']['id']],
+			[
+				'productId' => $productId,
+				'shop' => $shop
+			]
+		);
+	}
+
+	public function shopifyUpdateProduct($inputs) {
+		$product = ProductModel::readProduct($inputs['productId']);
+		if($product['shopifyProductId'] === NULL) {
+			return;
+		}
+
+		$shop = AgileInventoryModel::readShopFromCookie();
+		$accessToken = AgileInventoryModel::readAccessToken();
+		$reply = Curl::sendJsonRequest("PUT","https://" . $this->apiKey . ':' . $accessToken . '@'. $shop . "/admin/api/2021-01/products/" . $product['shopifyProductId'] . ".json", [
+			'product' => [
+				'title' => $inputs['productName'],
+				'id' => $product['shopifyProductId']
+			]
+		]);
+
+		if(isset($reply['errors'])) {
+			throw new Exception(var_export($reply));
+		}
+	}
+
+	public function shopifyDeleteProduct($shopifyProductId) {
+		if($shopifyProductId === NULL) {
+			return;
+		}
+
+		$shop = AgileInventoryModel::readShopFromCookie();
+		$accessToken = AgileInventoryModel::readAccessToken();
+		$reply = Curl::sendRequest("DELETE","https://" . $this->apiKey . ':' . $accessToken . '@'. $shop . "/admin/api/2021-01/products/" . $shopifyProductId . ".json");
+
+		if(isset($reply['errors'])) {
+			throw new Exception(var_export($reply));
+		}
+	}
+
 	public function importLocations() {
 		$shop = AgileInventoryModel::readShopFromCookie();
 		$accessToken = AgileInventoryModel::readAccessToken();
-		$apiKey = "22c5eb452caddfcd8a9a0ffaed31a38d";
-		$reply = Curl::get("https://" . $apiKey . ':' . $accessToken . '@'. $shop . "/admin/api/2021-01/locations.json");
+		$reply = Curl::get("https://" . $this->apiKey . ':' . $accessToken . '@'. $shop . "/admin/api/2021-01/locations.json");
 		if(!(isset($reply['locations']) && is_array($reply['locations']))) {
 			return;
 		}
@@ -643,16 +760,70 @@ class AgileInventory extends AgileBaseController {
 	public function readProductsFromApi() {
 		$shop = AgileInventoryModel::readShopFromCookie();
 		$accessToken = AgileInventoryModel::readAccessToken();
-		$apiKey = "22c5eb452caddfcd8a9a0ffaed31a38d";
-		$reply = Curl::get("https://" . $apiKey . ':' . $accessToken . '@'. $shop . "/admin/api/2021-01/products.json?fields=vendor");
+		$reply = Curl::get("https://" . $this->apiKey . ':' . $accessToken . '@'. $shop . "/admin/api/2021-01/products.json?fields=vendor");
 		echo "<pre>";print_r($reply);die();
 	}
 
 	public function readLocationsFromApi() {
 		$shop = AgileInventoryModel::readShopFromCookie();
 		$accessToken = AgileInventoryModel::readAccessToken();
-		$apiKey = "22c5eb452caddfcd8a9a0ffaed31a38d";
-		$reply = Curl::get("https://" . $apiKey . ':' . $accessToken . '@'. $shop . "/admin/api/2021-01/locations.json");
+		$reply = Curl::get("https://" . $this->apiKey . ':' . $accessToken . '@'. $shop . "/admin/api/2021-01/locations.json");
 		echo "<pre>";print_r($reply);die();
+	}
+
+	function deleteEverything() {
+		$input = Validation::validateGet([
+			'shop' => ['default' => NULL]
+		]);
+
+		$shopFilter = [];
+		if($input['shop'] !== NULL) {
+			$shopFilter = ['shop' => $input['shop']];
+		}
+
+		$this->database->delete(
+			"AccessToken",
+			$shopFilter
+		);
+
+		$this->database->delete(
+			"Bin",
+			$shopFilter
+		);
+
+		$this->database->delete(
+			"Location",
+			$shopFilter
+		);
+
+		$this->database->delete(
+			"Facility",
+			$shopFilter
+		);
+
+		$this->database->delete(
+			"OnHand",
+			$shopFilter
+		);
+
+		$this->database->delete(
+			"Product",
+			$shopFilter
+		);
+
+		$this->database->delete(
+			"Session",
+			$shopFilter
+		);
+
+		$this->database->delete(
+			"Transaction",
+			$shopFilter
+		);
+
+		$this->database->delete(
+			"Shop",
+			$shopFilter
+		);
 	}
 }

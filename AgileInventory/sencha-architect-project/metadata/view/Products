@@ -107,60 +107,6 @@
                                     "designerId": "7f418acb-b102-4aeb-aac1-1644710d1b77"
                                 }
                             ]
-                        },
-                        {
-                            "type": "Ext.button.Button",
-                            "reference": {
-                                "name": "items",
-                                "type": "array"
-                            },
-                            "codeClass": null,
-                            "userConfig": {
-                                "layout|flex": null,
-                                "margin": "5 0 0 0 ",
-                                "text": "Import Products"
-                            },
-                            "configAlternates": {
-                                "margin": "auto",
-                                "text": "string",
-                                "layout|flex": "number"
-                            },
-                            "name": "MyButton2",
-                            "designerId": "49f44bde-d26a-45c1-b544-a95bc1dab047",
-                            "cn": [
-                                {
-                                    "type": "basiceventbinding",
-                                    "reference": {
-                                        "name": "listeners",
-                                        "type": "array"
-                                    },
-                                    "codeClass": null,
-                                    "userConfig": {
-                                        "fn": "onButtonClick2",
-                                        "implHandler": [
-                                            "AERP.Ajax.request({",
-                                            "\turl:\"/AgileInventory/importProducts\",",
-                                            "\tsuccess:function(reply) {",
-                                            "\t\tExt.Msg.alert(\"Success\", reply.data + \" Products Imported!\");",
-                                            "\t\tthis.readProducts();",
-                                            "\t},",
-                                            "\tscope:this,",
-                                            "\tmask:this",
-                                            "});"
-                                        ],
-                                        "name": "click",
-                                        "scope": "me"
-                                    },
-                                    "configAlternates": {
-                                        "fn": "string",
-                                        "implHandler": "code",
-                                        "name": "string",
-                                        "scope": "string"
-                                    },
-                                    "name": "onButtonClick2",
-                                    "designerId": "91cb22fc-5c33-4e84-be74-e26b719a967b"
-                                }
-                            ]
                         }
                     ]
                 },

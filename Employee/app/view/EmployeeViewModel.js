@@ -57,6 +57,16 @@ Ext.define('Employee.view.EmployeeViewModel', {
 				},
 				{
 					name: 'position'
+				},
+				{
+					type: 'date',
+					name: 'lastLogin',
+					dateReadFormat: 'Y-m-d H:i:s'
+				},
+				{
+					type: 'date',
+					name: 'lastActivity',
+					dateReadFormat: 'Y-m-d H:i:s'
 				}
 			],
 			sorters: {

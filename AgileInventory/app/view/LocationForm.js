@@ -66,7 +66,8 @@ Ext.define('AgileInventory.view.LocationForm', {
 		}
 	],
 	listeners: {
-		afterrender: 'onPanelAfterRender'
+		afterrender: 'onPanelAfterRender',
+		docFormBeforeNew: 'onPanelDocFormBeforeNew'
 	},
 
 	onPanelAfterRender: function(component, eOpts) {
@@ -85,6 +86,13 @@ Ext.define('AgileInventory.view.LocationForm', {
 			scope:this,
 			mask:this
 		});
+	},
+
+	onPanelDocFormBeforeNew: function(newData) {
+		let facilityStore = this.getViewModel().getStore('FacilityStore');
+		if(facilityStore.getCount() === 1) {
+			newData.data.facility = facilityStore.first().data.facilityId;
+		}
 	},
 
 	readLocation: function(locationId) {

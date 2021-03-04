@@ -223,7 +223,7 @@
                 "fn": "onPanelAfterRender",
                 "implHandler": [
                     "this.docFormInit({",
-                    "\ttoolbar:'facilityFormToolbar',",
+                    "\ttoolbarId:'facilityFormToolbar',",
                     "\taddFn:'createFacility',",
                     "\tsaveFn:'updateFacility',",
                     "\tdeleteFn:'deleteFacility'",
@@ -254,7 +254,7 @@
                 ],
                 "fn": "readFacility",
                 "implHandler": [
-                    "AERP.AJax.request({",
+                    "AERP.Ajax.request({",
                     "\turl:\"/AgileInventory/readFacility\",",
                     "\tjsonData:{facilityId:facilityId},",
                     "\tsuccess:function(reply) {",
@@ -284,7 +284,7 @@
             "userConfig": {
                 "fn": "createFacility",
                 "implHandler": [
-                    "AERP.AJax.request({",
+                    "AERP.Ajax.request({",
                     "\turl:\"/AgileInventory/createFacility\",",
                     "\tjsonData:this.docFormGetAllFieldValues(),",
                     "\tsuccess:function(reply) {",
@@ -317,7 +317,7 @@
                     "let jsonData = this.docFormGetAllFieldValues();",
                     "jsonData.facilityId = this.facilityId;",
                     "",
-                    "AERP.AJax.request({",
+                    "AERP.Ajax.request({",
                     "\turl:\"/AgileInventory/updateFacility\",",
                     "\tjsonData:jsonData,",
                     "\tsuccess:function(reply) {",
@@ -347,7 +347,7 @@
             "userConfig": {
                 "fn": "deleteFacility",
                 "implHandler": [
-                    "AERP.AJax.request({",
+                    "AERP.Ajax.request({",
                     "\turl:\"/AgileInventory/deleteFacility\",",
                     "\tjsonData:{facilityId:this.facilityId},",
                     "\tsuccess:function(reply) {",

@@ -17,7 +17,8 @@
             "BinForm",
             "Products",
             "ProductForm",
-            "Facilities"
+            "Facilities",
+            "FacilityForm"
         ]
     },
     "configAlternates": {

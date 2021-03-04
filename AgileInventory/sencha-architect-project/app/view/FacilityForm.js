@@ -96,7 +96,7 @@ Ext.define('AgileInventory.view.FacilityForm', {
 
 	onPanelAfterRender: function(component, eOpts) {
 		this.docFormInit({
-			toolbar:'facilityFormToolbar',
+			toolbarId:'facilityFormToolbar',
 			addFn:'createFacility',
 			saveFn:'updateFacility',
 			deleteFn:'deleteFacility'
@@ -104,7 +104,7 @@ Ext.define('AgileInventory.view.FacilityForm', {
 	},
 
 	readFacility: function(facilityId) {
-		AERP.AJax.request({
+		AERP.Ajax.request({
 			url:"/AgileInventory/readFacility",
 			jsonData:{facilityId:facilityId},
 			success:function(reply) {
@@ -117,7 +117,7 @@ Ext.define('AgileInventory.view.FacilityForm', {
 	},
 
 	createFacility: function() {
-		AERP.AJax.request({
+		AERP.Ajax.request({
 			url:"/AgileInventory/createFacility",
 			jsonData:this.docFormGetAllFieldValues(),
 			success:function(reply) {
@@ -133,7 +133,7 @@ Ext.define('AgileInventory.view.FacilityForm', {
 		let jsonData = this.docFormGetAllFieldValues();
 		jsonData.facilityId = this.facilityId;
 
-		AERP.AJax.request({
+		AERP.Ajax.request({
 			url:"/AgileInventory/updateFacility",
 			jsonData:jsonData,
 			success:function(reply) {
@@ -146,7 +146,7 @@ Ext.define('AgileInventory.view.FacilityForm', {
 	},
 
 	deleteFacility: function() {
-		AERP.AJax.request({
+		AERP.Ajax.request({
 			url:"/AgileInventory/deleteFacility",
 			jsonData:{facilityId:this.facilityId},
 			success:function(reply) {

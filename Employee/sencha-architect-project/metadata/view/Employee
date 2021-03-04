@@ -135,11 +135,13 @@
                     "codeClass": null,
                     "userConfig": {
                         "dataIndex": "hireDate",
+                        "format": "F n, Y",
                         "text": "Hire Date"
                     },
                     "configAlternates": {
                         "dataIndex": "datafield",
-                        "text": "string"
+                        "text": "string",
+                        "format": "string"
                     },
                     "name": "MyDateColumn",
                     "designerId": "54f7892a-542f-45c5-9c41-bb3164e6a5ff"
@@ -163,6 +165,50 @@
                     },
                     "name": "MyColumn3",
                     "designerId": "908daa51-bf39-450b-83d7-e8e76395fa5a"
+                },
+                {
+                    "type": "Ext.grid.column.Date",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "lastLogin",
+                        "format": "F n, Y h:ia",
+                        "text": "Last Log In",
+                        "width": 150
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "format": "string",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyDateColumn1",
+                    "designerId": "a319f60b-bb59-41ee-a2a6-b30b7eb1ddb2"
+                },
+                {
+                    "type": "Ext.grid.column.Date",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "lastActivity",
+                        "format": "F n, Y h:ia",
+                        "text": "Last Activity",
+                        "width": 150
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "format": "string",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyDateColumn2",
+                    "designerId": "2a5cf7ea-630b-4145-be26-4b64adaaa3c8"
                 },
                 {
                     "type": "Ext.view.Table",

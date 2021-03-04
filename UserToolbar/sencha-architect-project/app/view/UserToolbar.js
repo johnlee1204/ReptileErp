@@ -18,15 +18,11 @@ Ext.define('UserToolbar.view.UserToolbar', {
 	alias: 'widget.usertoolbar',
 
 	requires: [
-		'UserToolbar.view.UserToolbarViewModel',
 		'Ext.container.Container',
 		'Ext.button.Button',
 		'Ext.toolbar.Spacer'
 	],
 
-	viewModel: {
-		type: 'usertoolbar'
-	},
 	dock: 'top',
 	defaultButtonUI: 'default',
 	defaultListenerScope: true,
@@ -111,6 +107,7 @@ Ext.define('UserToolbar.view.UserToolbar', {
 		let totalButtonWidth = 0;
 
 		let tooManyLinksWarning = "";
+		let cutOffButtons = [];
 
 		for(let i in buttons) {
 			let button = Ext.create('Ext.button.Button', {
@@ -119,7 +116,6 @@ Ext.define('UserToolbar.view.UserToolbar', {
 				listeners:{
 					scope:this,
 					click:function() {
-						//window.open(buttons[i].linkPath);
 						window.location.href = buttons[i].linkPath;
 					}
 				}
@@ -134,7 +130,7 @@ Ext.define('UserToolbar.view.UserToolbar', {
 				listeners:{
 					scope:this,
 					click:function() {
-						window.open(buttons[i].linkPath);
+						window.location.href = buttons[i].linkPath;
 					}
 				}
 			});
@@ -150,21 +146,35 @@ Ext.define('UserToolbar.view.UserToolbar', {
 				totalButtonWidth += buttonWidth + 5;
 				this.linkButtons.push(button);
 			} else {
-				let buttonsCutOff = buttons.length - this.linkButtons.length;
-
-				if(buttonsCutOff === 1) {
-					tooManyLinksWarning =  buttonsCutOff + " Button Cut Off";
-				} else {
-					tooManyLinksWarning =  buttonsCutOff + " Buttons Cut Off";
-				}
-				break;
+				cutOffButtons.push(buttons[i]);
 			}
 		}
-		if(tooManyLinksWarning !== "") {
-			this.linkButtons.push(Ext.create('Ext.container.Container', {
-				html:tooManyLinksWarning,
+
+		if(cutOffButtons.length > 0) {
+			let additionalLinksMenu = Ext.create('Ext.menu.Menu', {
+				text:"Other Links"
+			});
+
+			for(let i in cutOffButtons) {
+				let menuItem = {
+					xtype:'menuitem',
+					text:cutOffButtons[i].linkName,
+					listeners:{scope:this, click:function() {
+						window.location.href = cutOffButtons[i].linkPath;
+					}}};
+				if(cutOffButtons[i].iconPath) {
+					menuItem.icon = cutOffButtons[i].iconPath;
+				}
+				additionalLinksMenu.add(menuItem);
+			}
+			let additionalButtons = Ext.create('Ext.button.Button', {
+				text:(buttons.length - this.linkButtons.length) + " More",
+				menu:additionalLinksMenu,
+				icon:'/inc/img/silk_icons/delete.png',
 				margin:'0 0 0 5'
-			}));
+			});
+			this.linkButtons.push(additionalButtons);
+
 		}
 
 		this.insert(4, this.linkButtons);

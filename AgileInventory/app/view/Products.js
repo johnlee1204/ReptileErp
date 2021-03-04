@@ -57,14 +57,6 @@ Ext.define('AgileInventory.view.Products', {
 							listeners: {
 								click: 'onButtonClick'
 							}
-						},
-						{
-							xtype: 'button',
-							margin: '5 0 0 0 ',
-							text: 'Import Products',
-							listeners: {
-								click: 'onButtonClick2'
-							}
 						}
 					]
 				}
@@ -105,18 +97,6 @@ Ext.define('AgileInventory.view.Products', {
 
 	onButtonClick: function(button, e, eOpts) {
 		this.readProducts();
-	},
-
-	onButtonClick2: function(button, e, eOpts) {
-		AERP.Ajax.request({
-			url:"/AgileInventory/importProducts",
-			success:function(reply) {
-				Ext.Msg.alert("Success", reply.data + " Products Imported!");
-				this.readProducts();
-			},
-			scope:this,
-			mask:this
-		});
 	},
 
 	onGridpanelSelectionChange: function(model, selected, eOpts) {

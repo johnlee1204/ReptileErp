@@ -40,7 +40,8 @@ class ProductModel extends AgileModel {
 				SecondaryLocation.locationName secondaryLocationName,
 				
 				Product.secondaryBinId secondaryBin,
-				SecondaryBin.binName secondaryBinName
+				SecondaryBin.binName secondaryBinName,
+				shopifyProductId
 			FROM Product
 			LEFT JOIN Location PrimaryLocation ON PrimaryLocation.locationId = Product.primaryLocationId AND PrimaryLocation.shop = Product.shop
 			LEFT JOIN Bin PrimaryBin ON PrimaryBin.binId = Product.primaryBinId AND PrimaryBin.shop = Product.shop

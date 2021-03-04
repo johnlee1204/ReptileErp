@@ -10,7 +10,7 @@
         "container|align": "stretch",
         "designer|userAlias": "facilities",
         "designer|userClassName": "Facilities",
-        "layout": "vbox",
+        "layout": "hbox",
         "title": "Facilities"
     },
     "configAlternates": {
@@ -104,7 +104,43 @@
                         "width": "auto"
                     },
                     "name": "MyColumn23",
-                    "designerId": "20a8165e-3c29-4199-8e99-78748a2a8855"
+                    "designerId": "20a8165e-3c29-4199-8e99-78748a2a8855",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "if(value.trim() === \", ,\") {",
+                                    "\treturn \"\";",
+                                    "}",
+                                    "",
+                                    "return value;"
+                                ]
+                            },
+                            "configAlternates": {
+                                "designer|params": "typedarray",
+                                "fn": "string",
+                                "implHandler": "code"
+                            },
+                            "name": "renderer",
+                            "designerId": "cd0143b7-580c-4b18-8e9f-5160390d4f4c"
+                        }
+                    ]
                 },
                 {
                     "type": "Ext.view.Table",
@@ -113,8 +149,44 @@
                         "type": "object"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "enableTextSelection": true
+                    },
+                    "configAlternates": {
+                        "enableTextSelection": "boolean"
+                    },
                     "name": "MyTable5",
                     "designerId": "6a9d43c8-58e9-46a1-8269-cba43480949e"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onGridpanelSelectionChange",
+                        "implHandler": [
+                            "if(!selected || selected.length !== 1) {",
+                            "\treturn;",
+                            "}",
+                            "",
+                            "selected = selected[0];",
+                            "",
+                            "this.queryById('facilityForm').readFacility(selected.data.facilityId);"
+                        ],
+                        "name": "selectionchange",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onGridpanelSelectionChange",
+                    "designerId": "52ef1e5b-9562-4b17-9c26-e76b34e0bdee"
                 }
             ]
         },
@@ -168,6 +240,53 @@
             },
             "name": "readFacilities",
             "designerId": "8a93bf51-6191-492b-8908-89ba603cf809"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "facilityForm"
+            },
+            "configAlternates": {
+                "itemId": "string"
+            },
+            "name": "facilityform",
+            "designerId": "fdf31622-f088-412b-b4d1-0ae2b498ebbc",
+            "masterInstanceId": "70478b72-b16d-41a7-ae37-59fa4bf8a47b",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "panel"
+                        ],
+                        "fn": "onPanelFacilityChangeD",
+                        "implHandler": [
+                            "this.readFacilities();"
+                        ],
+                        "name": "facilitychanged",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "designer|params": "typedarray",
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onPanelFacilityChangeD",
+                    "designerId": "9c7da9d6-38bf-4702-b244-4ab7ad92d8f5"
+                }
+            ]
         }
     ]
 }

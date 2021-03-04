@@ -17,7 +17,9 @@ class EmployeeModel extends AgileModel{
 				hireDate,
 				terminationDate,
 				payRate,
-			   	position
+			   	position,
+			   	lastLogin,
+			   	lastActivity
 			FROM Employee
 			ORDER BY employeeNumber
 		");
