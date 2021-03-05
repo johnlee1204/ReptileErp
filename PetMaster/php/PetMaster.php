@@ -7,6 +7,7 @@ class PetMaster extends AgileBaseController {
 
 	static $AgilePermissions = [
 		'index' => 'read',
+		'readReptiles' => 'read',
 		'readPet' => 'read',
 		'createPet' => 'create',
 		'updatePet' => 'update',
@@ -23,6 +24,10 @@ class PetMaster extends AgileBaseController {
 		'jpeg',
 		'png'
 	];
+
+	function readReptiles() {
+		$this->outputSuccessData(PetMasterModel::readReptiles());
+	}
 
 	function readPet() {
 		$input = Validation::validateJsonInput([

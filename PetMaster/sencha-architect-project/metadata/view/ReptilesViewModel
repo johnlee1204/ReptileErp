@@ -1,0 +1,137 @@
+{
+    "type": "Ext.app.ViewModel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "reptiles",
+        "designer|userClassName": "ReptilesViewModel"
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string"
+    },
+    "designerId": "090daae3-3785-4248-a3a7-74dc18bdc4ba",
+    "cn": [
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "ReptileStore"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyStore7",
+            "designerId": "5cee60ee-152f-4659-943d-a82215b97b96",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "reptileId"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField10",
+                    "designerId": "be68548d-89aa-441f-b8af-0515e054a2f4"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "serial"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField11",
+                    "designerId": "bbc80f69-1d84-4827-bb2f-93a713b73e99"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "type"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField12",
+                    "designerId": "20b9df58-2c28-42ea-9aae-aff92d28d862"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "sex"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField13",
+                    "designerId": "726a69de-ba62-4af5-8715-ba5887646a35"
+                },
+                {
+                    "type": "Ext.data.field.Date",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dateReadFormat": "Y-m-d",
+                        "name": "receiveDate"
+                    },
+                    "configAlternates": {
+                        "name": "string",
+                        "dateReadFormat": "string"
+                    },
+                    "name": "MyDate3",
+                    "designerId": "15266bca-c3cd-4be5-a93d-5f9799b804bc"
+                },
+                {
+                    "type": "Ext.data.field.Date",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dateReadFormat": "Y-m-d",
+                        "name": "sellDate"
+                    },
+                    "configAlternates": {
+                        "name": "string",
+                        "dateReadFormat": "string"
+                    },
+                    "name": "MyDate4",
+                    "designerId": "8be7484c-460f-4ace-af18-47ff2c5ace3a"
+                }
+            ]
+        }
+    ]
+}

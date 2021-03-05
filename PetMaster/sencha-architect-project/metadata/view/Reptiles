@@ -1,0 +1,336 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyStyle": "background:none",
+        "container|align": "stretch",
+        "designer|userAlias": "reptiles",
+        "designer|userClassName": "Reptiles",
+        "layout": "hbox",
+        "title": "Reptile Database"
+    },
+    "configAlternates": {
+        "bodyStyle": "string",
+        "container|align": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "layout": "string",
+        "title": "string"
+    },
+    "name": "MyPanel1",
+    "designerId": "540cd583-f3ea-47cd-83ec-141aa2c69d6f",
+    "viewControllerInstanceId": "46efddc0-081a-4abc-a235-4f61236851da",
+    "viewModelInstanceId": "090daae3-3785-4248-a3a7-74dc18bdc4ba",
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "collapseDirection": "left",
+                "collapsible": true,
+                "resizable": true,
+                "store": [
+                    "{ReptileStore}"
+                ],
+                "width": 520
+            },
+            "configAlternates": {
+                "store": "binding",
+                "collapseDirection": "string",
+                "collapsible": "boolean",
+                "resizable": "boolean",
+                "width": "auto"
+            },
+            "name": "MyGridPanel2",
+            "designerId": "c3431e9b-a268-49ed-a587-dd58d324863a",
+            "cn": [
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "serial",
+                        "text": "Serial"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyColumn4",
+                    "designerId": "8e7a8ae7-b30b-4239-a776-7f6ee3bde4ce"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "type",
+                        "text": "Type",
+                        "width": 134
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyColumn5",
+                    "designerId": "fdfa12b0-aaef-4783-a20d-2e1ac9877e92"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "sex",
+                        "text": "Sex",
+                        "width": 59
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyColumn6",
+                    "designerId": "2bca3197-3386-454f-9424-e2313a84fbaa",
+                    "cn": [
+                        {
+                            "type": "fixedfunction",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|params": [
+                                    "value",
+                                    "metaData",
+                                    "record",
+                                    "rowIndex",
+                                    "colIndex",
+                                    "store",
+                                    "view"
+                                ],
+                                "fn": "renderer",
+                                "implHandler": [
+                                    "if(value === \"Male\") {",
+                                    "\treturn \"<img src='/inc/img/silk_icons/male.png'>\";",
+                                    "} else {",
+                                    "\treturn \"<img src='/inc/img/silk_icons/female.png'>\";",
+                                    "}"
+                                ]
+                            },
+                            "configAlternates": {
+                                "designer|params": "typedarray",
+                                "fn": "string",
+                                "implHandler": "code"
+                            },
+                            "name": "renderer",
+                            "designerId": "84c59238-d1ec-44ea-8afe-ba50a6cf935e"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.grid.column.Date",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "receiveDate",
+                        "text": "Receive Date",
+                        "width": 119
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyDateColumn3",
+                    "designerId": "7c43d096-f367-4f71-9a03-671eb80ad6a0"
+                },
+                {
+                    "type": "Ext.grid.column.Date",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "sellDate",
+                        "text": "Sell Date"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyDateColumn4",
+                    "designerId": "134b5363-5a1e-4eda-8403-9d5fb4536ef6"
+                },
+                {
+                    "type": "Ext.view.Table",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "enableTextSelection": true
+                    },
+                    "configAlternates": {
+                        "enableTextSelection": "boolean"
+                    },
+                    "name": "MyTable2",
+                    "designerId": "afb4af26-aafe-46de-b7d0-0767aa4b0beb"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onGridpanelSelectionChange",
+                        "implHandler": [
+                            "if(!selected || selected.length !== 1) {",
+                            "\treturn;",
+                            "}",
+                            "",
+                            "selected = selected[0];",
+                            "",
+                            "this.queryById('reptileForm').readPet(selected.data.reptileId);"
+                        ],
+                        "name": "selectionchange",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onGridpanelSelectionChange",
+                    "designerId": "efaa8b4a-f194-45de-8afc-f876b5a0a162"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "flex": 1,
+                "itemId": "reptileForm"
+            },
+            "configAlternates": {
+                "flex": "number",
+                "itemId": "string"
+            },
+            "name": "petmaster1",
+            "designerId": "964ccead-d46a-474f-95d5-8437d10e9718",
+            "masterInstanceId": "d38c2cf0-9e53-498a-8521-da773f47156a",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "panel"
+                        ],
+                        "fn": "onPanelReptileChangeD",
+                        "implHandler": [
+                            "this.readReptiles();"
+                        ],
+                        "name": "reptilechanged",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "designer|params": "typedarray",
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onPanelReptileChangeD",
+                    "designerId": "0bd55366-0e46-432d-ae73-71a103ba145b"
+                }
+            ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "readReptiles",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/PetMaster/readReptiles',",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore('ReptileStore').loadData(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readReptiles",
+            "designerId": "3e054f2e-0841-4614-890c-94e493e76585"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.readReptiles();"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "a6486503-a3a3-4214-84c2-b8e5b444cefa"
+        }
+    ]
+}

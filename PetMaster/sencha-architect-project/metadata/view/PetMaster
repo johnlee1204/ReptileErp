@@ -13,8 +13,7 @@
         "layout": "vbox",
         "mixins": [
             "['DocForm']"
-        ],
-        "title": "Reptile Database"
+        ]
     },
     "configAlternates": {
         "designer|userAlias": "string",
@@ -1318,7 +1317,7 @@
                         "itemId": "string",
                         "title": "string"
                     },
-                    "name": "ReptileHistory",
+                    "name": "reptilehistory",
                     "designerId": "520e7bff-8139-43f6-ad2c-7a3bebc8811c",
                     "masterInstanceId": "4a4a2827-01e6-4649-816e-93d0e9d0bd5d",
                     "cn": [
@@ -1388,7 +1387,7 @@
                     "",
                     "//Main Viewport",
                     "this.fileDropper = new FileDropper({",
-                    "\tviewport: component.ownerCt,",
+                    "\tviewport: component.ownerCt.ownerCt,",
                     "\tuploadUrl:'/PetMaster/uploadAttachment',",
                     "\tlisteners:listeners,",
                     "\tallowedExtensions:['png', 'jpg', 'jpeg'],",
@@ -1711,6 +1710,7 @@
                     "\tjsonData:this.docFormGetAllFieldValues(),",
                     "\tsuccess:function(reply) {",
                     "\t\tthis.readPet(reply.data);",
+                    "\t\tthis.fireEvent('reptilechanged');",
                     "\t},",
                     "\tscope:this,",
                     "\tmask:this",
@@ -1743,6 +1743,7 @@
                     "\tjsonData:jsonData,",
                     "\tsuccess:function(reply) {",
                     "\t\tthis.readPet(this.petId);",
+                    "\t\tthis.fireEvent('reptilechanged');",
                     "\t},",
                     "\tscope:this,",
                     "\tmask:this",
@@ -1774,6 +1775,7 @@
                     "\t\tthis.petId = null;",
                     "\t\tthis.setSexIcon(\"\");",
                     "\t\tthis.docFormReset();",
+                    "\t\tthis.fireEvent('reptilechanged');",
                     "\t},",
                     "\tscope:this,",
                     "\tmask:this",

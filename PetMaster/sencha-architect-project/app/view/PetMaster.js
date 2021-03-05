@@ -39,7 +39,6 @@ Ext.define('PetMaster.view.PetMaster', {
 		type: 'petmaster'
 	},
 	frame: true,
-	title: 'Reptile Database',
 	defaultListenerScope: true,
 
 	layout: {
@@ -548,7 +547,7 @@ Ext.define('PetMaster.view.PetMaster', {
 
 		//Main Viewport
 		this.fileDropper = new FileDropper({
-			viewport: component.ownerCt,
+			viewport: component.ownerCt.ownerCt,
 			uploadUrl:'/PetMaster/uploadAttachment',
 			listeners:listeners,
 			allowedExtensions:['png', 'jpg', 'jpeg'],
@@ -687,6 +686,7 @@ Ext.define('PetMaster.view.PetMaster', {
 			jsonData:this.docFormGetAllFieldValues(),
 			success:function(reply) {
 				this.readPet(reply.data);
+				this.fireEvent('reptilechanged');
 			},
 			scope:this,
 			mask:this
@@ -702,6 +702,7 @@ Ext.define('PetMaster.view.PetMaster', {
 			jsonData:jsonData,
 			success:function(reply) {
 				this.readPet(this.petId);
+				this.fireEvent('reptilechanged');
 			},
 			scope:this,
 			mask:this
@@ -716,6 +717,7 @@ Ext.define('PetMaster.view.PetMaster', {
 				this.petId = null;
 				this.setSexIcon("");
 				this.docFormReset();
+				this.fireEvent('reptilechanged');
 			},
 			scope:this,
 			mask:this

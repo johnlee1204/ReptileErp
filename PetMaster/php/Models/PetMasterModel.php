@@ -7,6 +7,21 @@ use PetMaster\Tables\PetMasterLog;
 use Schedule\Models\ScheduleModel;
 
 class PetMasterModel extends AgileModel {
+
+	static function readReptiles() {
+		return self::$database->fetch_all_row("
+			SELECT
+				petId,
+				serial,
+				type,
+				sex,
+				receiveDate,
+				sellDate
+			FROM Pet
+			ORDER BY receiveDate DESC
+		");
+	}
+
 	static function readPet($petId) {
 
 		return self::$database->fetch_assoc("

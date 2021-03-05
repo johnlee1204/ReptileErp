@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="a9e42020-6ace-484e-aefc-d9aa76786a6c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/MyViewport.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/MyViewport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/PetMaster.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/PetMaster.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/Models/PetMasterModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/Models/PetMasterModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/php/PetMaster.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/PetMaster.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/.architect" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/.architect" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/PetMaster.xds" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/PetMaster.xds" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/app/view/MyViewport.js" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/app/view/MyViewport.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/app/view/PetMaster.js" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/app/view/PetMaster.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/Application" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/Application" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/Library" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/Library" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/css_w1x6kd2p" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/resource/css_w1x6kd2p" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/MyViewport" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/MyViewport" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/PetMaster" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/PetMaster" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/PetSearch" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/PetSearch" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/PetSearchViewModel" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/PetSearchViewModel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/ReptileHistory" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/ReptileHistory" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/ReptileHistoryViewController" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/ReptileHistoryViewController" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/ReptileHistoryViewModel" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/ReptileHistoryViewModel" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1pLiStEy9qpE1AW9VmVfXQmYE1i" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a9e42020-6ace-484e-aefc-d9aa76786a6c" name="Default Changelist" comment="" />
+      <created>1614968774058</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1614968774058</updated>
+      <workItem from="1614968775192" duration="1032000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -7,13 +7,14 @@
     "codeClass": null,
     "userConfig": {
         "name": "PetMaster",
-        "title": "Shwift Reptiles Database",
+        "title": "Reptile Database",
         "views": [
             "MyViewport",
             "PetMaster",
             "PetSearch",
             "HabitatData",
-            "ReptileHistory"
+            "ReptileHistory",
+            "Reptiles"
         ]
     },
     "configAlternates": {

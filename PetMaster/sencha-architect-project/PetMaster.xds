@@ -7,7 +7,7 @@
             "frameworkVersion": ""
         },
         "urlPrefixTemplate": "http://dev.local/",
-        "exportPath": "C:/Users/johnm/Desktop/Websites/LeeSheet/PetMaster",
+        "exportPath": "C:/Users/jlee/Desktop/Websites/LeeSheet/PetMaster",
         "buildShouldOverwriteIndex": true,
         "generateArchitectVersion": false,
         "spacesToIndent": "tab",
@@ -25,7 +25,8 @@
         },
         "sdkPath": "",
         "urlPrefix": "http://dev.local/",
-        "displayfield-ExtBox1-1125-inputEl": "a new version of the framework is available"
+        "displayfield-ExtBox1-1125-inputEl": "a new version of the framework is available",
+        "displayfield-ExtBox1-1123-inputEl": "a new version of the framework is available"
     },
     "xdsVersion": "4.2.9",
     "xdsBuild": 443,
@@ -48,13 +49,16 @@
             "29f38074-1ab1-4b0f-89d5-448731dc6375",
             "4a4a2827-01e6-4649-816e-93d0e9d0bd5d",
             "7537e7d7-c243-4b53-878d-a38c78122bf9",
-            "d3f852b6-5d0f-4c8a-b6e3-b40e4565d73f"
+            "d3f852b6-5d0f-4c8a-b6e3-b40e4565d73f",
+            "540cd583-f3ea-47cd-83ec-141aa2c69d6f",
+            "090daae3-3785-4248-a3a7-74dc18bdc4ba",
+            "46efddc0-081a-4abc-a235-4f61236851da"
         ],
         "store": [],
         "controller": [],
         "model": [],
         "resource": [
-            "35938ee7-75e8-487e-8b4c-28e01ab13284",
+            "c15c067d-659a-40cc-8150-856bd37450b7",
             "173a740e-293e-4e00-b40c-9a50fb2577d4",
             "5ba3958c-da75-475c-be62-0204422d23cf",
             "e9dfff16-f6c8-498c-ac8a-f008ed4717e3",

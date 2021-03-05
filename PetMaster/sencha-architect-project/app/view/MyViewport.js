@@ -19,7 +19,7 @@ Ext.define('PetMaster.view.MyViewport', {
 
 	requires: [
 		'PetMaster.view.MyViewportViewModel',
-		'PetMaster.view.PetMaster',
+		'PetMaster.view.Reptiles',
 		'Ext.toolbar.Toolbar',
 		'Ext.panel.Panel'
 	],
@@ -45,7 +45,7 @@ Ext.define('PetMaster.view.MyViewport', {
 			layout: 'fit',
 			items: [
 				{
-					xtype: 'petmaster'
+					xtype: 'reptiles'
 				}
 			]
 		}

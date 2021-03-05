@@ -25,10 +25,11 @@ Ext.application({
 		'PetMaster',
 		'PetSearch',
 		'HabitatData',
-		'ReptileHistory'
+		'ReptileHistory',
+		'Reptiles'
 	],
 	name: 'PetMaster',
-	title: 'Shwift Reptiles Database',
+	title: 'Reptile Database',
 
 	launch: function() {
 		Ext.create('PetMaster.view.MyViewport');

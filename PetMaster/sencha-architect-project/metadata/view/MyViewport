@@ -77,9 +77,9 @@
                         "type": "array"
                     },
                     "codeClass": null,
-                    "name": "petmaster",
-                    "designerId": "38b67402-0ac9-4d82-ae03-004462aad200",
-                    "masterInstanceId": "d38c2cf0-9e53-498a-8521-da773f47156a"
+                    "name": "reptiles",
+                    "designerId": "7f9d2815-456a-491c-a542-b299b97b8d8f",
+                    "masterInstanceId": "540cd583-f3ea-47cd-83ec-141aa2c69d6f"
                 }
             ]
         }
