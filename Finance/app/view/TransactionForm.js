@@ -23,8 +23,8 @@ Ext.define('Finance.view.TransactionForm', {
 	requires: [
 		'Finance.view.TransactionFormViewModel',
 		'Ext.toolbar.Toolbar',
-		'Ext.form.field.Date',
 		'Ext.form.field.ComboBox',
+		'Ext.form.field.Date',
 		'Ext.form.field.TextArea'
 	],
 
@@ -43,6 +43,19 @@ Ext.define('Finance.view.TransactionForm', {
 		}
 	],
 	items: [
+		{
+			xtype: 'combobox',
+			itemId: 'type',
+			fieldLabel: 'Type',
+			value: 'Expense',
+			displayField: 'type',
+			forceSelection: true,
+			queryMode: 'local',
+			valueField: 'type',
+			bind: {
+				store: '{TypeStore}'
+			}
+		},
 		{
 			xtype: 'textfield',
 			formatCurrency: true,
@@ -63,6 +76,7 @@ Ext.define('Finance.view.TransactionForm', {
 			itemId: 'category',
 			fieldLabel: 'Category',
 			displayField: 'category',
+			forceSelection: true,
 			queryMode: 'local',
 			valueField: 'category',
 			bind: {

@@ -16,7 +16,8 @@
             "GroupPermissionsStore"
         ],
         "views": [
-            "GroupManagerPanel"
+            "GroupManagerPanel",
+            "MyViewport"
         ]
     },
     "configAlternates": {

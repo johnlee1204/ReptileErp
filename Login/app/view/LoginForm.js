@@ -30,6 +30,7 @@ Ext.define('Login.view.LoginForm', {
 	border: false,
 	margin: 5,
 	width: 250,
+	bodyPadding: 10,
 	bodyStyle: {
 		background: 'none'
 	},

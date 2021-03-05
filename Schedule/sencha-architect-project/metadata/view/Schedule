@@ -384,11 +384,13 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "dataIndex": "employeeNumber",
-                                        "text": "Employee No"
+                                        "text": "Employee No",
+                                        "width": 127
                                     },
                                     "configAlternates": {
                                         "dataIndex": "datafield",
-                                        "text": "string"
+                                        "text": "string",
+                                        "width": "auto"
                                     },
                                     "name": "MyColumn",
                                     "designerId": "d1ce4190-570e-4e4e-b63e-75412616f4a4"
@@ -459,12 +461,14 @@
                                     "userConfig": {
                                         "dataIndex": "currentClockIn",
                                         "format": "h:ia",
-                                        "text": "Current Clock In"
+                                        "text": "Current Clock In",
+                                        "width": 132
                                     },
                                     "configAlternates": {
                                         "dataIndex": "datafield",
                                         "text": "string",
-                                        "format": "string"
+                                        "format": "string",
+                                        "width": "auto"
                                     },
                                     "name": "MyDateColumn",
                                     "designerId": "bb621db8-90ec-42da-ae9b-fa95feb73f5f"
@@ -621,7 +625,7 @@
                                                 "dataIndex": "startTime",
                                                 "format": "F j, Y g:i a",
                                                 "text": "Start Time",
-                                                "width": 160
+                                                "width": 225
                                             },
                                             "configAlternates": {
                                                 "dataIndex": "datafield",
@@ -643,7 +647,7 @@
                                                 "dataIndex": "endTime",
                                                 "format": "F j, Y g:i a",
                                                 "text": "End Time",
-                                                "width": 160
+                                                "width": 228
                                             },
                                             "configAlternates": {
                                                 "dataIndex": "datafield",
@@ -663,11 +667,13 @@
                                             "codeClass": null,
                                             "userConfig": {
                                                 "dataIndex": "hoursWorked",
-                                                "text": "Hours Worked"
+                                                "text": "Hours Worked",
+                                                "width": 126
                                             },
                                             "configAlternates": {
                                                 "dataIndex": "datafield",
-                                                "text": "string"
+                                                "text": "string",
+                                                "width": "auto"
                                             },
                                             "name": "MyColumn4",
                                             "designerId": "9ea88a1e-18f1-49b4-8f0c-f938b6b874be"

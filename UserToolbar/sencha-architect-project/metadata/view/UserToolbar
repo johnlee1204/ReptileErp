@@ -21,6 +21,7 @@
     "name": "MyToolbar",
     "designerId": "c18ea7b7-5954-46cf-9c27-0d435d2f2356",
     "viewControllerInstanceId": "7e1bedf2-012c-4ec2-8141-2c2e326d873b",
+    "viewModelInstanceId": "fe5a7761-cbe4-4b32-ae5a-13326cd9fde0",
     "cn": [
         {
             "type": "Ext.container.Container",

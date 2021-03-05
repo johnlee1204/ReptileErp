@@ -23,7 +23,7 @@ Ext.define('PetMaster.view.PetMaster', {
 	requires: [
 		'PetMaster.view.PetMasterViewModel',
 		'PetMaster.view.HabitatData',
-		'PetMaster.view.PetLog',
+		'PetMaster.view.ReptileHistory',
 		'Ext.toolbar.Toolbar',
 		'Ext.form.field.ComboBox',
 		'Ext.tab.Panel',
@@ -39,7 +39,7 @@ Ext.define('PetMaster.view.PetMaster', {
 		type: 'petmaster'
 	},
 	frame: true,
-	title: 'Shwift Reptiles Database',
+	title: 'Reptile Database',
 	defaultListenerScope: true,
 
 	layout: {
@@ -111,6 +111,7 @@ Ext.define('PetMaster.view.PetMaster', {
 			bodyStyle: 'background:none',
 			activeTab: 0,
 			deferredRender: false,
+			plain: true,
 			items: [
 				{
 					xtype: 'panel',
@@ -402,9 +403,8 @@ Ext.define('PetMaster.view.PetMaster', {
 					}
 				},
 				{
-					xtype: 'petlog',
-					itemId: 'petLog',
-					title: 'Reptile Log'
+					xtype: 'reptilehistory',
+					itemId: 'reptileHistory'
 				}
 			]
 		}
@@ -648,7 +648,7 @@ Ext.define('PetMaster.view.PetMaster', {
 
 				this.readPetAttachments();
 
-				this.queryById('petLog').filterPet(petId);
+				this.queryById('reptileHistory').filterPet(petId);
 
 				this.docFormLoadFormData(reply);
 			},

@@ -8,7 +8,7 @@
     "userConfig": {
         "basePath": "/js-lib/ext-7.3-latest/build/",
         "designer|userClassName": "Library",
-        "theme": "classic"
+        "theme": "neptune"
     },
     "configAlternates": {
         "basePath": "uri",

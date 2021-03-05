@@ -6,7 +6,7 @@
     },
     "codeClass": null,
     "userConfig": {
-        "bodyPadding": null,
+        "bodyPadding": 10,
         "bodyStyle": [
             "{background:'none'}"
         ],

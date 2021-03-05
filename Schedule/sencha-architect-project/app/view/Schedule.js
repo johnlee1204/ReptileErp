@@ -117,6 +117,7 @@ Ext.define('Schedule.view.Schedule', {
 							columns: [
 								{
 									xtype: 'gridcolumn',
+									width: 127,
 									dataIndex: 'employeeNumber',
 									text: 'Employee No'
 								},
@@ -138,6 +139,7 @@ Ext.define('Schedule.view.Schedule', {
 								},
 								{
 									xtype: 'datecolumn',
+									width: 132,
 									dataIndex: 'currentClockIn',
 									text: 'Current Clock In',
 									format: 'h:ia'
@@ -181,20 +183,21 @@ Ext.define('Schedule.view.Schedule', {
 									columns: [
 										{
 											xtype: 'datecolumn',
-											width: 160,
+											width: 225,
 											dataIndex: 'startTime',
 											text: 'Start Time',
 											format: 'F j, Y g:i a'
 										},
 										{
 											xtype: 'datecolumn',
-											width: 160,
+											width: 228,
 											dataIndex: 'endTime',
 											text: 'End Time',
 											format: 'F j, Y g:i a'
 										},
 										{
 											xtype: 'gridcolumn',
+											width: 126,
 											dataIndex: 'hoursWorked',
 											text: 'Hours Worked'
 										}

@@ -47,7 +47,7 @@
         "controller": [],
         "model": [],
         "resource": [
-            "5e04ba25-ba51-41d1-bb65-7ec52d6800a1",
+            "2219134a-b957-4f14-84d7-b3dfd74dff34",
             "173a740e-293e-4e00-b40c-9a50fb2577d4",
             "5ba3958c-da75-475c-be62-0204422d23cf",
             "e9dfff16-f6c8-498c-ac8a-f008ed4717e3",
@@ -58,7 +58,8 @@
             "1dbd3c0d-5d1c-4cd8-86d0-2cbe0fd92178",
             "40e1fc54-dc2c-477a-9667-8688a4e3389a",
             "6d3863bd-00b5-4ae1-a676-10327db4a8d1",
-            "d94af485-d9b9-41ab-b418-64b8a3917c66"
+            "d94af485-d9b9-41ab-b418-64b8a3917c66",
+            "e8e88106-1ca3-4b6e-b52b-666034ca0ce9"
         ],
         "app": [
             "application"

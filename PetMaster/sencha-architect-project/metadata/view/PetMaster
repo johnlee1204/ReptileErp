@@ -14,7 +14,7 @@
         "mixins": [
             "['DocForm']"
         ],
-        "title": "Shwift Reptiles Database"
+        "title": "Reptile Database"
     },
     "configAlternates": {
         "designer|userAlias": "string",
@@ -255,13 +255,15 @@
                 "activeTab": 0,
                 "bodyStyle": "background:none",
                 "deferredRender": false,
-                "flex": 1
+                "flex": 1,
+                "plain": true
             },
             "configAlternates": {
                 "activeTab": "auto",
                 "bodyStyle": "string",
                 "flex": "number",
-                "deferredRender": "boolean"
+                "deferredRender": "boolean",
+                "plain": "boolean"
             },
             "name": "MyTabPanel",
             "designerId": "efa01163-c179-4739-b157-a92ffa33d744",
@@ -1310,14 +1312,13 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "itemId": "petLog",
-                        "title": "Reptile Log"
+                        "itemId": "reptileHistory"
                     },
                     "configAlternates": {
                         "itemId": "string",
                         "title": "string"
                     },
-                    "name": "petlog",
+                    "name": "ReptileHistory",
                     "designerId": "520e7bff-8139-43f6-ad2c-7a3bebc8811c",
                     "masterInstanceId": "4a4a2827-01e6-4649-816e-93d0e9d0bd5d",
                     "cn": [
@@ -1617,8 +1618,8 @@
                     "\t\tthis.fileDropper.setUploadUrl(url);",
                     "",
                     "\t\tthis.readPetAttachments();",
-                    "\t\t",
-                    "\t\tthis.queryById('petLog').filterPet(petId);",
+                    "",
+                    "\t\tthis.queryById('reptileHistory').filterPet(petId);",
                     "",
                     "\t\tthis.docFormLoadFormData(reply);",
                     "\t},",

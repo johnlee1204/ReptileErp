@@ -40,11 +40,12 @@ class FinanceModel extends AgileModel {
 	static function readTransaction($ledgerId) {
 		$transaction = self::$database->fetch_assoc("
 			SELECT
-				amount,
+				ABS(amount) amount,
 				transactionDate,
 				employeeId,
 				notes,
-				category
+				category,
+				CASE WHEN amount < 0 THEN 'Expense' ELSE 'Income' END type
 			FROM Ledger
 			WHERE
 				ledgerId = ?
@@ -57,6 +58,10 @@ class FinanceModel extends AgileModel {
 
 	static function createTransaction($inputs) {
 		$userInformation = self::$agileApp->SessionManager->getUserDataFromSession();
+		$inputs['amount'] = abs($inputs['amount']);
+		if($inputs['type'] === 'Expense') {
+			$inputs['amount'] *= -1;
+		}
 
 		self::$database->insert(
 			'Ledger',
@@ -75,6 +80,12 @@ class FinanceModel extends AgileModel {
 	}
 
 	static function updateTransaction($inputs) {
+
+		$inputs['amount'] = abs($inputs['amount']);
+		if($inputs['type'] === 'Expense') {
+			$inputs['amount'] *= -1;
+		}
+
 		self::$database->update(
 			'Ledger',
 			[

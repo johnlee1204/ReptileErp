@@ -7,14 +7,13 @@
     "codeClass": null,
     "userConfig": {
         "container|align": "stretch",
-        "designer|initialView": true,
         "designer|userAlias": "groupmanagerpanel",
         "designer|userClassName": "GroupManagerPanel",
         "height": 407,
         "itemId": null,
         "layout": "hbox",
-        "title": "",
-        "width": 782
+        "title": "Groups",
+        "width": 839
     },
     "configAlternates": {
         "scrollable": "boolean",
@@ -430,7 +429,7 @@
                 "layout": "fit",
                 "layout|flex": null,
                 "title": "",
-                "width": 422
+                "width": 500
             },
             "configAlternates": {
                 "scrollable": "boolean",
@@ -883,14 +882,15 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "dataIndex": "appClass",
-                                        "flex": 1,
-                                        "text": "App Name"
+                                        "text": "App Name",
+                                        "width": 173
                                     },
                                     "configAlternates": {
                                         "scrollable": "boolean",
                                         "dataIndex": "datafield",
                                         "flex": "number",
-                                        "text": "string"
+                                        "text": "string",
+                                        "width": "auto"
                                     },
                                     "name": "MyColumn1",
                                     "designerId": "3118fce6-5b6a-4a0a-9695-5464b075e5bf"
@@ -906,7 +906,7 @@
                                         "dataIndex": "permissionCreate",
                                         "defaultWidth": null,
                                         "text": "Create",
-                                        "width": 50
+                                        "width": 76
                                     },
                                     "configAlternates": {
                                         "scrollable": "boolean",
@@ -928,7 +928,7 @@
                                     "userConfig": {
                                         "dataIndex": "permissionRead",
                                         "text": "Read",
-                                        "width": 50
+                                        "width": 75
                                     },
                                     "configAlternates": {
                                         "scrollable": "boolean",
@@ -949,7 +949,7 @@
                                     "userConfig": {
                                         "dataIndex": "permissionUpdate",
                                         "text": "Update",
-                                        "width": 50
+                                        "width": 76
                                     },
                                     "configAlternates": {
                                         "scrollable": "boolean",
@@ -970,7 +970,7 @@
                                     "userConfig": {
                                         "dataIndex": "permissionDelete",
                                         "text": "Delete",
-                                        "width": 50
+                                        "width": 68
                                     },
                                     "configAlternates": {
                                         "scrollable": "boolean",

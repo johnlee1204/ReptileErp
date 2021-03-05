@@ -65,7 +65,7 @@
                     "userConfig": {
                         "dataIndex": "displayOrder",
                         "text": "Order",
-                        "width": 55
+                        "width": 79
                     },
                     "configAlternates": {
                         "dataIndex": "datafield",
@@ -85,7 +85,7 @@
                     "userConfig": {
                         "dataIndex": "selection",
                         "text": "Selection",
-                        "width": 635
+                        "width": 608
                     },
                     "configAlternates": {
                         "dataIndex": "datafield",

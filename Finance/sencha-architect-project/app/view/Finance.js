@@ -78,8 +78,8 @@ Ext.define('Finance.view.Finance', {
 						},
 						{
 							xtype: 'datecolumn',
-							dataIndex: 'date',
 							width: 129,
+							dataIndex: 'date',
 							text: 'Date',
 							format: 'F j, Y'
 						},

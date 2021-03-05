@@ -48,6 +48,51 @@
                     "designerId": "16199001-d4cd-40b8-8277-8e4e683c69a5"
                 }
             ]
+        },
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "data": [
+                    "[",
+                    "\t{",
+                    "\t\t\"type\": \"Income\"",
+                    "\t},",
+                    "\t{",
+                    "\t\t\"type\": \"Expense\"",
+                    "\t}",
+                    "]"
+                ],
+                "name": "TypeStore"
+            },
+            "configAlternates": {
+                "name": "string",
+                "data": "array"
+            },
+            "name": "MyStore2",
+            "designerId": "b961c96f-1a3c-4653-953b-b0028ff30bf4",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "type"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField3",
+                    "designerId": "41f6944f-7074-4504-a9c9-27c70059e8c2"
+                }
+            ]
         }
     ]
 }

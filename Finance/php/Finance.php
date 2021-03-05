@@ -31,6 +31,7 @@ class Finance extends AgileBaseController {
 	function createTransaction() {
 		$inputs = Validation::validateJsonInput([
 			'amount' => 'numeric',
+			'type' => 'notBlank',
 			'transactionDate' => 'notBlank',
 			'notes',
 			'category'
@@ -42,6 +43,7 @@ class Finance extends AgileBaseController {
 	function updateTransaction() {
 		$inputs = Validation::validateJsonInput([
 			'ledgerId' => 'numeric',
+			'type' => 'notBlank',
 			'amount' => 'numeric',
 			'transactionDate' => 'notBlank',
 			'notes',

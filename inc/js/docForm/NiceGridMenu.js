@@ -119,8 +119,8 @@ Ext.define('NiceGridMenu',{
 				xtype:'textfield',
 				itemId:'niceGridMenuFilterField',
 				fieldLabel:'Search',
-				labelWidth:35,
-				width:120,
+				labelWidth:50,
+				width:135,
 				labelAlign:'right',
 				listeners:{
 					scope:this,

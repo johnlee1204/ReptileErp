@@ -43,10 +43,11 @@
         "controller": [],
         "model": [],
         "resource": [
-            "3d9c0422-e585-4481-8db4-06dfcf16c5fc",
+            "a4e8d74b-7193-408d-917c-89d4cc90dbbe",
             "f28aed9e-aba1-492d-af91-b5b66c08c5d6",
             "2bb67d18-6864-4f24-ac34-87c03b8df87a",
-            "35ef41e4-ad9b-4480-9c56-5ee565f29212"
+            "35ef41e4-ad9b-4480-9c56-5ee565f29212",
+            "150fa22c-eea8-45c2-a9cf-62afd6b04529"
         ],
         "app": [
             "application"

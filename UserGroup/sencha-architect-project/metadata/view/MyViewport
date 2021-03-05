@@ -1,0 +1,79 @@
+{
+    "type": "Ext.container.Viewport",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|initialView": true,
+        "designer|userAlias": "myviewport",
+        "designer|userClassName": "MyViewport",
+        "height": 250,
+        "layout": "vbox",
+        "width": 400
+    },
+    "configAlternates": {
+        "container|align": "string",
+        "designer|initialView": "boolean",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "layout": "string",
+        "width": "auto"
+    },
+    "name": "MyViewport",
+    "designerId": "54c44b38-50c1-4f03-ab30-45452c796a7f",
+    "viewControllerInstanceId": "0f5a5ec6-1f75-4e61-b6cc-7cf828124d35",
+    "viewModelInstanceId": "e907d4bf-39af-4f60-8d2d-98472748cef9",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|createAlias": "usertoolbar"
+            },
+            "configAlternates": {
+                "designer|createAlias": "string"
+            },
+            "name": "MyToolbar2",
+            "designerId": "1291a6a6-2df7-4658-8438-f0b4632ff329"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "flex": 1,
+                "padding": 20
+            },
+            "configAlternates": {
+                "flex": "number",
+                "padding": "auto"
+            },
+            "name": "MyContainer",
+            "designerId": "46670ff4-bb8a-4642-b7f0-35b975110c8d",
+            "cn": [
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "name": "groupmanagerpanel",
+                    "designerId": "5fc3bf41-0bd1-4cf0-84f7-a08fdb02ba5a",
+                    "masterInstanceId": "880911ba-063d-4c5e-b92e-3dce2c3d595d"
+                }
+            ]
+        }
+    ]
+}

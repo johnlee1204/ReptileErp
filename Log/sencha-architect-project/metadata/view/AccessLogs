@@ -45,13 +45,14 @@
             },
             "codeClass": null,
             "userConfig": {
+                "bodyPadding": 10,
                 "border": false,
                 "designer|uiInterfaceName": "default-framed",
                 "frame": true,
                 "frameHeader": false,
                 "itemId": "logSelectPanel",
                 "layout": "auto",
-                "maxHeight": 60,
+                "maxHeight": 90,
                 "ui": "default-framed"
             },
             "configAlternates": {
@@ -64,7 +65,8 @@
                 "itemId": "string",
                 "layout": "string",
                 "maxHeight": "number",
-                "ui": "string"
+                "ui": "string",
+                "bodyPadding": "auto"
             },
             "name": "MyForm",
             "designerId": "2b645a69-ea71-44e8-87e5-e2a8bd271348",
@@ -959,11 +961,13 @@
                             "codeClass": null,
                             "userConfig": {
                                 "dataIndex": "date",
-                                "text": "Date"
+                                "text": "Date",
+                                "width": 150
                             },
                             "configAlternates": {
                                 "dataIndex": "datafield",
-                                "text": "string"
+                                "text": "string",
+                                "width": "auto"
                             },
                             "name": "MyColumn20",
                             "designerId": "0cc97b14-8b82-45e2-88e7-8ee5c48241b0"

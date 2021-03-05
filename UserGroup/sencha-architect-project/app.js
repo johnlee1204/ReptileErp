@@ -29,12 +29,13 @@ Ext.application({
 		'GroupPermissionsStore'
 	],
 	views: [
-		'GroupManagerPanel'
+		'GroupManagerPanel',
+		'MyViewport'
 	],
 	name: 'GroupManager',
 
 	launch: function() {
-		Ext.create('GroupManager.view.GroupManagerPanel', {renderTo: Ext.getBody()});
+		Ext.create('GroupManager.view.MyViewport');
 	}
 
 });

@@ -29,6 +29,21 @@ Ext.define('Finance.view.TransactionFormViewModel', {
 					name: 'category'
 				}
 			]
+		},
+		TypeStore: {
+			data: [
+				{
+					type: 'Income'
+				},
+				{
+					type: 'Expense'
+				}
+			],
+			fields: [
+				{
+					name: 'type'
+				}
+			]
 		}
 	}
 

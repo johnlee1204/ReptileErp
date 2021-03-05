@@ -135,13 +135,15 @@
                     "codeClass": null,
                     "userConfig": {
                         "dataIndex": "hireDate",
-                        "format": "F n, Y",
-                        "text": "Hire Date"
+                        "format": "F j, Y",
+                        "text": "Hire Date",
+                        "width": 134
                     },
                     "configAlternates": {
                         "dataIndex": "datafield",
                         "text": "string",
-                        "format": "string"
+                        "format": "string",
+                        "width": "auto"
                     },
                     "name": "MyDateColumn",
                     "designerId": "54f7892a-542f-45c5-9c41-bb3164e6a5ff"
@@ -156,7 +158,7 @@
                     "userConfig": {
                         "dataIndex": "position",
                         "text": "Position",
-                        "width": 130
+                        "width": 145
                     },
                     "configAlternates": {
                         "dataIndex": "datafield",
@@ -175,9 +177,9 @@
                     "codeClass": null,
                     "userConfig": {
                         "dataIndex": "lastLogin",
-                        "format": "F n, Y h:ia",
+                        "format": "F j, Y h:ia",
                         "text": "Last Log In",
-                        "width": 150
+                        "width": 200
                     },
                     "configAlternates": {
                         "dataIndex": "datafield",
@@ -197,9 +199,9 @@
                     "codeClass": null,
                     "userConfig": {
                         "dataIndex": "lastActivity",
-                        "format": "F n, Y h:ia",
+                        "format": "F j, Y h:ia",
                         "text": "Last Activity",
-                        "width": 150
+                        "width": 200
                     },
                     "configAlternates": {
                         "dataIndex": "datafield",

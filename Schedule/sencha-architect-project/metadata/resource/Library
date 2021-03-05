@@ -12,7 +12,7 @@
         "libraryRequires": [
             "calendar"
         ],
-        "theme": "classic"
+        "theme": "neptune"
     },
     "configAlternates": {
         "basePath": "uri",

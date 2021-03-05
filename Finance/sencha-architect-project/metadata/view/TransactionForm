@@ -45,6 +45,38 @@
             "designerId": "ebee48c5-650a-4d37-b566-88170656fe87"
         },
         {
+            "type": "Ext.form.field.ComboBox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "displayField": "type",
+                "fieldLabel": "Type",
+                "forceSelection": true,
+                "itemId": "type",
+                "queryMode": "local",
+                "store": [
+                    "{TypeStore}"
+                ],
+                "value": "Expense",
+                "valueField": "type"
+            },
+            "configAlternates": {
+                "store": "binding",
+                "displayField": "datafield",
+                "fieldLabel": "string",
+                "itemId": "string",
+                "queryMode": "string",
+                "valueField": "datafield",
+                "value": "string",
+                "forceSelection": "boolean"
+            },
+            "name": "MyComboBox1",
+            "designerId": "cbc31f57-24e4-4714-9273-754000128527"
+        },
+        {
             "type": "Ext.form.field.Text",
             "reference": {
                 "name": "items",
@@ -129,6 +161,7 @@
             "userConfig": {
                 "displayField": "category",
                 "fieldLabel": "Category",
+                "forceSelection": true,
                 "itemId": "category",
                 "queryMode": "local",
                 "store": [
@@ -142,7 +175,8 @@
                 "fieldLabel": "string",
                 "itemId": "string",
                 "queryMode": "string",
-                "valueField": "datafield"
+                "valueField": "datafield",
+                "forceSelection": "boolean"
             },
             "name": "MyComboBox",
             "designerId": "437bd2c9-84ca-43fa-badb-0eca71a840ed",

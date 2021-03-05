@@ -1,17 +1,17 @@
 {
-    "type": "Ext.app.ViewController",
+    "type": "Ext.app.ViewModel",
     "reference": {
         "name": "items",
         "type": "array"
     },
     "codeClass": null,
     "userConfig": {
-        "designer|userAlias": "petlog",
-        "designer|userClassName": "PetLogViewController"
+        "designer|userAlias": "reptilehistory",
+        "designer|userClassName": "ReptileHistoryViewModel"
     },
     "configAlternates": {
         "designer|userAlias": "string",
         "designer|userClassName": "string"
     },
-    "designerId": "d3f852b6-5d0f-4c8a-b6e3-b40e4565d73f"
+    "designerId": "7537e7d7-c243-4b53-878d-a38c78122bf9"
 }

@@ -54,7 +54,6 @@
                 "flex": null,
                 "frame": true,
                 "frameHeader": false,
-                "height": 90,
                 "itemId": "exceptionSelectPanel",
                 "layout": "vbox",
                 "layout|flex": null,
@@ -87,6 +86,12 @@
                         "type": "array"
                     },
                     "codeClass": null,
+                    "userConfig": {
+                        "padding": 10
+                    },
+                    "configAlternates": {
+                        "padding": "auto"
+                    },
                     "name": "MyContainer26",
                     "designerId": "fd6f1a97-bbb1-431a-b97a-1c9d3a3fbf3c",
                     "cn": [
@@ -1094,9 +1099,9 @@
             "userConfig": {
                 "container|align": "stretch",
                 "container|padding": null,
+                "flex": 1,
                 "height": null,
                 "layout": "vbox",
-                "layout|flex": 1,
                 "margin": null,
                 "maxHeight": null
             },
@@ -1107,7 +1112,8 @@
                 "layout": "string",
                 "layout|flex": "number",
                 "margin": "auto",
-                "maxHeight": "number"
+                "maxHeight": "number",
+                "flex": "number"
             },
             "name": "MyContainer11",
             "designerId": "5645f067-2607-4048-9a5c-c2b7608f8e92",
@@ -1158,7 +1164,7 @@
                                 "dataIndex": "date",
                                 "itemId": "date",
                                 "text": "Date",
-                                "width": null
+                                "width": 150
                             },
                             "configAlternates": {
                                 "dataIndex": "datafield",
@@ -1290,7 +1296,7 @@
                                 "dataIndex": "httpType",
                                 "itemId": "httpType",
                                 "text": "HTTP Type",
-                                "width": 70
+                                "width": 93
                             },
                             "configAlternates": {
                                 "dataIndex": "datafield",
@@ -1416,7 +1422,7 @@
                                 "dataIndex": "errorLineNumber",
                                 "itemId": "lineNumber",
                                 "text": "Line Number",
-                                "width": 80
+                                "width": 104
                             },
                             "configAlternates": {
                                 "dataIndex": "datafield",
@@ -1484,7 +1490,7 @@
                                 "dataIndex": "errorType",
                                 "itemId": "type",
                                 "text": "Type",
-                                "width": 60
+                                "width": 90
                             },
                             "configAlternates": {
                                 "dataIndex": "datafield",
@@ -1505,12 +1511,14 @@
                             "userConfig": {
                                 "dataIndex": "errorExtraData",
                                 "itemId": "exceptionData",
-                                "text": "Exception Data"
+                                "text": "Exception Data",
+                                "width": 120
                             },
                             "configAlternates": {
                                 "dataIndex": "datafield",
                                 "text": "string",
-                                "itemId": "string"
+                                "itemId": "string",
+                                "width": "auto"
                             },
                             "name": "MyColumn25",
                             "designerId": "cdf8a5f9-4931-4ac9-9276-5b27366d9c1c"

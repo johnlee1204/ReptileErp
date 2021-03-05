@@ -29,6 +29,7 @@ Ext.define('Logout.view.LogoutPanel', {
 	border: false,
 	margin: 5,
 	width: 250,
+	bodyPadding: 10,
 	bodyStyle: {
 		background: 'none'
 	},

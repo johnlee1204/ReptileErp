@@ -49,13 +49,13 @@ Ext.define('DropDownSelectionEditor.view.DropDownSelectionEditor', {
 			columns: [
 				{
 					xtype: 'gridcolumn',
-					width: 55,
+					width: 79,
 					dataIndex: 'displayOrder',
 					text: 'Order'
 				},
 				{
 					xtype: 'gridcolumn',
-					width: 635,
+					width: 608,
 					dataIndex: 'selection',
 					text: 'Selection'
 				}

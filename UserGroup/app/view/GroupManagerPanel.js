@@ -35,8 +35,8 @@ Ext.define('GroupManager.view.GroupManagerPanel', {
 		type: 'groupmanagerpanel'
 	},
 	height: 407,
-	width: 782,
-	title: '',
+	width: 839,
+	title: 'Groups',
 	defaultListenerScope: true,
 
 	layout: {
@@ -97,7 +97,7 @@ Ext.define('GroupManager.view.GroupManagerPanel', {
 						xtype: 'panel',
 						border: false,
 						itemId: 'editPanel',
-						width: 422,
+						width: 500,
 						layout: 'fit',
 						title: '',
 						listeners: {
@@ -188,31 +188,31 @@ Ext.define('GroupManager.view.GroupManagerPanel', {
 										columns: [
 											{
 												xtype: 'gridcolumn',
-												flex: 1,
+												width: 173,
 												dataIndex: 'appClass',
 												text: 'App Name'
 											},
 											{
 												xtype: 'checkcolumn',
-												width: 50,
+												width: 76,
 												dataIndex: 'permissionCreate',
 												text: 'Create'
 											},
 											{
 												xtype: 'checkcolumn',
-												width: 50,
+												width: 75,
 												dataIndex: 'permissionRead',
 												text: 'Read'
 											},
 											{
 												xtype: 'checkcolumn',
-												width: 50,
+												width: 76,
 												dataIndex: 'permissionUpdate',
 												text: 'Update'
 											},
 											{
 												xtype: 'checkcolumn',
-												width: 50,
+												width: 68,
 												dataIndex: 'permissionDelete',
 												text: 'Delete'
 											}

@@ -28,11 +28,11 @@
         "displayfield-ExtBox1-1124-inputEl": "a new version of the framework is available",
         "displayfield-ExtBox1-1123-inputEl": "a new version of the framework is available"
     },
-    "xdsVersion": "4.2.5",
-    "xdsBuild": 420,
+    "xdsVersion": "4.2.9",
+    "xdsBuild": 443,
     "schemaVersion": 1,
     "upgradeVersion": 310000000001,
-    "framework": "ext66",
+    "framework": "ext73",
     "viewOrderMap": {
         "view": [
             "053ae044-67ec-46bf-9cce-184ee28719b6",
@@ -58,7 +58,7 @@
         "controller": [],
         "model": [],
         "resource": [
-            "0755823f-49b7-4079-9113-7a6075cda3a6",
+            "bd18979c-2e86-4b74-afd6-6de4dfe16872",
             "569abc86-f4db-4a4a-82f2-df820ebacd11",
             "579400b4-535b-4064-8c3c-b53b35f9184a",
             "6baa88a2-afba-44a6-b180-ec268e472de6",
@@ -66,7 +66,8 @@
             "7055dfba-4737-4db1-b85b-fd083b9738b3",
             "27edcf93-1b81-4818-8799-8ad2e676f42a",
             "3e7e11ad-08db-44e6-940a-e24d0f500f84",
-            "7b6e4a31-a3a8-473a-b5db-a97f4a067d87"
+            "7b6e4a31-a3a8-473a-b5db-a97f4a067d87",
+            "dd7c11c8-0bf3-47d7-84c7-37d228783cd0"
         ],
         "app": [
             "application"

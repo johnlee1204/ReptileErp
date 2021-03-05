@@ -11,10 +11,10 @@
         "closeAction": "hide",
         "designer|userAlias": "addeventform",
         "designer|userClassName": "AddEventForm",
-        "height": 228,
+        "height": 269,
         "layout": "vbox",
         "title": "Add Shift",
-        "width": 493
+        "width": 494
     },
     "configAlternates": {
         "bodyPadding": "auto",

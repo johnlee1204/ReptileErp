@@ -1,0 +1,7 @@
+.x-panel{
+	border: 1px solid #43A3EC;
+}
+
+.x-toolbar, .x-toolbar-default {
+	border-bottom: 1px solid #43A3EC !important;
+}

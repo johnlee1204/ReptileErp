@@ -7,10 +7,10 @@
     "codeClass": null,
     "userConfig": {
         "container|align": "stretch",
-        "designer|userAlias": "petlog",
-        "designer|userClassName": "PetLog",
+        "designer|userAlias": "reptilehistory",
+        "designer|userClassName": "ReptileHistory",
         "layout": "vbox",
-        "title": "Pet Log"
+        "title": "History"
     },
     "configAlternates": {
         "container|align": "string",

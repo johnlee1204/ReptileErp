@@ -28,8 +28,8 @@ Ext.define('Schedule.view.AddEventForm', {
 	viewModel: {
 		type: 'addeventform'
 	},
-	height: 228,
-	width: 493,
+	height: 269,
+	width: 494,
 	layout: 'vbox',
 	bodyPadding: 10,
 	bodyStyle: 'background:none',
