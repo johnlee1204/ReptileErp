@@ -2,6 +2,7 @@
 class AgileModel {
 	/* @var AgileApp */
 	public static $agileApp;
+	/* @var mysql_helper */
 	public static $database;
 	public static $databaseFwe;
 

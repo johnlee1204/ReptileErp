@@ -1,0 +1,245 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyStyle": "background:none",
+        "container|align": "stretch",
+        "designer|userAlias": "breeding",
+        "designer|userClassName": "Breeding",
+        "layout": "vbox",
+        "title": "Breeding"
+    },
+    "configAlternates": {
+        "bodyStyle": "string",
+        "container|align": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "layout": "string",
+        "title": "string"
+    },
+    "name": "MyPanel1",
+    "designerId": "24ec5268-577c-4fa3-aca1-b40e83ff1bcf",
+    "viewControllerInstanceId": "c5e7b8f5-a618-4080-8434-f78b131e567b",
+    "viewModelInstanceId": "4413da6a-2ca4-4a37-be59-ea219681e663",
+    "cn": [
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "padding": 10
+            },
+            "configAlternates": {
+                "padding": "auto"
+            },
+            "name": "MyContainer11",
+            "designerId": "653bdaaf-a2ac-4390-9acb-2062bda23496",
+            "cn": [
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "displayField": "serial",
+                        "docFormSkip": true,
+                        "fieldLabel": "Breed With",
+                        "forceSelection": true,
+                        "itemId": "breedWith",
+                        "queryMode": "local",
+                        "store": [
+                            "{BreedWithStore}"
+                        ],
+                        "valueField": "reptileId"
+                    },
+                    "configAlternates": {
+                        "store": "binding",
+                        "docFormSkip": "boolean",
+                        "displayField": "datafield",
+                        "fieldLabel": "string",
+                        "forceSelection": "boolean",
+                        "itemId": "string",
+                        "queryMode": "string",
+                        "valueField": "datafield"
+                    },
+                    "name": "MyComboBox5",
+                    "designerId": "94e615e0-4a3f-4a62-8ef5-057645564975",
+                    "customConfigs": [
+                        {
+                            "group": "(Custom Properties)",
+                            "name": "docFormSkip",
+                            "type": "string"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "icon": "/inc/img/silk_icons/add.png",
+                        "text": "Add"
+                    },
+                    "configAlternates": {
+                        "icon": "string",
+                        "text": "string"
+                    },
+                    "name": "MyButton2",
+                    "designerId": "6357daf8-819a-4066-b9f2-aa99c0e45659",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onButtonClick",
+                                "implHandler": [
+                                    "this.createBreedingPair();"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onButtonClick",
+                            "designerId": "70d37b7f-e0e8-4f83-b286-ee16d924dc3f"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": 1,
+                "store": [
+                    "{CurrentlyBreedingWithStore}"
+                ],
+                "title": "Currently Breeding With"
+            },
+            "configAlternates": {
+                "store": "binding",
+                "layout|flex": "number",
+                "title": "string"
+            },
+            "name": "MyGridPanel3",
+            "designerId": "44a2942e-243e-4d38-ad3e-4500c5e10fa6",
+            "cn": [
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "serial",
+                        "text": "Serial"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyColumn7",
+                    "designerId": "cda62c1e-5f2d-489f-bbe7-f6efdbd277e5"
+                },
+                {
+                    "type": "Ext.view.Table",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "name": "MyTable3",
+                    "designerId": "8039e8d1-5b27-4497-b342-60bd6bbb47bc"
+                }
+            ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "reptileId"
+                ],
+                "fn": "readBreedingData",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:\"/PetMaster/readBreedingData\",",
+                    "\tjsonData:{reptileId:reptileId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.reptileId = reptileId;",
+                    "\t\tthis.getViewModel().getStore('BreedWithStore').loadData(reply.breedWith);",
+                    "\t\tthis.getViewModel().getStore('CurrentlyBreedingWithStore').loadData(reply.currentlyBreedingWith);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readBreedingData",
+            "designerId": "8771abd9-1cd6-48f6-802b-af8c0fc47263"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "createBreedingPair",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:\"/PetMaster/createBreedingPair\",",
+                    "\tjsonData:{reptileId1:this.reptileId, reptileId2:this.queryById('breedWith').getValue()},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readBreedingData(this.reptileId);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "createBreedingPair",
+            "designerId": "d19907f2-5120-4881-9546-48d23bfa9153"
+        }
+    ]
+}

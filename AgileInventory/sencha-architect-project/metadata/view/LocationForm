@@ -133,6 +133,7 @@
                     "\turl:\"/AgileInventory/readLocationInitData\",",
                     "\tsuccess:function(reply) {",
                     "\t\tthis.getViewModel().getStore('FacilityStore').loadData(reply.facilities);",
+                    "\t\tthis.fireEvent('appdataloaded');",
                     "\t},",
                     "\tscope:this,",
                     "\tmask:this",

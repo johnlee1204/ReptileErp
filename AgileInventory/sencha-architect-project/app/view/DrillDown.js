@@ -20,6 +20,7 @@ Ext.define('AgileInventory.view.DrillDown', {
 	requires: [
 		'AgileInventory.view.DrillDownViewModel',
 		'Ext.grid.Panel',
+		'Ext.toolbar.Toolbar',
 		'Ext.view.Table',
 		'Ext.grid.column.Number'
 	],
@@ -47,11 +48,25 @@ Ext.define('AgileInventory.view.DrillDown', {
 				{
 					xtype: 'gridpanel',
 					flex: 1,
+					itemId: 'locationGrid',
 					title: 'Location',
 					bind: {
 						store: '{LocationStore}'
 					},
+					dockedItems: [
+						{
+							xtype: 'toolbar',
+							dock: 'top',
+							itemId: 'locationToolbar'
+						}
+					],
 					columns: [
+						{
+							xtype: 'gridcolumn',
+							width: 150,
+							dataIndex: 'facilityName',
+							text: 'Facility'
+						},
 						{
 							xtype: 'gridcolumn',
 							dataIndex: 'locationName',
@@ -74,10 +89,18 @@ Ext.define('AgileInventory.view.DrillDown', {
 				{
 					xtype: 'gridpanel',
 					flex: 1,
+					itemId: 'binGrid',
 					title: 'Bin',
 					bind: {
 						store: '{BinStore}'
 					},
+					dockedItems: [
+						{
+							xtype: 'toolbar',
+							dock: 'top',
+							itemId: 'binToolbar'
+						}
+					],
 					columns: [
 						{
 							xtype: 'gridcolumn',
@@ -101,10 +124,18 @@ Ext.define('AgileInventory.view.DrillDown', {
 				{
 					xtype: 'gridpanel',
 					flex: 1,
+					itemId: 'productGrid',
 					title: 'Products On Hand',
 					bind: {
 						store: '{OnHandStore}'
 					},
+					dockedItems: [
+						{
+							xtype: 'toolbar',
+							dock: 'top',
+							itemId: 'productToolbar'
+						}
+					],
 					columns: [
 						{
 							xtype: 'gridcolumn',
@@ -158,6 +189,57 @@ Ext.define('AgileInventory.view.DrillDown', {
 
 	onPanelAfterRender: function(component, eOpts) {
 		this.readLocations();
+		this.buildNiceGridMenus();
+	},
+
+	buildNiceGridMenus: function() {
+		Ext.create("NiceGridMenu", {
+			menuItems:[{text:"Edit Location", action:"editLocation", icon:"/inc/img/silk_icons/pencil.png", disabled:true}],
+			callbackHandler:function(action, data) {
+				switch(action) {
+					case 'editLocation':
+						AppWindowManager.appLink('location', {dataKey:data.locationId});
+						break;
+				}
+			},
+			doubleClick:'editLocation',
+			filterField:true,
+			grid:this.queryById('locationGrid'),
+			toolbar:this.queryById('locationToolbar'),
+			scope:this
+		});
+
+		Ext.create("NiceGridMenu", {
+			menuItems:[{text:"Edit Bin", action:"editBin", icon:"/inc/img/silk_icons/pencil.png", disabled:true}],
+			callbackHandler:function(action, data) {
+				switch(action) {
+					case 'editBin':
+						AppWindowManager.appLink('bin', {dataKey:data.binId});
+						break;
+				}
+			},
+			doubleClick:'editBin',
+			filterField:true,
+			grid:this.queryById('binGrid'),
+			toolbar:this.queryById('binToolbar'),
+			scope:this
+		});
+
+		Ext.create("NiceGridMenu", {
+			menuItems:[{text:"Edit Product", action:"editProduct", icon:"/inc/img/silk_icons/pencil.png", disabled:true}],
+			callbackHandler:function(action, data) {
+				switch(action) {
+					case 'editProduct':
+						AppWindowManager.appLink('product', {dataKey:data.productId});
+						break;
+				}
+			},
+			doubleClick:'editProduct',
+			filterField:true,
+			grid:this.queryById('productGrid'),
+			toolbar:this.queryById('productToolbar'),
+			scope:this
+		});
 	},
 
 	readLocations: function() {
@@ -179,8 +261,7 @@ Ext.define('AgileInventory.view.DrillDown', {
 				this.getViewModel().getStore('BinStore').loadData(reply.data);
 				this.readOnHandForLocation(locationId);
 			},
-			scope:this,
-			mask:this
+			scope:this
 		});
 	},
 
@@ -190,10 +271,9 @@ Ext.define('AgileInventory.view.DrillDown', {
 			jsonData:{binId:binId},
 			success:function(reply) {
 				this.getViewModel().getStore('OnHandStore').loadData(reply.data);
-				this.queryById('onHandBinColumn').hide();
+				//this.queryById('onHandBinColumn').hide();
 			},
-			scope:this,
-			mask:this
+			scope:this
 		});
 	},
 
@@ -205,8 +285,7 @@ Ext.define('AgileInventory.view.DrillDown', {
 				this.getViewModel().getStore('OnHandStore').loadData(reply.data);
 				this.queryById('onHandBinColumn').show();
 			},
-			scope:this,
-			mask:this
+			scope:this
 		});
 	}
 

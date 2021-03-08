@@ -33,6 +33,9 @@ Ext.define('AgileInventory.view.DrillDownViewModel', {
 				},
 				{
 					name: 'locationDescription'
+				},
+				{
+					name: 'facilityName'
 				}
 			]
 		},

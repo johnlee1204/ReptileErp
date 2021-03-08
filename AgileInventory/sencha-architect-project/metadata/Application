@@ -18,7 +18,9 @@
             "Products",
             "ProductForm",
             "Facilities",
-            "FacilityForm"
+            "FacilityForm",
+            "PurchaseOrders",
+            "PurchaseOrder"
         ]
     },
     "configAlternates": {

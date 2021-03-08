@@ -16,7 +16,9 @@ class PetMaster extends AgileBaseController {
 		'readPetAttachments' => 'read',
 		'readAttachment' => 'read',
 		'uploadAttachment' => 'update',
-		'deleteAttachment' => 'delete'
+		'deleteAttachment' => 'delete',
+		'readBreedingData' => 'read',
+		'createBreedingPair' => 'create'
 	];
 
 	static $allowedExtensions = [
@@ -234,6 +236,28 @@ class PetMaster extends AgileBaseController {
 		} else {
 			throw new AgileUserMessageException("Failed to Delete Attachment!");
 		}
+
+		$this->outputSuccess();
+	}
+
+	function readBreedingData() {
+		$input = Validation::validateJsonInput([
+			'reptileId' => 'numeric'
+		]);
+
+		$this->outputSuccess([
+			'breedWith' => PetMasterModel::readCanBreedWith($input['reptileId']),
+			'currentlyBreedingWith' => PetMasterModel::readCurrentlyBreedingWith($input['reptileId'])
+		]);
+	}
+
+	function createBreedingPair() {
+		$inputs = Validation::validateJsonInput([
+			'reptileId1' => 'numeric',
+			'reptileId2' => 'numeric'
+		]);
+
+		PetMasterModel::createBreedingPair($inputs['reptileId1'], $inputs['reptileId2']);
 
 		$this->outputSuccess();
 	}

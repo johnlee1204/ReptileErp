@@ -87,6 +87,16 @@ Ext.define('AgileInventory.view.ProductForm', {
 					items: [
 						{
 							xtype: 'container',
+							items: [
+								{
+									xtype: 'textfield',
+									itemId: 'sku',
+									fieldLabel: 'SKU'
+								}
+							]
+						},
+						{
+							xtype: 'container',
 							layout: {
 								type: 'hbox',
 								align: 'stretch'
@@ -598,8 +608,10 @@ Ext.define('AgileInventory.view.ProductForm', {
 							columns: [
 								{
 									xtype: 'datecolumn',
+									width: 150,
 									dataIndex: 'transactionDate',
-									text: 'Date'
+									text: 'Date',
+									format: 'M, j Y h:ia'
 								},
 								{
 									xtype: 'gridcolumn',
@@ -652,7 +664,8 @@ Ext.define('AgileInventory.view.ProductForm', {
 		}
 	],
 	listeners: {
-		afterrender: 'onPanelAfterRender'
+		afterrender: 'onPanelAfterRender',
+		docFormBeforeNew: 'onPanelDocFormBeforeNew'
 	},
 
 	onComboboxSelect: function(combo, record, eOpts) {
@@ -736,6 +749,22 @@ Ext.define('AgileInventory.view.ProductForm', {
 				viewModel.getStore('AdjustmentLocationStore').loadData(reply.data);
 				viewModel.getStore('TransferFromLocationStore').loadData(reply.data);
 				viewModel.getStore('TransferToLocationStore').loadData(reply.data);
+				this.fireEvent('appdataloaded');
+			},
+			scope:this,
+			mask:this
+		});
+	},
+
+	onPanelDocFormBeforeNew: function(panel) {
+		this.generateSku();
+	},
+
+	generateSku: function() {
+		AERP.Ajax.request({
+			url:"/AgileInventory/generateSku",
+			success:function(reply) {
+				this.queryById('sku').setValue(reply.data);
 			},
 			scope:this,
 			mask:this

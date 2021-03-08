@@ -55,6 +55,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "flex": 1,
+                        "itemId": "locationGrid",
                         "store": [
                             "{LocationStore}"
                         ],
@@ -63,11 +64,50 @@
                     "configAlternates": {
                         "store": "binding",
                         "flex": "number",
-                        "title": "string"
+                        "title": "string",
+                        "itemId": "string"
                     },
                     "name": "MyGridPanel",
                     "designerId": "bcc8abac-cacc-4f86-a7f0-55ab7cb15d16",
                     "cn": [
+                        {
+                            "type": "Ext.toolbar.Toolbar",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dock": "top",
+                                "itemId": "locationToolbar"
+                            },
+                            "configAlternates": {
+                                "dock": "string",
+                                "itemId": "string"
+                            },
+                            "name": "MyToolbar",
+                            "designerId": "4544d018-44d8-49ce-9ba6-20db1913008b"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "facilityName",
+                                "text": "Facility",
+                                "width": 150
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyColumn25",
+                            "designerId": "2917df9e-1046-43df-9815-539c1bfff904"
+                        },
                         {
                             "type": "Ext.grid.column.Column",
                             "reference": {
@@ -163,6 +203,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "flex": 1,
+                        "itemId": "binGrid",
                         "store": [
                             "{BinStore}"
                         ],
@@ -171,11 +212,30 @@
                     "configAlternates": {
                         "flex": "number",
                         "title": "string",
-                        "store": "binding"
+                        "store": "binding",
+                        "itemId": "string"
                     },
                     "name": "MyGridPanel1",
                     "designerId": "f8d0d1ca-f52d-44d7-a984-094d1317a27b",
                     "cn": [
+                        {
+                            "type": "Ext.toolbar.Toolbar",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dock": "top",
+                                "itemId": "binToolbar"
+                            },
+                            "configAlternates": {
+                                "dock": "string",
+                                "itemId": "string"
+                            },
+                            "name": "MyToolbar1",
+                            "designerId": "f58570e4-1281-4368-b616-4c53e5d3fcc2"
+                        },
                         {
                             "type": "Ext.grid.column.Column",
                             "reference": {
@@ -271,6 +331,7 @@
                     "codeClass": null,
                     "userConfig": {
                         "flex": 1,
+                        "itemId": "productGrid",
                         "store": [
                             "{OnHandStore}"
                         ],
@@ -279,11 +340,30 @@
                     "configAlternates": {
                         "flex": "number",
                         "title": "string",
-                        "store": "binding"
+                        "store": "binding",
+                        "itemId": "string"
                     },
                     "name": "MyGridPanel2",
                     "designerId": "1f082904-8c2b-43d5-b722-7c37918085d6",
                     "cn": [
+                        {
+                            "type": "Ext.toolbar.Toolbar",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dock": "top",
+                                "itemId": "productToolbar"
+                            },
+                            "configAlternates": {
+                                "dock": "string",
+                                "itemId": "string"
+                            },
+                            "name": "MyToolbar4",
+                            "designerId": "2b21ad60-2183-4edd-963b-bf74cee692ea"
+                        },
                         {
                             "type": "Ext.grid.column.Column",
                             "reference": {
@@ -374,7 +454,8 @@
             "userConfig": {
                 "fn": "onPanelAfterRender",
                 "implHandler": [
-                    "this.readLocations();"
+                    "this.readLocations();",
+                    "this.buildNiceGridMenus();"
                 ],
                 "name": "afterrender",
                 "scope": "me"
@@ -387,6 +468,72 @@
             },
             "name": "onPanelAfterRender",
             "designerId": "4ea7d0b5-a3f9-48f1-a512-e93834e62570"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "buildNiceGridMenus",
+                "implHandler": [
+                    "Ext.create(\"NiceGridMenu\", {",
+                    "\tmenuItems:[{text:\"Edit Location\", action:\"editLocation\", icon:\"/inc/img/silk_icons/pencil.png\", disabled:true}],",
+                    "\tcallbackHandler:function(action, data) {",
+                    "\t\tswitch(action) {",
+                    "\t\t\tcase 'editLocation':",
+                    "\t\t\t\tAppWindowManager.appLink('location', {dataKey:data.locationId});",
+                    "\t\t\t\tbreak;",
+                    "\t\t}",
+                    "\t},",
+                    "\tdoubleClick:'editLocation',",
+                    "\tfilterField:true,",
+                    "\tgrid:this.queryById('locationGrid'),",
+                    "\ttoolbar:this.queryById('locationToolbar'),",
+                    "\tscope:this",
+                    "});",
+                    "",
+                    "Ext.create(\"NiceGridMenu\", {",
+                    "\tmenuItems:[{text:\"Edit Bin\", action:\"editBin\", icon:\"/inc/img/silk_icons/pencil.png\", disabled:true}],",
+                    "\tcallbackHandler:function(action, data) {",
+                    "\t\tswitch(action) {",
+                    "\t\t\tcase 'editBin':",
+                    "\t\t\t\tAppWindowManager.appLink('bin', {dataKey:data.binId});",
+                    "\t\t\t\tbreak;",
+                    "\t\t}",
+                    "\t},",
+                    "\tdoubleClick:'editBin',",
+                    "\tfilterField:true,",
+                    "\tgrid:this.queryById('binGrid'),",
+                    "\ttoolbar:this.queryById('binToolbar'),",
+                    "\tscope:this",
+                    "});",
+                    "",
+                    "Ext.create(\"NiceGridMenu\", {",
+                    "\tmenuItems:[{text:\"Edit Product\", action:\"editProduct\", icon:\"/inc/img/silk_icons/pencil.png\", disabled:true}],",
+                    "\tcallbackHandler:function(action, data) {",
+                    "\t\tswitch(action) {",
+                    "\t\t\tcase 'editProduct':",
+                    "\t\t\t\tAppWindowManager.appLink('product', {dataKey:data.productId});",
+                    "\t\t\t\tbreak;",
+                    "\t\t}",
+                    "\t},",
+                    "\tdoubleClick:'editProduct',",
+                    "\tfilterField:true,",
+                    "\tgrid:this.queryById('productGrid'),",
+                    "\ttoolbar:this.queryById('productToolbar'),",
+                    "\tscope:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "buildNiceGridMenus",
+            "designerId": "4c7e5ec3-5b84-4573-83b2-0142b502752f"
         },
         {
             "type": "basicfunction",
@@ -435,8 +582,7 @@
                     "\t\tthis.getViewModel().getStore('BinStore').loadData(reply.data);",
                     "\t\tthis.readOnHandForLocation(locationId);",
                     "\t},",
-                    "\tscope:this,",
-                    "\tmask:this",
+                    "\tscope:this",
                     "});"
                 ]
             },
@@ -466,10 +612,9 @@
                     "\tjsonData:{binId:binId},",
                     "\tsuccess:function(reply) {",
                     "\t\tthis.getViewModel().getStore('OnHandStore').loadData(reply.data);",
-                    "\t\tthis.queryById('onHandBinColumn').hide();",
+                    "\t\t//this.queryById('onHandBinColumn').hide();",
                     "\t},",
-                    "\tscope:this,",
-                    "\tmask:this",
+                    "\tscope:this",
                     "});"
                 ]
             },
@@ -501,8 +646,7 @@
                     "\t\tthis.getViewModel().getStore('OnHandStore').loadData(reply.data);",
                     "\t\tthis.queryById('onHandBinColumn').show();",
                     "\t},",
-                    "\tscope:this,",
-                    "\tmask:this",
+                    "\tscope:this",
                     "});"
                 ]
             },

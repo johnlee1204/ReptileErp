@@ -42,7 +42,7 @@ class AgileInventoryModel extends AgileModel
 				OnHand.binId = ?
 			AND
 				OnHand.shop = ?
-		", [$binId]);
+		", [$binId, $shop]);
 	}
 
 	static function readOnHandForLocation($locationId) {
@@ -344,5 +344,30 @@ class AgileInventoryModel extends AgileModel
 		}
 
 		return $shopInfo['shopName'];
+	}
+
+	static function generateSku() {
+		$shop = self::readShopFromCookie();
+		$sku = "";
+		$characters = [1,2,3,4,5,6,7,8,9,0,"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+		for($i = 0; $i < 8; $i++) {
+			$sku .= $characters[random_int(0, 35)];
+		}
+
+		self::$database->select(
+			"Product",
+			['productId'],
+			[
+				'sku' => $sku,
+				'shop' => $shop
+			]
+		);
+
+		$takenSku = self::$database->fetch_assoc();
+
+		if($takenSku === NULL) {
+			return $sku;
+		}
+		return self::generateSku();
 	}
 }

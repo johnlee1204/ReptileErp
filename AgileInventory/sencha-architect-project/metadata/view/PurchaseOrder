@@ -1,0 +1,202 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyStyle": "background:none",
+        "designer|userAlias": "purchaseorder",
+        "designer|userClassName": "PurchaseOrder",
+        "mixins": [
+            "['DocForm']"
+        ]
+    },
+    "configAlternates": {
+        "bodyStyle": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "mixins": "object"
+    },
+    "name": "MyPanel5",
+    "designerId": "92b26ae8-22a8-4464-b420-d26633eceb75",
+    "viewControllerInstanceId": "5af37cdb-54af-455e-b2b3-38280b133087",
+    "viewModelInstanceId": "ac81ae0d-50a2-46b2-82ac-bbe2f8dbdc2f",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "itemId": "purchaseOrderFormToolbar"
+            },
+            "configAlternates": {
+                "dock": "string",
+                "itemId": "string"
+            },
+            "name": "MyToolbar5",
+            "designerId": "fdf5629a-ef01-4b1e-9b4c-5005554cff18"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.docFormInit({",
+                    "\ttoolbarId:\"purchaseOrderFormToobar\",",
+                    "\taddFn:\"createPurchaseOrder\",",
+                    "\tsaveFn:\"updatePurchaseOrder\",",
+                    "\tdeleteFn:\"deletePurchaseOrder\"",
+                    "});"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "fd5d748a-39f5-42a9-a93b-2ab4fcc4b8b7"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "purchaseOrderId"
+                ],
+                "fn": "readPurchaseOrder",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:\"/AgileInventory/readPurchaseOrder\",",
+                    "\tjsonData:{purchaseOrderId:purchaseOrderId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.purchaseOrderId = purchaseOrderId;",
+                    "\t\tthis.docFormLoadFormData(reply);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readPurchaseOrder",
+            "designerId": "254c0dee-f73a-49bc-a16f-158ae08b4983"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "createPurchaseOrder",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:\"/AgileInventory/createPurchaseOrder\",",
+                    "\tjsonData:this.docFormGetAllFieldValues(),",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readPurchaseOrder(reply.data);",
+                    "\t\tthis.fireEvent('purchaseorderchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "createPurchaseOrder",
+            "designerId": "4dc9afb0-6620-46b9-9566-3bc0b748685d"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "updatePurchaseOrder",
+                "implHandler": [
+                    "let jsonData = this.docFormGetAllFieldValues();",
+                    "jsonData.purchaseOrderId = this.purchaseOrderId;",
+                    "",
+                    "AERP.Ajax.request({",
+                    "\turl:\"/AgileInventory/updatePurchaseOrder\",",
+                    "\tjsonData:jsonData,",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readPurchaseOrder(this.purchaseOrderId);",
+                    "\t\tthis.fireEvent('purchaseorderchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "updatePurchaseOrder",
+            "designerId": "6a028558-31f5-445f-a843-90a3a053ad18"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "deletePurchaseOrder",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:\"/AgileInventory/updatePurchaseOrder\",",
+                    "\tjsonData:{purchaseOrderId:this.purchaseOrderId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.purchaseOrderId = null;",
+                    "\t\tthis.docFormReset();",
+                    "\t\tthis.fireEvent('purchaseorderchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "deletePurchaseOrder",
+            "designerId": "3bbf7f84-98f8-479b-ae13-5a9e2c9935fb"
+        }
+    ]
+}

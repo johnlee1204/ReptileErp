@@ -1311,6 +1311,35 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "itemId": "breedingTab"
+                    },
+                    "configAlternates": {
+                        "itemId": "string"
+                    },
+                    "name": "breeding",
+                    "designerId": "c4e22204-8897-4cc2-a9ca-9dfb6e8591b4",
+                    "masterInstanceId": "24ec5268-577c-4fa3-aca1-b40e83ff1bcf",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "TabConfig3",
+                            "designerId": "ceeba4c6-034c-41a3-b821-dac37078a7aa"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
                         "itemId": "reptileHistory"
                     },
                     "configAlternates": {
@@ -1617,6 +1646,8 @@
                     "\t\tthis.fileDropper.setUploadUrl(url);",
                     "",
                     "\t\tthis.readPetAttachments();",
+                    "",
+                    "\t\tthis.queryById('breedingTab').readBreedingData(petId);",
                     "",
                     "\t\tthis.queryById('reptileHistory').filterPet(petId);",
                     "",

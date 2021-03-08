@@ -157,6 +157,7 @@
                     "\turl:'/AgileInventory/readLocations',",
                     "\tsuccess:function(reply) {",
                     "\t\tthis.getViewModel().getStore('LocationStore').loadData(reply.data);",
+                    "\t\tthis.fireEvent('appdataloaded');",
                     "\t},",
                     "\tscope:this,",
                     "\tmask:this",

@@ -82,6 +82,7 @@ Ext.define('AgileInventory.view.LocationForm', {
 			url:"/AgileInventory/readLocationInitData",
 			success:function(reply) {
 				this.getViewModel().getStore('FacilityStore').loadData(reply.facilities);
+				this.fireEvent('appdataloaded');
 			},
 			scope:this,
 			mask:this

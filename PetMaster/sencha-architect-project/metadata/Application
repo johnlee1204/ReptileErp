@@ -14,7 +14,8 @@
             "PetSearch",
             "HabitatData",
             "ReptileHistory",
-            "Reptiles"
+            "Reptiles",
+            "Breeding"
         ]
     },
     "configAlternates": {

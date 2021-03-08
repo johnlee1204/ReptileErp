@@ -85,6 +85,7 @@ Ext.define('AgileInventory.view.BinForm', {
 			url:'/AgileInventory/readLocations',
 			success:function(reply) {
 				this.getViewModel().getStore('LocationStore').loadData(reply.data);
+				this.fireEvent('appdataloaded');
 			},
 			scope:this,
 			mask:this

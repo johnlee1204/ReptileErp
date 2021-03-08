@@ -54,6 +54,42 @@ Ext.define('AppWindowManagerClass', {
 			windowConfig:{
 				title:'User Toolbar Setup'
 			}
+		},
+		'location':{
+			loaderClass:'AgileInventory',
+			loaderPath:'/AgileInventory/app',
+			appClass: 'AgileInventory.view.LocationForm',
+			dataLoader: 'readLocation',
+			docForm:true,
+			windowConfig:{
+				title:'Location',
+				width:510,
+				height:240
+			}
+		},
+		'bin':{
+			loaderClass:'AgileInventory',
+			loaderPath:'/AgileInventory/app',
+			appClass: 'AgileInventory.view.BinForm',
+			dataLoader: 'readBin',
+			docForm:true,
+			windowConfig:{
+				title:'Bin',
+				width:460,
+				height:230
+			}
+		},
+		'product':{
+			loaderClass:'AgileInventory',
+			loaderPath:'/AgileInventory/app',
+			appClass: 'AgileInventory.view.ProductForm',
+			dataLoader: 'readProduct',
+			docForm:true,
+			windowConfig:{
+				title:'Product',
+				width:970,
+				height:450
+			}
 		}
 	},
 	appLink:function(appId, appConfig){

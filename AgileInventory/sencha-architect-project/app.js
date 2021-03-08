@@ -31,7 +31,9 @@ Ext.application({
 		'Products',
 		'ProductForm',
 		'Facilities',
-		'FacilityForm'
+		'FacilityForm',
+		'PurchaseOrders',
+		'PurchaseOrder'
 	],
 	name: 'AgileInventory',
 

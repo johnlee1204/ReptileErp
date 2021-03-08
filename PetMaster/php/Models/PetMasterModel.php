@@ -320,4 +320,63 @@ class PetMasterModel extends AgileModel {
 				petAttachmentId = ?
 		", [$petAttachmentId]);
 	}
+
+	static function readCanBreedWith($reptileId) {
+		$reptile = self::readPet($reptileId);
+		return self::$database->fetch_all_row("
+			SELECT
+				petId,
+				serial
+			FROM Pet
+			LEFT JOIN Breeding ON (Breeding.maleReptileId = ? AND Breeding.femaleReptileId = petId) OR (Breeding.femaleReptileId = ? AND Breeding.maleReptileId = petId)
+			WHERE
+				petId != ?
+			AND
+				sex != ?
+			AND
+				Breeding.breedingId IS NULL
+		", [$reptileId, $reptileId, $reptileId, $reptile['sex']]);
+	}
+
+	static function readCurrentlyBreedingWith($reptileId) {
+		return self::$database->fetch_all_row("
+			SELECT DISTINCT
+				CASE WHEN femaleReptileId = ? THEN maleReptileId ELSE femaleReptileId END reptileId,
+				CASE WHEN femaleReptileId = ? THEN male.serial ELSE female.serial END serial
+			FROM Breeding
+			JOIN Pet male ON male.petId = maleReptileId
+			JOIN Pet female ON female.petId = femaleReptileId
+			WHERE
+				Breeding.maleReptileId = ? OR Breeding.femaleReptileId = ?
+		", [$reptileId, $reptileId, $reptileId, $reptileId]);
+	}
+
+	static function createBreedingPair($reptileId1, $reptileId2) {
+		$reptile1 = self::readPet($reptileId1);
+		$reptile2 = self::readPet($reptileId2);
+
+		if($reptile1['sex'] === $reptile2['sex']) {
+			throw new AgileUserMessageException("Cannot Breed Same Sex!");
+		}
+
+		$male = NULL;
+		$female = NULL;
+
+		if($reptile1['sex'] === 'Male') {
+			$male = $reptileId1;
+			$female = $reptileId2;
+		} else {
+			$male = $reptileId2;
+			$female = $reptileId1;
+		}
+
+		self::$database->insert(
+		'Breeding',
+			[
+				'maleReptileId' => $male,
+				'femaleReptileId' => $female
+			]
+		);
+	}
+
 }

@@ -23,6 +23,7 @@ Ext.define('PetMaster.view.PetMaster', {
 	requires: [
 		'PetMaster.view.PetMasterViewModel',
 		'PetMaster.view.HabitatData',
+		'PetMaster.view.Breeding',
 		'PetMaster.view.ReptileHistory',
 		'Ext.toolbar.Toolbar',
 		'Ext.form.field.ComboBox',
@@ -402,6 +403,10 @@ Ext.define('PetMaster.view.PetMaster', {
 					}
 				},
 				{
+					xtype: 'breeding',
+					itemId: 'breedingTab'
+				},
+				{
 					xtype: 'reptilehistory',
 					itemId: 'reptileHistory'
 				}
@@ -646,6 +651,8 @@ Ext.define('PetMaster.view.PetMaster', {
 				this.fileDropper.setUploadUrl(url);
 
 				this.readPetAttachments();
+
+				this.queryById('breedingTab').readBreedingData(petId);
 
 				this.queryById('reptileHistory').filterPet(petId);
 

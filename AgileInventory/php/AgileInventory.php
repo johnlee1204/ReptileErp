@@ -232,10 +232,15 @@ class AgileInventory extends AgileBaseController {
 		$this->outputSuccessData(ProductModel::readProduct($input['productId']));
 	}
 
+	function generateSku() {
+		$this->outputSuccessData(AgileInventoryModel::generateSku());
+	}
+
 	function createProduct() {
 		$inputs = Validation::validateJsonInput([
 			'productName' => 'notBlank',
 			'productDescription',
+			'sku',
 			'primaryLocation' => 'numericOrNull',
 			'primaryBin' => 'numericOrNull',
 			'secondaryLocation' => 'numericOrNull',
@@ -255,6 +260,7 @@ class AgileInventory extends AgileBaseController {
 			'productId' => 'numeric',
 			'productName' => 'notBlank',
 			'productDescription',
+			'sku',
 			'primaryLocation' => 'numericOrNull',
 			'primaryBin' => 'numericOrNull',
 			'secondaryLocation' => 'numericOrNull',
@@ -406,7 +412,8 @@ class AgileInventory extends AgileBaseController {
 				'productName' => $productInfo['title'],
 				'productDescription' => '',
 				'shopifyProductId' => $productInfo['id'],
-				'shop' => $headers['X-Shopify-Shop-Domain']
+				'shop' => $headers['X-Shopify-Shop-Domain'],
+				'sku' => $productInfo['variants'][0]['sku']
 			]
 		);
 	}
@@ -422,6 +429,7 @@ class AgileInventory extends AgileBaseController {
 			"Product",
 			[
 				'productName' => $productInfo['title'],
+				'sku' => $productInfo['variants'][0]['sku']
 			],
 			[
 				'shopifyProductId' => $productInfo['id'],
@@ -643,6 +651,7 @@ class AgileInventory extends AgileBaseController {
 				[
 					'productName' => $product['title'],
 					'productDescription' => '',
+					'sku' => $product['variants'][0]['sku'],
 					'shopifyProductId' => $product['id'],
 					'shop' => $shop
 				]
@@ -664,7 +673,10 @@ class AgileInventory extends AgileBaseController {
 				'body_html' => '',
 				'vendor' => '',
 				'product_type' => '',
-				'tags' => []
+				'tags' => [],
+				'variants' => [
+					['sku' => $inputs['sku']]
+				]
 			]
 		]);
 
@@ -693,7 +705,10 @@ class AgileInventory extends AgileBaseController {
 		$reply = Curl::sendJsonRequest("PUT","https://" . $this->apiKey . ':' . $accessToken . '@'. $shop . "/admin/api/2021-01/products/" . $product['shopifyProductId'] . ".json", [
 			'product' => [
 				'title' => $inputs['productName'],
-				'id' => $product['shopifyProductId']
+				'id' => $product['shopifyProductId'],
+				'variants' => [
+					['sku' => $inputs['sku']]
+				]
 			]
 		]);
 
@@ -760,7 +775,7 @@ class AgileInventory extends AgileBaseController {
 	public function readProductsFromApi() {
 		$shop = AgileInventoryModel::readShopFromCookie();
 		$accessToken = AgileInventoryModel::readAccessToken();
-		$reply = Curl::get("https://" . $this->apiKey . ':' . $accessToken . '@'. $shop . "/admin/api/2021-01/products.json?fields=vendor");
+		$reply = Curl::get("https://" . $this->apiKey . ':' . $accessToken . '@'. $shop . "/admin/api/2021-01/products.json");
 		echo "<pre>";print_r($reply);die();
 	}
 

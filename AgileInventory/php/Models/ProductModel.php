@@ -29,6 +29,7 @@ class ProductModel extends AgileModel {
 				Product.productId,
 				Product.productName,
 				Product.productDescription,
+				Product.sku,
 				
 				Product.primaryLocationId primaryLocation,
 				PrimaryLocation.locationName primaryLocationName,
@@ -63,6 +64,7 @@ class ProductModel extends AgileModel {
 			[
 				'productName' => $inputs['productName'],
 				'productDescription' => $inputs['productDescription'],
+				'sku' => $inputs['sku'],
 				'primaryLocationId' => $inputs['primaryLocation'],
 				'primaryBinId' => $inputs['primaryBin'],
 				'secondaryLocationId' => $inputs['secondaryLocation'],
@@ -81,6 +83,7 @@ class ProductModel extends AgileModel {
 			[
 				'productName' => $inputs['productName'],
 				'productDescription' => $inputs['productDescription'],
+				'sku' => $inputs['sku'],
 				'primaryLocationId' => $inputs['primaryLocation'],
 				'primaryBinId' => $inputs['primaryBin'],
 				'secondaryLocationId' => $inputs['secondaryLocation'],
