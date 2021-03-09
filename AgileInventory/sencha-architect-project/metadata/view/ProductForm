@@ -56,49 +56,90 @@
             },
             "codeClass": null,
             "userConfig": {
+                "layout": "hbox",
                 "padding": 10
             },
             "configAlternates": {
+                "layout": "string",
                 "padding": "auto"
             },
-            "name": "MyContainer4",
-            "designerId": "d5674c8b-13f9-41a7-a208-e7daa22e78e9",
+            "name": "MyContainer",
+            "designerId": "e1642cad-cc53-4c75-af51-63f681b0152c",
             "cn": [
                 {
-                    "type": "Ext.form.field.Text",
+                    "type": "Ext.container.Container",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
-                    "userConfig": {
-                        "fieldLabel": "Name",
-                        "itemId": "productName"
-                    },
                     "configAlternates": {
-                        "fieldLabel": "string",
-                        "itemId": "string"
+                        "padding": "auto"
                     },
-                    "name": "MyTextField2",
-                    "designerId": "8a3f25b8-470c-4a65-b414-33db6914cc0b"
+                    "name": "MyContainer4",
+                    "designerId": "d5674c8b-13f9-41a7-a208-e7daa22e78e9",
+                    "cn": [
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Name",
+                                "itemId": "productName"
+                            },
+                            "configAlternates": {
+                                "fieldLabel": "string",
+                                "itemId": "string"
+                            },
+                            "name": "MyTextField2",
+                            "designerId": "8a3f25b8-470c-4a65-b414-33db6914cc0b"
+                        },
+                        {
+                            "type": "Ext.form.field.Text",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fieldLabel": "Description",
+                                "itemId": "productDescription"
+                            },
+                            "configAlternates": {
+                                "fieldLabel": "string",
+                                "itemId": "string"
+                            },
+                            "name": "MyTextField3",
+                            "designerId": "f08d0cbf-802f-487a-a749-c5d94e68154d"
+                        }
+                    ]
                 },
                 {
-                    "type": "Ext.form.field.Text",
+                    "type": "Ext.form.field.Checkbox",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "fieldLabel": "Description",
-                        "itemId": "productDescription"
+                        "boxLabel": "On Website",
+                        "inputValue": "1",
+                        "itemId": "onWebsite",
+                        "margin": "0 0 0 15",
+                        "uncheckedValue": "0"
                     },
                     "configAlternates": {
-                        "fieldLabel": "string",
-                        "itemId": "string"
+                        "boxLabel": "string",
+                        "inputValue": "string",
+                        "itemId": "string",
+                        "margin": "auto",
+                        "uncheckedValue": "string"
                     },
-                    "name": "MyTextField3",
-                    "designerId": "f08d0cbf-802f-487a-a749-c5d94e68154d"
+                    "name": "MyCheckbox",
+                    "designerId": "fb27b61c-8e5d-4a98-8664-eceefb8d37bc"
                 }
             ]
         },
@@ -112,12 +153,14 @@
             "userConfig": {
                 "activeTab": 0,
                 "bodyStyle": "background:none",
+                "deferredRender": false,
                 "flex": 1
             },
             "configAlternates": {
                 "activeTab": "auto",
                 "bodyStyle": "string",
-                "flex": "number"
+                "flex": "number",
+                "deferredRender": "boolean"
             },
             "name": "MyTabPanel1",
             "designerId": "db116161-bc9c-4c45-8037-796964610315",
@@ -453,6 +496,35 @@
                             "codeClass": null,
                             "name": "MyContainer11",
                             "designerId": "cb5b47f6-de76-47a6-ac8c-042fe050fbb6"
+                        }
+                    ]
+                },
+                {
+                    "type": "linkedinstance",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "components"
+                    },
+                    "configAlternates": {
+                        "itemId": "string"
+                    },
+                    "name": "components",
+                    "designerId": "7fe5e02c-1f6e-4b74-a416-5c1579d57689",
+                    "masterInstanceId": "b6d912d1-092b-4425-81b6-c867470e7414",
+                    "cn": [
+                        {
+                            "type": "Ext.tab.Tab",
+                            "reference": {
+                                "name": "tabConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "name": "TabConfig9",
+                            "designerId": "692da614-4372-43a1-b474-ef102990727d"
                         }
                     ]
                 },
@@ -2060,11 +2132,12 @@
             "codeClass": null,
             "userConfig": {
                 "designer|params": [
-                    "panel"
+                    "newData"
                 ],
                 "fn": "onPanelDocFormBeforeNew",
                 "implHandler": [
-                    "this.generateSku();"
+                    "this.generateSku();",
+                    "newData.data.onWebsite = 1;"
                 ],
                 "name": "docFormBeforeNew",
                 "scope": "me"
@@ -2134,6 +2207,7 @@
                     "",
                     "\t\tthis.docFormLoadFormData(reply);",
                     "\t\tthis.readOnHand(productId);",
+                    "\t\tthis.queryById('components').readComponents(productId);",
                     "\t\tthis.readTransactionHistory(productId);",
                     "\t},",
                     "\tscope:this,",

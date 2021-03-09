@@ -1,0 +1,263 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyStyle": "background:none",
+        "container|align": "stretch",
+        "designer|userAlias": "components",
+        "designer|userClassName": "Components",
+        "layout": "vbox",
+        "title": "Components"
+    },
+    "configAlternates": {
+        "bodyStyle": "string",
+        "container|align": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "layout": "string",
+        "title": "string"
+    },
+    "name": "MyPanel5",
+    "designerId": "b6d912d1-092b-4425-81b6-c867470e7414",
+    "viewControllerInstanceId": "5cf10025-59d0-4f57-9bbc-b277f8a10508",
+    "viewModelInstanceId": "12849228-0704-4348-82ba-495ca2480e3c",
+    "cn": [
+        {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "flex": 1,
+                "itemId": "componentsGrid",
+                "store": [
+                    "{ComponentStore}"
+                ]
+            },
+            "configAlternates": {
+                "store": "binding",
+                "flex": "number",
+                "itemId": "string"
+            },
+            "name": "MyGridPanel12",
+            "designerId": "44f0eac5-23f4-4fe1-b5c6-713799ff2ffc",
+            "cn": [
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "top",
+                        "itemId": "componentsToolbar"
+                    },
+                    "configAlternates": {
+                        "dock": "string",
+                        "itemId": "string"
+                    },
+                    "name": "MyToolbar6",
+                    "designerId": "5248a3e1-c111-4a04-97c5-1eb4fa207d97"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "productName",
+                        "text": "Part",
+                        "width": 156
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyColumn31",
+                    "designerId": "0548f938-02ad-4856-8de2-309239a4da58"
+                },
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "quantity",
+                        "text": "Quantity"
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string"
+                    },
+                    "name": "MyColumn32",
+                    "designerId": "99b4973f-c483-4c30-8c73-5a268357dfb3"
+                },
+                {
+                    "type": "Ext.view.Table",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "enableTextSelection": true
+                    },
+                    "configAlternates": {
+                        "enableTextSelection": "boolean"
+                    },
+                    "name": "MyTable7",
+                    "designerId": "ef5c2eb1-5a6e-4c9a-8993-ca22e1182d7c"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onComponentsGridSelectionChange",
+                        "implHandler": [
+                            "if(!selected || selected.length !== 1) {",
+                            "\treturn;",
+                            "}",
+                            "",
+                            "selected = selected[0];",
+                            "",
+                            "this.queryById('componentForm').readComponent(selected.data.componentId);"
+                        ],
+                        "name": "selectionchange",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onComponentsGridSelectionChange",
+                    "designerId": "89db60a4-f4e0-4d98-95fc-83fcb4de6487"
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    ""
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "c673c597-bc03-4186-9487-56f32d409c26"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "productId"
+                ],
+                "fn": "readComponents",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:\"/AgileInventory/readComponents\",",
+                    "\tjsonData:{productId:productId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.productId = productId;",
+                    "\t\tthis.getViewModel().getStore('ComponentStore').loadData(reply.data);",
+                    "\t\tthis.queryById('componentForm').parentProductId = productId;",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readComponents",
+            "designerId": "93ac3038-56fe-4daa-a318-d822f9781cca"
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "itemId": "componentForm",
+                "layout|flex": 1
+            },
+            "configAlternates": {
+                "itemId": "string",
+                "layout|flex": "number"
+            },
+            "name": "componentform",
+            "designerId": "812f19d2-f638-45af-9602-db26a39ae950",
+            "masterInstanceId": "92354791-e4c4-421b-9d76-6ce8711cc316",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "panel"
+                        ],
+                        "fn": "onPanelComponentChangeD",
+                        "implHandler": [
+                            "this.readComponents(this.productId);"
+                        ],
+                        "name": "componentchanged",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "designer|params": "typedarray",
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onPanelComponentChangeD",
+                    "designerId": "eefcc17b-ead9-4a18-8675-27cba4c2ec0a"
+                }
+            ]
+        }
+    ]
+}

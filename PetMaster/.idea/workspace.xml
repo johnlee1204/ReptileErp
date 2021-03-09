@@ -1,50 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a9e42020-6ace-484e-aefc-d9aa76786a6c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Agile/Classes/AgileModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/../Agile/Classes/AgileModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/app/view/BinForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/app/view/BinForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/app/view/DrillDown.js" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/app/view/DrillDown.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/app/view/DrillDownViewModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/app/view/DrillDownViewModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/app/view/LocationForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/app/view/LocationForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/app/view/ProductForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/app/view/ProductForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/php/AgileInventory.php" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/php/AgileInventory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/php/Models/AgileInventoryModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/php/Models/AgileInventoryModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/php/Models/ProductModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/php/Models/ProductModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/.architect" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/.architect" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/AgileInventory.xds" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/AgileInventory.xds" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/app/view/BinForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/app/view/BinForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/app/view/DrillDown.js" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/app/view/DrillDown.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/app/view/DrillDownViewModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/app/view/DrillDownViewModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/app/view/LocationForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/app/view/LocationForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/app/view/ProductForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/app/view/ProductForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/metadata/Application" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/metadata/Application" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/metadata/view/BinForm" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/metadata/view/BinForm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/metadata/view/DrillDown" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/metadata/view/DrillDown" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/metadata/view/DrillDownViewModel" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/metadata/view/DrillDownViewModel" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/metadata/view/LocationForm" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/metadata/view/LocationForm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/metadata/view/ProductForm" beforeDir="false" afterPath="$PROJECT_DIR$/../AgileInventory/sencha-architect-project/metadata/view/ProductForm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/PetMaster.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/PetMaster.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/Models/PetMasterModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/Models/PetMasterModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/php/PetMaster.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/PetMaster.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sencha-architect-project/.architect" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/.architect" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sencha-architect-project/PetMaster.xds" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/PetMaster.xds" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sencha-architect-project/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sencha-architect-project/app/view/PetMaster.js" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/app/view/PetMaster.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/Application" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/Application" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/MyViewport" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/MyViewport" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/PetMaster" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/PetMaster" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/Reptiles" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/Reptiles" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/ReptilesViewController" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/ReptilesViewController" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/ReptilesViewModel" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/ReptilesViewModel" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../inc/js/AppWindowManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/../inc/js/AppWindowManager.js" afterDir="false" />
-    </list>
+    <list default="true" id="a9e42020-6ace-484e-aefc-d9aa76786a6c" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,7 +29,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../inc/php" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../AgileInventory" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
@@ -89,6 +46,7 @@
       <workItem from="1614968775192" duration="1032000" />
       <workItem from="1615059270825" duration="1734000" />
       <workItem from="1615171169232" duration="593000" />
+      <workItem from="1615246477598" duration="19000" />
     </task>
     <servers />
   </component>
@@ -100,9 +58,9 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="987" y="343" key="#PHP/0.0.2560.1400@0.0.2560.1400" timestamp="1615059315380" />
-    <state x="1059" y="455" key="FileChooserDialogImpl" timestamp="1615059314131">
+    <state x="1059" y="455" key="FileChooserDialogImpl" timestamp="1615246495452">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1059" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1615059314131" />
+    <state x="1059" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1615246495452" />
   </component>
 </project>

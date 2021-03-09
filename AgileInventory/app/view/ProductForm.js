@@ -22,7 +22,9 @@ Ext.define('AgileInventory.view.ProductForm', {
 	],
 	requires: [
 		'AgileInventory.view.ProductFormViewModel',
+		'AgileInventory.view.Components',
 		'Ext.toolbar.Toolbar',
+		'Ext.form.field.Checkbox',
 		'Ext.tab.Panel',
 		'Ext.tab.Tab',
 		'Ext.form.FieldSet',
@@ -55,16 +57,30 @@ Ext.define('AgileInventory.view.ProductForm', {
 		{
 			xtype: 'container',
 			padding: 10,
+			layout: 'hbox',
 			items: [
 				{
-					xtype: 'textfield',
-					itemId: 'productName',
-					fieldLabel: 'Name'
+					xtype: 'container',
+					items: [
+						{
+							xtype: 'textfield',
+							itemId: 'productName',
+							fieldLabel: 'Name'
+						},
+						{
+							xtype: 'textfield',
+							itemId: 'productDescription',
+							fieldLabel: 'Description'
+						}
+					]
 				},
 				{
-					xtype: 'textfield',
-					itemId: 'productDescription',
-					fieldLabel: 'Description'
+					xtype: 'checkboxfield',
+					itemId: 'onWebsite',
+					margin: '0 0 0 15',
+					boxLabel: 'On Website',
+					inputValue: '1',
+					uncheckedValue: '0'
 				}
 			]
 		},
@@ -73,6 +89,7 @@ Ext.define('AgileInventory.view.ProductForm', {
 			flex: 1,
 			bodyStyle: 'background:none',
 			activeTab: 0,
+			deferredRender: false,
 			items: [
 				{
 					xtype: 'panel',
@@ -186,6 +203,10 @@ Ext.define('AgileInventory.view.ProductForm', {
 							xtype: 'container'
 						}
 					]
+				},
+				{
+					xtype: 'components',
+					itemId: 'components'
 				},
 				{
 					xtype: 'panel',
@@ -756,8 +777,9 @@ Ext.define('AgileInventory.view.ProductForm', {
 		});
 	},
 
-	onPanelDocFormBeforeNew: function(panel) {
+	onPanelDocFormBeforeNew: function(newData) {
 		this.generateSku();
+		newData.data.onWebsite = 1;
 	},
 
 	generateSku: function() {
@@ -787,6 +809,7 @@ Ext.define('AgileInventory.view.ProductForm', {
 
 				this.docFormLoadFormData(reply);
 				this.readOnHand(productId);
+				this.queryById('components').readComponents(productId);
 				this.readTransactionHistory(productId);
 			},
 			scope:this,

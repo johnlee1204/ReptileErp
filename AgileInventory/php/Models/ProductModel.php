@@ -10,16 +10,33 @@ class ProductModel extends AgileModel {
 
 	static function readProducts() {
 		$shop = AgileInventoryModel::readShopFromCookie();
-		return self::$database->fetch_all_row("
-			SELECT
-				Product.productId,
-				Product.productName,
-				Product.productDescription
-			FROM Product
-			WHERE
-				Product.shop = ?
-			ORDER BY Product.productName
-		", [$shop]);
+		self::$database->select(
+			"Product",
+			[
+				'productId',
+				'productName',
+				'productDescription'
+			],
+			['shop' => $shop],
+			'ORDER BY productName'
+		);
+
+		return self::$database->fetch_all_row();
+	}
+
+	static function readProductsCombo() {
+		$shop = AgileInventoryModel::readShopFromCookie();
+		self::$database->select(
+			"Product",
+			[
+				'productId',
+				'productName'
+			],
+			['shop' => $shop],
+			'ORDER BY productName'
+		);
+
+		return self::$database->fetch_all_row();
 	}
 
 	static function readProduct($productId) {
@@ -42,6 +59,7 @@ class ProductModel extends AgileModel {
 				
 				Product.secondaryBinId secondaryBin,
 				SecondaryBin.binName secondaryBinName,
+				Product.onWebsite,
 				shopifyProductId
 			FROM Product
 			LEFT JOIN Location PrimaryLocation ON PrimaryLocation.locationId = Product.primaryLocationId AND PrimaryLocation.shop = Product.shop
@@ -65,6 +83,7 @@ class ProductModel extends AgileModel {
 				'productName' => $inputs['productName'],
 				'productDescription' => $inputs['productDescription'],
 				'sku' => $inputs['sku'],
+				'onWebsite' => $inputs['onWebsite'],
 				'primaryLocationId' => $inputs['primaryLocation'],
 				'primaryBinId' => $inputs['primaryBin'],
 				'secondaryLocationId' => $inputs['secondaryLocation'],
@@ -78,12 +97,14 @@ class ProductModel extends AgileModel {
 
 	static function updateProduct($inputs) {
 		$shop = AgileInventoryModel::readShopFromCookie();
+
 		self::$database->update(
 			"Product",
 			[
 				'productName' => $inputs['productName'],
 				'productDescription' => $inputs['productDescription'],
 				'sku' => $inputs['sku'],
+				'onWebsite' => $inputs['onWebsite'],
 				'primaryLocationId' => $inputs['primaryLocation'],
 				'primaryBinId' => $inputs['primaryBin'],
 				'secondaryLocationId' => $inputs['secondaryLocation'],
@@ -102,6 +123,83 @@ class ProductModel extends AgileModel {
 			"Product",
 			[
 				'productId' => $productId,
+				'shop' => $shop
+			]
+		);
+	}
+
+	static function readComponents($productId) {
+		$shop = AgileInventoryModel::readShopFromCookie();
+		return self::$database->fetch_all_row("
+			SELECT
+				Component.componentId,
+				Component.productId,
+				Product.productName,
+				Component.quantity
+			FROM Component
+			JOIN Product ON Product.productId = Component.productId AND Product.shop = Component.shop
+			WHERE
+				Component.parentProductId = ?			
+			AND
+				Component.shop = ?
+			ORDER BY Product.productName
+		", [$productId, $shop]);
+	}
+
+	static function readComponent($componentId) {
+		$shop = AgileInventoryModel::readShopFromCookie();
+		return self::$database->fetch_assoc("
+			SELECT
+				Component.productId,
+				Component.parentProductId,
+				Product.productName,
+				Product.productDescription,
+				Component.quantity
+			FROM Component
+			JOIN Product ON Product.productId = Component.productId AND Product.shop = Component.shop
+			WHERE
+				Component.componentId = ?
+			AND
+				Component.shop = ?
+		", [$componentId, $shop]);
+	}
+
+	static function createComponent($inputs) {
+		$shop = AgileInventoryModel::readShopFromCookie();
+		$componentId = self::$database->insert(
+			"Component",
+			[
+				'parentProductId' => $inputs['parentProductId'],
+				'productId' => $inputs['productId'],
+				'quantity' => $inputs['quantity'],
+				'shop' => $shop
+			]
+		);
+
+		return $componentId['id'];
+	}
+
+	static function updateComponent($inputs) {
+		$shop = AgileInventoryModel::readShopFromCookie();
+		self::$database->update(
+			"Component",
+			[
+				'productId' => $inputs['productId'],
+				'quantity' => $inputs['quantity']
+			],
+			[
+				'componentId' => $inputs['componentId'],
+				'shop' => $shop
+			]
+		);
+	}
+
+	static function deleteComponent($componentId) {
+		$shop = AgileInventoryModel::readShopFromCookie();
+		self::$database->delete(
+			"Component",
+			[
+				'componentId' => $componentId,
 				'shop' => $shop
 			]
 		);

@@ -20,7 +20,9 @@
             "Facilities",
             "FacilityForm",
             "PurchaseOrders",
-            "PurchaseOrder"
+            "PurchaseOrder",
+            "Components",
+            "ComponentForm"
         ]
     },
     "configAlternates": {

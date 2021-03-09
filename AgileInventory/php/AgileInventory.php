@@ -224,6 +224,10 @@ class AgileInventory extends AgileBaseController {
 		$this->outputSuccessData(ProductModel::readProducts());
 	}
 
+	function readProductsCombo() {
+		$this->outputSuccessData(ProductModel::readProductsCombo());
+	}
+
 	function readProduct() {
 		$input = Validation::validateJsonInput([
 			'productId' => 'numeric'
@@ -241,6 +245,7 @@ class AgileInventory extends AgileBaseController {
 			'productName' => 'notBlank',
 			'productDescription',
 			'sku',
+			'onWebsite' => 'checkBox',
 			'primaryLocation' => 'numericOrNull',
 			'primaryBin' => 'numericOrNull',
 			'secondaryLocation' => 'numericOrNull',
@@ -249,7 +254,9 @@ class AgileInventory extends AgileBaseController {
 
 		$this->database->begin_transaction();
 		$productId = ProductModel::createProduct($inputs);
-		$this->shopifyCreateProduct($inputs, $productId);
+		if($inputs['onWebsite'] === 1) {
+			$this->shopifyCreateProduct($inputs, $productId);
+		}
 		$this->database->commit_transaction();
 
 		$this->outputSuccessData($productId);
@@ -261,15 +268,26 @@ class AgileInventory extends AgileBaseController {
 			'productName' => 'notBlank',
 			'productDescription',
 			'sku',
+			'onWebsite' => 'checkBox',
 			'primaryLocation' => 'numericOrNull',
 			'primaryBin' => 'numericOrNull',
 			'secondaryLocation' => 'numericOrNull',
 			'secondaryBin' => 'numericOrNull'
 		]);
 
+		$product = ProductModel::readProduct($inputs['productId']);
 		$this->database->begin_transaction();
+
 		ProductModel::updateProduct($inputs);
-		$this->shopifyUpdateProduct($inputs);
+
+		if($product['onWebsite'] === 0 && $inputs['onWebsite'] === 1) {
+			$this->shopifyCreateProduct($inputs, $inputs['productId']);
+		} else if($product['onWebsite'] === 1 && $inputs['onWebsite'] === 0) {
+			$this->shopifyDeleteProduct($product['shopifyProductId']);
+		} else if($product['onWebsite'] === 1 && $inputs['onWebsite'] === 1) {
+			$this->shopifyUpdateProduct($inputs);
+		}
+
 		$this->database->commit_transaction();
 
 		$this->outputSuccess();
@@ -283,8 +301,60 @@ class AgileInventory extends AgileBaseController {
 		$this->database->begin_transaction();
 		$product = ProductModel::readProduct($input['productId']);
 		ProductModel::deleteProduct($input['productId']);
-		$this->shopifyDeleteProduct($product['shopifyProductId']);
+
+		if($product['onWebsite'] === 1) {
+			$this->shopifyDeleteProduct($product['shopifyProductId']);
+		}
+
 		$this->database->commit_transaction();
+
+		$this->outputSuccess();
+	}
+
+	function readComponents() {
+		$input = Validation::validateJsonInput([
+			'productId' => 'numeric'
+		]);
+
+		$this->outputSuccessData(ProductModel::readComponents($input['productId']));
+	}
+
+	function readComponent() {
+		$input = Validation::validateJsonInput([
+			'componentId' => 'numeric'
+		]);
+
+		$this->outputSuccessData(ProductModel::readComponent($input['componentId']));
+	}
+
+	function createComponent() {
+		$inputs = Validation::validateJsonInput([
+			'parentProductId' => 'numeric',
+			'productId' => 'numeric',
+			'quantity' => 'numeric'
+		]);
+
+		$this->outputSuccessData(ProductModel::createComponent($inputs));
+	}
+
+	function updateComponent() {
+		$inputs = Validation::validateJsonInput([
+			'componentId' => 'numeric',
+			'productId' => 'numeric',
+			'quantity' => 'numeric'
+		]);
+
+		ProductModel::updateComponent($inputs);
+
+		$this->outputSuccess();
+	}
+
+	function deleteComponent() {
+		$input = Validation::validateJsonInput([
+			'componentId' => 'numeric'
+		]);
+
+		ProductModel::deleteComponent($input['componentId']);
 
 		$this->outputSuccess();
 	}
@@ -406,6 +476,19 @@ class AgileInventory extends AgileBaseController {
 		if(!$this->verify_webhook($productInfoJson, $headers['X-Shopify-Hmac-Sha256'])) {
 			exit;
 		}
+
+		$this->database->select(
+			"Product",
+			['productId'],
+			['productName' => $productInfo['title']]
+		);
+
+		$product = $this->database->fetch_assoc();
+
+		if($product !== NULL) {
+			return;
+		}
+
 		$this->database->insert(
 			"Product",
 			[
@@ -413,7 +496,8 @@ class AgileInventory extends AgileBaseController {
 				'productDescription' => '',
 				'shopifyProductId' => $productInfo['id'],
 				'shop' => $headers['X-Shopify-Shop-Domain'],
-				'sku' => $productInfo['variants'][0]['sku']
+				'sku' => $productInfo['variants'][0]['sku'],
+				'onWebsite' => 1
 			]
 		);
 	}
@@ -653,6 +737,7 @@ class AgileInventory extends AgileBaseController {
 					'productDescription' => '',
 					'sku' => $product['variants'][0]['sku'],
 					'shopifyProductId' => $product['id'],
+					'onWebsite' => 1,
 					'shop' => $shop
 				]
 			);
@@ -725,6 +810,12 @@ class AgileInventory extends AgileBaseController {
 		$shop = AgileInventoryModel::readShopFromCookie();
 		$accessToken = AgileInventoryModel::readAccessToken();
 		$reply = Curl::sendRequest("DELETE","https://" . $this->apiKey . ':' . $accessToken . '@'. $shop . "/admin/api/2021-01/products/" . $shopifyProductId . ".json");
+
+		$this->database->update(
+			"Product",
+			['shopifyProductId' => NULL],
+			['shopifyProductId' => $shopifyProductId]
+		);
 
 		if(isset($reply['errors'])) {
 			throw new Exception(var_export($reply));

@@ -11,15 +11,15 @@
 }
 
 .docFormChanged .x-form-checkbox{
-    background-image:url(checkbox-changed.gif);
+    /*background-image:url(checkbox-changed.gif);*/
 }
 
 .docFormSearchable .x-form-checkbox{
-    background-image:url(checkbox-searchable.gif);
+    /*background-image:url(checkbox-searchable.gif);*/
 }
 
 .docFormReadOnly .x-form-checkbox{
-    background-image:url(checkbox-readOnly.gif);
+    /*background-image:url(checkbox-readOnly.gif);*/
 }
 
 .docFormChanged .x-form-radio{

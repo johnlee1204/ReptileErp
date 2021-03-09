@@ -1,0 +1,69 @@
+{
+    "type": "Ext.app.ViewModel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userAlias": "componentform",
+        "designer|userClassName": "ComponentFormViewModel"
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string"
+    },
+    "designerId": "f3557367-0cff-4f37-b700-c96e820284ab",
+    "cn": [
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "ProductStore"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyStore26",
+            "designerId": "8b5a7997-5e57-4f94-83d4-ac6dd0e0ba78",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "productId"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField66",
+                    "designerId": "cb99b0f8-e7f2-4600-9ab0-dc568fad12a6"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "productName"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField67",
+                    "designerId": "e86510b3-9061-4c78-b6a3-31695a1e06f0"
+                }
+            ]
+        }
+    ]
+}
