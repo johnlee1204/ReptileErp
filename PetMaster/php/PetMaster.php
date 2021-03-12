@@ -8,6 +8,7 @@ class PetMaster extends AgileBaseController {
 	static $AgilePermissions = [
 		'index' => 'read',
 		'readReptiles' => 'read',
+		'readMorphs' => 'read',
 		'readPet' => 'read',
 		'createPet' => 'create',
 		'updatePet' => 'update',
@@ -29,6 +30,10 @@ class PetMaster extends AgileBaseController {
 
 	function readReptiles() {
 		$this->outputSuccessData(PetMasterModel::readReptiles());
+	}
+
+	function readMorphs() {
+		$this->outputSuccessData(PetMasterModel::readMorphs());
 	}
 
 	function readPet() {
@@ -58,7 +63,8 @@ class PetMaster extends AgileBaseController {
 			'customer',
 			'notes',
 			'weight',
-			'sellPrice'
+			'sellPrice',
+			'morph' => 'numericOrNull'
 		]);
 
 		$this->database->begin_transaction();
@@ -88,7 +94,8 @@ class PetMaster extends AgileBaseController {
 			'customer',
 			'notes',
 			'weight',
-			'sellPrice'
+			'sellPrice',
+			'morph' => 'numericOrNull'
 		]);
 
 		$this->database->begin_transaction();

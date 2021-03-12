@@ -175,6 +175,56 @@
             },
             "codeClass": null,
             "userConfig": {
+                "name": "MorphStore"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyStore10",
+            "designerId": "1074ceae-d6b6-47ff-921f-46c1291fc108",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "morphId"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField4",
+                    "designerId": "56ecc1bd-6b89-419a-974f-a9998033c4d1"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "morphName"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField",
+                    "designerId": "82a9f7fb-3a37-48a6-a2ec-0cabb5c19a77"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
                 "data": [
                     "[",
                     "\t{",
