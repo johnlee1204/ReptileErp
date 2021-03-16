@@ -40,6 +40,7 @@ Ext.define('PetMaster.view.PetMaster', {
 		type: 'petmaster'
 	},
 	frame: true,
+	scrollable: true,
 	defaultListenerScope: true,
 
 	layout: {

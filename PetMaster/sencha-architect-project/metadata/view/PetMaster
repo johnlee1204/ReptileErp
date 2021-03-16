@@ -13,7 +13,8 @@
         "layout": "vbox",
         "mixins": [
             "['DocForm']"
-        ]
+        ],
+        "scrollable": true
     },
     "configAlternates": {
         "designer|userAlias": "string",
@@ -26,7 +27,8 @@
         "minWidth": "number",
         "mixins": "object",
         "container|align": "string",
-        "layout": "string"
+        "layout": "string",
+        "scrollable": "auto"
     },
     "name": "MyPanel",
     "designerId": "d38c2cf0-9e53-498a-8521-da773f47156a",

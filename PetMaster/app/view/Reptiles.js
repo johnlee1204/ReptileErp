@@ -28,6 +28,7 @@ Ext.define('PetMaster.view.Reptiles', {
 	viewModel: {
 		type: 'reptiles'
 	},
+	scrollable: true,
 	bodyStyle: 'background:none',
 	title: 'Reptile Database',
 	defaultListenerScope: true,

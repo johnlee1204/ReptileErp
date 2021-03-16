@@ -7,7 +7,7 @@
             "frameworkVersion": ""
         },
         "urlPrefixTemplate": "http://dev.local/",
-        "exportPath": "C:/Users/johnm/Desktop/Websites/LeeSheet/Employee",
+        "exportPath": "C:/Users/jlee/Desktop/Websites/LeeSheet/Employee",
         "buildShouldOverwriteIndex": true,
         "generateArchitectVersion": false,
         "spacesToIndent": "tab",
@@ -47,7 +47,7 @@
         "controller": [],
         "model": [],
         "resource": [
-            "fc07e6b2-5cc6-4b84-ad72-c6753a80df1b",
+            "2b0b0ce9-ed40-4d0d-9710-2b62b0033c7e",
             "173a740e-293e-4e00-b40c-9a50fb2577d4",
             "5ba3958c-da75-475c-be62-0204422d23cf",
             "e9dfff16-f6c8-498c-ac8a-f008ed4717e3",

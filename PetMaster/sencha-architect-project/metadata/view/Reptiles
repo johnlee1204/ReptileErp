@@ -11,6 +11,7 @@
         "designer|userAlias": "reptiles",
         "designer|userClassName": "Reptiles",
         "layout": "hbox",
+        "scrollable": true,
         "title": "Reptile Database"
     },
     "configAlternates": {
@@ -19,7 +20,8 @@
         "designer|userAlias": "string",
         "designer|userClassName": "string",
         "layout": "string",
-        "title": "string"
+        "title": "string",
+        "scrollable": "auto"
     },
     "name": "MyPanel1",
     "designerId": "540cd583-f3ea-47cd-83ec-141aa2c69d6f",
