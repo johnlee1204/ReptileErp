@@ -408,6 +408,10 @@ class AgileInventory extends AgileBaseController {
 		$this->outputSuccess();
 	}
 
+	function readPurchaseOrders() {
+		$this->outputSuccessData();
+	}
+
 	function readWebHooks() {
 		$store = AgileInventoryModel::readShopFromCookie();
 		$accessToken = AgileInventoryModel::readAccessToken();

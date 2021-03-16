@@ -4,7 +4,8 @@
 namespace AgileInventory\Models;
 
 
-class PurchaseOrderModel
-{
+use AgileModel;
+
+class PurchaseOrderModel extends AgileModel {
 
 }

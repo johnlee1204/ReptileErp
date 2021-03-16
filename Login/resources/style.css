@@ -1,9 +1,0 @@
-.logo{
-	width: 175px;
-	height: 75px;
-	background: url(/Login/resources/logo.png) no-repeat;
-	background-position: center center;
-	background-size: contain;
-    margin: 0 auto 5px auto;
-    display: block;
-}
