@@ -7,7 +7,7 @@
             "frameworkVersion": ""
         },
         "urlPrefixTemplate": "http://dev.local/",
-        "exportPath": "C:/Users/johnm/Desktop/Websites/LeeSheet/PetMaster",
+        "exportPath": "C:/Users/jlee/Desktop/Websites/LeeSheet/PetMaster",
         "buildShouldOverwriteIndex": true,
         "generateArchitectVersion": false,
         "spacesToIndent": "tab",
@@ -62,7 +62,7 @@
         "controller": [],
         "model": [],
         "resource": [
-            "121e2eba-8c45-42a7-b461-8bc341af5d8e",
+            "31173de6-e40c-473c-9207-3eb84fb39ebd",
             "173a740e-293e-4e00-b40c-9a50fb2577d4",
             "5ba3958c-da75-475c-be62-0204422d23cf",
             "e9dfff16-f6c8-498c-ac8a-f008ed4717e3",

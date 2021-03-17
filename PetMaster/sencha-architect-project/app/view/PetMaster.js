@@ -40,6 +40,7 @@ Ext.define('PetMaster.view.PetMaster', {
 		type: 'petmaster'
 	},
 	frame: true,
+	scrollable: true,
 	defaultListenerScope: true,
 
 	layout: {
@@ -171,6 +172,19 @@ Ext.define('PetMaster.view.PetMaster', {
 											margin: '4 0 0 5'
 										}
 									]
+								},
+								{
+									xtype: 'combobox',
+									itemId: 'morph',
+									fieldLabel: 'Morph',
+									labelAlign: 'right',
+									displayField: 'morphName',
+									forceSelection: true,
+									queryMode: 'local',
+									valueField: 'morphId',
+									bind: {
+										store: '{MorphStore}'
+									}
 								},
 								{
 									xtype: 'container',
@@ -510,6 +524,7 @@ Ext.define('PetMaster.view.PetMaster', {
 	},
 
 	onPanelAfterRender: function(component, eOpts) {
+		this.readMorphs();
 		this.readPetTypes();
 		this.readFoodTypes();
 		this.readPetStatuses();
@@ -593,6 +608,17 @@ Ext.define('PetMaster.view.PetMaster', {
 			jsonData:{petAttachmentId:petAttachmentId},
 			success:function(reply) {
 				this.readPetAttachments();
+			},
+			scope:this,
+			mask:this
+		});
+	},
+
+	readMorphs: function() {
+		AERP.Ajax.request({
+			url:'/PetMaster/readMorphs',
+			success:function(reply) {
+				this.getViewModel().getStore('MorphStore').loadData(reply.data);
 			},
 			scope:this,
 			mask:this

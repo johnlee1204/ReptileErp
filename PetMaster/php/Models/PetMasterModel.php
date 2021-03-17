@@ -22,6 +22,20 @@ class PetMasterModel extends AgileModel {
 		");
 	}
 
+	static function readMorphs() {
+		self::$database->select(
+			"Morph",
+			[
+				'morphId',
+				'morphName'
+			],
+			[],
+			'ORDER BY morphName'
+		);
+
+		return self::$database->fetch_all_row();
+	}
+
 	static function readPet($petId) {
 
 		return self::$database->fetch_assoc("
@@ -45,7 +59,8 @@ class PetMasterModel extends AgileModel {
 				Pet.notes,
 				Pet.weight,
 				Pet.sellPrice,
-				Pet.status
+				Pet.status,
+			    Pet.morphId morph
 			FROM Pet
 			LEFT JOIN Habitat ON Habitat.habitatId = Pet.habitatId
 			WHERE
@@ -118,7 +133,8 @@ class PetMasterModel extends AgileModel {
 				'notes' => $inputs['notes'],
 				'weight' => $inputs['weight'],
 				'sellPrice' => $inputs['sellPrice'],
-				'status' => $inputs['status']
+				'status' => $inputs['status'],
+				'morphId' => $inputs['morph']
 			]
 		);
 
@@ -210,7 +226,8 @@ class PetMasterModel extends AgileModel {
 				'notes' => $inputs['notes'],
 				'weight' => $inputs['weight'],
 				'sellPrice' => $inputs['sellPrice'],
-				'status' => $inputs['status']
+				'status' => $inputs['status'],
+				'morphId' => $inputs['morph']
 			],
 			[
 				'petId' => $inputs['petId']

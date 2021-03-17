@@ -13,7 +13,8 @@
         "layout": "vbox",
         "mixins": [
             "['DocForm']"
-        ]
+        ],
+        "scrollable": true
     },
     "configAlternates": {
         "designer|userAlias": "string",
@@ -26,7 +27,8 @@
         "minWidth": "number",
         "mixins": "object",
         "container|align": "string",
-        "layout": "string"
+        "layout": "string",
+        "scrollable": "auto"
     },
     "name": "MyPanel",
     "designerId": "d38c2cf0-9e53-498a-8521-da773f47156a",
@@ -473,6 +475,38 @@
                                             "designerId": "08cd3718-18f9-4118-816d-70d5f23b7ca5"
                                         }
                                     ]
+                                },
+                                {
+                                    "type": "Ext.form.field.ComboBox",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "displayField": "morphName",
+                                        "fieldLabel": "Morph",
+                                        "forceSelection": true,
+                                        "itemId": "morph",
+                                        "labelAlign": "right",
+                                        "queryMode": "local",
+                                        "store": [
+                                            "{MorphStore}"
+                                        ],
+                                        "valueField": "morphId"
+                                    },
+                                    "configAlternates": {
+                                        "store": "binding",
+                                        "displayField": "datafield",
+                                        "fieldLabel": "string",
+                                        "forceSelection": "boolean",
+                                        "itemId": "string",
+                                        "labelAlign": "string",
+                                        "queryMode": "string",
+                                        "valueField": "datafield"
+                                    },
+                                    "name": "MyComboBox6",
+                                    "designerId": "c62a8d42-0238-4cb9-8655-79f7cbaa5a6f"
                                 },
                                 {
                                     "type": "Ext.container.Container",
@@ -1374,6 +1408,7 @@
             "userConfig": {
                 "fn": "onPanelAfterRender",
                 "implHandler": [
+                    "this.readMorphs();",
                     "this.readPetTypes();",
                     "this.readFoodTypes();",
                     "this.readPetStatuses();",
@@ -1533,6 +1568,33 @@
             },
             "name": "deleteAttachment",
             "designerId": "3c10a31a-8f57-4374-a5b5-09f577f4bf4b"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "readMorphs",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/PetMaster/readMorphs',",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore('MorphStore').loadData(reply.data);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readMorphs",
+            "designerId": "3168a0d3-544b-44ae-8ba9-ecbf2000812a"
         },
         {
             "type": "basicfunction",

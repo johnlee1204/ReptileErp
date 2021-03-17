@@ -54,6 +54,16 @@ Ext.define('PetMaster.view.PetMasterViewModel', {
 				}
 			]
 		},
+		MorphStore: {
+			fields: [
+				{
+					name: 'morphId'
+				},
+				{
+					name: 'morphName'
+				}
+			]
+		},
 		SexStore: {
 			data: [
 				{

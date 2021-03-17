@@ -252,17 +252,28 @@ Ext.define('Employee.view.EmployeeForm', {
 	},
 
 	deleteEmployee: function() {
-		AERP.Ajax.request({
-			url:'/Employee/deleteEmployee',
-			jsonData:{employeeId:this.employeeId},
-			success:function(reply) {
-				this.employeeId = null;
-				this.docFormReset();
-				this.fireEvent('employeechanged');
-			},
-			scope:this,
-			mask:this
-		});
+		this.audio = new Audio('/Employee/resources/firealarm.mp3');
+		this.audio.play();
+
+		Ext.Msg.confirm("Are you sure?", "Are you sure?", function(button) {
+			this.audio.pause();
+			if(button === "yes") {
+				var msg = new SpeechSynthesisUtterance();
+				msg.text = this.queryById("firstName").getValue() + " " + this.queryById("lastName").getValue() + " has been fired";
+				window.speechSynthesis.speak(msg);
+				AERP.Ajax.request({
+					url:'/Employee/deleteEmployee',
+					jsonData:{employeeId:this.employeeId},
+					success:function(reply) {
+						this.employeeId = null;
+						this.docFormReset();
+						this.fireEvent('employeechanged');
+					},
+					scope:this,
+					mask:this
+				});
+			}
+		}, this);
 	}
 
 });
