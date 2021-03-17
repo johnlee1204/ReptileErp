@@ -1,0 +1,140 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|userAlias": "incubator",
+        "designer|userClassName": "Incubator",
+        "frame": true,
+        "layout": "hbox",
+        "minHeight": 500,
+        "minWidth": 500,
+        "title": "Incubator"
+    },
+    "configAlternates": {
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "frame": "boolean",
+        "height": "auto",
+        "title": "string",
+        "width": "auto",
+        "minHeight": "number",
+        "minWidth": "number",
+        "container|align": "string",
+        "layout": "string"
+    },
+    "name": "MyPanel",
+    "designerId": "d38c2cf0-9e53-498a-8521-da773f47156a",
+    "viewControllerInstanceId": "8e77139f-bc05-4a61-ab7b-54ee0eb6e2c6",
+    "viewModelInstanceId": "f565af02-a06d-4dc3-95d1-9c4c266bfbf2",
+    "cn": [
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "collapseDirection": "left",
+                "collapsible": true,
+                "itemId": "eggGrid",
+                "resizable": true,
+                "width": 300
+            },
+            "configAlternates": {
+                "collapseDirection": "string",
+                "collapsible": "boolean",
+                "itemId": "string",
+                "resizable": "boolean",
+                "width": "auto"
+            },
+            "name": "eggs",
+            "designerId": "8cb7da89-9277-42da-ac23-83bb06c1c277",
+            "masterInstanceId": "a47366f8-d0a7-41d0-b46b-178677ba08cc",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "eggId"
+                        ],
+                        "fn": "onPanelEggselected",
+                        "implHandler": [
+                            "this.queryById('eggForm').readEgg(eggId);"
+                        ],
+                        "name": "eggselected",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "designer|params": "typedarray",
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onPanelEggselected",
+                    "designerId": "c7e77e6d-ad1d-4f2f-ad6a-cda65a928ae6"
+                }
+            ]
+        },
+        {
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "flex": 1,
+                "itemId": "eggForm"
+            },
+            "configAlternates": {
+                "flex": "number",
+                "itemId": "string"
+            },
+            "name": "eggform",
+            "designerId": "588dbd27-85c4-4677-844c-96fe93447a32",
+            "masterInstanceId": "fa71f935-b4dd-47aa-b652-f767cdc8d719",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|params": [
+                            "panel"
+                        ],
+                        "fn": "onPanelEggChangeD",
+                        "implHandler": [
+                            "this.queryById('eggGrid').readEggs();"
+                        ],
+                        "name": "eggchanged",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "designer|params": "typedarray",
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onPanelEggChangeD",
+                    "designerId": "0a429bda-1a51-46ea-9191-e26f389a9443"
+                }
+            ]
+        }
+    ]
+}

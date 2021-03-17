@@ -994,10 +994,12 @@ Ext.define('DocForm',{
 		this.docFormInitilizeToolbar(params);
 
 		for(var fieldNo in children){
-			var field = children[fieldNo];
-
-			var xType = field.getXType();
-			var itemId = field.getItemId();
+			if(isNaN(fieldNo)) {
+				continue;
+			}
+			let field = children[fieldNo];
+			let xType = field.getXType();
+			let itemId = field.getItemId();
 
 			field.name = itemId;
 			field.enableKeyEvents = true;

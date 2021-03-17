@@ -60,7 +60,9 @@ class PetMasterModel extends AgileModel {
 				Pet.weight,
 				Pet.sellPrice,
 				Pet.status,
-			    Pet.morphId morph
+			    Pet.morphId morph,
+			    Pet.maleParentId maleParent,
+			    Pet.femaleParentId femaleParent
 			FROM Pet
 			LEFT JOIN Habitat ON Habitat.habitatId = Pet.habitatId
 			WHERE
@@ -371,6 +373,12 @@ class PetMasterModel extends AgileModel {
 	static function createBreedingPair($reptileId1, $reptileId2) {
 		$reptile1 = self::readPet($reptileId1);
 		$reptile2 = self::readPet($reptileId2);
+
+		$currentlyBreedingWith = self::readCurrentlyBreedingWith($reptileId1);
+
+		if(count($currentlyBreedingWith) === 6) {
+			throw new AgileUserMessageException("Cannot Breed with over 6 Reptiles");
+		}
 
 		if($reptile1['sex'] === $reptile2['sex']) {
 			throw new AgileUserMessageException("Cannot Breed Same Sex!");

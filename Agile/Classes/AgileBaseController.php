@@ -2,6 +2,8 @@
 
 
 class AgileBaseController {
+
+	/* @var mysql_helper */
 	public $database;
 	public $AgileApp;
 
