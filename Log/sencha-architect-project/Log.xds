@@ -5,7 +5,7 @@
             "cmdVersion": ""
         },
         "urlPrefixTemplate": "http://dev.local/Log/",
-        "exportPath": "C:/Users/johnm/Desktop/Websites/LeeSheet/Log",
+        "exportPath": "C:/Users/jlee/Desktop/Websites/LeeSheet/Log",
         "buildShouldOverwriteIndex": true,
         "generateArchitectVersion": false,
         "spacesToIndent": 4,
@@ -58,7 +58,7 @@
         "controller": [],
         "model": [],
         "resource": [
-            "bd18979c-2e86-4b74-afd6-6de4dfe16872",
+            "522a9e23-2f91-4104-912b-aceebe068345",
             "569abc86-f4db-4a4a-82f2-df820ebacd11",
             "579400b4-535b-4064-8c3c-b53b35f9184a",
             "6baa88a2-afba-44a6-b180-ec268e472de6",

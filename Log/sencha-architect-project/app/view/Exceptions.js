@@ -52,7 +52,7 @@ Ext.define('Log.view.Exceptions', {
             border: false,
             frame: true,
             itemId: 'exceptionSelectPanel',
-            minHeight: 90,
+            minHeight: 120,
             ui: 'default-framed',
             layout: 'vbox',
             frameHeader: false,
@@ -268,9 +268,9 @@ Ext.define('Log.view.Exceptions', {
                 },
                 {
                     xtype: 'checkboxgroup',
-                    cls: 'floatBox',
                     height: 35,
                     margin: '5 10 0 10',
+                    minHeight: 35,
                     width: 500,
                     fieldLabel: 'Error Types',
                     labelWidth: 85,
@@ -672,13 +672,13 @@ Ext.define('Log.view.Exceptions', {
     },
 
     onExceptionSelectPanelResize: function(component, width, height, oldWidth, oldHeight, eOpts) {
-        if(width >= 1450){
-            component.setHeight(35);
-        }else if(width >= 940 ){
-            component.setHeight(70);
-        }else{
-            component.setHeight(105);
-        }
+        // if(width >= 1450){
+        //     component.setHeight(35);
+        // }else if(width >= 940 ){
+        //     component.setHeight(70);
+        // }else{
+        //     component.setHeight(105);
+        // }
     },
 
     onCheckboxgroupChange: function(field, newValue, oldValue, eOpts) {

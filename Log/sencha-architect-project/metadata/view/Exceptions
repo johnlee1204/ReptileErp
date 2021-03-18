@@ -57,7 +57,7 @@
                 "itemId": "exceptionSelectPanel",
                 "layout": "vbox",
                 "layout|flex": null,
-                "minHeight": 90,
+                "minHeight": 120,
                 "ui": "default-framed"
             },
             "configAlternates": {
@@ -882,13 +882,13 @@
                     "userConfig": {
                         "fn": "onExceptionSelectPanelResize",
                         "implHandler": [
-                            "if(width >= 1450){",
-                            "    component.setHeight(35);",
-                            "}else if(width >= 940 ){",
-                            "    component.setHeight(70);",
-                            "}else{",
-                            "    component.setHeight(105);",
-                            "}"
+                            "// if(width >= 1450){",
+                            "//     component.setHeight(35);",
+                            "// }else if(width >= 940 ){",
+                            "//     component.setHeight(70);",
+                            "// }else{",
+                            "//     component.setHeight(105);",
+                            "// }"
                         ],
                         "name": "resize",
                         "scope": "me"
@@ -910,9 +910,6 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "cls": [
-                            "floatBox"
-                        ],
                         "container|align": "stretch",
                         "fieldLabel": "Error Types",
                         "flex": null,
@@ -921,7 +918,7 @@
                         "layout": "hbox",
                         "margin": "5 10 0 10",
                         "maxHeight": null,
-                        "minHeight": null,
+                        "minHeight": 35,
                         "width": 500
                     },
                     "configAlternates": {
