@@ -1,0 +1,4 @@
+# AERP-Ajax/sass/etc
+
+This folder contains miscellaneous SASS files. Unlike `"AERP-Ajax/sass/etc"`, these files
+need to be used explicitly.

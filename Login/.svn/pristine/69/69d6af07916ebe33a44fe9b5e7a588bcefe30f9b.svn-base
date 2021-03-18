@@ -1,0 +1,65 @@
+{
+    "type": "Ext.container.Viewport",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|initialView": true,
+        "designer|userAlias": "myviewport",
+        "designer|userClassName": "MyViewport"
+    },
+    "name": "MyViewport",
+    "designerId": "93d41c65-f591-4890-be76-77059791a669",
+    "viewControllerInstanceId": "88194b1d-530c-40dc-82e9-94ca15d10708",
+    "viewModelInstanceId": "2b9fd130-75d6-4923-8882-630297acb0df",
+    "cn": [
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onViewportAfterRender",
+                "implHandler": [
+                    "var form = Ext.create('widget.loginform');",
+                    "",
+                    "this.loginWin = Ext.create('Ext.window.Window', {",
+                    "    header: false,",
+                    "    layout: 'fit',",
+                    "\tclosable:false,",
+                    "\tresizable:false,",
+                    "\tbodyPadding:5,",
+                    "\titems:[form]",
+                    "});",
+                    "this.loginWin.show();"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "name": "onViewportAfterRender",
+            "designerId": "54672167-eee7-456f-9f99-addc8bf2eaa4"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onViewportResize",
+                "implHandler": [
+                    "//this.loginWin.center();"
+                ],
+                "name": "resize",
+                "scope": "me"
+            },
+            "name": "onViewportResize",
+            "designerId": "10857ce2-2d31-4782-b985-2ec68db10f01"
+        }
+    ]
+}

@@ -1,0 +1,403 @@
+{
+    "type": "Ext.form.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyPadding": null,
+        "bodyStyle": [
+            "{background:'none'}"
+        ],
+        "border": false,
+        "designer|userAlias": "loginform",
+        "designer|userClassName": "LoginForm",
+        "frame": null,
+        "height": null,
+        "margin": 5,
+        "title": "",
+        "width": 250
+    },
+    "configAlternates": {
+        "bodyPadding": "auto",
+        "bodyStyle": "object",
+        "border": "boolean",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "frame": "boolean",
+        "height": "auto",
+        "margin": "auto",
+        "title": "string",
+        "width": "auto"
+    },
+    "name": "MyForm",
+    "designerId": "43ed5b3f-eedb-4896-8c90-6007584d555c",
+    "viewControllerInstanceId": "4bd69a3f-5ad3-4407-a47c-f2f313758a56",
+    "viewModelInstanceId": "87fb12aa-029a-4c8b-8d5c-6cd8b9aa721a",
+    "cn": [
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "cls": [
+                    "logo"
+                ],
+                "height": 75,
+                "html": null,
+                "itemId": "logo",
+                "margin": null,
+                "width": null
+            },
+            "configAlternates": {
+                "html": "string",
+                "cls": "typedarray",
+                "height": "auto",
+                "itemId": "string",
+                "margin": "auto",
+                "width": "auto"
+            },
+            "name": "MyContainer3",
+            "designerId": "8a5979a2-39ec-43de-8608-0cb4cc4b7c88"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "html": "Please Login",
+                "itemId": "pleaseLogin",
+                "style": [
+                    "{",
+                    "    'font-family':'Arial'",
+                    "    ,'font-size':'20px'",
+                    "    ,'text-decoration':'italic'",
+                    "    ,'font-weight':'bolder'",
+                    "    ,'margin-bottom': '10px'",
+                    "    ,'text-align': 'center'",
+                    "}"
+                ]
+            },
+            "configAlternates": {
+                "html": "string",
+                "itemId": "string",
+                "style": "object"
+            },
+            "name": "MyContainer4",
+            "designerId": "3b848041-29af-4695-8427-1489463b861b"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "allowBlank": null,
+                "emptyText": "Username",
+                "fieldLabel": "",
+                "itemId": "user",
+                "labelAlign": "right",
+                "layout|anchor": "100%",
+                "margin": "5 0 5 0",
+                "name": "user"
+            },
+            "configAlternates": {
+                "allowBlank": "boolean",
+                "emptyText": "string",
+                "fieldLabel": "string",
+                "itemId": "string",
+                "labelAlign": "string",
+                "layout|anchor": "string",
+                "margin": "auto",
+                "name": "string"
+            },
+            "name": "MyTextField",
+            "designerId": "e149113b-8f9f-4b63-8c34-e6ae17a32aff"
+        },
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "allowBlank": null,
+                "emptyText": "Password",
+                "enableKeyEvents": true,
+                "fieldLabel": "",
+                "inputType": "password",
+                "itemId": "pass",
+                "labelAlign": "right",
+                "layout|anchor": "100%",
+                "margin": "5 0 5 0",
+                "name": "pass"
+            },
+            "configAlternates": {
+                "allowBlank": "boolean",
+                "emptyText": "string",
+                "enableKeyEvents": "boolean",
+                "fieldLabel": "string",
+                "inputType": "string",
+                "itemId": "string",
+                "labelAlign": "string",
+                "layout|anchor": "string",
+                "margin": "auto",
+                "name": "string"
+            },
+            "name": "MyTextField1",
+            "designerId": "fbcb2bcd-5ec6-41b5-ac15-d2e6f39c9614",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onTextfieldKeypress",
+                        "implHandler": [
+                            "if(e.keyCode == Ext.event.Event.ENTER){",
+                            "    this.login();",
+                            "}"
+                        ],
+                        "name": "keypress",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onTextfieldKeypress",
+                    "designerId": "b2b9b221-ad5b-4592-b673-8af658bb5827"
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "container|align": "stretch",
+                "layout": "hbox"
+            },
+            "configAlternates": {
+                "container|align": "string",
+                "layout": "string"
+            },
+            "name": "MyContainer",
+            "designerId": "432290f2-09fa-4e0c-a2fe-9c4a01635fd2",
+            "cn": [
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 1
+                    },
+                    "configAlternates": {
+                        "layout|flex": "number"
+                    },
+                    "name": "MyContainer1",
+                    "designerId": "f20e1f03-491d-427c-9c57-4705dee8b311"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "glyph": null,
+                        "icon": "/inc/img/silk_icons/key.png",
+                        "padding": "10 30 10 30",
+                        "text": "Login"
+                    },
+                    "configAlternates": {
+                        "glyph": "auto",
+                        "icon": "string",
+                        "padding": "auto",
+                        "text": "string"
+                    },
+                    "name": "MyButton",
+                    "designerId": "00a34a16-3326-4e2b-a8b8-582d924b6f11",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onButtonClick",
+                                "implHandler": [
+                                    "this.login();"
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onButtonClick",
+                            "designerId": "8b9e7c55-6d4f-4ab6-a393-0dd0854e685d"
+                        }
+                    ]
+                },
+                {
+                    "type": "Ext.container.Container",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 1
+                    },
+                    "configAlternates": {
+                        "layout|flex": "number"
+                    },
+                    "name": "MyContainer2",
+                    "designerId": "11c7a103-1d08-40e8-970b-23571383d5de"
+                }
+            ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "login",
+                "implHandler": [
+                    "var values = this.getValues();",
+                    "if(values.user === '' || values.pass === ''){",
+                    "\treturn;",
+                    "}",
+                    "",
+                    "this.mask('Logging In...');",
+                    "AERP.Ajax.request({",
+                    "\turl:'/Login/authenticate',",
+                    "\tparams:values,",
+                    "\tsuccess:function(reply){",
+                    "\t\tthis.unmask();",
+                    "\t\tif(!reply.login){",
+                    "\t\t\tExt.Msg.alert('Error', 'Login Failed');",
+                    "\t\t\tvar pass = this.queryById('pass');",
+                    "\t\t\tpass.reset();",
+                    "\t\t\tExt.Msg.alert('Login Failed','Incorrect User or Password!<BR><BR>Please try again.', function(){",
+                    "\t\t\t\tpass.focus();",
+                    "\t\t\t});",
+                    "\t\t\treturn;",
+                    "\t\t}",
+                    "\t\tif(this.eventMode){",
+                    "\t\t\tthis.fireEvent('loginSuccess',values.user);",
+                    "\t\t}else{",
+                    "\t\t\tvar redirectUrl = this.getGetVar('redirect');",
+                    "\t\t\tif(redirectUrl){",
+                    "\t\t\t\tlocation.href = reply.rootUrl+redirectUrl;",
+                    "\t\t\t}else{",
+                    "\t\t\t\tlocation.href = reply.rootUrl;",
+                    "\t\t\t}",
+                    "\t\t}",
+                    "\t},",
+                    "\tfailure:function(){",
+                    "\t\tthis.unmask();",
+                    "\t},",
+                    "\tscope:this",
+                    "});",
+                    ""
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "login",
+            "designerId": "b6b115fd-ec66-4e0c-a821-d2509a887a51"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "key"
+                ],
+                "fn": "getGetVar",
+                "implHandler": [
+                    "var searchQuery = Ext.Object.fromQueryString(window.location.search);",
+                    "if(searchQuery.hasOwnProperty(key)){",
+                    "\treturn searchQuery[key];",
+                    "}else{",
+                    "\treturn false;",
+                    "}",
+                    ""
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "getGetVar",
+            "designerId": "08068d88-2553-49bd-a731-dcc75ea0e4f8"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onFormAfterRender",
+                "implHandler": [
+                    "var searchQuery = Ext.Object.fromQueryString(window.location.search);",
+                    "if(searchQuery.hasOwnProperty('loggedOut')){",
+                    "\tthis.queryById('pleaseLogin').setHtml('<span style=\"color:#F44336;\">You have been logged out</span>');",
+                    "}",
+                    "this.queryById('user').focus();"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onFormAfterRender",
+            "designerId": "688ac2f9-b537-4a13-a3f7-a0fa6accaf42"
+        }
+    ]
+}

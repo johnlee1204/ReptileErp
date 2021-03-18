@@ -1,0 +1,45 @@
+<?php
+class Login extends AgileBaseController {
+
+	function index(){
+		if ($this->AgileApp->SessionManager->getAuthenticated()) {
+			// The only way to ever get here is if you have a bookmark to the login screen and you are a logged in
+			if (isset($_GET['redirect'])){
+				$class = $_GET['redirect'];
+				header($_SERVER["SERVER_PROTOCOL"]." 302"); //HTTP 302 Found
+				header('Location: ' . $this->AgileApp->systemConfigs['publicRootUrl'] . $class);
+				return;
+			}
+			header($_SERVER["SERVER_PROTOCOL"]." 302"); //HTTP 302 Found
+			header('Location: ' . $this->AgileApp->systemConfigs['publicRootUrl']);
+			return;
+		}
+		readfile(__DIR__ . '/../index.html');
+		return;
+	}
+
+	function logout(){
+		$this->AgileApp->SessionManager->delete();
+		header('Location: ' . $this->AgileApp->systemConfigs['publicRootUrl'].'login?loggedOut');
+		return;
+	}
+
+	function authenticate(){
+
+		$params = Validation::validatePOST(array('user','pass'));
+
+		if($this->AgileApp->SessionManager->authenticateCredentials($params['user'], $params['pass'])){
+			$this->outputJson(array(
+				'success'=>true,
+				'login'=>true,
+				'rootUrl'=>$this->AgileApp->systemConfigs["publicRootUrl"]
+			));
+			return true;
+		}
+		$this->outputJson(array(
+			'success'=>true,
+			'login'=>false
+		));
+		return false;
+	}
+}
