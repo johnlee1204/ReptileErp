@@ -19,7 +19,8 @@ class PetMaster extends AgileBaseController {
 		'uploadAttachment' => 'update',
 		'deleteAttachment' => 'delete',
 		'readBreedingData' => 'read',
-		'createBreedingPair' => 'create'
+		'createBreedingPair' => 'create',
+		'readParentOptions' => 'read'
 	];
 
 	static $allowedExtensions = [
@@ -64,7 +65,9 @@ class PetMaster extends AgileBaseController {
 			'notes',
 			'weight',
 			'sellPrice',
-			'morph' => 'numericOrNull'
+			'morph' => 'numericOrNull',
+			'maleParent' => 'numericOrNull',
+			'femaleParent' => 'numericOrNull'
 		]);
 
 		$this->database->begin_transaction();
@@ -95,7 +98,9 @@ class PetMaster extends AgileBaseController {
 			'notes',
 			'weight',
 			'sellPrice',
-			'morph' => 'numericOrNull'
+			'morph' => 'numericOrNull',
+			'maleParent' => 'numericOrNull',
+			'femaleParent' => 'numericOrNull'
 		]);
 
 		$this->database->begin_transaction();
@@ -267,5 +272,9 @@ class PetMaster extends AgileBaseController {
 		PetMasterModel::createBreedingPair($inputs['reptileId1'], $inputs['reptileId2']);
 
 		$this->outputSuccess();
+	}
+
+	function readParentOptions() {
+		$this->outputSuccess(PetMasterModel::readParentOptions());
 	}
 }

@@ -23,10 +23,11 @@ Ext.define('Incubator.view.EggForm', {
 	requires: [
 		'Incubator.view.EggFormViewModel',
 		'Ext.toolbar.Toolbar',
+		'Ext.form.field.ComboBox',
 		'Ext.form.field.Date',
 		'Ext.tab.Panel',
 		'Ext.tab.Tab',
-		'Ext.form.field.ComboBox',
+		'Ext.form.FieldSet',
 		'Ext.form.field.Checkbox'
 	],
 
@@ -54,10 +55,38 @@ Ext.define('Incubator.view.EggForm', {
 			layout: 'vbox',
 			items: [
 				{
-					xtype: 'textfield',
-					itemId: 'serial',
-					fieldLabel: 'Serial',
-					labelAlign: 'right'
+					xtype: 'container',
+					flex: 1,
+					margin: '0 0 5 0',
+					layout: {
+						type: 'hbox',
+						align: 'stretch'
+					},
+					items: [
+						{
+							xtype: 'textfield',
+							itemId: 'serial',
+							fieldLabel: 'Serial',
+							labelAlign: 'right'
+						},
+						{
+							xtype: 'combobox',
+							flex: 1,
+							itemId: 'type',
+							fieldLabel: 'Type',
+							labelAlign: 'right',
+							displayField: 'type',
+							forceSelection: true,
+							queryMode: 'local',
+							valueField: 'type',
+							bind: {
+								store: '{TypeStore}'
+							},
+							listeners: {
+								afterrender: 'onTypeAfterRender'
+							}
+						}
+					]
 				},
 				{
 					xtype: 'datefield',
@@ -109,36 +138,59 @@ Ext.define('Incubator.view.EggForm', {
 							}
 						},
 						{
-							xtype: 'datefield',
-							itemId: 'hatchDate',
-							fieldLabel: 'Hatch Date',
-							labelAlign: 'right'
-						},
-						{
-							xtype: 'checkboxfield',
-							itemId: 'hatched',
-							margin: '0 0 0 104',
-							boxLabel: 'Hatched',
-							inputValue: '1',
-							uncheckedValue: '0'
-						},
-						{
-							xtype: 'combobox',
-							itemId: 'reptile',
-							fieldLabel: 'Reptile',
-							labelAlign: 'right',
-							displayField: 'serial',
-							forceSelection: true,
-							queryMode: 'local',
-							valueField: 'reptileId',
-							bind: {
-								store: '{ReptileStore}'
-							}
+							xtype: 'fieldset',
+							title: 'Hatch Info',
+							items: [
+								{
+									xtype: 'checkboxfield',
+									itemId: 'hatched',
+									margin: '0 0 0 104',
+									boxLabel: 'Hatched',
+									inputValue: '1',
+									uncheckedValue: '0',
+									listeners: {
+										change: 'onHatchedChange'
+									}
+								},
+								{
+									xtype: 'datefield',
+									itemId: 'hatchDate',
+									fieldLabel: 'Hatch Date',
+									labelAlign: 'right'
+								},
+								{
+									xtype: 'combobox',
+									itemId: 'reptile',
+									fieldLabel: 'Reptile',
+									labelAlign: 'right',
+									displayField: 'serial',
+									forceSelection: true,
+									queryMode: 'local',
+									valueField: 'reptileId',
+									bind: {
+										store: '{ReptileStore}'
+									}
+								},
+								{
+									xtype: 'combobox',
+									itemId: 'sex',
+									fieldLabel: 'Sex',
+									labelAlign: 'right',
+									displayField: 'sex',
+									forceSelection: true,
+									queryMode: 'local',
+									valueField: 'sex',
+									bind: {
+										store: '{SexStore}'
+									}
+								}
+							]
 						}
 					]
 				},
 				{
 					xtype: 'panel',
+					hidden: true,
 					bodyStyle: 'background:none',
 					title: 'Family Tree',
 					layout: {
@@ -161,6 +213,43 @@ Ext.define('Incubator.view.EggForm', {
 		afterrender: 'onPanelAfterRender'
 	},
 
+	onTypeAfterRender: function(component, eOpts) {
+		AppWindowManager.appOn('dropDownSelectionEditor', {
+			scope:this,
+			selectionchanged:function() {
+				this.readReptileTypes();
+			}
+		});
+
+		component.el.on({
+		    contextmenu: function(event) {
+		        event.stopEvent();
+		        AppWindowManager.appLink('dropDownSelectionEditor', {dataKey:'petType'});
+		    },
+		    scope:this
+		});
+
+	},
+
+	onHatchedChange: function(field, newValue, oldValue, eOpts) {
+		let hatchDate = this.queryById('hatchDate');
+		let sex = this.queryById('sex');
+		let reptile = this.queryById('reptile');
+
+		if(newValue) {
+			hatchDate.enable();
+			sex.enable();
+			reptile.enable();
+		} else {
+			hatchDate.setValue("");
+			sex.clearValue();
+			reptile.clearValue();
+			hatchDate.disable();
+			sex.disable();
+			reptile.disable();
+		}
+	},
+
 	onPanelAfterRender: function(component, eOpts) {
 		this.docFormInit({
 			toolbarId:"eggFormToolbar",
@@ -181,6 +270,34 @@ Ext.define('Incubator.view.EggForm', {
 			scope:this,
 			mask:this
 		});
+
+		this.readReptileTypes();
+	},
+
+	readReptileTypes: function() {
+		AERP.Ajax.request({
+			url:'/DropDownSelectionEditor/readSelectionsForCombo',
+			jsonData:{selectionKey:'petType'},
+			success:function(reply) {
+				this.getViewModel().getStore('TypeStore').loadData(reply.data);
+			},
+			scope:this,
+			mask:this
+		});
+	},
+
+	readReptiles: function(reptileId = null) {
+		AERP.Ajax.request({
+			url:"/Incubator/readAppInitData",
+			success:function(reply) {
+				this.getViewModel().getStore("ReptileStore").loadData(reply.reptiles);
+				if(reptileId !== null) {
+					this.queryById('reptile').setValue(reptileId);
+				}
+			},
+			scope:this,
+			mask:this
+		});
 	},
 
 	readEgg: function(eggId) {
@@ -189,7 +306,15 @@ Ext.define('Incubator.view.EggForm', {
 			jsonData:{eggId:eggId},
 			success:function(reply) {
 				this.eggId = eggId;
-				this.readFamilyTree();
+
+				if(reply.data.hatched === 0) {
+					this.queryById('hatchDate').disable();
+					this.queryById('sex').disable();
+					this.queryById('reptile').disable();
+				} else if(reply.data.reptile){
+					this.readReptiles(reply.data.reptile);
+				}
+
 				this.docFormLoadFormData(reply);
 			},
 			scope:this,
@@ -252,25 +377,21 @@ Ext.define('Incubator.view.EggForm', {
 					nodeBinding: {
 						field_0: "name"
 					},
-					template: "ana"
+					template: "belinda"
 				});
 
-				chart.on('render-link', function(sender, args){
-					if (args.cnode.ppid != undefined){
-						args.html += '<use xlink:href="#baby" x="'+ args.p.xa +'" y="'+ args.p.ya +'"/>';
-					}
-				});
+				chart.load(reply.data);
 
-				chart.load([
-					{ id: 1, name: "Jeff" },
-					{ id: 2, pid: 1, tags: ["partner"], name: "Elizabeth" },
-					{ id: 6, pid: 1, tags: ["partner"], name: "Nichole" },
-					{ id: 8, pid: 1, tags: ["partner"], name: "Cindy" },
-					{ id: 3, pid: 1, ppid: 2, name: "John" },
-					{ id: 4, pid: 3, tags: ["partner"], name: "Chris" },
-					{ id: 5, pid: 3, tags: ["partner"], name: "Hannah" },
-					{ id: 7, pid: 1, ppid: 6, name: "Sara" }
-				]);
+		// 		chart.load([
+		// 			{ id: 1, name: "Jeff" },
+		// 			{ id: 2, pid: 1, tags: ["partner"], name: "Elizabeth" },
+		// 			{ id: 6, pid: 1, tags: ["partner"], name: "Nichole" },
+		// 			{ id: 8, pid: 1, tags: ["partner"], name: "Cindy" },
+		// 			{ id: 3, pid: 1, ppid: 2, name: "John" },
+		// 			{ id: 4, pid: 3, tags: ["partner"], name: "Chris" },
+		// 			{ id: 5, pid: 3, tags: ["partner"], name: "Hannah" },
+		// 			{ id: 7, pid: 1, ppid: 6, name: "Sara" }
+		// 		]);
 			},
 			scope:this,
 			mask:this

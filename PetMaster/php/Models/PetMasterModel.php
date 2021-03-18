@@ -136,7 +136,9 @@ class PetMasterModel extends AgileModel {
 				'weight' => $inputs['weight'],
 				'sellPrice' => $inputs['sellPrice'],
 				'status' => $inputs['status'],
-				'morphId' => $inputs['morph']
+				'morphId' => $inputs['morph'],
+				'maleParentId' => $inputs['maleParent'],
+				'femaleParentId' => $inputs['femaleParent']
 			]
 		);
 
@@ -229,7 +231,9 @@ class PetMasterModel extends AgileModel {
 				'weight' => $inputs['weight'],
 				'sellPrice' => $inputs['sellPrice'],
 				'status' => $inputs['status'],
-				'morphId' => $inputs['morph']
+				'morphId' => $inputs['morph'],
+				'maleParentId' => $inputs['maleParent'],
+				'femaleParentId' => $inputs['femaleParent']
 			],
 			[
 				'petId' => $inputs['petId']
@@ -402,6 +406,35 @@ class PetMasterModel extends AgileModel {
 				'femaleReptileId' => $female
 			]
 		);
+	}
+
+	static function readParentOptions() {
+		self::$database->select(
+			"Pet",
+			[
+				'petId',
+				'serial'
+			],
+			['sex' => "Male"]
+		);
+
+		$males = self::$database->fetch_all_row();
+
+		self::$database->select(
+			"Pet",
+			[
+				'petId',
+				'serial'
+			],
+			['sex' => "Female"]
+		);
+
+		$females = self::$database->fetch_all_row();
+
+		return [
+			'males' => $males,
+			'females' => $females
+		];
 	}
 
 }

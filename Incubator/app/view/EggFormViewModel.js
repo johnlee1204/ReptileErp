@@ -52,6 +52,28 @@ Ext.define('Incubator.view.EggFormViewModel', {
 					name: 'serial'
 				}
 			]
+		},
+		SexStore: {
+			data: [
+				{
+					sex: 'Male'
+				},
+				{
+					sex: 'Female'
+				}
+			],
+			fields: [
+				{
+					name: 'sex'
+				}
+			]
+		},
+		TypeStore: {
+			fields: [
+				{
+					name: 'type'
+				}
+			]
 		}
 	}
 

@@ -219,6 +219,43 @@ Ext.define('PetMaster.view.PetMaster', {
 									]
 								},
 								{
+									xtype: 'container',
+									margin: '0 0 5 0',
+									layout: {
+										type: 'hbox',
+										align: 'stretch'
+									},
+									items: [
+										{
+											xtype: 'combobox',
+											itemId: 'maleParent',
+											fieldLabel: 'Male Parent',
+											labelAlign: 'right',
+											displayField: 'serial',
+											forceSelection: true,
+											queryMode: 'local',
+											valueField: 'reptileId',
+											bind: {
+												store: '{MaleParentStore}'
+											}
+										},
+										{
+											xtype: 'combobox',
+											itemId: 'femaleParent',
+											width: 247,
+											fieldLabel: 'Female Parent',
+											labelAlign: 'right',
+											displayField: 'serial',
+											forceSelection: true,
+											queryMode: 'local',
+											valueField: 'reptileId',
+											bind: {
+												store: '{FemaleParentStore}'
+											}
+										}
+									]
+								},
+								{
 									xtype: 'datefield',
 									itemId: 'receiveDate',
 									fieldLabel: 'Receive Date',
@@ -404,7 +441,10 @@ Ext.define('PetMaster.view.PetMaster', {
 									dataIndex: 'photoDate',
 									text: 'Photo Date'
 								}
-							]
+							],
+							viewConfig: {
+								enableTextSelection: true
+							}
 						}
 					]
 				},
@@ -529,6 +569,7 @@ Ext.define('PetMaster.view.PetMaster', {
 		this.readFoodTypes();
 		this.readPetStatuses();
 		this.buildNiceGridMenu();
+		this.readParentOptions();
 
 		AERP.Ajax.request({
 			url:'/Habitat/readHabitats',
@@ -655,6 +696,18 @@ Ext.define('PetMaster.view.PetMaster', {
 			jsonData:{selectionKey:'foodType'},
 			success:function(reply) {
 				this.getViewModel().getStore('FoodTypeStore').loadData(reply.data);
+			},
+			scope:this,
+			mask:this
+		});
+	},
+
+	readParentOptions: function() {
+		AERP.Ajax.request({
+			url:"/PetMaster/readParentOptions",
+			success:function(reply) {
+				this.getViewModel().getStore("MaleParentStore").loadData(reply.males);
+				this.getViewModel().getStore("FemaleParentStore").loadData(reply.females);
 			},
 			scope:this,
 			mask:this

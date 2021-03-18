@@ -343,6 +343,106 @@
                     "designerId": "e28887a8-1e53-45af-ae0d-a268862ae313"
                 }
             ]
+        },
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "MaleParentStore"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyStore2",
+            "designerId": "aea74810-ccbf-44d1-8d66-5c2e744f2de4",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "reptileId"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField1",
+                    "designerId": "f57f1dba-d8f2-45f6-b949-49c25fffe679"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "serial"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField2",
+                    "designerId": "9367d118-3985-454b-bdbc-4d53c8653358"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "FemaleParentStore"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyStore11",
+            "designerId": "68c209ee-cab7-4443-95a6-10fadffbcb23",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "reptileId"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField1",
+                    "designerId": "a3cc3fd4-ed47-439e-b8b0-b0693cd6f9a2"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "serial"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField2",
+                    "designerId": "835d6764-a8bb-4b72-9df0-9dd1d7616963"
+                }
+            ]
         }
     ]
 }

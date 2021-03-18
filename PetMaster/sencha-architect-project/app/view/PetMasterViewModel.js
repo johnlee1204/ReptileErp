@@ -95,6 +95,26 @@ Ext.define('PetMaster.view.PetMasterViewModel', {
 					name: 'photoDate'
 				}
 			]
+		},
+		MaleParentStore: {
+			fields: [
+				{
+					name: 'reptileId'
+				},
+				{
+					name: 'serial'
+				}
+			]
+		},
+		FemaleParentStore: {
+			fields: [
+				{
+					name: 'reptileId'
+				},
+				{
+					name: 'serial'
+				}
+			]
 		}
 	}
 

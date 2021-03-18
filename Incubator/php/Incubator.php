@@ -38,6 +38,8 @@ class Incubator extends AgileBaseController{
 			'hatchDate',
 			'hatched' => 'checkBox',
 			'reptile' => 'numericOrNull',
+			'sex',
+			'type' => 'notBlank'
 		]);
 
 		$this->database->begin_transaction();
@@ -57,6 +59,8 @@ class Incubator extends AgileBaseController{
 			'hatchDate',
 			'hatched' => 'checkBox',
 			'reptile' => 'numericOrNull',
+			'sex',
+			'type' => 'notBlank'
 		]);
 
 		$this->database->begin_transaction();
@@ -82,8 +86,7 @@ class Incubator extends AgileBaseController{
 		$input = Validation::validateJsonInput([
 			'eggId' => 'numeric'
 		]);
-		$this->outputSuccess();
 
-		//$this->outputSuccessData(IncubatorModel::readFamilyTree($input['eggId']));
+		$this->outputSuccessData(IncubatorModel::readFamilyTree($input['eggId']));
 	}
 }

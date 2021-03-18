@@ -164,6 +164,85 @@
                     "designerId": "20e706c5-27e2-456e-afa1-bd30918e48d5"
                 }
             ]
+        },
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "data": [
+                    "[",
+                    "\t{",
+                    "\t\t\"sex\": \"Male\"",
+                    "\t},",
+                    "\t{",
+                    "\t\t\"sex\": \"Female\"",
+                    "\t}",
+                    "]"
+                ],
+                "name": "SexStore"
+            },
+            "configAlternates": {
+                "data": "array",
+                "name": "string"
+            },
+            "name": "MyStore4",
+            "designerId": "96528429-de56-4716-a9b1-77c631066833",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "sex"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField4",
+                    "designerId": "7fb29013-92db-4247-af78-ace47ba11a88"
+                }
+            ]
+        },
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "TypeStore"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyStore5",
+            "designerId": "9351dcca-e775-4f18-b851-bf214c0ec33b",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "type"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField5",
+                    "designerId": "149abc05-c417-4bbc-938a-974ac82d3581"
+                }
+            ]
         }
     ]
 }

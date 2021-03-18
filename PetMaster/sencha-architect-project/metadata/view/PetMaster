@@ -634,6 +634,101 @@
                                     ]
                                 },
                                 {
+                                    "type": "Ext.container.Container",
+                                    "reference": {
+                                        "name": "items",
+                                        "type": "array"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "container|align": "stretch",
+                                        "layout": "hbox",
+                                        "margin": "0 0 5 0"
+                                    },
+                                    "configAlternates": {
+                                        "container|align": "string",
+                                        "layout": "string",
+                                        "margin": "auto"
+                                    },
+                                    "name": "MyContainer12",
+                                    "designerId": "ab4835a2-b893-48fc-8f33-3e12662fd77a",
+                                    "cn": [
+                                        {
+                                            "type": "Ext.form.field.ComboBox",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "displayField": "serial",
+                                                "fieldLabel": "Male Parent",
+                                                "forceSelection": true,
+                                                "itemId": "maleParent",
+                                                "labelAlign": "right",
+                                                "queryMode": "local",
+                                                "store": [
+                                                    "{MaleParentStore}"
+                                                ],
+                                                "valueField": "reptileId"
+                                            },
+                                            "configAlternates": {
+                                                "fieldLabel": "string",
+                                                "itemId": "string",
+                                                "labelAlign": "string",
+                                                "submitFormat": "string",
+                                                "cls": "typedarray",
+                                                "store": "binding",
+                                                "displayField": "datafield",
+                                                "forceSelection": "boolean",
+                                                "queryMode": "string",
+                                                "valueField": "datafield"
+                                            },
+                                            "name": "MyComboBox7",
+                                            "designerId": "6b4396d7-efae-426d-9c5d-fe80628b8db5"
+                                        },
+                                        {
+                                            "type": "Ext.form.field.ComboBox",
+                                            "reference": {
+                                                "name": "items",
+                                                "type": "array"
+                                            },
+                                            "codeClass": null,
+                                            "userConfig": {
+                                                "displayField": "serial",
+                                                "fieldLabel": "Female Parent",
+                                                "forceSelection": true,
+                                                "itemId": "femaleParent",
+                                                "labelAlign": "right",
+                                                "queryMode": "local",
+                                                "store": [
+                                                    "{FemaleParentStore}"
+                                                ],
+                                                "valueField": "reptileId",
+                                                "width": 247
+                                            },
+                                            "configAlternates": {
+                                                "fieldLabel": "string",
+                                                "itemId": "string",
+                                                "labelAlign": "string",
+                                                "submitFormat": "string",
+                                                "docFormSkip": "boolean",
+                                                "labelWidth": "number",
+                                                "readOnly": "boolean",
+                                                "readOnlyCls": "string",
+                                                "width": "auto",
+                                                "store": "binding",
+                                                "displayField": "datafield",
+                                                "forceSelection": "boolean",
+                                                "queryMode": "string",
+                                                "valueField": "datafield"
+                                            },
+                                            "name": "MyComboBox8",
+                                            "designerId": "981f27c4-087c-4ec4-9f38-931721fdcbdd"
+                                        }
+                                    ]
+                                },
+                                {
                                     "type": "Ext.form.field.Date",
                                     "reference": {
                                         "name": "items",
@@ -1295,6 +1390,12 @@
                                         "type": "object"
                                     },
                                     "codeClass": null,
+                                    "userConfig": {
+                                        "enableTextSelection": true
+                                    },
+                                    "configAlternates": {
+                                        "enableTextSelection": "boolean"
+                                    },
                                     "name": "MyTable1",
                                     "designerId": "dcdc38db-6b03-4c10-897d-91f41cae526f"
                                 }
@@ -1413,6 +1514,7 @@
                     "this.readFoodTypes();",
                     "this.readPetStatuses();",
                     "this.buildNiceGridMenu();",
+                    "this.readParentOptions();",
                     "",
                     "AERP.Ajax.request({",
                     "\turl:'/Habitat/readHabitats',",
@@ -1679,6 +1781,34 @@
             },
             "name": "readFoodTypes",
             "designerId": "46fcbaf5-c8fb-4267-b73c-010f4c911f43"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "readParentOptions",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:\"/PetMaster/readParentOptions\",",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.getViewModel().getStore(\"MaleParentStore\").loadData(reply.males);",
+                    "\t\tthis.getViewModel().getStore(\"FemaleParentStore\").loadData(reply.females);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readParentOptions",
+            "designerId": "9aa81ea3-1d20-4346-9400-07f232d9d0f8"
         },
         {
             "type": "basicfunction",

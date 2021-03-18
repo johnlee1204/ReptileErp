@@ -2,6 +2,7 @@
 
 namespace Incubator\Models;
 use AgileModel;
+use AgileUserMessageException;
 use PetMaster\Models\PetMasterModel;
 
 class IncubatorModel extends AgileModel {
@@ -73,6 +74,8 @@ class IncubatorModel extends AgileModel {
 				"hatchDate",
 				"hatched",
 				"reptileId reptile",
+				"sex",
+				"type"
 			],
 			['eggId' => $eggId]
 		);
@@ -99,7 +102,9 @@ class IncubatorModel extends AgileModel {
 				"femaleParentId" => $inputs['femaleParent'],
 				"hatchDate" => $inputs['hatchDate'],
 				"hatched" => $inputs['hatched'],
-				"reptileId" => $inputs['reptile']
+				"reptileId" => $inputs['reptile'],
+				'sex' => $inputs['sex'],
+				'type' => $inputs['type']
 			]
 		);
 
@@ -116,6 +121,8 @@ class IncubatorModel extends AgileModel {
 
 		$inputs['layDate'] = date('Y-m-d', strtotime($inputs['layDate']));
 
+		$oldEgg = self::readEgg($inputs['eggId']);
+
 		self::$database->update(
 			"Egg",
 			[
@@ -125,10 +132,54 @@ class IncubatorModel extends AgileModel {
 				"femaleParentId" => $inputs['femaleParent'],
 				"hatchDate" => $inputs['hatchDate'],
 				"hatched" => $inputs['hatched'],
-				"reptileId" => $inputs['reptile']
+				"reptileId" => $inputs['reptile'],
+				'sex' => $inputs['sex'],
+				'type' => $inputs['type']
 			],
 			['eggId' => $inputs['eggId']]
 		);
+
+		if($oldEgg['hatched'] === 0 && $inputs['hatched'] === 1) {
+			if($inputs['hatchDate'] === NULL) {
+				throw new AgileUserMessageException("Must enter Hatch Date!");
+			}
+
+			if($inputs['sex'] === "") {
+				throw new AgileUserMessageException("Must enter Sex!");
+			}
+
+			$reptileId = PetMasterModel::createPet([
+				'serial' => $inputs['serial'],
+				'type' => $inputs['type'],
+				'price' => NULL,
+				'sex' => $inputs['sex'],
+				'birthDate' => $inputs['hatchDate'],
+				'receiveDate' => $inputs['hatchDate'],
+				'sellDate' => NULL,
+				'vendor' => "",
+				'cost' => 0,
+				'habitatId' => NULL,
+				'food' => '',
+				'feedingQuantity' => 0,
+				'feedingFrequency' => 0,
+				'customer' => '',
+				'notes' => '',
+				'weight' => NULL,
+				'sellPrice' => NULL,
+				'status' => NULL,
+				'morph' => NULL,
+				'maleParent' => $inputs['maleParent'],
+				'femaleParent' => $inputs['femaleParent']
+			]);
+
+			self::$database->update(
+				"Egg",
+				[
+					"reptileId" => $reptileId
+				],
+				['eggId' => $inputs['eggId']]
+			);
+		}
 	}
 
 	static function deleteEgg($eggId) {
@@ -140,43 +191,42 @@ class IncubatorModel extends AgileModel {
 
 	static function readFamilyTree($eggId) {
 		$familyTree = [];
-		$id = 1;
 
 		$egg = self::readEgg($eggId);
+		$familyTree[] = [
+			'id' => 1,
+			'name' => $egg['serial'],
+			'pid' => NULL,
+			'ppid' => NULL
+		];
+		self::readFamilyTreeRecursive($familyTree, $egg['maleParent']);
+
+		return $familyTree;
 	}
 
-	static function readTopParents($reptileId) {
+	static function readFamilyTreeRecursive(&$tree, $reptileId, $partner = NULL) {
 		$reptile = PetMasterModel::readPet($reptileId);
-		if($reptile['maleParent'] !== NULL) {
+		$maleParent = PetMasterModel::readPet($reptile['maleParent']);
+		$femaleParent = PetMasterModel::readPet($reptile['femaleParent']);
 
+		$tree[] = [
+			'id' => $reptileId,
+			'name' => $reptile['serial'],
+			'pid' => $reptile['maleParent'],
+			'ppid' => $reptile['femaleParent']
+		];
+
+		if($partner !== NULL) {
+			$tree[count($tree) - 1]['tags'] = ['partner'];
+			$tree[count($tree) - 1]['pid'] = $partner;
 		}
-	}
 
-	static function readFamilyTreeRecursive($id, &$tree, $eggId = NULL, $reptileId = NULL) {
-		$parents = self::$database->fetch_all_assoc("
-			SELECT
-				male.serial father,
-				female.serial mother
-			FROM Egg
-			JOIN Pet male ON male.petId = Egg.maleParentId
-			JOIN Pet female ON female.petId = Egg.maleParentId
-			WHERE
-				eggId = ?
-		");
+		if($reptile['maleParent']) {
+			self::readFamilyTreeRecursive($tree, $reptile['maleParent']);
+		}
 
-		$tree[] = [
-			'id' => $id,
-			'pid' => self::readFamilyTreeRecursive($id, $tree),
-			'name' => $parents['father']
-		];
-
-		$id++;
-
-		$tree[] = [
-			'id' => $id,
-			'pid' => self::readFamilyTreeRecursive($id, $tree),
-			'name' => $parents['father']
-		];
-		self::readFamilyTreeRecursive($id, $tree);
+		if($reptile['femaleParent']) {
+			self::readFamilyTreeRecursive($tree, $reptile['femaleParent'], $reptile['maleParent']);
+		}
 	}
 }
