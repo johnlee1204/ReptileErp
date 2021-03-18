@@ -1,0 +1,108 @@
+{
+    "type": "Ext.container.Viewport",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "container|align": "stretch",
+        "designer|initialView": true,
+        "designer|userAlias": "myviewport",
+        "designer|userClassName": "MyViewport",
+        "layout": "vbox",
+        "margin": null
+    },
+    "configAlternates": {
+        "scrollable": "boolean",
+        "designer|initialView": "boolean",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "height": "auto",
+        "margin": "auto",
+        "padding": "auto",
+        "width": "auto",
+        "layout": "string",
+        "container|align": "string"
+    },
+    "name": "MyViewport",
+    "designerId": "79f3f913-02f7-4a07-8ef4-c3f24245093b",
+    "viewControllerInstanceId": "9f9c802f-7311-4f1e-8bd1-2b212c501096",
+    "viewModelInstanceId": "0202bb2a-4780-44c2-a06f-4de52c206d34",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|createAlias": "usertoolbar"
+            },
+            "configAlternates": {
+                "designer|createAlias": "string"
+            },
+            "name": "MyToolbar",
+            "designerId": "0c99beb9-f353-464a-ac42-36ed1060172a"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onViewportAfterRender",
+                "implHandler": [
+                    "var form = Ext.create('widget.passwordreset');",
+                    "",
+                    "this.passwordReset = Ext.create('Ext.window.Window', {",
+                    "\theader: false,",
+                    "\tlayout: 'fit',",
+                    "\tclosable:false,",
+                    "\tresizable:false,",
+                    "\tbodyPadding:5,",
+                    "\titems:[form]",
+                    "});",
+                    "this.passwordReset.show();"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onViewportAfterRender",
+            "designerId": "528ba0ca-afdc-4785-a96b-94fa689a1f0a"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onViewportResize",
+                "implHandler": [
+                    "this.passwordReset.center();"
+                ],
+                "name": "resize",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onViewportResize",
+            "designerId": "6701ebb5-6720-4fb6-81cc-ec4fe820ed8b"
+        }
+    ]
+}

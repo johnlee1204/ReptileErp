@@ -78,4 +78,15 @@ class Login extends AgileBaseController {
 		));
 		return false;
 	}
+
+	function resetPassword() {
+		$input = Validation::validateJsonInput([
+			'user' => 'notBlank'
+		]);
+
+		$userModel = $this->AgileApp->loadModel('AgileUserModel');
+		$userModel->resetPassword($input['user']);
+
+		$this->outputSuccess();
+	}
 }

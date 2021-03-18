@@ -13,7 +13,7 @@
                 "width": null
             }
         },
-        "exportPath": "C:/Users/johnm/Desktop/Websites/LeeSheet/Login",
+        "exportPath": "C:/Users/jlee/Desktop/Websites/LeeSheet/Login",
         "buildShouldOverwriteIndex": true,
         "generateArchitectVersion": false,
         "spacesToIndent": "tab",
@@ -42,7 +42,7 @@
         "controller": [],
         "model": [],
         "resource": [
-            "2b76d842-5b88-40e7-bc1c-fed2aa5cfd3a",
+            "e016ae02-75f7-4d51-89da-ea55db631424",
             "f28aed9e-aba1-492d-af91-b5b66c08c5d6",
             "2bb67d18-6864-4f24-ac34-87c03b8df87a",
             "78217a74-19a0-4583-8323-23d426a3a49d"

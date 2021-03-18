@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0805ee84-5655-4603-b9bb-90a22b3cf7f0" name="Default Changelist" comment="">
+    <list default="true" id="99a3986a-bae9-4de3-bf88-c0a3e0a0e006" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Finance/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/php/Models/PasswordResetModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/php/PasswordReset.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Agile/Models/AgileUserModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/../Agile/Models/AgileUserModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Employee/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Employee/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Login/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Login/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Login/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Login/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Login/app/view/LoginForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Login/app/view/LoginForm.js" afterDir="false" />
@@ -26,11 +35,12 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
-      <path value="$PROJECT_DIR$/../inc/php" />
       <path value="$PROJECT_DIR$/../Agile" />
+      <path value="$PROJECT_DIR$/../inc/php" />
+      <path value="$PROJECT_DIR$/../Employee" />
     </include_path>
   </component>
-  <component name="ProjectId" id="1p1yfL0dk29TtNkrR1uOUjD3pEY" />
+  <component name="ProjectId" id="1pwhexVzKvuz7CGXT7Y0jSlRptJ" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -38,44 +48,38 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Finance" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Employee" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0805ee84-5655-4603-b9bb-90a22b3cf7f0" name="Default Changelist" comment="" />
-      <created>1614364992938</created>
+      <changelist id="99a3986a-bae9-4de3-bf88-c0a3e0a0e006" name="Default Changelist" comment="" />
+      <created>1616100159009</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1614364992938</updated>
-      <workItem from="1614364994160" duration="2689000" />
-      <workItem from="1614828202491" duration="713000" />
-      <workItem from="1616094186290" duration="8000" />
+      <updated>1616100159009</updated>
+      <workItem from="1616100160201" duration="1581000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="987" y="343" key="#PHP" timestamp="1614365024173">
+    <state x="987" y="343" key="#PHP" timestamp="1616100394837">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="987" y="343" key="#PHP/-2560.0.2560.1400/0.0.2560.1400/2560.165.1920.1040@0.0.2560.1400" timestamp="1614365024173" />
-    <state x="1059" y="455" key="FileChooserDialogImpl" timestamp="1616094192930">
+    <state x="987" y="343" key="#PHP/-2560.0.2560.1400/0.0.2560.1400/2560.165.1920.1040@0.0.2560.1400" timestamp="1616100394837" />
+    <state x="-1501" y="455" key="FileChooserDialogImpl" timestamp="1616100918585">
+      <screen x="-2560" y="0" width="2560" height="1400" />
+    </state>
+    <state x="-1501" y="455" key="FileChooserDialogImpl/-2560.0.2560.1400/0.0.2560.1400/2560.165.1920.1040@-2560.0.2560.1400" timestamp="1616100918585" />
+    <state x="1059" y="455" key="FileChooserDialogImpl/-2560.0.2560.1400/0.0.2560.1400/2560.165.1920.1040@0.0.2560.1400" timestamp="1616100393838" />
+    <state x="1020" y="423" key="NewPhpClassDialog" timestamp="1616100256161">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1059" y="455" key="FileChooserDialogImpl/-2560.0.2560.1400/0.0.2560.1400/2560.165.1920.1040@0.0.2560.1400" timestamp="1616094192930" />
-    <state x="1059" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1614829026542" />
-    <state x="987" y="433" width="585" height="534" key="find.popup" timestamp="1614365451686">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="987" y="433" width="585" height="534" key="find.popup/-2560.0.2560.1400/0.0.2560.1400/2560.165.1920.1040@0.0.2560.1400" timestamp="1614365451686" />
+    <state x="1020" y="423" key="NewPhpClassDialog/-2560.0.2560.1400/0.0.2560.1400/2560.165.1920.1040@0.0.2560.1400" timestamp="1616100256161" />
   </component>
 </project>

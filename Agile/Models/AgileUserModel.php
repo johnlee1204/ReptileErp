@@ -451,4 +451,49 @@ class AgileUserModel{
 
 		return $output;
 	}
+
+	function resetPassword($user) {
+		$userInfo = $this->readUserByName($user);
+
+		if($userInfo === FALSE) {
+			throw new AgileUserMessageException("User Not Found");
+		}
+
+		if($userInfo['email'] === NULL || trim($userInfo['email']) === "") {
+			throw new AgileUserMessageException("User Not Associated With Email");
+		}
+
+		$nonce = $this->generateRandomString();
+
+		$this->database->delete(
+			"PasswordReset",
+			[
+				'employeeId' => $userInfo['employeeId']
+			]
+		);
+
+		$this->database->insert(
+			"PasswordReset",
+			[
+				'employeeId' => $userInfo['employeeId'],
+				'nonce' => $nonce
+			]
+		);
+
+		Email::send([
+			'to' => $userInfo['email'],
+			'subject' => 'Password Reset Requested',
+			'message' => "You have requested to reset your password.<BR>To continue, press the link below.<BR>If you did not request to reset your password, please contact support!<BR><BR><a href = 'https://LeeSheet.com/PasswordReset?nonce=" . $nonce . "'>Reset Password</a>"
+		]);
+	}
+
+	function generateRandomString($length = 100) {
+		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$charactersLength = strlen($characters);
+		$randomString = '';
+		for ($i = 0; $i < $length; $i++) {
+			$randomString .= $characters[rand(0, $charactersLength - 1)];
+		}
+		return $randomString;
+	}
 }

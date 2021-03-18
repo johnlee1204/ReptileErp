@@ -348,6 +348,57 @@
             ]
         },
         {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "glyph": null,
+                "icon": "/inc/img/silk_icons/mail.png",
+                "margin": "15 0 0 50",
+                "text": "Forgot Password"
+            },
+            "configAlternates": {
+                "glyph": "auto",
+                "icon": "string",
+                "padding": "auto",
+                "text": "string",
+                "height": "auto",
+                "width": "auto",
+                "margin": "auto"
+            },
+            "name": "MyButton2",
+            "designerId": "d7c5b19e-5548-42cd-9035-b724036a65cf",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onButtonClick2",
+                        "implHandler": [
+                            "this.resetPassword();"
+                        ],
+                        "name": "click",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onButtonClick2",
+                    "designerId": "fdc8c166-91f3-4de5-b04a-c740fca271d3"
+                }
+            ]
+        },
+        {
             "type": "basicfunction",
             "reference": {
                 "name": "items",
@@ -432,6 +483,40 @@
             },
             "name": "getGetVar",
             "designerId": "08068d88-2553-49bd-a731-dcc75ea0e4f8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "resetPassword",
+                "implHandler": [
+                    "var values = this.getValues();",
+                    "if(values.user === ''){",
+                    "\tExt.Msg.alert(\"Warning\", \"Enter User\");",
+                    "\treturn;",
+                    "}",
+                    "",
+                    "AERP.Ajax.request({",
+                    "\turl:'/Login/resetPassword',",
+                    "\tjsonData:values,",
+                    "\tsuccess:function(reply){",
+                    "\t\tExt.Msg.alert(\"Success\", \"Check email for Password Reset\");",
+                    "\t},",
+                    "\tscope:this",
+                    "});",
+                    ""
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "resetPassword",
+            "designerId": "6bafc710-a14b-4e0f-886c-cb81a60e642b"
         },
         {
             "type": "basiceventbinding",

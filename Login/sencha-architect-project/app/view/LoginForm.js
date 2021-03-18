@@ -122,6 +122,15 @@ Ext.define('Login.view.LoginForm', {
 					flex: 1
 				}
 			]
+		},
+		{
+			xtype: 'button',
+			margin: '15 0 0 50',
+			icon: '/inc/img/silk_icons/mail.png',
+			text: 'Forgot Password',
+			listeners: {
+				click: 'onButtonClick2'
+			}
 		}
 	],
 	listeners: {
@@ -140,6 +149,10 @@ Ext.define('Login.view.LoginForm', {
 
 	onButtonClick1: function(button, e, eOpts) {
 		this.fireEvent('logincancel');
+	},
+
+	onButtonClick2: function(button, e, eOpts) {
+		this.resetPassword();
 	},
 
 	onFormAfterRender: function(component, eOpts) {
@@ -203,6 +216,24 @@ Ext.define('Login.view.LoginForm', {
 		}else{
 			return false;
 		}
+
+	},
+
+	resetPassword: function() {
+		var values = this.getValues();
+		if(values.user === ''){
+			Ext.Msg.alert("Warning", "Enter User");
+			return;
+		}
+
+		AERP.Ajax.request({
+			url:'/Login/resetPassword',
+			jsonData:values,
+			success:function(reply){
+				Ext.Msg.alert("Success", "Check email for Password Reset");
+			},
+			scope:this
+		});
 
 	}
 
