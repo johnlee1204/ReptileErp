@@ -7,7 +7,7 @@
             "frameworkVersion": ""
         },
         "urlPrefixTemplate": "https://leesheet.com/",
-        "exportPath": "C:/Users/johnm/Desktop/Websites/LeeSheet/Incubator",
+        "exportPath": "C:/Users/chris/Desktop/Websites/Leesheet/Incubator",
         "buildShouldOverwriteIndex": true,
         "generateArchitectVersion": false,
         "spacesToIndent": "tab",
@@ -51,7 +51,7 @@
         "controller": [],
         "model": [],
         "resource": [
-            "f6a7c85b-3bf6-4607-9447-bb3131ab26d8",
+            "69dee9e1-7564-4e48-b843-0c73f67408ef",
             "173a740e-293e-4e00-b40c-9a50fb2577d4",
             "5ba3958c-da75-475c-be62-0204422d23cf",
             "e9dfff16-f6c8-498c-ac8a-f008ed4717e3",

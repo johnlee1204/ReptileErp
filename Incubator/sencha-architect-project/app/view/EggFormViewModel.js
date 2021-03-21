@@ -43,16 +43,6 @@ Ext.define('Incubator.view.EggFormViewModel', {
 				}
 			]
 		},
-		ReptileStore: {
-			fields: [
-				{
-					name: 'reptileId'
-				},
-				{
-					name: 'serial'
-				}
-			]
-		},
 		SexStore: {
 			data: [
 				{

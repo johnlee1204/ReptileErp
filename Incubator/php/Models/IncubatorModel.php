@@ -64,23 +64,24 @@ class IncubatorModel extends AgileModel {
 	}
 
 	static function readEgg($eggId) {
-		self::$database->select(
-			"Egg",
-			[
-				"serial",
-				"layDate",
-				"maleParentId maleParent",
-				"femaleParentId  femaleParent",
-				"hatchDate",
-				"hatched",
-				"reptileId reptile",
-				"sex",
-				"type"
-			],
-			['eggId' => $eggId]
-		);
 
-		return self::$database->fetch_assoc();
+		return self::$database->fetch_assoc('
+		    SELECT
+		        Egg.serial,
+                Egg.layDate,
+                Egg.maleParentId maleParent,
+                Egg.femaleParentId femaleParent,
+                Egg.hatchDate,
+                Egg.hatched,
+                Pet.serial reptile,
+                Egg.sex,
+                Egg.type
+            FROM Egg
+            LEFT JOIN Pet ON Pet.petId = Egg.reptileId
+		    WHERE
+                eggId = ?
+		', [$eggId]);
+
 	}
 
 	static function createEgg($inputs) {
@@ -102,7 +103,6 @@ class IncubatorModel extends AgileModel {
 				"femaleParentId" => $inputs['femaleParent'],
 				"hatchDate" => $inputs['hatchDate'],
 				"hatched" => $inputs['hatched'],
-				"reptileId" => $inputs['reptile'],
 				'sex' => $inputs['sex'],
 				'type' => $inputs['type']
 			]
@@ -132,7 +132,6 @@ class IncubatorModel extends AgileModel {
 				"femaleParentId" => $inputs['femaleParent'],
 				"hatchDate" => $inputs['hatchDate'],
 				"hatched" => $inputs['hatched'],
-				"reptileId" => $inputs['reptile'],
 				'sex' => $inputs['sex'],
 				'type' => $inputs['type']
 			],
@@ -164,7 +163,7 @@ class IncubatorModel extends AgileModel {
 				'feedingFrequency' => 0,
 				'customer' => '',
 				'notes' => '',
-				'weight' => NULL,
+				'weight' => 1,
 				'sellPrice' => NULL,
 				'status' => NULL,
 				'morph' => NULL,

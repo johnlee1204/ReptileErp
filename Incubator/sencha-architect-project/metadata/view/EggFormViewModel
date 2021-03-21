@@ -123,56 +123,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "name": "ReptileStore"
-            },
-            "configAlternates": {
-                "name": "string"
-            },
-            "name": "MyStore3",
-            "designerId": "c5995e49-d95c-46d4-89b7-725f172dcb0c",
-            "cn": [
-                {
-                    "type": "Ext.data.field.Field",
-                    "reference": {
-                        "name": "fields",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "name": "reptileId"
-                    },
-                    "configAlternates": {
-                        "name": "string"
-                    },
-                    "name": "MyField2",
-                    "designerId": "2968fca9-4ab4-4892-bbd0-11686309b3a9"
-                },
-                {
-                    "type": "Ext.data.field.Field",
-                    "reference": {
-                        "name": "fields",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "name": "serial"
-                    },
-                    "configAlternates": {
-                        "name": "string"
-                    },
-                    "name": "MyField3",
-                    "designerId": "20e706c5-27e2-456e-afa1-bd30918e48d5"
-                }
-            ]
-        },
-        {
-            "type": "Ext.data.Store",
-            "reference": {
-                "name": "stores",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
                 "data": [
                     "[",
                     "\t{",

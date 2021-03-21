@@ -37,7 +37,6 @@ class Incubator extends AgileBaseController{
 			'femaleParent' => 'numeric',
 			'hatchDate',
 			'hatched' => 'checkBox',
-			'reptile' => 'numericOrNull',
 			'sex',
 			'type' => 'notBlank'
 		]);
@@ -58,7 +57,6 @@ class Incubator extends AgileBaseController{
 			'femaleParent' => 'numeric',
 			'hatchDate',
 			'hatched' => 'checkBox',
-			'reptile' => 'numericOrNull',
 			'sex',
 			'type' => 'notBlank'
 		]);

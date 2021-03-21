@@ -159,17 +159,10 @@ Ext.define('Incubator.view.EggForm', {
 									labelAlign: 'right'
 								},
 								{
-									xtype: 'combobox',
+									xtype: 'textfield',
 									itemId: 'reptile',
 									fieldLabel: 'Reptile',
-									labelAlign: 'right',
-									displayField: 'serial',
-									forceSelection: true,
-									queryMode: 'local',
-									valueField: 'reptileId',
-									bind: {
-										store: '{ReptileStore}'
-									}
+									labelAlign: 'right'
 								},
 								{
 									xtype: 'combobox',
@@ -210,7 +203,8 @@ Ext.define('Incubator.view.EggForm', {
 		}
 	],
 	listeners: {
-		afterrender: 'onPanelAfterRender'
+		afterrender: 'onPanelAfterRender',
+		docFormStateChanged: 'onPanelDocFormStateChangeD'
 	},
 
 	onTypeAfterRender: function(component, eOpts) {
@@ -243,7 +237,7 @@ Ext.define('Incubator.view.EggForm', {
 		} else {
 			hatchDate.setValue("");
 			sex.clearValue();
-			reptile.clearValue();
+			reptile.setValue('');
 			hatchDate.disable();
 			sex.disable();
 			reptile.disable();
@@ -265,7 +259,6 @@ Ext.define('Incubator.view.EggForm', {
 
 				viewModel.getStore("MaleParentStore").loadData(reply.maleReptiles);
 				viewModel.getStore("FemaleParentStore").loadData(reply.femaleReptiles);
-				viewModel.getStore("ReptileStore").loadData(reply.reptiles);
 			},
 			scope:this,
 			mask:this
@@ -274,26 +267,18 @@ Ext.define('Incubator.view.EggForm', {
 		this.readReptileTypes();
 	},
 
+	onPanelDocFormStateChangeD: function(panel) {
+		let field = this.queryById("reptile");
+		field.setReadOnly(true);
+		field.addCls("docFormReadOnly");
+	},
+
 	readReptileTypes: function() {
 		AERP.Ajax.request({
 			url:'/DropDownSelectionEditor/readSelectionsForCombo',
 			jsonData:{selectionKey:'petType'},
 			success:function(reply) {
 				this.getViewModel().getStore('TypeStore').loadData(reply.data);
-			},
-			scope:this,
-			mask:this
-		});
-	},
-
-	readReptiles: function(reptileId = null) {
-		AERP.Ajax.request({
-			url:"/Incubator/readAppInitData",
-			success:function(reply) {
-				this.getViewModel().getStore("ReptileStore").loadData(reply.reptiles);
-				if(reptileId !== null) {
-					this.queryById('reptile').setValue(reptileId);
-				}
 			},
 			scope:this,
 			mask:this
@@ -311,8 +296,6 @@ Ext.define('Incubator.view.EggForm', {
 					this.queryById('hatchDate').disable();
 					this.queryById('sex').disable();
 					this.queryById('reptile').disable();
-				} else if(reply.data.reptile){
-					this.readReptiles(reply.data.reptile);
 				}
 
 				this.docFormLoadFormData(reply);
