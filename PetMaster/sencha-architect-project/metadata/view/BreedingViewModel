@@ -89,6 +89,22 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "name": "breedingId"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField3",
+                    "designerId": "8620f6c8-cd10-4f33-83be-b4f282235312"
+                },
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
                         "name": "reptileId"
                     },
                     "configAlternates": {

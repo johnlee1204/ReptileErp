@@ -41,7 +41,7 @@ Ext.define('PetMaster.view.Reptiles', {
 		{
 			xtype: 'gridpanel',
 			resizable: true,
-			width: 520,
+			width: 540,
 			collapseDirection: 'left',
 			collapsible: true,
 			bind: {
@@ -50,6 +50,7 @@ Ext.define('PetMaster.view.Reptiles', {
 			columns: [
 				{
 					xtype: 'gridcolumn',
+					width: 120,
 					dataIndex: 'serial',
 					text: 'Serial'
 				},

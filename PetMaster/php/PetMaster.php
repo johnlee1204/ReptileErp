@@ -20,7 +20,8 @@ class PetMaster extends AgileBaseController {
 		'deleteAttachment' => 'delete',
 		'readBreedingData' => 'read',
 		'createBreedingPair' => 'create',
-		'readParentOptions' => 'read'
+		'readParentOptions' => 'read',
+		'deleteBreedingPair' => 'update'
 	];
 
 	static $allowedExtensions = [
@@ -270,6 +271,16 @@ class PetMaster extends AgileBaseController {
 		]);
 
 		PetMasterModel::createBreedingPair($inputs['reptileId1'], $inputs['reptileId2']);
+
+		$this->outputSuccess();
+	}
+
+	function deleteBreedingPair() {
+		$input = Validation::validateJsonInput([
+			'breedingId' => 'numeric'
+		]);
+
+		PetMasterModel::deleteBreedingPair($input['breedingId']);
 
 		$this->outputSuccess();
 	}

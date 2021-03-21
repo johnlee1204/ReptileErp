@@ -22,7 +22,7 @@ class Email extends AgileLibrary{
 			'cc' => null,
 			'bcc' => null,
 			'headers' => null,
-			'from' => 'Swift Reptiles',
+			'from' => 'Shwift Reptiles',
 			'fromEmail' => 'webmaster@leesheet.com',
 			'subject' => 'subject',
 			'message' => 'message',

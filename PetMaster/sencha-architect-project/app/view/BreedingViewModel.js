@@ -36,6 +36,9 @@ Ext.define('PetMaster.view.BreedingViewModel', {
 		CurrentlyBreedingWithStore: {
 			fields: [
 				{
+					name: 'breedingId'
+				},
+				{
 					name: 'reptileId'
 				},
 				{

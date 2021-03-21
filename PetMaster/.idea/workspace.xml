@@ -2,26 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9e42020-6ace-484e-aefc-d9aa76786a6c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Incubator/app/view/EggForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Incubator/app/view/EggForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Incubator/php/Incubator.php" beforeDir="false" afterPath="$PROJECT_DIR$/../Incubator/php/Incubator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Incubator/php/Models/IncubatorModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/../Incubator/php/Models/IncubatorModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Incubator/sencha-architect-template/.architect" beforeDir="false" afterPath="$PROJECT_DIR$/../Incubator/sencha-architect-template/.architect" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Incubator/sencha-architect-template/Incubator.xds" beforeDir="false" afterPath="$PROJECT_DIR$/../Incubator/sencha-architect-template/Incubator.xds" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Incubator/sencha-architect-template/app/view/EggForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Incubator/sencha-architect-template/app/view/EggForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Incubator/sencha-architect-template/metadata/view/EggForm" beforeDir="false" afterPath="$PROJECT_DIR$/../Incubator/sencha-architect-template/metadata/view/EggForm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Incubator/sencha-architect-template/metadata/view/MyViewport" beforeDir="false" afterPath="$PROJECT_DIR$/../Incubator/sencha-architect-template/metadata/view/MyViewport" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/PetMaster.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/PetMaster.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/PetMasterViewModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/PetMasterViewModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/Breeding.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/Breeding.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/BreedingViewModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/BreedingViewModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/Reptiles.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/Reptiles.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/php/Models/PetMasterModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/Models/PetMasterModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/php/PetMaster.php" beforeDir="false" afterPath="$PROJECT_DIR$/php/PetMaster.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sencha-architect-project/.architect" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/.architect" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sencha-architect-project/PetMaster.xds" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/PetMaster.xds" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sencha-architect-project/app/view/PetMaster.js" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/app/view/PetMaster.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sencha-architect-project/app/view/PetMasterViewModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/app/view/PetMasterViewModel.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/PetMaster" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/PetMaster" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/PetMasterViewModel" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/PetMasterViewModel" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/app/view/Breeding.js" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/app/view/Breeding.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/app/view/BreedingViewModel.js" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/app/view/BreedingViewModel.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/app/view/Reptiles.js" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/app/view/Reptiles.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/Breeding" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/Breeding" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/BreedingViewModel" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/BreedingViewModel" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sencha-architect-project/metadata/view/Reptiles" beforeDir="false" afterPath="$PROJECT_DIR$/sencha-architect-project/metadata/view/Reptiles" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../inc/php/classes/Email.php" beforeDir="false" afterPath="$PROJECT_DIR$/../inc/php/classes/Email.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +45,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../CloudErp/shopify/AgileInventory" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
@@ -71,6 +66,8 @@
       <workItem from="1615537686562" duration="766000" />
       <workItem from="1615946001895" duration="693000" />
       <workItem from="1616023764291" duration="1545000" />
+      <workItem from="1616108007624" duration="4696000" />
+      <workItem from="1616193683558" duration="63000" />
     </task>
     <servers />
   </component>
@@ -82,9 +79,13 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="987" y="343" key="#PHP/0.0.2560.1400@0.0.2560.1400" timestamp="1615059315380" />
-    <state x="1059" y="455" key="FileChooserDialogImpl" timestamp="1615947350500">
+    <state x="1059" y="455" key="FileChooserDialogImpl" timestamp="1616193745870">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="1059" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1615947350500" />
+    <state x="1059" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1616193745870" />
+    <state x="987" y="433" width="689" height="534" key="find.popup" timestamp="1616109613059">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="987" y="433" width="689" height="534" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1616109613059" />
   </component>
 </project>

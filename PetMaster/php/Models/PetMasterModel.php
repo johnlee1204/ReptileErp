@@ -364,6 +364,7 @@ class PetMasterModel extends AgileModel {
 	static function readCurrentlyBreedingWith($reptileId) {
 		return self::$database->fetch_all_row("
 			SELECT DISTINCT
+				breedingId,
 				CASE WHEN femaleReptileId = ? THEN maleReptileId ELSE femaleReptileId END reptileId,
 				CASE WHEN femaleReptileId = ? THEN male.serial ELSE female.serial END serial
 			FROM Breeding
@@ -375,6 +376,8 @@ class PetMasterModel extends AgileModel {
 	}
 
 	static function createBreedingPair($reptileId1, $reptileId2) {
+		self::checkForIncest($reptileId1, $reptileId2);
+
 		$reptile1 = self::readPet($reptileId1);
 		$reptile2 = self::readPet($reptileId2);
 
@@ -404,6 +407,74 @@ class PetMasterModel extends AgileModel {
 			[
 				'maleReptileId' => $male,
 				'femaleReptileId' => $female
+			]
+		);
+	}
+
+	static function checkForIncest($reptile1, $reptile2) {
+		$familyMembers = [];
+		$familyMembers = [intval($reptile1), intval($reptile2)];
+		self::checkForIncestRecursive($reptile1, $familyMembers, 1);
+		self::checkForIncestRecursive($reptile2, $familyMembers, 1);
+	}
+
+	static function checkForIncestRecursive($reptileId, &$familyMembers, $level) {
+
+		if($reptileId === NULL) {
+			return;
+		}
+
+		$reptile = PetMasterModel::readPet($reptileId);
+
+		if(in_array($reptile['maleParent'], $familyMembers)) {
+			$relation = self::readFamilyLevelName($level);
+			if($relation !== NULL) {
+				throw new AgileUserMessageException("Incest Detected!<BR>Reptiles share a " . $relation[0] . " Father.<BR>Reptiles are " . $relation[1] . ".");
+			}
+		}
+
+		if(in_array($reptile['femaleParent'], $familyMembers)) {
+			$relation = self::readFamilyLevelName($level);
+			if($relation !== NULL) {
+				throw new AgileUserMessageException("Incest Detected!<BR>Reptiles share a " . $relation[0] . " Mother.<BR>Reptiles are " . $relation[1] . ".");
+			}
+		}
+
+
+
+		if($reptile['maleParent'] !== NULL && $reptile['femaleParent'] !== NULL) {
+			$familyMembers[] = $reptile['maleParent'];
+			$familyMembers[] = $reptile['femaleParent'];
+			self::checkForIncestRecursive($reptile['maleParent'], $familyMembers, $level + 1);
+			self::checkForIncestRecursive($reptile['femaleParent'], $familyMembers, $level+ 1);
+		}
+	}
+
+	static function readFamilyLevelName($level) {
+		$dictionary = [
+			1 => ["", "Siblings"],
+			2 => ["Grand", "Cousins"],
+			3 => ["Great Grand", "Second Cousins"],
+			4 => ["Great Great Grand", "Third Cousins"],
+			5 => ["Great Great Great Grand", "Fourth Cousins"],
+			6 => ["Great Grand Great Grand Great", "Fifth Cousins"],
+			7 => ["Great Grand Great Grand Great Grand", "Sixth Cousins"],
+			8 => ["Great Grand Great Grand Great Grand Grand", "Seventh Cousins"],
+			9 => ["Great Grand Great Grand Great Grand Grand Grand", "Eighth Cousins"]
+		];
+
+		if(isset($dictionary[$level])) {
+			return $dictionary[$level];
+		} else {
+			return NULL;
+		}
+	}
+
+	static function deleteBreedingPair($breedingId) {
+		self::$database->delete(
+			'Breeding',
+			[
+				'breedingId' => $breedingId
 			]
 		);
 	}

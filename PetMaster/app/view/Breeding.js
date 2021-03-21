@@ -22,6 +22,7 @@ Ext.define('PetMaster.view.Breeding', {
 		'Ext.form.field.ComboBox',
 		'Ext.button.Button',
 		'Ext.grid.Panel',
+		'Ext.toolbar.Toolbar',
 		'Ext.grid.column.Column',
 		'Ext.view.Table'
 	],
@@ -68,22 +69,55 @@ Ext.define('PetMaster.view.Breeding', {
 		{
 			xtype: 'gridpanel',
 			flex: 1,
+			itemId: 'currenlyBreedingWithGrid',
 			title: 'Currently Breeding With',
 			bind: {
 				store: '{CurrentlyBreedingWithStore}'
 			},
+			dockedItems: [
+				{
+					xtype: 'toolbar',
+					dock: 'top',
+					itemId: 'currenlyBreedingWithToolbar'
+				}
+			],
 			columns: [
 				{
 					xtype: 'gridcolumn',
+					width: 153,
 					dataIndex: 'serial',
 					text: 'Serial'
 				}
 			]
 		}
 	],
+	listeners: {
+		afterrender: 'onPanelAfterRender'
+	},
 
 	onButtonClick: function(button, e, eOpts) {
 		this.createBreedingPair();
+	},
+
+	onPanelAfterRender: function(component, eOpts) {
+		this.buildNiceGridMenu();
+	},
+
+	buildNiceGridMenu: function() {
+		Ext.create("NiceGridMenu", {
+			menuItems:[{action:"deletePair", text:"Delete Pair", icon:"/inc/img/silk_icons/cancel.png", disabled:true}],
+			callbackHandler:function(action, data) {
+				switch(action) {
+					case 'deletePair':
+						this.deleteBreedingPair(data.breedingId);
+						break;
+				}
+			},
+			filterField:true,
+			grid:this.queryById('currenlyBreedingWithGrid'),
+			toolbar:this.queryById('currenlyBreedingWithToolbar'),
+			scope:this
+		});
 	},
 
 	readBreedingData: function(reptileId) {
@@ -104,6 +138,18 @@ Ext.define('PetMaster.view.Breeding', {
 		AERP.Ajax.request({
 			url:"/PetMaster/createBreedingPair",
 			jsonData:{reptileId1:this.reptileId, reptileId2:this.queryById('breedWith').getValue()},
+			success:function(reply) {
+				this.readBreedingData(this.reptileId);
+			},
+			scope:this,
+			mask:this
+		});
+	},
+
+	deleteBreedingPair: function(breedingId) {
+		AERP.Ajax.request({
+			url:"/PetMaster/deleteBreedingPair",
+			jsonData:{breedingId:breedingId},
 			success:function(reply) {
 				this.readBreedingData(this.reptileId);
 			},

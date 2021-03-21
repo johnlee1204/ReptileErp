@@ -150,6 +150,12 @@ Ext.define('AgileInventory.view.DrillDown', {
 							text: 'Product'
 						},
 						{
+							xtype: 'gridcolumn',
+							width: 134,
+							dataIndex: 'variantTitle',
+							text: 'Variant'
+						},
+						{
 							xtype: 'numbercolumn',
 							width: 102,
 							dataIndex: 'quantity',

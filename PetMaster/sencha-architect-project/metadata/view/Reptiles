@@ -42,7 +42,7 @@
                 "store": [
                     "{ReptileStore}"
                 ],
-                "width": 520
+                "width": 540
             },
             "configAlternates": {
                 "store": "binding",
@@ -63,11 +63,13 @@
                     "codeClass": null,
                     "userConfig": {
                         "dataIndex": "serial",
-                        "text": "Serial"
+                        "text": "Serial",
+                        "width": 120
                     },
                     "configAlternates": {
                         "dataIndex": "datafield",
-                        "text": "string"
+                        "text": "string",
+                        "width": "auto"
                     },
                     "name": "MyColumn4",
                     "designerId": "8e7a8ae7-b30b-4239-a776-7f6ee3bde4ce"

@@ -135,6 +135,7 @@
             },
             "codeClass": null,
             "userConfig": {
+                "itemId": "currenlyBreedingWithGrid",
                 "layout|flex": 1,
                 "store": [
                     "{CurrentlyBreedingWithStore}"
@@ -144,11 +145,30 @@
             "configAlternates": {
                 "store": "binding",
                 "layout|flex": "number",
-                "title": "string"
+                "title": "string",
+                "itemId": "string"
             },
             "name": "MyGridPanel3",
             "designerId": "44a2942e-243e-4d38-ad3e-4500c5e10fa6",
             "cn": [
+                {
+                    "type": "Ext.toolbar.Toolbar",
+                    "reference": {
+                        "name": "dockedItems",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dock": "top",
+                        "itemId": "currenlyBreedingWithToolbar"
+                    },
+                    "configAlternates": {
+                        "dock": "string",
+                        "itemId": "string"
+                    },
+                    "name": "MyToolbar1",
+                    "designerId": "aa404063-5a05-4cd1-bb8e-ceb253ba18ec"
+                },
                 {
                     "type": "Ext.grid.column.Column",
                     "reference": {
@@ -158,11 +178,13 @@
                     "codeClass": null,
                     "userConfig": {
                         "dataIndex": "serial",
-                        "text": "Serial"
+                        "text": "Serial",
+                        "width": 153
                     },
                     "configAlternates": {
                         "dataIndex": "datafield",
-                        "text": "string"
+                        "text": "string",
+                        "width": "auto"
                     },
                     "name": "MyColumn7",
                     "designerId": "cda62c1e-5f2d-489f-bbe7-f6efdbd277e5"
@@ -178,6 +200,63 @@
                     "designerId": "8039e8d1-5b27-4497-b342-60bd6bbb47bc"
                 }
             ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.buildNiceGridMenu();"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "6c525452-21a9-43c9-8586-1b7af1f6e8f1"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "buildNiceGridMenu",
+                "implHandler": [
+                    "Ext.create(\"NiceGridMenu\", {",
+                    "\tmenuItems:[{action:\"deletePair\", text:\"Delete Pair\", icon:\"/inc/img/silk_icons/cancel.png\", disabled:true}],",
+                    "\tcallbackHandler:function(action, data) {",
+                    "\t\tswitch(action) {",
+                    "\t\t\tcase 'deletePair':",
+                    "\t\t\t\tthis.deleteBreedingPair(data.breedingId);",
+                    "\t\t\t\tbreak;",
+                    "\t\t}",
+                    "\t},",
+                    "\tfilterField:true,",
+                    "\tgrid:this.queryById('currenlyBreedingWithGrid'),",
+                    "\ttoolbar:this.queryById('currenlyBreedingWithToolbar'),",
+                    "\tscope:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "buildNiceGridMenu",
+            "designerId": "ee69d1d0-cb14-48a9-a0ee-ef9216614f30"
         },
         {
             "type": "basicfunction",
@@ -240,6 +319,38 @@
             },
             "name": "createBreedingPair",
             "designerId": "d19907f2-5120-4881-9546-48d23bfa9153"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "breedingId"
+                ],
+                "fn": "deleteBreedingPair",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:\"/PetMaster/deleteBreedingPair\",",
+                    "\tjsonData:{breedingId:breedingId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readBreedingData(this.reptileId);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "designer|params": "typedarray"
+            },
+            "name": "deleteBreedingPair",
+            "designerId": "6681d714-3b14-4be9-8801-e9f3b314d8a6"
         }
     ]
 }
