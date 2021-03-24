@@ -27,7 +27,8 @@ Ext.application({
 		'HabitatData',
 		'ReptileHistory',
 		'Reptiles',
-		'Breeding'
+		'Breeding',
+		'BreedingForm'
 	],
 	name: 'PetMaster',
 	title: 'Reptile Database',

@@ -22,13 +22,14 @@ Ext.define('Schedule.view.AddEventForm', {
 		'Ext.container.Container',
 		'Ext.form.field.Date',
 		'Ext.form.field.Time',
+		'Ext.form.field.Checkbox',
 		'Ext.button.Button'
 	],
 
 	viewModel: {
 		type: 'addeventform'
 	},
-	height: 269,
+	height: 286,
 	width: 494,
 	layout: 'vbox',
 	bodyPadding: 10,
@@ -130,6 +131,17 @@ Ext.define('Schedule.view.AddEventForm', {
 			]
 		},
 		{
+			xtype: 'checkboxfield',
+			itemId: 'allDay',
+			margin: '5 0 0 103',
+			boxLabel: 'All Day',
+			inputValue: '1',
+			uncheckedValue: '0',
+			listeners: {
+				change: 'onAllDayChange'
+			}
+		},
+		{
 			xtype: 'textfield',
 			itemId: 'title',
 			margin: '5 0 0 0',
@@ -190,6 +202,18 @@ Ext.define('Schedule.view.AddEventForm', {
 		}
 	},
 
+	onAllDayChange: function(field, newValue, oldValue, eOpts) {
+		let startTime = this.queryById('startTime');
+		let endTime = this.queryById('endTime');
+		if(newValue === true) {
+			startTime.disable();
+			endTime.disable();
+		} else {
+			startTime.enable();
+			endTime.enable();
+		}
+	},
+
 	onButtonClick: function(button, e, eOpts) {
 		if(this.scheduleId) {
 			AERP.Ajax.request({
@@ -202,7 +226,8 @@ Ext.define('Schedule.view.AddEventForm', {
 					endDate:this.queryById('endDate').getSubmitValue(),
 					endTime:this.queryById('endTime').getSubmitValue(),
 					type:this.queryById('type').getValue(),
-					title:this.queryById('title').getValue()
+					title:this.queryById('title').getValue(),
+					allDay:this.queryById('allDay').getSubmitValue()
 				},
 				success:function(reply) {
 					this.resetFields();
@@ -222,7 +247,8 @@ Ext.define('Schedule.view.AddEventForm', {
 					endDate:this.queryById('endDate').getSubmitValue(),
 					endTime:this.queryById('endTime').getSubmitValue(),
 					type:this.queryById('type').getValue(),
-					title:this.queryById('title').getValue()
+					title:this.queryById('title').getValue(),
+					allDay:this.queryById('allDay').getSubmitValue()
 				},
 				success:function(reply) {
 					this.resetFields();
@@ -302,6 +328,7 @@ Ext.define('Schedule.view.AddEventForm', {
 			this.employeeId = data.employeeId;
 			this.scheduleId = data.scheduleId;
 			this.queryById('deleteButton').show();
+			this.queryById('allDay').setValue(data.allDay);
 
 			let startTime = new Date("Tue Jan 01 2008 " + (data.startDate.getHours() + "").padStart(2,"0") + ":" + (data.startDate.getMinutes() + "").padStart(2,"0") + ":00 GMT-0600");
 			let endTime = new Date("Tue Jan 01 2008 " + (data.endDate.getHours() + "").padStart(2,"0") + ":" + (data.endDate.getMinutes() + "").padStart(2,"0") + ":00 GMT-0600");
@@ -322,6 +349,7 @@ Ext.define('Schedule.view.AddEventForm', {
 			this.setTitle("Request Time Off");
 			this.queryById('type').setValue(4);
 			this.queryById('type').disable();
+			this.queryById('allDay').setValue(true);
 			this.queryById('employee').setValue(data.employeeId);
 			this.employeeId = data.employeeId;
 			this.queryById('employee').disable();
@@ -342,6 +370,7 @@ Ext.define('Schedule.view.AddEventForm', {
 		this.queryById('endTime').reset();
 		this.queryById('type').reset();
 		this.queryById('title').reset();
+		this.queryById('allDay').reset();
 	}
 
 });

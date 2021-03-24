@@ -3,6 +3,8 @@
 namespace Schedule\Models;
 use AgileModel;
 use AgileUserMessageException;
+use Email;
+use Employee\Models\EmployeeModel;
 
 class ScheduleModel extends AgileModel{
 
@@ -196,7 +198,7 @@ class ScheduleModel extends AgileModel{
 	}
 
 	static function readSchedule($calendarId) {
-		return self::$database->fetch_all_assoc("
+		$schedule = self::$database->fetch_all_assoc("
 			SELECT
 				scheduleId id,
 				scheduleId,
@@ -210,17 +212,41 @@ class ScheduleModel extends AgileModel{
 					WHEN calendarId = 4 THEN CONCAT(Employee.firstName, ' ', Employee.lastName, ' Time Off')
 					ELSE title
 				END title,
-				CASE WHEN calendarId = 4 THEN 1 ELSE 0 END allDay
+				CASE WHEN allDay = 1 THEN true ELSE false END allDay
 			FROM Schedule
 			JOIN Employee ON Employee.employeeId = Schedule.employeeId
 			WHERE
 				calendarId = ?
 		", [$calendarId]);
+
+		$output = [];
+
+		foreach($schedule as $event) {
+			$event['allDay'] = boolval($event['allDay']);
+
+			$output[] = $event;
+		}
+
+		return $output;
 	}
 
 	static function createShift($inputs) {
-		$startDate = date("Y-m-d H:i:s", strtotime($inputs['startDate'] . ' ' . $inputs['startTime']));
-		$endDate = date("Y-m-d H:i:s", strtotime($inputs['endDate'] . ' ' . $inputs['endTime']));
+
+		if($inputs['allDay'] === 0) {
+			if($inputs['startTime'] === "" || $inputs['startTime'] === NULL) {
+				throw new AgileUserMessageException("Must Select Start Time!");
+			}
+
+			if($inputs['endTime'] === "" || $inputs['endTime'] === NULL) {
+				throw new AgileUserMessageException("Must Select End Time!");
+			}
+
+			$startDate = date("Y-m-d H:i:s", strtotime($inputs['startDate'] . ' ' . $inputs['startTime']));
+			$endDate = date("Y-m-d H:i:s", strtotime($inputs['endDate'] . ' ' . $inputs['endTime']));
+		} else {
+			$startDate = date("Y-m-d H:i:s", strtotime($inputs['startDate']));
+			$endDate = date("Y-m-d H:i:s", strtotime($inputs['endDate']) + 86399);
+		}
 
 		$hoursWorked = NULL;
 		$hoursWorked = strtotime($endDate) - strtotime($startDate);
@@ -238,14 +264,55 @@ class ScheduleModel extends AgileModel{
 				'endTime' => $endDate,
 				'hours' => $hoursWorked,
 				'calendarId' => $inputs['type'],
-				'title' => $inputs['title']
+				'title' => $inputs['title'],
+				'allDay' => $inputs['allDay']
 			]
 		);
+
+		$employee = EmployeeModel::readEmployee($inputs['employeeId']);
+
+		$dictionary = [
+			1 => "Shift",
+			2 => "Event",
+			3 => "Meeting",
+			4 => "Time Off"
+		];
+
+		$message = [];
+		$message[] = "A " . $dictionary[$inputs['type']] . " has been added on " . date("F j, Y", strtotime($inputs['startDate']));
+		if($inputs['title']) {
+			$message[] = "Title: " . $inputs['title'];
+		}
+		$message[] = "";
+		$message[] = "<a href = 'https://" . $_SERVER['SERVER_NAME'] . "/Schedule'>Schedule</a>";
+
+		$message = join("<BR>", $message);
+
+		if($employee['email'] !== NULL && trim($employee['email'] !== "")) {
+			Email::send([
+				"to" => $employee['email'],
+				"subject" => "Check Your Calendar! " . date("F j, Y", strtotime($inputs['startDate'])),
+				"message" => $message
+			]);
+		}
 	}
 
 	static function updateShift($inputs) {
-		$startDate = date("Y-m-d H:i:s", strtotime($inputs['startDate'] . ' ' . $inputs['startTime']));
-		$endDate = date("Y-m-d H:i:s", strtotime($inputs['endDate'] . ' ' . $inputs['endTime']));
+		if($inputs['allDay'] === 0) {
+			if($inputs['startTime'] === "" || $inputs['startTime'] === NULL) {
+				throw new AgileUserMessageException("Must Select Start Time!");
+			}
+
+			if($inputs['endTime'] === "" || $inputs['endTime'] === NULL) {
+				throw new AgileUserMessageException("Must Select End Time!");
+			}
+
+			$startDate = date("Y-m-d H:i:s", strtotime($inputs['startDate'] . ' ' . $inputs['startTime']));
+			$endDate = date("Y-m-d H:i:s", strtotime($inputs['endDate'] . ' ' . $inputs['endTime']));
+		} else {
+			$startDate = date("Y-m-d H:i:s", strtotime($inputs['startDate']));
+			$endDate = date("Y-m-d H:i:s", strtotime($inputs['endDate']) + 86399);
+		}
 
 		$hoursWorked = NULL;
 		$hoursWorked = strtotime($endDate) - strtotime($startDate);
@@ -264,7 +331,8 @@ class ScheduleModel extends AgileModel{
 				'endTime' => $endDate,
 				'hours' => $hoursWorked,
 				'calendarId' => $inputs['type'],
-				'title' => $inputs['title']
+				'title' => $inputs['title'],
+				'allDay' => $inputs['allDay']
 			],
 			['scheduleId' => $inputs['scheduleId']]
 		);

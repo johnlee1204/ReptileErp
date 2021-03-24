@@ -1,0 +1,18 @@
+{
+    "type": "cssresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "css_ydclfi97",
+        "url": "/Schedule/resources/calendar.css"
+    },
+    "configAlternates": {
+        "designer|userClassName": "string",
+        "url": "uri"
+    },
+    "name": "css5",
+    "designerId": "4ce2ca9c-7366-491c-95f9-808697171d69"
+}

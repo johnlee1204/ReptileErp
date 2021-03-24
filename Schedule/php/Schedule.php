@@ -111,11 +111,12 @@ class Schedule extends AgileBaseController {
 		$inputs = Validation::validateJsonInput([
 			'employeeId' => 'notBlank',
 			'startDate' => 'notBlank',
-			'startTime' => 'notBlank',
+			'startTime',
 			'endDate' => 'notBlank',
-			'endTime' => 'notBlank',
+			'endTime',
 			'type' => 'numeric',
-			'title'
+			'title',
+			'allDay' => 'checkBox'
 		]);
 
 		ScheduleModel::createShift($inputs);
@@ -128,11 +129,12 @@ class Schedule extends AgileBaseController {
 			'scheduleId' => 'numeric',
 			'employeeId' => 'notBlank',
 			'startDate' => 'notBlank',
-			'startTime' => 'notBlank',
+			'startTime',
 			'endDate' => 'notBlank',
-			'endTime' => 'notBlank',
+			'endTime',
 			'type' => 'numeric',
-			'title'
+			'title',
+			'allDay' => 'checkBox'
 		]);
 
 		ScheduleModel::updateShift($inputs);

@@ -15,7 +15,8 @@
             "HabitatData",
             "ReptileHistory",
             "Reptiles",
-            "Breeding"
+            "Breeding",
+            "BreedingForm"
         ]
     },
     "configAlternates": {

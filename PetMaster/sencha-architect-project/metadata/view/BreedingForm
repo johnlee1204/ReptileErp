@@ -1,0 +1,176 @@
+{
+    "type": "Ext.panel.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "bodyPadding": 10,
+        "bodyStyle": "background:none",
+        "container|align": "stretch",
+        "designer|userAlias": "breedingform",
+        "designer|userClassName": "BreedingForm",
+        "layout": "vbox",
+        "mixins": [
+            "['DocForm']"
+        ]
+    },
+    "configAlternates": {
+        "bodyPadding": "auto",
+        "bodyStyle": "string",
+        "container|align": "string",
+        "designer|userAlias": "string",
+        "designer|userClassName": "string",
+        "layout": "string",
+        "mixins": "object"
+    },
+    "name": "MyPanel1",
+    "designerId": "4d2f2751-afde-422c-b728-c1bea0860314",
+    "viewControllerInstanceId": "79927a7d-6e2f-42ef-8fc1-c8b7300c9a1e",
+    "viewModelInstanceId": "df34bffd-f5fd-496c-bb8e-561a07c899e9",
+    "cn": [
+        {
+            "type": "Ext.toolbar.Toolbar",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "top",
+                "itemId": "breedingToolbar",
+                "layout|flex": 1
+            },
+            "configAlternates": {
+                "dock": "string",
+                "itemId": "string",
+                "layout|flex": "number"
+            },
+            "name": "MyToolbar4",
+            "designerId": "c6e18ca6-af27-4ace-b554-f00b4116d12c"
+        },
+        {
+            "type": "Ext.form.field.TextArea",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fieldLabel": "Notes",
+                "height": 219,
+                "itemId": "notes",
+                "labelAlign": "right",
+                "layout|flex": 1
+            },
+            "configAlternates": {
+                "fieldLabel": "string",
+                "height": "auto",
+                "itemId": "string",
+                "labelAlign": "string",
+                "layout|flex": "number"
+            },
+            "name": "MyTextArea1",
+            "designerId": "b81b0208-62d3-4b76-b3ca-a82cea9eba82"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onPanelAfterRender",
+                "implHandler": [
+                    "this.docFormInit({",
+                    "\ttoolbarId:'breedingToolbar',",
+                    "\tsaveFn:'updateBreedingPair'",
+                    "});"
+                ],
+                "name": "afterrender",
+                "scope": "me"
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code",
+                "name": "string",
+                "scope": "string"
+            },
+            "name": "onPanelAfterRender",
+            "designerId": "62acf867-20d9-47b2-abe3-45bb0561d631",
+            "customConfigs": [
+                {
+                    "group": "(Custom Properties)",
+                    "name": "itemid",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "breedingId"
+                ],
+                "fn": "readBreedingPair",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:\"/PetMaster/readBreedingPair\",",
+                    "\tjsonData:{breedingId:breedingId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.breedingId = breedingId;",
+                    "\t\tthis.docFormLoadFormData(reply);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readBreedingPair",
+            "designerId": "5da9b772-91e1-40b7-b0e2-2b9faf7659d5"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "updateBreedingPair",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:\"/PetMaster/updateBreedingPair\",",
+                    "\tjsonData:{",
+                    "\t\tbreedingId:this.breedingId,",
+                    "\t\tnotes:this.queryById('notes').getValue()",
+                    "\t},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readBreedingPair(this.breedingId);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "updateBreedingPair",
+            "designerId": "24d5fb58-07e9-4246-84ca-783d604554c2"
+        }
+    ]
+}

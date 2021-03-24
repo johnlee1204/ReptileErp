@@ -483,7 +483,7 @@ class AgileUserModel{
 		Email::send([
 			'to' => $userInfo['email'],
 			'subject' => 'Password Reset Requested',
-			'message' => "You have requested to reset your password.<BR>To continue, press the link below.<BR>If you did not request to reset your password, please contact support!<BR><BR><a href = 'https://LeeSheet.com/PasswordReset?nonce=" . $nonce . "'>Reset Password</a>"
+			'message' => "You have requested to reset your password.<BR>To continue, press the link below.<BR>If you did not request to reset your password, please contact support!<BR><BR><a href = 'https://shwiftportal.com/PasswordReset?nonce=" . $nonce . "'>Reset Password</a>"
 		]);
 	}
 

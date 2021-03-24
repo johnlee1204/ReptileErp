@@ -27,7 +27,8 @@
         "urlPrefix": "http://dev.local/",
         "displayfield-ExtBox1-1125-inputEl": "a new version of the framework is available",
         "displayfield-ExtBox1-1123-inputEl": "a new version of the framework is available",
-        "displayfield-ExtBox1-1127-inputEl": "a new version of the framework is available"
+        "displayfield-ExtBox1-1127-inputEl": "a new version of the framework is available",
+        "displayfield-ExtBox1-1119-inputEl": "a new version of the framework is available"
     },
     "xdsVersion": "4.2.9",
     "xdsBuild": 443,
@@ -56,13 +57,16 @@
             "46efddc0-081a-4abc-a235-4f61236851da",
             "24ec5268-577c-4fa3-aca1-b40e83ff1bcf",
             "4413da6a-2ca4-4a37-be59-ea219681e663",
-            "c5e7b8f5-a618-4080-8434-f78b131e567b"
+            "c5e7b8f5-a618-4080-8434-f78b131e567b",
+            "4d2f2751-afde-422c-b728-c1bea0860314",
+            "df34bffd-f5fd-496c-bb8e-561a07c899e9",
+            "79927a7d-6e2f-42ef-8fc1-c8b7300c9a1e"
         ],
         "store": [],
         "controller": [],
         "model": [],
         "resource": [
-            "a5c14307-6171-4eb0-9744-92aefe9bcbaa",
+            "2c6e9a7d-dbbe-4d55-85af-ca5df82c6b99",
             "173a740e-293e-4e00-b40c-9a50fb2577d4",
             "5ba3958c-da75-475c-be62-0204422d23cf",
             "e9dfff16-f6c8-498c-ac8a-f008ed4717e3",

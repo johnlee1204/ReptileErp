@@ -411,6 +411,24 @@ class PetMasterModel extends AgileModel {
 		);
 	}
 
+	static function readBreedingPair($breedingId) {
+		self::$database->select(
+			"Breeding",
+			['notes'],
+			['breedingId' => $breedingId]
+		);
+
+		return self::$database->fetch_assoc();
+	}
+
+	static function updateBreedingPair($inputs) {
+		self::$database->update(
+			"Breeding",
+			['notes' => $inputs['notes']],
+			['breedingId' => $inputs['breedingId']]
+		);
+	}
+
 	static function checkForIncest($reptile1, $reptile2) {
 		$familyMembers = [];
 		$familyMembers = [intval($reptile1), intval($reptile2)];

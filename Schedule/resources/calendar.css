@@ -1,0 +1,6 @@
+td, .x-calendar-event-title, .x-calendar-event-inner, .x-calendar-event, .x-calendar-event-week-inline, .x-calendar-event-inline-title, .x-calendar-weeks-cell, .x-calendar-weeks-cell-inner{
+	word-wrap: break-word;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	white-space: normal;
+}

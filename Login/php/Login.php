@@ -41,6 +41,14 @@ class Login extends AgileBaseController {
 			]);
 		}
 	}
+
+	function mail() {
+		Email::send([
+			'to' => 'test-t5nkoegg4@srv1.mail-tester.com',
+			'subject' => 'Hello',
+			'message' => 'Hello'
+		]);
+	}
 	
 	function cleanupSessions(){
 		$this->AgileApp->SessionManager->cleanupSessions();

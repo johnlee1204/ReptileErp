@@ -21,7 +21,9 @@ class PetMaster extends AgileBaseController {
 		'readBreedingData' => 'read',
 		'createBreedingPair' => 'create',
 		'readParentOptions' => 'read',
-		'deleteBreedingPair' => 'update'
+		'deleteBreedingPair' => 'update',
+		'readBreedingPair' => 'read',
+		'updateBreedingPair' => 'update'
 	];
 
 	static $allowedExtensions = [
@@ -281,6 +283,25 @@ class PetMaster extends AgileBaseController {
 		]);
 
 		PetMasterModel::deleteBreedingPair($input['breedingId']);
+
+		$this->outputSuccess();
+	}
+
+	function readBreedingPair() {
+		$input = Validation::validateJsonInput([
+			'breedingId' => 'numeric'
+		]);
+
+		$this->outputSuccessData(PetMasterModel::readBreedingPair($input['breedingId']));
+	}
+
+	function updateBreedingPair() {
+		$inputs = Validation::validateJsonInput([
+			'breedingId' => 'numeric',
+			'notes'
+		]);
+
+		PetMasterModel::updateBreedingPair($inputs);
 
 		$this->outputSuccess();
 	}

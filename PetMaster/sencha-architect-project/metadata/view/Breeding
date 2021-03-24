@@ -128,76 +128,153 @@
             ]
         },
         {
-            "type": "Ext.grid.Panel",
+            "type": "Ext.container.Container",
             "reference": {
                 "name": "items",
                 "type": "array"
             },
             "codeClass": null,
             "userConfig": {
-                "itemId": "currenlyBreedingWithGrid",
-                "layout|flex": 1,
-                "store": [
-                    "{CurrentlyBreedingWithStore}"
-                ],
-                "title": "Currently Breeding With"
+                "container|align": "stretch",
+                "layout": "hbox",
+                "layout|flex": 1
             },
             "configAlternates": {
-                "store": "binding",
-                "layout|flex": "number",
-                "title": "string",
-                "itemId": "string"
+                "container|align": "string",
+                "layout": "string",
+                "layout|flex": "number"
             },
-            "name": "MyGridPanel3",
-            "designerId": "44a2942e-243e-4d38-ad3e-4500c5e10fa6",
+            "name": "MyContainer13",
+            "designerId": "ee586811-4304-40ac-a71f-d39e9eb02885",
             "cn": [
                 {
-                    "type": "Ext.toolbar.Toolbar",
+                    "type": "Ext.grid.Panel",
                     "reference": {
-                        "name": "dockedItems",
+                        "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "dock": "top",
-                        "itemId": "currenlyBreedingWithToolbar"
+                        "itemId": "currenlyBreedingWithGrid",
+                        "layout|flex": 1,
+                        "store": [
+                            "{CurrentlyBreedingWithStore}"
+                        ],
+                        "title": "Currently Breeding With"
                     },
                     "configAlternates": {
-                        "dock": "string",
+                        "store": "binding",
+                        "layout|flex": "number",
+                        "title": "string",
                         "itemId": "string"
                     },
-                    "name": "MyToolbar1",
-                    "designerId": "aa404063-5a05-4cd1-bb8e-ceb253ba18ec"
+                    "name": "MyGridPanel3",
+                    "designerId": "44a2942e-243e-4d38-ad3e-4500c5e10fa6",
+                    "cn": [
+                        {
+                            "type": "Ext.toolbar.Toolbar",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dock": "top",
+                                "itemId": "currenlyBreedingWithToolbar"
+                            },
+                            "configAlternates": {
+                                "dock": "string",
+                                "itemId": "string"
+                            },
+                            "name": "MyToolbar1",
+                            "designerId": "aa404063-5a05-4cd1-bb8e-ceb253ba18ec"
+                        },
+                        {
+                            "type": "Ext.grid.column.Column",
+                            "reference": {
+                                "name": "columns",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dataIndex": "serial",
+                                "text": "Serial",
+                                "width": 153
+                            },
+                            "configAlternates": {
+                                "dataIndex": "datafield",
+                                "text": "string",
+                                "width": "auto"
+                            },
+                            "name": "MyColumn7",
+                            "designerId": "cda62c1e-5f2d-489f-bbe7-f6efdbd277e5"
+                        },
+                        {
+                            "type": "Ext.view.Table",
+                            "reference": {
+                                "name": "viewConfig",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "enableTextSelection": true
+                            },
+                            "configAlternates": {
+                                "enableTextSelection": "boolean"
+                            },
+                            "name": "MyTable3",
+                            "designerId": "8039e8d1-5b27-4497-b342-60bd6bbb47bc"
+                        },
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onCurrenlyBreedingWithGridSelectionChange",
+                                "implHandler": [
+                                    "if(!selected || selected.length !== 1) {",
+                                    "\treturn;",
+                                    "}",
+                                    "",
+                                    "selected = selected[0];",
+                                    "",
+                                    "this.queryById(\"breedingForm\").readBreedingPair(selected.data.breedingId);"
+                                ],
+                                "name": "selectionchange",
+                                "scope": "me"
+                            },
+                            "configAlternates": {
+                                "fn": "string",
+                                "implHandler": "code",
+                                "name": "string",
+                                "scope": "string"
+                            },
+                            "name": "onCurrenlyBreedingWithGridSelectionChange",
+                            "designerId": "d3094044-c92d-4cb0-b818-7ffc96214c7e"
+                        }
+                    ]
                 },
                 {
-                    "type": "Ext.grid.column.Column",
+                    "type": "linkedinstance",
                     "reference": {
-                        "name": "columns",
+                        "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "dataIndex": "serial",
-                        "text": "Serial",
-                        "width": 153
+                        "flex": 1,
+                        "itemId": "breedingForm"
                     },
                     "configAlternates": {
-                        "dataIndex": "datafield",
-                        "text": "string",
-                        "width": "auto"
+                        "flex": "number",
+                        "itemId": "string"
                     },
-                    "name": "MyColumn7",
-                    "designerId": "cda62c1e-5f2d-489f-bbe7-f6efdbd277e5"
-                },
-                {
-                    "type": "Ext.view.Table",
-                    "reference": {
-                        "name": "viewConfig",
-                        "type": "object"
-                    },
-                    "codeClass": null,
-                    "name": "MyTable3",
-                    "designerId": "8039e8d1-5b27-4497-b342-60bd6bbb47bc"
+                    "name": "breedingform",
+                    "designerId": "f030508c-6163-4603-a7e2-05d29d4dc857",
+                    "masterInstanceId": "4d2f2751-afde-422c-b728-c1bea0860314"
                 }
             ]
         },

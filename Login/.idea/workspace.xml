@@ -35,9 +35,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PasswordReset" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Schedule" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -58,7 +60,7 @@
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration" cleanupOnStartRun="true">
-    <configuration>C:\Users\jlee\AppData\Roaming\Subversion</configuration>
+    <configuration>C:\Users\johnm\AppData\Roaming\Subversion</configuration>
     <supportedVersion>125</supportedVersion>
   </component>
   <component name="TaskManager">
@@ -70,6 +72,9 @@
       <updated>1475694377196</updated>
       <workItem from="1616089788564" duration="380000" />
       <workItem from="1616090194845" duration="9444000" />
+      <workItem from="1616548416535" duration="47000" />
+      <workItem from="1616548600070" duration="1249000" />
+      <workItem from="1616556692529" duration="466000" />
     </task>
     <task id="LOCAL-00001" summary="Updated">
       <created>1476485497114</created>
@@ -103,19 +108,5 @@
     <MESSAGE value="Updated" />
     <MESSAGE value="Updated Login to follow andrew standards from portal login screen" />
     <option name="LAST_COMMIT_MESSAGE" value="Updated Login to follow andrew standards from portal login screen" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="987" y="343" key="#PHP" timestamp="1616090231820">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="987" y="343" key="#PHP/-2560.0.2560.1400/0.0.2560.1400/2560.165.1920.1040@0.0.2560.1400" timestamp="1616090231820" />
-    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1616101130548">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="1060" y="455" key="FileChooserDialogImpl/-2560.0.2560.1400/0.0.2560.1400/2560.165.1920.1040@0.0.2560.1400" timestamp="1616101130548" />
-    <state x="987" y="433" width="628" height="534" key="find.popup" timestamp="1616089931805">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="987" y="433" width="628" height="534" key="find.popup/-2560.0.2560.1400/0.0.2560.1400/2560.165.1920.1040@0.0.2560.1400" timestamp="1616089931805" />
   </component>
 </project>

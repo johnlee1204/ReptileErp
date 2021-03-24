@@ -11,7 +11,7 @@
         "closeAction": "hide",
         "designer|userAlias": "addeventform",
         "designer|userClassName": "AddEventForm",
-        "height": 269,
+        "height": 286,
         "layout": "vbox",
         "title": "Add Shift",
         "width": 494
@@ -294,6 +294,64 @@
             ]
         },
         {
+            "type": "Ext.form.field.Checkbox",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "boxLabel": "All Day",
+                "inputValue": "1",
+                "itemId": "allDay",
+                "margin": "5 0 0 103",
+                "uncheckedValue": "0"
+            },
+            "configAlternates": {
+                "boxLabel": "string",
+                "inputValue": "string",
+                "itemId": "string",
+                "margin": "auto",
+                "uncheckedValue": "string"
+            },
+            "name": "MyCheckbox",
+            "designerId": "6ae2797b-5038-4b57-9ddc-2ef2c715dc3b",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onAllDayChange",
+                        "implHandler": [
+                            "let startTime = this.queryById('startTime');",
+                            "let endTime = this.queryById('endTime');",
+                            "if(newValue === true) {",
+                            "\tstartTime.disable();",
+                            "\tendTime.disable();",
+                            "} else {",
+                            "\tstartTime.enable();",
+                            "\tendTime.enable();",
+                            "}"
+                        ],
+                        "name": "change",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onAllDayChange",
+                    "designerId": "9927057b-b747-49d6-bd32-f425161b3c1f"
+                }
+            ]
+        },
+        {
             "type": "Ext.form.field.Text",
             "reference": {
                 "name": "items",
@@ -380,7 +438,8 @@
                                     "\t\t\tendDate:this.queryById('endDate').getSubmitValue(),",
                                     "\t\t\tendTime:this.queryById('endTime').getSubmitValue(),",
                                     "\t\t\ttype:this.queryById('type').getValue(),",
-                                    "\t\t\ttitle:this.queryById('title').getValue()",
+                                    "\t\t\ttitle:this.queryById('title').getValue(),",
+                                    "\t\t\tallDay:this.queryById('allDay').getSubmitValue()",
                                     "\t\t},",
                                     "\t\tsuccess:function(reply) {",
                                     "\t\t\tthis.resetFields();",
@@ -400,7 +459,8 @@
                                     "\t\t\tendDate:this.queryById('endDate').getSubmitValue(),",
                                     "\t\t\tendTime:this.queryById('endTime').getSubmitValue(),",
                                     "\t\t\ttype:this.queryById('type').getValue(),",
-                                    "\t\t\ttitle:this.queryById('title').getValue()",
+                                    "\t\t\ttitle:this.queryById('title').getValue(),",
+                                    "\t\t\tallDay:this.queryById('allDay').getSubmitValue()",
                                     "\t\t},",
                                     "\t\tsuccess:function(reply) {",
                                     "\t\t\tthis.resetFields();",
@@ -574,6 +634,7 @@
                     "\tthis.employeeId = data.employeeId;",
                     "\tthis.scheduleId = data.scheduleId;",
                     "\tthis.queryById('deleteButton').show();",
+                    "\tthis.queryById('allDay').setValue(data.allDay);",
                     "",
                     "\tlet startTime = new Date(\"Tue Jan 01 2008 \" + (data.startDate.getHours() + \"\").padStart(2,\"0\") + \":\" + (data.startDate.getMinutes() + \"\").padStart(2,\"0\") + \":00 GMT-0600\");",
                     "\tlet endTime = new Date(\"Tue Jan 01 2008 \" + (data.endDate.getHours() + \"\").padStart(2,\"0\") + \":\" + (data.endDate.getMinutes() + \"\").padStart(2,\"0\") + \":00 GMT-0600\");",
@@ -594,6 +655,7 @@
                     "\tthis.setTitle(\"Request Time Off\");",
                     "\tthis.queryById('type').setValue(4);",
                     "\tthis.queryById('type').disable();",
+                    "\tthis.queryById('allDay').setValue(true);",
                     "\tthis.queryById('employee').setValue(data.employeeId);",
                     "\tthis.employeeId = data.employeeId;",
                     "\tthis.queryById('employee').disable();",
@@ -630,7 +692,8 @@
                     "this.queryById('endDate').reset();",
                     "this.queryById('endTime').reset();",
                     "this.queryById('type').reset();",
-                    "this.queryById('title').reset();"
+                    "this.queryById('title').reset();",
+                    "this.queryById('allDay').reset();"
                 ]
             },
             "configAlternates": {

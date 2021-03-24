@@ -19,6 +19,7 @@ Ext.define('PetMaster.view.Breeding', {
 
 	requires: [
 		'PetMaster.view.BreedingViewModel',
+		'PetMaster.view.BreedingForm',
 		'Ext.form.field.ComboBox',
 		'Ext.button.Button',
 		'Ext.grid.Panel',
@@ -67,26 +68,47 @@ Ext.define('PetMaster.view.Breeding', {
 			]
 		},
 		{
-			xtype: 'gridpanel',
+			xtype: 'container',
 			flex: 1,
-			itemId: 'currenlyBreedingWithGrid',
-			title: 'Currently Breeding With',
-			bind: {
-				store: '{CurrentlyBreedingWithStore}'
+			layout: {
+				type: 'hbox',
+				align: 'stretch'
 			},
-			dockedItems: [
+			items: [
 				{
-					xtype: 'toolbar',
-					dock: 'top',
-					itemId: 'currenlyBreedingWithToolbar'
-				}
-			],
-			columns: [
+					xtype: 'gridpanel',
+					flex: 1,
+					itemId: 'currenlyBreedingWithGrid',
+					title: 'Currently Breeding With',
+					bind: {
+						store: '{CurrentlyBreedingWithStore}'
+					},
+					dockedItems: [
+						{
+							xtype: 'toolbar',
+							dock: 'top',
+							itemId: 'currenlyBreedingWithToolbar'
+						}
+					],
+					columns: [
+						{
+							xtype: 'gridcolumn',
+							width: 153,
+							dataIndex: 'serial',
+							text: 'Serial'
+						}
+					],
+					viewConfig: {
+						enableTextSelection: true
+					},
+					listeners: {
+						selectionchange: 'onCurrenlyBreedingWithGridSelectionChange'
+					}
+				},
 				{
-					xtype: 'gridcolumn',
-					width: 153,
-					dataIndex: 'serial',
-					text: 'Serial'
+					xtype: 'breedingform',
+					flex: 1,
+					itemId: 'breedingForm'
 				}
 			]
 		}
@@ -97,6 +119,16 @@ Ext.define('PetMaster.view.Breeding', {
 
 	onButtonClick: function(button, e, eOpts) {
 		this.createBreedingPair();
+	},
+
+	onCurrenlyBreedingWithGridSelectionChange: function(model, selected, eOpts) {
+		if(!selected || selected.length !== 1) {
+			return;
+		}
+
+		selected = selected[0];
+
+		this.queryById("breedingForm").readBreedingPair(selected.data.breedingId);
 	},
 
 	onPanelAfterRender: function(component, eOpts) {

@@ -11,6 +11,8 @@
         "designer|userAlias": "reptiles",
         "designer|userClassName": "Reptiles",
         "layout": "hbox",
+        "minHeight": 800,
+        "minWidth": 1700,
         "scrollable": true,
         "title": "Reptile Database"
     },
@@ -21,7 +23,9 @@
         "designer|userClassName": "string",
         "layout": "string",
         "title": "string",
-        "scrollable": "auto"
+        "scrollable": "auto",
+        "minHeight": "number",
+        "minWidth": "number"
     },
     "name": "MyPanel1",
     "designerId": "540cd583-f3ea-47cd-83ec-141aa2c69d6f",
