@@ -1,0 +1,19 @@
+{
+    "type": "arraystore",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "GroupPermissionsStore",
+        "model": "GroupPermissionsModel",
+        "storeId": "GroupPermissionsStore"
+    },
+    "configAlternates": {
+        "designer|userClassName": "string",
+        "model": "model",
+        "storeId": "string"
+    },
+    "designerId": "87cad16b-22ac-4dc4-bdee-948dbb4df150"
+}

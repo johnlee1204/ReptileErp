@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5f1f41d2-241f-45cb-a8b3-f2c38ba9238e" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/../inc/php" />
+      <path value="$PROJECT_DIR$/../Agile" />
+    </include_path>
+  </component>
+  <component name="ProjectId" id="1isApltw3usjq3QxAktxfYE9LhC" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>C:\Users\jlee\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5f1f41d2-241f-45cb-a8b3-f2c38ba9238e" name="Default Changelist" comment="" />
+      <created>1602686110532</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1602686110532</updated>
+      <workItem from="1602686112106" duration="329000" />
+      <workItem from="1602765349476" duration="11462000" />
+      <workItem from="1602859077822" duration="717000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="987" y="343" key="#PHP" timestamp="1602765371217">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="987" y="343" key="#PHP/-2560.0.2560.1400/0.0.2560.1400/2560.165.1920.1040@0.0.2560.1400" timestamp="1602765371217" />
+    <state x="973" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1602712902592">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="973" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/-2560.0.2560.1400/0.0.2560.1400/2560.165.1920.1040@0.0.2560.1400" timestamp="1602712902592" />
+    <state x="1060" y="455" width="440" height="485" key="FileChooserDialogImpl" timestamp="1602794747689">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="-1500" y="455" key="FileChooserDialogImpl/-2560.0.2560.1400/0.0.2560.1400/2560.165.1920.1040@-2560.0.2560.1400" timestamp="1602686272123" />
+    <state x="1060" y="455" key="FileChooserDialogImpl/-2560.0.2560.1400/0.0.2560.1400/2560.165.1920.1040@0.0.2560.1400" timestamp="1602765370134" />
+    <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400/-2560.0.2560.1400/2560.165.1920.1040@0.0.2560.1400" timestamp="1602794747689" />
+    <state x="3355" y="503" width="440" height="485" key="FileChooserDialogImpl/0.0.2560.1400/-2560.0.2560.1400/2560.165.1920.1040@2560.165.1920.1040" timestamp="1602770819242" />
+    <state x="-1489" y="423" key="NewPhpClassDialog" timestamp="1602686125173">
+      <screen x="-2560" y="0" width="2560" height="1400" />
+    </state>
+    <state x="-1489" y="423" key="NewPhpClassDialog/-2560.0.2560.1400/0.0.2560.1400/2560.165.1920.1040@-2560.0.2560.1400" timestamp="1602686125173" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1602786523924">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400/-2560.0.2560.1400/2560.165.1920.1040@0.0.2560.1400" timestamp="1602786523924" />
+  </component>
+</project>

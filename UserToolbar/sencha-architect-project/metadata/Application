@@ -1,0 +1,24 @@
+{
+    "type": "Ext.app.Application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "name": "UserToolbar",
+        "views": [
+            "MyViewport",
+            "ToolbarLink",
+            "ToolbarLinkForm",
+            "UserToolbar",
+            "UserToolbarSetup"
+        ]
+    },
+    "configAlternates": {
+        "name": "string",
+        "views": "typedarray"
+    },
+    "name": "Application",
+    "designerId": "application"
+}
