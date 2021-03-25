@@ -16,8 +16,10 @@ class Finance extends AgileBaseController {
 	function readLedger() {
 		$this->outputSuccess([
 			'data' => FinanceModel::readLedger(),
-			'currentBalance' => FinanceModel::readCurrentBalance()
-		]);
+            'currentBalance' => FinanceModel::readCurrentBalance(),
+            'totalCost' => FinanceModel::readtotalCost(),
+            'totalRevenue' => FinanceModel::readtotalRevenue()
+        ]);
 	}
 
 	function readTransaction() {

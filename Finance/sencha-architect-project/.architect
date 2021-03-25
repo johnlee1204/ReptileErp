@@ -31,6 +31,12 @@
                     "cn": [
                         {
                             "id": "c32b5894-539c-4f23-b815-91a23bce4a49"
+                        },
+                        {
+                            "id": "c8018250-bc2b-41a7-be2b-e6278ea6a7c4"
+                        },
+                        {
+                            "id": "8f53a6f5-78b5-41ca-b27f-540a3eef10a7"
                         }
                     ]
                 },
@@ -201,8 +207,8 @@
         "model": true,
         "controller": true,
         "resource": true,
-        "d3e7233a-2484-4dbd-a156-693732c5836f": {
-            "id": "d3e7233a-2484-4dbd-a156-693732c5836f"
+        "4e6f031b-1949-4942-bfc5-79fea952a212": {
+            "id": "4e6f031b-1949-4942-bfc5-79fea952a212"
         },
         "173a740e-293e-4e00-b40c-9a50fb2577d4": {
             "id": "173a740e-293e-4e00-b40c-9a50fb2577d4"
@@ -264,8 +270,8 @@
         "topInstance": null
     },
     "inspectorState": {
-        "topInstance": "3574517c-9578-470c-b1ba-f6802801396a",
-        "selectedInstance": "cbc31f57-24e4-4714-9273-754000128527"
+        "topInstance": "d38c2cf0-9e53-498a-8521-da773f47156a",
+        "selectedInstance": "6f57ff5b-e20e-402c-81d4-1e9def5f2e10"
     },
     "editMode": "code",
     "userSettings": {

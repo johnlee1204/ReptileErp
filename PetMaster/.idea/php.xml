@@ -4,6 +4,7 @@
     <include_path>
       <path value="$PROJECT_DIR$/../Agile" />
       <path value="$PROJECT_DIR$/../inc/php" />
+      <path value="$PROJECT_DIR$/../Schedule" />
     </include_path>
   </component>
 </project>

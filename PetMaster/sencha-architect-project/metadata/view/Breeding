@@ -43,41 +43,95 @@
             "designerId": "653bdaaf-a2ac-4390-9acb-2062bda23496",
             "cn": [
                 {
-                    "type": "Ext.form.field.ComboBox",
+                    "type": "Ext.container.Container",
                     "reference": {
                         "name": "items",
                         "type": "array"
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "displayField": "serial",
-                        "docFormSkip": true,
-                        "fieldLabel": "Breed With",
-                        "forceSelection": true,
-                        "itemId": "breedWith",
-                        "queryMode": "local",
-                        "store": [
-                            "{BreedWithStore}"
-                        ],
-                        "valueField": "reptileId"
+                        "container|align": "stretch",
+                        "layout": "hbox"
                     },
                     "configAlternates": {
-                        "store": "binding",
-                        "docFormSkip": "boolean",
-                        "displayField": "datafield",
-                        "fieldLabel": "string",
-                        "forceSelection": "boolean",
-                        "itemId": "string",
-                        "queryMode": "string",
-                        "valueField": "datafield"
+                        "container|align": "string",
+                        "layout": "string"
                     },
-                    "name": "MyComboBox5",
-                    "designerId": "94e615e0-4a3f-4a62-8ef5-057645564975",
-                    "customConfigs": [
+                    "name": "MyContainer14",
+                    "designerId": "fb8a106e-d336-4131-b548-5ac35508fdac",
+                    "cn": [
                         {
-                            "group": "(Custom Properties)",
-                            "name": "docFormSkip",
-                            "type": "string"
+                            "type": "Ext.form.field.ComboBox",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "displayField": "serial",
+                                "docFormSkip": true,
+                                "fieldLabel": "Breed With",
+                                "forceSelection": true,
+                                "itemId": "breedWith",
+                                "queryMode": "local",
+                                "store": [
+                                    "{BreedWithStore}"
+                                ],
+                                "valueField": "reptileId"
+                            },
+                            "configAlternates": {
+                                "store": "binding",
+                                "docFormSkip": "boolean",
+                                "displayField": "datafield",
+                                "fieldLabel": "string",
+                                "forceSelection": "boolean",
+                                "itemId": "string",
+                                "queryMode": "string",
+                                "valueField": "datafield"
+                            },
+                            "name": "MyComboBox5",
+                            "designerId": "94e615e0-4a3f-4a62-8ef5-057645564975",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "docFormSkip",
+                                    "type": "string"
+                                }
+                            ]
+                        },
+                        {
+                            "type": "Ext.form.field.Date",
+                            "reference": {
+                                "name": "items",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "docFormSkip": true,
+                                "fieldLabel": "Breed Date",
+                                "itemId": "breedDate",
+                                "margin": "0 0 0 10"
+                            },
+                            "configAlternates": {
+                                "store": "binding",
+                                "docFormSkip": "boolean",
+                                "displayField": "datafield",
+                                "fieldLabel": "string",
+                                "forceSelection": "boolean",
+                                "itemId": "string",
+                                "queryMode": "string",
+                                "valueField": "datafield",
+                                "margin": "auto"
+                            },
+                            "name": "MyDateField3",
+                            "designerId": "d8677432-4b67-4cec-8e23-3f08e6a0a579",
+                            "customConfigs": [
+                                {
+                                    "group": "(Custom Properties)",
+                                    "name": "docFormSkip",
+                                    "type": "string"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -90,11 +144,13 @@
                     "codeClass": null,
                     "userConfig": {
                         "icon": "/inc/img/silk_icons/add.png",
+                        "margin": "5 0 0 0",
                         "text": "Add"
                     },
                     "configAlternates": {
                         "icon": "string",
-                        "text": "string"
+                        "text": "string",
+                        "margin": "auto"
                     },
                     "name": "MyButton2",
                     "designerId": "6357daf8-819a-4066-b9f2-aa99c0e45659",
@@ -381,7 +437,7 @@
                 "implHandler": [
                     "AERP.Ajax.request({",
                     "\turl:\"/PetMaster/createBreedingPair\",",
-                    "\tjsonData:{reptileId1:this.reptileId, reptileId2:this.queryById('breedWith').getValue()},",
+                    "\tjsonData:{reptileId1:this.reptileId, reptileId2:this.queryById('breedWith').getValue(), breedDate:this.queryById('breedDate').getValue()},",
                     "\tsuccess:function(reply) {",
                     "\t\tthis.readBreedingData(this.reptileId);",
                     "\t},",

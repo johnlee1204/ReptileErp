@@ -39,6 +39,14 @@
                 "type": "array"
             },
             "codeClass": null,
+            "userConfig": {
+                "layout": "hbox",
+                "padding": 10
+            },
+            "configAlternates": {
+                "layout": "string",
+                "padding": "auto"
+            },
             "name": "MyContainer2",
             "designerId": "954036da-e442-4ed1-a63b-9a4fd25833b3",
             "cn": [
@@ -52,7 +60,6 @@
                     "userConfig": {
                         "fieldLabel": "Current Balance",
                         "itemId": "currentBalance",
-                        "margin": 10,
                         "readOnly": true
                     },
                     "configAlternates": {
@@ -64,6 +71,46 @@
                     },
                     "name": "MyTextField2",
                     "designerId": "c32b5894-539c-4f23-b815-91a23bce4a49"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Revenue",
+                        "itemId": "totalRevenue",
+                        "labelAlign": "right"
+                    },
+                    "configAlternates": {
+                        "fieldLabel": "string",
+                        "itemId": "string",
+                        "labelAlign": "string"
+                    },
+                    "name": "MyTextField1",
+                    "designerId": "c8018250-bc2b-41a7-be2b-e6278ea6a7c4"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fieldLabel": "Cost",
+                        "itemId": "totalCost",
+                        "labelAlign": "right"
+                    },
+                    "configAlternates": {
+                        "fieldLabel": "string",
+                        "itemId": "string",
+                        "labelAlign": "string"
+                    },
+                    "name": "MyTextField3",
+                    "designerId": "8f53a6f5-78b5-41ca-b27f-540a3eef10a7"
                 }
             ]
         },
@@ -413,6 +460,8 @@
                     "\tsuccess:function(reply) {",
                     "\t\tthis.getViewModel().getStore('LedgerStore').loadData(reply.data);",
                     "\t\tthis.queryById('currentBalance').setValue(Ext.util.Format.currency(reply.currentBalance, \"$\", 2));",
+                    "\t\tthis.queryById('totalCost').setValue(Ext.util.Format.currency(reply.totalCost, \"$\", 2));",
+                    "\t\tthis.queryById('totalRevenue').setValue(Ext.util.Format.currency(reply.totalRevenue, \"$\", 2));",
                     "\t},",
                     "\tscope:this,",
                     "\tmask:this",

@@ -42,13 +42,26 @@ Ext.define('Finance.view.Finance', {
 	items: [
 		{
 			xtype: 'container',
+			padding: 10,
+			layout: 'hbox',
 			items: [
 				{
 					xtype: 'textfield',
 					itemId: 'currentBalance',
-					margin: 10,
 					fieldLabel: 'Current Balance',
 					readOnly: true
+				},
+				{
+					xtype: 'textfield',
+					itemId: 'totalRevenue',
+					fieldLabel: 'Revenue',
+					labelAlign: 'right'
+				},
+				{
+					xtype: 'textfield',
+					itemId: 'totalCost',
+					fieldLabel: 'Cost',
+					labelAlign: 'right'
 				}
 			]
 		},
@@ -151,6 +164,8 @@ Ext.define('Finance.view.Finance', {
 			success:function(reply) {
 				this.getViewModel().getStore('LedgerStore').loadData(reply.data);
 				this.queryById('currentBalance').setValue(Ext.util.Format.currency(reply.currentBalance, "$", 2));
+				this.queryById('totalCost').setValue(Ext.util.Format.currency(reply.totalCost, "$", 2));
+				this.queryById('totalRevenue').setValue(Ext.util.Format.currency(reply.totalRevenue, "$", 2));
 			},
 			scope:this,
 			mask:this

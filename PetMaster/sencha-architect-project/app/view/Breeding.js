@@ -21,6 +21,7 @@ Ext.define('PetMaster.view.Breeding', {
 		'PetMaster.view.BreedingViewModel',
 		'PetMaster.view.BreedingForm',
 		'Ext.form.field.ComboBox',
+		'Ext.form.field.Date',
 		'Ext.button.Button',
 		'Ext.grid.Panel',
 		'Ext.toolbar.Toolbar',
@@ -45,20 +46,37 @@ Ext.define('PetMaster.view.Breeding', {
 			padding: 10,
 			items: [
 				{
-					xtype: 'combobox',
-					docFormSkip: true,
-					itemId: 'breedWith',
-					fieldLabel: 'Breed With',
-					displayField: 'serial',
-					forceSelection: true,
-					queryMode: 'local',
-					valueField: 'reptileId',
-					bind: {
-						store: '{BreedWithStore}'
-					}
+					xtype: 'container',
+					layout: {
+						type: 'hbox',
+						align: 'stretch'
+					},
+					items: [
+						{
+							xtype: 'combobox',
+							docFormSkip: true,
+							itemId: 'breedWith',
+							fieldLabel: 'Breed With',
+							displayField: 'serial',
+							forceSelection: true,
+							queryMode: 'local',
+							valueField: 'reptileId',
+							bind: {
+								store: '{BreedWithStore}'
+							}
+						},
+						{
+							xtype: 'datefield',
+							docFormSkip: true,
+							itemId: 'breedDate',
+							margin: '0 0 0 10',
+							fieldLabel: 'Breed Date'
+						}
+					]
 				},
 				{
 					xtype: 'button',
+					margin: '5 0 0 0',
 					icon: '/inc/img/silk_icons/add.png',
 					text: 'Add',
 					listeners: {
@@ -169,7 +187,7 @@ Ext.define('PetMaster.view.Breeding', {
 	createBreedingPair: function() {
 		AERP.Ajax.request({
 			url:"/PetMaster/createBreedingPair",
-			jsonData:{reptileId1:this.reptileId, reptileId2:this.queryById('breedWith').getValue()},
+			jsonData:{reptileId1:this.reptileId, reptileId2:this.queryById('breedWith').getValue(), breedDate:this.queryById('breedDate').getValue()},
 			success:function(reply) {
 				this.readBreedingData(this.reptileId);
 			},

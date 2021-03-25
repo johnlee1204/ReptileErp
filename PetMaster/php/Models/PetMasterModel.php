@@ -375,7 +375,7 @@ class PetMasterModel extends AgileModel {
 		", [$reptileId, $reptileId, $reptileId, $reptileId]);
 	}
 
-	static function createBreedingPair($reptileId1, $reptileId2) {
+	static function createBreedingPair($reptileId1, $reptileId2, $breedDate) {
 		self::checkForIncest($reptileId1, $reptileId2);
 
 		$reptile1 = self::readPet($reptileId1);
@@ -401,12 +401,28 @@ class PetMasterModel extends AgileModel {
 			$male = $reptileId2;
 			$female = $reptileId1;
 		}
+        if($breedDate !== NULL && $breedDate !== '') {
+            $breedDate = date('Y-m-d', strtotime($breedDate));
+
+            $employeeInfo = self::$agileApp->SessionManager->getUserDataFromSession();
+            ScheduleModel::createShift([
+                'employeeId' => $employeeInfo['employeeId'],
+                'type' => 2,
+                'title' => 'Breed ' . $reptile1['serial'] . ' with ' . $reptile2['serial'],
+                'allDay' => 1,
+                'startTime' => NULL,
+                'endTime'  => NULL,
+                'startDate' => $breedDate,
+                'endDate' => $breedDate
+            ]);
+        }
 
 		self::$database->insert(
 		'Breeding',
 			[
 				'maleReptileId' => $male,
-				'femaleReptileId' => $female
+				'femaleReptileId' => $female,
+                'breedDate' => $breedDate
 			]
 		);
 	}

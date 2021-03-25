@@ -37,7 +37,33 @@ class FinanceModel extends AgileModel {
 		return $currentBalance['currentBalance'];
 	}
 
-	static function readTransaction($ledgerId) {
+
+    static function readTotalCost() {
+        $totalCost= self::$database->fetch_assoc("
+			SELECT
+				SUM(amount) totalCost
+			FROM Ledger
+            WHERE
+                  amount < 0
+		");
+
+        return $totalCost['totalCost'];
+    }
+
+
+    static function readTotalRevenue() {
+        $totalRevenue= self::$database->fetch_assoc("
+			SELECT
+				SUM(amount) totalRevenue
+			FROM Ledger
+            WHERE
+                  amount > 0
+		");
+
+        return $totalRevenue['totalRevenue'];
+    }
+
+    static function readTransaction($ledgerId) {
 		$transaction = self::$database->fetch_assoc("
 			SELECT
 				ABS(amount) amount,

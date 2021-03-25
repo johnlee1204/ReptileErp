@@ -269,10 +269,11 @@ class PetMaster extends AgileBaseController {
 	function createBreedingPair() {
 		$inputs = Validation::validateJsonInput([
 			'reptileId1' => 'numeric',
-			'reptileId2' => 'numeric'
+			'reptileId2' => 'numeric',
+            'breedDate'
 		]);
 
-		PetMasterModel::createBreedingPair($inputs['reptileId1'], $inputs['reptileId2']);
+		PetMasterModel::createBreedingPair($inputs['reptileId1'], $inputs['reptileId2'], $inputs['breedDate']);
 
 		$this->outputSuccess();
 	}

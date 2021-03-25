@@ -243,7 +243,7 @@ Ext.define('Schedule.view.Schedule', {
 									flex: 1,
 									height: 44,
 									width: 90,
-									text: 'Clock On',
+									text: 'Clock In',
 									listeners: {
 										click: 'onButtonClick'
 									}
@@ -253,7 +253,7 @@ Ext.define('Schedule.view.Schedule', {
 									flex: 1,
 									margin: '0 0 0 25',
 									width: 90,
-									text: 'Clock Off',
+									text: 'Clock Out',
 									listeners: {
 										click: 'onButtonClick1'
 									}
