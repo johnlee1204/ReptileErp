@@ -8,7 +8,7 @@ class AgileInitializer{
 		//get all the system configs
 		/** @var $systemConfigs array */
 		if(FALSE === file_exists('../SystemConfigs.php')){
-			die("Here");
+			echo "Could not find System Configs!";
 		} else {
 			include('../SystemConfigs.php');
 		}
