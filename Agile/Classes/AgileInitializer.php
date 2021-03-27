@@ -7,10 +7,10 @@ class AgileInitializer{
 	function __construct(){
 		//get all the system configs
 		/** @var $systemConfigs array */
-		if(FALSE === file_exists('/var/www/leesheet.com/public_html/Agile/SystemConfigs.php')){
+		if(FALSE === file_exists('../SystemConfigs.php')){
 			die("Here");
 		} else {
-			include('/var/www/leesheet.com/public_html/Agile/SystemConfigs.php');
+			include('../SystemConfigs.php');
 		}
 
 		//based on the system class path, pull in the main App class
