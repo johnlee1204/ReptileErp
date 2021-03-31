@@ -20,6 +20,7 @@ Ext.define('Schedule.view.AddEventForm', {
 	requires: [
 		'Schedule.view.AddEventFormViewModel',
 		'Ext.container.Container',
+		'Ext.form.field.Tag',
 		'Ext.form.field.Date',
 		'Ext.form.field.Time',
 		'Ext.form.field.Checkbox',
@@ -29,8 +30,8 @@ Ext.define('Schedule.view.AddEventForm', {
 	viewModel: {
 		type: 'addeventform'
 	},
-	height: 286,
-	width: 494,
+	height: 385,
+	width: 517,
 	layout: 'vbox',
 	bodyPadding: 10,
 	bodyStyle: 'background:none',
@@ -48,11 +49,12 @@ Ext.define('Schedule.view.AddEventForm', {
 			},
 			items: [
 				{
-					xtype: 'combobox',
+					xtype: 'tagfield',
 					itemId: 'employee',
+					width: 281,
 					fieldLabel: 'Employee',
 					displayField: 'name',
-					forceSelection: true,
+					forceSelection: false,
 					queryMode: 'local',
 					valueField: 'employeeId',
 					bind: {
@@ -81,10 +83,7 @@ Ext.define('Schedule.view.AddEventForm', {
 		},
 		{
 			xtype: 'container',
-			layout: {
-				type: 'hbox',
-				align: 'stretch'
-			},
+			layout: 'hbox',
 			items: [
 				{
 					xtype: 'datefield',
@@ -99,7 +98,7 @@ Ext.define('Schedule.view.AddEventForm', {
 					margin: '0 0 0 15',
 					width: 204,
 					fieldLabel: 'Start Time',
-					labelWidth: 60,
+					labelWidth: 70,
 					submitFormat: 'H:i:s'
 				}
 			]
@@ -150,7 +149,6 @@ Ext.define('Schedule.view.AddEventForm', {
 		},
 		{
 			xtype: 'container',
-			flex: 1,
 			layout: {
 				type: 'hbox',
 				align: 'stretch'

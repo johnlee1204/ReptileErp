@@ -202,19 +202,17 @@ class ScheduleModel extends AgileModel{
 			SELECT
 				scheduleId id,
 				scheduleId,
-				Schedule.employeeId,
 				startTime startDate,
 				endTime endDate,
 				#hours,
 				FLOOR( RAND() * (3-1) + 1) as calendarId,
 				CASE
-					WHEN calendarId = 1 THEN CONCAT(CASE WHEN DATEDIFF(endTime,startTime) > 1 THEN DATE_FORMAT(startTime, '%h:%i %p') ELSE DATE_FORMAT(startTime, '%h:%i %p') END,' - ',DATE_FORMAT(endTime, '%h:%i %p'), ' ' ,Employee.firstName, ' ', Employee.lastName)	
-					WHEN calendarId = 4 THEN CONCAT(Employee.firstName, ' ', Employee.lastName, ' Time Off')
+					WHEN calendarId = 1 THEN CONCAT(CASE WHEN DATEDIFF(endTime,startTime) > 1 THEN DATE_FORMAT(startTime, '%h:%i %p') ELSE DATE_FORMAT(startTime, '%h:%i %p') END,' - ',DATE_FORMAT(endTime, '%h:%i %p'))	
+					WHEN calendarId = 4 THEN 'Time Off'
 					ELSE title
 				END title,
 				CASE WHEN allDay = 1 THEN true ELSE false END allDay
 			FROM Schedule
-			JOIN Employee ON Employee.employeeId = Schedule.employeeId
 			WHERE
 				calendarId = ?
 		", [$calendarId]);
@@ -224,25 +222,46 @@ class ScheduleModel extends AgileModel{
 		foreach($schedule as $event) {
 			$event['allDay'] = boolval($event['allDay']);
 
+			$event['employeeId'] = self::readEventEmployees($event['scheduleId']);
+
+			if($calendarId === "1" || $calendarId === "4" || $calendarId === "3") {
+				$employeeNames = [];
+				foreach($event['employeeId'] as $employeeId) {
+					$employee = EmployeeModel::readEmployee($employeeId);
+					$employeeNames[] = $employee['firstName'] . ' ' . $employee['lastName'];
+				}
+
+				$event['title'] .= " " . join(", ", $employeeNames);
+			}
+
 			$output[] = $event;
 		}
 
 		return $output;
 	}
 
-	static function readScheduleEvent($scheduleId) {
-	    self::$database->select(
-	        "Schedule",
-            [
-                'employeeId'
-            ],
-            ['scheduleId' => $scheduleId]
-        );
+	static function readEventEmployees($scheduleId) {
+		self::$database->select(
+			"ScheduleEmployee",
+			['employeeId'],
+			['scheduleId' => $scheduleId]
+		);
 
-	    return self::$database->fetch_assoc();
-    }
+		$employees = self::$database->fetch_all_assoc();
+		$output = [];
+
+		foreach($employees as $employee) {
+			$output[] = $employee['employeeId'];
+		}
+
+		return $output;
+	}
 
 	static function createShift($inputs) {
+
+		if($inputs['employeeId'] === "" || count($inputs['employeeId']) === 0) {
+			throw new AgileUserMessageException("Must Select Employee!");
+		}
 
 		if($inputs['allDay'] === 0) {
 			if($inputs['startTime'] === "" || $inputs['startTime'] === NULL) {
@@ -268,10 +287,9 @@ class ScheduleModel extends AgileModel{
 			throw new AgileUserMessageException("End time must be after Start time!");
 		}
 
-		self::$database->insert(
+		$id = self::$database->insert(
 			'Schedule',
 			[
-				'employeeId' => $inputs['employeeId'],
 				'startTime' => $startDate,
 				'endTime' => $endDate,
 				'hours' => $hoursWorked,
@@ -281,35 +299,65 @@ class ScheduleModel extends AgileModel{
 			]
 		);
 
-		$employee = EmployeeModel::readEmployee($inputs['employeeId']);
+		$id = $id['id'];
 
-		$dictionary = [
-			1 => "Shift",
-			2 => "Event",
-			3 => "Meeting",
-			4 => "Time Off"
-		];
-
-		$message = [];
-		$message[] = "A " . $dictionary[$inputs['type']] . " has been added on " . date("F j, Y", strtotime($inputs['startDate']));
-		if($inputs['title']) {
-			$message[] = "Title: " . $inputs['title'];
+		$employeeNames = [];
+		foreach($inputs['employeeId'] as $employeeId) {
+			$employee = EmployeeModel::readEmployee($employeeId);
+			$employeeNames[] = $employee['firstName'] . ' ' . $employee['lastName'];
 		}
-		$message[] = "";
-		$message[] = "<a href = 'https://" . $_SERVER['SERVER_NAME'] . "/Schedule'>Schedule</a>";
 
-		$message = join("<BR>", $message);
+		foreach($inputs['employeeId'] as $employeeId) {
+			self::$database->insert(
+				'ScheduleEmployee',
+				[
+					'employeeId' => $employeeId,
+					'scheduleId' => $id
+				]
+			);
 
-		if($employee['email'] !== NULL && trim($employee['email'] !== "")) {
-			Email::send([
-				"to" => $employee['email'],
-				"subject" => "Check Your Calendar! " . date("F j, Y", strtotime($inputs['startDate'])),
-				"message" => $message
-			]);
+			$employee = EmployeeModel::readEmployee($employeeId);
+
+			$dictionary = [
+				1 => "Shift",
+				2 => "Event",
+				3 => "Meeting",
+				4 => "Time Off"
+			];
+
+			$message = [];
+			$message[] = "A " . $dictionary[$inputs['type']] . " has been added on " . date("F j, Y", strtotime($inputs['startDate']));
+			if($inputs['title']) {
+				$message[] = "Title: " . $inputs['title'];
+			}
+			$message[] = "";
+
+			$message[] = "Employees involved:";
+			$message[] = "";
+			$message[] = join("<BR>", $employeeNames);
+			$message[] = "";
+
+			$message[] = "<a href = 'https://" . $_SERVER['SERVER_NAME'] . "/Schedule'>Schedule</a>";
+
+			$message = join("<BR>", $message);
+
+			if($employee['email'] !== NULL && trim($employee['email'] !== "")) {
+				Email::send([
+					"to" => $employee['email'],
+					"subject" => "Check Your Calendar! " . date("F j, Y", strtotime($inputs['startDate'])),
+					"message" => $message
+				]);
+			}
+
 		}
 	}
 
 	static function updateShift($inputs) {
+
+		if($inputs['employeeId'] === "" || count($inputs['employeeId']) === 0) {
+			throw new AgileUserMessageException("Must Select Employee!");
+		}
+
 		if($inputs['allDay'] === 0) {
 			if($inputs['startTime'] === "" || $inputs['startTime'] === NULL) {
 				throw new AgileUserMessageException("Must Select Start Time!");
@@ -333,12 +381,10 @@ class ScheduleModel extends AgileModel{
 		if($hoursWorked < 0) {
 			throw new AgileUserMessageException("End time must be after Start time!");
 		}
-        $oldSchedule = self::readScheduleEvent($inputs['scheduleId']);
 
 		self::$database->update(
 			'Schedule',
 			[
-				'employeeId' => $inputs['employeeId'],
 				'startTime' => $startDate,
 				'endTime' => $endDate,
 				'hours' => $hoursWorked,
@@ -349,42 +395,80 @@ class ScheduleModel extends AgileModel{
 			['scheduleId' => $inputs['scheduleId']]
 		);
 
-		if(intVal($inputs['employeeId']) === $oldSchedule['employeeId']) {
-		    return;
-        }
+		$oldEmployees = self::readEventEmployees($inputs['scheduleId']);
 
-        $employee = EmployeeModel::readEmployee($inputs['employeeId']);
+		self::$database->delete(
+			'ScheduleEmployee',
+			[
+				'scheduleId' => $inputs['scheduleId']
+			]
+		);
 
-        $dictionary = [
-            1 => "Shift",
-            2 => "Event",
-            3 => "Meeting",
-            4 => "Time Off"
-        ];
+		$employeeNames = [];
+		foreach($inputs['employeeId'] as $employeeId) {
+			$employee = EmployeeModel::readEmployee($employeeId);
+			$employeeNames[] = $employee['firstName'] . ' ' . $employee['lastName'];
+		}
 
-        $message = [];
-        $message[] = "A " . $dictionary[$inputs['type']] . " has been added on " . date("F j, Y", strtotime($inputs['startDate']));
-        if($inputs['title']) {
-            $message[] = "Title: " . $inputs['title'];
-        }
-        $message[] = "";
-        $message[] = "<a href = 'https://" . $_SERVER['SERVER_NAME'] . "/Schedule'>Schedule</a>";
+		foreach($inputs['employeeId'] as $employeeId) {
+			self::$database->insert(
+				'ScheduleEmployee',
+				[
+					'employeeId' => $employeeId,
+					'scheduleId' => $inputs['scheduleId']
+				]
+			);
 
-        $message = join("<BR>", $message);
+			if(in_array($employeeId, $oldEmployees)) {
+				continue;
+			}
 
-        if($employee['email'] !== NULL && trim($employee['email'] !== "")) {
-            Email::send([
-                "to" => $employee['email'],
-                "subject" => "Check Your Calendar! " . date("F j, Y", strtotime($inputs['startDate'])),
-                "message" => $message
-            ]);
-        }
+			$employee = EmployeeModel::readEmployee($employeeId);
+
+			$dictionary = [
+				1 => "Shift",
+				2 => "Event",
+				3 => "Meeting",
+				4 => "Time Off"
+			];
+
+			$message = [];
+			$message[] = "A " . $dictionary[$inputs['type']] . " has been added on " . date("F j, Y", strtotime($inputs['startDate']));
+			if($inputs['title']) {
+				$message[] = "Title: " . $inputs['title'];
+			}
+			$message[] = "";
+
+			$message[] = "Employees involved:";
+			$message[] = "";
+			$message[] = join("<BR>", $employeeNames);
+			$message[] = "";
+			
+			$message[] = "<a href = 'https://" . $_SERVER['SERVER_NAME'] . "/Schedule'>Schedule</a>";
+
+			$message = join("<BR>", $message);
+
+			if($employee['email'] !== NULL && trim($employee['email'] !== "")) {
+				Email::send([
+					"to" => $employee['email'],
+					"subject" => "Check Your Calendar! " . date("F j, Y", strtotime($inputs['startDate'])),
+					"message" => $message
+				]);
+			}
+		}
 	}
 
 	static function deleteShift($scheduleId) {
 		self::$database->delete(
 			"Schedule",
 			['scheduleId' => $scheduleId]
+		);
+
+		self::$database->delete(
+			'ScheduleEmployee',
+			[
+				'scheduleId' => $scheduleId
+			]
 		);
 	}
 

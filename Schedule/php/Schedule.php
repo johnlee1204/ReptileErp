@@ -109,7 +109,7 @@ class Schedule extends AgileBaseController {
 
 	function createShift() {
 		$inputs = Validation::validateJsonInput([
-			'employeeId' => 'notBlank',
+			'employeeId' => 'arrayOfIds',
 			'startDate' => 'notBlank',
 			'startTime',
 			'endDate' => 'notBlank',
@@ -119,7 +119,9 @@ class Schedule extends AgileBaseController {
 			'allDay' => 'checkBox'
 		]);
 
+		$this->database->begin_transaction();
 		ScheduleModel::createShift($inputs);
+		$this->database->commit_transaction();
 
 		$this->outputSuccess();
 	}
@@ -127,7 +129,7 @@ class Schedule extends AgileBaseController {
 	function updateShift() {
 		$inputs = Validation::validateJsonInput([
 			'scheduleId' => 'numeric',
-			'employeeId' => 'notBlank',
+			'employeeId' => 'arrayOfIds',
 			'startDate' => 'notBlank',
 			'startTime',
 			'endDate' => 'notBlank',
@@ -137,7 +139,9 @@ class Schedule extends AgileBaseController {
 			'allDay' => 'checkBox'
 		]);
 
+		$this->database->begin_transaction();
 		ScheduleModel::updateShift($inputs);
+		$this->database->commit_transaction();
 
 		$this->outputSuccess();
 	}
@@ -147,7 +151,9 @@ class Schedule extends AgileBaseController {
 			'scheduleId' => 'numeric'
 		]);
 
+		$this->database->begin_transaction();
 		ScheduleModel::deleteShift($input['scheduleId']);
+		$this->database->commit_transaction();
 
 		$this->outputSuccess();
 	}

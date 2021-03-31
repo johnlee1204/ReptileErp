@@ -11,10 +11,10 @@
         "closeAction": "hide",
         "designer|userAlias": "addeventform",
         "designer|userClassName": "AddEventForm",
-        "height": 286,
+        "height": 385,
         "layout": "vbox",
         "title": "Add Shift",
-        "width": 494
+        "width": 517
     },
     "configAlternates": {
         "bodyPadding": "auto",
@@ -52,7 +52,7 @@
             "designerId": "e4409ca9-619e-4039-9891-5b4b177c7469",
             "cn": [
                 {
-                    "type": "Ext.form.field.ComboBox",
+                    "type": "Ext.form.field.Tag",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -61,13 +61,14 @@
                     "userConfig": {
                         "displayField": "name",
                         "fieldLabel": "Employee",
-                        "forceSelection": true,
+                        "forceSelection": false,
                         "itemId": "employee",
                         "queryMode": "local",
                         "store": [
                             "{EmployeeStore}"
                         ],
-                        "valueField": "employeeId"
+                        "valueField": "employeeId",
+                        "width": 281
                     },
                     "configAlternates": {
                         "fieldLabel": "string",
@@ -76,9 +77,10 @@
                         "displayField": "datafield",
                         "forceSelection": "boolean",
                         "queryMode": "string",
-                        "valueField": "datafield"
+                        "valueField": "datafield",
+                        "width": "auto"
                     },
-                    "name": "MyComboBox",
+                    "name": "MyTagField",
                     "designerId": "b2ed436f-cde4-4139-8c6d-1cfdfd7ddb5a"
                 },
                 {
@@ -163,7 +165,6 @@
             },
             "codeClass": null,
             "userConfig": {
-                "container|align": "stretch",
                 "layout": "hbox"
             },
             "configAlternates": {
@@ -205,7 +206,7 @@
                     "userConfig": {
                         "fieldLabel": "Start Time",
                         "itemId": "startTime",
-                        "labelWidth": 60,
+                        "labelWidth": 70,
                         "margin": "0 0 0 15",
                         "submitFormat": "H:i:s",
                         "width": 204
@@ -382,8 +383,7 @@
             "codeClass": null,
             "userConfig": {
                 "container|align": "stretch",
-                "layout": "hbox",
-                "layout|flex": 1
+                "layout": "hbox"
             },
             "configAlternates": {
                 "container|align": "string",

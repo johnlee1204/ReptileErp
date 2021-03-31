@@ -48,4 +48,4 @@ $systemConfigs['table']['logException'] = $systemConfigs['database']['systemData
 
 //$systemConfigs['exceptionEmailErrorTypes'] = array('error','shutdown','exception','useremail');
 
-$systemConfigs['adminEmail'] = 'j-lee@fweco.net';
+$systemConfigs['adminEmail'] = 'debian@shwiftportal.local';

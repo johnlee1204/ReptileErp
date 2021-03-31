@@ -7,7 +7,7 @@
             "frameworkVersion": ""
         },
         "urlPrefixTemplate": "http://dev.local/",
-        "exportPath": "C:/Users/chris/Desktop/Websites/LeeSheet/Schedule",
+        "exportPath": "Z:/data/ApacheData/shwiftportal.local/Schedule",
         "buildShouldOverwriteIndex": true,
         "generateArchitectVersion": false,
         "spacesToIndent": "tab",
@@ -55,7 +55,7 @@
             "b555a1df-a148-4e7b-a910-4809f4e567e2"
         ],
         "resource": [
-            "8d3dc7f2-43ee-430e-a3e7-9f3c68d1a4e6",
+            "fca8d191-6556-4951-943e-3a3d99212200",
             "173a740e-293e-4e00-b40c-9a50fb2577d4",
             "5ba3958c-da75-475c-be62-0204422d23cf",
             "e9dfff16-f6c8-498c-ac8a-f008ed4717e3",
