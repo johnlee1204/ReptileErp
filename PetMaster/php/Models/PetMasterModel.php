@@ -104,16 +104,17 @@ class PetMasterModel extends AgileModel {
 			$endTime = "17:00:00";
 
 			ScheduleModel::createShift([
-				'employeeId' => $userInformation['employeeId'],
+				'employeeId' => [$userInformation['employeeId']],
 				'startDate' => $startDate,
 				'endDate' => $endDate,
 				'startTime' => $startTime,
 				'endTime' => $endTime,
 				'hours' => NULL,
 				'type' => 2,
-				'title' => 'Sell Reptile Serial: ' . $inputs['serial']
+				'title' => 'Sell Reptile Serial: ' . $inputs['serial'],
+				'allDay' => 0
 			]);
-			}
+		}
 
 		self::$database->insert(
 			'Pet',
@@ -197,15 +198,17 @@ class PetMasterModel extends AgileModel {
 				$endDate = date("Y-m-d", strtotime($inputs['sellDate']));
 				$startTime = "09:00:00";
 				$endTime = "17:00:00";
+
 				ScheduleModel::createShift([
-					'employeeId' => $userInformation['employeeId'],
+					'employeeId' => [$userInformation['employeeId']],
 					'startDate' => $startDate,
 					'endDate' => $endDate,
 					'startTime' => $startTime,
 					'endTime' => $endTime,
 					'hours' => NULL,
 					'type' => 2,
-					'title' => 'Sell Reptile Serial: ' . $inputs['serial']
+					'title' => 'Sell Reptile Serial: ' . $inputs['serial'],
+					'allDay' => 0
 				]);
 			}
 		}

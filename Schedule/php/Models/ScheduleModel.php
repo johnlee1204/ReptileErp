@@ -348,8 +348,9 @@ class ScheduleModel extends AgileModel{
 					"message" => $message
 				]);
 			}
-
 		}
+
+		return $id;
 	}
 
 	static function updateShift($inputs) {
@@ -443,7 +444,7 @@ class ScheduleModel extends AgileModel{
 			$message[] = "";
 			$message[] = join("<BR>", $employeeNames);
 			$message[] = "";
-			
+
 			$message[] = "<a href = 'https://" . $_SERVER['SERVER_NAME'] . "/Schedule'>Schedule</a>";
 
 			$message = join("<BR>", $message);
