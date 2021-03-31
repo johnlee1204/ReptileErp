@@ -349,10 +349,10 @@ class ScheduleModel extends AgileModel{
 			['scheduleId' => $inputs['scheduleId']]
 		);
 
-		if($inputs['employeeId'] === $oldSchedule['employeeId']) {
+		if(intVal($inputs['employeeId']) === $oldSchedule['employeeId']) {
 		    return;
         }
-		
+
         $employee = EmployeeModel::readEmployee($inputs['employeeId']);
 
         $dictionary = [
