@@ -326,6 +326,8 @@ class ScheduleModel extends AgileModel{
 			];
 
 			$message = [];
+			$message[] = "Hello " . $employee['firstName'] . ' ' . $employee['lastName'] . ',';
+			$message[] = "";
 			$message[] = "A " . $dictionary[$inputs['type']] . " has been added on " . date("F j, Y", strtotime($inputs['startDate']));
 			if($inputs['title']) {
 				$message[] = "Title: " . $inputs['title'];
@@ -337,7 +339,7 @@ class ScheduleModel extends AgileModel{
 			$message[] = join("<BR>", $employeeNames);
 			$message[] = "";
 
-			$message[] = "<a href = 'https://" . $_SERVER['SERVER_NAME'] . "/Schedule'>Schedule</a>";
+			//$message[] = "<a href = 'https://" . $_SERVER['SERVER_NAME'] . "/Schedule'>Schedule</a>";
 
 			$message = join("<BR>", $message);
 
@@ -434,6 +436,8 @@ class ScheduleModel extends AgileModel{
 			];
 
 			$message = [];
+			$message[] = "Hello " . $employee['firstName'] . ' ' . $employee['lastName'] . ',';
+			$message[] = "";
 			$message[] = "A " . $dictionary[$inputs['type']] . " has been added on " . date("F j, Y", strtotime($inputs['startDate']));
 			if($inputs['title']) {
 				$message[] = "Title: " . $inputs['title'];
@@ -445,7 +449,7 @@ class ScheduleModel extends AgileModel{
 			$message[] = join("<BR>", $employeeNames);
 			$message[] = "";
 
-			$message[] = "<a href = 'https://" . $_SERVER['SERVER_NAME'] . "/Schedule'>Schedule</a>";
+			//$message[] = "<a href = 'https://" . $_SERVER['SERVER_NAME'] . "/Schedule'>Schedule</a>";
 
 			$message = join("<BR>", $message);
 
@@ -471,6 +475,8 @@ class ScheduleModel extends AgileModel{
             ];
 
             $message = [];
+			$message[] = "Hello " . $employee['firstName'] . ' ' . $employee['lastName'] . ',';
+			$message[] = "";
             $message[] = "You have been removed from a " . $dictionary[$inputs['type']] . " on " . date("F j, Y", strtotime($inputs['startDate']));
             if($inputs['title']) {
                 $message[] = "Title: " . $inputs['title'];
@@ -482,7 +488,7 @@ class ScheduleModel extends AgileModel{
             $message[] = join("<BR>", $employeeNames);
             $message[] = "";
 
-            $message[] = "<a href = 'https://" . $_SERVER['SERVER_NAME'] . "/Schedule'>Schedule</a>";
+            //$message[] = "<a href = 'https://" . $_SERVER['SERVER_NAME'] . "/Schedule'>Schedule</a>";
 
             $message = join("<BR>", $message);
 
