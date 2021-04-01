@@ -457,6 +457,43 @@ class ScheduleModel extends AgileModel{
 				]);
 			}
 		}
+		foreach($oldEmployees as $oldEmployee){
+		    if(in_array($oldEmployee,$inputs['employeeId'])){
+		        continue;
+            }
+            $employee = EmployeeModel::readEmployee($oldEmployee);
+
+            $dictionary = [
+                1 => "Shift",
+                2 => "Event",
+                3 => "Meeting",
+                4 => "Time Off"
+            ];
+
+            $message = [];
+            $message[] = "You have been removed from a " . $dictionary[$inputs['type']] . " on " . date("F j, Y", strtotime($inputs['startDate']));
+            if($inputs['title']) {
+                $message[] = "Title: " . $inputs['title'];
+            }
+            $message[] = "";
+
+            $message[] = "Employees involved:";
+            $message[] = "";
+            $message[] = join("<BR>", $employeeNames);
+            $message[] = "";
+
+            $message[] = "<a href = 'https://" . $_SERVER['SERVER_NAME'] . "/Schedule'>Schedule</a>";
+
+            $message = join("<BR>", $message);
+
+            if($employee['email'] !== NULL && trim($employee['email'] !== "")) {
+                Email::send([
+                    "to" => $employee['email'],
+                    "subject" => "Check Your Calendar! " . date("F j, Y", strtotime($inputs['startDate'])),
+                    "message" => $message
+                ]);
+            }
+        }
 	}
 
 	static function deleteShift($scheduleId) {
