@@ -43,7 +43,7 @@ Ext.define('PetMaster.view.Reptiles', {
 		{
 			xtype: 'gridpanel',
 			resizable: true,
-			width: 540,
+			width: 434,
 			collapseDirection: 'left',
 			collapsible: true,
 			bind: {
@@ -80,11 +80,6 @@ Ext.define('PetMaster.view.Reptiles', {
 					width: 119,
 					dataIndex: 'receiveDate',
 					text: 'Receive Date'
-				},
-				{
-					xtype: 'datecolumn',
-					dataIndex: 'sellDate',
-					text: 'Sell Date'
 				}
 			],
 			viewConfig: {

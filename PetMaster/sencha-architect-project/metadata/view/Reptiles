@@ -46,7 +46,7 @@
                 "store": [
                     "{ReptileStore}"
                 ],
-                "width": 540
+                "width": 434
             },
             "configAlternates": {
                 "store": "binding",
@@ -173,24 +173,6 @@
                     },
                     "name": "MyDateColumn3",
                     "designerId": "7c43d096-f367-4f71-9a03-671eb80ad6a0"
-                },
-                {
-                    "type": "Ext.grid.column.Date",
-                    "reference": {
-                        "name": "columns",
-                        "type": "array"
-                    },
-                    "codeClass": null,
-                    "userConfig": {
-                        "dataIndex": "sellDate",
-                        "text": "Sell Date"
-                    },
-                    "configAlternates": {
-                        "dataIndex": "datafield",
-                        "text": "string"
-                    },
-                    "name": "MyDateColumn4",
-                    "designerId": "134b5363-5a1e-4eda-8403-9d5fb4536ef6"
                 },
                 {
                     "type": "Ext.view.Table",
