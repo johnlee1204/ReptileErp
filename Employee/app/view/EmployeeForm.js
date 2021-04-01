@@ -95,7 +95,9 @@ Ext.define('Employee.view.EmployeeForm', {
 		{
 			xtype: 'combobox',
 			itemId: 'position',
+			width: 324,
 			fieldLabel: 'Position',
+			matchFieldWidth: false,
 			displayField: 'position',
 			forceSelection: true,
 			queryMode: 'local',
@@ -206,7 +208,7 @@ Ext.define('Employee.view.EmployeeForm', {
 			success:function(reply) {
 				this.employeeId = employeeId;
 				let fireButton = this.queryById('fireButton');
-				if(reply.data.position !== "Owner" && reply.data.position !== "Software Developer") {
+				if(reply.data.position !== "Owner" && reply.data.position !== "Senior Software Developer") {
 					fireButton.show();
 				} else {
 					fireButton.hide();

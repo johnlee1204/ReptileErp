@@ -57,6 +57,7 @@ Ext.define('Employee.view.Employee', {
 			columns: [
 				{
 					xtype: 'gridcolumn',
+					width: 109,
 					dataIndex: 'employeeNumber',
 					text: 'Employee No.'
 				},
@@ -79,7 +80,7 @@ Ext.define('Employee.view.Employee', {
 				},
 				{
 					xtype: 'gridcolumn',
-					width: 145,
+					width: 182,
 					dataIndex: 'position',
 					text: 'Position'
 				},

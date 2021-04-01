@@ -81,11 +81,13 @@
                     "codeClass": null,
                     "userConfig": {
                         "dataIndex": "employeeNumber",
-                        "text": "Employee No."
+                        "text": "Employee No.",
+                        "width": 109
                     },
                     "configAlternates": {
                         "dataIndex": "datafield",
-                        "text": "string"
+                        "text": "string",
+                        "width": "auto"
                     },
                     "name": "MyColumn",
                     "designerId": "d934a948-6c16-423a-b532-bab36640a91e"
@@ -158,7 +160,7 @@
                     "userConfig": {
                         "dataIndex": "position",
                         "text": "Position",
-                        "width": 145
+                        "width": 182
                     },
                     "configAlternates": {
                         "dataIndex": "datafield",

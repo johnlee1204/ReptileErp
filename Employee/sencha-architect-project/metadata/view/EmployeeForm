@@ -228,11 +228,13 @@
                 "fieldLabel": "Position",
                 "forceSelection": true,
                 "itemId": "position",
+                "matchFieldWidth": false,
                 "queryMode": "local",
                 "store": [
                     "{PositionStore}"
                 ],
-                "valueField": "position"
+                "valueField": "position",
+                "width": 324
             },
             "configAlternates": {
                 "store": "binding",
@@ -241,7 +243,9 @@
                 "forceSelection": "boolean",
                 "itemId": "string",
                 "queryMode": "string",
-                "valueField": "datafield"
+                "valueField": "datafield",
+                "matchFieldWidth": "boolean",
+                "width": "auto"
             },
             "name": "MyComboBox",
             "designerId": "09c73039-f258-4903-8cc0-f50beedcda20",
@@ -486,7 +490,7 @@
                     "\tsuccess:function(reply) {",
                     "\t\tthis.employeeId = employeeId;",
                     "\t\tlet fireButton = this.queryById('fireButton');",
-                    "\t\tif(reply.data.position !== \"Owner\" && reply.data.position !== \"Software Developer\") {",
+                    "\t\tif(reply.data.position !== \"Owner\" && reply.data.position !== \"Senior Software Developer\") {",
                     "\t\t\tfireButton.show();",
                     "\t\t} else {",
                     "\t\t\tfireButton.hide();",
