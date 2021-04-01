@@ -49,7 +49,7 @@ class Email extends AgileLibrary{
 		}
 
 		if(Dev::isDev()) {
-			var_dump($config);
+			echo($config['message']);
 			self::$config['to'] = Email::getDevEmail();
 			self::$config['cc'] = null;
 			self::$config['bcc'] = null;
