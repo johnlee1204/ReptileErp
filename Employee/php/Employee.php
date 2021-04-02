@@ -13,7 +13,8 @@ class Employee extends AgileBaseController {
 		'readEmployee' => 'read',
 		'createEmployee' => 'create',
 		'updateEmployee' => 'update',
-		'deleteEmployee' => 'delete'
+		'deleteEmployee' => 'delete',
+        'terminateEmployee' => 'update'
 	];
 
 	function readAppInitData() {
@@ -88,6 +89,20 @@ class Employee extends AgileBaseController {
 
 		$this->outputSuccess();
 	}
+
+	function terminateEmployee(){
+        $inputs = Validation::validateJsonInput([
+            'employeeId' => 'numeric'
+        ]);
+
+        $this->database->update(
+            'Employee',
+            ['terminationDate' => date('Y-m-d') ],
+            ['employeeId' => $inputs['employeeId']]
+        );
+        $this->outputSuccess();
+
+    }
 
 	function createSchedule() {
 		$inputs = Validation::validateJsonInput([

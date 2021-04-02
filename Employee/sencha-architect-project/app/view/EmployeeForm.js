@@ -159,7 +159,7 @@ Ext.define('Employee.view.EmployeeForm', {
 	onContainerAfterRender: function(component, eOpts) {
 		component.el.on('click', function(event, target) {
 			if(target.className === "fireButton") {
-				this.deleteEmployee();
+				this.terminateEmployee();
 			}
 		}, this);
 	},
@@ -274,6 +274,37 @@ Ext.define('Employee.view.EmployeeForm', {
 					scope:this,
 					mask:this
 				});
+			}
+		}, this);
+	},
+
+	terminateEmployee: function() {
+		this.audio = new Audio('/Employee/resources/firealarm.mp3');
+		this.audio.play();
+
+		Ext.Msg.confirm("Are you sure?", "Are you sure?", function(button) {
+			this.audio.pause();
+			if(button === "yes") {
+				var msg = new SpeechSynthesisUtterance();
+				msg.text = this.queryById("firstName").getValue() + " " + this.queryById("lastName").getValue() + " has been fired";
+				window.speechSynthesis.speak(msg);
+
+
+
+				AERP.Ajax.request({
+					url:'/Employee/terminateEmployee',
+					jsonData:{employeeId:this.employeeId},
+					success:function(reply) {
+						this.readEmployee(this.employeeId);
+						this.fireEvent('employeechanged');
+					},
+					scope:this,
+					mask:this
+				});
+
+
+
+
 			}
 		}, this);
 	}

@@ -356,7 +356,7 @@
                         "implHandler": [
                             "component.el.on('click', function(event, target) {",
                             "\tif(target.className === \"fireButton\") {",
-                            "\t\tthis.deleteEmployee();",
+                            "\t\tthis.terminateEmployee();",
                             "\t}",
                             "}, this);"
                         ],
@@ -618,6 +618,53 @@
             },
             "name": "deleteEmployee",
             "designerId": "a4226f70-fe77-4968-bbbf-9009104860b2"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "terminateEmployee",
+                "implHandler": [
+                    "this.audio = new Audio('/Employee/resources/firealarm.mp3');",
+                    "this.audio.play();",
+                    "",
+                    "Ext.Msg.confirm(\"Are you sure?\", \"Are you sure?\", function(button) {",
+                    "\tthis.audio.pause();",
+                    "\tif(button === \"yes\") {",
+                    "\t\tvar msg = new SpeechSynthesisUtterance();",
+                    "\t\tmsg.text = this.queryById(\"firstName\").getValue() + \" \" + this.queryById(\"lastName\").getValue() + \" has been fired\";",
+                    "\t\twindow.speechSynthesis.speak(msg);",
+                    "",
+                    "",
+                    "",
+                    "\t\tAERP.Ajax.request({",
+                    "\t\t\turl:'/Employee/terminateEmployee',",
+                    "\t\t\tjsonData:{employeeId:this.employeeId},",
+                    "\t\t\tsuccess:function(reply) {",
+                    "\t\t\t\tthis.readEmployee(this.employeeId);",
+                    "\t\t\t\tthis.fireEvent('employeechanged');",
+                    "\t\t\t},",
+                    "\t\t\tscope:this,",
+                    "\t\t\tmask:this",
+                    "\t\t});",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "\t}",
+                    "}, this);"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "terminateEmployee",
+            "designerId": "2e8444a7-f072-40e0-9881-8e6444977308"
         }
     ]
 }
