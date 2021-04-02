@@ -198,6 +198,9 @@ class ScheduleModel extends AgileModel{
 	}
 
 	static function readSchedule($calendarId) {
+		$isScheduleAdmin = self::isScheduleAdmin();
+		$userInformation = self::$agileApp->SessionManager->getUserDataFromSession();
+
 		$schedule = self::$database->fetch_all_assoc("
 			SELECT
 				scheduleId id,
@@ -211,7 +214,8 @@ class ScheduleModel extends AgileModel{
 					WHEN calendarId = 4 THEN 'Time Off'
 					ELSE title
 				END title,
-				CASE WHEN allDay = 1 THEN true ELSE false END allDay
+				CASE WHEN allDay = 1 THEN true ELSE false END allDay,
+			    CASE WHEN private = 1 THEN true ELSE false END private
 			FROM Schedule
 			WHERE
 				calendarId = ?
@@ -224,6 +228,10 @@ class ScheduleModel extends AgileModel{
 
 			$event['employeeId'] = self::readEventEmployees($event['scheduleId']);
 
+			if($event['private'] === 1 && !$isScheduleAdmin && !in_array($userInformation['employeeId'], $event['employeeId'])) {
+				continue;
+			}
+
 			if($calendarId === "1" || $calendarId === "4" || $calendarId === "3") {
 				$employeeNames = [];
 				foreach($event['employeeId'] as $employeeId) {
@@ -231,7 +239,10 @@ class ScheduleModel extends AgileModel{
 					$employeeNames[] = $employee['firstName'] . ' ' . $employee['lastName'];
 				}
 
-				$event['title'] .= " " . join(", ", $employeeNames);
+				if(strpos($event['title'], " " . join(", ", $employeeNames)) === FALSE) {
+					$event['title'] .= " " . join(", ", $employeeNames);
+				}
+
 			}
 
 			$output[] = $event;
@@ -295,7 +306,8 @@ class ScheduleModel extends AgileModel{
 				'hours' => $hoursWorked,
 				'calendarId' => $inputs['type'],
 				'title' => $inputs['title'],
-				'allDay' => $inputs['allDay']
+				'allDay' => $inputs['allDay'],
+				'private' => $inputs['private']
 			]
 		);
 
@@ -394,7 +406,8 @@ class ScheduleModel extends AgileModel{
 				'hours' => $hoursWorked,
 				'calendarId' => $inputs['type'],
 				'title' => $inputs['title'],
-				'allDay' => $inputs['allDay']
+				'allDay' => $inputs['allDay'],
+				'private' => $inputs['private']
 			],
 			['scheduleId' => $inputs['scheduleId']]
 		);

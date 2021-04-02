@@ -116,7 +116,8 @@ class Schedule extends AgileBaseController {
 			'endTime',
 			'type' => 'numeric',
 			'title',
-			'allDay' => 'checkBox'
+			'allDay' => 'checkBox',
+			'private' => 'checkBox'
 		]);
 
 		$this->database->begin_transaction();
@@ -136,7 +137,8 @@ class Schedule extends AgileBaseController {
 			'endTime',
 			'type' => 'numeric',
 			'title',
-			'allDay' => 'checkBox'
+			'allDay' => 'checkBox',
+			'private' => 'checkBox'
 		]);
 
 		$this->database->begin_transaction();

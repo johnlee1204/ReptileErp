@@ -345,7 +345,8 @@ Ext.define('Schedule.view.Schedule', {
 				endTime:endTime,
 				type:context.event.data.calendarId,
 				title:context.event.data.title,
-				allDay:context.event.data.allDay ? 1:0
+				allDay:context.event.data.allDay ? 1:0,
+				private:context.event.data.private ? 1:0
 			},
 			success:function(reply) {
 				calendarStore.load();

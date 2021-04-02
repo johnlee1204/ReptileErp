@@ -208,7 +208,8 @@ class PetMasterModel extends AgileModel {
 					'hours' => NULL,
 					'type' => 2,
 					'title' => 'Sell Reptile Serial: ' . $inputs['serial'],
-					'allDay' => 0
+					'allDay' => 0,
+					'private' => 0
 				]);
 			}
 		}

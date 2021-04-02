@@ -130,15 +130,33 @@ Ext.define('Schedule.view.AddEventForm', {
 			]
 		},
 		{
-			xtype: 'checkboxfield',
-			itemId: 'allDay',
-			margin: '5 0 0 103',
-			boxLabel: 'All Day',
-			inputValue: '1',
-			uncheckedValue: '0',
-			listeners: {
-				change: 'onAllDayChange'
-			}
+			xtype: 'container',
+			margin: '5 0 0 0',
+			layout: 'hbox',
+			items: [
+				{
+					xtype: 'checkboxfield',
+					itemId: 'allDay',
+					margin: '0 0 0 103',
+					boxLabel: 'All Day',
+					inputValue: '1',
+					uncheckedValue: '0',
+					listeners: {
+						change: 'onAllDayChange'
+					}
+				},
+				{
+					xtype: 'checkboxfield',
+					itemId: 'private',
+					margin: '0 0 0 103',
+					boxLabel: 'Private',
+					inputValue: '1',
+					uncheckedValue: '0',
+					listeners: {
+						change: 'onAllDayChange1'
+					}
+				}
+			]
 		},
 		{
 			xtype: 'textfield',
@@ -212,6 +230,18 @@ Ext.define('Schedule.view.AddEventForm', {
 		}
 	},
 
+	onAllDayChange1: function(field, newValue, oldValue, eOpts) {
+		let startTime = this.queryById('startTime');
+		let endTime = this.queryById('endTime');
+		if(newValue === true) {
+			startTime.disable();
+			endTime.disable();
+		} else {
+			startTime.enable();
+			endTime.enable();
+		}
+	},
+
 	onButtonClick: function(button, e, eOpts) {
 		if(this.scheduleId) {
 			AERP.Ajax.request({
@@ -225,7 +255,8 @@ Ext.define('Schedule.view.AddEventForm', {
 					endTime:this.queryById('endTime').getSubmitValue(),
 					type:this.queryById('type').getValue(),
 					title:this.queryById('title').getValue(),
-					allDay:this.queryById('allDay').getSubmitValue()
+					allDay:this.queryById('allDay').getSubmitValue(),
+					private:this.queryById('private').getSubmitValue()
 				},
 				success:function(reply) {
 					this.resetFields();
@@ -246,7 +277,8 @@ Ext.define('Schedule.view.AddEventForm', {
 					endTime:this.queryById('endTime').getSubmitValue(),
 					type:this.queryById('type').getValue(),
 					title:this.queryById('title').getValue(),
-					allDay:this.queryById('allDay').getSubmitValue()
+					allDay:this.queryById('allDay').getSubmitValue(),
+					private:this.queryById('private').getSubmitValue()
 				},
 				success:function(reply) {
 					this.resetFields();
@@ -327,6 +359,7 @@ Ext.define('Schedule.view.AddEventForm', {
 			this.scheduleId = data.scheduleId;
 			this.queryById('deleteButton').show();
 			this.queryById('allDay').setValue(data.allDay);
+			this.queryById('private').setValue(data.private);
 
 			let startTime = new Date("Tue Jan 01 2008 " + (data.startDate.getHours() + "").padStart(2,"0") + ":" + (data.startDate.getMinutes() + "").padStart(2,"0") + ":00 GMT-0600");
 			let endTime = new Date("Tue Jan 01 2008 " + (data.endDate.getHours() + "").padStart(2,"0") + ":" + (data.endDate.getMinutes() + "").padStart(2,"0") + ":00 GMT-0600");
@@ -369,6 +402,7 @@ Ext.define('Schedule.view.AddEventForm', {
 		this.queryById('type').reset();
 		this.queryById('title').reset();
 		this.queryById('allDay').reset();
+		this.queryById('private').reset();
 	}
 
 });
