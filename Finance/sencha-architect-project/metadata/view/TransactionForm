@@ -237,7 +237,47 @@
                 "itemId": "string"
             },
             "name": "MyTextArea",
-            "designerId": "d85a69ca-374e-4fee-9285-9aa07a281de8"
+            "designerId": "d85a69ca-374e-4fee-9285-9aa07a281de8",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onNotesAfterRender",
+                        "implHandler": [
+                            "component.el.on('dblclick', function() {",
+                            "\tlet words = component.getValue().split(\" \");",
+                            "\tlet formatted = [];",
+                            "\tfor(let i in words) {",
+                            "\t\tif(words[i].length === 1) {",
+                            "\t\t\tformatted.push(words[i].toUpperCase());",
+                            "\t\t\tcontinue;",
+                            "\t\t}",
+                            "",
+                            "\t\tformatted.push(words[i].substring(0,1).toUpperCase() + words[i].substring(1).toLowerCase());",
+                            "\t}",
+                            "",
+                            "\tcomponent.setValue(formatted.join(\" \"));",
+                            "",
+                            "});"
+                        ],
+                        "name": "afterrender",
+                        "scope": "me"
+                    },
+                    "configAlternates": {
+                        "fn": "string",
+                        "implHandler": "code",
+                        "name": "string",
+                        "scope": "string"
+                    },
+                    "name": "onNotesAfterRender",
+                    "designerId": "efa77783-51d7-4a72-ba3e-5d58114e4921"
+                }
+            ]
         },
         {
             "type": "basiceventbinding",

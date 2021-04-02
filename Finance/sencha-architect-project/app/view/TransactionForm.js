@@ -89,7 +89,10 @@ Ext.define('Finance.view.TransactionForm', {
 		{
 			xtype: 'textareafield',
 			itemId: 'notes',
-			fieldLabel: 'Notes'
+			fieldLabel: 'Notes',
+			listeners: {
+				afterrender: 'onNotesAfterRender'
+			}
 		}
 	],
 	listeners: {
@@ -118,6 +121,24 @@ Ext.define('Finance.view.TransactionForm', {
 		    scope:this
 		});
 
+	},
+
+	onNotesAfterRender: function(component, eOpts) {
+		component.el.on('dblclick', function() {
+			let words = component.getValue().split(" ");
+			let formatted = [];
+			for(let i in words) {
+				if(words[i].length === 1) {
+					formatted.push(words[i].toUpperCase());
+					continue;
+				}
+
+				formatted.push(words[i].substring(0,1).toUpperCase() + words[i].substring(1).toLowerCase());
+			}
+
+			component.setValue(formatted.join(" "));
+
+		});
 	},
 
 	onPanelAfterRender: function(component, eOpts) {

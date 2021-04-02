@@ -7,7 +7,7 @@
             "frameworkVersion": ""
         },
         "urlPrefixTemplate": "http://dev.local/",
-        "exportPath": "C:/Users/chris/Desktop/Websites/LeeSheet/Finance",
+        "exportPath": "Z:/data/ApacheData/shwiftportal.local/Finance",
         "buildShouldOverwriteIndex": true,
         "generateArchitectVersion": false,
         "spacesToIndent": "tab",
@@ -47,7 +47,7 @@
         "controller": [],
         "model": [],
         "resource": [
-            "4e6f031b-1949-4942-bfc5-79fea952a212",
+            "95336818-085f-4612-82b6-fa2755e2d876",
             "173a740e-293e-4e00-b40c-9a50fb2577d4",
             "5ba3958c-da75-475c-be62-0204422d23cf",
             "e9dfff16-f6c8-498c-ac8a-f008ed4717e3",
