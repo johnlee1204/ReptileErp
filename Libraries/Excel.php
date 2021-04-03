@@ -56,7 +56,7 @@ class Excel extends AgileLibrary{
 		//header('Content-Type: application/vnd.ms-excel');
 		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 
-		header('Content-Disposition: attachment;filename="'.$fileName.'.xls"');
+		header('Content-Disposition: attachment;filename="'.$fileName.'.xlsx"');
 
 		header('Cache-Control: max-age=0');
 		// If you're serving to IE 9, then the following may be needed
@@ -67,7 +67,7 @@ class Excel extends AgileLibrary{
 		header ('Cache-Control: cache, must-revalidate'); // HTTP/1.1
 		header ('Pragma: public'); // HTTP/1.0
 
-		$objWriter = IOFactory::createWriter($phpSpreadsheet,"Xls");
+		$objWriter = IOFactory::createWriter($phpSpreadsheet,"Xlsx");
 		$objWriter->save('php://output');
 	}
 	static function outputExcelViaSpec($outputSpec, $allRows, $reportParams=[], $excelReportName='Excel Export'){

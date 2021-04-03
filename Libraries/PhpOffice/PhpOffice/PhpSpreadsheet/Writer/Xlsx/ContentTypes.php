@@ -24,10 +24,11 @@ class ContentTypes extends WriterPart
         if ($this->getParentWriter()->getUseDiskCaching()) {
             $objWriter = new XMLWriter(XMLWriter::STORAGE_DISK, $this->getParentWriter()->getDiskCachingDirectory());
         } else {
-            $objWriter = new XMLWriter(XMLWriter::STORAGE_MEMORY);
+            $objWriter = new XMLWriter(XMLWriter::STORAGE_DISK);
         }
 
         // XML header
+
         $objWriter->startDocument('1.0', 'UTF-8', 'yes');
 
         // Types

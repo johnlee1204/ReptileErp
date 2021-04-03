@@ -4,11 +4,27 @@ namespace PhpOffice\PhpSpreadsheet\Reader;
 
 use InvalidArgumentException;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
+use PhpOffice\PhpSpreadsheet\Reader\Csv\Delimiter;
 use PhpOffice\PhpSpreadsheet\Shared\StringHelper;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 
 class Csv extends BaseReader
 {
+    const UTF8_BOM = "\xEF\xBB\xBF";
+    const UTF8_BOM_LEN = 3;
+    const UTF16BE_BOM = "\xfe\xff";
+    const UTF16BE_BOM_LEN = 2;
+    const UTF16BE_LF = "\x00\x0a";
+    const UTF16LE_BOM = "\xff\xfe";
+    const UTF16LE_BOM_LEN = 2;
+    const UTF16LE_LF = "\x0a\x00";
+    const UTF32BE_BOM = "\x00\x00\xfe\xff";
+    const UTF32BE_BOM_LEN = 4;
+    const UTF32BE_LF = "\x00\x00\x00\x0a";
+    const UTF32LE_BOM = "\xff\xfe\x00\x00";
+    const UTF32LE_BOM_LEN = 4;
+    const UTF32LE_LF = "\x0a\x00\x00\x00";
+
     /**
      * Input encoding.
      *
@@ -90,12 +106,8 @@ class Csv extends BaseReader
     {
         rewind($this->fileHandle);
 
-        switch ($this->inputEncoding) {
-            case 'UTF-8':
-                fgets($this->fileHandle, 4) == "\xEF\xBB\xBF" ?
-                    fseek($this->fileHandle, 3) : fseek($this->fileHandle, 0);
-
-                break;
+        if (fgets($this->fileHandle, self::UTF8_BOM_LEN + 1) !== self::UTF8_BOM) {
+            rewind($this->fileHandle);
         }
     }
 
@@ -127,114 +139,24 @@ class Csv extends BaseReader
             return;
         }
 
-        $potentialDelimiters = [',', ';', "\t", '|', ':', ' ', '~'];
-        $counts = [];
-        foreach ($potentialDelimiters as $delimiter) {
-            $counts[$delimiter] = [];
-        }
-
-        // Count how many times each of the potential delimiters appears in each line
-        $numberLines = 0;
-        while (($line = $this->getNextLine()) !== false && (++$numberLines < 1000)) {
-            $countLine = [];
-            for ($i = strlen($line) - 1; $i >= 0; --$i) {
-                $char = $line[$i];
-                if (isset($counts[$char])) {
-                    if (!isset($countLine[$char])) {
-                        $countLine[$char] = 0;
-                    }
-                    ++$countLine[$char];
-                }
-            }
-            foreach ($potentialDelimiters as $delimiter) {
-                $counts[$delimiter][] = $countLine[$delimiter]
-                    ?? 0;
-            }
-        }
+        $inferenceEngine = new Delimiter($this->fileHandle, $this->escapeCharacter, $this->enclosure);
 
         // If number of lines is 0, nothing to infer : fall back to the default
-        if ($numberLines === 0) {
-            $this->delimiter = reset($potentialDelimiters);
+        if ($inferenceEngine->linesCounted() === 0) {
+            $this->delimiter = $inferenceEngine->getDefaultDelimiter();
             $this->skipBOM();
 
             return;
         }
 
-        // Calculate the mean square deviations for each delimiter (ignoring delimiters that haven't been found consistently)
-        $meanSquareDeviations = [];
-        $middleIdx = floor(($numberLines - 1) / 2);
-
-        foreach ($potentialDelimiters as $delimiter) {
-            $series = $counts[$delimiter];
-            sort($series);
-
-            $median = ($numberLines % 2)
-                ? $series[$middleIdx]
-                : ($series[$middleIdx] + $series[$middleIdx + 1]) / 2;
-
-            if ($median === 0) {
-                continue;
-            }
-
-            $meanSquareDeviations[$delimiter] = array_reduce(
-                $series,
-                function ($sum, $value) use ($median) {
-                    return $sum + ($value - $median) ** 2;
-                }
-            ) / count($series);
-        }
-
-        // ... and pick the delimiter with the smallest mean square deviation (in case of ties, the order in potentialDelimiters is respected)
-        $min = INF;
-        foreach ($potentialDelimiters as $delimiter) {
-            if (!isset($meanSquareDeviations[$delimiter])) {
-                continue;
-            }
-
-            if ($meanSquareDeviations[$delimiter] < $min) {
-                $min = $meanSquareDeviations[$delimiter];
-                $this->delimiter = $delimiter;
-            }
-        }
+        $this->delimiter = $inferenceEngine->infer();
 
         // If no delimiter could be detected, fall back to the default
         if ($this->delimiter === null) {
-            $this->delimiter = reset($potentialDelimiters);
+            $this->delimiter = $inferenceEngine->getDefaultDelimiter();
         }
 
         $this->skipBOM();
-    }
-
-    /**
-     * Get the next full line from the file.
-     *
-     * @return false|string
-     */
-    private function getNextLine()
-    {
-        $line = '';
-        $enclosure = '(?<!' . preg_quote($this->escapeCharacter, '/') . ')' . preg_quote($this->enclosure, '/');
-
-        do {
-            // Get the next line in the file
-            $newLine = fgets($this->fileHandle);
-
-            // Return false if there is no next line
-            if ($newLine === false) {
-                return false;
-            }
-
-            // Add the new line to the line passed in
-            $line = $line . $newLine;
-
-            // Drop everything that is enclosed to avoid counting false positives in enclosures
-            $line = preg_replace('/(' . $enclosure . '.*' . $enclosure . ')/Us', '', $line);
-
-            // See if we have any enclosures left in the line
-            // if we still have an enclosure then we need to read the next line as well
-        } while (preg_match('/(' . $enclosure . ')/', $line) > 0);
-
-        return $line;
     }
 
     /**
@@ -307,7 +229,7 @@ class Csv extends BaseReader
             $this->fileHandle = fopen('php://memory', 'r+b');
             $data = StringHelper::convertEncoding($entireFile, 'UTF-8', $this->inputEncoding);
             fwrite($this->fileHandle, $data);
-            rewind($this->fileHandle);
+            $this->skipBOM();
         }
     }
 
@@ -321,7 +243,7 @@ class Csv extends BaseReader
     public function loadIntoExisting($pFilename, Spreadsheet $spreadsheet)
     {
         $lineEnding = ini_get('auto_detect_line_endings');
-        ini_set('auto_detect_line_endings', true);
+        ini_set('auto_detect_line_endings', '1');
 
         // Open file
         $this->openFileOrMemory($pFilename);
@@ -515,7 +437,8 @@ class Csv extends BaseReader
         fclose($this->fileHandle);
 
         // Trust file extension if any
-        $extension = strtolower(pathinfo($pFilename, PATHINFO_EXTENSION));
+        $extension = pathinfo($pFilename, PATHINFO_EXTENSION);
+        $extension = is_array($extension) ? '' : strtolower($extension);
         if (in_array($extension, ['csv', 'tsv'])) {
             return true;
         }
@@ -530,5 +453,64 @@ class Csv extends BaseReader
         ];
 
         return in_array($type, $supportedTypes, true);
+    }
+
+    private static function guessEncodingTestNoBom(string &$encoding, string &$contents, string $compare, string $setEncoding): void
+    {
+        if ($encoding === '') {
+            $pos = strpos($contents, $compare);
+            if ($pos !== false && $pos % strlen($compare) === 0) {
+                $encoding = $setEncoding;
+            }
+        }
+    }
+
+    private static function guessEncodingNoBom(string $filename): string
+    {
+        $encoding = '';
+        $contents = file_get_contents($filename);
+        self::guessEncodingTestNoBom($encoding, $contents, self::UTF32BE_LF, 'UTF-32BE');
+        self::guessEncodingTestNoBom($encoding, $contents, self::UTF32LE_LF, 'UTF-32LE');
+        self::guessEncodingTestNoBom($encoding, $contents, self::UTF16BE_LF, 'UTF-16BE');
+        self::guessEncodingTestNoBom($encoding, $contents, self::UTF16LE_LF, 'UTF-16LE');
+        if ($encoding === '' && preg_match('//u', $contents) === 1) {
+            $encoding = 'UTF-8';
+        }
+
+        return $encoding;
+    }
+
+    private static function guessEncodingTestBom(string &$encoding, string $first4, string $compare, string $setEncoding): void
+    {
+        if ($encoding === '') {
+            if ($compare === substr($first4, 0, strlen($compare))) {
+                $encoding = $setEncoding;
+            }
+        }
+    }
+
+    private static function guessEncodingBom(string $filename): string
+    {
+        $encoding = '';
+        $first4 = file_get_contents($filename, false, null, 0, 4);
+        if ($first4 !== false) {
+            self::guessEncodingTestBom($encoding, $first4, self::UTF8_BOM, 'UTF-8');
+            self::guessEncodingTestBom($encoding, $first4, self::UTF16BE_BOM, 'UTF-16BE');
+            self::guessEncodingTestBom($encoding, $first4, self::UTF32BE_BOM, 'UTF-32BE');
+            self::guessEncodingTestBom($encoding, $first4, self::UTF32LE_BOM, 'UTF-32LE');
+            self::guessEncodingTestBom($encoding, $first4, self::UTF16LE_BOM, 'UTF-16LE');
+        }
+
+        return $encoding;
+    }
+
+    public static function guessEncoding(string $filename, string $dflt = 'CP1252'): string
+    {
+        $encoding = self::guessEncodingBom($filename);
+        if ($encoding === '') {
+            $encoding = self::guessEncodingNoBom($filename);
+        }
+
+        return ($encoding === '') ? $dflt : $encoding;
     }
 }
