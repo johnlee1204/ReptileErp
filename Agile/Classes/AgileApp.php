@@ -155,7 +155,7 @@ class AgileApp {
 			'method' => $lowerMethod,
 			'referrer' => $referrer,
 			'httpType' => $_SERVER['REQUEST_METHOD'],
-			'query' => $_SERVER['QUERY_STRING'],
+			'query' => substr($_SERVER['QUERY_STRING'], 0, 1000),
 			'loggedIn' => $loggedIn,
 			'userId' => $userId,
 			'userName' => $userName,

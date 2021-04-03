@@ -31,7 +31,7 @@
 
 Ext.define('NiceGridMenu',{
 	niceGridMenuAppLinks:{
-		job:{appId:'job', icon:'/inc/img/silk_icons/wrench.png', text:'Job', appLinkField:'job'}
+
 	},
 	constructor:function(userConfig){
 		this.config = userConfig;
@@ -76,11 +76,11 @@ Ext.define('NiceGridMenu',{
 
 		if(this.config.filterButtons) {
 			this.config.menuItems.push(
-				{text:'Filter By Cell', action:'filterField', icon:'/inc/img/silk_icons/hourglass.png', recordData:this.config.recordData, listeners:{click:this.filterClickHandler, scope:this}, hidden:true}
+				{text:'Filter By Cell', action:'filterField', icon:'/inc/img/silk_icons/hourglass.png', recordData:this.config.recordData, listeners:{click:this.filterClickHandler, scope:this}, hidden:true},
+				{text:'Filter By Not Cell', action:'filterNotField', icon:'/inc/img/silk_icons/hourglass.png', recordData:this.config.recordData, listeners:{click:this.filterClickHandler, scope:this}, hidden:true}
 			);
 			this.config.filterToolbar = Ext.create("Ext.toolbar.Toolbar", {
 				itemId:'filterToolbar',
-				//height:27,
 				defaultButtonUI:'default',
 				items:[
 					Ext.create('Ext.container.Container', {html:"Filter: ", margin:'0 0 0 10'})
@@ -119,8 +119,8 @@ Ext.define('NiceGridMenu',{
 				xtype:'textfield',
 				itemId:'niceGridMenuFilterField',
 				fieldLabel:'Search',
-				labelWidth:50,
-				width:135,
+				labelWidth:45,
+				width:150,
 				labelAlign:'right',
 				listeners:{
 					scope:this,
@@ -164,10 +164,23 @@ Ext.define('NiceGridMenu',{
 			}
 		}
 
+		this.exportButton = Ext.create({
+			xtype:'button',
+			text:'Export',
+			icon:"/inc/img/silk_icons/page_excel.png",
+			listeners:{
+				scope:this,
+				click:this.exportGrid
+			}
+		});
+
+		this.toolbar.add(this.exportButton);
+
 		this.config.grid.addListener('selectionchange',function(model,selected,eOpts){
 
 			if(this.config.filterButtons) {
 				this.getButtons().filterField.hide();
+				this.getButtons().filterNotField.hide();
 				this.updateContextMenu();
 			}
 
@@ -232,10 +245,20 @@ Ext.define('NiceGridMenu',{
 					this.menu.recordData.filterFieldValue = cellValue;
 					this.menu.recordData.filterFieldColumn = e.position.column.text;
 					this.getButtons().filterField.show();
+					this.getButtons().filterNotField.show();
+
+					let parsedDate = Date.parse(cellValue);
+					if (isNaN(cellValue) && !isNaN(parsedDate)) {
+						let date = new Date(parsedDate);
+						cellValue = date.toLocaleDateString("en-US");
+					}
+
 					this.getButtons().filterField.setText(e.position.column.text + " = " + cellValue);
+					this.getButtons().filterNotField.setText(e.position.column.text + " != " + cellValue);
 					this.updateContextMenu();
 				} else {
 					this.getButtons().filterField.hide();
+					this.getButtons().filterNotField.hide();
 					this.updateContextMenu();
 				}
 			}
@@ -330,13 +353,41 @@ Ext.define('NiceGridMenu',{
 			Ext.Msg.alert("","No Record Selected!");
 			return;
 		}
-		let niceGridMenuFilter = new Ext.util.Filter({
+
+		let filterConfig = {
 			property: record.filterField,
 			value: record.filterFieldValue,
 			exactMatch:true
-		});
+		};
+
+		let filterText = "";
+
+		if (button.action === "filterNotField") {
+			let currentFilters = this.config.grid.getStore().getFilters();
+			let currentSameFieldFilters = [record.filterFieldValue];
+			if(currentFilters && currentFilters.items) {
+				for(let i in currentFilters.items) {
+					let item = currentFilters.items[i].config;
+					if(item.property === record.filterField && item.operator === "notin") {
+						currentSameFieldFilters = currentSameFieldFilters.concat(item.value);
+					}
+				}
+			}
+			filterConfig.value = currentSameFieldFilters;
+			filterConfig.operator = "notin";
+			filterText = "!";
+		}
+
+		let niceGridMenuFilter = new Ext.util.Filter(filterConfig);
+
+		let parsedDate = Date.parse(record.filterFieldValue);
+		if (isNaN(record.filterFieldValue) && !isNaN(parsedDate)) {
+			let date = new Date(parsedDate);
+			record.filterFieldValue = date.toLocaleDateString("en-US");
+		}
+
 		this.config.filterToolbar.add(Ext.create('Ext.button.Button', {
-			text:record.filterFieldColumn + ' = ' + record.filterFieldValue,
+			text:record.filterFieldColumn + " " + filterText + "= " + record.filterFieldValue,
 			icon:'/inc/img/silk_icons/cross.png',
 			niceGridMenuFilter:niceGridMenuFilter,
 			margin:'0 0 0 5',
@@ -388,6 +439,31 @@ Ext.define('NiceGridMenu',{
 		}
 		this.filters = filters;
 		store.filter(filters);
+	},
+	exportGrid: function() {
+		let store = this.config.grid.getStore();
+		let exportData = [];
+		let fields = [];
+		let columns = this.config.grid.getColumns();
+		let dataIndexType = {};
+		for(let i in columns) {
+			fields.push({text:columns[i].text, dataCol:columns[i].dataIndex});
+			dataIndexType[columns[i].dataIndex] = columns[i].xtype;
+		}
+		store.each(function(record) {
+			exportData.push(record.data);
+		});
+
+		if(exportData.length === 0) {
+			Ext.Msg.alert("Error", "No data to Export!");
+			return;
+		}
+
+		fields = JSON.stringify(fields);
+		exportData = JSON.stringify(exportData);
+		dataIndexType = JSON.stringify(dataIndexType);
+
+		document.location.href = "/Exporter/exportGrid?fields=" + fields + "&exportData=" + exportData + "&dataIndexType=" + dataIndexType;
 	},
 	setItemState: function(item) {
 		if(item.hasOwnProperty('appLink')){

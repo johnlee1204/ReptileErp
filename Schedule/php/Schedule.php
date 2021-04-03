@@ -15,7 +15,6 @@ class Schedule extends AgileBaseController {
 		'readClockOnDetails' => 'read',
 		'readEmployeeSchedule' => 'read',
 		'readEmployeeLaborHistory' => 'read',
-		'exportEmployeeLaborHistory' => 'read',
 		'readLabor' => 'read',
 		'updateLabor' => 'update',
 		'deleteLabor' => 'delete',
@@ -75,22 +74,6 @@ class Schedule extends AgileBaseController {
 		}
 
 		$this->outputSuccessData($output);
-	}
-
-	function exportEmployeeLaborHistory() {
-		$input = Validation::validateGet([
-			'employeeId' => 'numeric'
-		]);
-
-		$employee = EmployeeModel::readEmployee($input['employeeId']);
-		$labor = ScheduleModel::readEmployeeLaborHistory($input['employeeId']);
-		$spec = [
-			['dataCol' => 'startTime', 'text' => 'startTime'],
-			['dataCol' => 'endTime', 'text' => 'endTime'],
-			['dataCol' => 'hoursWorked', 'text' => 'hoursWorked']
-		];
-
-		Excel::outputExcelViaSpec($spec, $labor, [], "Labor for " . $employee['firstName'] . ' ' . $employee['lastName'] . ' ' . date("F j, Y g:i a"));
 	}
 
 	function readLabor() {
