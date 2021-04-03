@@ -5,15 +5,18 @@ use Libraries\Excel;
 
 class Exporter extends AgileBaseController {
 	function exportGrid() {
-		$inputs = Validation::validateGet([
-			'fields' => 'notBlank',
-			'exportData' => 'notBlank',
-			'dataIndexType' => 'notBlank'
+		$inputs = Validation::validateJsonInput([
+			'fields',
+			'exportData',
+			'dataIndexType',
+			'fileName'
 		]);
 
-		$inputs['fields'] = json_decode($inputs['fields'], TRUE);
-		$inputs['exportData'] = json_decode($inputs['exportData'], TRUE);
-		$inputs['dataIndexType'] = json_decode($inputs['dataIndexType'], TRUE);
+//		$inputs['content'] = json_decode($inputs['content'], TRUE);
+//		$inputs['fields'] = $inputs['content']['fields'];
+//		$inputs['exportData'] = $inputs['content']['exportData'];
+//		$inputs['dataIndexType'] = $inputs['content']['dataIndexType'];
+//		$inputs['fileName'] = $inputs['content']['fileName'];
 
 		foreach($inputs['exportData'] as &$record) {
 			foreach($record as $key => &$value) {
@@ -26,6 +29,6 @@ class Exporter extends AgileBaseController {
 			}
 		}
 
-		Excel::outputExcelViaSpec($inputs['fields'], $inputs['exportData'], [], 'Grid Export ' . date("F j, Y g:i a"));
+		Excel::outputExcelViaSpec($inputs['fields'], $inputs['exportData'], [], $inputs['fileName'] . ' ' . date("F j, Y g:i a"));
 	}
 }

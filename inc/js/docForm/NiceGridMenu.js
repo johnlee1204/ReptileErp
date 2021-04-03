@@ -446,6 +446,12 @@ Ext.define('NiceGridMenu',{
 		let fields = [];
 		let columns = this.config.grid.getColumns();
 		let dataIndexType = {};
+		let fileName = "Grid Export";
+		if(this.config.grid.hasOwnProperty('excelName') && this.config.grid.excelName !== "") {
+			fileName = this.config.grid.excelName;
+		} else if(this.config.grid.hasOwnProperty('title') && this.config.grid.title !== ""){
+			fileName = this.config.grid.title;
+		}
 
 		for(let i in columns) {
 			fields.push({text:columns[i].text, dataCol:columns[i].dataIndex});
@@ -460,11 +466,26 @@ Ext.define('NiceGridMenu',{
 			return;
 		}
 
-		fields = JSON.stringify(fields);
-		exportData = JSON.stringify(exportData);
-		dataIndexType = JSON.stringify(dataIndexType);
+		var content = JSON.stringify({fields:fields, exportData:exportData, dataIndexType:dataIndexType, fileName:fileName});
+		var request = new XMLHttpRequest();
+		request.open('POST', '/Exporter/exportGrid', true);
+		request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+		request.responseType = 'blob';
 
-		document.location.href = "/Exporter/exportGrid?fields=" + fields + "&exportData=" + exportData + "&dataIndexType=" + dataIndexType;
+		request.onload = function() {
+			if(request.status === 200) {
+				var disposition = request.getResponseHeader('content-disposition');
+				var filename = fileName + '.xlsx';
+				var blob = new Blob([request.response], {type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+				var link = document.createElement('a');
+				link.href = window.URL.createObjectURL(blob);
+				link.download = filename;
+				document.body.appendChild(link);
+				link.click();
+				document.body.removeChild(link);
+			}
+		};
+		request.send(content);
 	},
 	setItemState: function(item) {
 		if(item.hasOwnProperty('appLink')){
