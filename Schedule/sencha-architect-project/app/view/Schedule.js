@@ -177,7 +177,18 @@ Ext.define('Schedule.view.Schedule', {
 										{
 											xtype: 'toolbar',
 											dock: 'top',
-											itemId: 'laborHistoryToolbar'
+											itemId: 'laborHistoryToolbar',
+											items: [
+												{
+													xtype: 'button',
+													margin: '0 0 0 15',
+													icon: '/inc/img/silk_icons/page_excel.png',
+													text: 'Download',
+													listeners: {
+														click: 'onButtonClick2'
+													}
+												}
+											]
 										}
 									],
 									columns: [
@@ -202,6 +213,9 @@ Ext.define('Schedule.view.Schedule', {
 											text: 'Hours Worked'
 										}
 									],
+									viewConfig: {
+										enableTextSelection: true
+									},
 									listeners: {
 										selectionchange: 'onLaborHistoryGridSelectionChange'
 									}
@@ -367,6 +381,15 @@ Ext.define('Schedule.view.Schedule', {
 		selected = selected[0];
 
 		this.readEmployeeLaborHistory(selected.data.employeeId);
+	},
+
+	onButtonClick2: function(button, e, eOpts) {
+		if(!this.employeeId) {
+			Ext.Msg.alert("Warning", "No Employee Selected!");
+			return;
+		}
+
+		document.location.href = "/Schedule/exportEmployeeLaborHistory?employeeId=" + this.employeeId;
 	},
 
 	onLaborHistoryGridSelectionChange: function(model, selected, eOpts) {

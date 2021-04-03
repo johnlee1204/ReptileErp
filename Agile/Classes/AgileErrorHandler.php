@@ -17,7 +17,7 @@ class AgileErrorHandler
 		$this->AgileApp = $AgileApp;
 		$this->AgileApp->jsonErrorOutput = false;
 		error_reporting(E_ALL);
-		ini_set('display_errors', 0);
+		ini_set('display_errors', 1);
 		set_exception_handler(function($exception){
 			$this->handleException($exception);
 		});

@@ -141,7 +141,7 @@ class ScheduleModel extends AgileModel{
 				$laborRecord['endTime'] = date('F j, Y g:i a', strtotime($laborRecord['endTime']));
 			}
 
-			$output[] = array_values($laborRecord);
+			$output[] = $laborRecord;
 		}
 
 		return $output;

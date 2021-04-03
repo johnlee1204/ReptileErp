@@ -2,6 +2,7 @@
 
 
 use Employee\Models\EmployeeModel;
+use Libraries\Excel;
 use Schedule\Models\ScheduleModel;
 
 class Schedule extends AgileBaseController {
@@ -14,6 +15,7 @@ class Schedule extends AgileBaseController {
 		'readClockOnDetails' => 'read',
 		'readEmployeeSchedule' => 'read',
 		'readEmployeeLaborHistory' => 'read',
+		'exportEmployeeLaborHistory' => 'read',
 		'readLabor' => 'read',
 		'updateLabor' => 'update',
 		'deleteLabor' => 'delete',
@@ -53,7 +55,6 @@ class Schedule extends AgileBaseController {
 	public function readClockOnDetails() {
 
 		$userInformation = $this->AgileApp->SessionManager->getUserDataFromSession();
-
 		$this->outputSuccessData(ScheduleModel::readClockOnDetails($userInformation['employeeId']));
 	}
 
@@ -66,7 +67,30 @@ class Schedule extends AgileBaseController {
 			'employeeId' => 'numeric'
 		]);
 
-		$this->outputSuccessData(ScheduleModel::readEmployeeLaborHistory($input['employeeId']));
+		$labor = ScheduleModel::readEmployeeLaborHistory($input['employeeId']);
+		$output = [];
+
+		foreach($labor as $laborRecord) {
+			$output[] = array_values($laborRecord);
+		}
+
+		$this->outputSuccessData($output);
+	}
+
+	function exportEmployeeLaborHistory() {
+		$input = Validation::validateGet([
+			'employeeId' => 'numeric'
+		]);
+
+		$employee = EmployeeModel::readEmployee($input['employeeId']);
+		$labor = ScheduleModel::readEmployeeLaborHistory($input['employeeId']);
+		$spec = [
+			['dataCol' => 'startTime', 'text' => 'startTime'],
+			['dataCol' => 'endTime', 'text' => 'endTime'],
+			['dataCol' => 'hoursWorked', 'text' => 'hoursWorked']
+		];
+
+		Excel::outputExcelViaSpec($spec, $labor, [], "Labor for " . $employee['firstName'] . ' ' . $employee['lastName'] . ' ' . date("F j, Y g:i a"));
 	}
 
 	function readLabor() {
