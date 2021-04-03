@@ -22,6 +22,7 @@ Ext.define('Finance.view.Finance', {
 		'Finance.view.TransactionForm',
 		'Ext.form.field.Text',
 		'Ext.grid.Panel',
+		'Ext.toolbar.Toolbar',
 		'Ext.grid.column.Date',
 		'Ext.view.Table'
 	],
@@ -55,13 +56,15 @@ Ext.define('Finance.view.Finance', {
 					xtype: 'textfield',
 					itemId: 'totalRevenue',
 					fieldLabel: 'Revenue',
-					labelAlign: 'right'
+					labelAlign: 'right',
+					readOnly: true
 				},
 				{
 					xtype: 'textfield',
 					itemId: 'totalCost',
 					fieldLabel: 'Cost',
-					labelAlign: 'right'
+					labelAlign: 'right',
+					readOnly: true
 				}
 			]
 		},
@@ -80,6 +83,13 @@ Ext.define('Finance.view.Finance', {
 					bind: {
 						store: '{LedgerStore}'
 					},
+					dockedItems: [
+						{
+							xtype: 'toolbar',
+							dock: 'top',
+							itemId: 'ledgerToolbar'
+						}
+					],
 					columns: [
 						{
 							xtype: 'gridcolumn',
@@ -155,7 +165,19 @@ Ext.define('Finance.view.Finance', {
 	},
 
 	onPanelAfterRender: function(component, eOpts) {
+		this.buildNiceGridMenu();
 		this.readLedger();
+	},
+
+	buildNiceGridMenu: function() {
+		Ext.create("NiceGridMenu",{
+			menuItems:[],
+			callbackHandler:function(){},
+			filterField:true,
+			grid:this.queryById("ledgerGrid"),
+			toolbar:this.queryById("ledgerToolbar"),
+			scope:this
+		});
 	},
 
 	readLedger: function() {

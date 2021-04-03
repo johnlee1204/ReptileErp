@@ -82,12 +82,14 @@
                     "userConfig": {
                         "fieldLabel": "Revenue",
                         "itemId": "totalRevenue",
-                        "labelAlign": "right"
+                        "labelAlign": "right",
+                        "readOnly": true
                     },
                     "configAlternates": {
                         "fieldLabel": "string",
                         "itemId": "string",
-                        "labelAlign": "string"
+                        "labelAlign": "string",
+                        "readOnly": "boolean"
                     },
                     "name": "MyTextField1",
                     "designerId": "c8018250-bc2b-41a7-be2b-e6278ea6a7c4"
@@ -102,12 +104,14 @@
                     "userConfig": {
                         "fieldLabel": "Cost",
                         "itemId": "totalCost",
-                        "labelAlign": "right"
+                        "labelAlign": "right",
+                        "readOnly": true
                     },
                     "configAlternates": {
                         "fieldLabel": "string",
                         "itemId": "string",
-                        "labelAlign": "string"
+                        "labelAlign": "string",
+                        "readOnly": "boolean"
                     },
                     "name": "MyTextField3",
                     "designerId": "8f53a6f5-78b5-41ca-b27f-540a3eef10a7"
@@ -149,6 +153,7 @@
                     },
                     "codeClass": null,
                     "userConfig": {
+                        "designer|displayName": "Ledger",
                         "flex": 1,
                         "itemId": "ledgerGrid",
                         "store": [
@@ -158,11 +163,30 @@
                     "configAlternates": {
                         "store": "binding",
                         "flex": "number",
-                        "itemId": "string"
+                        "itemId": "string",
+                        "designer|displayName": "string"
                     },
                     "name": "MyGridPanel",
                     "designerId": "b27f95ce-6a13-4335-973a-3459eec85ea4",
                     "cn": [
+                        {
+                            "type": "Ext.toolbar.Toolbar",
+                            "reference": {
+                                "name": "dockedItems",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "dock": "top",
+                                "itemId": "ledgerToolbar"
+                            },
+                            "configAlternates": {
+                                "dock": "string",
+                                "itemId": "string"
+                            },
+                            "name": "MyToolbar2",
+                            "designerId": "eea44a41-f07d-494f-b56d-0631a5351a1e"
+                        },
                         {
                             "type": "Ext.grid.column.Column",
                             "reference": {
@@ -431,6 +455,7 @@
             "userConfig": {
                 "fn": "onPanelAfterRender",
                 "implHandler": [
+                    "this.buildNiceGridMenu();",
                     "this.readLedger();"
                 ],
                 "name": "afterrender",
@@ -444,6 +469,33 @@
             },
             "name": "onPanelAfterRender",
             "designerId": "5a88d561-9f7d-448b-a37c-7e00c1813f9e"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "buildNiceGridMenu",
+                "implHandler": [
+                    "Ext.create(\"NiceGridMenu\",{",
+                    "\tmenuItems:[],",
+                    "\tcallbackHandler:function(){},",
+                    "\tfilterField:true,",
+                    "\tgrid:this.queryById(\"ledgerGrid\"),",
+                    "\ttoolbar:this.queryById(\"ledgerToolbar\"),",
+                    "\tscope:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "buildNiceGridMenu",
+            "designerId": "17b6943c-bc86-485f-b2c8-630ecfd92e54"
         },
         {
             "type": "basicfunction",

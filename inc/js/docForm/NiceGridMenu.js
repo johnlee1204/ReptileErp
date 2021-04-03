@@ -446,6 +446,7 @@ Ext.define('NiceGridMenu',{
 		let fields = [];
 		let columns = this.config.grid.getColumns();
 		let dataIndexType = {};
+
 		for(let i in columns) {
 			fields.push({text:columns[i].text, dataCol:columns[i].dataIndex});
 			dataIndexType[columns[i].dataIndex] = columns[i].xtype;
