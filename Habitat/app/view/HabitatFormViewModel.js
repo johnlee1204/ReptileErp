@@ -15,6 +15,21 @@
 
 Ext.define('Habitat.view.HabitatFormViewModel', {
 	extend: 'Ext.app.ViewModel',
-	alias: 'viewmodel.habitatform'
+	alias: 'viewmodel.habitatform',
+
+	requires: [
+		'Ext.data.Store',
+		'Ext.data.field.Field'
+	],
+
+	stores: {
+		DesignatedReptileStore: {
+			fields: [
+				{
+					name: 'serial'
+				}
+			]
+		}
+	}
 
 });

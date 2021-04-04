@@ -23,12 +23,16 @@ Ext.define('Habitat.view.HabitatForm', {
 	requires: [
 		'Habitat.view.HabitatFormViewModel',
 		'Ext.toolbar.Toolbar',
-		'Ext.form.field.Text'
+		'Ext.form.field.Text',
+		'Ext.grid.Panel',
+		'Ext.grid.column.Column',
+		'Ext.view.Table'
 	],
 
 	viewModel: {
 		type: 'habitatform'
 	},
+	layout: 'vbox',
 	bodyPadding: 10,
 	bodyStyle: 'background:none',
 	defaultListenerScope: true,
@@ -52,6 +56,26 @@ Ext.define('Habitat.view.HabitatForm', {
 			itemId: 'rack',
 			fieldLabel: 'Rack',
 			labelAlign: 'right'
+		},
+		{
+			xtype: 'gridpanel',
+			flex: 1,
+			width: 400,
+			title: 'Designated Reptiles',
+			bind: {
+				store: '{DesignatedReptileStore}'
+			},
+			columns: [
+				{
+					xtype: 'gridcolumn',
+					width: 180,
+					dataIndex: 'serial',
+					text: 'Serial'
+				}
+			],
+			viewConfig: {
+				enableTextSelection: true
+			}
 		}
 	],
 	listeners: {
@@ -74,6 +98,20 @@ Ext.define('Habitat.view.HabitatForm', {
 			success:function(reply) {
 				this.habitatId = habitatId;
 				this.docFormLoadFormData(reply);
+				this.readDesignatedReptiles(habitatId);
+			},
+			scope:this,
+			mask:this
+		});
+
+	},
+
+	readDesignatedReptiles: function(habitatId) {
+		AERP.Ajax.request({
+			url:'/Habitat/readDesignatedReptiles',
+			jsonData:{habitatId:habitatId},
+			success:function(reply){
+				this.getViewModel().getStore('DesignatedReptileStore').loadData(reply.data);
 			},
 			scope:this,
 			mask:this

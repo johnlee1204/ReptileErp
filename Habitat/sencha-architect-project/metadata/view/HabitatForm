@@ -10,6 +10,7 @@
         "bodyStyle": "background:none",
         "designer|userAlias": "habitatform",
         "designer|userClassName": "HabitatForm",
+        "layout": "vbox",
         "mixins": [
             "['DocForm']"
         ]
@@ -19,7 +20,8 @@
         "bodyStyle": "string",
         "designer|userAlias": "string",
         "designer|userClassName": "string",
-        "mixins": "object"
+        "mixins": "object",
+        "layout": "string"
     },
     "name": "MyPanel",
     "designerId": "395d712d-eebb-4288-8b5a-9e6f5dbcd571",
@@ -85,6 +87,68 @@
             "designerId": "b839e6ee-f411-4459-8955-7956625268e8"
         },
         {
+            "type": "Ext.grid.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "flex": 1,
+                "store": [
+                    "{DesignatedReptileStore}"
+                ],
+                "title": "Designated Reptiles",
+                "width": 400
+            },
+            "configAlternates": {
+                "store": "binding",
+                "flex": "number",
+                "title": "string",
+                "width": "auto"
+            },
+            "name": "MyGridPanel1",
+            "designerId": "4d63c408-5eb8-45bd-89e7-11904e6d838a",
+            "cn": [
+                {
+                    "type": "Ext.grid.column.Column",
+                    "reference": {
+                        "name": "columns",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "dataIndex": "serial",
+                        "text": "Serial",
+                        "width": 180
+                    },
+                    "configAlternates": {
+                        "dataIndex": "datafield",
+                        "text": "string",
+                        "width": "auto"
+                    },
+                    "name": "MyColumn1",
+                    "designerId": "33f3cfb0-3f8c-4c24-912b-efe256c9277a"
+                },
+                {
+                    "type": "Ext.view.Table",
+                    "reference": {
+                        "name": "viewConfig",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "enableTextSelection": true
+                    },
+                    "configAlternates": {
+                        "enableTextSelection": "boolean"
+                    },
+                    "name": "MyTable1",
+                    "designerId": "ff4a9187-cad3-4e18-94f6-99de4e96ef29"
+                }
+            ]
+        },
+        {
             "type": "basiceventbinding",
             "reference": {
                 "name": "listeners",
@@ -132,6 +196,40 @@
                     "\tsuccess:function(reply) {",
                     "\t\tthis.habitatId = habitatId;",
                     "\t\tthis.docFormLoadFormData(reply);",
+                    "\t\tthis.readDesignatedReptiles(habitatId);",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});",
+                    ""
+                ]
+            },
+            "configAlternates": {
+                "designer|params": "typedarray",
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "readHabitat",
+            "designerId": "02d0d549-9753-49a1-9c2c-1f5b0ac9ccf5"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|params": [
+                    "habitatId"
+                ],
+                "fn": "readDesignatedReptiles",
+                "implHandler": [
+                    "AERP.Ajax.request({",
+                    "\turl:'/Habitat/readDesignatedReptiles',",
+                    "\tjsonData:{habitatId:habitatId},",
+                    "\tsuccess:function(reply){",
+                    "\t\tthis.getViewModel().getStore('DesignatedReptileStore').loadData(reply.data);",
                     "\t},",
                     "\tscope:this,",
                     "\tmask:this",
@@ -143,8 +241,8 @@
                 "fn": "string",
                 "implHandler": "code"
             },
-            "name": "readHabitat",
-            "designerId": "02d0d549-9753-49a1-9c2c-1f5b0ac9ccf5"
+            "name": "readDesignatedReptiles",
+            "designerId": "2e7665e4-fd10-4fb6-964f-6da5cdc37902"
         },
         {
             "type": "basicfunction",

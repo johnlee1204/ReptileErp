@@ -13,5 +13,41 @@
         "designer|userAlias": "string",
         "designer|userClassName": "string"
     },
-    "designerId": "01b8b812-f89f-4b23-8b40-844b3753b0ae"
+    "designerId": "01b8b812-f89f-4b23-8b40-844b3753b0ae",
+    "cn": [
+        {
+            "type": "Ext.data.Store",
+            "reference": {
+                "name": "stores",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "DesignatedReptileStore"
+            },
+            "configAlternates": {
+                "name": "string"
+            },
+            "name": "MyStore1",
+            "designerId": "24abaa1f-662e-4d99-831f-2272bfbf4274",
+            "cn": [
+                {
+                    "type": "Ext.data.field.Field",
+                    "reference": {
+                        "name": "fields",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "name": "serial"
+                    },
+                    "configAlternates": {
+                        "name": "string"
+                    },
+                    "name": "MyField2",
+                    "designerId": "38dcd5ec-d368-4094-94a1-70a454cccae4"
+                }
+            ]
+        }
+    ]
 }

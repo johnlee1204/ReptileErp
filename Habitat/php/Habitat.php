@@ -63,4 +63,18 @@ class Habitat extends AgileBaseController {
 
 		$this->outputSuccess();
 	}
+	function readDesignatedReptiles(){
+        $input = Validation::validateJsonInput([
+           'habitatId' => 'numeric'
+        ]);
+        $reptilesWithHabitat = $this->database->fetch_all_row("
+			SELECT
+				serial
+			FROM Pet
+			WHERE habitatId = ?
+			ORDER BY receiveDate DESC
+		",[ $input['habitatId']]);
+
+        $this->outputSuccessData($reptilesWithHabitat);
+    }
 }

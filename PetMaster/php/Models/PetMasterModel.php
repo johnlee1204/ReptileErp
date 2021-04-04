@@ -386,10 +386,13 @@ class PetMasterModel extends AgileModel {
 		$reptile2 = self::readPet($reptileId2);
 
 		$currentlyBreedingWith = self::readCurrentlyBreedingWith($reptileId1);
-
 		if(count($currentlyBreedingWith) === 6) {
 			throw new AgileUserMessageException("Cannot Breed with over 6 Reptiles");
 		}
+        $currentlyBreedingWith = self::readCurrentlyBreedingWith($reptileId2);
+        if(count($currentlyBreedingWith) === 6) {
+            throw new AgileUserMessageException("Cannot Breed with over 6 Reptiles");
+        }
 
 		if($reptile1['sex'] === $reptile2['sex']) {
 			throw new AgileUserMessageException("Cannot Breed Same Sex!");
@@ -410,14 +413,15 @@ class PetMasterModel extends AgileModel {
 
             $employeeInfo = self::$agileApp->SessionManager->getUserDataFromSession();
             ScheduleModel::createShift([
-                'employeeId' => $employeeInfo['employeeId'],
+                'employeeId' => [$employeeInfo['employeeId']],
                 'type' => 2,
                 'title' => 'Breed ' . $reptile1['serial'] . ' with ' . $reptile2['serial'],
                 'allDay' => 1,
                 'startTime' => NULL,
                 'endTime'  => NULL,
                 'startDate' => $breedDate,
-                'endDate' => $breedDate
+                'endDate' => $breedDate,
+                'private' => 0
             ]);
         }
 
