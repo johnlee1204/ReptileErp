@@ -1108,6 +1108,7 @@
                     "\tsuccess:function(reply) {",
                     "\t\tthis.employeeId = employeeId;",
                     "\t\tthis.getViewModel().getStore('LaborHistoryStore').loadData(reply.data);",
+                    "\t\tthis.queryById('laborForm').employeeId = employeeId;",
                     "\t},",
                     "\tscope:this,",
                     "\tmask:this",

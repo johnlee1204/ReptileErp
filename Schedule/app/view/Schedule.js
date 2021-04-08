@@ -465,6 +465,7 @@ Ext.define('Schedule.view.Schedule', {
 			success:function(reply) {
 				this.employeeId = employeeId;
 				this.getViewModel().getStore('LaborHistoryStore').loadData(reply.data);
+				this.queryById('laborForm').employeeId = employeeId;
 			},
 			scope:this,
 			mask:this

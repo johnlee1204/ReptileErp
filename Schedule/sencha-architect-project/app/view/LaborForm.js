@@ -66,6 +66,7 @@ Ext.define('Schedule.view.LaborForm', {
 	onPanelAfterRender: function(component, eOpts) {
 		this.docFormInit({
 			toolbarId:'laborFormToolbar',
+			addFn:'createLabor',
 			saveFn:'updateLabor',
 			deleteFn:'deleteLabor'
 		});
@@ -89,6 +90,22 @@ Ext.define('Schedule.view.LaborForm', {
 			success:function(reply) {
 				this.laborId = laborId;
 				this.docFormLoadFormData(reply);
+			},
+			scope:this,
+			mask:this
+		});
+	},
+
+	createLabor: function() {
+		let jsonData = this.docFormGetAllFieldValues();
+		jsonData.employeeId = this.employeeId;
+
+		AERP.Ajax.request({
+			url:'/Schedule/createLabor',
+			jsonData:jsonData,
+			success:function(reply) {
+				this.readLabor(reply.data);
+				this.fireEvent('laborchanged');
 			},
 			scope:this,
 			mask:this

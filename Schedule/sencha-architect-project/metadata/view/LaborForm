@@ -112,6 +112,7 @@
                 "implHandler": [
                     "this.docFormInit({",
                     "\ttoolbarId:'laborFormToolbar',",
+                    "\taddFn:'createLabor',",
                     "\tsaveFn:'updateLabor',",
                     "\tdeleteFn:'deleteLabor'",
                     "});"
@@ -195,6 +196,38 @@
             },
             "name": "readLabor",
             "designerId": "4fdd3968-5891-4a63-aafd-77b0abe162d8"
+        },
+        {
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "createLabor",
+                "implHandler": [
+                    "let jsonData = this.docFormGetAllFieldValues();",
+                    "jsonData.employeeId = this.employeeId;",
+                    "",
+                    "AERP.Ajax.request({",
+                    "\turl:'/Schedule/createLabor',",
+                    "\tjsonData:jsonData,",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.readLabor(reply.data);",
+                    "\t\tthis.fireEvent('laborchanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
+                ]
+            },
+            "configAlternates": {
+                "fn": "string",
+                "implHandler": "code"
+            },
+            "name": "createLabor",
+            "designerId": "c6c8c6e5-ae9b-41ab-b1ba-7183961f1b82"
         },
         {
             "type": "basicfunction",

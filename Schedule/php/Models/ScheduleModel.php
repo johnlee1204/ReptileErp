@@ -161,6 +161,35 @@ class ScheduleModel extends AgileModel{
 		return self::$database->fetch_assoc();
 	}
 
+	static function createLabor($inputs) {
+        if($inputs['endTime'] === "") {
+            $inputs['endTime'] = NULL;
+        }
+
+        $hoursWorked = NULL;
+        if($inputs['endTime'] !== NULL) {
+            $hoursWorked = strtotime($inputs['endTime']) - strtotime($inputs['startTime']);
+            $hoursWorked = $hoursWorked / ( 60 * 60 );
+
+            if($hoursWorked < 0) {
+                throw new AgileUserMessageException("End time must be after Start time!");
+            }
+        }
+
+        $laborId = self::$database->insert(
+            'Labor',
+            [
+                'startTime' => $inputs['startTime'],
+                'endTime' => $inputs['endTime'],
+                'hoursWorked' => $hoursWorked,
+                'employeeId' => $inputs['employeeId']
+
+            ]
+        );
+
+        return $laborId['id'];
+    }
+
 	static function updateLabor($inputs) {
 
 		if($inputs['endTime'] === "") {

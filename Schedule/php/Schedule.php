@@ -15,13 +15,15 @@ class Schedule extends AgileBaseController {
 		'readClockOnDetails' => 'read',
 		'readEmployeeSchedule' => 'read',
 		'readEmployeeLaborHistory' => 'read',
-		'readLabor' => 'read',
-		'updateLabor' => 'update',
+        'readLabor' => 'read',
+		'createLabor' => 'create',
+        'updateLabor' => 'update',
 		'deleteLabor' => 'delete',
 		'readSchedule' => 'read',
 		'createShift' => 'read',
 		'updateShift' => 'update',
-		'deleteShift' => 'delete'
+		'deleteShift' => 'delete',
+
 	];
 
 	function readAppInitData() {
@@ -83,6 +85,16 @@ class Schedule extends AgileBaseController {
 
 		$this->outputSuccessData(ScheduleModel::readLabor($input['laborId']));
 	}
+
+	function createLabor() {
+        $inputs = Validation::validateJsonInput([
+            'employeeId' => 'numeric',
+            'startTime' => 'notBlank',
+            'endTime'
+        ]);
+
+        $this->outputSuccessData(ScheduleModel::createLabor($inputs));
+    }
 
 	function updateLabor() {
 		$inputs = Validation::validateJsonInput([
