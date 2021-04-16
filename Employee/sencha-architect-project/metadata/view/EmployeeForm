@@ -428,7 +428,7 @@
                 ],
                 "fn": "onPanelDocFormStateChangeD",
                 "implHandler": [
-                    "this.docFormBtns.deleteBtn.hide();"
+                    ""
                 ],
                 "name": "docFormStateChanged",
                 "scope": "me"
@@ -587,28 +587,17 @@
             "userConfig": {
                 "fn": "deleteEmployee",
                 "implHandler": [
-                    "this.audio = new Audio('/Employee/resources/firealarm.mp3');",
-                    "this.audio.play();",
-                    "",
-                    "Ext.Msg.confirm(\"Are you sure?\", \"Are you sure?\", function(button) {",
-                    "\tthis.audio.pause();",
-                    "\tif(button === \"yes\") {",
-                    "\t\tvar msg = new SpeechSynthesisUtterance();",
-                    "\t\tmsg.text = this.queryById(\"firstName\").getValue() + \" \" + this.queryById(\"lastName\").getValue() + \" has been fired\";",
-                    "\t\twindow.speechSynthesis.speak(msg);",
-                    "\t\tAERP.Ajax.request({",
-                    "\t\t\turl:'/Employee/deleteEmployee',",
-                    "\t\t\tjsonData:{employeeId:this.employeeId},",
-                    "\t\t\tsuccess:function(reply) {",
-                    "\t\t\t\tthis.employeeId = null;",
-                    "\t\t\t\tthis.docFormReset();",
-                    "\t\t\t\tthis.fireEvent('employeechanged');",
-                    "\t\t\t},",
-                    "\t\t\tscope:this,",
-                    "\t\t\tmask:this",
-                    "\t\t});",
-                    "\t}",
-                    "}, this);"
+                    "AERP.Ajax.request({",
+                    "\turl:'/Employee/deleteEmployee',",
+                    "\tjsonData:{employeeId:this.employeeId},",
+                    "\tsuccess:function(reply) {",
+                    "\t\tthis.employeeId = null;",
+                    "\t\tthis.docFormReset();",
+                    "\t\tthis.fireEvent('employeechanged');",
+                    "\t},",
+                    "\tscope:this,",
+                    "\tmask:this",
+                    "});"
                 ]
             },
             "configAlternates": {

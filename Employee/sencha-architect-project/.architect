@@ -241,8 +241,8 @@
         "model": true,
         "controller": true,
         "resource": true,
-        "10867763-8589-410c-be88-bd974b7fd1ec": {
-            "id": "10867763-8589-410c-be88-bd974b7fd1ec"
+        "221ea3a0-bb13-4207-80da-18d48b795843": {
+            "id": "221ea3a0-bb13-4207-80da-18d48b795843"
         },
         "173a740e-293e-4e00-b40c-9a50fb2577d4": {
             "id": "173a740e-293e-4e00-b40c-9a50fb2577d4"
@@ -285,19 +285,16 @@
         }
     },
     "tabState": {
-        "openTabs": [
-            "d38c2cf0-9e53-498a-8521-da773f47156a",
-            "e9dc3894-68b1-4910-a175-504a0559dda2"
-        ]
+        "openTabs": []
     },
     "canvasState": {
         "topInstance": null
     },
     "inspectorState": {
         "topInstance": "e9dc3894-68b1-4910-a175-504a0559dda2",
-        "selectedInstance": "2e8444a7-f072-40e0-9881-8e6444977308"
+        "selectedInstance": "4caec55a-e5bc-400c-8cc0-cc9f66a7507f"
     },
-    "editMode": "code",
+    "editMode": "design",
     "userSettings": {
         "no-cmd": true
     }
